@@ -1,0 +1,29 @@
+.login-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--accent-gold);
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--text-main);
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-input:focus {
+  border-color: var(--accent-dark-gold);
+  box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+}
+
+.login-btn {
+  background-color: var(--accent-gold);
+  color: white;
+  font-weight: 600;
+  border: none;
+}
+
+.login-btn:hover {
+  background-color: var(--accent-dark-gold);
+  transform: translateY(-1px);
+}

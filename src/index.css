@@ -1,0 +1,327 @@
+/* Design System matching wine.html */
+:root {
+  --bg-color: #fbf8f1;
+  --text-main: #333;
+  --text-muted: #777;
+  --accent-gold: #d4af37;
+  --accent-dark-gold: #b8860b;
+
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Montserrat', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f2ede5;
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  min-width: 8.5in;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base styles for a premium look */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+/* When displaying the menu, don't stretch to full viewport height */
+.app-container.menu-view {
+  min-height: unset;
+  height: auto;
+}
+
+/* Upload Screen */
+.upload-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.upload-title {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  color: #1a1a1a;
+}
+
+.upload-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin-bottom: 3rem;
+  font-weight: 300;
+}
+
+.upload-box {
+  border: 1px dashed var(--accent-gold);
+  padding: 4rem 3rem;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 500px;
+}
+
+.upload-box:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-color: var(--accent-dark-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.upload-icon {
+  color: var(--accent-gold);
+  margin-bottom: 1rem;
+  width: 48px;
+  height: 48px;
+}
+
+.upload-input {
+  display: none;
+}
+
+/* Wine Menu List */
+.menu-container {
+  width: 100%;
+  max-width: 1100px;
+  padding: 1in 1.25in;
+  background-color: var(--bg-color);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.12);
+  margin: 2rem auto;
+}
+
+.print-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+header.menu-header {
+  text-align: center;
+  margin-bottom: 50px;
+  border-bottom: 1px solid var(--accent-gold);
+  padding-bottom: 20px;
+}
+
+h1.menu-title {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 400;
+  margin: 0;
+  color: #1a1a1a;
+  letter-spacing: 1px;
+}
+
+.menu-subtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+
+/* Category Sections */
+section.wine-category {
+  margin-bottom: 50px;
+}
+
+h2 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--accent-dark-gold);
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 1px double var(--accent-gold);
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 5px;
+}
+
+.category-title {
+  font-weight: 700;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 30px 0 15px 0;
+  color: #1a1a1a;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 5px;
+}
+
+.section-desc {
+  text-align: center;
+  font-style: italic;
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.region-label {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
+}
+
+/* Wine Item */
+.wine-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.wine-info {
+  flex: 1;
+}
+
+.producer {
+  font-weight: 400;
+  color: #000;
+}
+
+.vintage-region {
+  font-style: italic;
+  color: #666;
+  margin-left: 8px;
+}
+
+.price {
+  font-weight: 300;
+  margin-left: 20px;
+  color: #000;
+}
+
+/* Actions */
+.actions-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--accent-gold);
+  background: transparent;
+  color: var(--accent-dark-gold);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  background: var(--accent-gold);
+  color: #fff;
+}
+
+/* Print Styles */
+@media print {
+  @page {
+    margin: 0;
+    /* Zero margin so cream fills edge to edge — no white seams */
+  }
+
+  html,
+  body {
+    background-color: var(--bg-color) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  .app-container {
+    display: block;
+    background-color: var(--bg-color) !important;
+  }
+
+  .menu-container {
+    box-shadow: none;
+    width: 100%;
+    padding: 0 0.65in;
+    /* Left/right margins on every page */
+    margin: 0;
+    background-color: var(--bg-color) !important;
+  }
+
+  /* Top/bottom margin on every page via repeating thead/tfoot */
+  .print-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  .print-margin-spacer {
+    height: 0.65in;
+    display: block;
+  }
+
+  .upload-container,
+  .actions-bar,
+  .tabs-container {
+    display: none !important;
+  }
+
+  h1.menu-title {
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+
+  .menu-subtitle {
+    font-size: 14px;
+  }
+
+  header.menu-header {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+  }
+
+  /* Prevent orphaned labels */
+  h2,
+  .category-title,
+  .region-label {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .wine-item {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
