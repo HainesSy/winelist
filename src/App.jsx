@@ -53,7 +53,7 @@ function App() {
           }
         });
       } else {
-        alert("Failed to connect to CellarTracker. Server responded with an error.");
+        alert(`Failed to connect to CellarTracker. Server responded with error ${response.status}: ${response.statusText}`);
         setIsLoadingDefault(false);
       }
     } catch (error) {
