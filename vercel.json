@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/api/cellartracker/(.*)",
-      "destination": "https://www.cellartracker.com/$1"
+      "source": "/api/cellartracker/:path*",
+      "destination": "https://www.cellartracker.com/:path*"
     }
   ]
 }
