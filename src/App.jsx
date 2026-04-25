@@ -426,7 +426,7 @@ function App() {
       <div className="upload-container">
         <h1 className="upload-title">CellarTracker</h1>
         <p className="upload-subtitle">
-          Connect your CellarTracker account or upload a CSV export to instantly generate a 3 Michelin star wine list.
+          Connect your CellarTracker account or upload a CSV export to instantly generate a Restaurant Style Wine List.
         </p>
 
         <div className="login-section" style={{ marginBottom: '2rem', textAlign: 'left', width: '100%', maxWidth: '400px', margin: '0 auto 2rem auto' }}>
