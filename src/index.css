@@ -24,7 +24,6 @@ body {
   padding: 0;
   display: flex;
   justify-content: center;
-  min-width: 8.5in;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -50,10 +49,9 @@ body {
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  padding-bottom: 10rem; /* Lift it up */
   background-color: #f2ede5;
   z-index: 1000;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 /* If we are in the menu view, hide the fixed landing page */
@@ -136,69 +134,142 @@ body {
   margin: 2rem auto;
 }
 
-@media (max-width: 1200px) {
-  body {
-    min-width: 1200px;
+@media (min-width: 1024px) {
+  .menu-container {
+    min-width: 800px; /* Maintain elegant spacing on desktop */
   }
+}
 
-  .upload-container {
-    padding: 2rem;
-    padding-bottom: 10rem; /* Lift it up */
-    justify-content: center;
-    height: 100dvh;
-    width: 1200px;
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
-  }
-
+@media (max-width: 768px) {
   .upload-title {
-    font-size: 4.8rem;
-    margin-bottom: 1.4rem;
+    font-size: clamp(1.1rem, 5vw, 1.4rem);
+    text-align: center;
   }
 
   .upload-subtitle {
-    font-size: 2.1rem;
-    max-width: 950px;
-    margin-bottom: 3.8rem;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
   }
 
   .login-section {
-    max-width: 880px !important;
-    margin-bottom: 3.8rem !important;
-  }
-
-  .login-input {
-    padding: 1.4rem 2rem !important;
-    font-size: 2.4rem !important;
-    border-width: 2px !important;
-  }
-
-  .btn.login-btn {
-    padding: 1.5rem !important;
-    font-size: 2rem !important;
-    font-weight: 600;
+    padding: 0 1rem;
+    max-width: 100% !important;
   }
 
   .upload-box {
-    max-width: 880px;
-    padding: 5.5rem 3.5rem;
-    border-width: 2px;
-  }
-
-  .upload-icon {
-    width: 110px;
-    height: 110px;
-    margin-bottom: 1.8rem;
+    padding: 2rem 1rem;
+    margin: 0 1rem;
+    width: calc(100% - 2rem);
+    max-width: 100%;
   }
 
   .upload-box h3 {
-    font-size: 2.8rem;
+    font-size: 1.2rem;
   }
 
-  .upload-box p {
-    font-size: 1.7rem;
+  /* Make the menu fit on mobile without squeezing or scrolling */
+  .menu-view {
+    align-items: center !important;
+    overflow-x: hidden;
+    width: 100%;
+    padding: 0;
+  }
+
+  .menu-container {
+    min-width: 0;
+    width: 100%;
+    padding: clamp(0.4rem, 2vw, 0.8rem) clamp(0.4rem, 2vw, 0.8rem);
+    margin: 0;
+    box-shadow: none;
+  }
+
+  header.menu-header {
+    margin-bottom: clamp(12px, 3vw, 20px) !important;
+    padding-bottom: clamp(6px, 2vw, 10px) !important;
+  }
+
+  h1.menu-title {
+    font-size: clamp(0.65rem, 3.5vw, 0.95rem) !important;
+    letter-spacing: 0.5px;
+  }
+
+  .menu-subtitle {
+    font-size: clamp(0.4rem, 1.8vw, 0.55rem) !important;
+    margin-top: 2px;
+  }
+
+  h2 {
+    font-size: clamp(1rem, 5.5vw, 1.2rem) !important;
+    margin-bottom: clamp(0.4rem, 2vw, 0.6rem) !important;
+    margin-top: 0 !important;
+    padding-bottom: 2px !important;
+  }
+
+  .region-label {
+    font-size: clamp(0.55rem, 2.5vw, 0.65rem);
+    margin-bottom: 0.1rem;
+    margin-top: 0.2rem;
+  }
+
+  section.wine-category {
+    margin-bottom: clamp(1rem, 4vw, 1.5rem) !important;
+  }
+
+  .region-section {
+    margin-bottom: clamp(0.3rem, 1.5vw, 0.6rem) !important;
+  }
+
+  .wine-item {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 3px;
+    font-size: clamp(0.5rem, 2.5vw, 0.6rem) !important;
+    margin-bottom: 2px;
+    line-height: 1.3;
+  }
+
+  .producer {
+    font-size: clamp(0.5rem, 2.5vw, 0.6rem) !important;
+  }
+
+  .wine-info {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
+
+  .vintage-region {
+    margin-left: 3px;
+    display: inline;
+    font-size: clamp(0.45rem, 2vw, 0.55rem) !important;
+    color: var(--text-muted);
+  }
+
+  .price {
+    margin-left: auto;
+    font-size: clamp(0.5rem, 2.5vw, 0.6rem) !important;
+    font-weight: 400;
+  }
+
+  /* Compact buttons and tabs for mobile */
+  .actions-bar, .tabs-container {
+    gap: clamp(0.3rem, 1.5vw, 0.5rem) !important;
+    margin-bottom: clamp(0.5rem, 2vw, 1rem) !important;
+    margin-top: clamp(0.5rem, 2vw, 1rem) !important;
+  }
+
+  .btn {
+    padding: clamp(0.25rem, 1.2vw, 0.4rem) clamp(0.4rem, 2vw, 0.7rem) !important;
+    font-size: clamp(0.4rem, 2vw, 0.6rem) !important;
+    letter-spacing: 0.05em;
+  }
+
+  .btn svg {
+    width: clamp(10px, 3vw, 14px) !important;
+    height: clamp(10px, 3vw, 14px) !important;
+    margin-right: clamp(2px, 1vw, 4px) !important;
   }
 }
 
