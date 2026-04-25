@@ -24,6 +24,7 @@ body {
   padding: 0;
   display: flex;
   justify-content: center;
+  min-width: 8.5in;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -111,13 +112,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  .menu-container {
-    padding: 2rem 1.5rem; /* Much smaller than 1in */
-    margin: 0;
-    box-shadow: none;
-    width: 100%;
-  }
-
   .upload-container {
     padding: 1rem;
     padding-bottom: 8rem;
@@ -128,63 +122,6 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-  }
-
-  .upload-title {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .upload-subtitle {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-  }
-
-  h1.menu-title {
-    font-size: 26px;
-    letter-spacing: 0;
-  }
-
-  .menu-subtitle {
-    font-size: 14px;
-  }
-
-  h2 {
-    font-size: 22px;
-  }
-
-  .wine-item {
-    font-size: 13px; /* Slightly smaller for mobile */
-    gap: 8px;
-  }
-
-  .vintage-region {
-    font-size: 12px;
-  }
-
-  .price {
-    font-size: 13px;
-    margin-left: 10px;
-  }
-
-  .actions-bar, .tabs-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem !important;
-    padding: 0 1rem;
-    width: 100%;
-  }
-
-  .btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
-    flex: 1 1 auto;
-    min-width: 140px;
-  }
-
-  .tabs-container .btn {
-    min-width: 80px;
   }
 }
 
