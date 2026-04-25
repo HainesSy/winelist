@@ -177,6 +177,11 @@ function App() {
       wine.Designation = decodeEntities(wine.Designation);
       wine.Producer = decodeEntities(wine.Producer);
 
+      // Handle Non-Vintage (CellarTracker uses 1001 for NV)
+      if (wine.Vintage === '1001' || !wine.Vintage || wine.Vintage === '') {
+        wine.Vintage = 'NV';
+      }
+
       if (!grouped[mainType]) {
         grouped[mainType] = {};
       }
@@ -243,9 +248,11 @@ function App() {
         }).forEach(region => {
           // Sort wines within region by Vintage
           sortedRegions[region] = countriesObj[country][region].sort((a, b) => {
-            if (a.Vintage === 'NV') return 1;
-            if (b.Vintage === 'NV') return -1;
-            return parseInt(a.Vintage) - parseInt(b.Vintage);
+            const vA = a.Vintage === '1001' ? 'NV' : a.Vintage;
+            const vB = b.Vintage === '1001' ? 'NV' : b.Vintage;
+            if (vA === 'NV') return 1;
+            if (vB === 'NV') return -1;
+            return parseInt(vA) - parseInt(vB);
           });
         });
         sortedCountries[country] = sortedRegions;
