@@ -371,8 +371,22 @@ function App() {
                             <div className="wine-list">
                               {categoryWines.map((wine, idx) => {
                                 const vintage = wine.Vintage || 'NV';
-                                const name = wine.Wine || wine.Designation || 'Unknown Wine';
                                 const producer = wine.Producer || '';
+                                
+                                // Clean up the wine name to avoid repeating producer or vintage
+                                let cleanName = wine.Wine || wine.Designation || 'Unknown Wine';
+                                if (producer && cleanName.startsWith(producer)) {
+                                  cleanName = cleanName.replace(producer, '').trim();
+                                }
+                                // Also remove vintage if it's at the start of the name (common in CellarTracker)
+                                if (vintage !== 'NV' && cleanName.startsWith(vintage)) {
+                                  cleanName = cleanName.replace(vintage, '').trim();
+                                }
+                                // Remove leading punctuation that might be left over
+                                cleanName = cleanName.replace(/^[,.\s-]+/, '').trim();
+
+                                const primaryText = producer || cleanName;
+                                const secondaryText = producer ? (cleanName ? `${cleanName}, ${vintage}` : vintage) : vintage;
 
                                 // Helper to get the first valid, non-zero price
                                 const getValidPrice = (...prices) => {
@@ -391,8 +405,6 @@ function App() {
                                   displayPrice = Math.round(parseFloat(price.replace('$', '')));
                                 }
 
-                                const primaryText = producer || name;
-                                const secondaryText = producer ? `${name}, ${vintage}` : vintage;
 
                                 return (
                                   <div key={idx} className="wine-item">
