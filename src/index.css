@@ -121,9 +121,14 @@ body {
 
   .upload-container {
     padding: 1rem;
+    padding-bottom: 8rem; /* Push content higher */
     justify-content: center;
     height: 100dvh;
+    width: 100vw;
     overflow: hidden;
+    position: fixed; /* Lock to viewport */
+    top: 0;
+    left: 0;
   }
 
   .upload-title {
