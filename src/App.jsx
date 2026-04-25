@@ -58,7 +58,7 @@ function App() {
       }
     } catch (error) {
       console.log("Error fetching from CellarTracker proxy:", error);
-      alert("Error connecting to CellarTracker. Make sure the Vite development server is running.");
+      alert(`Error connecting to CellarTracker: ${error.message || "Unknown error"}. If you are on the website, this might be a temporary proxy issue.`);
       setIsLoadingDefault(false);
     }
   };
