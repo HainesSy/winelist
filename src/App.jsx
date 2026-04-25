@@ -284,6 +284,19 @@ function App() {
     return groupWines(filtered);
   }, [rawWines, activeTab]);
 
+  useEffect(() => {
+    const viewport = document.getElementById('viewport');
+    if (viewport) {
+      if (rawWines) {
+        // Zoom out to fit the wide wine list
+        viewport.setAttribute('content', 'width=1200');
+      } else {
+        // Stay zoomed in for the landing page
+        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+      }
+    }
+  }, [rawWines]);
+
   const resetData = () => {
     setRawWines(null);
     setActiveTab('All');
