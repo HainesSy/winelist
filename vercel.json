@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/cellartracker/:path*",
-      "destination": "https://www.cellartracker.com/:path*"
+      "destination": "/api/cellartracker"
     }
   ]
 }
