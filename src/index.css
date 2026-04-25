@@ -120,8 +120,10 @@ body {
   }
 
   .upload-container {
-    padding: 1rem 1rem;
-    justify-content: flex-start;
+    padding: 1rem;
+    justify-content: center;
+    height: 100dvh;
+    overflow: hidden;
   }
 
   .upload-title {
