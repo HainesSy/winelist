@@ -24,9 +24,9 @@ body {
   padding: 0;
   display: flex;
   justify-content: center;
-  min-width: 8.5in;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* Base styles for a premium look */
@@ -109,6 +109,70 @@ body {
   background-color: var(--bg-color);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.12);
   margin: 2rem auto;
+}
+
+@media (max-width: 768px) {
+  .menu-container {
+    padding: 2rem 1.5rem;
+    margin: 1rem 0;
+    box-shadow: none;
+  }
+
+  .upload-container {
+    padding: 2rem 1rem;
+  }
+
+  .upload-title {
+    font-size: 2.2rem;
+  }
+
+  h1.menu-title {
+    font-size: 24px;
+  }
+
+  .menu-subtitle {
+    font-size: 16px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  .wine-item {
+    font-size: 14px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    margin-bottom: 12px;
+    border-bottom: 1px dotted rgba(212, 175, 55, 0.2);
+    padding-bottom: 8px;
+  }
+
+  .wine-info {
+    width: 100%;
+  }
+
+  .vintage-region {
+    display: block;
+    margin-left: 0;
+    margin-top: 2px;
+  }
+
+  .price {
+    margin-left: 0;
+    font-weight: 500;
+    color: var(--accent-dark-gold);
+  }
+
+  .actions-bar {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 .print-table {
