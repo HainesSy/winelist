@@ -63,39 +63,48 @@ body {
 
 .upload-title {
   font-family: var(--font-serif);
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
   letter-spacing: 2px;
   color: #1a1a1a;
 }
 
 .upload-subtitle {
-  font-size: 1.4rem;
+  font-size: 2.2rem;
   color: var(--text-muted);
-  max-width: 700px;
-  margin-bottom: 3rem;
+  max-width: 1000px;
+  margin-bottom: 4rem;
   font-weight: 300;
 }
 
 .login-section {
   width: 100%;
-  max-width: 500px !important;
+  max-width: 900px !important;
+  margin-bottom: 4rem !important;
 }
 
 .login-input {
-  padding: 1rem 1.5rem !important;
-  font-size: 1.2rem !important;
+  padding: 1.5rem 2rem !important;
+  font-size: 2.5rem !important;
+  border-width: 2px !important;
 }
 
 .upload-box {
-  border: 1px dashed var(--accent-gold);
-  padding: 3rem 2rem;
-  border-radius: 8px;
+  border: 2px dashed var(--accent-gold);
+  padding: 6rem 4rem;
+  border-radius: 12px;
   background-color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   transition: all 0.3s ease;
   width: 100%;
-  max-width: 500px;
+  max-width: 900px;
+}
+
+.upload-icon {
+  color: var(--accent-gold);
+  margin-bottom: 2rem;
+  width: 120px;
+  height: 120px;
 }
 
 .upload-box:hover {
@@ -107,9 +116,17 @@ body {
 
 .upload-icon {
   color: var(--accent-gold);
-  margin-bottom: 1rem;
-  width: 48px;
-  height: 48px;
+  margin-bottom: 2rem;
+  width: 120px;
+  height: 120px;
+}
+
+.upload-box h3 {
+  font-size: 3rem;
+}
+
+.upload-box p {
+  font-size: 1.8rem;
 }
 
 .upload-input {
