@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Papa from 'papaparse';
-import { UploadCloud, Printer, RefreshCw } from 'lucide-react';
+import { UploadCloud, Printer, RefreshCw, Menu, X } from 'lucide-react';
 import './App.css';
 
 function App() {
@@ -313,6 +313,30 @@ function App() {
   if (rawWines) {
     return (
       <div className="app-container menu-view">
+        <div 
+          className="top-hover-trigger print-btn" 
+          onMouseEnter={() => {
+            if (!isForceClosed) setIsNavOpen(true);
+          }}
+        />
+
+        <button
+          className={`fab-menu-btn print-btn ${isNavOpen ? 'nav-open' : ''}`}
+          onClick={(e) => {
+            e.currentTarget.blur();
+            if (isNavOpen) {
+              setIsNavOpen(false);
+              setIsForceClosed(true);
+            } else {
+              setIsNavOpen(true);
+              setIsForceClosed(false);
+            }
+          }}
+          aria-label="Toggle Menu Controls"
+        >
+          {isNavOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+
         <header
           className={`top-nav-bar print-btn ${isNavOpen ? 'nav-open' : ''}`}
           onMouseEnter={() => {
@@ -357,21 +381,6 @@ function App() {
                 ))}
               </div>
             )}
-          </div>
-          <div
-            className="top-nav-trigger-hint"
-            onClick={(e) => {
-              e.stopPropagation();
-              if (isNavOpen) {
-                setIsNavOpen(false);
-                setIsForceClosed(true);
-              } else {
-                setIsNavOpen(true);
-                setIsForceClosed(false);
-              }
-            }}
-          >
-            <span className="hint-pill">{isNavOpen ? '▲ Close Controls' : '▼ Menu Controls & Tabs'}</span>
           </div>
         </header>
 
