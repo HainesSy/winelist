@@ -10,6 +10,8 @@ function App() {
   const [isLoadingDefault, setIsLoadingDefault] = useState(true);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isForceClosed, setIsForceClosed] = useState(false);
   const fileInputRef = useRef(null);
 
   const fetchFromCellarTracker = async (user, pass) => {
@@ -311,34 +313,67 @@ function App() {
   if (rawWines) {
     return (
       <div className="app-container menu-view">
-        <div className="actions-bar print-btn" style={{ marginTop: '2rem' }}>
-          <button className="btn" onClick={printMenu}>
-            <Printer size={18} style={{ display: 'inline', marginRight: '8px', verticalAlign: 'text-bottom' }} />
-            Print Menu
-          </button>
-          <button className="btn" onClick={handleLogout}>
-            <RefreshCw size={18} style={{ display: 'inline', marginRight: '8px', verticalAlign: 'text-bottom' }} />
-            Disconnect / Upload New
-          </button>
-        </div>
-
-        {locations.length > 1 && (
-          <div className="tabs-container print-btn" style={{ display: 'flex', gap: '1rem', marginBottom: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            {locations.map(loc => (
-              <button
-                key={loc}
-                className={`btn ${activeTab === loc ? 'active-tab' : ''}`}
-                onClick={() => setActiveTab(loc)}
-                style={{
-                  backgroundColor: activeTab === loc ? 'var(--accent-gold)' : 'transparent',
-                  color: activeTab === loc ? 'white' : 'var(--accent-dark-gold)'
-                }}
-              >
-                {loc}
+        <header
+          className={`top-nav-bar print-btn ${isNavOpen ? 'nav-open' : ''}`}
+          onMouseEnter={() => {
+            if (!isForceClosed) {
+              setIsNavOpen(true);
+            }
+          }}
+          onMouseLeave={() => {
+            setIsNavOpen(false);
+            setIsForceClosed(false);
+          }}
+        >
+          <div className="top-nav-content">
+            <div className="actions-bar">
+              <button className="btn" onClick={(e) => { e.currentTarget.blur(); setIsNavOpen(false); setIsForceClosed(true); printMenu(); }}>
+                <Printer size={18} style={{ display: 'inline', marginRight: '8px', verticalAlign: 'text-bottom' }} />
+                Print Menu
               </button>
-            ))}
+              <button className="btn" onClick={(e) => { e.currentTarget.blur(); setIsNavOpen(false); setIsForceClosed(true); handleLogout(); }}>
+                <RefreshCw size={18} style={{ display: 'inline', marginRight: '8px', verticalAlign: 'text-bottom' }} />
+                Disconnect / Upload New
+              </button>
+            </div>
+
+            {locations.length > 1 && (
+              <div className="tabs-container">
+                {locations.map(loc => (
+                  <button
+                    key={loc}
+                    className={`btn ${activeTab === loc ? 'active-tab' : ''}`}
+                    onClick={(e) => {
+                      e.currentTarget.blur();
+                      setActiveTab(loc);
+                    }}
+                    style={{
+                      backgroundColor: activeTab === loc ? 'var(--accent-gold)' : 'transparent',
+                      color: activeTab === loc ? 'white' : 'var(--accent-dark-gold)'
+                    }}
+                  >
+                    {loc}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
-        )}
+          <div
+            className="top-nav-trigger-hint"
+            onClick={(e) => {
+              e.stopPropagation();
+              if (isNavOpen) {
+                setIsNavOpen(false);
+                setIsForceClosed(true);
+              } else {
+                setIsNavOpen(true);
+                setIsForceClosed(false);
+              }
+            }}
+          >
+            <span className="hint-pill">{isNavOpen ? '▲ Close Controls' : '▼ Menu Controls & Tabs'}</span>
+          </div>
+        </header>
 
         <div className="menu-container">
           <table className="print-table">
