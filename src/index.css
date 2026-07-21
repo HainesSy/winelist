@@ -366,6 +366,9 @@ h2 {
   align-items: baseline;
   margin-bottom: 8px;
   font-size: 15px;
+  position: relative;
+  z-index: 2;
+  background: var(--bg-color, #fbf8f1);
 }
 
 .wine-info {
@@ -578,4 +581,309 @@ h2 {
     page-break-inside: avoid;
     break-inside: avoid;
   }
+
+  .swipe-action-bg,
+  .modal-backdrop,
+  .toast-notification {
+    display: none !important;
+  }
+}
+
+/* Interactive Swipe to Consume & Modal Styles */
+.wine-item-wrapper {
+  position: relative;
+  overflow: hidden;
+  touch-action: pan-y;
+  user-select: none;
+  border-radius: 4px;
+}
+
+.swipe-action-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(90deg, #722f37 0%, #4a1525 100%);
+  color: #fbf8f1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 16px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+.wine-swipe-icon {
+  color: var(--accent-gold);
+}
+
+.wine-item.has-consumed {
+  opacity: 0.85;
+}
+
+.consumed-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: rgba(114, 47, 55, 0.12);
+  color: #722f37;
+  border: 1px solid rgba(114, 47, 55, 0.35);
+  font-size: 0.75rem;
+  font-weight: 600;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.undo-btn {
+  background: rgba(114, 47, 55, 0.1);
+  border: 1px solid rgba(114, 47, 55, 0.25);
+  border-radius: 50%;
+  color: #722f37;
+  cursor: pointer;
+  margin-left: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  opacity: 0.85;
+  transition: all 0.2s ease;
+  position: relative;
+  z-index: 15;
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
+.undo-btn:hover,
+.undo-btn:active {
+  opacity: 1;
+  color: #900;
+  background: rgba(114, 47, 55, 0.25);
+  transform: scale(1.1);
+}
+
+/* Modal Backdrop & Container */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(20, 15, 10, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-container {
+  background: var(--bg-color);
+  border: 1px solid var(--accent-gold);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  font-family: var(--font-sans);
+  animation: modalScale 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalScale {
+  from { transform: scale(0.94); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  padding-bottom: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.modal-header-icon {
+  color: var(--accent-dark-gold);
+}
+
+.modal-header h3 {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: #1a1a1a;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.modal-wine-producer {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #722f37;
+  margin-bottom: 4px;
+}
+
+.modal-wine-title {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  margin-bottom: 1.2rem;
+}
+
+.quantity-notice-box {
+  background: rgba(212, 175, 55, 0.12);
+  border-left: 3px solid var(--accent-dark-gold);
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.qty-highlight {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--accent-dark-gold);
+}
+
+.qty-remaining {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.bin-selector-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 1.2rem;
+}
+
+.bin-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+}
+
+.bin-select-dropdown {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--accent-gold);
+  border-radius: 6px;
+  background-color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--text-main);
+  outline: none;
+  cursor: pointer;
+}
+
+.modal-confirm-question {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.modal-btn {
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirm-btn {
+  background: var(--accent-dark-gold);
+  color: white;
+  border: none;
+}
+
+.confirm-btn:hover {
+  background: #966c04;
+}
+
+.cancel-btn {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color, #ccc);
+}
+
+.cancel-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-main);
+}
+
+/* Toast Notifications */
+.toast-notification {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a1a;
+  color: #fff;
+  padding: 0.85rem 1.4rem;
+  border-radius: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  z-index: 2200;
+  border: 1px solid var(--accent-gold);
+  animation: toastSlideUp 0.3s ease-out;
+}
+
+@keyframes toastSlideUp {
+  from { transform: translate(-50%, 20px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+.toast-icon {
+  color: var(--accent-gold);
+}
+
+.ct-direct-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent-dark-gold);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.ct-direct-link:hover {
+  color: #722f37;
 }
