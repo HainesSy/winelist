@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Dark Charcoal & Bronze Background Gradient -->
+    <radialGradient id="bg-grad-charcoal" cx="50%" cy="35%" r="75%" fx="50%" fy="25%">
+      <stop offset="0%" stop-color="#24211D" />
+      <stop offset="60%" stop-color="#141210" />
+      <stop offset="100%" stop-color="#0A0908" />
+    </radialGradient>
+
+    <!-- Luxury Gold Foil Gradient -->
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF0BD" />
+      <stop offset="25%" stop-color="#E5C158" />
+      <stop offset="55%" stop-color="#C59B3F" />
+      <stop offset="85%" stop-color="#F3D787" />
+      <stop offset="100%" stop-color="#9E7628" />
+    </linearGradient>
+
+    <!-- Metallic Rim Gradient -->
+    <linearGradient id="rim-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFEBB3" stop-opacity="0.85" />
+      <stop offset="50%" stop-color="#8C6B26" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#E5C158" stop-opacity="0.75" />
+    </linearGradient>
+
+    <!-- Subtle Gold Ambient Aura -->
+    <radialGradient id="gold-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.22" />
+      <stop offset="70%" stop-color="#D4AF37" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Soft Drop Shadow Filter -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.75" />
+    </filter>
+
+    <filter id="emboss-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- App Icon Squircle Base -->
+  <rect x="16" y="16" width="480" height="480" rx="108" fill="url(#bg-grad-charcoal)" filter="url(#shadow)" />
+  
+  <!-- Outer Gold Metallic Border -->
+  <rect x="17" y="17" width="478" height="478" rx="107" fill="none" stroke="url(#rim-grad)" stroke-width="3" />
+
+  <!-- Ambient Warm Gold Aura -->
+  <circle cx="256" cy="256" r="180" fill="url(#gold-glow)" />
+
+  <!-- Geometric Shield Emblem -->
+  <g transform="translate(0, 5)" filter="url(#emboss-glow)">
+    <!-- Shield Outer Frame -->
+    <path d="M 256 100 
+             L 360 140 
+             V 260 
+             C 360 340, 256 390, 256 410 
+             C 256 390, 152 340, 152 260 
+             V 140 
+             Z" 
+          fill="none" 
+          stroke="url(#gold-grad)" 
+          stroke-width="5" 
+          stroke-linejoin="round" />
+
+    <!-- Inner Shield Accent Line -->
+    <path d="M 256 116 
+             L 346 151 
+             V 255 
+             C 346 325, 256 372, 256 388 
+             C 256 372, 166 325, 166 255 
+             V 151 
+             Z" 
+          fill="none" 
+          stroke="url(#gold-grad)" 
+          stroke-width="1.5" 
+          stroke-opacity="0.5" 
+          stroke-dasharray="6 4" />
+
+    <!-- Minimalist Wine Bottle & Glass Silhouette Monogram -->
+    <!-- Wine Bottle Contour -->
+    <path d="M 244 180 
+             H 268 
+             V 210 
+             C 285 225, 292 240, 292 265 
+             V 340 
+             H 220 
+             V 265 
+             C 220 240, 227 225, 244 210 
+             Z" 
+          fill="none" 
+          stroke="url(#gold-grad)" 
+          stroke-width="4.5" 
+          stroke-linejoin="round" />
+
+    <!-- Glass Silhouette Intertwined -->
+    <path d="M 234 260 C 234 300, 278 300, 278 260 H 234 Z" fill="url(#gold-grad)" opacity="0.85" />
+
+    <!-- Bottle Neck Band Accent -->
+    <line x1="244" y1="200" x2="268" y2="200" stroke="url(#gold-grad)" stroke-width="3" />
+
+    <!-- Star Emblem Crest Peak -->
+    <g transform="translate(256, 75)">
+      <path d="M 0 -12 L 3 -3 L 12 0 L 3 3 L 0 12 L -3 3 L -12 0 L -3 -3 Z" fill="url(#gold-grad)" />
+    </g>
+  </g>
+</svg>

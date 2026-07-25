@@ -1,0 +1,22 @@
+{
+  "name": "Cellar — Fine Wine Collection",
+  "short_name": "Cellar",
+  "description": "Manage and track your fine wine cellar collection.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f2ede5",
+  "theme_color": "#141210",
+  "icons": [
+    {
+      "src": "/app-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

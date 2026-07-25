@@ -553,7 +553,7 @@ function App() {
             <tfoot><tr><td className="print-margin-spacer"></td></tr></tfoot>
             <tbody><tr><td style={{ padding: 0 }}>
               <header className="menu-header">
-                <h1 className="menu-title">{username ? <><span style={{ fontFamily: "'Playfair Display SC', serif" }}>{username.charAt(0).toUpperCase() + username.slice(1).toLowerCase()}</span>'s Wine List</> : 'Grand Cru Reserve'}</h1>
+                <h1 className="menu-title">{username ? <><span style={{ fontFamily: "'Playfair Display SC', serif" }}>{username.charAt(0).toUpperCase() + username.slice(1).toLowerCase()}</span>'s Wine List</> : 'Cellar'}</h1>
                 <div className="menu-subtitle">{activeTab === 'All' ? 'A curated selection from the cellar' : `Wines from the ${activeTab}`}</div>
               </header>
 
