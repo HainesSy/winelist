@@ -3,6 +3,10 @@
     {
       "source": "/api/cellartracker/:path*",
       "destination": "/api/cellartracker"
+    },
+    {
+      "source": "/api/service-state",
+      "destination": "/api/service-state"
     }
   ]
 }

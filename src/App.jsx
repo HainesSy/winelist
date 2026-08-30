@@ -1,17 +1,50 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Papa from 'papaparse';
-import { UploadCloud, Printer, RefreshCw, Menu, X, Wine, CheckCircle2, MapPin, Undo2, Check, ExternalLink } from 'lucide-react';
+import { 
+  UploadCloud, 
+  Printer, 
+  RefreshCw, 
+  Menu, 
+  X, 
+  Wine, 
+  CheckCircle2, 
+  MapPin, 
+  Undo2, 
+  Check, 
+  ExternalLink,
+  Clock,
+  AlertCircle,
+  Trash2,
+  ListOrdered,
+  CheckSquare,
+  Sparkles,
+  Send,
+  Calendar,
+  Layers,
+  Copy,
+  CheckCheck,
+  Play,
+  Forward,
+  Share2,
+  Compass,
+  ChevronRight
+} from 'lucide-react';
+import WineRegionDetail from './components/WineRegionDetail';
+import { findWineRegion } from './data/wineRegions';
 import './App.css';
 
 function App() {
   const [rawWines, setRawWines] = useState(null);
-  const [activeTab, setActiveTab] = useState('All');
+  const [activeTab, setActiveTab] = useState('Cellar');
   const [isHovering, setIsHovering] = useState(false);
   const [isLoadingDefault, setIsLoadingDefault] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isForceClosed, setIsForceClosed] = useState(false);
+  const [isServiceTrayOpen, setIsServiceTrayOpen] = useState(false);
+  const [selectedRegion, setSelectedRegion] = useState(null); // { id, name, country }
   const fileInputRef = useRef(null);
 
   // Interactive consumption tracking states
@@ -31,20 +64,61 @@ function App() {
     }
   });
 
-  const [activeModal, setActiveModal] = useState(null); // { wine, availableBins, selectedBinId }
-  const [toast, setToast] = useState(null); // { message, type, iWine }
+  // Detailed consumption history logs for two-way sync
+  const [consumptionHistory, setConsumptionHistory] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('ct_consumption_history') || '[]');
+    } catch {
+      return [];
+    }
+  });
+
+  const [toast, setToast] = useState(null); // { message, type, ctUrl, linkText }
   const [swipeState, setSwipeState] = useState({ key: null, deltaX: 0 });
   const touchStartRef = useRef({ x: 0, y: 0, wineKey: null, isSwiping: false, wine: null });
 
-  const showToast = (message, type = 'info', iWine = null) => {
-    setToast({ message, type, iWine });
+  const showToast = (message, type = 'info', ctUrl = null, linkText = 'Open on CellarTracker') => {
+    setToast({ message, type, ctUrl, linkText });
     setTimeout(() => {
       setToast(null);
-    }, 6000);
+    }, 7000);
   };
 
-  const fetchFromCellarTracker = async (user, pass) => {
-    setIsLoadingDefault(true);
+  const getCellarTrackerActionUrl = (iWine, iBottle, action = 'Drink', fallbackQuery = '') => {
+    const cleanBottle = iBottle ? String(iBottle).trim() : '';
+    const cleanWine = iWine ? String(iWine).trim() : '';
+
+    // If it's a barcode (like 0224178017 or has leading zeros / barcode string), search by barcode
+    if (cleanBottle && cleanBottle !== '0') {
+      return `https://www.cellartracker.com/search.asp?S=${encodeURIComponent(cleanBottle)}`;
+    }
+    // If master wine ID is available
+    if (cleanWine && cleanWine !== '0') {
+      return `https://www.cellartracker.com/wine.asp?iWine=${encodeURIComponent(cleanWine)}`;
+    }
+    // If wine name query is available
+    if (fallbackQuery && fallbackQuery.trim()) {
+      return `https://www.cellartracker.com/search.asp?S=${encodeURIComponent(fallbackQuery.trim())}&QTable=AllWines`;
+    }
+    return `https://www.cellartracker.com/list.asp?Table=Inventory`;
+  };
+
+  const fetchFromCellarTracker = async (user, pass, options = {}) => {
+    const { isReconcile = false, silent = false } = options;
+    if (!user || !pass) {
+      if (!silent && isReconcile) {
+        showToast("No connected CellarTracker credentials found. Using local cellar data.", "info");
+      }
+      setIsLoadingDefault(false);
+      setIsRefreshing(false);
+      return;
+    }
+
+    if (!silent) {
+      if (isReconcile) setIsRefreshing(true);
+      else setIsLoadingDefault(true);
+    }
+
     try {
       const url = `/api/cellartracker/xlquery.asp?User=${encodeURIComponent(user)}&Password=${encodeURIComponent(pass)}&Format=csv&Table=Inventory`;
       const response = await fetch(url);
@@ -54,10 +128,11 @@ function App() {
         const textCheck = await blob.slice(0, 1000).text();
         if (textCheck.toLowerCase().includes('<!doctype html>') || textCheck.toLowerCase().includes('<html')) {
           console.log("Failed to fetch or invalid credentials (HTML returned)");
-          alert("Failed to connect to CellarTracker. Please check your credentials.");
-          localStorage.removeItem('ct_user');
-          localStorage.removeItem('ct_pass');
+          if (!silent) {
+            showToast("Failed to connect to CellarTracker. Please check your credentials.", "error");
+          }
           setIsLoadingDefault(false);
+          setIsRefreshing(false);
           return;
         }
 
@@ -69,28 +144,52 @@ function App() {
             const parsedWines = results.data;
             const validWines = parsedWines.filter(w => w.Wine || w.Vintage);
             if (validWines.length > 0) {
-              setRawWines(parsedWines);
+              setRawWines(validWines);
               localStorage.setItem('ct_user', user);
               localStorage.setItem('ct_pass', pass);
+
+              // Auto-reconciliation: Fresh inventory from CellarTracker loaded
+              if (isReconcile && consumptionHistory.length > 0) {
+                const updatedHistory = consumptionHistory.map(item => ({ ...item, synced: true }));
+                setConsumptionHistory(updatedHistory);
+                setConsumedCounts({});
+                setConsumedBins({});
+                localStorage.setItem('ct_consumption_history', JSON.stringify(updatedHistory));
+                localStorage.setItem('ct_consumed_counts', JSON.stringify({}));
+                localStorage.setItem('ct_consumed_bins', JSON.stringify({}));
+                syncStateWithServer(updatedHistory, {}, {});
+                showToast("Cellar synchronized! Fresh inventory loaded from CellarTracker.", "success");
+              } else if (isReconcile) {
+                setConsumedCounts({});
+                setConsumedBins({});
+                localStorage.setItem('ct_consumed_counts', JSON.stringify({}));
+                localStorage.setItem('ct_consumed_bins', JSON.stringify({}));
+                syncStateWithServer(consumptionHistory, {}, {});
+                showToast("Cellar refreshed from CellarTracker.", "info");
+              }
             } else {
-              alert("No wines found in your cellar, or format invalid.");
+              if (!silent) showToast("No wines found in your cellar, or format invalid.", "error");
             }
             setIsLoadingDefault(false);
+            setIsRefreshing(false);
           },
           error: (error) => {
             console.error("Error parsing CSV:", error);
-            alert("Failed to parse CSV file from CellarTracker.");
+            if (!silent) showToast("Failed to parse CSV file from CellarTracker.", "error");
             setIsLoadingDefault(false);
+            setIsRefreshing(false);
           }
         });
       } else {
-        alert(`Failed to connect to CellarTracker. Server responded with error ${response.status}: ${response.statusText}`);
+        if (!silent) showToast(`Server error ${response.status}: ${response.statusText}`, "error");
         setIsLoadingDefault(false);
+        setIsRefreshing(false);
       }
     } catch (error) {
       console.log("Error fetching from CellarTracker proxy:", error);
-      alert(`Error connecting to CellarTracker: ${error.message || "Unknown error"}. If you are on the website, this might be a temporary proxy issue.`);
+      if (!silent) showToast(`Error connecting to CellarTracker: ${error.message || "Network issue"}`, "error");
       setIsLoadingDefault(false);
+      setIsRefreshing(false);
     }
   };
 
@@ -100,11 +199,75 @@ function App() {
 
     if (savedUser && savedPass) {
       setUsername(savedUser);
+      setPassword(savedPass);
       fetchFromCellarTracker(savedUser, savedPass);
     } else {
-      setIsLoadingDefault(false);
+      // Auto-load default cellar sample CSV if available
+      fetch('/My Cellar.csv')
+        .then(res => {
+          if (res.ok) return res.text();
+          throw new Error('No default CSV');
+        })
+        .then(csvText => {
+          Papa.parse(csvText, {
+            header: true,
+            skipEmptyLines: true,
+            complete: (results) => {
+              const parsedWines = results.data;
+              const validWines = parsedWines.filter(w => w.Wine || w.Vintage);
+              if (validWines.length > 0) {
+                setRawWines(validWines);
+              }
+              setIsLoadingDefault(false);
+            },
+            error: () => setIsLoadingDefault(false)
+          });
+        })
+        .catch(() => {
+          setIsLoadingDefault(false);
+        });
     }
   }, []);
+
+  // Hash-based region navigation listener (e.g. #region=champagne or #region=burgundy)
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash.startsWith('#region=')) {
+        const slug = decodeURIComponent(hash.replace('#region=', '')).trim();
+        if (slug) {
+          const matched = findWineRegion(slug);
+          if (matched) {
+            setSelectedRegion({ id: matched.id, name: matched.name, country: matched.country });
+          } else {
+            setSelectedRegion({ id: slug, name: slug, country: '' });
+          }
+        }
+      } else if (!hash || hash === '#' || hash === '#menu') {
+        setSelectedRegion(null);
+      }
+    };
+
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const navigateToRegion = (regionName, countryName = '') => {
+    const matched = findWineRegion(regionName, countryName);
+    const regionId = matched ? matched.id : regionName.toLowerCase().replace(/\s+/g, '-');
+    setSelectedRegion({
+      id: regionId,
+      name: matched ? matched.name : regionName,
+      country: matched ? matched.country : countryName
+    });
+    window.location.hash = `#region=${encodeURIComponent(regionId)}`;
+  };
+
+  const handleBackToMenu = () => {
+    setSelectedRegion(null);
+    window.location.hash = '';
+  };
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
@@ -120,6 +283,8 @@ function App() {
     setPassword('');
     setRawWines(null);
     setActiveTab('All');
+    setSelectedRegion(null);
+    window.location.hash = '';
   };
 
   const handleFileUpload = (event) => {
@@ -142,17 +307,21 @@ function App() {
     Papa.parse(file, {
       header: true,
       skipEmptyLines: true,
-      encoding: "ISO-8859-1", // Fixes question mark rendering for European wine names
+      encoding: "ISO-8859-1",
       complete: (results) => {
         const parsedWines = results.data;
-        // Basic filtering to ensure we only process rows that look like wines
         const validWines = parsedWines.filter(w => w.Wine || w.Vintage);
-        setRawWines(validWines);
+        if (validWines.length > 0) {
+          setRawWines(validWines);
+          showToast(`Loaded ${validWines.length} wines from CSV export.`, "success");
+        } else {
+          showToast("No wines found in uploaded CSV.", "error");
+        }
         setIsLoadingDefault(false);
       },
       error: (error) => {
         console.error("Error parsing CSV:", error);
-        alert("Failed to parse CSV file. Please make sure it is a valid CellarTracker export.");
+        showToast("Failed to parse CSV file. Make sure it is a valid CellarTracker export.", "error");
         setIsLoadingDefault(false);
       }
     });
@@ -212,7 +381,7 @@ function App() {
       const binName = decodeEntities(wine.Bin || 'Unassigned');
       const locName = decodeEntities(wine.Location || 'Cellar');
       const iWine = wine.iWine || wine.WineID || wine.IWine || '';
-      const iBottle = wine.iBottle || wine.BottleID || wine.IBottle || '';
+      const iBottle = wine.iBottle || wine.BottleID || wine.IBottle || wine.Barcode || '';
 
       if (!grouped[mainType]) {
         grouped[mainType] = {};
@@ -231,6 +400,11 @@ function App() {
         const existingBin = existingWine.bins.find(b => b.bin === binName && b.location === locName);
         if (existingBin) {
           existingBin.quantity += rowQty;
+          if (iBottle && !existingBin.iBottle) existingBin.iBottle = iBottle;
+          if (iBottle) {
+            existingBin.bottleIds = existingBin.bottleIds || [];
+            existingBin.bottleIds.push(iBottle);
+          }
         } else {
           existingWine.bins.push({
             id: `${wineKey}-${locName}-${binName}-${existingWine.bins.length}`,
@@ -238,7 +412,8 @@ function App() {
             bin: binName,
             quantity: rowQty,
             iWine,
-            iBottle
+            iBottle,
+            bottleIds: iBottle ? [iBottle] : []
           });
         }
       } else {
@@ -246,6 +421,7 @@ function App() {
           ...wine,
           wineKey,
           iWine,
+          iBottle,
           Producer: cleanProducer,
           Wine: cleanWine,
           Designation: cleanDesignation,
@@ -257,7 +433,8 @@ function App() {
             bin: binName,
             quantity: rowQty,
             iWine,
-            iBottle
+            iBottle,
+            bottleIds: iBottle ? [iBottle] : []
           }]
         };
         grouped[mainType][country][subregion].push(newWineObj);
@@ -320,17 +497,69 @@ function App() {
     return sortedGrouped;
   };
 
-  const locations = rawWines ? ['All', ...new Set(rawWines.map(w => w.Location).filter(Boolean))].sort() : [];
+  const locations = React.useMemo(() => {
+    if (!rawWines) return [];
+    const distinct = Array.from(new Set(rawWines.map(w => w.Location).filter(Boolean))).sort();
+    if (distinct.length === 0) return ['All'];
+    if (distinct.length === 1) return distinct;
+    const hasCellar = distinct.includes('Cellar');
+    const otherLocs = distinct.filter(l => l !== 'Cellar');
+    return hasCellar ? ['Cellar', ...otherLocs, 'All'] : [...distinct, 'All'];
+  }, [rawWines]);
 
   const wines = React.useMemo(() => {
     if (!rawWines) return null;
-    const filtered = activeTab === 'All' ? rawWines : rawWines.filter(w => w.Location === activeTab);
-    return groupWines(filtered);
+    if (activeTab === 'All') return groupWines(rawWines);
+    const filtered = rawWines.filter(w => (w.Location || 'Cellar') === activeTab);
+    return groupWines(filtered.length > 0 ? filtered : rawWines);
   }, [rawWines, activeTab]);
 
   const printMenu = () => {
     window.print();
   };
+
+  // Server-synchronized shared service state
+  const syncStateWithServer = async (history, counts, bins) => {
+    try {
+      await fetch('/api/service-state', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ history, counts, bins })
+      });
+    } catch (err) {
+      // Silent in offline / standalone mode
+    }
+  };
+
+  const loadStateFromServer = async () => {
+    try {
+      const res = await fetch('/api/service-state');
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.history !== undefined) {
+          setConsumptionHistory(data.history || []);
+          setConsumedCounts(data.counts || {});
+          setConsumedBins(data.bins || {});
+          localStorage.setItem('ct_consumption_history', JSON.stringify(data.history || []));
+          localStorage.setItem('ct_consumed_counts', JSON.stringify(data.counts || {}));
+          localStorage.setItem('ct_consumed_bins', JSON.stringify(data.bins || {}));
+        }
+      }
+    } catch (err) {
+      // Uses local storage fallback
+    }
+  };
+
+  useEffect(() => {
+    loadStateFromServer();
+    const interval = setInterval(loadStateFromServer, 3000);
+    const handleFocus = () => loadStateFromServer();
+    window.addEventListener('focus', handleFocus);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('focus', handleFocus);
+    };
+  }, []);
 
   // Swipe gesture handlers
   const handleTouchStart = (e, wine, remainingQty) => {
@@ -374,33 +603,24 @@ function App() {
   const handleTouchEnd = (wine) => {
     if (!touchStartRef.current.wineKey || touchStartRef.current.wineKey !== wine.wineKey) return;
 
-    if (swipeState.key === wine.wineKey && swipeState.deltaX > 60) {
-      openConsumptionModal(wine);
+    // Instant 1-Swipe Consumption: No confirmation modal required
+    if (swipeState.key === wine.wineKey && swipeState.deltaX > 55) {
+      executeInstantConsume(wine);
     }
 
     setSwipeState({ key: null, deltaX: 0 });
     touchStartRef.current = { x: 0, y: 0, wineKey: null, isSwiping: false, wine: null };
   };
 
-  const openConsumptionModal = (wine) => {
+  const executeInstantConsume = (wine) => {
+    const wineKey = wine.wineKey;
     const availableBins = wine.bins.filter(bin => {
-      const consumedFromBin = consumedBins[wine.wineKey]?.[bin.id] || 0;
+      const consumedFromBin = consumedBins[wineKey]?.[bin.id] || 0;
       return (bin.quantity - consumedFromBin) > 0;
     });
 
-    const defaultBinId = availableBins.length > 0 ? availableBins[0].id : (wine.bins[0]?.id || '');
-    setActiveModal({
-      wine,
-      availableBins,
-      selectedBinId: defaultBinId
-    });
-  };
-
-  const handleConfirmConsume = () => {
-    if (!activeModal) return;
-    const { wine, selectedBinId } = activeModal;
-    const wineKey = wine.wineKey;
-    const selectedBin = wine.bins.find(b => b.id === selectedBinId) || wine.bins[0];
+    const selectedBin = availableBins.length > 0 ? availableBins[0] : wine.bins[0];
+    const selectedBinId = selectedBin?.id || '';
 
     const newCounts = { ...consumedCounts, [wineKey]: (consumedCounts[wineKey] || 0) + 1 };
     const wineBinMap = consumedBins[wineKey] || {};
@@ -412,32 +632,97 @@ function App() {
       }
     };
 
+    const targetIWine = selectedBin?.iWine || wine.iWine || wine.WineID || wine.IWine || wine['Wine ID'] || '';
+    const targetIBottle = selectedBin?.iBottle || wine.iBottle || wine.BottleID || wine.IBottle || wine['Bottle ID'] || wine.Barcode || wine.barcode || '';
+    const fallbackQuery = `${wine.Producer} ${wine.Wine} ${wine.Vintage !== 'NV' ? wine.Vintage : ''}`.trim();
+    const ctActionUrl = getCellarTrackerActionUrl(targetIWine, targetIBottle, 'Drink', fallbackQuery);
+
+    const newHistoryItem = {
+      id: 'log_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+      timestamp: Date.now(),
+      timeStr: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      dateStr: new Date().toISOString().split('T')[0],
+      wineKey,
+      producer: wine.Producer,
+      wine: wine.Wine,
+      vintage: wine.Vintage,
+      location: selectedBin ? selectedBin.location : 'Cellar',
+      bin: selectedBin ? selectedBin.bin : 'Unassigned',
+      binId: selectedBinId,
+      iWine: targetIWine,
+      iBottle: targetIBottle,
+      barcode: targetIBottle || targetIWine || '',
+      reason: 'Drink',
+      reasonLabel: 'Drank from my cellar',
+      note: '',
+      ctUrl: ctActionUrl,
+      synced: false
+    };
+
+    const updatedHistory = [newHistoryItem, ...consumptionHistory];
+
     setConsumedCounts(newCounts);
     setConsumedBins(newBins);
+    setConsumptionHistory(updatedHistory);
     localStorage.setItem('ct_consumed_counts', JSON.stringify(newCounts));
     localStorage.setItem('ct_consumed_bins', JSON.stringify(newBins));
+    localStorage.setItem('ct_consumption_history', JSON.stringify(updatedHistory));
 
-    setActiveModal(null);
+    // Sync across iPad and Computer
+    syncStateWithServer(updatedHistory, newCounts, newBins);
 
     const binLabel = selectedBin ? (selectedBin.bin !== 'Unassigned' ? selectedBin.bin : selectedBin.location) : 'Cellar';
-    const targetIWine = selectedBin?.iWine || wine.iWine || '';
+    showToast(`🍷 Opened 1 bottle of ${wine.Producer} ${wine.Wine} (${binLabel}). Added to Service Tray.`, 'success');
+  };
 
-    showToast(`Logged 1 bottle of ${wine.Producer} ${wine.Wine} as consumed (${binLabel}).`, 'success', targetIWine);
+  const handleBulkSyncOnCellarTracker = () => {
+    const pendingItems = consumptionHistory.filter(h => !h.synced);
+    const targetItems = pendingItems.length > 0 ? pendingItems : consumptionHistory;
+    const codes = targetItems.map(item => item.iBottle || item.barcode || item.iWine).filter(Boolean);
 
-    // Direct user to CellarTracker barcode.asp for this bottle in a new tab
-    // This loads the exact bottle's action page with pre-filled details
-    if (targetIWine) {
-      try {
-        const ctUrl = `https://www.cellartracker.com/barcode.asp?iWine=${encodeURIComponent(targetIWine)}`;
-        window.open(ctUrl, '_blank', 'noopener,noreferrer');
-      } catch (err) {
-        console.error('Error opening CellarTracker barcode page:', err);
-      }
+    if (codes.length === 0) {
+      showToast("No opened bottles in Service Tray to sync.", "info");
+      return;
+    }
+
+    // 1. Open CellarTracker's direct validated scan list with all opened bottles
+    const scanUrl = `https://www.cellartracker.com/list.asp?Table=Scan&Validate=true&iInventoryList=${encodeURIComponent(codes.join(','))}`;
+
+    try {
+      window.open(scanUrl, '_blank', 'noopener,noreferrer');
+    } catch (err) {
+      console.error('Error opening CellarTracker scan list:', err);
+    }
+
+    // 2. Auto-mark as synced
+    const updated = consumptionHistory.map(h => ({ ...h, synced: true }));
+    setConsumptionHistory(updated);
+    localStorage.setItem('ct_consumption_history', JSON.stringify(updated));
+    syncStateWithServer(updated, consumedCounts, consumedBins);
+
+    showToast(`🍷 Opened ${codes.length} bottle(s) on CellarTracker!`, 'success');
+  };
+
+  const handleCopyBarcodeList = () => {
+    const pendingItems = consumptionHistory.filter(h => !h.synced);
+    const targetItems = pendingItems.length > 0 ? pendingItems : consumptionHistory;
+    const codes = targetItems.map(item => `${item.producer} ${item.wine} (${item.vintage}) [${item.bin !== 'Unassigned' ? item.bin : item.location}]: ${item.iBottle || item.iWine || item.barcode || 'No ID'}`);
+    if (codes.length > 0 && navigator.clipboard) {
+      navigator.clipboard.writeText(codes.join('\n'));
+      showToast(`📋 Copied list of ${codes.length} bottle(s) to clipboard.`, 'info');
     }
   };
 
-  const handleUndoConsume = (e, wineKey) => {
-    e.stopPropagation();
+  const markAllAsSynced = () => {
+    const updated = consumptionHistory.map(h => ({ ...h, synced: true }));
+    setConsumptionHistory(updated);
+    localStorage.setItem('ct_consumption_history', JSON.stringify(updated));
+    syncStateWithServer(updated, consumedCounts, consumedBins);
+    showToast("All bottles marked as synced with CellarTracker.", "success");
+  };
+
+  const handleUndoConsume = (e, wineKey, historyId = null) => {
+    if (e) e.stopPropagation();
     const currentCount = consumedCounts[wineKey] || 0;
     if (currentCount <= 0) return;
 
@@ -458,8 +743,46 @@ function App() {
     localStorage.setItem('ct_consumed_counts', JSON.stringify(newCounts));
     localStorage.setItem('ct_consumed_bins', JSON.stringify(newBins));
 
+    let updatedHistory;
+    if (historyId) {
+      updatedHistory = consumptionHistory.filter(h => h.id !== historyId);
+    } else {
+      const idx = consumptionHistory.findIndex(h => h.wineKey === wineKey);
+      if (idx !== -1) {
+        updatedHistory = [...consumptionHistory];
+        updatedHistory.splice(idx, 1);
+      } else {
+        updatedHistory = consumptionHistory;
+      }
+    }
+    setConsumptionHistory(updatedHistory);
+    localStorage.setItem('ct_consumption_history', JSON.stringify(updatedHistory));
+
+    // Sync across iPad and Computer
+    syncStateWithServer(updatedHistory, newCounts, newBins);
+
     showToast('Reverted 1 bottle consumption log.', 'info');
   };
+
+  const clearServiceHistory = async () => {
+    if (window.confirm("Are you sure you want to clear all logged consumption history and reset bottle counts?")) {
+      setConsumptionHistory([]);
+      setConsumedCounts({});
+      setConsumedBins({});
+      localStorage.removeItem('ct_consumption_history');
+      localStorage.removeItem('ct_consumed_counts');
+      localStorage.removeItem('ct_consumed_bins');
+
+      try {
+        await fetch('/api/service-state', { method: 'DELETE' });
+      } catch (err) {}
+
+      showToast("Service log and opened bottle counts cleared across all devices.", "info");
+    }
+  };
+
+  const totalConsumed = Object.values(consumedCounts).reduce((a, b) => a + b, 0);
+  const pendingSyncCount = consumptionHistory.filter(h => !h.synced).length;
 
   if (isLoadingDefault) {
     return (
@@ -515,12 +838,50 @@ function App() {
           <div className="top-nav-content">
             <div className="actions-bar">
               <button className="btn" onClick={(e) => { e.currentTarget.blur(); setIsNavOpen(false); setIsForceClosed(true); printMenu(); }}>
-                <Printer size={18} style={{ display: 'inline', marginRight: '8px', verticalAlign: 'text-bottom' }} />
+                <Printer size={16} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'text-bottom' }} />
                 Print Menu
               </button>
+
+              {/* Contextual Unified Sync & Service Tray Button */}
+              {pendingSyncCount > 0 ? (
+                <button 
+                  className="btn service-tray-btn has-pending" 
+                  onClick={(e) => { 
+                    e.currentTarget.blur(); 
+                    setIsNavOpen(false); 
+                    setIsForceClosed(true); 
+                    setIsServiceTrayOpen(true); 
+                  }}
+                  title="Review pending bottles and update CellarTracker"
+                >
+                  <Wine size={16} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'text-bottom' }} />
+                  Service Tray ({pendingSyncCount})
+                  <span className="pending-indicator-dot" title={`${pendingSyncCount} pending CellarTracker update`} />
+                </button>
+              ) : (
+                <button 
+                  className="btn" 
+                  onClick={(e) => { 
+                    e.currentTarget.blur(); 
+                    if (username && password) {
+                      fetchFromCellarTracker(username, password, { isReconcile: true });
+                    } else if (consumptionHistory.length > 0) {
+                      setIsServiceTrayOpen(true);
+                    } else {
+                      showToast("No pending items. Cellar is up to date!", "info");
+                    }
+                  }}
+                  disabled={isRefreshing}
+                  title="Re-sync cellar inventory from CellarTracker"
+                >
+                  <RefreshCw size={16} className={isRefreshing ? 'spin-icon' : ''} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'text-bottom' }} />
+                  {isRefreshing ? 'Re-syncing...' : 'Re-sync Cellar'}
+                </button>
+              )}
+
               <button className="btn" onClick={(e) => { e.currentTarget.blur(); setIsNavOpen(false); setIsForceClosed(true); handleLogout(); }}>
-                <RefreshCw size={18} style={{ display: 'inline', marginRight: '8px', verticalAlign: 'text-bottom' }} />
-                Disconnect / Upload New
+                <Layers size={16} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'text-bottom' }} />
+                Disconnect / Upload
               </button>
             </div>
 
@@ -547,7 +908,29 @@ function App() {
           </div>
         </header>
 
-        <div className="menu-container">
+        {selectedRegion ? (
+          <WineRegionDetail
+            key={selectedRegion.id}
+            regionId={selectedRegion.id}
+            regionName={selectedRegion.name}
+            countryName={selectedRegion.country}
+            rawWines={rawWines || []}
+            onBack={handleBackToMenu}
+            onSelectRegion={(newRegId) => {
+              const matched = findWineRegion(newRegId);
+              setSelectedRegion({
+                id: newRegId,
+                name: matched ? matched.name : newRegId,
+                country: matched ? matched.country : ''
+              });
+              window.location.hash = `#region=${encodeURIComponent(newRegId)}`;
+            }}
+            onConsumeBottle={executeInstantConsume}
+            consumedCounts={consumedCounts}
+            getCellarTrackerActionUrl={getCellarTrackerActionUrl}
+          />
+        ) : (
+          <div className="menu-container">
           <table className="print-table">
             <thead><tr><td className="print-margin-spacer"></td></tr></thead>
             <tfoot><tr><td className="print-margin-spacer"></td></tr></tfoot>
@@ -566,13 +949,23 @@ function App() {
                         {Object.entries(regions).map(([region, categoryWines]) => (
                           <div key={region} className="region-section" style={{ marginBottom: '1.5rem' }}>
                             {region !== 'Other' ? (
-                              <div className="region-label">
+                              <button 
+                                type="button"
+                                className="region-label region-clickable-label"
+                                onClick={() => navigateToRegion(region, country)}
+                                title={`View ${region} region & map`}
+                              >
                                 {region}
-                              </div>
+                              </button>
                             ) : (
-                              <div className="region-label">
+                              <button 
+                                type="button"
+                                className="region-label region-clickable-label"
+                                onClick={() => navigateToRegion(country, country)}
+                                title={`View ${country} region & map`}
+                              >
                                 {country}
-                              </div>
+                              </button>
                             )}
 
                             <div className="wine-list">
@@ -607,7 +1000,7 @@ function App() {
                                   displayPrice = Math.round(parseFloat(price.replace('$', '')));
                                 }
 
-                                const consumedTotal = consumedCounts[wine.wineKey] || 0;
+                                const consumedTotal = consumptionHistory.filter(h => h.wineKey === wine.wineKey && !h.synced).length;
                                 const remainingTotal = Math.max(0, wine.totalQuantity - consumedTotal);
                                 const isSwipingThis = swipeState.key === wine.wineKey;
                                 const currentTranslateX = isSwipingThis ? swipeState.deltaX : 0;
@@ -646,7 +1039,7 @@ function App() {
                                           {consumedTotal > 0 && (
                                             <span 
                                               className="consumed-badge" 
-                                              title="Bottles opened tonight"
+                                              title="Bottles opened tonight (Click to undo)"
                                               onClick={(e) => {
                                                 e.stopPropagation();
                                                 handleUndoConsume(e, wine.wineKey);
@@ -687,79 +1080,153 @@ function App() {
             </td></tr></tbody>
           </table>
         </div>
+        )}
 
-        {/* Confirmation Modal */}
-        {activeModal && (
-          <div className="modal-backdrop" onClick={() => setActiveModal(null)}>
-            <div className="modal-container" onClick={(e) => e.stopPropagation()}>
-              <div className="modal-header">
-                <Wine size={24} className="modal-header-icon" />
-                <h3>Wine Service Confirmation</h3>
-              </div>
-
-              <div className="modal-body">
-                <h4 className="modal-wine-producer">{activeModal.wine.Producer}</h4>
-                <p className="modal-wine-title">{activeModal.wine.Wine} ({activeModal.wine.Vintage})</p>
-
-                <div className="quantity-notice-box">
-                  <span className="qty-highlight">Deducting exactly 1 bottle</span>
-                  <span className="qty-remaining">
-                    ({Math.max(0, activeModal.wine.totalQuantity - (consumedCounts[activeModal.wine.wineKey] || 0))} bottle{Math.max(0, activeModal.wine.totalQuantity - (consumedCounts[activeModal.wine.wineKey] || 0)) === 1 ? '' : 's'} remaining in cellar)
-                  </span>
+        {/* Service Tray & Sync Drawer */}
+        {isServiceTrayOpen && (
+          <div className="modal-backdrop" onClick={() => setIsServiceTrayOpen(false)}>
+            <div className="service-tray-drawer" onClick={(e) => e.stopPropagation()}>
+              <div className="service-tray-header">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Wine size={22} className="modal-header-icon" />
+                  <div>
+                    <h3 style={{ margin: 0, fontFamily: 'var(--font-serif)', fontSize: '1.25rem' }}>Service Tray & Cellar Sync</h3>
+                    <p style={{ margin: 0, fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                      Track bottles opened during tonight's service and synchronize with CellarTracker.com
+                    </p>
+                  </div>
                 </div>
+                <button className="close-tray-btn" onClick={() => setIsServiceTrayOpen(false)}>
+                  <X size={20} />
+                </button>
+              </div>
 
-                {activeModal.availableBins && activeModal.availableBins.length > 0 && (
-                  <div className="bin-selector-section">
-                    <label className="bin-label">
-                      <MapPin size={14} style={{ display: 'inline', marginRight: '5px' }} />
-                      Cellar Location & Bin:
-                    </label>
-                    <select
-                      className="bin-select-dropdown"
-                      value={activeModal.selectedBinId}
-                      onChange={(e) => setActiveModal({ ...activeModal, selectedBinId: e.target.value })}
-                    >
-                      {activeModal.availableBins.map(bin => {
-                        const consumedFromBin = consumedBins[activeModal.wine.wineKey]?.[bin.id] || 0;
-                        const binLeft = bin.quantity - consumedFromBin;
-                        const binDisplay = bin.bin !== 'Unassigned' ? `${bin.location} — Bin ${bin.bin}` : bin.location;
-                        return (
-                          <option key={bin.id} value={bin.id}>
-                            {binDisplay} ({binLeft} available)
-                          </option>
-                        );
-                      })}
-                    </select>
-                  </div>
+              <div className="service-tray-stats">
+                <div className="stat-card">
+                  <span className="stat-value">{consumptionHistory.length}</span>
+                  <span className="stat-label">Total Opened</span>
+                </div>
+                <div className="stat-card">
+                  <span className="stat-value" style={{ color: '#2e7d32' }}>
+                    {consumptionHistory.filter(h => h.synced).length}
+                  </span>
+                  <span className="stat-label">Synced to CT</span>
+                </div>
+                <div className="stat-card">
+                  <span className="stat-value" style={{ color: pendingSyncCount > 0 ? '#b8860b' : 'var(--text-muted)' }}>
+                    {pendingSyncCount}
+                  </span>
+                  <span className="stat-label">Pending Sync</span>
+                </div>
+              </div>
+
+              <div className="service-tray-toolbar">
+                {pendingSyncCount > 0 && (
+                  <button 
+                    className="tray-action-btn primary" 
+                    onClick={handleBulkSyncOnCellarTracker}
+                    title="Open CellarTracker with all opened bottles ready to consume"
+                  >
+                    <ExternalLink size={14} style={{ marginRight: '5px' }} />
+                    Bulk Sync on CellarTracker ({pendingSyncCount}) ↗
+                  </button>
                 )}
-
-                <p className="modal-confirm-question">
-                  Would you like to log 1 bottle of this selection as opened for tonight's service?
-                </p>
-
-                {(activeModal.wine.iWine || (activeModal.availableBins[0] && activeModal.availableBins[0].iWine)) && (
-                  <div style={{ marginBottom: '1.2rem', textAlign: 'center' }}>
-                    <a
-                      href={`https://www.cellartracker.com/wine.asp?iWine=${activeModal.wine.iWine || activeModal.availableBins[0].iWine}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ct-direct-link"
-                    >
-                      <ExternalLink size={14} style={{ display: 'inline', marginRight: '4px', verticalAlign: 'text-bottom' }} />
-                      View wine details on CellarTracker.com
-                    </a>
-                  </div>
+                {username && (
+                  <button 
+                    className="tray-action-btn" 
+                    onClick={() => fetchFromCellarTracker(username, password, { isReconcile: true })}
+                    disabled={isRefreshing}
+                    title="Pull fresh cellar inventory from CellarTracker"
+                  >
+                    <RefreshCw size={14} className={isRefreshing ? 'spin-icon' : ''} style={{ marginRight: '5px' }} />
+                    {isRefreshing ? 'Re-syncing...' : 'Re-sync Cellar ⟳'}
+                  </button>
+                )}
+                {consumptionHistory.length > 0 && (
+                  <button className="tray-action-btn danger" onClick={clearServiceHistory} title="Clear all local service history">
+                    <Trash2 size={14} style={{ marginRight: '5px' }} />
+                    Clear History
+                  </button>
                 )}
               </div>
 
-              <div className="modal-actions">
-                <button className="modal-btn confirm-btn" onClick={handleConfirmConsume}>
-                  <Check size={16} style={{ marginRight: '6px' }} />
-                  Confirm & Log 1 Bottle
-                </button>
-                <button className="modal-btn cancel-btn" onClick={() => setActiveModal(null)}>
-                  Return to Menu
-                </button>
+              <div className="service-tray-list">
+                {consumptionHistory.length === 0 ? (
+                  <div className="empty-tray-message">
+                    <Wine size={36} style={{ opacity: 0.3, marginBottom: '8px' }} />
+                    <p style={{ margin: 0, fontWeight: 600 }}>No bottles opened yet tonight</p>
+                    <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                      Swipe right on any wine in the menu to log a bottle as consumed.
+                    </p>
+                  </div>
+                ) : (
+                  consumptionHistory.map(item => (
+                    <div key={item.id} className={`service-tray-card ${item.synced ? 'is-synced' : 'is-pending'}`}>
+                      <div className="tray-card-top">
+                        <div>
+                          <h4 className="tray-card-producer">{item.producer}</h4>
+                          <p className="tray-card-title">{item.wine} ({item.vintage})</p>
+                        </div>
+                        <span className={`sync-status-badge ${item.synced ? 'synced' : 'pending'}`}>
+                          {item.synced ? (
+                            <><CheckCircle2 size={12} style={{ marginRight: '3px' }} /> Synced</>
+                          ) : (
+                            <><AlertCircle size={12} style={{ marginRight: '3px' }} /> Pending Sync</>
+                          )}
+                        </span>
+                      </div>
+
+                      <div className="tray-card-meta">
+                        <span><MapPin size={12} style={{ display: 'inline', marginRight: '3px' }} /> {item.location} {item.bin !== 'Unassigned' ? `· Bin ${item.bin}` : ''}</span>
+                        <span><Clock size={12} style={{ display: 'inline', marginRight: '3px' }} /> {item.timeStr}</span>
+                        {(item.iBottle || item.iWine) && (
+                          <span style={{ fontFamily: 'monospace', fontSize: '0.78rem', background: 'rgba(0,0,0,0.05)', padding: '2px 6px', borderRadius: '4px' }}>
+                            ID: {item.iBottle || item.iWine}
+                          </span>
+                        )}
+                        <span className="tray-reason-tag">{item.reasonLabel || 'Drank from cellar'}</span>
+                      </div>
+
+                      <div className="tray-card-actions">
+                        {(() => {
+                          const liveCtUrl = getCellarTrackerActionUrl(
+                            item.iWine, 
+                            item.iBottle || item.barcode, 
+                            item.reason || 'Drink', 
+                            `${item.producer} ${item.wine} ${item.vintage}`
+                          );
+                          return (
+                            <a 
+                              href={liveCtUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="tray-btn-link"
+                              onClick={() => {
+                                const updated = consumptionHistory.map(h => h.id === item.id ? { ...h, synced: true } : h);
+                                setConsumptionHistory(updated);
+                                localStorage.setItem('ct_consumption_history', JSON.stringify(updated));
+                                syncStateWithServer(updated, consumedCounts, consumedBins);
+                              }}
+                              title="Open exact wine on CellarTracker and mark as synced"
+                            >
+                              <ExternalLink size={12} style={{ marginRight: '4px' }} />
+                              Open on CT ↗
+                            </a>
+                          );
+                        })()}
+
+                        <button 
+                          className="tray-btn-undo"
+                          onClick={() => handleUndoConsume(null, item.wineKey, item.id)}
+                          title="Return bottle back to cellar"
+                        >
+                          <Undo2 size={13} style={{ marginRight: '4px' }} />
+                          Undo / Restore Bottle
+                        </button>
+                      </div>
+                    </div>
+                  ))
+                )}
               </div>
             </div>
           </div>
@@ -771,14 +1238,14 @@ function App() {
             <CheckCircle2 size={18} className="toast-icon" />
             <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
               <span>{toast.message}</span>
-              {toast.iWine && (
+              {toast.ctUrl && (
                 <a
-                  href={`https://www.cellartracker.com/wine.asp?iWine=${toast.iWine}`}
+                  href={toast.ctUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: 'var(--accent-gold)', fontSize: '0.8rem', textDecoration: 'underline', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+                  style={{ color: 'var(--accent-gold)', fontSize: '0.85rem', textDecoration: 'underline', display: 'inline-flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}
                 >
-                  View wine on CellarTracker.com <ExternalLink size={12} />
+                  {toast.linkText || 'Complete update on CellarTracker.com'} <ExternalLink size={12} />
                 </a>
               )}
             </div>
@@ -793,7 +1260,7 @@ function App() {
       <div className="upload-container">
         <h1 className="upload-title">CellarTracker</h1>
         <p className="upload-subtitle">
-          Connect your CellarTracker account or upload a CSV export to instantly generate a Restaurant Style Wine List.
+          Connect your CellarTracker account or upload a CSV export to instantly generate a Restaurant Style Wine List with real-time bottle consumption synchronization.
         </p>
 
         <div className="login-section" style={{ marginBottom: '2rem', textAlign: 'left', width: '100%', maxWidth: '400px', margin: '0 auto 2rem auto' }}>

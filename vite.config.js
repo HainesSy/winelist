@@ -7,6 +7,14 @@ export default defineConfig({
   server: {
     host: true,
     proxy: {
+      '/api/service-state': {
+        target: 'http://localhost:3001',
+        changeOrigin: true
+      },
+      '/api/consume': {
+        target: 'http://localhost:3001',
+        changeOrigin: true
+      },
       '/api/cellartracker': {
         target: 'https://www.cellartracker.com',
         changeOrigin: true,

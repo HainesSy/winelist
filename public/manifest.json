@@ -3,7 +3,7 @@
   "short_name": "Cellar",
   "description": "Manage and track your fine wine cellar collection.",
   "start_url": "/",
-  "display": "standalone",
+  "display": "browser",
   "background_color": "#f2ede5",
   "theme_color": "#141210",
   "icons": [
