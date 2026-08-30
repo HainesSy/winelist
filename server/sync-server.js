@@ -21,12 +21,13 @@ if (!fs.existsSync(STATE_DIR)) {
 let serviceState = {
   history: [],
   counts: {},
-  bins: {}
+  bins: {},
+  username: ''
 };
 
 try {
   if (fs.existsSync(STATE_FILE)) {
-    serviceState = JSON.parse(fs.readFileSync(STATE_FILE, 'utf-8'));
+    serviceState = { ...serviceState, ...JSON.parse(fs.readFileSync(STATE_FILE, 'utf-8')) };
   }
 } catch (e) {
   console.log('[Sync Server] Initializing fresh service state');
@@ -45,16 +46,17 @@ app.get('/api/service-state', (req, res) => {
 });
 
 app.post('/api/service-state', (req, res) => {
-  const { history, counts, bins } = req.body;
+  const { history, counts, bins, username } = req.body;
   if (history !== undefined) serviceState.history = history;
   if (counts !== undefined) serviceState.counts = counts;
   if (bins !== undefined) serviceState.bins = bins;
+  if (username !== undefined && username.trim()) serviceState.username = username.trim();
   saveServiceState();
   res.json({ success: true, state: serviceState });
 });
 
 app.delete('/api/service-state', (req, res) => {
-  serviceState = { history: [], counts: {}, bins: {} };
+  serviceState = { history: [], counts: {}, bins: {}, username: serviceState.username };
   saveServiceState();
   res.json({ success: true, message: 'Service state cleared across devices' });
 });

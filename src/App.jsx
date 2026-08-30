@@ -112,7 +112,7 @@ function App() {
     if (fallbackQuery && fallbackQuery.trim()) {
       return `https://www.cellartracker.com/search.asp?S=${encodeURIComponent(fallbackQuery.trim())}&QTable=AllWines`;
     }
-    return `https://www.cellartracker.com/list.asp'able=Inventory`;
+    return `https://www.cellartracker.com/list.asp?Table=Inventory`;
   };
 
   const fetchFromCellarTracker = async (user, pass, options = {}) => {
@@ -136,9 +136,17 @@ function App() {
       const response = await fetch(url);
 
       if (response.ok) {
-        const blob = await response.blob();
-        const textCheck = await blob.slice(0, 1000).text();
-        if (textCheck.toLowerCase().includes('<!doctype html>') || textCheck.toLowerCase().includes('<html')) {
+        const arrayBuf = await response.arrayBuffer();
+        let csvText;
+        try {
+          const utf8Decoder = new TextDecoder('utf-8', { fatal: true });
+          csvText = utf8Decoder.decode(arrayBuf);
+        } catch {
+          const winDecoder = new TextDecoder('windows-1252');
+          csvText = winDecoder.decode(arrayBuf);
+        }
+
+        if (csvText.slice(0, 1000).toLowerCase().includes('<!doctype html>') || csvText.slice(0, 1000).toLowerCase().includes('<html')) {
           console.log("Failed to fetch or invalid credentials (HTML returned)");
           if (!silent) {
             showToast("Failed to connect to CellarTracker. Please check your credentials.", "error");
@@ -148,17 +156,18 @@ function App() {
           return;
         }
 
-        Papa.parse(blob, {
+        Papa.parse(csvText, {
           header: true,
           skipEmptyLines: true,
-          encoding: "ISO-8859-1",
           complete: (results) => {
             const parsedWines = results.data;
             const validWines = parsedWines.filter(w => w.Wine || w.Vintage);
             if (validWines.length > 0) {
               setRawWines(validWines);
+              setUsername(user);
               localStorage.setItem('ct_user', user);
               localStorage.setItem('ct_pass', pass);
+              syncStateWithServer(consumptionHistory, consumedCounts, consumedBins, user);
 
               // Auto-reconciliation: Fresh inventory from CellarTracker loaded
               if (isReconcile && consumptionHistory.length > 0) {
@@ -169,14 +178,14 @@ function App() {
                 localStorage.setItem('ct_consumption_history', JSON.stringify(updatedHistory));
                 localStorage.setItem('ct_consumed_counts', JSON.stringify({}));
                 localStorage.setItem('ct_consumed_bins', JSON.stringify({}));
-                syncStateWithServer(updatedHistory, {}, {});
+                syncStateWithServer(updatedHistory, {}, {}, user);
                 showToast("Cellar synchronized! Fresh inventory loaded from CellarTracker.", "success");
               } else if (isReconcile) {
                 setConsumedCounts({});
                 setConsumedBins({});
                 localStorage.setItem('ct_consumed_counts', JSON.stringify({}));
                 localStorage.setItem('ct_consumed_bins', JSON.stringify({}));
-                syncStateWithServer(consumptionHistory, {}, {});
+                syncStateWithServer(consumptionHistory, {}, {}, user);
                 showToast("Cellar refreshed from CellarTracker.", "info");
               }
             } else {
@@ -214,13 +223,21 @@ function App() {
       setPassword(savedPass);
       fetchFromCellarTracker(savedUser, savedPass);
     } else {
-      // Auto-load default cellar sample CSV if available
+      // Auto-load default cellar sample CSV with universal UTF-8 & Windows-1252 decoding
       fetch('/My Cellar.csv')
         .then(res => {
-          if (res.ok) return res.text();
+          if (res.ok) return res.arrayBuffer();
           throw new Error('No default CSV');
         })
-        .then(csvText => {
+        .then(buf => {
+          let csvText;
+          try {
+            const utf8Decoder = new TextDecoder('utf-8', { fatal: true });
+            csvText = utf8Decoder.decode(buf);
+          } catch {
+            const winDecoder = new TextDecoder('windows-1252');
+            csvText = winDecoder.decode(buf);
+          }
           Papa.parse(csvText, {
             header: true,
             skipEmptyLines: true,
@@ -531,12 +548,17 @@ function App() {
   };
 
   // Server-synchronized shared service state
-  const syncStateWithServer = async (history, counts, bins) => {
+  const syncStateWithServer = async (history, counts, bins, user = username) => {
     try {
       await fetch('/api/service-state', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ history, counts, bins })
+        body: JSON.stringify({
+          history,
+          counts,
+          bins,
+          username: (user && user.trim()) || localStorage.getItem('ct_user') || ''
+        })
       });
     } catch (err) {
       // Silent in offline / standalone mode
@@ -555,6 +577,10 @@ function App() {
           localStorage.setItem('ct_consumption_history', JSON.stringify(data.history || []));
           localStorage.setItem('ct_consumed_counts', JSON.stringify(data.counts || {}));
           localStorage.setItem('ct_consumed_bins', JSON.stringify(data.bins || {}));
+        }
+        if (data && data.username && !username) {
+          setUsername(data.username);
+          localStorage.setItem('ct_user', data.username);
         }
       }
     } catch (err) {

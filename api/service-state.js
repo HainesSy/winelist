@@ -1,4 +1,4 @@
-﻿export const config = {
+export const config = {
   runtime: 'edge',
 };
 
@@ -6,6 +6,7 @@ let sharedState = {
   history: [],
   counts: {},
   bins: {},
+  username: '',
   lastUpdated: Date.now()
 };
 
@@ -32,6 +33,7 @@ export default async function (req) {
         history: data.history || [],
         counts: data.counts || {},
         bins: data.bins || {},
+        username: (data.username && data.username.trim()) || sharedState.username || '',
         lastUpdated: Date.now()
       };
       return new Response(JSON.stringify({ success: true, ...sharedState }), { status: 200, headers });
@@ -41,7 +43,7 @@ export default async function (req) {
   }
 
   if (req.method === 'DELETE') {
-    sharedState = { history: [], counts: {}, bins: {}, lastUpdated: Date.now() };
+    sharedState = { history: [], counts: {}, bins: {}, username: sharedState.username, lastUpdated: Date.now() };
     return new Response(JSON.stringify({ success: true }), { status: 200, headers });
   }
 
