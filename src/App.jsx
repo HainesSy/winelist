@@ -39,8 +39,20 @@ function App() {
   const [isHovering, setIsHovering] = useState(false);
   const [isLoadingDefault, setIsLoadingDefault] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState(() => {
+    try {
+      return localStorage.getItem('ct_user') || 'Haines';
+    } catch {
+      return 'Haines';
+    }
+  });
+  const [password, setPassword] = useState(() => {
+    try {
+      return localStorage.getItem('ct_pass') || '';
+    } catch {
+      return '';
+    }
+  });
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isForceClosed, setIsForceClosed] = useState(false);
   const [isServiceTrayOpen, setIsServiceTrayOpen] = useState(false);
@@ -936,7 +948,15 @@ function App() {
             <tfoot><tr><td className="print-margin-spacer"></td></tr></tfoot>
             <tbody><tr><td style={{ padding: 0 }}>
               <header className="menu-header">
-                <h1 className="menu-title">{username ? <><span style={{ fontFamily: "'Playfair Display SC', serif" }}>{username.charAt(0).toUpperCase() + username.slice(1).toLowerCase()}</span>'s Wine List</> : 'Cellar'}</h1>
+                <div className="menu-brand-icon">
+                  <Wine size={26} strokeWidth={1.5} style={{ color: 'var(--accent-gold)', marginBottom: '8px' }} />
+                </div>
+                <h1 className="menu-title">
+                  <span className="menu-title-user" style={{ fontFamily: "'Playfair Display SC', 'Playfair Display', serif" }}>
+                    {username ? username.charAt(0).toUpperCase() + username.slice(1).toLowerCase() : 'Haines'}
+                  </span>
+                  's Wine List
+                </h1>
                 <div className="menu-subtitle">{activeTab === 'All' ? 'A curated selection from the cellar' : `Wines from the ${activeTab}`}</div>
               </header>
 
@@ -1128,7 +1148,7 @@ function App() {
                     title="Open CellarTracker with all opened bottles ready to consume"
                   >
                     <ExternalLink size={14} style={{ marginRight: '5px' }} />
-                    Bulk Sync on CellarTracker ({pendingSyncCount}) ↗
+                    Bulk Sync on CellarTracker ({pendingSyncCount})
                   </button>
                 )}
                 {username && (
@@ -1139,7 +1159,7 @@ function App() {
                     title="Pull fresh cellar inventory from CellarTracker"
                   >
                     <RefreshCw size={14} className={isRefreshing ? 'spin-icon' : ''} style={{ marginRight: '5px' }} />
-                    {isRefreshing ? 'Re-syncing...' : 'Re-sync Cellar ⟳'}
+                    {isRefreshing ? 'Re-syncing...' : 'Re-sync Cellar'}
                   </button>
                 )}
                 {consumptionHistory.length > 0 && (
@@ -1210,7 +1230,7 @@ function App() {
                               title="Open exact wine on CellarTracker and mark as synced"
                             >
                               <ExternalLink size={12} style={{ marginRight: '4px' }} />
-                              Open on CT ↗
+                              Open on CT
                             </a>
                           );
                         })()}

@@ -6,13 +6,15 @@
   --accent-gold: #d4af37;
   --accent-dark-gold: #b8860b;
 
-  --font-serif: 'Playfair Display', serif;
-  --font-sans: 'Montserrat', sans-serif;
+  --font-serif: 'Playfair Display', 'Playfair Display SC', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 html {
   width: 100%;
   min-height: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 * {
@@ -31,6 +33,7 @@ body {
   justify-content: center;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* Base styles for a premium look */
@@ -285,11 +288,28 @@ body {
   border-spacing: 0;
 }
 
+@media screen {
+  .print-table thead,
+  .print-table tfoot {
+    display: none !important;
+  }
+}
+
 header.menu-header {
   text-align: center;
   margin-bottom: 50px;
   border-bottom: 1px solid var(--accent-gold);
   padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-brand-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4px;
 }
 
 h1.menu-title {
@@ -299,6 +319,11 @@ h1.menu-title {
   margin: 0;
   color: #1a1a1a;
   letter-spacing: 1px;
+}
+
+.menu-title-user {
+  font-family: 'Playfair Display SC', 'Playfair Display', Georgia, serif;
+  font-variant: small-caps;
 }
 
 .menu-subtitle {
