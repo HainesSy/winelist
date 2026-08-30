@@ -533,7 +533,7 @@ h2 {
 @media print {
   @page {
     margin: 0;
-    /* Zero margin so cream fills edge to edge — no white seams */
+    /* Zero margin so cream fills edge to edge - no white seams */
   }
 
   html,

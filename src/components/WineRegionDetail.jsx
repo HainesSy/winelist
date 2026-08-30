@@ -563,7 +563,7 @@ export default function WineRegionDetail({
               <Search size={16} className="search-icon" />
               <input 
                 type="text"
-                placeholder="Search producer, vintage, cuvée..."
+                placeholder="Search producer, vintage, cuvee..."
                 value={searchFilter}
                 onChange={(e) => setSearchFilter(e.target.value)}
                 className="cellar-search-input"
@@ -640,9 +640,9 @@ export default function WineRegionDetail({
                         </p>
                         <div className="wine-card-meta">
                           <span><MapPin size={13} style={{ display: 'inline', marginRight: '3px' }} /> {wine.Locale || region.name}</span>
-                          {wine.Bin && <span>· Bin: <strong>{wine.Bin}</strong></span>}
-                          {wine.Location && <span>· Loc: {wine.Location}</span>}
-                          {wine.Varietal && <span>· {wine.Varietal}</span>}
+                          {wine.Bin && <span>- Bin: <strong>{wine.Bin}</strong></span>}
+                          {wine.Location && <span>- Loc: {wine.Location}</span>}
+                          {wine.Varietal && <span>- {wine.Varietal}</span>}
                         </div>
                       </div>
 

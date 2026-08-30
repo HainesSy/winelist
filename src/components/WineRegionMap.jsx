@@ -133,7 +133,7 @@ export default function WineRegionMap({
               </div>
               <div class="popup-row">
                 <strong>Focus:</strong>
-                <p>${sub.focus || 'Signature regional cuvées.'}</p>
+                <p>${sub.focus || 'Signature regional cuvees.'}</p>
               </div>
               ${bottleCount > 0 ? `
                 <div class="popup-cellar-count">

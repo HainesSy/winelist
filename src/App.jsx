@@ -41,9 +41,9 @@ function App() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [username, setUsername] = useState(() => {
     try {
-      return localStorage.getItem('ct_user') || 'Haines';
+      return localStorage.getItem('ct_user') || '';
     } catch {
-      return 'Haines';
+      return '';
     }
   });
   const [password, setPassword] = useState(() => {
@@ -112,7 +112,7 @@ function App() {
     if (fallbackQuery && fallbackQuery.trim()) {
       return `https://www.cellartracker.com/search.asp?S=${encodeURIComponent(fallbackQuery.trim())}&QTable=AllWines`;
     }
-    return `https://www.cellartracker.com/list.asp?Table=Inventory`;
+    return `https://www.cellartracker.com/list.asp'able=Inventory`;
   };
 
   const fetchFromCellarTracker = async (user, pass, options = {}) => {
@@ -373,7 +373,7 @@ function App() {
 
       const localeLower = (wine.Locale || wine.Region || '').toLowerCase();
       const isBeaujolais = localeLower.includes('beaujolais') ||
-        ['morgon', 'fleurie', 'moulin-à-vent', 'moulin a vent', 'brouilly', 'côte de brouilly', 'cote de brouilly', 'juliénas', 'julienas', 'régnié', 'regnie', 'saint-amour', 'saint amour', 'chiroubles', 'chénas', 'chenas']
+        ['morgon', 'fleurie', 'moulin-a-vent', 'moulin a vent', 'brouilly', 'cote de brouilly', 'cote de brouilly', 'julienas', 'julienas', 'regnie', 'regnie', 'saint-amour', 'saint amour', 'chiroubles', 'chenas', 'chenas']
           .some(cru => localeLower.includes(cru));
 
       if (isBeaujolais && country === 'France') {
@@ -453,7 +453,7 @@ function App() {
       }
     });
 
-    const typeOrder = ['Sparkling', 'White', 'Red', 'Rosé', 'Dessert', 'Fortified', 'Other Wines'];
+    const typeOrder = ['Sparkling', 'White', 'Red', 'Rose', 'Dessert', 'Fortified', 'Other Wines'];
     const sortedGrouped = {};
 
     const sortHierarchy = (countriesObj) => {
@@ -465,7 +465,7 @@ function App() {
 
       const regionPriority = {
         'Champagne': 1, 'Burgundy': 2, 'Bordeaux': 3, 'Loire': 4,
-        'Rhône': 5, 'Rhone': 5, 'Beaujolais': 6
+        'Rhone': 5, 'Rhone': 5, 'Beaujolais': 6
       };
 
       const sortedCountries = {};
@@ -684,7 +684,7 @@ function App() {
     syncStateWithServer(updatedHistory, newCounts, newBins);
 
     const binLabel = selectedBin ? (selectedBin.bin !== 'Unassigned' ? selectedBin.bin : selectedBin.location) : 'Cellar';
-    showToast(`🍷 Opened 1 bottle of ${wine.Producer} ${wine.Wine} (${binLabel}). Added to Service Tray.`, 'success');
+    showToast(`Opened 1 bottle of ${wine.Producer} ${wine.Wine} (${binLabel}). Added to Service Tray.`, 'success');
   };
 
   const handleBulkSyncOnCellarTracker = () => {
@@ -698,7 +698,7 @@ function App() {
     }
 
     // 1. Open CellarTracker's direct validated scan list with all opened bottles
-    const scanUrl = `https://www.cellartracker.com/list.asp?Table=Scan&Validate=true&iInventoryList=${encodeURIComponent(codes.join(','))}`;
+    const scanUrl = `https://www.cellartracker.com/list.asp'able=Scan&Validate=true&iInventoryList=${encodeURIComponent(codes.join(','))}`;
 
     try {
       window.open(scanUrl, '_blank', 'noopener,noreferrer');
@@ -712,7 +712,7 @@ function App() {
     localStorage.setItem('ct_consumption_history', JSON.stringify(updated));
     syncStateWithServer(updated, consumedCounts, consumedBins);
 
-    showToast(`🍷 Opened ${codes.length} bottle(s) on CellarTracker!`, 'success');
+    showToast(`Opened ${codes.length} bottle(s) on CellarTracker!`, 'success');
   };
 
   const handleCopyBarcodeList = () => {
@@ -721,7 +721,7 @@ function App() {
     const codes = targetItems.map(item => `${item.producer} ${item.wine} (${item.vintage}) [${item.bin !== 'Unassigned' ? item.bin : item.location}]: ${item.iBottle || item.iWine || item.barcode || 'No ID'}`);
     if (codes.length > 0 && navigator.clipboard) {
       navigator.clipboard.writeText(codes.join('\n'));
-      showToast(`📋 Copied list of ${codes.length} bottle(s) to clipboard.`, 'info');
+      showToast(`Copied list of ${codes.length} bottle(s) to clipboard.`, 'info');
     }
   };
 
@@ -952,10 +952,16 @@ function App() {
                   <Wine size={26} strokeWidth={1.5} style={{ color: 'var(--accent-gold)', marginBottom: '8px' }} />
                 </div>
                 <h1 className="menu-title">
-                  <span className="menu-title-user" style={{ fontFamily: "'Playfair Display SC', 'Playfair Display', serif" }}>
-                    {username ? username.charAt(0).toUpperCase() + username.slice(1).toLowerCase() : 'Haines'}
-                  </span>
-                  's Wine List
+                  {username ? (
+                    <>
+                      <span className="menu-title-user" style={{ fontFamily: "'Playfair Display SC', 'Playfair Display', serif" }}>
+                        {username.charAt(0).toUpperCase() + username.slice(1).toLowerCase()}
+                      </span>
+                      's Wine List
+                    </>
+                  ) : (
+                    'Wine List'
+                  )}
                 </h1>
                 <div className="menu-subtitle">{activeTab === 'All' ? 'A curated selection from the cellar' : `Wines from the ${activeTab}`}</div>
               </header>
@@ -1197,7 +1203,7 @@ function App() {
                       </div>
 
                       <div className="tray-card-meta">
-                        <span><MapPin size={12} style={{ display: 'inline', marginRight: '3px' }} /> {item.location} {item.bin !== 'Unassigned' ? `· Bin ${item.bin}` : ''}</span>
+                        <span><MapPin size={12} style={{ display: 'inline', marginRight: '3px' }} /> {item.location} {item.bin !== 'Unassigned' ? `- Bin ${item.bin}` : ''}</span>
                         <span><Clock size={12} style={{ display: 'inline', marginRight: '3px' }} /> {item.timeStr}</span>
                         {(item.iBottle || item.iWine) && (
                           <span style={{ fontFamily: 'monospace', fontSize: '0.78rem', background: 'rgba(0,0,0,0.05)', padding: '2px 6px', borderRadius: '4px' }}>
