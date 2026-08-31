@@ -4151,31 +4151,29 @@ button.region-label:hover,
 
 .prestige-table {
   width: 100%;
-  min-width: 1020px;
+  min-width: 980px;
   table-layout: fixed;
   border-collapse: collapse;
   font-size: 0.85rem;
 }
 
 /* Champagne Columns */
-.prestige-table col.col-rank { width: 7%; }
 .prestige-table col.col-cuvee { width: 16%; }
 .prestige-table col.col-house { width: 14%; }
 .prestige-table col.col-debut { width: 10%; }
-.prestige-table col.col-blend { width: 12%; }
-.prestige-table col.col-sourcing { width: 13%; }
-.prestige-table col.col-winemaking { width: 14%; }
-.prestige-table col.col-legacy { width: 14%; }
+.prestige-table col.col-blend { width: 13%; }
+.prestige-table col.col-sourcing { width: 14%; }
+.prestige-table col.col-winemaking { width: 17%; }
+.prestige-table col.col-legacy { width: 16%; }
 
 /* Burgundy Monopoles & Whites Columns */
-.prestige-table col.col-bg-rank { width: 7%; }
 .prestige-table col.col-bg-monopole { width: 16%; }
 .prestige-table col.col-bg-owner { width: 15%; }
-.prestige-table col.col-bg-village { width: 16%; }
-.prestige-table col.col-bg-grape { width: 11%; }
-.prestige-table col.col-bg-class { width: 11%; }
-.prestige-table col.col-bg-lore { width: 12%; }
-.prestige-table col.col-bg-profile { width: 12%; }
+.prestige-table col.col-bg-village { width: 17%; }
+.prestige-table col.col-bg-grape { width: 12%; }
+.prestige-table col.col-bg-class { width: 12%; }
+.prestige-table col.col-bg-lore { width: 15%; }
+.prestige-table col.col-bg-profile { width: 13%; }
 
 .prestige-table th {
   background: #faf7f2;

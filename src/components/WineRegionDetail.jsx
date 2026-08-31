@@ -1860,7 +1860,6 @@ export default function WineRegionDetail({
             <table className={`prestige-table ${isBurgundy ? 'monopoles-table' : ''}`}>
               {isBurgundy ? (
                 <colgroup>
-                  <col className="col-bg-rank" />
                   <col className="col-bg-monopole" />
                   <col className="col-bg-owner" />
                   <col className="col-bg-village" />
@@ -1871,7 +1870,6 @@ export default function WineRegionDetail({
                 </colgroup>
               ) : (
                 <colgroup>
-                  <col className="col-rank" />
                   <col className="col-cuvee" />
                   <col className="col-house" />
                   <col className="col-debut" />
@@ -1883,7 +1881,6 @@ export default function WineRegionDetail({
               )}
               <thead>
                 <tr>
-                  <th>Rank</th>
                   <th>{isBurgundy ? (prestigeColorFilter === 'white' ? 'White Climat / Terroir' : 'Monopole / Benchmark Climat') : 'Prestige Cuvée'}</th>
                   <th>{isBurgundy ? 'Benchmark Domaine / Owner' : 'House / Estate'}</th>
                   <th>{isBurgundy ? 'Village & AOC' : 'Debut'}</th>
@@ -1895,7 +1892,6 @@ export default function WineRegionDetail({
               </thead>
               <tbody>
                 {paginatedPrestigeItems.map((item, idx) => {
-                  const globalRank = (prestigePage - 1) * PRESTIGE_PAGE_SIZE + idx + 1;
                   const grapeStr = (item.grape || item.grapeComposition || item.blend || item.dominantGrape || item.wineType || '').toLowerCase();
                   const nameStr = (item.name || '').toLowerCase();
 
@@ -1914,11 +1910,6 @@ export default function WineRegionDetail({
 
                   return (
                     <tr key={item.id || idx}>
-                      <td className="col-rank-cell">
-                        <span className={`prestige-rank-badge ${globalRank === 1 ? 'rank-1' : globalRank === 2 ? 'rank-2' : globalRank === 3 ? 'rank-3' : ''}`}>
-                          {globalRank === 1 ? '👑 #1' : globalRank === 2 ? '🥇 #2' : globalRank === 3 ? '🥈 #3' : `#${globalRank}`}
-                        </span>
-                      </td>
                       <td className="col-cuvee-cell">
                         <strong className="cuvee-name-highlight">{item.name}</strong>
                       </td>
@@ -1961,7 +1952,7 @@ export default function WineRegionDetail({
             {totalPrestigePages > 1 && (
               <div className="prestige-pagination-bar">
                 <div className="pagination-info">
-                  Showing <strong>{(prestigePage - 1) * PRESTIGE_PAGE_SIZE + 1}–{Math.min(prestigePage * PRESTIGE_PAGE_SIZE, prestigeItems.length)}</strong> of <strong>{prestigeItems.length}</strong> {isBurgundy ? 'Benchmark Terroirs' : 'Prestige Cuvées'} (Ranked by Prominence)
+                  Showing <strong>{(prestigePage - 1) * PRESTIGE_PAGE_SIZE + 1}–{Math.min(prestigePage * PRESTIGE_PAGE_SIZE, prestigeItems.length)}</strong> of <strong>{prestigeItems.length}</strong> {isBurgundy ? 'Benchmark Terroirs' : 'Prestige Cuvées'}
                 </div>
                 <div className="pagination-controls">
                   <button 
