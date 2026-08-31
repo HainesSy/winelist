@@ -8,6 +8,21 @@ import {
   BURGUNDY_ICONIC_DOMAINES
 } from './burgundyData';
 
+import {
+  ALSACE_GRAND_CRUS,
+  ALSACE_SUBREGIONS,
+  ALSACE_TECHNICAL_REGULATIONS,
+  ALSACE_PRESTIGE_MONOPOLES,
+  ALSACE_ICONIC_DOMAINES
+} from './alsaceData';
+
+import {
+  CORSICA_SUBREGIONS,
+  CORSICA_TECHNICAL_REGULATIONS,
+  CORSICA_BENCHMARK_ESTATES,
+  CORSICA_ICONIC_DOMAINES
+} from './corsicaData';
+
 export {
   BURGUNDY_GRAND_CRUS,
   BURGUNDY_PREMIER_CRUS,
@@ -15,7 +30,16 @@ export {
   BURGUNDY_TECHNICAL_REGULATIONS,
   BURGUNDY_PRESTIGE_MONOPOLES,
   BURGUNDY_WHITE_BENCHMARKS,
-  BURGUNDY_ICONIC_DOMAINES
+  BURGUNDY_ICONIC_DOMAINES,
+  ALSACE_GRAND_CRUS,
+  ALSACE_SUBREGIONS,
+  ALSACE_TECHNICAL_REGULATIONS,
+  ALSACE_PRESTIGE_MONOPOLES,
+  ALSACE_ICONIC_DOMAINES,
+  CORSICA_SUBREGIONS,
+  CORSICA_TECHNICAL_REGULATIONS,
+  CORSICA_BENCHMARK_ESTATES,
+  CORSICA_ICONIC_DOMAINES
 };
 
 // ============================================================================
@@ -2847,6 +2871,233 @@ export const WINE_REGIONS = {
         focus: "Koshu: Grace Wine, Katsunuma Jozo, Chateau Mercian.",
         description: "The spiritual birthplace of Japanese wine, crafting laser-pure, mineral-kissed Koshu." }
     ]
+  },
+'alsace': {
+    id: 'alsace',
+    name: "Alsace",
+    country: 'France',
+    countryCode: 'FR',
+    aliases: ['alsace', 'vin d\'alsace', 'haut-rhin', 'bas-rhin', 'riquewihr', 'ribeauville', 'ribeauvillé', 'colmar', 'kaysersberg', 'eguisheim', 'turckheim', 'thann', 'guebwiller', 'molsheim', 'barr', 'andlau', 'dambach', 'cremant d\'alsace', 'crémant d\'alsace'],
+    tagline: "The European Kaleidoscope of Terroir & Noble White Varieties",
+    summary: "Sheltered by the Vosges Mountains in northeast France, Alsace is one of the world's greatest cool-climate, aromatic white wine capitals. Blessed with a dry rain-shadow microclimate and 13 distinct bedrock formations, Alsace crafts dry, pure, and noble sweet expressions of Riesling, Gewurztraminer, Pinot Gris, and Muscat, alongside vibrant Crémant d'Alsace and rising Grand Cru Pinot Noir.",
+    center: [48.1500, 7.3000],
+    zoom: 10,
+    bounds: [[47.70, 7.00], [48.75, 7.70]],
+    heroGradient: 'linear-gradient(135deg, #1b3a24 0%, #2e5939 50%, #d4af37 100%)',
+    accentColor: '#2e7d32',
+
+    terroir: {
+      climate: "Semi-continental with cold winters, hot sunny summers, and exceptionally dry autumns. Sheltered by the Vosges Mountains (Colmar is France's 2nd driest wine city with ~500mm rain/year).",
+      soil: "The most complex geological mosaic in Europe: Paleozoic granite, volcanic rhyolite, pink Buntsandstein sandstone, marine Muschelkalk limestone, Keuper gypsiferous marls, and loess.",
+      elevation: "200m to 470m (Rangen de Thann) on steep terraced slopes along the eastern fault line of the Vosges.",
+      riverInfluence: "Rhine River valley and fast-flowing mountain streams (Thur, Weiss, Fecht, Lauch, Andlau) ventilate hillside parcels."
+    },
+
+    grapes: [
+      { name: 'Riesling', percentage: 22, type: 'White', role: "The noble king of Alsace: bone-dry, laser-precise, citrus, petrol, and crushed-rock minerality." },
+      { name: 'Pinot Blanc / Auxerrois', percentage: 21, type: 'White', role: "Fresh orchard fruit, soft acidity; cornerstone of Crémant d'Alsace." },
+      { name: 'Gewurztraminer', percentage: 19, type: 'White', role: "Exotic lychee, rosewater, ginger, cardamom, and unctuous, opulent texture." },
+      { name: 'Pinot Gris', percentage: 16, type: 'White', role: "Rich, smoky, honeyed stone fruit, mushrooms, and versatile gastronomic weight." },
+      { name: 'Pinot Noir', percentage: 11, type: 'Red', role: "Fresh cherry, raspberry, forest floor; elevated to Grand Cru status in Hengst & Vorbourg in 2022!" },
+      { name: 'Sylvaner', percentage: 5, type: 'White', role: "Crisp, floral, saline; world-class Grand Cru expression in Zotzenberg." },
+      { name: 'Muscat', percentage: 3, type: 'White', role: "Dry, aromatic aperitif with fresh grape, orange blossom, and mint." }
+    ],
+
+    structure: {
+      body: 6.5,
+      acidity: 9.0,
+      tannin: 2.5,
+      sweetness: 2,
+      alcohol: 13.0,
+      agingPotential: "5 - 30+ Years"
+    },
+
+    classification: {
+      system: "AOC Appellation d'Origine Contrôlée & 2021 Sweetness Scale",
+      description: "Hierarchy spanning 51 Grand Crus, single Lieux-Dits, Communal designations, Regional varietal AOCs, and Crémant d'Alsace.",
+      tiers: [
+        { name: 'Alsace Grand Cru AOC (51 Crus)', detail: "Strictly delimited single vineyards (e.g. Rangen, Schlossberg, Clos Sainte Hune/Rosacker, Brand, Sommerberg, Hengst, Zotzenberg)." },
+        { name: 'Alsace Communal & Lieu-Dit AOC', detail: "Designated village DGCs (e.g. Scherwiller, Blienschwiller, Côtes de Barr) and iconic walled single parcels." },
+        { name: 'Alsace AOC (Regional Varietal)', detail: "100% single-varietal wines labeled by grape variety with mandatory sweetness scale (Sec, Demi-Sec, Moelleux, Doux)." },
+        { name: 'Crémant d\'Alsace AOC', detail: "Traditional method sparkling wine; France's largest crémant AOC with elite 'Émotion' 24-month lees category." },
+        { name: 'Vendanges Tardives (VT) & SGN', detail: "Prestigious late harvest and noble rot botrytis sweet wines with strict minimum natural must weights." }
+      ]
+    },
+
+    flavorProfile: {
+      primary: ['Meyer Lemon / Lime Zest', 'White Peach', 'Lychee & Rosewater', 'Jasmine Flower', 'Crushed Quartz / Flint'],
+      secondary: ['Smoky Petrol / Kerosene', 'Ginger & Star Anise', 'Beeswax & Honey', 'Dried Apricot', 'Noble Botrytis Spice'],
+      palate: "Vibrant, chiseled, highly aromatic attack with soaring crystalline acidity, kaleidoscopic bedrock minerality, and extraordinarily pure length."
+    },
+
+    foodPairings: [
+      // White Alsace Pairings
+      {
+        category: 'Classic Alsatian Heritage Dishes',
+        wineType: 'White',
+        targetWine: 'Dry Riesling & Pinot Blanc',
+        dish: "Choucroute Garnie (Sauerkraut with Smoked Pork, Bacon & Sausages) & Baeckeoffe",
+        note: "Riesling's electric acidity and citrus drive cut through rich smoked pork fat while harmonizing with fermented cabbage acidity."
+      },
+      {
+        category: 'Rich & Pungent Cheeses',
+        wineType: 'White',
+        targetWine: 'Gewurztraminer & Pinot Gris',
+        dish: "Munster AOP with Cumin Seeds, Epoisses, Roquefort Blue & Aged Comté",
+        note: "Gewurztraminer's opulent texture and rosewater-ginger aromatics tame the pungent washed rind of Munster, creating an immortal regional marriage."
+      },
+      {
+        category: 'Foie Gras & Decadent Starters',
+        wineType: 'White',
+        targetWine: 'Vendanges Tardives & SGN Pinot Gris / Gewurztraminer',
+        dish: "Pan-Seared Foie Gras with Spiced Brioche, Foie Gras Terrine with Quince",
+        note: "Unctuous noble rot sweetness and high natural acidity dissolve decadent duck liver fat into luscious harmony."
+      },
+      {
+        category: 'Freshwater Fish & Shellfish',
+        wineType: 'White',
+        targetWine: 'Grand Cru Riesling (Schlossberg / Rosacker)',
+        dish: "Truite au Bleu (Poached Trout with Brown Butter), Coq au Riesling & King Crab",
+        note: "Granite and limestone-grown Riesling delivers razor-sharp tension and crushed stone salinity that elevate tender river trout."
+      },
+      {
+        category: 'Savory Tarts & Bistro Classics',
+        wineType: 'White',
+        targetWine: 'Crémant d\'Alsace & Sylvaner Grand Cru',
+        dish: "Tarte Flambée (Flammekueche with Lardons & Fromage Blanc), Quiche Lorraine",
+        note: "Crispy dough and rich crème fraîche demand the effervescence of Crémant or the savory, saline snap of old-vine Sylvaner."
+      },
+
+      // Red Alsace Pairings
+      {
+        category: 'Roasted Poultry & Game Birds',
+        wineType: 'Red',
+        targetWine: 'Grand Cru Pinot Noir (Hengst / Vorbourg)',
+        dish: "Roast Duck Breast with Cherry Glaze, Squab with Chanterelles & Game Terrine",
+        note: "Alsatian Pinot Noir offers bright red cherry fruit, spicy forest floor, and silky fine tannins that pair seamlessly with feathered game."
+      },
+      {
+        category: 'Charcuterie & Smoked Meats',
+        wineType: 'Red',
+        targetWine: 'Alsace Pinot Noir (Saint-Hippolyte / Rodern)',
+        dish: "Smoked Ham, Knack d\'Alsace, Presskopf & Pork Tenderloin with Morels",
+        note: "Lightly chilled Pinot Noir brings crunchy redcurrant fruit and refreshing acidity to balance savory, smoked Alsatian charcuterie."
+      }
+    ],
+
+    subRegions: ALSACE_SUBREGIONS,
+    grandCrus: ALSACE_GRAND_CRUS,
+    technicalRegulations: ALSACE_TECHNICAL_REGULATIONS,
+    prestigeMonopoles: ALSACE_PRESTIGE_MONOPOLES,
+    prestigeCuvees: ALSACE_PRESTIGE_MONOPOLES,
+    iconicDomaines: ALSACE_ICONIC_DOMAINES,
+    iconicGrowers: ALSACE_ICONIC_DOMAINES
+  },
+
+  'corsica': {
+    id: 'corsica',
+    name: "Corsica (Corse)",
+    country: 'France',
+    countryCode: 'FR',
+    aliases: ['corsica', 'corse', 'patrimonio', 'ajaccio', 'figari', 'calvi', 'sartene', 'sartène', 'porto-vecchio', 'cap corse', 'coteaux du cap corse', 'muscat du cap corse', 'ile de beaute', 'île de beauté', 'vin de corse'],
+    tagline: "The Wild Mountain in the Sea & Indigenous Mediterranean Terroirs",
+    summary: "Rising dramatically out of the Mediterranean Sea with towering granite peaks over 2,700 meters, Corsica ('L\'Île de Beauté') is one of the world's most unique, unspoiled wine regions. Defined by ancient crystalline granite and limestone soils, 5 cooling sea winds, and indigenous grapes found nowhere else (Sciaccarellu, Niellucciu, Vermentinu, Biancu Gentile), Corsica crafts weightless, peppery, maquis-scented reds and intensely saline, floral whites.",
+    center: [42.1500, 9.1500],
+    zoom: 9,
+    bounds: [[41.30, 8.50], [43.05, 9.65]],
+    heroGradient: 'linear-gradient(135deg, #1f2d3d 0%, #34495e 50%, #d4af37 100%)',
+    accentColor: '#0288d1',
+
+    terroir: {
+      climate: "Sun-drenched Mediterranean climate with over 2,750 hours of sunshine, tempered by high mountain elevation and 5 maritime winds (Libeccio, Mistral, Sirocco, Tramuntana, Grecale).",
+      soil: "Two distinct geological realms: Hercynian crystalline granite in western and southern Corsica (Ajaccio, Sartène, Figari, Calvi) vs. metamorphic schist and white Saint-Florent limestone in the northeast (Cap Corse and Patrimonio).",
+      elevation: "Sea level up to 450m on steep mountain amphitheaters and windy coastal plateaus.",
+      riverInfluence: "Taravo, Golo, Rizzanese, and Tavignano river valleys provide dramatic alpine diurnal temperature cooling."
+    },
+
+    grapes: [
+      { name: 'Niellucciu', percentage: 35, type: 'Red', role: "Sangiovese's ancient Corsican relative: dark cherry, dried herbs, leather, and powerful limestone-driven tannins." },
+      { name: 'Sciaccarellu', percentage: 28, type: 'Red', role: "Corsica's native red jewel on granite: pale translucent ruby, crushed white pepper, wild strawberry, and maquis." },
+      { name: 'Vermentinu', percentage: 26, type: 'White', role: "100% of white AOC wines: green apple, preserved lemon, wild fennel, almonds, and mouthwatering sea spray salinity." },
+      { name: 'Muscat à Petits Grains', percentage: 4, type: 'White', role: "Fortified Vin Doux Naturel on Cap Corse schist terraces; candied citrus, apricot, and dried mint." },
+      { name: 'Biancu Gentile', percentage: 3, type: 'White', role: "Rescued ancestral white grape: rich beeswax, honeyed stone fruit, and vibrant Mediterranean freshness." },
+      { name: 'Minustellu & Carcaghjolu Neru', percentage: 4, type: 'Red', role: "Ancient heritage varieties adding inky color, wild blackberry, iron, and savory spice to artisan cuvées." }
+    ],
+
+    structure: {
+      body: 6.0,
+      acidity: 8.0,
+      tannin: 6.5,
+      sweetness: 1,
+      alcohol: 13.5,
+      agingPotential: "4 - 25+ Years"
+    },
+
+    classification: {
+      system: "AOC Appellation d'Origine Contrôlée (9 AOCs) & IGP Île de Beauté",
+      description: "Island hierarchy consisting of 2 Cru Appellations, 5 Sub-Regional Satellites, 1 Vin Doux Naturel, 1 Regional AOC, and the dynamic IGP Île de Beauté.",
+      tiers: [
+        { name: 'Cru Appellations (Patrimonio & Ajaccio)', detail: "The apex terroirs: Patrimonio (1968) on white limestone, and Ajaccio (1971) on granitic sands." },
+        { name: 'Sub-Regional AOCs (5 Communal Satellites)', detail: "Corse Calvi, Corse Coteaux du Cap Corse, Corse Sartène, Corse Figari, Corse Porto-Vecchio (1976)." },
+        { name: 'Vin Doux Naturel (Muscat du Cap Corse AOC)', detail: "Artisanal fortified sweet Muscat (1993) on steep schist terraces; min 252 g/L must weight, mutage with neutral alcohol." },
+        { name: 'Regional AOC Corse & IGP Île de Beauté', detail: "Island-wide appellation and dynamic IGP framework celebrating 18 ancient indigenous grape varieties." }
+      ]
+    },
+
+    flavorProfile: {
+      primary: ['Wild Strawberry & Redcurrant', 'Preserved Lemon & Green Apple', 'Crushed White Pepper', 'Maquis Herbs (Immortelle & Myrtle)', 'Sea Spray Salinity'],
+      secondary: ['Black Cherry & Leather', 'Fennel Seed & Almond', 'Smoky Granite / Flint', 'Dried Thyme & Rosemary', 'Beeswax & Honey'],
+      palate: "Weightless power, vibrant Mediterranean energy, silken fine-grained tannins, bracing saline acidity, and an unforgettable wild garrigue herbal perfume."
+    },
+
+    foodPairings: [
+      // Red Corsican Pairings
+      {
+        category: 'Traditional Roasted Game & Mountain Kid',
+        wineType: 'Red',
+        targetWine: 'Sciaccarellu (Ajaccio & Figari) / Niellucciu (Patrimonio)',
+        dish: "Cabri Rôti au Myrte (Roasted Milk-Fed Kid with Myrtle) & Civet de Sanglier (Wild Boar Stew with Polenta)",
+        note: "Sciaccarellu's signature crushed white pepper and immortelle aromatics mirror the roasted herbs, while Niellucciu's firm tannins dissolve rich braised wild boar."
+      },
+      {
+        category: 'Artisanal Charcuterie Corse',
+        wineType: 'Red',
+        targetWine: 'Corse Sartène & Ajaccio Rouge',
+        dish: "Prisuttu (Dry-Cured Ham), Lonzu, Coppa, Figatellu (Grilled Liver Sausage) & Stufatu de Veau",
+        note: "Savory, peppery Corsican charcuterie demands the lively acidity and herbal garrigue freshness of Sciaccarellu and Niellucciu."
+      },
+
+      // White Corsican Pairings
+      {
+        category: 'Mediterranean Seafood & Crustaceans',
+        wineType: 'White',
+        targetWine: 'Vermentinu (Patrimonio & Cap Corse)',
+        dish: "Grilled Loup de Mer (Sea Bass) with Wild Fennel, Langoustines de Saint-Florent, Pan-Roasted Dentex",
+        note: "Vermentinu's crystalline sea-spray salinity, lemon oil, and wild fennel perfume effortlessly elevate delicate grilled fish and sweet local shellfish."
+      },
+      {
+        category: 'Corsican Cheeses & Brocciu Dishes',
+        wineType: 'White',
+        targetWine: 'Biancu Gentile & Vermentinu',
+        dish: "Beignets au Brocciu AOP, Fiadone (Corsican Lemon Cheesecake), Fleur du Maquis Cheese",
+        note: "Creamy, whey-based Brocciu and sheep's milk Fleur du Maquis covered in rosemary and savory harmonize with the waxy, floral richness of Biancu Gentile."
+      },
+      {
+        category: 'Dessert & Pâtisserie Pairing',
+        wineType: 'White',
+        targetWine: 'Muscat du Cap Corse AOC (Vin Doux Naturel)',
+        dish: "Canistrelli (Corsican Anise & Almond Biscuits), Tarte au Citron, Fruit Tarts",
+        note: "Unctuous candied citrus, orange blossom, and dried mint in Muscat du Cap Corse create a breathtaking finish alongside traditional almond pastries."
+      }
+    ],
+
+    subRegions: CORSICA_SUBREGIONS,
+    grandCrus: [],
+    technicalRegulations: CORSICA_TECHNICAL_REGULATIONS,
+    prestigeMonopoles: CORSICA_BENCHMARK_ESTATES,
+    prestigeCuvees: CORSICA_BENCHMARK_ESTATES,
+    iconicDomaines: CORSICA_ICONIC_DOMAINES,
+    iconicGrowers: CORSICA_ICONIC_DOMAINES
   }
 };
 
@@ -2874,10 +3125,12 @@ export function findWineRegion(regionQuery, countryQuery = '') {
   if (cleanCountry === 'france') {
     if (cleanReg.includes('champagne') || cleanReg.includes('coteaux champenois') || cleanReg.includes('riceys')) return WINE_REGIONS['champagne'];
     if (cleanReg.includes('burgundy') || cleanReg.includes('bourgogne') || cleanReg.includes('chablis') || cleanReg.includes('beaune') || cleanReg.includes('nuits') || cleanReg.includes('macon') || cleanReg.includes('mâcon') || cleanReg.includes('beaujolais')) return WINE_REGIONS['burgundy'];
+    if (cleanReg.includes('alsace') || cleanReg.includes('haut-rhin') || cleanReg.includes('bas-rhin') || cleanReg.includes('riquewihr') || cleanReg.includes('ribeauville') || cleanReg.includes('ribeauvillé') || cleanReg.includes('colmar') || cleanReg.includes('kaysersberg') || cleanReg.includes('thann') || cleanReg.includes('guebwiller') || cleanReg.includes('cremant d\'alsace') || cleanReg.includes('crémant d\'alsace')) return WINE_REGIONS['alsace'];
+    if (cleanReg.includes('corsica') || cleanReg.includes('corse') || cleanReg.includes('patrimonio') || cleanReg.includes('ajaccio') || cleanReg.includes('figari') || cleanReg.includes('calvi') || cleanReg.includes('sartene') || cleanReg.includes('sartène') || cleanReg.includes('cap corse') || cleanReg.includes('ile de beaute') || cleanReg.includes('île de beauté')) return WINE_REGIONS['corsica'];
     if (cleanReg.includes('bordeaux') || cleanReg.includes('medoc') || cleanReg.includes('pauillac') || cleanReg.includes('margaux') || cleanReg.includes('saint-emilion') || cleanReg.includes('pomerol') || cleanReg.includes('sauternes')) return WINE_REGIONS['bordeaux'];
     if (cleanReg.includes('loire') || cleanReg.includes('sancerre') || cleanReg.includes('chinon') || cleanReg.includes('vouvray') || cleanReg.includes('saumur')) return WINE_REGIONS['loire-valley'];
     if (cleanReg.includes('rhone') || cleanReg.includes('rhône') || cleanReg.includes('cornas') || cleanReg.includes('hermitage') || cleanReg.includes('cote-rotie') || cleanReg.includes('chateauneuf') || cleanReg.includes('gigondas')) return WINE_REGIONS['rhone'];
-  }
+}
 
   if (cleanCountry === 'italy' || cleanCountry === 'italia') {
     if (cleanReg.includes('piedmont') || cleanReg.includes('piemonte') || cleanReg.includes('barolo') || cleanReg.includes('barbaresco') || cleanReg.includes('langhe')) return WINE_REGIONS['piedmont'];

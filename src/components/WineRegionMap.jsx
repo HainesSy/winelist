@@ -333,14 +333,16 @@ export default function WineRegionMap({
     // 2. Draw Grand Cru Markers (Radiant Gold aesthetic, z-index 1000)
     if ((pinViewMode === 'grandCrus' || pinViewMode === 'all') && hasGrandCrus) {
       const isBurgundy = region.id === 'burgundy';
+      const isAlsace = region.id === 'alsace';
       region.grandCrus.forEach(cru => {
         const isCruSelected = selectedCruId === cru.id;
-        const isPinot = cru.dominantGrape?.toLowerCase().includes('pinot');
-        const isChard = cru.dominantGrape?.toLowerCase().includes('chardonnay');
-        const isAligote = cru.dominantGrape?.toLowerCase().includes('aligoté') || cru.dominantGrape?.toLowerCase().includes('aligote');
+        const dominantLower = (cru.dominantGrape || '').toLowerCase();
+        const isPinot = dominantLower.includes('pinot noir') || dominantLower.includes('rouge') || dominantLower.includes('red');
+        const isChard = dominantLower.includes('chardonnay') || dominantLower.includes('riesling') || dominantLower.includes('gewurztraminer') || dominantLower.includes('pinot gris') || dominantLower.includes('muscat') || dominantLower.includes('sylvaner') || dominantLower.includes('white');
+        const isAligote = dominantLower.includes('aligoté') || dominantLower.includes('aligote');
         const grapeSymbol = isPinot ? '🍷' : (isChard ? '🥂' : (isAligote ? '🌿' : '🍇'));
         const pinClass = isPinot ? 'pinot-cru' : 'chard-cru';
-        const starBadgeText = isBurgundy ? (cru.areaHa ? `${cru.areaHa}ha` : 'GC') : '100%';
+        const starBadgeText = (isBurgundy || isAlsace) ? (cru.areaHa ? `${cru.areaHa}ha` : 'GC') : '100%';
 
         const cruHtml = `
           <div class="custom-sommelier-marker cru-marker grand-cru ${pinClass} ${isCruSelected ? 'is-active' : ''}">
@@ -365,7 +367,7 @@ export default function WineRegionMap({
         const cruPopupHtml = `
           <div class="sommelier-map-popup grand-cru-popup">
             <div class="popup-header">
-              <span class="popup-sub-tag grand-cru-tag">👑 ${isBurgundy ? 'Grand Cru (AOC)' : 'Grand Cru (100% Échelle)'} · ${cru.village || cru.district || cru.subregion}${cru.areaHa ? ` · ${cru.areaHa} ha` : ''}</span>
+              <span class="popup-sub-tag grand-cru-tag">👑 ${(isBurgundy || isAlsace) ? 'Grand Cru (AOC)' : 'Grand Cru (100% Échelle)'} · ${cru.village || cru.commune || cru.district || cru.subregion}${cru.areaHa ? ` · ${cru.areaHa} ha` : ''}</span>
               <h4 class="popup-title">${cru.name}</h4>
             </div>
             <div class="popup-body">

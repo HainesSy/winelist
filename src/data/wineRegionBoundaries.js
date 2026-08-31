@@ -1103,5 +1103,172 @@ export const WINE_REGION_BOUNDARIES = {
         }
       }
     ]
+  },
+
+  // ==========================================================================
+  // ALSACE AOC & GRAND CRU AOC (Vosges Rain Shadow Mosaic)
+  // ==========================================================================
+  'alsace': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "haut-rhin",
+        properties: {
+          id: "haut-rhin",
+          name: "Haut-Rhin (Southern & Central Alsace)",
+          category: "Grand Cru Kingdom (37 Grand Crus)",
+          dominantGrape: "Riesling, Gewurztraminer, Pinot Gris, Pinot Noir",
+          color: "#b8860b", // Dark gold
+          accent: "#ffd700",
+          fillOpacity: 0.22,
+          description: "Steep Vosges foothills sheltered by the highest peaks; home to 37 Grand Crus including Rangen, Schlossberg, Brand, and Sommerberg."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [7.080, 47.780], [7.280, 47.780], [7.380, 47.950], [7.440, 48.120],
+            [7.400, 48.240], [7.280, 48.240], [7.180, 48.100], [7.050, 47.880],
+            [7.080, 47.780]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "bas-rhin",
+        properties: {
+          id: "bas-rhin",
+          name: "Bas-Rhin (Northern Alsace & Couronne de Strasbourg)",
+          category: "Sandstone & Limestone Crus (14 Grand Crus)",
+          dominantGrape: "Riesling, Sylvaner, Pinot Blanc, Auxerrois",
+          color: "#2e7d32", // Green
+          accent: "#81c784",
+          fillOpacity: 0.20,
+          description: "Gentler northern slopes with cool nights and crystalline floral aromatics; home to Zotzenberg, Kastelberg, and Muenchberg."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [7.320, 48.240], [7.450, 48.240], [7.550, 48.450], [7.580, 48.650],
+            [7.450, 48.680], [7.360, 48.500], [7.320, 48.350], [7.320, 48.240]
+          ]]
+        }
+      }
+    ]
+  },
+
+  // ==========================================================================
+  // CORSICA / CORSE AOC (L'Île de Beauté)
+  // ==========================================================================
+  'corsica': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "patrimonio",
+        properties: {
+          id: "patrimonio",
+          name: "Patrimonio AOC (Cru Appellation)",
+          category: "Pure White Limestone Cru",
+          dominantGrape: "Niellucciu (90%+) & Vermentinu",
+          color: "#8b0000",
+          accent: "#d4af37",
+          fillOpacity: 0.25,
+          description: "Corsica's first AOC (1968) on pure white chalk limestone surrounding the Gulf of Saint-Florent."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [9.280, 42.660], [9.380, 42.740], [9.450, 42.720], [9.400, 42.640],
+            [9.300, 42.630], [9.280, 42.660]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "ajaccio",
+        properties: {
+          id: "ajaccio",
+          name: "Ajaccio AOC (Cru Appellation)",
+          category: "Granitic Sciaccarellu Cru",
+          dominantGrape: "Sciaccarellu (60%+) & Vermentinu",
+          color: "#c2185b",
+          accent: "#f48fb1",
+          fillOpacity: 0.22,
+          description: "Weathered granite amphitheaters in the Gulf of Ajaccio and Taravo Valley; world benchmark for peppery, aromatic Sciaccarellu."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [8.650, 41.850], [8.920, 41.950], [8.980, 41.820], [8.800, 41.720],
+            [8.680, 41.780], [8.650, 41.850]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "corse-calvi",
+        properties: {
+          id: "corse-calvi",
+          name: "Corse Calvi AOC",
+          category: "Balagne Maritime Amphitheater",
+          dominantGrape: "Sciaccarellu, Niellucciu, Vermentinu",
+          color: "#0288d1",
+          accent: "#81d4fa",
+          fillOpacity: 0.20,
+          description: "The Garden of Corsica framed between Mount Cinto and the sea on granite and schist slopes."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [8.680, 42.500], [8.880, 42.620], [8.980, 42.580], [8.850, 42.450],
+            [8.680, 42.500]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "coteaux-du-cap-corse",
+        properties: {
+          id: "coteaux-du-cap-corse",
+          name: "Cap Corse & Muscat du Cap Corse AOC",
+          category: "Metamorphic Schist Terraces",
+          dominantGrape: "Vermentinu & Muscat Blanc à Petits Grains",
+          color: "#7b1fa2",
+          accent: "#ba68c8",
+          fillOpacity: 0.24,
+          description: "Vertiginous schist terraces hanging over the sea at the northern tip of Corsica; dry Vermentinu and unctuous Muscat VDN."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [9.350, 42.780], [9.480, 43.020], [9.520, 42.980], [9.450, 42.780],
+            [9.350, 42.780]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "corse-figari",
+        properties: {
+          id: "corse-figari",
+          name: "Corse Figari AOC",
+          category: "Extreme Windswept Granite Plateau",
+          dominantGrape: "Sciaccarellu, Niellucciu, Biancu Gentile",
+          color: "#e65100",
+          accent: "#ffb74d",
+          fillOpacity: 0.22,
+          description: "The southernmost vineyards in France; bone-dry, wind-battered granite soils delivering intense saline minerality."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [8.980, 41.440], [9.180, 41.540], [9.220, 41.480], [9.050, 41.400],
+            [8.980, 41.440]
+          ]]
+        }
+      }
+    ]
   }
 };
+

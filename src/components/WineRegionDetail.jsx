@@ -534,13 +534,15 @@ export default function WineRegionDetail({
 
   const isChampagne = region?.id === 'champagne';
   const isBurgundy = region?.id === 'burgundy';
+  const isAlsace = region?.id === 'alsace';
+  const isCorsica = region?.id === 'corsica';
 
   const hasGrandCrus = Boolean(region?.grandCrus && region.grandCrus.length > 0);
   const hasPremierCrus = Boolean(region?.premierCrus && region.premierCrus.length > 0);
   const hasTechnicalRegulations = Boolean(region?.technicalRegulations);
   const hasPrestigeCuvees = Boolean((region?.prestigeCuvees && region.prestigeCuvees.length > 0) || (region?.prestigeMonopoles && region.prestigeMonopoles.length > 0));
 
-  // Prestige items list (supporting Burgundy Red Monopoles & White Benchmark Terroirs)
+  // Prestige items list (supporting Burgundy Red Monopoles & White Benchmark Terroirs, Alsace, Corsica)
   const prestigeItems = useMemo(() => {
     if (isBurgundy) {
       const reds = region?.prestigeMonopoles || [];
@@ -557,7 +559,10 @@ export default function WineRegionDetail({
       }
       return interleaved;
     }
-    return region?.prestigeCuvees || [];
+    const allPrestige = (region?.prestigeMonopoles || region?.prestigeCuvees || []);
+    if (prestigeColorFilter === 'red') return allPrestige.filter(p => (p.wineType || '').toLowerCase() === 'red' || (p.wineType || '').toLowerCase() === 'dual');
+    if (prestigeColorFilter === 'white') return allPrestige.filter(p => (p.wineType || '').toLowerCase() === 'white' || (p.wineType || '').toLowerCase() === 'dual');
+    return allPrestige;
   }, [region, isBurgundy, prestigeColorFilter]);
 
   // Reset page when filter or region changes
@@ -809,13 +814,34 @@ export default function WineRegionDetail({
         { value: 'Gamay', label: 'Gamay Focus 🍇' }
       ];
     }
+    if (isAlsace) {
+      return [
+        { value: 'all', label: 'All Dominant Grapes' },
+        { value: 'Riesling', label: 'Riesling Focus 🥂' },
+        { value: 'Gewurztraminer', label: 'Gewurztraminer Focus 🌸' },
+        { value: 'Pinot Gris', label: 'Pinot Gris Focus 🍯' },
+        { value: 'Muscat', label: 'Muscat Focus 🌿' },
+        { value: 'Sylvaner', label: 'Sylvaner Focus 🍏' },
+        { value: 'Pinot Noir', label: 'Pinot Noir Focus 🍷' }
+      ];
+    }
+    if (isCorsica) {
+      return [
+        { value: 'all', label: 'All Dominant Grapes' },
+        { value: 'Niellucciu', label: 'Niellucciu Focus 🍷' },
+        { value: 'Sciaccarellu', label: 'Sciaccarellu Focus 🍓' },
+        { value: 'Vermentinu', label: 'Vermentinu Focus 🥂' },
+        { value: 'Muscat', label: 'Muscat VDN Focus 🍯' },
+        { value: 'Biancu Gentile', label: 'Biancu Gentile Focus ✨' }
+      ];
+    }
     return [
       { value: 'all', label: 'All Dominant Grapes' },
       { value: 'Pinot Noir', label: 'Pinot Noir Dominant 🍷' },
       { value: 'Chardonnay', label: 'Chardonnay Dominant 🥂' },
       { value: 'Meunier', label: 'Meunier Focus 🌿' }
     ];
-  }, [isBurgundy]);
+  }, [isBurgundy, isAlsace, isCorsica]);
 
   const filteredUnifiedCrus = useMemo(() => {
     return unifiedCrus.filter(cru => {
@@ -940,7 +966,13 @@ export default function WineRegionDetail({
             {hasGrandCrus && (
               <span className="region-cms-badge">
                 <Crown size={12} style={{ display: 'inline', marginRight: '4px', verticalAlign: 'text-bottom' }} />
-                {isBurgundy ? '33 Grand Crus & Benchmark Climats' : 'Grand Cru & Premier Cru Terroirs'}
+                {isBurgundy ? '33 Grand Crus & Benchmark Climats' : isAlsace ? '51 Grand Crus (AOC)' : 'Grand Cru & Premier Cru Terroirs'}
+              </span>
+            )}
+            {isCorsica && (
+              <span className="region-cms-badge">
+                <Crown size={12} style={{ display: 'inline', marginRight: '4px', verticalAlign: 'text-bottom' }} />
+                9 AOCs & Indigenous Terroirs
               </span>
             )}
             {cellarWines.length > 0 && (
@@ -982,7 +1014,7 @@ export default function WineRegionDetail({
             onClick={() => setActiveTab('crus')}
           >
             <Crown size={16} />
-            <span>Crus & Villages ({unifiedCrus.length})</span>
+            <span>{isAlsace ? '51 Grand Crus (AOC)' : `Crus & Villages (${unifiedCrus.length})`}</span>
           </button>
         )}
 
@@ -1010,7 +1042,7 @@ export default function WineRegionDetail({
             onClick={() => setActiveTab('prestige')}
           >
             <Sparkles size={16} />
-            <span>{isBurgundy ? 'Monopoles & Iconic Domaines' : 'Prestige Cuvées & Growers'}</span>
+            <span>{isBurgundy ? 'Monopoles & Iconic Domaines' : isAlsace ? 'Monopoles & Iconic Domaines' : isCorsica ? 'Benchmark Estates & Cuvées' : 'Prestige Cuvées & Growers'}</span>
           </button>
         )}
 
@@ -1040,7 +1072,11 @@ export default function WineRegionDetail({
               <p>
                 {isBurgundy
                   ? "Explore the Côte d'Or escarpment, Chablis, Côte Chalonnaise, and Mâconnais. Discover all 33 Grand Crus and essential Premier Cru Climats across Middle & Upper Jurassic limestone terroirs."
-                  : "Explore geological microclimates, 17 Grand Cru communes, 16 essential Premier Crus, famous river valleys, and sub-districts. Toggle between district zones, Grand Crus, and Premier Cru pins."
+                  : isAlsace
+                    ? "Explore the Vosges rain-shadow foothills across Haut-Rhin and Bas-Rhin. Discover all 51 Grand Crus, 13 distinct soil formations, and iconic single vineyards."
+                    : isCorsica
+                      ? "Explore the 9 AOCs of L'Île de Beauté: Hercynian granite hillsides, Cap Corse schist terraces, and Patrimonio limestone amphitheaters."
+                      : "Explore geological microclimates, 17 Grand Cru communes, 16 essential Premier Crus, famous river valleys, and sub-districts. Toggle between district zones, Grand Crus, and Premier Cru pins."
                 }
               </p>
             </div>
@@ -1143,16 +1179,18 @@ export default function WineRegionDetail({
           <div className="cms-section-header">
             <div>
               <div className="cms-badge-row">
-                <span className="cms-level-badge">{isBurgundy ? 'Grand Cru & Premier Cru Hierarchy' : 'Grand Cru Classification'}</span>
+                <span className="cms-level-badge">{isBurgundy ? 'Grand Cru & Premier Cru Hierarchy' : isAlsace ? 'Grand Cru Appellations (AOC)' : 'Grand Cru Classification'}</span>
                 <span className="cru-count-badge">
-                  {isBurgundy ? '33 Grand Crus (AOC) & Benchmark Premier Crus' : '17 Grand Crus (100%) & 16 Essential Premier Crus (90–99%)'}
+                  {isBurgundy ? '33 Grand Crus (AOC) & Benchmark Premier Crus' : isAlsace ? '51 Grand Crus (AOC) Directory' : '17 Grand Crus (100%) & 16 Essential Premier Crus (90–99%)'}
                 </span>
               </div>
               <h3>Crus & Viticultural Hierarchy of {region.name}</h3>
               <p>
                 {isBurgundy
                   ? "Burgundy's Climat-based AOC system classifies individual vineyard parcels cultivated for centuries. Below are all 33 Grand Crus across the Côte d'Or and Chablis alongside essential benchmark Premier Crus."
-                  : "Under the historical Échelle des Crus, 17 villages earned 100% Grand Cru classification and 42 earned Premier Cru status (90–99%). Below are all 17 Grand Crus alongside the 16 most essential historical Premier Crus."
+                  : isAlsace
+                    ? "Alsace's Grand Cru AOC system classifies 51 strictly delimited single vineyards across the Haut-Rhin (37) and Bas-Rhin (14), capturing 13 distinct soil formations from ancient granite and volcanic rhyolite to pink sandstone and marine limestone."
+                    : "Under the historical Échelle des Crus, 17 villages earned 100% Grand Cru classification and 42 earned Premier Cru status (90–99%). Below are all 17 Grand Crus alongside the 16 most essential historical Premier Crus."
                 }
               </p>
             </div>
@@ -1384,14 +1422,23 @@ export default function WineRegionDetail({
                     <Mountain className="tech-icon" />
                     <div>
                       <span className="tech-tag">Pedology & Subsurface Geology</span>
-                      <h4>{isBurgundy ? 'Jurassic Limestone Formations & Soil Stratigraphy' : 'Chalk Formations: Belemnite vs. Micraster vs. Kimmeridgian'}</h4>
+                      <h4>
+                        {isBurgundy ? 'Jurassic Limestone Formations & Soil Stratigraphy' : 
+                         isAlsace ? 'The 13 Geological Terroirs of Alsace & Rhine Graben Rifting' :
+                         isCorsica ? 'Hercynian Granite vs. Alpine Schist & Limestone Formations' :
+                         'Chalk Formations: Belemnite vs. Micraster vs. Kimmeridgian'}
+                      </h4>
                     </div>
                   </div>
 
                   <p className="tech-summary">
                     {isBurgundy 
                       ? "Burgundy's micro-terroirs are defined by a complex mosaic of Middle and Upper Jurassic limestone, crinoidal marls, and iron-rich clays shaped 150–175 million years ago:"
-                      : "Champagne's world-renowned tension and saline minerality stem from distinct Mesozoic fossiliferous chalk, limestone marl, and clay strata:"
+                      : isAlsace
+                        ? "Alsace represents Europe's greatest geological mosaic, shaped by the collapse of the Rhine Graben 50 million years ago and featuring 13 distinct soil formations:"
+                        : isCorsica
+                          ? "Corsica's dramatic topography combines Hercynian Paleozoic granite in the west and south with Alpine metamorphic schist and white Miocene limestone in the northeast:"
+                          : "Champagne's world-renowned tension and saline minerality stem from distinct Mesozoic fossiliferous chalk, limestone marl, and clay strata:"
                     }
                   </p>
 
@@ -1425,6 +1472,28 @@ export default function WineRegionDetail({
                 </div>
               )}
 
+              {/* Card 1B (Corsica): Climatology & The 5 Mediterranean Winds */}
+              {region.technicalRegulations.climatology && (
+                <div className="cms-tech-card climatology-card" style={{ marginTop: '16px' }}>
+                  <div className="tech-card-header">
+                    <ThermometerSun className="tech-icon" />
+                    <div>
+                      <span className="tech-tag">Mediterranean Climatology</span>
+                      <h4>{region.technicalRegulations.climatology.system}</h4>
+                    </div>
+                  </div>
+                  <p className="tech-summary">{region.technicalRegulations.climatology.description}</p>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '10px', marginTop: '12px' }}>
+                    {region.technicalRegulations.climatology.winds?.map((wind, wIdx) => (
+                      <div key={wIdx} style={{ background: '#ffffff', border: '1px solid rgba(2, 136, 209, 0.3)', borderRadius: '8px', padding: '10px' }}>
+                        <strong style={{ fontSize: '0.86rem', color: '#0288d1', display: 'block', marginBottom: '4px' }}>💨 {wind.name}</strong>
+                        <p style={{ fontSize: '0.78rem', color: '#444', margin: 0, lineHeight: 1.4 }}>{wind.effect}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* Card 2: Authorized Grapes Matrix */}
               {region.technicalRegulations.grapes && (
                 <div className="cms-tech-card grapes-tech-card">
@@ -1432,14 +1501,23 @@ export default function WineRegionDetail({
                     <Wine className="tech-icon" />
                     <div>
                       <span className="tech-tag">Ampelography & Viticulture</span>
-                      <h4>{isBurgundy ? 'Burgundian Ampelography: Pinot Noir, Chardonnay, Aligoté & Heritage Varieties' : 'The 7 Authorized Grape Varieties of Champagne AOC'}</h4>
+                      <h4>
+                        {isBurgundy ? 'Burgundian Ampelography: Pinot Noir, Chardonnay, Aligoté & Heritage Varieties' : 
+                         isAlsace ? 'Alsatian Ampelography: The 4 Noble Grapes & Heritage Varieties' :
+                         isCorsica ? 'Indigenous Corsican Ampelography: Niellucciu, Sciaccarellu & Vermentinu' :
+                         'The 7 Authorized Grape Varieties of Champagne AOC'}
+                      </h4>
                     </div>
                   </div>
 
                   <p className="tech-summary">
                     {isBurgundy
                       ? "Pinot Noir and Chardonnay dominate the Côte d'Or and Chablis, complemented by historic Aligoté in the Côte Chalonnaise, and ancestral Gamay and César:"
-                      : "While Pinot Noir (38%), Chardonnay (31%), and Meunier (31%) represent over 99.7% of vineyard acreage, the INAO legally authorizes four rare heritage varieties:"
+                      : isAlsace
+                        ? "While the 4 Noble Varieties (Riesling, Gewurztraminer, Pinot Gris, Muscat) dominate Grand Cru and late harvest wines, Alsace produces vibrant Crémant from Pinot Blanc/Auxerrois and world-class Grand Cru Pinot Noir and Sylvaner:"
+                        : isCorsica
+                          ? "Corsica is a living sanctuary for indigenous grape varieties, anchored by Niellucciu, Sciaccarellu, and Vermentinu alongside ancient rescued heritage cépages:"
+                          : "While Pinot Noir (38%), Chardonnay (31%), and Meunier (31%) represent over 99.7% of vineyard acreage, the INAO legally authorizes four rare heritage varieties:"
                     }
                   </p>
 
@@ -1491,7 +1569,7 @@ export default function WineRegionDetail({
                 </div>
               )}
 
-              {/* Card 3 (Burgundy): AOC Quality Hierarchy & Climat UNESCO System */}
+              {/* Card 3: AOC Quality Hierarchy & Climat UNESCO System */}
               {region.technicalRegulations.classification && (
                 <div className="cms-tech-card classification-pyramid-card">
                   <div className="tech-card-header">
@@ -1506,7 +1584,7 @@ export default function WineRegionDetail({
                     {region.technicalRegulations.classification.pyramid?.map((tier, idx) => (
                       <div key={idx} className="climat-pyramid-box">
                         <div className="tier-header">
-                          <span className="tier-badge-share">{tier.sharePct} of Burgundy</span>
+                          <span className="tier-badge-share">{tier.sharePct} Share</span>
                           <h5>{tier.tier}</h5>
                           <span className="tier-aoc-count">{tier.aocCount}</span>
                         </div>
@@ -1519,6 +1597,23 @@ export default function WineRegionDetail({
                       </div>
                     ))}
                   </div>
+
+                  {/* Alsace Sweetness Rules & Harvest Categories */}
+                  {region.technicalRegulations.classification.sweetnessRules && (
+                    <div className="alsace-sweetness-rules-section" style={{ marginTop: '16px', paddingTop: '14px', borderTop: '1px solid rgba(212, 175, 55, 0.25)' }}>
+                      <h5 style={{ fontFamily: 'var(--font-serif)', fontSize: '0.95rem', color: '#1a1a1a', marginBottom: '8px' }}>
+                        ⚖️ Mandatory Sweetness Scale (2021) & Noble Late Harvest Regulations:
+                      </h5>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '10px' }}>
+                        {region.technicalRegulations.classification.sweetnessRules.map((rule, rIdx) => (
+                          <div key={rIdx} style={{ background: '#faf8f2', border: '1px solid rgba(212, 175, 55, 0.3)', borderRadius: '8px', padding: '10px' }}>
+                            <strong style={{ fontSize: '0.84rem', color: '#b8860b', display: 'block', marginBottom: '4px' }}>{rule.category}</strong>
+                            <p style={{ fontSize: '0.78rem', color: '#444', margin: 0, lineHeight: 1.4 }}>{rule.details}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   {region.technicalRegulations.classification.climatConcept && (
                     <div className="unesco-climat-banner">
@@ -1927,8 +2022,24 @@ export default function WineRegionDetail({
         <section className="region-tab-content prestige-tab">
           <div className="prestige-intro">
             <div>
-              <span className="cms-level-badge">{isBurgundy ? (prestigeColorFilter === 'white' ? 'White Burgundy Benchmark Terroirs' : prestigeColorFilter === 'red' ? 'Red Monopoles & Iconic Climats' : 'Monopoles & Benchmark Domaines') : 'Prestige Heritage & Benchmark Estates'}</span>
-              <h3>{isBurgundy ? (prestigeColorFilter === 'white' ? 'Benchmark White Terroirs & Iconic White Climats of Burgundy' : prestigeColorFilter === 'red' ? 'Benchmark Red Monopoles & Historic Climats of Burgundy' : 'Benchmark Monopoles & Iconic Terroirs of Burgundy') : 'Benchmark Prestige Cuvées of Champagne'}</h3>
+              <span className="cms-level-badge">
+                {isBurgundy 
+                  ? (prestigeColorFilter === 'white' ? 'White Burgundy Benchmark Terroirs' : prestigeColorFilter === 'red' ? 'Red Monopoles & Iconic Climats' : 'Monopoles & Benchmark Domaines') 
+                  : isAlsace
+                    ? 'Benchmark Monopoles & Iconic Terroirs'
+                    : isCorsica
+                      ? 'Benchmark Estates & Historic Cuvées'
+                      : 'Prestige Heritage & Benchmark Estates'}
+              </span>
+              <h3>
+                {isBurgundy 
+                  ? (prestigeColorFilter === 'white' ? 'Benchmark White Terroirs & Iconic White Climats of Burgundy' : prestigeColorFilter === 'red' ? 'Benchmark Red Monopoles & Historic Climats of Burgundy' : 'Benchmark Monopoles & Iconic Terroirs of Burgundy') 
+                  : isAlsace
+                    ? 'Benchmark Monopoles & Iconic Terroirs of Alsace'
+                    : isCorsica
+                      ? 'Benchmark Estates & Iconic Cuvées of Corsica'
+                      : 'Benchmark Prestige Cuvées of Champagne'}
+              </h3>
               <p>
                 {isBurgundy 
                   ? (prestigeColorFilter === 'white'
@@ -1937,7 +2048,11 @@ export default function WineRegionDetail({
                         ? "Legendary single-owner Pinot Noir vineyard holdings (Monopoles) and historic walled clos that embody Burgundy's most coveted red terroirs."
                         : "Legendary single-owner vineyard holdings (Monopoles) and iconic Grand Cru & Premier Cru terroirs across Burgundy's red and white spectrum."
                     )
-                  : "The iconic tête de cuvées that established Champagne's global prestige, their inaugural debut vintages, terroir sourcing, and assemblage philosophies."
+                  : isAlsace
+                    ? "Legendary walled vineyards (Clos) and historic single parcels across Alsace's most celebrated Grand Crus and noble terroirs."
+                    : isCorsica
+                      ? "Iconic benchmark cuvées and single-parcel expressions capturing the wild granitic, schist, and limestone terroirs of Corsica."
+                      : "The iconic tête de cuvées that established Champagne's global prestige, their inaugural debut vintages, terroir sourcing, and assemblage philosophies."
                 }
               </p>
             </div>
@@ -1968,10 +2083,10 @@ export default function WineRegionDetail({
             </div>
           )}
 
-          {/* Table: Prestige Cuvées (Champagne) or Benchmark Monopoles / White Terroirs (Burgundy) */}
+          {/* Table: Prestige Cuvées (Champagne) or Benchmark Monopoles / White Terroirs (Burgundy / Alsace / Corsica) */}
           <div className="prestige-table-wrapper">
-            <table className={`prestige-table ${isBurgundy ? 'monopoles-table' : ''}`}>
-              {isBurgundy ? (
+            <table className={`prestige-table ${(isBurgundy || isAlsace || isCorsica) ? 'monopoles-table' : ''}`}>
+              {(isBurgundy || isAlsace || isCorsica) ? (
                 <colgroup>
                   <col className="col-bg-monopole" />
                   <col className="col-bg-owner" />
@@ -1994,13 +2109,21 @@ export default function WineRegionDetail({
               )}
               <thead>
                 <tr>
-                  <th>{isBurgundy ? (prestigeColorFilter === 'white' ? 'White Climat / Terroir' : 'Monopole / Benchmark Climat') : 'Prestige Cuvée'}</th>
-                  <th>{isBurgundy ? 'Benchmark Domaine / Owner' : 'House / Estate'}</th>
-                  <th>{isBurgundy ? 'Village & AOC' : 'Debut'}</th>
-                  <th>{isBurgundy ? 'Grape Variety' : 'Composition'}</th>
-                  <th>{isBurgundy ? 'Classification' : 'Terroir Sourcing'}</th>
-                  <th>{isBurgundy ? 'Historical Lore & Terroir' : 'Winemaking & Aging'}</th>
-                  <th>{isBurgundy ? 'Character Profile' : 'Iconic Legacy'}</th>
+                  <th>
+                    {isBurgundy 
+                      ? (prestigeColorFilter === 'white' ? 'White Climat / Terroir' : 'Monopole / Benchmark Climat') 
+                      : isAlsace
+                        ? 'Monopole / Iconic Terroir'
+                        : isCorsica
+                          ? 'Benchmark Cuvée / Parcel'
+                          : 'Prestige Cuvée'}
+                  </th>
+                  <th>{(isBurgundy || isAlsace || isCorsica) ? 'Benchmark Domaine / Producer' : 'House / Estate'}</th>
+                  <th>{(isBurgundy || isAlsace || isCorsica) ? 'Village & Appellation' : 'Debut'}</th>
+                  <th>{(isBurgundy || isAlsace || isCorsica) ? 'Grape Variety' : 'Composition'}</th>
+                  <th>{(isBurgundy || isAlsace || isCorsica) ? 'Classification / Status' : 'Terroir Sourcing'}</th>
+                  <th>{(isBurgundy || isAlsace || isCorsica) ? 'Historical Lore & Terroir' : 'Winemaking & Aging'}</th>
+                  <th>{(isBurgundy || isAlsace || isCorsica) ? 'Character Profile' : 'Iconic Legacy'}</th>
                 </tr>
               </thead>
               <tbody>
@@ -2013,9 +2136,9 @@ export default function WineRegionDetail({
                     colorClass = 'rose';
                   } else if (grapeStr.includes('chardonnay') && !grapeStr.includes('pinot')) {
                     colorClass = 'white';
-                  } else if (grapeStr.includes('pinot noir') || grapeStr.includes('pinot') || grapeStr.includes('red') || grapeStr.includes('rouge') || grapeStr.includes('césar') || grapeStr.includes('gamay')) {
+                  } else if (grapeStr.includes('pinot noir') || grapeStr.includes('niellucciu') || grapeStr.includes('sciaccarellu') || grapeStr.includes('pinot') || grapeStr.includes('red') || grapeStr.includes('rouge') || grapeStr.includes('césar') || grapeStr.includes('gamay')) {
                     colorClass = 'red';
-                  } else if (grapeStr.includes('chardonnay') || grapeStr.includes('aligoté') || grapeStr.includes('aligote') || grapeStr.includes('white') || grapeStr.includes('blanc') || grapeStr.includes('sauvignon')) {
+                  } else if (grapeStr.includes('riesling') || grapeStr.includes('gewurztraminer') || grapeStr.includes('vermentinu') || grapeStr.includes('biancu') || grapeStr.includes('sylvaner') || grapeStr.includes('chardonnay') || grapeStr.includes('aligoté') || grapeStr.includes('aligote') || grapeStr.includes('white') || grapeStr.includes('blanc') || grapeStr.includes('sauvignon')) {
                     colorClass = 'white';
                   }
 
@@ -2027,15 +2150,15 @@ export default function WineRegionDetail({
                         <strong className="cuvee-name-highlight">{item.name}</strong>
                       </td>
                       <td className="col-house-cell">
-                        <span className="house-name">{item.domainOrHouse || item.houseOrGrower || item.house}</span>
+                        <span className="house-name">{item.producer || item.domainOrHouse || item.houseOrGrower || item.house}</span>
                         {item.producerCode && (
                           <span className="house-code-tag">({item.producerCode} · {item.type || 'Maison'})</span>
                         )}
                       </td>
                       <td className="col-debut-cell">
-                        {isBurgundy ? (
+                        {(isBurgundy || isAlsace || isCorsica) ? (
                           <span className={`monopole-village-tag ${colorClass}`}>
-                            <span>{icon}</span> {item.village}
+                            <span>{icon}</span> {item.village || item.appellation}
                           </span>
                         ) : (
                           renderDebutVintage(item.debutVintage)
@@ -2043,17 +2166,17 @@ export default function WineRegionDetail({
                       </td>
                       <td className="col-blend-cell">
                         <span className={`monopole-grape-badge ${colorClass}`}>
-                          {item.grape || item.grapeComposition || item.blend}
+                          {item.grape || item.grapeComposition || item.blend || item.dominantGrape}
                         </span>
                       </td>
                       <td className="col-sourcing-cell">
-                        <span className="sourcing-text">{item.classification || item.sourcing || 'Grand Cru'}</span>
+                        <span className="sourcing-text">{item.classification || item.status || item.appellation || item.sourcing || 'Grand Cru'}</span>
                       </td>
                       <td className="col-winemaking-cell">
-                        <p className="vinification-note">{item.historicalLore || item.winemaking || item.vinification || item.notes}</p>
+                        <p className="vinification-note">{item.historicalLore || item.terroir || item.winemaking || item.vinification || item.notes}</p>
                       </td>
                       <td className="col-legacy-cell">
-                        <p className="iconic-status-note">{item.character || item.iconicStatus}</p>
+                        <p className="iconic-status-note">{item.character || item.status || item.iconicStatus}</p>
                       </td>
                     </tr>
                   );
@@ -2065,7 +2188,7 @@ export default function WineRegionDetail({
             {totalPrestigePages > 1 && (
               <div className="prestige-pagination-bar">
                 <div className="pagination-info">
-                  Showing <strong>{(prestigePage - 1) * PRESTIGE_PAGE_SIZE + 1}–{Math.min(prestigePage * PRESTIGE_PAGE_SIZE, prestigeItems.length)}</strong> of <strong>{prestigeItems.length}</strong> {isBurgundy ? 'Benchmark Terroirs' : 'Prestige Cuvées'}
+                  Showing <strong>{(prestigePage - 1) * PRESTIGE_PAGE_SIZE + 1}–{Math.min(prestigePage * PRESTIGE_PAGE_SIZE, prestigeItems.length)}</strong> of <strong>{prestigeItems.length}</strong> {(isBurgundy || isAlsace || isCorsica) ? 'Benchmark Terroirs' : 'Prestige Cuvées'}
                 </div>
                 <div className="pagination-controls">
                   <button 
@@ -2101,7 +2224,10 @@ export default function WineRegionDetail({
             <div className="growers-directory-section">
               <h3 className="section-subtitle">
                 <Wine size={18} style={{ color: 'var(--accent-gold)', marginRight: '8px' }} />
-                {isBurgundy ? 'Iconic Benchmark Cult Domaines of Burgundy' : 'Iconic Grower Champagne (RM) Benchmark Estates'}
+                {isBurgundy ? 'Iconic Benchmark Cult Domaines of Burgundy' : 
+                 isAlsace ? 'Iconic Benchmark Cult Domaines of Alsace' :
+                 isCorsica ? 'Iconic Benchmark Cult Domaines of Corsica' :
+                 'Iconic Grower Champagne (RM) Benchmark Estates'}
               </h3>
               <div className="growers-grid">
                 {(region.iconicDomaines || region.iconicGrowers).map(estate => {
@@ -2163,7 +2289,7 @@ export default function WineRegionDetail({
                 {pairingCounts.red > 0 && (
                   <button
                     type="button"
-                    className={`pairing-filter-btn red-btn ${pairingTypeFilter === 'red' ? 'active' : ''}`}
+                    className={`pairing-filter-btn ${pairingTypeFilter === 'red' ? 'active red' : ''}`}
                     onClick={() => setPairingTypeFilter('red')}
                   >
                     🍷 Red Wine ({pairingCounts.red})
@@ -2172,7 +2298,7 @@ export default function WineRegionDetail({
                 {pairingCounts.white > 0 && (
                   <button
                     type="button"
-                    className={`pairing-filter-btn white-btn ${pairingTypeFilter === 'white' ? 'active' : ''}`}
+                    className={`pairing-filter-btn ${pairingTypeFilter === 'white' ? 'active white' : ''}`}
                     onClick={() => setPairingTypeFilter('white')}
                   >
                     🥂 White Wine ({pairingCounts.white})
@@ -2181,7 +2307,7 @@ export default function WineRegionDetail({
                 {pairingCounts.sparkling > 0 && (
                   <button
                     type="button"
-                    className={`pairing-filter-btn sparkling-btn ${pairingTypeFilter === 'sparkling' ? 'active' : ''}`}
+                    className={`pairing-filter-btn ${pairingTypeFilter === 'sparkling' ? 'active sparkling' : ''}`}
                     onClick={() => setPairingTypeFilter('sparkling')}
                   >
                     🍾 Sparkling ({pairingCounts.sparkling})
@@ -2193,15 +2319,28 @@ export default function WineRegionDetail({
 
           <div className="pairings-grid">
             {filteredFoodPairings.map((pairing, idx) => {
-              const wt = pairing.computedWineType;
-              const isRed = wt === 'red';
-              const isWhite = wt === 'white';
-              const isSparkling = wt === 'sparkling';
-              const isRose = wt === 'rose';
+              const wineType = pairing.computedWineType;
+              let badgeClass = 'gold';
+              let badgeLabel = 'Food Pairing';
+              let badgeIcon = '🍽️';
 
-              const badgeClass = isRed ? 'red' : isWhite ? 'white' : isSparkling ? 'sparkling' : isRose ? 'rose' : 'general';
-              const badgeIcon = isRed ? '🍷' : isWhite ? '🥂' : isSparkling ? '🍾' : isRose ? '🌸' : '🍽️';
-              const badgeLabel = pairing.targetWine || (isRed ? 'Red Wine Pairing' : isWhite ? 'White Wine Pairing' : isSparkling ? 'Sparkling Pairing' : isRose ? 'Rosé Pairing' : 'Wine Pairing');
+              if (wineType === 'red') {
+                badgeClass = 'red';
+                badgeLabel = pairing.targetWine || 'Red Wine Pairing';
+                badgeIcon = '🍷';
+              } else if (wineType === 'white') {
+                badgeClass = 'white';
+                badgeLabel = pairing.targetWine || 'White Wine Pairing';
+                badgeIcon = '🥂';
+              } else if (wineType === 'sparkling') {
+                badgeClass = 'sparkling';
+                badgeLabel = pairing.targetWine || 'Sparkling Pairing';
+                badgeIcon = '🍾';
+              } else if (wineType === 'rose') {
+                badgeClass = 'rose';
+                badgeLabel = pairing.targetWine || 'Rosé Pairing';
+                badgeIcon = '🌸';
+              }
 
               return (
                 <div key={idx} className={`pairing-card ${badgeClass}`}>
@@ -2228,7 +2367,11 @@ export default function WineRegionDetail({
               <p>
                 {isBurgundy
                   ? "Serve red Burgundies at 16–18°C (60–64°F) in wide-bowled Pinot Noir / Burgundy glasses to concentrate delicate floral aromatics and sous-bois nuances. White Burgundies shine at 11–13°C (52–55°F) in larger Burgundy Chardonnay glasses that allow hazelnut richness and limestone tension to breathe."
-                  : "Serve fine Champagnes at 9–11°C (48–52°F) in tulip-shaped white wine glasses rather than narrow flutes or wide coupes. A wider bowl allows complex autolytic aromas (brioche, hazelnut, candied citrus) to unfold while preserving a steady, delicate mousse."
+                  : isAlsace
+                    ? "Serve dry Alsatian Riesling and Sylvaner at 9–11°C (48–52°F) in medium white wine glasses to highlight tension and crushed stone salinity. Rich Gewurztraminer, Pinot Gris, and Grand Crus shine at 12–14°C (54–57°F) in larger tulip bowls that let exotic spice and unctuous honeyed florals breathe."
+                    : isCorsica
+                      ? "Serve aromatic red Sciaccarellu at 15–17°C (59–62°F) in wide-bowled glasses to release haunting white pepper and wild maquis herbs. Structure-driven Niellucciu from Patrimonio benefits from decanting and service at 17–18°C (62–64°F). Crisp Vermentinu is best enjoyed at 10–12°C (50–54°F) to preserve sea spray salinity."
+                      : "Serve fine Champagnes at 9–11°C (48–52°F) in tulip-shaped white wine glasses rather than narrow flutes or wide coupes. A wider bowl allows complex autolytic aromas (brioche, hazelnut, candied citrus) to unfold while preserving a steady, delicate mousse."
                 }
               </p>
             </div>
