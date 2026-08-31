@@ -4733,13 +4733,181 @@ button.region-label:hover,
   .cms-tech-card,
   .appellation-card,
   .aging-box,
-  .fraction-box {
+  .fraction-box,
+  .climat-pyramid-box,
+  .vinification-tradition-box,
+  .business-model-box {
     padding: 0.85rem;
   }
 
   .region-top-bar-inner {
     flex-wrap: wrap;
   }
+}
+
+/* ==========================================================================
+   BURGUNDY TECHNICAL CARDS & CLIMAT PYRAMID STYLES
+   ========================================================================== */
+.classification-pyramid-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 1.5rem;
+}
+
+.climat-pyramid-box {
+  background: #faf7f2;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 10px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.climat-pyramid-box:nth-child(1) {
+  border-top: 4px solid var(--accent-gold);
+  background: #fffdf5;
+}
+
+.climat-pyramid-box:nth-child(2) {
+  border-top: 4px solid #d97706;
+}
+
+.climat-pyramid-box:nth-child(3) {
+  border-top: 4px solid #8b0000;
+}
+
+.climat-pyramid-box:nth-child(4) {
+  border-top: 4px solid #64748b;
+}
+
+.tier-badge-share {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--accent-dark-gold);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.climat-pyramid-box h5 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.tier-aoc-count {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #666;
+  margin: 2px 0 8px 0;
+  display: block;
+}
+
+.climat-pyramid-box p {
+  font-size: 0.83rem;
+  color: #444;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.unesco-climat-banner {
+  background: linear-gradient(135deg, #fbf7ee 0%, #f4ebd8 100%);
+  border: 1px solid var(--accent-gold);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+}
+
+.unesco-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  color: #523600;
+}
+
+.unesco-climat-banner p {
+  font-size: 0.86rem;
+  color: #4a3818;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.vinification-traditions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.vinification-tradition-box {
+  background: #faf7f2;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.vinification-tradition-box h5 {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+}
+
+.vinification-tradition-box p {
+  font-size: 0.84rem;
+  color: #444;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.business-models-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.business-model-box {
+  background: #faf7f2;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 10px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.french-term-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--accent-dark-gold);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.business-model-box h5 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  margin: 0 0 6px 0;
+  color: #1a1a1a;
+}
+
+.business-model-box p {
+  font-size: 0.84rem;
+  color: #444;
+  line-height: 1.45;
+  margin: 0 0 10px 0;
+}
+
+.benchmark-examples-tag {
+  font-size: 0.78rem;
+  color: #555;
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 /* ==========================================================================

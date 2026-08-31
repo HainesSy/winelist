@@ -106,7 +106,102 @@ const CHAMPAGNE_PRODUCER_MAP = {
   'benoit lahaye': { commune: 'Bouzy', subregionId: 'montagne-de-reims', subregion: 'Montagne de Reims', cruId: 'bouzy', cruType: 'Grand Cru (100%)', code: 'RM' }
 };
 
-// Sommelier match resolver for Champagne cellar items
+// Comprehensive Burgundy producer mapping dictionary
+const BURGUNDY_PRODUCER_MAP = {
+  'bouchard père et fils': { commune: 'Beaune', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune', cruId: 'beaune-greves-vigne-de-l-enfant-jesus', cruType: '🥇 1er Cru Monopole' },
+  'bouchard pere et fils': { commune: 'Beaune', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune', cruId: 'beaune-greves-vigne-de-l-enfant-jesus', cruType: '🥇 1er Cru Monopole' },
+  'bouchard': { commune: 'Beaune', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'francois carillon': { commune: 'Puligny-Montrachet', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'domaine de cassiopée': { commune: 'Sampigny-lès-Maranges', subregionId: 'hautes-cotes', subregion: 'Hautes-Côtes de Beaune' },
+  'domaine de cassiopee': { commune: 'Sampigny-lès-Maranges', subregionId: 'hautes-cotes', subregion: 'Hautes-Côtes de Beaune' },
+  'domaine chavy-chouet': { commune: 'Puligny-Montrachet', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune', cruId: 'puligny-montrachet-les-folatieres', cruType: '🥇 1er Cru Climat' },
+  'chavy-chouet': { commune: 'Puligny-Montrachet', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'domaine robert chevillon': { commune: 'Nuits-Saint-Georges', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits', cruId: 'nuits-saint-georges-les-chaignots', cruType: '🥇 1er Cru Climat' },
+  'robert chevillon': { commune: 'Nuits-Saint-Georges', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'chevillon': { commune: 'Nuits-Saint-Georges', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'coche-dury': { commune: 'Meursault', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune', cruType: 'Cult Benchmark Domaine' },
+  'coche dury': { commune: 'Meursault', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'bruno colin': { commune: 'Chassagne-Montrachet', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune', cruId: 'chassagne-montrachet-morgeot', cruType: '🥇 1er Cru Climat' },
+  'pierre-yves colin-morey': { commune: 'Chassagne-Montrachet', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune', cruType: 'Cult Benchmark Domaine' },
+  'pycm': { commune: 'Chassagne-Montrachet', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'domaine comtesse de chérisey': { commune: 'Meursault-Blagny', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune', cruType: '🥇 1er Cru Climat' },
+  'domaine comtesse de cherisey': { commune: 'Meursault-Blagny', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'faiveley': { commune: 'Nuits-Saint-Georges', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'domaine faiveley': { commune: 'Nuits-Saint-Georges', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'jean foillard': { commune: 'Morgon', subregionId: 'maconnais', subregion: 'Beaujolais', cruType: 'Cru Beaujolais Benchmark' },
+  'foillard': { commune: 'Morgon', subregionId: 'maconnais', subregion: 'Beaujolais' },
+  'domaine ghislaine barthod': { commune: 'Chambolle-Musigny', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'ghislaine barthod': { commune: 'Chambolle-Musigny', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'domaine jean grivot': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits', cruType: '🥇 1er Cru Climat' },
+  'jean grivot': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'domaine rémi jobard': { commune: 'Meursault', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune', cruType: '🥇 1er Cru Climat' },
+  'domaine remi jobard': { commune: 'Meursault', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'remi jobard': { commune: 'Meursault', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'kosta browne': { commune: 'Beaune / Pommard', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'marcel lapierre': { commune: 'Morgon', subregionId: 'maconnais', subregion: 'Beaujolais', cruType: 'Cru Beaujolais Benchmark' },
+  'lapierre': { commune: 'Morgon', subregionId: 'maconnais', subregion: 'Beaujolais' },
+  'domaine larue': { commune: 'Saint-Aubin', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'larue': { commune: 'Saint-Aubin', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'roland lavantureux': { commune: 'Chablis', subregionId: 'chablis', subregion: 'Chablis & Grand Auxerrois' },
+  'lavantureux': { commune: 'Chablis', subregionId: 'chablis', subregion: 'Chablis & Grand Auxerrois' },
+  'domaine leflaive': { commune: 'Puligny-Montrachet', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune', cruType: 'Cult Benchmark Domaine' },
+  'leflaive': { commune: 'Puligny-Montrachet', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'domaine lignier-michelot': { commune: 'Morey-Saint-Denis', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'lignier-michelot': { commune: 'Morey-Saint-Denis', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'domaine méo-camuzet': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits', cruType: 'Cult Benchmark Domaine' },
+  'méo-camuzet': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'meo-camuzet': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'méo-camuzet frère et soeurs': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'méo-camuzet frère et sours': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'domaine françois mikulski': { commune: 'Meursault', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'domaine francois mikulski': { commune: 'Meursault', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'francois mikulski': { commune: 'Meursault', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'mikulski': { commune: 'Meursault', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'jacques-frédéric mugnier': { commune: 'Chambolle-Musigny', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits', cruId: 'nuits-saint-georges-clos-de-la-marechale', cruType: '🥇 1er Cru Monopole' },
+  'jacques-frederic mugnier': { commune: 'Chambolle-Musigny', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'mugnier': { commune: 'Chambolle-Musigny', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'domaine des perdrix': { commune: 'Prémeaux-Prissey', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'perdrix': { commune: 'Prémeaux-Prissey', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'maison roche de bellene': { commune: 'Beaune', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'roche de bellene': { commune: 'Beaune', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'domaine g. roumier': { commune: 'Chambolle-Musigny', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits', cruType: 'Cult Benchmark Domaine' },
+  'domaine g. roumier / christophe roumier': { commune: 'Chambolle-Musigny', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits', cruId: 'chambolle-musigny-les-cras', cruType: '🥇 1er Cru Climat' },
+  'roumier': { commune: 'Chambolle-Musigny', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'domaine de la romanée-conti': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits', cruType: '👑 Grand Cru Monopole' },
+  'domaine de la romanee-conti': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'drc': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'domaine leroy': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits', cruType: 'Cult Benchmark Domaine' },
+  'leroy': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'domaine d\'auvenay': { commune: 'Saint-Romain', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'domaine armand rousseau': { commune: 'Gevrey-Chambertin', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits', cruType: 'Cult Benchmark Domaine' },
+  'armand rousseau': { commune: 'Gevrey-Chambertin', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'domaine du comte liger-belair': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits', cruType: '👑 Grand Cru Monopole' },
+  'comte liger-belair': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'domaine dujac': { commune: 'Morey-Saint-Denis', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits', cruType: 'Cult Benchmark Domaine' },
+  'dujac': { commune: 'Morey-Saint-Denis', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'domaine françois raveneau': { commune: 'Chablis', subregionId: 'chablis', subregion: 'Chablis & Grand Auxerrois', cruType: 'Cult Benchmark Domaine' },
+  'raveneau': { commune: 'Chablis', subregionId: 'chablis', subregion: 'Chablis & Grand Auxerrois' },
+  'vincent dauvissat': { commune: 'Chablis', subregionId: 'chablis', subregion: 'Chablis & Grand Auxerrois', cruType: 'Cult Benchmark Domaine' },
+  'dauvissat': { commune: 'Chablis', subregionId: 'chablis', subregion: 'Chablis & Grand Auxerrois' },
+  'domaine des comtes lafon': { commune: 'Meursault', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune', cruType: 'Cult Benchmark Domaine' },
+  'comtes lafon': { commune: 'Meursault', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'domaine roulot': { commune: 'Meursault', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune', cruType: 'Cult Benchmark Domaine' },
+  'roulot': { commune: 'Meursault', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'domaine marquis d\'angerville': { commune: 'Volnay', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune', cruId: 'volnay-clos-des-ducs', cruType: '🥇 1er Cru Monopole' },
+  'marquis d\'angerville': { commune: 'Volnay', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'domaine comte armand': { commune: 'Pommard', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune', cruId: 'pommard-les-rugiens', cruType: '🥇 1er Cru Monopole' },
+  'comte armand': { commune: 'Pommard', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'domaine ramonet': { commune: 'Chassagne-Montrachet', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune', cruType: 'Cult Benchmark Domaine' },
+  'ramonet': { commune: 'Chassagne-Montrachet', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'domaine hubert lamy': { commune: 'Saint-Aubin', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'hubert lamy': { commune: 'Saint-Aubin', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
+  'domaine arnoux-lachaux': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'arnoux-lachaux': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'domaine sylvain cathiard': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
+  'sylvain cathiard': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' }
+};
+
+// Match resolver for Champagne cellar items
 function matchChampagneWine(wine, region) {
   const prodLower = (wine.Producer || '').toLowerCase().trim();
   const wineLower = (wine.Wine || wine.Designation || '').toLowerCase().trim();
@@ -218,6 +313,154 @@ function matchChampagneWine(wine, region) {
   };
 }
 
+// Match resolver for Burgundy cellar items
+function matchBurgundyWine(wine, region) {
+  const prodLower = (wine.Producer || '').toLowerCase().trim();
+  const wineLower = (wine.Wine || wine.Designation || '').toLowerCase().trim();
+  const locLower = (wine.Locale || '').toLowerCase().trim();
+  const combinedText = `${prodLower} ${wineLower} ${locLower}`;
+
+  let matchedSubId = null;
+  let matchedCruId = null;
+  let cruClassification = null;
+  let commune = null;
+
+  // 1. Direct producer dictionary match
+  if (BURGUNDY_PRODUCER_MAP[prodLower]) {
+    const info = BURGUNDY_PRODUCER_MAP[prodLower];
+    matchedSubId = info.subregionId;
+    matchedCruId = info.cruId || null;
+    cruClassification = info.cruType || null;
+    commune = info.commune;
+  } else {
+    for (const [key, info] of Object.entries(BURGUNDY_PRODUCER_MAP)) {
+      if (prodLower.includes(key) || combinedText.includes(key)) {
+        matchedSubId = info.subregionId;
+        matchedCruId = info.cruId || null;
+        cruClassification = info.cruType || null;
+        commune = info.commune;
+        break;
+      }
+    }
+  }
+
+  // 2. Match against 33 Grand Crus
+  if (region?.grandCrus) {
+    for (const cru of region.grandCrus) {
+      const cruNameClean = cru.name.toLowerCase().replace(/\(.*?\)/g, '').trim();
+      const cruIdClean = cru.id.toLowerCase();
+      if (combinedText.includes(cruNameClean) || (cru.id && combinedText.includes(cruIdClean))) {
+        matchedCruId = cru.id;
+        cruClassification = '👑 Grand Cru (AOC)';
+        commune = cru.village || cru.name;
+        if (cru.subregionId) matchedSubId = cru.subregionId;
+        break;
+      }
+    }
+  }
+
+  // 3. Match against Premier Crus
+  if (!matchedCruId && region?.premierCrus) {
+    for (const cru of region.premierCrus) {
+      const cruNameClean = cru.name.toLowerCase().replace(/\(.*?\)/g, '').trim();
+      if (combinedText.includes(cruNameClean)) {
+        matchedCruId = cru.id;
+        cruClassification = '🥇 Premier Cru Climat';
+        commune = cru.village || cru.name;
+        if (cru.subregionId) matchedSubId = cru.subregionId;
+        break;
+      }
+    }
+  }
+
+  // 4. Communal / Village Appellation Fallback
+  if (!commune) {
+    const villages = [
+      { name: 'Gevrey-Chambertin', subId: 'cote-de-nuits' },
+      { name: 'Morey-Saint-Denis', subId: 'cote-de-nuits' },
+      { name: 'Chambolle-Musigny', subId: 'cote-de-nuits' },
+      { name: 'Vougeot', subId: 'cote-de-nuits' },
+      { name: 'Flagey-Échézeaux', subId: 'cote-de-nuits' },
+      { name: 'Vosne-Romanée', subId: 'cote-de-nuits' },
+      { name: 'Nuits-Saint-Georges', subId: 'cote-de-nuits' },
+      { name: 'Aloxe-Corton', subId: 'cote-de-beaune' },
+      { name: 'Pernand-Vergelesses', subId: 'cote-de-beaune' },
+      { name: 'Ladoix', subId: 'cote-de-beaune' },
+      { name: 'Savigny-lès-Beaune', subId: 'cote-de-beaune' },
+      { name: 'Chorey-lès-Beaune', subId: 'cote-de-beaune' },
+      { name: 'Beaune', subId: 'cote-de-beaune' },
+      { name: 'Pommard', subId: 'cote-de-beaune' },
+      { name: 'Volnay', subId: 'cote-de-beaune' },
+      { name: 'Monthélie', subId: 'cote-de-beaune' },
+      { name: 'Auxey-Duresses', subId: 'cote-de-beaune' },
+      { name: 'Meursault', subId: 'cote-de-beaune' },
+      { name: 'Puligny-Montrachet', subId: 'cote-de-beaune' },
+      { name: 'Chassagne-Montrachet', subId: 'cote-de-beaune' },
+      { name: 'Saint-Aubin', subId: 'cote-de-beaune' },
+      { name: 'Santenay', subId: 'cote-de-beaune' },
+      { name: 'Maranges', subId: 'cote-de-beaune' },
+      { name: 'Chablis', subId: 'chablis' },
+      { name: 'Bouzeron', subId: 'cote-chalonnaise' },
+      { name: 'Rully', subId: 'cote-chalonnaise' },
+      { name: 'Mercurey', subId: 'cote-chalonnaise' },
+      { name: 'Givry', subId: 'cote-chalonnaise' },
+      { name: 'Montagny', subId: 'cote-chalonnaise' },
+      { name: 'Pouilly-Fuissé', subId: 'maconnais' },
+      { name: 'Saint-Véran', subId: 'maconnais' },
+      { name: 'Viré-Clessé', subId: 'maconnais' },
+      { name: 'Morgon', subId: 'maconnais' },
+      { name: 'Fleurie', subId: 'maconnais' },
+      { name: 'Moulin-à-Vent', subId: 'maconnais' }
+    ];
+
+    for (const v of villages) {
+      const vClean = v.name.toLowerCase();
+      if (combinedText.includes(vClean) || locLower.includes(vClean)) {
+        commune = v.name;
+        if (!matchedSubId) matchedSubId = v.subId;
+        break;
+      }
+    }
+  }
+
+  // 5. Classification tags from Locale / text
+  if (!cruClassification) {
+    if (locLower.includes('grand cru') || combinedText.includes('grand cru')) {
+      cruClassification = '👑 Grand Cru (AOC)';
+    } else if (locLower.includes('premier cru') || combinedText.includes('premier cru') || combinedText.includes('1er cru')) {
+      cruClassification = '🥇 Premier Cru Climat';
+    } else if (commune) {
+      cruClassification = `🏘️ ${commune} Village`;
+    } else if (locLower.includes('hautes-côtes') || combinedText.includes('hautes-cotes') || combinedText.includes('hautes-côtes')) {
+      cruClassification = '🍇 Bourgogne Hautes-Côtes AOC';
+      matchedSubId = 'hautes-cotes';
+    } else if (locLower.includes('aligoté') || combinedText.includes('aligote') || combinedText.includes('aligoté')) {
+      cruClassification = '🍇 Bourgogne Aligoté AOC';
+    } else if (locLower.includes('bourgogne') || combinedText.includes('bourgogne')) {
+      cruClassification = '🍇 Bourgogne Régionale AOC';
+    }
+  }
+
+  // 6. Subregion fallback from text
+  if (!matchedSubId && region?.subRegions) {
+    for (const sub of region.subRegions) {
+      const subNameLower = sub.name.toLowerCase();
+      if (combinedText.includes(subNameLower) || (sub.focus && combinedText.includes(sub.focus.toLowerCase()))) {
+        matchedSubId = sub.id;
+        break;
+      }
+    }
+  }
+
+  return {
+    matchedSubId,
+    matchedCruId,
+    cruClassification,
+    commune,
+    producerCode: null
+  };
+}
+
 // Cleanly format Debut Vintage (e.g. "1959 (Iterative MV)" or "1876 / 1945 commercial")
 function renderDebutVintage(debut) {
   if (!debut) return null;
@@ -284,10 +527,13 @@ export default function WineRegionDetail({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [region?.id]);
 
+  const isChampagne = region?.id === 'champagne';
+  const isBurgundy = region?.id === 'burgundy';
+
   const hasGrandCrus = Boolean(region?.grandCrus && region.grandCrus.length > 0);
   const hasPremierCrus = Boolean(region?.premierCrus && region.premierCrus.length > 0);
   const hasTechnicalRegulations = Boolean(region?.technicalRegulations);
-  const hasPrestigeCuvees = Boolean(region?.prestigeCuvees && region.prestigeCuvees.length > 0);
+  const hasPrestigeCuvees = Boolean((region?.prestigeCuvees && region.prestigeCuvees.length > 0) || (region?.prestigeMonopoles && region.prestigeMonopoles.length > 0));
 
   // Filter cellar wines belonging to this region
   const cellarWines = useMemo(() => {
@@ -313,12 +559,10 @@ export default function WineRegionDetail({
     });
   }, [rawWines, region]);
 
-  // Group cellar bottles by sub-region & cru with sommelier metadata
+  // Group cellar bottles by sub-region & cru with metadata
   const { cellarBottlesBySub, cellarBottlesByCru, filteredCellarWines } = useMemo(() => {
     const subCounts = {};
     const cruCounts = {};
-
-    const isChampagne = region?.id === 'champagne';
 
     const enriched = cellarWines.map(w => {
       let matchedSubId = null;
@@ -329,6 +573,13 @@ export default function WineRegionDetail({
 
       if (isChampagne) {
         const match = matchChampagneWine(w, region);
+        matchedSubId = match.matchedSubId;
+        matchedCruId = match.matchedCruId;
+        cruClassification = match.cruClassification;
+        commune = match.commune;
+        producerCode = match.producerCode;
+      } else if (isBurgundy) {
+        const match = matchBurgundyWine(w, region);
         matchedSubId = match.matchedSubId;
         matchedCruId = match.matchedCruId;
         cruClassification = match.cruClassification;
@@ -393,23 +644,94 @@ export default function WineRegionDetail({
       enrichedCellarWines: enriched,
       filteredCellarWines: filtered
     };
-  }, [cellarWines, region, activeSubRegionId, searchFilter]);
+  }, [cellarWines, region, activeSubRegionId, searchFilter, isChampagne, isBurgundy]);
 
-  // Unified Filtered Crus for the Cru Directory tab (combining 17 Grand Crus + 16 Premier Crus)
+  // Unified Filtered Crus for the Cru Directory tab
   const unifiedCrus = useMemo(() => {
     const list = [];
     if (region?.grandCrus) {
       region.grandCrus.forEach(cru => {
-        list.push({ ...cru, tier: 'grandCru', classification: 'Grand Cru (100%)', badge: '100% Échelle' });
+        const badge = isBurgundy ? (cru.areaHa ? `${cru.areaHa} ha` : 'Grand Cru') : '100% Échelle';
+        const classification = isBurgundy ? 'Grand Cru (AOC)' : 'Grand Cru (100%)';
+        list.push({ ...cru, tier: 'grandCru', classification, badge });
       });
     }
     if (region?.premierCrus) {
       region.premierCrus.forEach(cru => {
-        list.push({ ...cru, tier: 'premierCru', classification: `Premier Cru (${cru.echelleRating}%)`, badge: `${cru.echelleRating}% Échelle` });
+        const badge = isBurgundy ? (cru.areaHa ? `${cru.areaHa} ha` : '1er Cru') : `${cru.echelleRating}% Échelle`;
+        const classification = isBurgundy ? 'Premier Cru Climat' : `Premier Cru (${cru.echelleRating}%)`;
+        list.push({ ...cru, tier: 'premierCru', classification, badge });
       });
     }
     return list;
-  }, [region]);
+  }, [region, isBurgundy]);
+
+  // District filter pills
+  const districtList = useMemo(() => {
+    if (isChampagne) {
+      return [
+        { id: 'all', label: 'All Districts' },
+        { id: 'Montagne de Reims', label: 'Montagne de Reims (9 GC)' },
+        { id: 'Côte des Blancs', label: 'Côte des Blancs (6 GC)' },
+        { id: 'Vallée de la Marne', label: 'Vallée de la Marne (2 GC)' },
+        { id: 'Côte des Bar', label: 'Côte des Bar (Aube)' },
+        { id: 'Coteaux Sud d’Épernay', label: 'Coteaux Sud d’Épernay' }
+      ];
+    }
+    if (isBurgundy) {
+      return [
+        { id: 'all', label: 'All Districts' },
+        { id: 'Côte de Nuits', label: 'Côte de Nuits (24 GC)' },
+        { id: 'Côte de Beaune', label: 'Côte de Beaune (8 GC)' },
+        { id: 'Chablis', label: 'Chablis (7 GC Climats)' },
+        { id: 'Côte Chalonnaise', label: 'Côte Chalonnaise' },
+        { id: 'Mâconnais', label: 'Mâconnais' }
+      ];
+    }
+    return [{ id: 'all', label: 'All Districts' }];
+  }, [isChampagne, isBurgundy]);
+
+  // Tier buttons
+  const tierLabels = useMemo(() => {
+    if (isChampagne) {
+      return {
+        all: `All Crus (${unifiedCrus.length})`,
+        grandCrus: '17 Grand Crus (100%)',
+        premierCrus: '16 Premier Crus (90–99%)'
+      };
+    }
+    if (isBurgundy) {
+      return {
+        all: `All Crus (${unifiedCrus.length})`,
+        grandCrus: '33 Grand Crus (AOC)',
+        premierCrus: 'Benchmark Premier Crus'
+      };
+    }
+    return {
+      all: `All Crus (${unifiedCrus.length})`,
+      grandCrus: 'Grand Crus',
+      premierCrus: 'Premier Crus'
+    };
+  }, [isChampagne, isBurgundy, unifiedCrus.length]);
+
+  // Grape filter options
+  const grapeOptions = useMemo(() => {
+    if (isBurgundy) {
+      return [
+        { value: 'all', label: 'All Dominant Grapes' },
+        { value: 'Pinot Noir', label: 'Pinot Noir Dominant 🍷' },
+        { value: 'Chardonnay', label: 'Chardonnay Dominant 🥂' },
+        { value: 'Aligoté', label: 'Aligoté Focus 🌿' },
+        { value: 'Gamay', label: 'Gamay Focus 🍇' }
+      ];
+    }
+    return [
+      { value: 'all', label: 'All Dominant Grapes' },
+      { value: 'Pinot Noir', label: 'Pinot Noir Dominant 🍷' },
+      { value: 'Chardonnay', label: 'Chardonnay Dominant 🥂' },
+      { value: 'Meunier', label: 'Meunier Focus 🌿' }
+    ];
+  }, [isBurgundy]);
 
   const filteredUnifiedCrus = useMemo(() => {
     return unifiedCrus.filter(cru => {
@@ -534,7 +856,7 @@ export default function WineRegionDetail({
             {hasGrandCrus && (
               <span className="region-cms-badge">
                 <Crown size={12} style={{ display: 'inline', marginRight: '4px', verticalAlign: 'text-bottom' }} />
-                Grand Cru & Premier Cru Terroirs
+                {isBurgundy ? '33 Grand Crus & Benchmark Climats' : 'Grand Cru & Premier Cru Terroirs'}
               </span>
             )}
             {cellarWines.length > 0 && (
@@ -604,7 +926,7 @@ export default function WineRegionDetail({
             onClick={() => setActiveTab('prestige')}
           >
             <Sparkles size={16} />
-            <span>Prestige Cuvées & Growers</span>
+            <span>{isBurgundy ? 'Monopoles & Iconic Domaines' : 'Prestige Cuvées & Growers'}</span>
           </button>
         )}
 
@@ -613,7 +935,7 @@ export default function WineRegionDetail({
           onClick={() => setActiveTab('pairings')}
         >
           <Utensils size={16} />
-          <span>Food & Dining Pairings</span>
+          <span>Dining & Food Recommendations</span>
         </button>
 
         <button 
@@ -631,7 +953,12 @@ export default function WineRegionDetail({
           <div className="map-intro-bar">
             <div className="map-intro-text">
               <h3>Cartography & Cru Geography of {region.name}</h3>
-              <p>Explore geological microclimates, 17 Grand Cru communes, 16 essential Premier Crus, famous river valleys, and sub-districts. Toggle between district zones, Grand Crus, and Premier Cru pins.</p>
+              <p>
+                {isBurgundy
+                  ? "Explore the Côte d'Or escarpment, Chablis, Côte Chalonnaise, and Mâconnais. Discover all 33 Grand Crus and essential Premier Cru Climats across Middle & Upper Jurassic limestone terroirs."
+                  : "Explore geological microclimates, 17 Grand Cru communes, 16 essential Premier Crus, famous river valleys, and sub-districts. Toggle between district zones, Grand Crus, and Premier Cru pins."
+                }
+              </p>
             </div>
             {cellarWines.length > 0 && (
               <button 
@@ -726,59 +1053,39 @@ export default function WineRegionDetail({
         </section>
       )}
 
-      {/* Tab 2: 17 Grand Crus & Essential Premier Crus Directory (CMS Level 3) */}
+      {/* Tab 2: Grand Crus & Benchmark Premier Crus Directory */}
       {activeTab === 'crus' && hasGrandCrus && (
         <section className="region-tab-content crus-tab">
           <div className="cms-section-header">
             <div>
               <div className="cms-badge-row">
-                <span className="cms-level-badge">Grand Cru Classification</span>
-                <span className="cru-count-badge">17 Grand Crus (100%) & 16 Essential Premier Crus (90–99%)</span>
+                <span className="cms-level-badge">{isBurgundy ? 'Grand Cru & Premier Cru Hierarchy' : 'Grand Cru Classification'}</span>
+                <span className="cru-count-badge">
+                  {isBurgundy ? '33 Grand Crus (AOC) & Benchmark Premier Crus' : '17 Grand Crus (100%) & 16 Essential Premier Crus (90–99%)'}
+                </span>
               </div>
-              <h3>Crus & Viticultural Hierarchy of Champagne</h3>
-              <p>Under the historical <em>Échelle des Crus</em>, 17 villages earned 100% Grand Cru classification and 42 earned Premier Cru status (90–99%). Below are all 17 Grand Crus alongside the 16 most essential historical Premier Crus.</p>
+              <h3>Crus & Viticultural Hierarchy of {region.name}</h3>
+              <p>
+                {isBurgundy
+                  ? "Burgundy's Climat-based AOC system classifies individual vineyard parcels cultivated for centuries. Below are all 33 Grand Crus across the Côte d'Or and Chablis alongside essential benchmark Premier Crus."
+                  : "Under the historical Échelle des Crus, 17 villages earned 100% Grand Cru classification and 42 earned Premier Cru status (90–99%). Below are all 17 Grand Crus alongside the 16 most essential historical Premier Crus."
+                }
+              </p>
             </div>
           </div>
 
           {/* Quick Subregion Filter Pills */}
           <div className="cru-filter-pill-bar">
             <span className="filter-group-label">Districts:</span>
-            <button 
-              className={`cru-filter-pill-btn ${cruDistrictFilter === 'all' ? 'active' : ''}`}
-              onClick={() => setCruDistrictFilter('all')}
-            >
-              All Districts
-            </button>
-            <button 
-              className={`cru-filter-pill-btn ${cruDistrictFilter === 'Montagne de Reims' ? 'active' : ''}`}
-              onClick={() => setCruDistrictFilter('Montagne de Reims')}
-            >
-              Montagne de Reims (9 GC)
-            </button>
-            <button 
-              className={`cru-filter-pill-btn ${cruDistrictFilter === 'Côte des Blancs' ? 'active' : ''}`}
-              onClick={() => setCruDistrictFilter('Côte des Blancs')}
-            >
-              Côte des Blancs (6 GC)
-            </button>
-            <button 
-              className={`cru-filter-pill-btn ${cruDistrictFilter === 'Vallée de la Marne' ? 'active' : ''}`}
-              onClick={() => setCruDistrictFilter('Vallée de la Marne')}
-            >
-              Vallée de la Marne (2 GC)
-            </button>
-            <button 
-              className={`cru-filter-pill-btn ${cruDistrictFilter === 'Côte des Bar' ? 'active' : ''}`}
-              onClick={() => setCruDistrictFilter('Côte des Bar')}
-            >
-              Côte des Bar (Aube)
-            </button>
-            <button 
-              className={`cru-filter-pill-btn ${cruDistrictFilter === 'Coteaux Sud d’Épernay' ? 'active' : ''}`}
-              onClick={() => setCruDistrictFilter('Coteaux Sud d’Épernay')}
-            >
-              Coteaux Sud d’Épernay
-            </button>
+            {districtList.map(dist => (
+              <button 
+                key={dist.id}
+                className={`cru-filter-pill-btn ${cruDistrictFilter === dist.id ? 'active' : ''}`}
+                onClick={() => setCruDistrictFilter(dist.id)}
+              >
+                {dist.label}
+              </button>
+            ))}
           </div>
 
           {/* Secondary Filter Controls Bar */}
@@ -788,14 +1095,14 @@ export default function WineRegionDetail({
                 className={`tier-toggle-btn ${cruClassificationFilter === 'all' ? 'active' : ''}`}
                 onClick={() => setCruClassificationFilter('all')}
               >
-                All Crus ({unifiedCrus.length})
+                {tierLabels.all}
               </button>
               <button 
                 className={`tier-toggle-btn ${cruClassificationFilter === 'grandCrus' ? 'active' : ''}`}
                 onClick={() => setCruClassificationFilter('grandCrus')}
               >
                 <Crown size={14} style={{ color: 'var(--accent-gold)', marginRight: '4px' }} />
-                17 Grand Crus (100%)
+                {tierLabels.grandCrus}
               </button>
               {hasPremierCrus && (
                 <button 
@@ -803,7 +1110,7 @@ export default function WineRegionDetail({
                   onClick={() => setCruClassificationFilter('premierCrus')}
                 >
                   <Award size={14} style={{ color: '#d97706', marginRight: '4px' }} />
-                  16 Premier Crus (90–99%)
+                  {tierLabels.premierCrus}
                 </button>
               )}
             </div>
@@ -814,17 +1121,16 @@ export default function WineRegionDetail({
                 onChange={(e) => setCruGrapeFilter(e.target.value)}
                 className="cru-select-filter"
               >
-                <option value="all">All Dominant Grapes</option>
-                <option value="Pinot Noir">Pinot Noir Dominant 🍇</option>
-                <option value="Chardonnay">Chardonnay Dominant 🥂</option>
-                <option value="Meunier">Meunier Focus 🌿</option>
+                {grapeOptions.map(opt => (
+                  <option key={opt.value} value={opt.value}>{opt.label}</option>
+                ))}
               </select>
 
               <div className="cru-search-wrapper">
                 <Search size={14} className="cru-search-icon" />
                 <input 
                   type="text"
-                  placeholder="Search village, producer, soil..."
+                  placeholder="Search village, climat, producer, soil..."
                   value={cruSearchQuery}
                   onChange={(e) => setCruSearchQuery(e.target.value)}
                   className="cru-search-input"
@@ -839,6 +1145,7 @@ export default function WineRegionDetail({
               const isPinot = cru.dominantGrape?.toLowerCase().includes('pinot');
               const isChard = cru.dominantGrape?.toLowerCase().includes('chardonnay');
               const isMeunier = cru.dominantGrape?.toLowerCase().includes('meunier');
+              const isAligote = cru.dominantGrape?.toLowerCase().includes('aligoté') || cru.dominantGrape?.toLowerCase().includes('aligote');
               const isSelected = selectedCruId === cru.id;
               const isGrandCru = cru.tier === 'grandCru';
               const bottleCount = cellarBottlesByCru[cru.id] || 0;
@@ -851,7 +1158,7 @@ export default function WineRegionDetail({
                 >
                   <div className="cru-card-top">
                     <div className="cru-card-title-group">
-                      <span className="cru-district-pill">{cru.district || cru.subregion}</span>
+                      <span className="cru-district-pill">{cru.village || cru.district || cru.subregion}</span>
                       <h4 className="cru-village-name">{cru.name}</h4>
                     </div>
                     <div className="cru-badge-stack">
@@ -859,12 +1166,18 @@ export default function WineRegionDetail({
                         {cru.badge}
                       </span>
                       <span className={`cru-grape-badge ${isPinot ? 'pinot' : (isChard ? 'chard' : (isMeunier ? 'meunier' : 'pinot'))}`}>
-                        {isPinot ? '🍇 Pinot Noir' : (isChard ? '🥂 Chardonnay' : (isMeunier ? '🌿 Meunier' : '🍇 Pinot Noir'))}
+                        {isPinot ? '🍷 Pinot Noir' : (isChard ? '🥂 Chardonnay' : (isMeunier ? '🌿 Meunier' : (isAligote ? '🌿 Aligoté' : '🍷 Pinot Noir')))}
                       </span>
                     </div>
                   </div>
 
                   <div className="cru-meta-rows">
+                    {cru.areaHa && (
+                      <div className="cru-meta-item">
+                        <strong>Surface Area:</strong>
+                        <span>{cru.areaHa} hectares</span>
+                      </div>
+                    )}
                     <div className="cru-meta-item">
                       <strong>Slope Aspect:</strong>
                       <span>{cru.aspect}</span>
@@ -944,7 +1257,7 @@ export default function WineRegionDetail({
         </section>
       )}
 
-      {/* Tab 3: CMS Level 3 Technical Regulations & Terroir Guide */}
+      {/* Tab 3: Technical Winemaking & Terroir Guide */}
       {activeTab === 'specs' && (
         <section className="region-tab-content specs-tab">
           {hasTechnicalRegulations ? (
@@ -957,12 +1270,15 @@ export default function WineRegionDetail({
                     <Mountain className="tech-icon" />
                     <div>
                       <span className="tech-tag">Pedology & Subsurface Geology</span>
-                      <h4>Chalk Formations: Belemnite vs. Micraster vs. Kimmeridgian</h4>
+                      <h4>{isBurgundy ? 'Jurassic Limestone Formations & Soil Stratigraphy' : 'Chalk Formations: Belemnite vs. Micraster vs. Kimmeridgian'}</h4>
                     </div>
                   </div>
 
                   <p className="tech-summary">
-                    Champagne's world-renowned tension and saline minerality stem from distinct Mesozoic fossiliferous chalk, limestone marl, and clay strata:
+                    {isBurgundy 
+                      ? "Burgundy's micro-terroirs are defined by a complex mosaic of Middle and Upper Jurassic limestone, crinoidal marls, and iron-rich clays shaped 150–175 million years ago:"
+                      : "Champagne's world-renowned tension and saline minerality stem from distinct Mesozoic fossiliferous chalk, limestone marl, and clay strata:"
+                    }
                   </p>
 
                   <div className="geology-comparison-grid">
@@ -979,19 +1295,22 @@ export default function WineRegionDetail({
                 </div>
               )}
 
-              {/* Card 2: 7 Authorized Grapes Matrix + Complantée Highlight */}
+              {/* Card 2: Authorized Grapes Matrix */}
               {region.technicalRegulations.grapes && (
                 <div className="cms-tech-card grapes-tech-card">
                   <div className="tech-card-header">
                     <Wine className="tech-icon" />
                     <div>
                       <span className="tech-tag">Ampelography & Viticulture</span>
-                      <h4>The 7 Authorized Grape Varieties of Champagne AOC</h4>
+                      <h4>{isBurgundy ? 'Burgundian Ampelography: Pinot Noir, Chardonnay, Aligoté & Heritage Varieties' : 'The 7 Authorized Grape Varieties of Champagne AOC'}</h4>
                     </div>
                   </div>
 
                   <p className="tech-summary">
-                    While Pinot Noir (38%), Chardonnay (31%), and Meunier (31%) represent over 99.7% of vineyard acreage, the INAO legally authorizes four rare heritage varieties:
+                    {isBurgundy
+                      ? "Pinot Noir and Chardonnay dominate the Côte d'Or and Chablis, complemented by historic Aligoté in the Côte Chalonnaise, and ancestral Gamay and César:"
+                      : "While Pinot Noir (38%), Chardonnay (31%), and Meunier (31%) represent over 99.7% of vineyard acreage, the INAO legally authorizes four rare heritage varieties:"
+                    }
                   </p>
 
                   <div className="grapes-grid-7">
@@ -1037,7 +1356,97 @@ export default function WineRegionDetail({
                 </div>
               )}
 
-              {/* Card 3: CIVC Pressing Regulations & 4000kg Marc Extraction Standard */}
+              {/* Card 3 (Burgundy): AOC Quality Hierarchy & Climat UNESCO System */}
+              {region.technicalRegulations.classification && (
+                <div className="cms-tech-card classification-pyramid-card">
+                  <div className="tech-card-header">
+                    <Crown className="tech-icon" />
+                    <div>
+                      <span className="tech-tag">AOC Quality Hierarchy</span>
+                      <h4>{region.technicalRegulations.classification.system}</h4>
+                    </div>
+                  </div>
+
+                  <div className="classification-pyramid-grid">
+                    {region.technicalRegulations.classification.pyramid?.map((tier, idx) => (
+                      <div key={idx} className="climat-pyramid-box">
+                        <div className="tier-header">
+                          <span className="tier-badge-share">{tier.sharePct} of Burgundy</span>
+                          <h5>{tier.tier}</h5>
+                          <span className="tier-aoc-count">{tier.aocCount}</span>
+                        </div>
+                        <p>{tier.description}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  {region.technicalRegulations.classification.climatConcept && (
+                    <div className="unesco-climat-banner">
+                      <div className="unesco-title">
+                        <Sparkles size={16} style={{ color: 'var(--accent-gold)' }} />
+                        <strong>UNESCO World Heritage Climats de Bourgogne:</strong>
+                      </div>
+                      <p>{region.technicalRegulations.classification.climatConcept}</p>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Card 4 (Burgundy): Traditional Vinification & Oak Aging in Pièce Bourguignonne (228L) */}
+              {region.technicalRegulations.vinification && (
+                <div className="cms-tech-card vinification-tech-card">
+                  <div className="tech-card-header">
+                    <Scale className="tech-icon" />
+                    <div>
+                      <span className="tech-tag">Traditional Cellar Craft</span>
+                      <h4>Burgundian Vinification & The 228-Liter Pièce</h4>
+                    </div>
+                  </div>
+
+                  <p className="tech-summary">
+                    Traditional Burgundy vinification emphasizes minimal manipulation, wild yeasts, whole-cluster dynamics, and maturation in traditional <strong>228-liter oak casks (Pièce Bourguignonne)</strong>:
+                  </p>
+
+                  <div className="vinification-traditions-grid">
+                    {region.technicalRegulations.vinification.traditions?.map((trad, idx) => (
+                      <div key={idx} className="vinification-tradition-box">
+                        <h5>{trad.practice}</h5>
+                        <p>{trad.details}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Card 5 (Burgundy): Domaine vs Négociant Landscape & Hospices Auctions */}
+              {region.technicalRegulations.businessModels && (
+                <div className="cms-tech-card business-models-card">
+                  <div className="tech-card-header">
+                    <Award className="tech-icon" />
+                    <div>
+                      <span className="tech-tag">Production Models</span>
+                      <h4>Domaines, Grandes Maisons & Hospices Auctions</h4>
+                    </div>
+                  </div>
+
+                  <div className="business-models-grid">
+                    {region.technicalRegulations.businessModels.map((model, idx) => (
+                      <div key={idx} className="business-model-box">
+                        <span className="french-term-badge">{model.frenchTerm}</span>
+                        <h5>{model.type}</h5>
+                        <p>{model.description}</p>
+                        {model.examples && (
+                          <span className="benchmark-examples-tag">
+                            <strong>Benchmarks:</strong> {model.examples.join(', ')}
+                          </span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Card 6 (Champagne): CIVC Pressing Regulations & 4000kg Marc Extraction Standard */}
               {region.technicalRegulations.pressing && (
                 <div className="cms-tech-card pressing-card">
                   <div className="tech-card-header">
@@ -1127,7 +1536,7 @@ export default function WineRegionDetail({
                 </div>
               )}
 
-              {/* Card 4: CIVC Maturation & Lees Aging Requirements */}
+              {/* Card 7 (Champagne): CIVC Maturation & Lees Aging Requirements */}
               {region.technicalRegulations.aging && (
                 <div className="cms-tech-card aging-tech-card">
                   <div className="tech-card-header">
@@ -1195,7 +1604,7 @@ export default function WineRegionDetail({
                 </div>
               )}
 
-              {/* Card 5: 7 Official Dosage Sweetness Tiers & Spectrum */}
+              {/* Card 8 (Champagne): 7 Official Dosage Sweetness Tiers */}
               {region.technicalRegulations.dosageTiers && (
                 <div className="cms-tech-card dosage-card">
                   <div className="tech-card-header">
@@ -1261,7 +1670,7 @@ export default function WineRegionDetail({
                 </div>
               )}
 
-              {/* Card 6: Producer Registration Codes Decoder */}
+              {/* Card 9 (Champagne): Producer Registration Codes Decoder */}
               {region.technicalRegulations.producerCodes && (
                 <div className="cms-tech-card codes-card">
                   <div className="tech-card-header">
@@ -1292,14 +1701,14 @@ export default function WineRegionDetail({
                 </div>
               )}
 
-              {/* Card 7: Regional Ancillary Satellite Appellations */}
+              {/* Card 10: Regional Ancillary Satellite Appellations */}
               {(region.technicalRegulations.ancillaryAocs || region.technicalRegulations.ancillaryAOCs) && (
                 <div className="cms-tech-card ancillary-card">
                   <div className="tech-card-header">
                     <Sparkles className="tech-icon" />
                     <div>
                       <span className="tech-tag">Regional Satellite Appellations</span>
-                      <h4>Coteaux Champenois & Rosé des Riceys AOC</h4>
+                      <h4>{isBurgundy ? 'Bouzeron, Irancy, Saint-Bris & Crémant de Bourgogne AOC' : 'Coteaux Champenois & Rosé des Riceys AOC'}</h4>
                     </div>
                   </div>
 
@@ -1373,18 +1782,23 @@ export default function WineRegionDetail({
         </section>
       )}
 
-      {/* Tab 4: Prestige Cuvées & Iconic Cult Growers */}
+      {/* Tab 4: Prestige Cuvées / Monopoles & Iconic Domaines */}
       {activeTab === 'prestige' && hasPrestigeCuvees && (
         <section className="region-tab-content prestige-tab">
           <div className="prestige-intro">
             <div>
-              <span className="cms-level-badge">Prestige Heritage & Benchmark Estates</span>
-              <h3>Benchmark Prestige Cuvées of Champagne</h3>
-              <p>The iconic tête de cuvées that established Champagne's global prestige, their inaugural debut vintages, terroir sourcing, and assemblage philosophies.</p>
+              <span className="cms-level-badge">{isBurgundy ? 'Monopoles & Benchmark Domaines' : 'Prestige Heritage & Benchmark Estates'}</span>
+              <h3>{isBurgundy ? 'Benchmark Monopoles & Historic Climats of Burgundy' : 'Benchmark Prestige Cuvées of Champagne'}</h3>
+              <p>
+                {isBurgundy 
+                  ? "Legendary single-owner vineyard holdings (Monopoles) and historic clos that embody Burgundy's most coveted terroirs."
+                  : "The iconic tête de cuvées that established Champagne's global prestige, their inaugural debut vintages, terroir sourcing, and assemblage philosophies."
+                }
+              </p>
             </div>
           </div>
 
-          {/* 7-Column Prestige Cuvées Table (Sized for Desktop & iPad) */}
+          {/* Table: Prestige Cuvées (Champagne) or Benchmark Monopoles (Burgundy) */}
           <div className="prestige-table-wrapper">
             <table className="prestige-table">
               <colgroup>
@@ -1398,39 +1812,45 @@ export default function WineRegionDetail({
               </colgroup>
               <thead>
                 <tr>
-                  <th>Prestige Cuvée</th>
-                  <th>House / Estate</th>
-                  <th>Debut</th>
-                  <th>Composition</th>
-                  <th>Terroir Sourcing</th>
-                  <th>Winemaking & Aging</th>
-                  <th>Iconic Legacy</th>
+                  <th>{isBurgundy ? 'Monopole Climat' : 'Prestige Cuvée'}</th>
+                  <th>{isBurgundy ? 'Domaine / Owner' : 'House / Estate'}</th>
+                  <th>{isBurgundy ? 'Village & AOC' : 'Debut'}</th>
+                  <th>{isBurgundy ? 'Grape Variety' : 'Composition'}</th>
+                  <th>{isBurgundy ? 'Classification' : 'Terroir Sourcing'}</th>
+                  <th>{isBurgundy ? 'Historical Lore & Terroir' : 'Winemaking & Aging'}</th>
+                  <th>{isBurgundy ? 'Character Profile' : 'Iconic Legacy'}</th>
                 </tr>
               </thead>
               <tbody>
-                {region.prestigeCuvees.map((cuvee, idx) => (
+                {(region.prestigeMonopoles || region.prestigeCuvees || []).map((item, idx) => (
                   <tr key={idx}>
                     <td className="col-cuvee-cell">
-                      <strong className="cuvee-name-highlight">{cuvee.name}</strong>
+                      <strong className="cuvee-name-highlight">{item.name}</strong>
                     </td>
                     <td className="col-house-cell">
-                      <span className="house-name">{cuvee.houseOrGrower || cuvee.house}</span>
-                      <span className="house-code-tag">({cuvee.producerCode || cuvee.code || 'NM'} · {cuvee.type || 'Maison'})</span>
+                      <span className="house-name">{item.domainOrHouse || item.houseOrGrower || item.house}</span>
+                      {item.producerCode && (
+                        <span className="house-code-tag">({item.producerCode} · {item.type || 'Maison'})</span>
+                      )}
                     </td>
                     <td className="col-debut-cell">
-                      {renderDebutVintage(cuvee.debutVintage)}
+                      {isBurgundy ? (
+                        <span className="vintage-debut-tag">{item.village}</span>
+                      ) : (
+                        renderDebutVintage(item.debutVintage)
+                      )}
                     </td>
                     <td className="col-blend-cell">
-                      <span className="blend-text">{cuvee.grapeComposition || cuvee.blend}</span>
+                      <span className="blend-text">{item.grape || item.grapeComposition || item.blend}</span>
                     </td>
                     <td className="col-sourcing-cell">
-                      <span className="sourcing-text">{cuvee.sourcing || 'Grand Cru Terroirs'}</span>
+                      <span className="sourcing-text">{item.classification || item.sourcing || 'Grand Cru'}</span>
                     </td>
                     <td className="col-winemaking-cell">
-                      <p className="vinification-note">{cuvee.winemaking || cuvee.vinification || cuvee.notes}</p>
+                      <p className="vinification-note">{item.historicalLore || item.winemaking || item.vinification || item.notes}</p>
                     </td>
                     <td className="col-legacy-cell">
-                      <p className="iconic-status-note">{cuvee.iconicStatus || cuvee.character}</p>
+                      <p className="iconic-status-note">{item.character || item.iconicStatus}</p>
                     </td>
                   </tr>
                 ))}
@@ -1438,22 +1858,22 @@ export default function WineRegionDetail({
             </table>
           </div>
 
-          {/* Iconic Grower Estates Directory */}
-          {region.iconicGrowers && (
+          {/* Cult Domaines / Iconic Growers Directory */}
+          {(region.iconicDomaines || region.iconicGrowers) && (
             <div className="growers-directory-section">
               <h3 className="section-subtitle">
                 <Wine size={18} style={{ color: 'var(--accent-gold)', marginRight: '8px' }} />
-                Iconic Grower Champagne (RM) Benchmark Estates
+                {isBurgundy ? 'Iconic Benchmark Cult Domaines of Burgundy' : 'Iconic Grower Champagne (RM) Benchmark Estates'}
               </h3>
               <div className="growers-grid">
-                {region.iconicGrowers.map(grower => (
-                  <div key={grower.name} className="grower-card">
+                {(region.iconicDomaines || region.iconicGrowers).map(estate => (
+                  <div key={estate.name} className="grower-card">
                     <div className="grower-card-header">
-                      <h5>{grower.name}</h5>
-                      <span className="grower-village">{grower.village} ({grower.subregion})</span>
+                      <h5>{estate.name}</h5>
+                      <span className="grower-village">{estate.village || estate.subregion} {estate.vigneron ? `· ${estate.vigneron}` : ''}</span>
                     </div>
-                    <p className="grower-philosophy"><strong>Philosophy:</strong> {grower.philosophy}</p>
-                    <p className="grower-key-wines"><strong>Key Cuvées:</strong> {grower.keyCuvees?.join(', ')}</p>
+                    <p className="grower-philosophy"><strong>Philosophy:</strong> {estate.philosophy}</p>
+                    <p className="grower-key-wines"><strong>Key Cuvées:</strong> {estate.keyCuvees?.join(', ')}</p>
                   </div>
                 ))}
               </div>
@@ -1462,7 +1882,7 @@ export default function WineRegionDetail({
         </section>
       )}
 
-      {/* Tab 5: Food & Dining Pairings */}
+      {/* Tab 5: Food & Dining Recommendations */}
       {activeTab === 'pairings' && (
         <section className="region-tab-content pairings-tab">
           <div className="pairings-intro">
@@ -1484,31 +1904,41 @@ export default function WineRegionDetail({
           </div>
 
           <div className="sommelier-tip-box">
-            <Sparkles size={20} className="tip-icon" />
+            <Sparkles className="tip-icon" size={20} />
             <div>
-              <strong>Service & Glassware Tip:</strong>
+              <strong>Service & Glassware Tip for {region.name}:</strong>
               <p>
-                When ordering fine Champagne from Grand Cru terroirs, consider serving in tulip-shaped white wine glasses rather than narrow flutes. This allows the complex brioche, hazelnut, and chalk mineral bouquet to breathe and express its true vinous character.
+                {isBurgundy
+                  ? "Serve red Burgundies at 16–18°C (60–64°F) in wide-bowled Pinot Noir / Burgundy glasses to concentrate delicate floral aromatics and sous-bois nuances. White Burgundies shine at 11–13°C (52–55°F) in larger Burgundy Chardonnay glasses that allow hazelnut richness and limestone tension to breathe."
+                  : "Serve fine Champagnes at 9–11°C (48–52°F) in tulip-shaped white wine glasses rather than narrow flutes or wide coupes. A wider bowl allows complex autolytic aromas (brioche, hazelnut, candied citrus) to unfold while preserving a steady, delicate mousse."
+                }
               </p>
             </div>
           </div>
         </section>
       )}
 
-      {/* Tab 6: Available in Our Cellar */}
+      {/* Tab 6: In Our Cellar (Inventory View) */}
       {activeTab === 'cellar' && (
         <section className="region-tab-content cellar-tab">
           <div className="cellar-tab-header">
             <div>
-              <h3>Bottles Available from {region.name}</h3>
-              <p>Explore and order bottles currently in the cellar from this region.</p>
+              <h3>Bottles in Our Cellar from {region.name}</h3>
+              <p>
+                {activeSubRegionId 
+                  ? `Filtered by district: ${region.subRegions?.find(s => s.id === activeSubRegionId)?.name || activeSubRegionId}`
+                  : searchFilter 
+                    ? `Filtered by search term: "${searchFilter}"`
+                    : `Displaying all ${cellarWines.length} cellar bottles from ${region.name}.`
+                }
+              </p>
             </div>
 
             <div className="cellar-search-box">
-              <Search size={16} className="search-icon" />
+              <Search className="search-icon" size={16} />
               <input 
-                type="text"
-                placeholder="Search producer, vintage, cuvée, village..."
+                type="text" 
+                placeholder="Search producer, cru, vintage..."
                 value={searchFilter}
                 onChange={(e) => setSearchFilter(e.target.value)}
                 className="cellar-search-input"
@@ -1516,11 +1946,11 @@ export default function WineRegionDetail({
             </div>
           </div>
 
-          {/* Sub-region filter pills */}
+          {/* Quick Sub-region Filter Pills */}
           {region.subRegions && region.subRegions.length > 0 && (
             <div className="cellar-sub-filter-pills">
               <button 
-                className={`filter-pill ${!activeSubRegionId ? 'active' : ''}`}
+                className={`filter-pill ${activeSubRegionId === null ? 'active' : ''}`}
                 onClick={() => setActiveSubRegionId(null)}
               >
                 All Districts ({cellarWines.length})
@@ -1528,107 +1958,78 @@ export default function WineRegionDetail({
               {region.subRegions.map(sub => {
                 const count = cellarBottlesBySub[sub.id] || 0;
                 return (
-                  <button
-                    key={sub.id}
+                  <button 
+                    key={sub.id} 
                     className={`filter-pill ${activeSubRegionId === sub.id ? 'active' : ''}`}
                     onClick={() => setActiveSubRegionId(activeSubRegionId === sub.id ? null : sub.id)}
                   >
-                    {sub.name} {count > 0 && `(${count})`}
+                    {sub.name} {count > 0 ? `(${count})` : ''}
                   </button>
                 );
               })}
             </div>
           )}
 
-          {/* Wine Items List */}
-          {filteredCellarWines.length === 0 ? (
-            <div className="empty-cellar-message">
-              <Wine size={42} style={{ opacity: 0.3, marginBottom: '10px' }} />
-              <h4>No bottles found</h4>
-              <p>No bottles currently in the cellar match this filter criteria.</p>
-              {searchFilter && (
-                <button className="btn" onClick={() => setSearchFilter('')}>Clear Search Filter</button>
-              )}
-            </div>
-          ) : (
+          {filteredCellarWines.length > 0 ? (
             <div className="region-wines-list">
-              {filteredCellarWines.map((wine, idx) => {
-                const vintage = wine.Vintage || 'NV';
-                const producer = wine.Producer || '';
-                let cleanName = wine.Wine || wine.Designation || 'Unknown Wine';
-
-                if (producer && cleanName.startsWith(producer)) {
-                  cleanName = cleanName.replace(producer, '').trim();
-                }
-                if (vintage !== 'NV' && cleanName.startsWith(vintage)) {
-                  cleanName = cleanName.replace(vintage, '').trim();
-                }
-                cleanName = cleanName.replace(/^[,.\s-]+/, '').trim();
-
-                const wineKey = `${producer}|${wine.Wine}|${vintage}`;
-                const consumedCount = consumedCounts[wineKey] || 0;
-                const totalQty = parseInt(wine.Quantity || '1', 10) || 1;
-                const remainingQty = Math.max(0, totalQty - consumedCount);
-                const price = wine.Value || wine.Valuation || wine.Price || '';
-
-                const iWine = wine.iWine || wine.WineID || wine.IWine || '';
-                const iBottle = wine.iBottle || wine.BottleID || wine.IBottle || wine.Barcode || '';
-                const ctUrl = getCellarTrackerActionUrl ? getCellarTrackerActionUrl(iWine, iBottle, 'Drink', `${producer} ${wine.Wine}`) : null;
+              {filteredCellarWines.map(w => {
+                const isConsumed = (consumedCounts[w.iWine] || 0) >= (parseInt(w.Quantity, 10) || 1);
+                const actionUrl = getCellarTrackerActionUrl ? getCellarTrackerActionUrl(w.iWine) : null;
 
                 return (
-                  <div key={idx} className={`region-wine-card ${consumedCount > 0 ? 'has-consumed' : ''}`}>
+                  <div key={w.iWine || w.Barcode} className={`region-wine-card ${isConsumed ? 'consumed' : ''}`}>
                     <div className="wine-card-main">
                       <div className="wine-card-info">
-                        <div className="sommelier-wine-badges">
-                          {wine._cruClassification && (
-                            <span className="somm-badge-cru">{wine._cruClassification}</span>
+                        <div className="wine-card-badge-row">
+                          {w._cruClassification && (
+                            <span className="wine-card-cru-pill">{w._cruClassification}</span>
                           )}
-                          {wine._commune && (
-                            <span className="somm-badge-village">📍 {wine._commune}</span>
+                          {w._commune && (
+                            <span className="wine-card-commune-pill">📍 {w._commune}</span>
                           )}
-                          {wine._producerCode && (
-                            <span className="somm-badge-code">🏷️ {wine._producerCode}</span>
+                          {w._producerCode && (
+                            <span className="wine-card-code-pill">[{w._producerCode}]</span>
                           )}
                         </div>
 
-                        <h4 className="wine-card-producer">{producer}</h4>
+                        <h4 className="wine-card-producer">{w.Producer}</h4>
                         <p className="wine-card-name">
-                          {cleanName} <span className="vintage-tag">{vintage}</span>
+                          {w.Vintage && <span className="vintage-tag">{w.Vintage} </span>}
+                          {w.Wine || w.Designation || w.Producer}
                         </p>
+
                         <div className="wine-card-meta">
-                          <span><MapPin size={13} style={{ display: 'inline', marginRight: '3px' }} /> {wine.Locale || region.name}</span>
-                          {wine.Bin && <span>· Bin: <strong>{wine.Bin}</strong></span>}
-                          {wine.Location && <span>· Loc: {wine.Location}</span>}
-                          {wine.Varietal && <span>· {wine.Varietal}</span>}
+                          <span>{w.Varietal || (w.Color === 'Red' ? 'Pinot Noir' : 'Chardonnay')}</span>
+                          {w.Locale && <span>· {w.Locale}</span>}
+                          <span>· Qty: {w.Quantity || 1}</span>
+                          {w.BottleSize && <span>· {w.BottleSize}</span>}
+                          {w.Location && <span>· Location: {w.Location}</span>}
                         </div>
                       </div>
 
                       <div className="wine-card-pricing-actions">
-                        {price && price !== '0' && (
-                          <div className="wine-card-price">
-                            ${Math.round(parseFloat(String(price).replace('$', '')))}
-                          </div>
+                        {w.Price && (
+                          <span className="wine-card-price">${parseFloat(w.Price).toFixed(0)}</span>
                         )}
 
                         <div className="wine-card-buttons">
-                          {onConsumeBottle && remainingQty > 0 && (
+                          {onConsumeBottle && !isConsumed && (
                             <button 
-                              className="btn order-bottle-btn"
-                              onClick={() => onConsumeBottle(wine)}
-                              title="Log 1 bottle opened tonight"
+                              className="btn btn-sm btn-consume"
+                              onClick={() => onConsumeBottle(w.iWine)}
+                              title="Mark bottle as consumed in cellar"
                             >
-                              <Wine size={14} style={{ marginRight: '4px' }} />
-                              Log Bottle ({remainingQty} left)
+                              Drink
                             </button>
                           )}
 
-                          {ctUrl && (
+                          {actionUrl && (
                             <a 
-                              href={ctUrl} 
+                              href={actionUrl}
                               target="_blank" 
                               rel="noopener noreferrer"
-                              className="ct-link-btn"
-                              title="View on CellarTracker"
+                              className="btn btn-sm btn-ct-link"
+                              title="Open wine in CellarTracker"
                             >
                               <ExternalLink size={14} />
                             </a>
@@ -1639,6 +2040,22 @@ export default function WineRegionDetail({
                   </div>
                 );
               })}
+            </div>
+          ) : (
+            <div className="no-cellar-wines">
+              <Wine size={32} style={{ color: 'var(--text-muted)', marginBottom: '8px' }} />
+              <p>No bottles found in cellar matching this district or filter query.</p>
+              {(activeSubRegionId || searchFilter) && (
+                <button 
+                  className="btn btn-sm"
+                  onClick={() => {
+                    setActiveSubRegionId(null);
+                    setSearchFilter('');
+                  }}
+                >
+                  Clear All Filters
+                </button>
+              )}
             </div>
           )}
         </section>

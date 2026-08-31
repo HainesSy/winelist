@@ -1,7 +1,24 @@
 // Comprehensive Wine Region Knowledge Base & Cartographic Data
+import {
+  BURGUNDY_GRAND_CRUS,
+  BURGUNDY_PREMIER_CRUS,
+  BURGUNDY_SUBREGIONS,
+  BURGUNDY_TECHNICAL_REGULATIONS,
+  BURGUNDY_PRESTIGE_MONOPOLES,
+  BURGUNDY_ICONIC_DOMAINES
+} from './burgundyData';
+
+export {
+  BURGUNDY_GRAND_CRUS,
+  BURGUNDY_PREMIER_CRUS,
+  BURGUNDY_SUBREGIONS,
+  BURGUNDY_TECHNICAL_REGULATIONS,
+  BURGUNDY_PRESTIGE_MONOPOLES,
+  BURGUNDY_ICONIC_DOMAINES
+};
 
 // ============================================================================
-// CMS LEVEL 3 CHAMPAGNE DATASETS (Grand Crus, Premier Crus, Terroirs, Specs)
+// CHAMPAGNE DATASETS (Grand Crus, Premier Crus, Terroirs, Specs)
 // ============================================================================
 
 export const CHAMPAGNE_GRAND_CRUS = [
@@ -1555,7 +1572,7 @@ export const WINE_REGIONS = {
       palate: "Vibrant, persistent mousse with crystalline acidity, chalky tension, tactile salinity, and an extraordinarily long, expansive finish."
     },
 
-    // Curated Food Pairings for Diners & Sommeliers
+    // Curated Food & Dining Pairings
     foodPairings: [
       { category: 'Raw Bar & Seafood', dish: "Fresh Oysters (Belon, Gillardeau), Oscietra Caviar, Hamachi Crudo, Pan-seared Hokkaido Scallops", note: "The wine's searing acidity and saline chalk finish effortlessly harmonize with the briny sweetness of raw shellfish." },
       { category: 'Rich & Crispy Bites', dish: "Truffle French Fries, Southern Fried Chicken, Warm Gougères, Tempura Langoustines", note: "The high effervescence and brisk acidity cleanse the palate after every rich, buttery or crispy bite." },
@@ -1642,48 +1659,25 @@ export const WINE_REGIONS = {
       { category: 'Classic Cheeses', dish: "Époisses de Bourgogne, Soumaintrain, Delice de Bourgogne, Aged Comté", note: "The pungent, washed-rind Époisses is the ultimate historic partner for mature red Burgundy." }
     ],
 
-    subRegions: [
-      {
-        id: 'chablis',
-        name: "Chablis",
-        lat: 47.81,
-        lng: 3.80,
-        terroir: "Kimmeridgian limestone packed with fossilized oyster shells (Exogyra virgula).",
-        focus: "100% Unoaked or subtly oaked Chardonnay: Les Clos, Vaudésir, Montée de Tonnerre.",
-        description: "Isolated northern outpost delivering steel-cut acidity, green apple, oyster-shell salinity, and flint." },
-      {
-        id: 'cote-de-nuits',
-        name: "Côte de Nuits",
-        lat: 47.18,
-        lng: 4.95,
-        terroir: "Steep limestone cliffs facing east, the world sanctuary for Pinot Noir Grand Crus.",
-        focus: "Pinot Noir: Gevrey-Chambertin, Chambolle-Musigny, Vosne-Romanée, Nuits-Saint-Georges, Morey-Saint-Denis.",
-        description: "Home to 24 of Burgundy's 25 red Grand Crus. Delivers aristocratically complex, structured red wines." },
-      {
-        id: 'cote-de-beaune',
-        name: "Côte de Beaune",
-        lat: 46.98,
-        lng: 4.80,
-        terroir: "Marl and white limestone benches producing the world's greatest white wines and ethereal reds.",
-        focus: "Chardonnay & Pinot Noir: Meursault, Puligny-Montrachet, Chassagne-Montrachet, Volnay, Pommard, Corton.",
-        description: "Celebrated for liquid-gold Grand Cru Chardonnays (Montrachet) and perfumed, velvety reds (Volnay)." },
-      {
-        id: 'cote-chalonnaise',
-        name: "Côte Chalonnaise",
-        lat: 46.75,
-        lng: 4.70,
-        terroir: "Rolling limestone hills south of the Côte d'Or.",
-        focus: "Bouzeron (Aligoté), Rully, Mercurey, Givry, Montagny.",
-        description: "Vibrant, high-value village wines offering immediate pleasure with authentic Burgundian character." },
-      {
-        id: 'maconnais',
-        name: "Mâconnais",
-        lat: 46.30,
-        lng: 4.75,
-        terroir: "Warmer Mediterranean-influenced limestone valleys under the dramatic Roche de Solutré.",
-        focus: "Chardonnay: Pouilly-Fuissé (1er Cru), Saint-Véran, Viré-Clessé, Mâcon-Villages.",
-        description: "Rich, sun-drenched Chardonnays bursting with stone fruit, acacia flowers, and creamy texture." }
-    ]
+    // 6 Subregions & Micro-Terroirs
+    subRegions: BURGUNDY_SUBREGIONS,
+
+    // All 33 Grand Crus
+    grandCrus: BURGUNDY_GRAND_CRUS,
+
+    // Benchmark Premier Crus
+    premierCrus: BURGUNDY_PREMIER_CRUS,
+
+    // Technical Geology & Winemaking Regulations
+    technicalRegulations: BURGUNDY_TECHNICAL_REGULATIONS,
+
+    // Benchmark Monopoles & Estates
+    prestigeMonopoles: BURGUNDY_PRESTIGE_MONOPOLES,
+    prestigeCuvees: BURGUNDY_PRESTIGE_MONOPOLES,
+
+    // Iconic Domaines & Cult Producers
+    iconicDomaines: BURGUNDY_ICONIC_DOMAINES,
+    iconicGrowers: BURGUNDY_ICONIC_DOMAINES
   },
 
   'bordeaux': {
