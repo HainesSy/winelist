@@ -4,9 +4,9 @@ import 'leaflet/dist/leaflet.css';
 import { Layers, Maximize2, Compass, MapPin, Award, Shapes, Crown } from 'lucide-react';
 import { WINE_REGION_BOUNDARIES } from '../data/wineRegionBoundaries';
 
-// Custom Wine Sommelier Tile Providers supporting Mapbox Token & Free Fallbacks
+// Custom Wine Sommelier Tile Providers supporting Mapbox Token, Stadia Key & Free Fallbacks
 const mapboxToken = import.meta.env.VITE_MAPBOX_TOKEN || import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
-const stadiaKey = import.meta.env.VITE_STADIA_API_KEY;
+const stadiaKey = import.meta.env.VITE_STADIA_API_KEY || '09a71635-6afb-419c-a272-b39c8b2654a3';
 
 const getTileLayers = () => ({
   parchment: {
