@@ -14,11 +14,11 @@ const getTileLayers = () => ({
     url: mapboxToken 
       ? `https://api.mapbox.com/styles/v1/mapbox/light-v11/tiles/512/{z}/{x}/{y}@2x?access_token=${mapboxToken}`
       : (stadiaKey
-          ? `https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=${stadiaKey}`
-          : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'),
+          ? `https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png?api_key=${stadiaKey}`
+          : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png'),
     attribution: mapboxToken 
-      ? '&copy; <a href="https://www.mapbox.com/">Mapbox</a>' 
-      : (stadiaKey ? '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> &copy; OpenStreetMap' : '&copy; <a href="https://carto.com/">CARTO</a> &copy; OpenStreetMap'),
+      ? '&copy; <a href="https://www.mapbox.com/" target="_blank" rel="noopener">Mapbox</a>' 
+      : (stadiaKey ? '&copy; <a href="https://stadiamaps.com/" target="_blank" rel="noopener">Stadia Maps</a> &copy; OpenStreetMap' : '&copy; <a href="https://carto.com/" target="_blank" rel="noopener">CARTO</a> &copy; OpenStreetMap'),
     className: 'sommelier-tile-parchment',
     tileSize: mapboxToken ? 512 : 256,
     zoomOffset: mapboxToken ? -1 : 0
@@ -28,11 +28,11 @@ const getTileLayers = () => ({
     url: mapboxToken 
       ? `https://api.mapbox.com/styles/v1/mapbox/outdoors-v12/tiles/512/{z}/{x}/{y}@2x?access_token=${mapboxToken}`
       : (stadiaKey 
-          ? `https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}{r}.png?api_key=${stadiaKey}`
+          ? `https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.png?api_key=${stadiaKey}`
           : 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'),
     attribution: mapboxToken 
-      ? '&copy; <a href="https://www.mapbox.com/">Mapbox</a>' 
-      : (stadiaKey ? '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> &copy; Stamen / OSM' : '&copy; OpenStreetMap / Esri'),
+      ? '&copy; <a href="https://www.mapbox.com/" target="_blank" rel="noopener">Mapbox</a>' 
+      : (stadiaKey ? '&copy; <a href="https://stadiamaps.com/" target="_blank" rel="noopener">Stadia Maps</a> &copy; Stamen / OSM' : '&copy; OpenStreetMap / Esri'),
     className: 'sommelier-tile-topo',
     tileSize: mapboxToken ? 512 : 256,
     zoomOffset: mapboxToken ? -1 : 0
@@ -41,10 +41,12 @@ const getTileLayers = () => ({
     name: 'Vineyard Satellite',
     url: mapboxToken
       ? `https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v12/tiles/512/{z}/{x}/{y}@2x?access_token=${mapboxToken}`
-      : 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      : (stadiaKey
+          ? `https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}.jpg?api_key=${stadiaKey}`
+          : 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
     attribution: mapboxToken 
-      ? '&copy; <a href="https://www.mapbox.com/">Mapbox</a>' 
-      : '&copy; Esri World Imagery',
+      ? '&copy; <a href="https://www.mapbox.com/" target="_blank" rel="noopener">Mapbox</a>' 
+      : (stadiaKey ? '&copy; <a href="https://stadiamaps.com/" target="_blank" rel="noopener">Stadia Maps</a> &copy; CNES/Airbus' : '&copy; Esri World Imagery'),
     className: 'sommelier-tile-sat',
     tileSize: mapboxToken ? 512 : 256,
     zoomOffset: mapboxToken ? -1 : 0
@@ -96,7 +98,7 @@ export default function WineRegionMap({
         minZoom: 4,
         maxZoom: 18,
         zoomControl: false,
-        attributionControl: false
+        attributionControl: true
       });
 
       L.control.zoom({ position: 'topright' }).addTo(map);

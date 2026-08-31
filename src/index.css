@@ -1971,7 +1971,26 @@ button.region-label:hover,
 }
 
 .leaflet-control-attribution {
-  display: none !important;
+  background: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 3px 8px !important;
+  border-radius: 6px;
+  font-size: 0.68rem !important;
+  color: #555 !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin: 0 8px 8px 0 !important;
+}
+
+.leaflet-control-attribution a {
+  color: var(--accent-dark-gold) !important;
+  text-decoration: none !important;
+  font-weight: 600;
+}
+
+.leaflet-control-attribution a:hover {
+  text-decoration: underline !important;
 }
 
 /* Custom Leaflet Popups */
