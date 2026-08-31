@@ -513,7 +513,7 @@ export default function WineRegionDetail({
   const [cruSearchQuery, setCruSearchQuery] = useState('');
   const [prestigeColorFilter, setPrestigeColorFilter] = useState('all'); // 'all' | 'red' | 'white'
   const [prestigePage, setPrestigePage] = useState(1);
-  const PRESTIGE_PAGE_SIZE = 8;
+  const PRESTIGE_PAGE_SIZE = 10;
   const [regionDropdownOpen, setRegionDropdownOpen] = useState(false);
   const [searchFilter, setSearchFilter] = useState('');
 
