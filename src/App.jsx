@@ -41,9 +41,9 @@ function App() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [username, setUsername] = useState(() => {
     try {
-      return localStorage.getItem('ct_user') || 'Haines';
+      return localStorage.getItem('ct_user') || '';
     } catch {
-      return 'Haines';
+      return '';
     }
   });
   const [password, setPassword] = useState(() => {
@@ -981,7 +981,7 @@ function App() {
                   {username ? (
                     <>
                       <span className="menu-title-user" style={{ fontFamily: "'Playfair Display SC', 'Playfair Display', serif" }}>
-                        {username.charAt(0).toUpperCase() + username.slice(1).toLowerCase()}
+                        {username}
                       </span>
                       's Wine List
                     </>

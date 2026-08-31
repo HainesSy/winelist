@@ -6,7 +6,7 @@ let sharedState = {
   history: [],
   counts: {},
   bins: {},
-  username: 'Haines',
+  username: '',
   lastUpdated: Date.now()
 };
 
