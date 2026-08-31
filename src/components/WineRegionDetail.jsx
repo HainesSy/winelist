@@ -1834,30 +1834,51 @@ export default function WineRegionDetail({
                 </tr>
               </thead>
               <tbody>
-                {(region.prestigeMonopoles || region.prestigeCuvees || []).map((item, idx) => (
-                  <tr key={idx}>
-                    <td className="col-cuvee-cell">
-                      <strong className="cuvee-name-highlight">{item.name}</strong>
-                    </td>
-                    <td className="col-house-cell">
-                      <span className="house-name">{item.domainOrHouse || item.houseOrGrower || item.house}</span>
-                      {item.producerCode && (
-                        <span className="house-code-tag">({item.producerCode} · {item.type || 'Maison'})</span>
-                      )}
-                    </td>
-                    <td className="col-debut-cell">
-                      {isBurgundy ? (
-                        <span className="monopole-village-tag">{item.village}</span>
-                      ) : (
-                        renderDebutVintage(item.debutVintage)
-                      )}
-                    </td>
-                    <td className="col-blend-cell">
-                      <span className="blend-text">{item.grape || item.grapeComposition || item.blend}</span>
-                    </td>
-                    <td className="col-sourcing-cell">
-                      <span className="sourcing-text">{item.classification || item.sourcing || 'Grand Cru'}</span>
-                    </td>
+                {(region.prestigeMonopoles || region.prestigeCuvees || []).map((item, idx) => {
+                  const grapeStr = (item.grape || item.grapeComposition || item.blend || item.dominantGrape || item.wineType || '').toLowerCase();
+                  const nameStr = (item.name || '').toLowerCase();
+
+                  let colorClass = 'gold';
+                  if (grapeStr.includes('rosé') || grapeStr.includes('rose') || nameStr.includes('rosé') || nameStr.includes('rose')) {
+                    colorClass = 'rose';
+                  } else if (grapeStr.includes('chardonnay') && grapeStr.includes('pinot')) {
+                    colorClass = 'red-white';
+                  } else if (grapeStr.includes('pinot noir') || grapeStr.includes('pinot') || grapeStr.includes('red') || grapeStr.includes('rouge') || grapeStr.includes('césar') || grapeStr.includes('gamay')) {
+                    colorClass = 'red';
+                  } else if (grapeStr.includes('chardonnay') || grapeStr.includes('aligoté') || grapeStr.includes('aligote') || grapeStr.includes('white') || grapeStr.includes('blanc') || grapeStr.includes('sauvignon')) {
+                    colorClass = 'white';
+                  }
+
+                  const icon = colorClass === 'red' ? '🍷' : colorClass === 'white' ? '🥂' : colorClass === 'rose' ? '🌸' : '🍇';
+
+                  return (
+                    <tr key={idx}>
+                      <td className="col-cuvee-cell">
+                        <strong className="cuvee-name-highlight">{item.name}</strong>
+                      </td>
+                      <td className="col-house-cell">
+                        <span className="house-name">{item.domainOrHouse || item.houseOrGrower || item.house}</span>
+                        {item.producerCode && (
+                          <span className="house-code-tag">({item.producerCode} · {item.type || 'Maison'})</span>
+                        )}
+                      </td>
+                      <td className="col-debut-cell">
+                        {isBurgundy ? (
+                          <span className={`monopole-village-tag ${colorClass}`}>
+                            <span>{icon}</span> {item.village}
+                          </span>
+                        ) : (
+                          renderDebutVintage(item.debutVintage)
+                        )}
+                      </td>
+                      <td className="col-blend-cell">
+                        <span className={`monopole-grape-badge ${colorClass}`}>
+                          {item.grape || item.grapeComposition || item.blend}
+                        </span>
+                      </td>
+                      <td className="col-sourcing-cell">
+                        <span className="sourcing-text">{item.classification || item.sourcing || 'Grand Cru'}</span>
+                      </td>
                     <td className="col-winemaking-cell">
                       <p className="vinification-note">{item.historicalLore || item.winemaking || item.vinification || item.notes}</p>
                     </td>
@@ -1865,7 +1886,8 @@ export default function WineRegionDetail({
                       <p className="iconic-status-note">{item.character || item.iconicStatus}</p>
                     </td>
                   </tr>
-                ))}
+                  );
+                })}
               </tbody>
             </table>
           </div>

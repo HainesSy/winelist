@@ -4225,16 +4225,75 @@ button.region-label:hover,
 
 .monopole-village-tag {
   font-weight: 700;
-  color: var(--accent-dark-gold);
-  background: rgba(212, 175, 55, 0.16);
-  border: 1px solid rgba(212, 175, 55, 0.35);
   padding: 3px 8px;
   border-radius: 6px;
   font-size: 0.76rem;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   white-space: normal;
   word-break: normal;
   line-height: 1.35;
+  transition: all 0.2s ease;
+}
+
+.monopole-village-tag.red {
+  background: #fbf0f2;
+  color: #8b0000;
+  border: 1px solid rgba(139, 0, 0, 0.32);
+}
+
+.monopole-village-tag.white {
+  background: #fff9e6;
+  color: #7a5800;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+}
+
+.monopole-village-tag.rose {
+  background: #fdf2f8;
+  color: #be185d;
+  border: 1px solid rgba(190, 24, 93, 0.35);
+}
+
+.monopole-village-tag.red-white,
+.monopole-village-tag.gold {
+  background: #f5f3ff;
+  color: #6d28d9;
+  border: 1px solid rgba(109, 40, 217, 0.32);
+}
+
+.monopole-grape-badge {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  line-height: 1.35;
+}
+
+.monopole-grape-badge.red {
+  background: rgba(139, 0, 0, 0.08);
+  color: #8b0000;
+  border: 1px solid rgba(139, 0, 0, 0.18);
+}
+
+.monopole-grape-badge.white {
+  background: rgba(212, 175, 55, 0.14);
+  color: #7a5800;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.monopole-grape-badge.rose {
+  background: rgba(190, 24, 93, 0.1);
+  color: #be185d;
+  border: 1px solid rgba(190, 24, 93, 0.25);
+}
+
+.monopole-grape-badge.red-white,
+.monopole-grape-badge.gold {
+  background: rgba(109, 40, 217, 0.08);
+  color: #6d28d9;
+  border: 1px solid rgba(109, 40, 217, 0.25);
 }
 
 .debut-subtitle-note {
