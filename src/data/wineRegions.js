@@ -1575,10 +1575,10 @@ export const WINE_REGIONS = {
 
     // Curated Food & Dining Pairings
     foodPairings: [
-      { category: 'Raw Bar & Seafood', dish: "Fresh Oysters (Belon, Gillardeau), Oscietra Caviar, Hamachi Crudo, Pan-seared Hokkaido Scallops", note: "The wine's searing acidity and saline chalk finish effortlessly harmonize with the briny sweetness of raw shellfish." },
-      { category: 'Rich & Crispy Bites', dish: "Truffle French Fries, Southern Fried Chicken, Warm Gougères, Tempura Langoustines", note: "The high effervescence and brisk acidity cleanse the palate after every rich, buttery or crispy bite." },
-      { category: 'Fine Dining Main Courses', dish: "Roast Bresse Duck (Rosé), Butter-Poached Maine Lobster, Roast Turbot with Caviar Beurre Blanc", note: "Fuller-bodied Blanc de Noirs, Vintage, and Prestige Cuvées possess the textural weight for poultry and butter sauces." },
-      { category: 'Artisanal Cheeses', dish: "Triple-cream Chaource, Brillat-Savarin, 24-Month Comté, Langres AOP", note: "Creamy bloomy-rind and washed-rind regional cheeses are cut by Champagne's mousse and acidity." }
+      { category: 'Raw Bar & Seafood', wineType: 'White', targetWine: 'Blanc de Blancs & Brut Nature', dish: "Fresh Oysters (Belon, Gillardeau), Oscietra Caviar, Hamachi Crudo, Pan-seared Hokkaido Scallops", note: "The wine's searing acidity and saline chalk finish effortlessly harmonize with the briny sweetness of raw shellfish." },
+      { category: 'Rich & Crispy Bites', wineType: 'White', targetWine: 'Brut NV & Extra Brut', dish: "Truffle French Fries, Southern Fried Chicken, Warm Gougères, Tempura Langoustines", note: "The high effervescence and brisk acidity cleanse the palate after every rich, buttery or crispy bite." },
+      { category: 'Fine Dining Main Courses', wineType: 'Red', targetWine: 'Rosé Champagne & Blanc de Noirs', dish: "Roast Bresse Duck (Rosé), Butter-Poached Maine Lobster, Roast Turbot with Caviar Beurre Blanc", note: "Fuller-bodied Blanc de Noirs, Vintage, and Prestige Cuvées possess the textural weight for poultry and butter sauces." },
+      { category: 'Artisanal Cheeses', wineType: 'White', targetWine: 'Vintage Champagne & Prestige Cuvées', dish: "Triple-cream Chaource, Brillat-Savarin, 24-Month Comté, Langres AOP", note: "Creamy bloomy-rind and washed-rind regional cheeses are cut by Champagne's mousse and acidity." }
     ],
 
     // 7 Sub-Regions & Micro-Terroirs
@@ -1654,10 +1654,72 @@ export const WINE_REGIONS = {
     },
 
     foodPairings: [
-      { category: 'Poultry & Game Bird', dish: "Roast Duck Breast with Cherry Glaze, Roasted Guinea Fowl, Coq au Vin", note: "Red Burgundy's delicate red fruit and savory sous-bois elevate game birds without overpowering them." },
-      { category: 'Beef & Earthy Stews', dish: "Boeuf Bourguignon, Dry-aged Ribeye with Morel Butter, Seared Venison Loin", note: "Tannins in Premier/Grand Cru Pinot soften beautifully against rich beef fat and wild mushrooms." },
-      { category: 'Seafood & White Meat', dish: "Pan-Roasted Dover Sole, Butter-Basted Turbot, Veal Chop with Chanterelles", note: "Chardonnay from Meursault or Puligny-Montrachet matches the richness of butter sauces with striking minerality." },
-      { category: 'Classic Cheeses', dish: "Époisses de Bourgogne, Soumaintrain, Delice de Bourgogne, Aged Comté", note: "The pungent, washed-rind Époisses is the ultimate historic partner for mature red Burgundy." }
+      // Red Burgundy (Pinot Noir)
+      { 
+        category: 'Poultry & Game Birds', 
+        wineType: 'Red',
+        targetWine: 'Red Burgundy (Pinot Noir)',
+        dish: "Roast Duck Breast with Cherry-Pinot Reduction & Roasted Guinea Fowl", 
+        note: "Red Burgundy's vibrant red cherry and wild strawberry fruit cut through rich poultry fat, while delicate tannins preserve the meat's tenderness." 
+      },
+      { 
+        category: 'Beef & Earthy Stews', 
+        wineType: 'Red',
+        targetWine: 'Red Burgundy (Pinot Noir)',
+        dish: "Traditional Boeuf Bourguignon, Braised Short Ribs & Morel Butter Steak", 
+        note: "Slow-braised beef collagen and earthy wild morels melt into mature Pinot Noir's savory sous-bois, forest floor, and silky resolved tannins." 
+      },
+      { 
+        category: 'Game & Truffled Meats', 
+        wineType: 'Red',
+        targetWine: 'Red Burgundy (Pinot Noir)',
+        dish: "Pan-Seared Venison Loin, Roasted Squab & Black Truffle Risotto", 
+        note: "Premier and Grand Cru Pinot Noir (Gevrey-Chambertin, Pommard, Nuits-Saint-Georges) offers gamey, iron-tinged spice and structure that elevate roasted game without dominating it." 
+      },
+      { 
+        category: 'Classic Pungent Cheeses', 
+        wineType: 'Red',
+        targetWine: 'Red Burgundy (Pinot Noir)',
+        dish: "Époisses de Bourgogne, Soumaintrain, Langres & Aged Gouda", 
+        note: "The legendary pairing: pungent, washed-rind Époisses softens against the velvety fruit core and high natural acidity of Côte de Nuits reds." 
+      },
+
+      // White Burgundy (Chardonnay & Chablis)
+      { 
+        category: 'Buttery Seafood & Crustaceans', 
+        wineType: 'White',
+        targetWine: 'White Burgundy (Chardonnay)',
+        dish: "Pan-Roasted Dover Sole Meunière, Butter-Poached Maine Lobster & Turbot", 
+        note: "Meursault and Puligny-Montrachet deliver toasted brioche, hazelnut richness, and electric limestone tension that effortlessly slice through brown butter and rich shellfish." 
+      },
+      { 
+        category: 'Shellfish & Raw Bar', 
+        wineType: 'White',
+        targetWine: 'White Burgundy (Chablis & Grand Auxerrois)',
+        dish: "Chilled Belon & Fine de Claire Oysters, Plateau de Fruits de Mer & King Crab", 
+        note: "Chablis Grand Cru and Premier Cru (Les Clos, Montée de Tonnerre) boast pure Kimmeridgian oyster-fossil salinity and razor-sharp acidity that mirror fresh briny oysters." 
+      },
+      { 
+        category: 'Cream-Sauced Poultry & Veal', 
+        wineType: 'White',
+        targetWine: 'White Burgundy (Chardonnay)',
+        dish: "Poulet de Bresse aux Morilles (Bresse Chicken in Morel Cream Sauce) & Veal Chop", 
+        note: "The supreme white Burgundy culinary benchmark: Corton-Charlemagne or Chassagne-Montrachet matches the unctuous cream while earthy morels echo the wine's mineral depth." 
+      },
+      { 
+        category: 'Caramelized Shellfish & Scallops', 
+        wineType: 'White',
+        targetWine: 'White Burgundy (Chardonnay)',
+        dish: "Pan-Seared Sea Scallops with Cauliflower-Hazelnut Purée", 
+        note: "Saint-Aubin, Meursault, or Chassagne-Montrachet echoed by caramelized scallop sweetness, toasted hazelnuts, and pure citrus tension." 
+      },
+      { 
+        category: 'Alpine & Hard Cheeses', 
+        wineType: 'White',
+        targetWine: 'White Burgundy (Chardonnay)',
+        dish: "Aged Comté (18–24 Months), Chaource, Brillat-Savarin & Morbier", 
+        note: "Mature Côte de Beaune whites and Comté share crystalline tyrosine crunch and toasted hazelnut lactones, creating a sublime, creamy harmonic resonance." 
+      }
     ],
 
     // 6 Subregions & Micro-Terroirs
@@ -1737,9 +1799,10 @@ export const WINE_REGIONS = {
     },
 
     foodPairings: [
-      { category: 'Prime Red Meats', dish: "Prime Ribeye Steak with Bordelaise Sauce, Rack of Lamb with Rosemary, Chateaubriand", note: "Rich animal protein and fat bind seamlessly with Bordeaux's dense, youthful tannins." },
-      { category: 'Game & Roasted Meats', dish: "Roast Duck with Blackberry Reduction, Venison Tenderloin, Braised Short Ribs", note: "Mature Bordeaux develops cedar, leather, and truffle notes that harmonize with wild game." },
-      { category: 'Dessert Pairing (Sauternes)', dish: "Foie Gras Terrine, Roquefort Blue Cheese, Lemon Tart, Crème Brûlée", note: "Sauternes botrytized sweet wines create iconic contrasts with salty blue cheese and rich foie gras." }
+      { category: 'Prime Red Meats', wineType: 'Red', targetWine: 'Left & Right Bank Reds', dish: "Prime Ribeye Steak with Bordelaise Sauce, Rack of Lamb with Rosemary, Chateaubriand", note: "Rich animal protein and fat bind seamlessly with Bordeaux's dense, youthful tannins." },
+      { category: 'Game & Roasted Meats', wineType: 'Red', targetWine: 'Mature Bordeaux Grand Cru', dish: "Roast Duck with Blackberry Reduction, Venison Tenderloin, Braised Short Ribs", note: "Mature Bordeaux develops cedar, leather, and truffle notes that harmonize with wild game." },
+      { category: 'Seafood & White Graves', wineType: 'White', targetWine: 'Dry White Bordeaux (Pessac-Léognan)', dish: "Pan-Roasted Sea Bass with Herb Butter, Grilled Langoustines & Goat Cheese", note: "Oak-aged Sauvignon Blanc / Sémillon blends provide brisk citrus drive and waxy textural richness." },
+      { category: 'Dessert & Foie Gras (Sauternes)', wineType: 'White', targetWine: 'Sauternes & Barsac Sweet Wine', dish: "Foie Gras Terrine, Roquefort Blue Cheese, Lemon Tart, Crème Brûlée", note: "Sauternes botrytized sweet wines create iconic contrasts with salty blue cheese and rich foie gras." }
     ],
 
     subRegions: [

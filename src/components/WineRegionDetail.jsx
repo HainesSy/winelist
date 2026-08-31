@@ -514,6 +514,7 @@ export default function WineRegionDetail({
   const [prestigeColorFilter, setPrestigeColorFilter] = useState('all'); // 'all' | 'red' | 'white'
   const [prestigePage, setPrestigePage] = useState(1);
   const PRESTIGE_PAGE_SIZE = 10;
+  const [pairingTypeFilter, setPairingTypeFilter] = useState('all'); // 'all' | 'red' | 'white' | 'sparkling'
   const [regionDropdownOpen, setRegionDropdownOpen] = useState(false);
   const [searchFilter, setSearchFilter] = useState('');
 
@@ -528,6 +529,7 @@ export default function WineRegionDetail({
   // Scroll to top upon opening new region
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    setPairingTypeFilter('all');
   }, [region?.id]);
 
   const isChampagne = region?.id === 'champagne';
@@ -569,6 +571,53 @@ export default function WineRegionDetail({
     const start = (prestigePage - 1) * PRESTIGE_PAGE_SIZE;
     return prestigeItems.slice(start, start + PRESTIGE_PAGE_SIZE);
   }, [prestigeItems, prestigePage]);
+
+  // Parse and color-code food pairings based on Red vs White vs Sparkling
+  const parsedFoodPairings = useMemo(() => {
+    if (!region?.foodPairings) return [];
+    return region.foodPairings.map(pairing => {
+      let wt = (pairing.wineType || '').toLowerCase();
+      if (!wt) {
+        const cat = (pairing.category || '').toLowerCase();
+        const dish = (pairing.dish || '').toLowerCase();
+        const note = (pairing.note || '').toLowerCase();
+        const target = (pairing.targetWine || '').toLowerCase();
+        const text = `${cat} ${dish} ${note} ${target}`;
+
+        if (text.includes('pinot') || text.includes('red') || text.includes('beef') || text.includes('duck') || text.includes('lamb') || text.includes('steak') || text.includes('stew') || text.includes('venison') || text.includes('cabernet') || text.includes('syrah') || text.includes('nebbiolo') || text.includes('sangiovese') || text.includes('tempranillo') || text.includes('bourguignon')) {
+          wt = 'red';
+        } else if (text.includes('chardonnay') || text.includes('white') || text.includes('chablis') || text.includes('seafood') || text.includes('oyster') || text.includes('fish') || text.includes('sole') || text.includes('scallop') || text.includes('lobster') || text.includes('sauvignon') || text.includes('riesling') || text.includes('sauternes') || text.includes('poulet de bresse aux morilles')) {
+          wt = 'white';
+        } else if (text.includes('champagne') || text.includes('sparkling') || text.includes('crémant') || text.includes('cava') || text.includes('prosecco') || text.includes('mousse')) {
+          wt = 'sparkling';
+        } else if (text.includes('rosé') || text.includes('rose')) {
+          wt = 'rose';
+        } else {
+          wt = 'general';
+        }
+      }
+      return {
+        ...pairing,
+        computedWineType: wt
+      };
+    });
+  }, [region?.foodPairings]);
+
+  const filteredFoodPairings = useMemo(() => {
+    if (pairingTypeFilter === 'all') return parsedFoodPairings;
+    return parsedFoodPairings.filter(p => p.computedWineType === pairingTypeFilter);
+  }, [parsedFoodPairings, pairingTypeFilter]);
+
+  const pairingCounts = useMemo(() => {
+    const counts = { all: parsedFoodPairings.length, red: 0, white: 0, sparkling: 0, rose: 0 };
+    parsedFoodPairings.forEach(p => {
+      if (p.computedWineType === 'red') counts.red++;
+      else if (p.computedWineType === 'white') counts.white++;
+      else if (p.computedWineType === 'sparkling') counts.sparkling++;
+      else if (p.computedWineType === 'rose') counts.rose++;
+    });
+    return counts;
+  }, [parsedFoodPairings]);
 
   // Filter cellar wines belonging to this region
   const cellarWines = useMemo(() => {
@@ -2095,22 +2144,81 @@ export default function WineRegionDetail({
       {/* Tab 5: Food & Dining Recommendations */}
       {activeTab === 'pairings' && (
         <section className="region-tab-content pairings-tab">
-          <div className="pairings-intro">
-            <h3>Dining & Food Recommendations</h3>
-            <p>Curated culinary pairings to elevate your dining experience when enjoying wines from {region.name}.</p>
+          <div className="pairings-intro-bar">
+            <div className="pairings-intro-text">
+              <h3>Dining & Food Recommendations</h3>
+              <p>Curated culinary pairings tailored specifically for {region.name} red, white, and sparkling expressions.</p>
+            </div>
+
+            {/* Red vs White Filter Tabs */}
+            {(pairingCounts.red > 0 && pairingCounts.white > 0) && (
+              <div className="pairing-filter-controls">
+                <button
+                  type="button"
+                  className={`pairing-filter-btn ${pairingTypeFilter === 'all' ? 'active' : ''}`}
+                  onClick={() => setPairingTypeFilter('all')}
+                >
+                  All Pairings ({pairingCounts.all})
+                </button>
+                {pairingCounts.red > 0 && (
+                  <button
+                    type="button"
+                    className={`pairing-filter-btn red-btn ${pairingTypeFilter === 'red' ? 'active' : ''}`}
+                    onClick={() => setPairingTypeFilter('red')}
+                  >
+                    🍷 Red Wine ({pairingCounts.red})
+                  </button>
+                )}
+                {pairingCounts.white > 0 && (
+                  <button
+                    type="button"
+                    className={`pairing-filter-btn white-btn ${pairingTypeFilter === 'white' ? 'active' : ''}`}
+                    onClick={() => setPairingTypeFilter('white')}
+                  >
+                    🥂 White Wine ({pairingCounts.white})
+                  </button>
+                )}
+                {pairingCounts.sparkling > 0 && (
+                  <button
+                    type="button"
+                    className={`pairing-filter-btn sparkling-btn ${pairingTypeFilter === 'sparkling' ? 'active' : ''}`}
+                    onClick={() => setPairingTypeFilter('sparkling')}
+                  >
+                    🍾 Sparkling ({pairingCounts.sparkling})
+                  </button>
+                )}
+              </div>
+            )}
           </div>
 
           <div className="pairings-grid">
-            {region.foodPairings?.map((pairing, idx) => (
-              <div key={idx} className="pairing-card">
-                <div className="pairing-category-badge">{pairing.category}</div>
-                <h4 className="pairing-dish-title">{pairing.dish}</h4>
-                <div className="pairing-note">
-                  <span className="pairing-note-label">Why it works:</span>
-                  <p>{pairing.note}</p>
+            {filteredFoodPairings.map((pairing, idx) => {
+              const wt = pairing.computedWineType;
+              const isRed = wt === 'red';
+              const isWhite = wt === 'white';
+              const isSparkling = wt === 'sparkling';
+              const isRose = wt === 'rose';
+
+              const badgeClass = isRed ? 'red' : isWhite ? 'white' : isSparkling ? 'sparkling' : isRose ? 'rose' : 'general';
+              const badgeIcon = isRed ? '🍷' : isWhite ? '🥂' : isSparkling ? '🍾' : isRose ? '🌸' : '🍽️';
+              const badgeLabel = pairing.targetWine || (isRed ? 'Red Wine Pairing' : isWhite ? 'White Wine Pairing' : isSparkling ? 'Sparkling Pairing' : isRose ? 'Rosé Pairing' : 'Wine Pairing');
+
+              return (
+                <div key={idx} className={`pairing-card ${badgeClass}`}>
+                  <div className="pairing-card-header">
+                    <span className={`pairing-wine-badge ${badgeClass}`}>
+                      <span>{badgeIcon}</span> {badgeLabel}
+                    </span>
+                    <span className="pairing-category-text">{pairing.category}</span>
+                  </div>
+                  <h4 className="pairing-dish-title">{pairing.dish}</h4>
+                  <div className="pairing-note">
+                    <span className="pairing-note-label">Why it works:</span>
+                    <p>{pairing.note}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="sommelier-tip-box">

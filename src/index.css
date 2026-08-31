@@ -2563,9 +2563,86 @@ button.region-label:hover,
   color: var(--text-muted);
 }
 
+.pairings-intro-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.pairings-intro-text h3 {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: #1a1a1a;
+  margin: 0 0 6px 0;
+}
+
+.pairings-intro-text p {
+  color: #666;
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+.pairing-filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.pairing-filter-btn {
+  background: #fbf7f0;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.80rem;
+  font-weight: 600;
+  color: #444;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pairing-filter-btn:hover {
+  background: #fff9e6;
+  border-color: var(--accent-gold);
+  color: #1a1a1a;
+}
+
+.pairing-filter-btn.active {
+  background: #3b0e1e;
+  color: #ffffff;
+  border-color: #3b0e1e;
+  box-shadow: 0 2px 8px rgba(59, 14, 30, 0.25);
+}
+
+.pairing-filter-btn.red-btn.active {
+  background: #8b0000;
+  border-color: #8b0000;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(139, 0, 0, 0.3);
+}
+
+.pairing-filter-btn.white-btn.active {
+  background: #b8860b;
+  border-color: #b8860b;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(184, 134, 11, 0.3);
+}
+
+.pairing-filter-btn.sparkling-btn.active {
+  background: #581c87;
+  border-color: #581c87;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(88, 28, 135, 0.3);
+}
+
 .pairings-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 16px;
   margin-bottom: 2rem;
 }
@@ -2576,20 +2653,89 @@ button.region-label:hover,
   border-radius: 12px;
   padding: 1.25rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
-.pairing-category-badge {
+.pairing-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.pairing-card.red {
+  border-left: 4px solid #8b0000;
+}
+
+.pairing-card.white {
+  border-left: 4px solid var(--accent-gold);
+}
+
+.pairing-card.sparkling {
+  border-left: 4px solid #7c3aed;
+}
+
+.pairing-card.rose {
+  border-left: 4px solid #db2777;
+}
+
+.pairing-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.pairing-wine-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
-  color: var(--accent-dark-gold);
-  margin-bottom: 6px;
+  letter-spacing: 0.6px;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.pairing-wine-badge.red {
+  background: #fbf0f2;
+  color: #8b0000;
+  border: 1px solid rgba(139, 0, 0, 0.3);
+}
+
+.pairing-wine-badge.white {
+  background: #fff9e6;
+  color: #7a5800;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.pairing-wine-badge.sparkling {
+  background: #f5f3ff;
+  color: #6d28d9;
+  border: 1px solid rgba(109, 40, 217, 0.3);
+}
+
+.pairing-wine-badge.rose {
+  background: #fdf2f8;
+  color: #be185d;
+  border: 1px solid rgba(190, 24, 93, 0.3);
+}
+
+.pairing-category-text {
+  font-size: 0.72rem;
+  color: #777;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
 }
 
 .pairing-dish-title {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: #1a1a1a;
   margin: 0 0 10px 0;
@@ -2597,12 +2743,24 @@ button.region-label:hover,
 }
 
 .pairing-note {
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: #444;
   line-height: 1.45;
   background: #faf7f2;
-  padding: 8px 10px;
+  padding: 9px 12px;
   border-radius: 6px;
+  margin-top: auto;
+  border-left: 2px solid rgba(212, 175, 55, 0.4);
+}
+
+.pairing-card.red .pairing-note {
+  border-left-color: rgba(139, 0, 0, 0.4);
+  background: #faf5f6;
+}
+
+.pairing-card.white .pairing-note {
+  border-left-color: rgba(212, 175, 55, 0.5);
+  background: #faf8f0;
 }
 
 .pairing-note-label {
@@ -2610,6 +2768,9 @@ button.region-label:hover,
   color: #222;
   display: block;
   margin-bottom: 2px;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .sommelier-tip-box {
