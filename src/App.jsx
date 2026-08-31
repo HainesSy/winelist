@@ -41,9 +41,9 @@ function App() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [username, setUsername] = useState(() => {
     try {
-      return localStorage.getItem('ct_user') || '';
+      return localStorage.getItem('ct_user') || 'Haines';
     } catch {
-      return '';
+      return 'Haines';
     }
   });
   const [password, setPassword] = useState(() => {
