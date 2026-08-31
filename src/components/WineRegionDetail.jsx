@@ -512,6 +512,8 @@ export default function WineRegionDetail({
   const [cruGrapeFilter, setCruGrapeFilter] = useState('all');
   const [cruSearchQuery, setCruSearchQuery] = useState('');
   const [prestigeColorFilter, setPrestigeColorFilter] = useState('all'); // 'all' | 'red' | 'white'
+  const [prestigePage, setPrestigePage] = useState(1);
+  const PRESTIGE_PAGE_SIZE = 8;
   const [regionDropdownOpen, setRegionDropdownOpen] = useState(false);
   const [searchFilter, setSearchFilter] = useState('');
 
@@ -547,6 +549,18 @@ export default function WineRegionDetail({
     }
     return region?.prestigeCuvees || [];
   }, [region, isBurgundy, prestigeColorFilter]);
+
+  // Reset page when filter or region changes
+  useEffect(() => {
+    setPrestigePage(1);
+  }, [prestigeColorFilter, region?.id]);
+
+  const totalPrestigePages = Math.ceil(prestigeItems.length / PRESTIGE_PAGE_SIZE) || 1;
+
+  const paginatedPrestigeItems = useMemo(() => {
+    const start = (prestigePage - 1) * PRESTIGE_PAGE_SIZE;
+    return prestigeItems.slice(start, start + PRESTIGE_PAGE_SIZE);
+  }, [prestigeItems, prestigePage]);
 
   // Filter cellar wines belonging to this region
   const cellarWines = useMemo(() => {
@@ -1846,6 +1860,7 @@ export default function WineRegionDetail({
             <table className={`prestige-table ${isBurgundy ? 'monopoles-table' : ''}`}>
               {isBurgundy ? (
                 <colgroup>
+                  <col className="col-bg-rank" />
                   <col className="col-bg-monopole" />
                   <col className="col-bg-owner" />
                   <col className="col-bg-village" />
@@ -1856,6 +1871,7 @@ export default function WineRegionDetail({
                 </colgroup>
               ) : (
                 <colgroup>
+                  <col className="col-rank" />
                   <col className="col-cuvee" />
                   <col className="col-house" />
                   <col className="col-debut" />
@@ -1867,6 +1883,7 @@ export default function WineRegionDetail({
               )}
               <thead>
                 <tr>
+                  <th>Rank</th>
                   <th>{isBurgundy ? (prestigeColorFilter === 'white' ? 'White Climat / Terroir' : 'Monopole / Benchmark Climat') : 'Prestige Cuvée'}</th>
                   <th>{isBurgundy ? 'Benchmark Domaine / Owner' : 'House / Estate'}</th>
                   <th>{isBurgundy ? 'Village & AOC' : 'Debut'}</th>
@@ -1877,7 +1894,8 @@ export default function WineRegionDetail({
                 </tr>
               </thead>
               <tbody>
-                {prestigeItems.map((item, idx) => {
+                {paginatedPrestigeItems.map((item, idx) => {
+                  const globalRank = (prestigePage - 1) * PRESTIGE_PAGE_SIZE + idx + 1;
                   const grapeStr = (item.grape || item.grapeComposition || item.blend || item.dominantGrape || item.wineType || '').toLowerCase();
                   const nameStr = (item.name || '').toLowerCase();
 
@@ -1895,7 +1913,12 @@ export default function WineRegionDetail({
                   const icon = colorClass === 'red' ? '🍷' : colorClass === 'white' ? '🥂' : colorClass === 'rose' ? '🌸' : '🍇';
 
                   return (
-                    <tr key={idx}>
+                    <tr key={item.id || idx}>
+                      <td className="col-rank-cell">
+                        <span className={`prestige-rank-badge ${globalRank === 1 ? 'rank-1' : globalRank === 2 ? 'rank-2' : globalRank === 3 ? 'rank-3' : ''}`}>
+                          {globalRank === 1 ? '👑 #1' : globalRank === 2 ? '🥇 #2' : globalRank === 3 ? '🥈 #3' : `#${globalRank}`}
+                        </span>
+                      </td>
                       <td className="col-cuvee-cell">
                         <strong className="cuvee-name-highlight">{item.name}</strong>
                       </td>
@@ -1922,17 +1945,51 @@ export default function WineRegionDetail({
                       <td className="col-sourcing-cell">
                         <span className="sourcing-text">{item.classification || item.sourcing || 'Grand Cru'}</span>
                       </td>
-                    <td className="col-winemaking-cell">
-                      <p className="vinification-note">{item.historicalLore || item.winemaking || item.vinification || item.notes}</p>
-                    </td>
-                    <td className="col-legacy-cell">
-                      <p className="iconic-status-note">{item.character || item.iconicStatus}</p>
-                    </td>
-                  </tr>
+                      <td className="col-winemaking-cell">
+                        <p className="vinification-note">{item.historicalLore || item.winemaking || item.vinification || item.notes}</p>
+                      </td>
+                      <td className="col-legacy-cell">
+                        <p className="iconic-status-note">{item.character || item.iconicStatus}</p>
+                      </td>
+                    </tr>
                   );
                 })}
               </tbody>
             </table>
+
+            {/* Pagination Controls */}
+            {totalPrestigePages > 1 && (
+              <div className="prestige-pagination-bar">
+                <div className="pagination-info">
+                  Showing <strong>{(prestigePage - 1) * PRESTIGE_PAGE_SIZE + 1}–{Math.min(prestigePage * PRESTIGE_PAGE_SIZE, prestigeItems.length)}</strong> of <strong>{prestigeItems.length}</strong> {isBurgundy ? 'Benchmark Terroirs' : 'Prestige Cuvées'} (Ranked by Prominence)
+                </div>
+                <div className="pagination-controls">
+                  <button 
+                    className="pagination-nav-btn" 
+                    disabled={prestigePage === 1}
+                    onClick={() => setPrestigePage(p => Math.max(1, p - 1))}
+                  >
+                    Previous
+                  </button>
+                  {Array.from({ length: totalPrestigePages }, (_, i) => i + 1).map(pageNum => (
+                    <button
+                      key={pageNum}
+                      className={`pagination-page-btn ${prestigePage === pageNum ? 'active' : ''}`}
+                      onClick={() => setPrestigePage(pageNum)}
+                    >
+                      {pageNum}
+                    </button>
+                  ))}
+                  <button 
+                    className="pagination-nav-btn" 
+                    disabled={prestigePage === totalPrestigePages}
+                    onClick={() => setPrestigePage(p => Math.min(totalPrestigePages, p + 1))}
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Cult Domaines / Iconic Growers Directory */}

@@ -4151,29 +4151,31 @@ button.region-label:hover,
 
 .prestige-table {
   width: 100%;
-  min-width: 980px;
+  min-width: 1020px;
   table-layout: fixed;
   border-collapse: collapse;
   font-size: 0.85rem;
 }
 
 /* Champagne Columns */
+.prestige-table col.col-rank { width: 7%; }
 .prestige-table col.col-cuvee { width: 16%; }
 .prestige-table col.col-house { width: 14%; }
 .prestige-table col.col-debut { width: 10%; }
-.prestige-table col.col-blend { width: 13%; }
-.prestige-table col.col-sourcing { width: 14%; }
-.prestige-table col.col-winemaking { width: 17%; }
-.prestige-table col.col-legacy { width: 16%; }
+.prestige-table col.col-blend { width: 12%; }
+.prestige-table col.col-sourcing { width: 13%; }
+.prestige-table col.col-winemaking { width: 14%; }
+.prestige-table col.col-legacy { width: 14%; }
 
-/* Burgundy Monopoles Columns */
+/* Burgundy Monopoles & Whites Columns */
+.prestige-table col.col-bg-rank { width: 7%; }
 .prestige-table col.col-bg-monopole { width: 16%; }
 .prestige-table col.col-bg-owner { width: 15%; }
-.prestige-table col.col-bg-village { width: 17%; }
-.prestige-table col.col-bg-grape { width: 12%; }
-.prestige-table col.col-bg-class { width: 12%; }
-.prestige-table col.col-bg-lore { width: 15%; }
-.prestige-table col.col-bg-profile { width: 13%; }
+.prestige-table col.col-bg-village { width: 16%; }
+.prestige-table col.col-bg-grape { width: 11%; }
+.prestige-table col.col-bg-class { width: 11%; }
+.prestige-table col.col-bg-lore { width: 12%; }
+.prestige-table col.col-bg-profile { width: 12%; }
 
 .prestige-table th {
   background: #faf7f2;
@@ -4193,6 +4195,123 @@ button.region-label:hover,
   color: #444;
   word-wrap: break-word;
   overflow-wrap: break-word;
+}
+
+.col-rank-cell {
+  text-align: center;
+}
+
+/* Prestige Prominence Rank Badges */
+.prestige-rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #555;
+  background: #f0ebe0;
+  border-radius: 6px;
+  padding: 3px 7px;
+  white-space: nowrap;
+}
+
+.prestige-rank-badge.rank-1 {
+  background: linear-gradient(135deg, #ffd700 0%, #daa520 100%);
+  color: #3b0e1e;
+  font-weight: 800;
+  box-shadow: 0 2px 5px rgba(218, 165, 32, 0.35);
+}
+
+.prestige-rank-badge.rank-2 {
+  background: linear-gradient(135deg, #f0f0f0 0%, #c0c0c0 100%);
+  color: #222;
+  font-weight: 800;
+  box-shadow: 0 2px 5px rgba(192, 192, 192, 0.35);
+}
+
+.prestige-rank-badge.rank-3 {
+  background: linear-gradient(135deg, #fed7aa 0%, #cd7f32 100%);
+  color: #3b0e1e;
+  font-weight: 800;
+  box-shadow: 0 2px 5px rgba(205, 127, 50, 0.35);
+}
+
+/* Prestige Table Pagination Bar */
+.prestige-pagination-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #faf7f2;
+  border-top: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.pagination-info {
+  font-size: 0.82rem;
+  color: #666;
+}
+
+.pagination-info strong {
+  color: #1a1a1a;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pagination-nav-btn {
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  background: #ffffff;
+  font-size: 0.80rem;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination-nav-btn:hover:not(:disabled) {
+  background: #fff9e6;
+  border-color: var(--accent-gold);
+  color: #8b0000;
+}
+
+.pagination-nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination-page-btn {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  background: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination-page-btn:hover {
+  background: #fff9e6;
+  border-color: var(--accent-gold);
+}
+
+.pagination-page-btn.active {
+  background: #3b0e1e;
+  color: #ffffff;
+  border-color: #3b0e1e;
+  box-shadow: 0 2px 6px rgba(59, 14, 30, 0.3);
 }
 
 .cuvee-name-highlight {
