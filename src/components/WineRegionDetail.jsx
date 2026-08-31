@@ -1999,16 +1999,37 @@ export default function WineRegionDetail({
                 {isBurgundy ? 'Iconic Benchmark Cult Domaines of Burgundy' : 'Iconic Grower Champagne (RM) Benchmark Estates'}
               </h3>
               <div className="growers-grid">
-                {(region.iconicDomaines || region.iconicGrowers).map(estate => (
-                  <div key={estate.name} className="grower-card">
-                    <div className="grower-card-header">
-                      <h5>{estate.name}</h5>
-                      <span className="grower-village">{estate.village || estate.subregion} {estate.vigneron ? `· ${estate.vigneron}` : ''}</span>
+                {(region.iconicDomaines || region.iconicGrowers).map(estate => {
+                  let estateColor = 'gold';
+                  const wt = (estate.wineType || '').toLowerCase();
+                  const villageStr = (estate.village || '').toLowerCase();
+                  const nameStr = (estate.name || '').toLowerCase();
+                  const cuveesStr = (estate.keyCuvees || []).join(' ').toLowerCase();
+
+                  if (wt === 'red') estateColor = 'red';
+                  else if (wt === 'white') estateColor = 'white';
+                  else if (wt === 'dual' || wt === 'both') estateColor = 'dual';
+                  else if (villageStr.includes('chablis') || villageStr.includes('meursault') || villageStr.includes('puligny') || villageStr.includes('chassagne') || villageStr.includes('côte des blancs') || nameStr.includes('leflaive') || nameStr.includes('raveneau') || nameStr.includes('dauvissat') || nameStr.includes('coche') || nameStr.includes('roulot') || nameStr.includes('colin')) {
+                    estateColor = 'white';
+                  } else if (villageStr.includes('gevrey') || villageStr.includes('chambolle') || villageStr.includes('morey') || villageStr.includes('vosne') || villageStr.includes('nuits') || villageStr.includes('volnay') || villageStr.includes('pommard') || villageStr.includes('montagne de reims')) {
+                    estateColor = 'red';
+                  }
+
+                  const icon = estateColor === 'red' ? '🍷' : estateColor === 'white' ? '🥂' : estateColor === 'dual' ? '🍇' : '🍾';
+
+                  return (
+                    <div key={estate.name} className={`grower-card ${estateColor}`}>
+                      <div className="grower-card-header">
+                        <h5>{estate.name}</h5>
+                        <span className={`grower-village ${estateColor}`}>
+                          <span>{icon}</span> {estate.village || estate.subregion} {estate.vigneron ? `· ${estate.vigneron}` : ''}
+                        </span>
+                      </div>
+                      <p className="grower-philosophy"><strong>Philosophy:</strong> {estate.philosophy}</p>
+                      <p className="grower-key-wines"><strong>Key Cuvées:</strong> {estate.keyCuvees?.join(', ')}</p>
                     </div>
-                    <p className="grower-philosophy"><strong>Philosophy:</strong> {estate.philosophy}</p>
-                    <p className="grower-key-wines"><strong>Key Cuvées:</strong> {estate.keyCuvees?.join(', ')}</p>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           )}
