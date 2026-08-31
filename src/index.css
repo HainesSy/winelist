@@ -3231,6 +3231,17 @@ button.region-label:hover,
   margin-bottom: 0.5rem;
 }
 
+.cru-legal-notes {
+  font-size: 0.79rem;
+  color: #7a5800;
+  background: rgba(212, 175, 55, 0.12);
+  border-left: 2px solid var(--accent-gold);
+  padding: 4px 8px;
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
 .cru-producers-box {
   margin-top: auto;
   padding-top: 8px;

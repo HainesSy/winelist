@@ -373,6 +373,12 @@ export default function WineRegionMap({
                 <strong>Dominant Grape:</strong>
                 <p><strong>${cru.dominantGrape}</strong> ${cru.grapeRatio ? `(${cru.grapeRatio})` : ''}</p>
               </div>
+              ${cru.aocDecreeYear || cru.elevationRange ? `
+                <div class="popup-row">
+                  <strong>Technical Specs:</strong>
+                  <p>${cru.aocDecreeYear ? `Decree Est. ${cru.aocDecreeYear}` : ''}${cru.aocDecreeYear && cru.elevationRange ? ' · ' : ''}${cru.elevationRange ? `Elevation: ${cru.elevationRange}` : ''}${cru.baseYield ? ` · Yield Cap: ${cru.baseYield}` : ''}</p>
+                </div>
+              ` : ''}
               <div class="popup-row">
                 <strong>Hillside Aspect:</strong>
                 <p>${cru.aspect || 'Steep solar slope'}</p>
@@ -385,6 +391,12 @@ export default function WineRegionMap({
                 <strong>Character Profile:</strong>
                 <p>${cru.character || 'Profound structural complexity.'}</p>
               </div>
+              ${cru.legalNotes ? `
+                <div class="popup-row">
+                  <strong>Appellation Nuance:</strong>
+                  <p>${cru.legalNotes}</p>
+                </div>
+              ` : ''}
               ${cru.benchmarkProducers && cru.benchmarkProducers.length > 0 ? `
                 <div class="popup-row">
                   <strong>Benchmark Producers:</strong>
@@ -470,10 +482,12 @@ export default function WineRegionMap({
                 <strong>Dominant Grape:</strong>
                 <p><strong>${pcru.dominantGrape}</strong> ${pcru.grapeRatio ? `(${pcru.grapeRatio})` : ''}</p>
               </div>
-              <div class="popup-row">
-                <strong>Aspect & Soil:</strong>
-                <p>${pcru.aspect ? `${pcru.aspect} · ` : ''}${pcru.soil || 'Chalk-marl slope'}</p>
-              </div>
+              ${pcru.areaHa || pcru.aspect ? `
+                <div class="popup-row">
+                  <strong>Terroir & Aspect:</strong>
+                  <p>${pcru.aspect || 'Slope'} · ${pcru.soil || 'Limestone marl'}</p>
+                </div>
+              ` : ''}
               <div class="popup-row">
                 <strong>Character:</strong>
                 <p>${pcru.character || 'Vibrant, terroir-expressive Cru.'}</p>

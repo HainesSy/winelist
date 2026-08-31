@@ -1,5 +1,7 @@
-// Authoritative Burgundy (Bourgogne) Wine Datasets
-// Grand Crus (33), Benchmark Premier Crus, Terroirs, Geology & Winemaking Guides
+// Authoritative Burgundy (Bourgogne) Wine Knowledge Base & Datasets
+// Comprehensive Master Catalog: 33 Grand Crus, 44 Benchmark Premier Crus, Geology & Combes,
+// Technical AOC Yield & Density Regulations, Ampelography & Clones, 228L Pièce Cooperage,
+// Satellite Appellations, Prestige Monopoles, White Benchmark Terroirs, and Cult Domaines.
 
 // ============================================================================
 // 1. ALL 33 GRAND CRUS OF BURGUNDY (AOC)
@@ -7,7 +9,7 @@
 
 export const BURGUNDY_GRAND_CRUS = [
   // --------------------------------------------------------------------------
-  // CHABLIS (1 Grand Cru Appellation / 7 Climats)
+  // CHABLIS (1 Grand Cru Appellation / 7 Climats + La Moutonne Monopole)
   // --------------------------------------------------------------------------
   {
     id: 'chablis-grand-cru-les-clos',
@@ -20,13 +22,17 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.8175,
     lng: 3.8083,
     areaHa: 28.39,
+    aocDecreeYear: 1938,
+    elevationRange: "135m – 215m",
     aspect: "South / South-West facing steep hillside",
     dominantGrape: "Chardonnay (100%)",
     wineType: "White",
+    baseYield: "45 hl/ha",
+    minPotentialAbv: "11.5% vol.",
     soil: "Pure Upper Jurassic Kimmeridgian limestone marl densely packed with fossilized Exogyra virgula oysters with thin stony topsoil",
     character: "The largest, most powerful, and longest-lived Grand Cru of Chablis. Monumental mineral depth, crushed oyster shell, citrus oil, white peach, iodine, and steely tension with immense 20-30+ year longevity.",
     benchmarkProducers: ["Domaine François Raveneau", "Vincent Dauvissat", "William Fèvre", "Christian Moreau", "Domaine Long-Depaquit (Bichot)", "Droin"],
-    iconicVineyards: ["Les Clos (28.39 ha historical climat, cradle of Chablis viticulture)"]
+    iconicVineyards: ["Les Clos (28.39 ha historical climat, cradle of Chablis viticulture planted by Cistercian monks of Pontigny Abbey)"]
   },
   {
     id: 'chablis-grand-cru-vaudesir',
@@ -39,10 +45,14 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.8208,
     lng: 3.8056,
     areaHa: 14.71,
-    aspect: "Steep natural amphitheater with South and North-West slopes",
+    aocDecreeYear: 1938,
+    elevationRange: "130m – 210m",
+    aspect: "Steep natural amphitheater with South and North-West slopes (the 'Valley of Desire')",
     dominantGrape: "Chardonnay (100%)",
     wineType: "White",
-    soil: "Soft Kimmeridgian clay-limestone marl nestled in a sheltered valley amphitheater",
+    baseYield: "45 hl/ha",
+    minPotentialAbv: "11.5% vol.",
+    soil: "Soft Kimmeridgian clay-limestone marl nestled in a sheltered valley amphitheater with excellent sun trapping",
     character: "Intensely floral, ethereal, feminine elegance with white blossom, acacia, lemon curd, and refined saline finesse balancing ripe stone fruit.",
     benchmarkProducers: ["Domaine Drouhin-Vaudon", "Louis Michel & Fils", "William Fèvre", "Billaud-Simon", "Gérard Tremblay"],
     iconicVineyards: ["Vaudésir Amphitheater"]
@@ -58,10 +68,14 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.8189,
     lng: 3.8067,
     areaHa: 13.20,
-    aspect: "South-East and North-West facing narrow valley slopes",
+    aocDecreeYear: 1938,
+    elevationRange: "140m – 205m",
+    aspect: "South-East and North-West facing narrow valley slopes acting as a thermal funnel",
     dominantGrape: "Chardonnay (100%)",
     wineType: "White",
-    soil: "Dense Kimmeridgian limestone marl with heavy clay pockets",
+    baseYield: "45 hl/ha",
+    minPotentialAbv: "11.5% vol.",
+    soil: "Dense Kimmeridgian limestone marl with heavy clay pockets and hard limestone benches",
     character: "Austere, chiseled, steely structure with piercing limestone minerality, green apple, smoke, and brooding complexity requiring cellar age.",
     benchmarkProducers: ["Domaine François Raveneau", "Moreau-Naudet", "Jean-Claude Bessin", "William Fèvre", "Jean-Paul & Benoît Droin"],
     iconicVineyards: ["Valmur Valley"]
@@ -77,10 +91,14 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.8139,
     lng: 3.8122,
     areaHa: 12.72,
-    aspect: "Pure South-East exposure receiving cool morning sun",
+    aocDecreeYear: 1938,
+    elevationRange: "145m – 215m",
+    aspect: "Pure South-East exposure receiving cool morning sun and shaded from intense afternoon heat",
     dominantGrape: "Chardonnay (100%)",
     wineType: "White",
-    soil: "White Kimmeridgian clay mixed with distinct strata of blue clay (argiles bleues)",
+    baseYield: "45 hl/ha",
+    minPotentialAbv: "11.5% vol.",
+    soil: "White Kimmeridgian clay mixed with distinct strata of blue clay (argiles bleues) rich in fossils",
     character: "Delicate, high-toned floral aromatics, white tea, citrus blossom, crystalline texture, and delicate saline lift.",
     benchmarkProducers: ["Domaine François Raveneau", "Domaine Laroche (La Réserve de l'Obédience)", "Patrick Piuze", "Guy Robin"],
     iconicVineyards: ["Blanchot"]
@@ -96,10 +114,14 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.8222,
     lng: 3.8028,
     areaHa: 11.44,
-    aspect: "South / South-West facing gentle terrace",
+    aocDecreeYear: 1938,
+    elevationRange: "150m – 200m",
+    aspect: "South / South-West facing gentle terrace overlooking the valley",
     dominantGrape: "Chardonnay (100%)",
     wineType: "White",
-    soil: "Deep, compact Kimmeridgian limestone marl with calcareous clay topsoil",
+    baseYield: "45 hl/ha",
+    minPotentialAbv: "11.5% vol.",
+    soil: "Deep, compact Kimmeridgian limestone marl with heavy calcareous clay topsoil ('Preuses' derives from Pierreuse / stony)",
     character: "Aristocratic, silken texture, hazelnut, candied citrus, wet stone minerality, and profound harmony between power and finesse.",
     benchmarkProducers: ["Vincent Dauvissat", "William Fèvre", "La Chablisienne", "René et Vincent Dauvissat", "Jean-Paul & Benoît Droin"],
     iconicVineyards: ["Les Preuses"]
@@ -115,10 +137,14 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.8236,
     lng: 3.7989,
     areaHa: 15.86,
+    aocDecreeYear: 1938,
+    elevationRange: "130m – 190m",
     aspect: "South / South-West steep hillside overlooking the Serein river",
     dominantGrape: "Chardonnay (100%)",
     wineType: "White",
-    soil: "Rich, deep clay-limestone marl with high gravel fraction on lower slopes (Côte Bouguerots)",
+    baseYield: "45 hl/ha",
+    minPotentialAbv: "11.5% vol.",
+    soil: "Rich, deep clay-limestone marl with high gravel fraction on lower slopes; includes the steep 40° sub-parcel Côte Bouguerots",
     character: "Broad-shouldered, rich, generous, smoky minerality with yellow orchard fruit and approachable roundness in youth.",
     benchmarkProducers: ["William Fèvre (Côte Bouguerots)", "Domaine Colombier", "Maison Chanson", "Jean-Marc Brocard"],
     iconicVineyards: ["Côte Bouguerots (steep 40° sub-parcel)"]
@@ -134,10 +160,14 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.8194,
     lng: 3.8042,
     areaHa: 9.38,
-    aspect: "Full South facing central slope just above the Serein river",
+    aocDecreeYear: 1938,
+    elevationRange: "130m – 175m",
+    aspect: "Full South facing central slope just above the Serein river (named after the frogs that historically populated the riverbanks)",
     dominantGrape: "Chardonnay (100%)",
     wineType: "White",
-    soil: "Warm Kimmeridgian marls on a gentle mid-slope terrace",
+    baseYield: "45 hl/ha",
+    minPotentialAbv: "11.5% vol.",
+    soil: "Warm Kimmeridgian marls on a gentle mid-slope terrace with excellent heat accumulation",
     character: "The smallest official Grand Cru climat in Chablis. Ripe peach, honeyed floral nuances, creamy mouthfeel, and succulent mineral persistence.",
     benchmarkProducers: ["La Chablisienne (Château Grenouilles - controlling over 7.2 ha)", "Jean-Paul & Benoît Droin", "Daniel-Etienne Defaix"],
     iconicVineyards: ["Château Grenouilles"]
@@ -157,13 +187,18 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.2189,
     lng: 4.9622,
     areaHa: 12.90,
-    aspect: "East / South-East mid-slope (275m–300m elevation)",
+    aocDecreeYear: 1937,
+    elevationRange: "275m – 300m",
+    aspect: "East / South-East mid-slope",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
-    soil: "Bajocian crinoidal limestone (Calcaire à Entroques) with brown calcareous clay, gravel, and iron-oxide deposits",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
+    soil: "Bajocian crinoidal limestone (Calcaire à Entroques) with brown calcareous clay, gravel, and iron-oxide deposits over fractured bedrock",
     character: "The 'King of Wines' — sovereign power, muscular architecture, dark cherry, black truffle, licorice, game, and profound noble tannins requiring decades of cellaring.",
+    legalNotes: "Clos de Bèze may be legally sold as Chambertin, but Chambertin cannot be sold as Clos de Bèze.",
     benchmarkProducers: ["Domaine Armand Rousseau", "Domaine Leroy", "Domaine Trapet Père & Fils", "Domaine Dujac", "Domaine Denis Mortet", "Domaine Dugat-Py"],
-    iconicVineyards: ["Chambertin (12.90 ha historic climat praised by Napoleon Bonaparte)"]
+    iconicVineyards: ["Chambertin (12.90 ha historic climat praised by Napoleon Bonaparte, historically created by the peasant Bertin as 'Champ de Bertin')"]
   },
   {
     id: 'chambertin-clos-de-beze',
@@ -176,11 +211,16 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.2217,
     lng: 4.9639,
     areaHa: 15.40,
+    aocDecreeYear: 1937,
+    elevationRange: "270m – 300m",
     aspect: "East facing steep slope (slightly steeper and warmer than Chambertin)",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
     soil: "Pure Bajocian limestone scree and shallow crinoidal clay on upper mid-slope",
-    character: "Oldest recorded Burgundy vineyard (cleared in 630 AD by monks of Bèze). Extraordinary aromatic complexity, Asian spice, wild strawberry, incense, and cashmere tannins with regal persistence.",
+    character: "Oldest recorded Burgundy vineyard (cleared in 630 AD by monks of Bèze Abbey). Extraordinary aromatic complexity, Asian spice, wild strawberry, incense, and cashmere tannins with regal persistence.",
+    legalNotes: "May be labeled as Chambertin-Clos de Bèze or simply Chambertin.",
     benchmarkProducers: ["Domaine Armand Rousseau", "Domaine Pierre Damoy", "Domaine Robert Groffier", "Domaine Bruno Clair", "Domaine Drouhin-Laroze"],
     iconicVineyards: ["Clos de Bèze (enclosed by stone walls in 630 AD)"]
   },
@@ -195,10 +235,14 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.2211,
     lng: 4.9675,
     areaHa: 5.49,
+    aocDecreeYear: 1937,
+    elevationRange: "260m – 275m",
     aspect: "East facing lower mid-slope opposite Clos de Bèze",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
-    soil: "Shallow, rocky topsoil over crinoidal limestone bedrock; well-drained and warm",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
+    soil: "Shallow, rocky topsoil over crinoidal limestone bedrock; comprises En la Chapelle (3.73 ha) and Les Gémeaux (1.76 ha)",
     character: "Silky, high-toned, red cherry, rose petal, subtle earth, and approachable finesse compared to the muscular core of Chambertin.",
     benchmarkProducers: ["Domaine Ponsot", "Domaine Trapet Père & Fils", "Domaine Pierre Damoy", "Domaine Cécile Tremblay", "Domaine Claude Dugat"],
     iconicVineyards: ["En la Chapelle", "Les Gémeaux"]
@@ -214,11 +258,16 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.2167,
     lng: 4.9667,
     areaHa: 28.43,
+    aocDecreeYear: 1937,
+    elevationRange: "240m – 280m",
     aspect: "East facing gentle slope below Chambertin",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
-    soil: "Bajocian limestone with deeper, clay-rich topsoil over gravelly bedrock",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
+    soil: "Bajocian limestone with deeper, clay-rich topsoil over gravelly bedrock (Charmes proper 12.24 ha, Mazoyères 18.59 ha)",
     character: "Supple, voluptuous, velvety red fruits, sweet cherry, violet, round tannins, and early charm with generous mid-palate richness.",
+    legalNotes: "Mazoyères-Chambertin may be legally bottled and sold as Charmes-Chambertin, making total possible production 30.83 ha.",
     benchmarkProducers: ["Domaine Armand Rousseau", "Domaine Denis Bachelet", "Domaine Dujac", "Domaine Perrot-Minot", "Domaine Arlaud", "Domaine Dugat-Py"],
     iconicVineyards: ["Charmes-Chambertin", "Mazoyères-Chambertin"]
   },
@@ -233,11 +282,15 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.2183,
     lng: 4.9661,
     areaHa: 2.73,
+    aocDecreeYear: 1937,
+    elevationRange: "260m – 275m",
     aspect: "East facing sheltered depression below Clos de Bèze",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
-    soil: "Deep fissured Bajocian limestone with clay-iron topsoil and high heat retention",
-    character: "Smallest Grand Cru in Gevrey-Chambertin. Intense wild sour cherry (griotte), exotic floral perfume, velvety texture, and refined aristocratic sweetness.",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
+    soil: "Deep fissured Bajocian limestone with clay-iron topsoil and exceptional microclimatic warmth",
+    character: "Smallest Grand Cru in Gevrey-Chambertin (2.73 ha). Intense wild sour cherry (griotte), exotic floral perfume, velvety texture, and refined aristocratic sweetness.",
     benchmarkProducers: ["Domaine Ponsot", "Domaine des Chézeaux", "Domaine Claude Dugat", "Domaine Joseph Drouhin", "Domaine René Leclerc"],
     iconicVineyards: ["Griotte-Chambertin (2.73 ha)"]
   },
@@ -252,10 +305,14 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.2150,
     lng: 4.9597,
     areaHa: 7.35,
+    aocDecreeYear: 1937,
+    elevationRange: "275m – 300m",
     aspect: "East / South-East slope directly south of Chambertin",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
-    soil: "Poor, rocky limestone scree cooled by cold downdrafts from the Combe Grisard valley",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
+    soil: "Poor, rocky limestone scree ('La Triche' / poor ground) cooled by cold downdrafts from the Combe Grisard valley",
     character: "Chiseled, mineral-driven, taut, flinty red berries, forest floor, high-tension acidity, and understated aristocratic elegance.",
     benchmarkProducers: ["Domaine Leroy", "Domaine Trapet Père & Fils", "Domaine Arnoux-Lachaux", "Domaine Rossignol-Trapet", "Domaine Faiveley"],
     iconicVineyards: ["Latricières-Chambertin"]
@@ -271,10 +328,14 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.2242,
     lng: 4.9650,
     areaHa: 9.10,
+    aocDecreeYear: 1937,
+    elevationRange: "260m – 290m",
     aspect: "East facing slope north of Clos de Bèze",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
-    soil: "Bathonian limestone on upper slope (Mazis-Haut) transitioning to deeper clay marl (Mazis-Bas)",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
+    soil: "Bathonian limestone on upper slope (Mazis-Haut 4.57 ha) transitioning to deeper clay marl (Mazis-Bas 4.53 ha)",
     character: "Dark, wild, untamed power with black cherry, leather, clove, roasted herbs, and firm structural tannins.",
     benchmarkProducers: ["Domaine Leroy", "Domaine Armand Rousseau", "Domaine Bernard Dugat-Py", "Domaine Faiveley", "Domaine Harmand-Geoffroy"],
     iconicVineyards: ["Mazis-Haut", "Mazis-Bas"]
@@ -290,11 +351,15 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.2139,
     lng: 4.9667,
     areaHa: 18.59,
+    aocDecreeYear: 1937,
+    elevationRange: "240m – 275m",
     aspect: "East facing gentle slope bordering Morey-Saint-Denis",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
     soil: "Bajocian limestone with gravelly clay topsoil on lower slope",
-    character: "Deep, earthy, structured red fruit, licorice, savory forest floor, and firm grip (may be labeled as Charmes-Chambertin).",
+    character: "Deep, earthy, structured red fruit, licorice, savory forest floor, and firm grip (frequently commercialized as Charmes-Chambertin).",
     benchmarkProducers: ["Domaine Taupenot-Merme", "Domaine Perrot-Minot", "Domaine Dugat-Py", "Domaine Camus Père & Fils"],
     iconicVineyards: ["Mazoyères-Chambertin"]
   },
@@ -309,10 +374,14 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.2264,
     lng: 4.9639,
     areaHa: 3.30,
-    aspect: "East facing steep upper slope on rocky limestone shelf (280m–300m elevation)",
+    aocDecreeYear: 1937,
+    elevationRange: "280m – 310m",
+    aspect: "East facing steep upper slope on rocky limestone shelf",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
-    soil: "Extremely stony, shallow limestone bedrock (Ruchottes refers to the rocky outcrop 'ruchots')",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
+    soil: "Extremely stony, shallow limestone bedrock ('Ruchottes' refers to the rocky outcrop 'ruchots')",
     character: "Electric limestone tension, red currant, pomegranate, white pepper, crushed stones, and razor-sharp mineral precision.",
     benchmarkProducers: ["Domaine Armand Rousseau (Clos des Ruchottes Monopole - 1.06 ha)", "Domaine Georges Mugneret-Gibourg", "Domaine Christophe Roumier", "Domaine Trapet Père & Fils"],
     iconicVineyards: ["Clos des Ruchottes (1.06 ha Monopole Rousseau)", "Ruchottes du Dessus", "Ruchottes du Bas"]
@@ -332,9 +401,13 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.1950,
     lng: 4.9583,
     areaHa: 7.53,
+    aocDecreeYear: 1939,
+    elevationRange: "265m – 300m",
     aspect: "East / South-East walled amphitheater (rows planted North-South to prevent erosion and maximize sun)",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
     soil: "Bajocian crinoidal limestone with varied clay-limestone strata enclosed by stone walls since 1141",
     character: "Monopole of Artémis Domaines (Pinault). Monumental richness, blackberry liqueur, violet, mocha, Asian spice, and velvety aristocratic power.",
     benchmarkProducers: ["Domaine du Clos de Tart (Monopole)"],
@@ -351,12 +424,16 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.1972,
     lng: 4.9589,
     areaHa: 8.84,
+    aocDecreeYear: 1981,
+    elevationRange: "260m – 310m",
     aspect: "East facing undulating amphitheater with complex microclimates",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
     soil: "Mosaic of 3 sub-climats: Les Bouchots (stony upper slope), Les Larrets (pure mid-slope limestone), Meix Rentier (clay-rich lower slope)",
-    character: "Quasi-monopole of Domaine des Lambrays (LVMH owning 8.66 ha). High-toned rose petal, wild strawberry, clove, forest floor, and silky complexity.",
-    benchmarkProducers: ["Domaine des Lambrays (Quasi-monopole)", "Domaine Taupenot-Merme (tiny parcel)"],
+    character: "Quasi-monopole of Domaine des Lambrays (LVMH owning 8.66 ha; Taupenot-Merme owns tiny 0.04 ha). High-toned rose petal, wild strawberry, clove, forest floor, and silky complexity.",
+    benchmarkProducers: ["Domaine des Lambrays (Quasi-monopole)", "Domaine Taupenot-Merme"],
     iconicVineyards: ["Les Larrets", "Les Bouchots", "Meix Rentier"]
   },
   {
@@ -370,13 +447,17 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.1992,
     lng: 4.9606,
     areaHa: 6.62,
+    aocDecreeYear: 1936,
+    elevationRange: "260m – 290m",
     aspect: "East facing central mid-slope giving its name to the commune",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
-    soil: "Brown limestone marl mixed with phosphorus and clay with gentle slope drainage",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
+    soil: "Brown limestone marl mixed with phosphorus and clay with gentle slope drainage; includes historic parcels Maison Brûlée and Calouère",
     character: "The silk and perfume of Morey-Saint-Denis: wild raspberry, sandalwood, violet, white truffle, refined tannins, and transcendent grace.",
     benchmarkProducers: ["Domaine Dujac", "Domaine Ponsot", "Domaine Bertagna", "Domaine Georges Lignier", "Domaine Arlaud"],
-    iconicVineyards: ["Clos Saint-Denis", "Maison Brûlée", "Calouère"]
+    iconicVineyards: ["Clos Saint-Denis (Historic 2.14 ha core)", "Maison Brûlée", "Calouère"]
   },
   {
     id: 'clos-de-la-roche',
@@ -389,9 +470,13 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.2025,
     lng: 4.9617,
     areaHa: 16.90,
+    aocDecreeYear: 1936,
+    elevationRange: "260m – 300m",
     aspect: "East facing rocky mid-slope adjoining Latricières-Chambertin",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
     soil: "Hard Bathonian Comblanchien limestone with razor-thin topsoil where vine roots plunge directly into solid rock",
     character: "Massive, deep, dark bramble fruit, black cherry, game, iron, wet stone, and muscular architecture with immense longevity.",
     benchmarkProducers: ["Domaine Ponsot (Cuvée Vieilles Vignes)", "Domaine Dujac", "Domaine Armand Rousseau", "Domaine Hubert Lignier", "Domaine Leroy"],
@@ -408,11 +493,15 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.1917,
     lng: 4.9567,
     areaHa: 1.52,
+    aocDecreeYear: 1936,
+    elevationRange: "260m – 290m",
     aspect: "East / South-East mid-slope",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
     soil: "Red clay-limestone soils (Terres Rouges) rich in iron and gravel",
-    character: "Powerful, broad, structured, dark berry fruits, chocolate, spice, and assertive tannins seamlessly completing the Chambolle portion.",
+    character: "Powerful, broad, structured, dark berry fruits, chocolate, spice, and assertive tannins completing the Chambolle portion (15.06 ha total AOC).",
     benchmarkProducers: ["Domaine Georges Roumier", "Domaine Dujac", "Domaine Bruno Clair"],
     iconicVineyards: ["Bonnes-Mares (Terres Rouges)"]
   },
@@ -431,13 +520,17 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.1778,
     lng: 4.9536,
     areaHa: 10.86,
-    aspect: "East / South-East amphitheater overlooking Clos de Vougeot (260m–300m elevation)",
-    dominantGrape: "Pinot Noir (and White Chardonnay permitted - sole Côte de Nuits Grand Cru for white wine)",
+    aocDecreeYear: 1936,
+    elevationRange: "260m – 300m",
+    aspect: "East / South-East amphitheater overlooking Clos de Vougeot",
+    dominantGrape: "Pinot Noir (and White Chardonnay permitted - sole Côte de Nuits Grand Cru authorized for white wine)",
     wineType: "Red & White",
+    baseYield: "35 hl/ha (Red), 40 hl/ha (White)",
+    minPotentialAbv: "11.5% vol. (Red), 12.0% vol. (White)",
     soil: "Bajocian crinoidal limestone with red calcareous clay, rich in iron, flint pebbles, and active calcium",
     character: "The undisputed apex of velvet and perfume: ethereal violet, rose petal, wild cherry, Asian incense, weightless power, and infinite haunting length.",
     benchmarkProducers: ["Domaine Comte Georges de Vogüé (7.14 ha - including Musigny Blanc)", "Domaine Leroy", "Domaine Georges Roumier", "Domaine Jacques-Frédéric Mugnier", "Domaine Drouhin-Laroze"],
-    iconicVineyards: ["Les Musigny (Grand Musigny)", "Les Petits Musigny (Monopole Vogüé - 4.19 ha)", "La Combe d'Orveau (0.77 ha)"]
+    iconicVineyards: ["Les Musigny (Grand Musigny - 5.90 ha)", "Les Petits Musigny (Monopole Vogüé - 4.19 ha)", "La Combe d'Orveau (0.77 ha)"]
   },
   {
     id: 'bonnes-mares',
@@ -450,9 +543,13 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.1894,
     lng: 4.9556,
     areaHa: 13.54,
+    aocDecreeYear: 1936,
+    elevationRange: "250m – 290m",
     aspect: "East facing gentle slope adjoining Morey-Saint-Denis",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
     soil: "Split between white limestone marl (Terres Blanches on upper slope) and deep red calcareous clay (Terres Rouges on lower slope)",
     character: "Muscular, deep, blackberry, wild blueberry, violet, roasted coffee, iron-tinged minerality, and brooding structural power contrasting with Musigny's lace.",
     benchmarkProducers: ["Domaine Georges Roumier", "Domaine Comte Georges de Vogüé", "Domaine Robert Groffier", "Domaine Bruno Clair", "Domaine d'Auvenay (Leroy)"],
@@ -473,10 +570,14 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.1750,
     lng: 4.9606,
     areaHa: 50.60,
+    aocDecreeYear: 1937,
+    elevationRange: "240m – 270m",
     aspect: "East facing vast walled vineyard enclosed in 1336 by Cistercian monks",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
-    soil: "Three distinct geological tiers: Upper slope near Château (shallow gravelly Bajocian limestone), Mid-slope (calcareous clay), Lower slope near RN74 (dense alluvium and clay)",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
+    soil: "Three distinct geological tiers: Upper slope near Château (shallow gravelly Bajocian limestone), Mid-slope (calcareous clay), Lower slope near D974 (dense alluvium and clay)",
     character: "Largest Grand Cru in Côte de Nuits (~80+ owners). Noble dark fruits, forest floor, black truffle, firm tannin, and rich savory earthiness from premier upper/mid parcels.",
     benchmarkProducers: ["Château de la Tour (Hommage à Jean Morin)", "Domaine Anne Gros", "Domaine Méo-Camuzet", "Domaine Jean Grivot", "Domaine Leroy", "Domaine Denis Mortet"],
     iconicVineyards: ["La Partie Haute (près du Château)", "La Partie Médiane", "La Partie Basse"]
@@ -496,13 +597,17 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.1717,
     lng: 4.9567,
     areaHa: 9.14,
+    aocDecreeYear: 1937,
+    elevationRange: "250m – 270m",
     aspect: "East facing uniform mid-slope directly adjoining Clos de Vougeot",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
     soil: "Bajocian crinoidal limestone with compact clay-limestone topsoil and superior drainage",
     character: "Aristocratic, structured, noble dark cherry, violet, game, black tea, refined tannins, and profound mineral depth outperforming neighboring Échézeaux.",
     benchmarkProducers: ["Domaine de la Romanée-Conti (3.53 ha)", "Domaine Mongeard-Mugneret", "Domaine Georges Noëllat", "Domaine Dujac", "Domaine Robert Sirugue"],
-    iconicVineyards: ["Grands Échézeaux (9.14 ha)"]
+    iconicVineyards: ["Grands Échézeaux (9.14 ha uniform climat)"]
   },
   {
     id: 'echezeaux',
@@ -515,13 +620,17 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.1706,
     lng: 4.9528,
     areaHa: 37.69,
+    aocDecreeYear: 1937,
+    elevationRange: "250m – 300m",
     aspect: "East / South-East facing undulating slope comprising 11 named lieux-dits",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
     soil: "Complex geological patchwork ranging from rocky limestone scree (Échézeaux du Dessus, En Orveaux) to deeper clay marl (Les Treux)",
     character: "Silky, red and black fruits, dried rose, sweet spices, forest floor, and supple tannins. Pinnacle expressions from top parcels like Les Poulaillères and Échézeaux du Dessus rival Grands Échézeaux.",
     benchmarkProducers: ["Domaine de la Romanée-Conti (4.67 ha)", "Domaine Emmanuel Rouget", "Domaine Dujac", "Domaine Méo-Camuzet", "Domaine Faiveley (En Orveaux)", "Domaine des Perdrix"],
-    iconicVineyards: ["Les Poulaillères", "Échézeaux du Dessus", "En Orveaux", "Les Champs Traversins", "Les Rouges du Bas"]
+    iconicVineyards: ["Les Poulaillères", "Échézeaux du Dessus", "En Orveaux", "Les Champs Traversins", "Les Rouges du Bas", "Les Cruots ou Vignes Blanches"]
   },
 
   // --------------------------------------------------------------------------
@@ -538,9 +647,13 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.1611,
     lng: 4.9514,
     areaHa: 1.81,
-    aspect: "East / South-East central mid-slope amphitheater (260m elevation)",
+    aocDecreeYear: 1936,
+    elevationRange: "260m – 275m",
+    aspect: "East / South-East central mid-slope amphitheater",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
     soil: "Bajocian limestone with brown calcareous clay topsoil perfectly balanced in active calcium, iron, and drainage; cultivated biodynamically with horse plowing",
     character: "Monopole of Domaine de la Romanée-Conti since 1869. The undisputed summit of Pinot Noir: rose petal, Asian spice, sandalwood, dried black cherry, truffle, weightless ethereal majesty, and infinite finish.",
     benchmarkProducers: ["Domaine de la Romanée-Conti (Monopole - 1.814 ha)"],
@@ -557,11 +670,15 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.1583,
     lng: 4.9511,
     areaHa: 6.06,
+    aocDecreeYear: 1936,
+    elevationRange: "255m – 300m",
     aspect: "East / South-East slope spanning 255m to 300m elevation",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
     soil: "Steep upper slope Bathonian limestone transitioning to rich Bajocian crinoidal marl on mid-slope (comprises historic La Tâche 1.43 ha and Les Gaudichots 4.63 ha)",
-    character: "Monopole of Domaine de la Romanée-Conti since 1933. Monumental, explosive perfume, dark cherry, lapsang souchong tea, licorice, sweet leather, and sovereign structure.",
+    character: "Monopole of Domaine de la Romanée-Conti since 1933. Monumental, explosive perfume, dark cherry, lapsang souchong tea, licorice, sweet leather, and sovereign architectural power.",
     benchmarkProducers: ["Domaine de la Romanée-Conti (Monopole - 6.062 ha)"],
     iconicVineyards: ["La Tâche (Historic parcel)", "Les Gaudichots (Integrated in 1932/1936)"]
   },
@@ -576,9 +693,13 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.1617,
     lng: 4.9536,
     areaHa: 9.44,
+    aocDecreeYear: 1936,
+    elevationRange: "250m – 265m",
     aspect: "East facing gentle mid-slope directly below Romanée-Conti",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
     soil: "Deeper, fine-grained clay-limestone topsoil over fractured Bajocian limestone bedrock",
     character: "The silk, perfume, and grace of Vosne: exquisite floral aromatics (violet, peony), red currant, cinnamon, silken texture, and aristocratic elegance.",
     benchmarkProducers: ["Domaine de la Romanée-Conti (5.29 ha)", "Domaine Leroy", "Domaine Arnoux-Lachaux", "Domaine Sylvain Cathiard", "Domaine Dujac", "Domaine Jean-Jacques Confuron"],
@@ -595,9 +716,13 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.1631,
     lng: 4.9506,
     areaHa: 8.03,
+    aocDecreeYear: 1936,
+    elevationRange: "260m – 280m",
     aspect: "East / North-East mid-slope directly north of Romanée-Conti",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
     soil: "Bajocian crinoidal limestone with pebbles and clay-iron topsoil; split into Les Richebourgs (5.05 ha) and Les Verroilles ou Richebourgs (2.98 ha)",
     character: "Opulent, voluptuous, muscular, dark bramble fruit, black cherry, dark chocolate, game, violet, and enormous mid-palate density with decades-long aging capacity.",
     benchmarkProducers: ["Domaine de la Romanée-Conti (3.51 ha)", "Domaine Leroy", "Domaine Anne Gros", "Domaine Méo-Camuzet", "Domaine Gros Frère et Sœur", "Domaine Jean Grivot"],
@@ -614,11 +739,15 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.1611,
     lng: 4.9497,
     areaHa: 0.85,
-    aspect: "East facing steep slope (12% gradient) directly above Romanée-Conti (275m–290m elevation)",
+    aocDecreeYear: 1936,
+    elevationRange: "275m – 290m",
+    aspect: "East facing steep slope (12% gradient) directly uphill from Romanée-Conti",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
     soil: "Extremely thin (20cm) stony topsoil over hard Bathonian Comblanchien limestone bedrock",
-    character: "Monopole of Domaine du Comte Liger-Belair. France's smallest AOC. Crystalline tension, red berry precision, exotic spices, crushed stones, and peerless aristocratic finesse.",
+    character: "Monopole of Domaine du Comte Liger-Belair. France's smallest AOC (0.845 ha). Crystalline tension, red berry precision, exotic spices, crushed stones, and peerless aristocratic finesse.",
     benchmarkProducers: ["Domaine du Comte Liger-Belair (Monopole - 0.845 ha)"],
     iconicVineyards: ["La Romanée (0.845 ha Monopole)"]
   },
@@ -633,9 +762,13 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.1600,
     lng: 4.9508,
     areaHa: 1.65,
+    aocDecreeYear: 1992,
+    elevationRange: "260m – 280m",
     aspect: "East facing narrow strip running between Romanée-Conti/La Romanée and La Tâche",
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
+    baseYield: "35 hl/ha",
+    minPotentialAbv: "11.5% vol.",
     soil: "Bajocian crinoidal limestone with shallow calcareous clay topsoil",
     character: "Monopole of Domaine François Lamarche (elevated to Grand Cru in 1992). Fragrant, spicy, floral red fruits, refined tannins, and elegant mineral core.",
     benchmarkProducers: ["Domaine François Lamarche / Nicole Lamarche (Monopole - 1.65 ha)"],
@@ -656,13 +789,17 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.0725,
     lng: 4.8625,
     areaHa: 160.19,
+    aocDecreeYear: 1937,
+    elevationRange: "215m – 350m",
     aspect: "South, East, and South-West facing slopes wrapping around the Montagne de Corton",
-    dominantGrape: "Pinot Noir (and White Chardonnay permitted - the only red Grand Cru in the Côte de Beaune)",
+    dominantGrape: "Pinot Noir (and White Chardonnay permitted - the sole red Grand Cru in the Côte de Beaune)",
     wineType: "Red & White",
+    baseYield: "35 hl/ha (Red), 40 hl/ha (White)",
+    minPotentialAbv: "11.5% vol. (Red), 12.0% vol. (White)",
     soil: "Bajocian limestone base with iron-rich reddish clay on mid/lower slopes (Les Bressandes, Clos du Roi, Le Corton, Les Renardes)",
     character: "Powerful, broad-shouldered, dark plum, wild cherry, leather, forest floor, firm structural tannins, and long cellaring potential.",
     benchmarkProducers: ["Domaine de la Romanée-Conti (Prince Florent de Mérode)", "Domaine Faiveley (Clos des Cortons Faiveley Monopole)", "Domaine Chandon de Briailles", "Domaine Bonneau du Martray", "Domaine Tollot-Beaut"],
-    iconicVineyards: ["Clos des Cortons Faiveley (Monopole)", "Le Corton", "Clos du Roi", "Les Bressandes", "Les Renardes", "Les Perrières", "Les Pougets"]
+    iconicVineyards: ["Clos des Cortons Faiveley (Monopole - 2.76 ha)", "Le Corton", "Clos du Roi", "Les Bressandes", "Les Renardes", "Les Perrières", "Les Pougets"]
   },
   {
     id: 'corton-charlemagne',
@@ -675,9 +812,13 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.0750,
     lng: 4.8583,
     areaHa: 52.44,
-    aspect: "South, South-West, and West steep upper slopes (280m–340m elevation)",
+    aocDecreeYear: 1937,
+    elevationRange: "280m – 340m",
+    aspect: "South, South-West, and West steep upper slopes",
     dominantGrape: "Chardonnay (100%)",
     wineType: "White",
+    baseYield: "40 hl/ha",
+    minPotentialAbv: "12.0% vol.",
     soil: "Pure Oxfordian white marl (Marnes Blanches) and limestone scree on steep upper slopes",
     character: "The titan of white Burgundy: electrifying green apple, lemon oil, toasted hazelnut, flint, gunflint reduction, monumental dry extract, and piercing limestone tension lasting decades.",
     benchmarkProducers: ["Domaine Coche-Dury", "Domaine Bonneau du Martray", "Domaine Leroy / Domaine d'Auvenay", "Domaine de la Romanée-Conti", "Pierre-Yves Colin-Morey", "Domaine Faiveley"],
@@ -694,9 +835,13 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 47.0764,
     lng: 4.8556,
     areaHa: 0.28,
+    aocDecreeYear: 1937,
+    elevationRange: "280m – 330m",
     aspect: "South-West facing steep slopes",
     dominantGrape: "Chardonnay (100%)",
     wineType: "White",
+    baseYield: "40 hl/ha",
+    minPotentialAbv: "12.0% vol.",
     soil: "White limestone marl and gravel",
     character: "Historic white Grand Cru appellation overlapping Corton-Charlemagne; almost universally commercialized as Corton-Charlemagne AOC.",
     benchmarkProducers: ["Domaine Bonneau du Martray", "Domaine Rapet Père & Fils"],
@@ -717,13 +862,17 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 46.9625,
     lng: 4.7528,
     areaHa: 7.99,
-    aspect: "Pure South / South-East mid-slope (250m–270m elevation) with perfect solar drainage",
+    aocDecreeYear: 1937,
+    elevationRange: "250m – 270m",
+    aspect: "Pure South / South-East mid-slope with perfect solar drainage",
     dominantGrape: "Chardonnay (100%)",
     wineType: "White",
-    soil: "Bajocian bat-limestone with reddish iron-rich rendzina soils, optimal active lime, and natural water table regulation",
+    baseYield: "40 hl/ha",
+    minPotentialAbv: "12.0% vol.",
+    soil: "Bajocian bat-limestone with reddish iron-rich rendzina soils, optimal active lime, and natural water table regulation (4.01 ha in Chassagne labeled 'Le Montrachet', 3.98 ha in Puligny labeled 'Montrachet')",
     character: "The undisputed global pinnacle of dry white wine: unparalleled depth, white peach, toasted brioche, crushed limestone, hazelnut cream, citrus blossom, and immortal multidimensional persistence.",
     benchmarkProducers: ["Domaine de la Romanée-Conti (0.68 ha)", "Domaine Leflaive", "Domaine des Comtes Lafon", "Domaine Ramonet", "Domaine Marquis de Laguiche (Joseph Drouhin)", "Domaine Guy Amiot", "Domaine d'Auvenay"],
-    iconicVineyards: ["Montrachet (Puligny side)", "Le Montrachet (Chassagne side)"]
+    iconicVineyards: ["Montrachet (Puligny side - 3.98 ha)", "Le Montrachet (Chassagne side - 4.01 ha)"]
   },
   {
     id: 'chevalier-montrachet',
@@ -736,9 +885,13 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 46.9639,
     lng: 4.7508,
     areaHa: 7.59,
-    aspect: "East / South-East steep upper slope (260m–300m elevation) directly uphill from Montrachet",
+    aocDecreeYear: 1937,
+    elevationRange: "260m – 300m",
+    aspect: "East / South-East steep upper slope directly uphill from Montrachet",
     dominantGrape: "Chardonnay (100%)",
     wineType: "White",
+    baseYield: "40 hl/ha",
+    minPotentialAbv: "12.0% vol.",
     soil: "Thin, stony, poor rendzina over hard crinoidal limestone bedrock on 4 terraced tiers",
     character: "The most chiseled, crystalline, and laser-pure of all white Grand Crus: white flowers, crushed oyster shell, citrus zest, supreme mineral tension, and ethereal aristocratic precision.",
     benchmarkProducers: ["Domaine Leflaive", "Pierre-Yves Colin-Morey", "Domaine Bouchard Père & Fils", "Domaine d'Auvenay (Leroy)", "Domaine Michel Niellon", "Domaine Colin-Deléger"],
@@ -755,10 +908,14 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 46.9611,
     lng: 4.7556,
     areaHa: 11.87,
-    aspect: "East facing lower mid-slope (240m–250m elevation) directly below Montrachet",
+    aocDecreeYear: 1937,
+    elevationRange: "240m – 250m",
+    aspect: "East facing lower mid-slope directly below Montrachet",
     dominantGrape: "Chardonnay (100%)",
     wineType: "White",
-    soil: "Deeper, heavier brown-red calcareous clay with rich limestone fragments",
+    baseYield: "40 hl/ha",
+    minPotentialAbv: "12.0% vol.",
+    soil: "Deeper, heavier brown-red calcareous clay with rich limestone fragments (6.02 ha in Puligny, 5.85 ha in Chassagne)",
     character: "Broad-shouldered, opulent, honeyed stone fruit, roasted almond, acacia, massive dry extract, and rich textural volume balanced by core limestone acidity.",
     benchmarkProducers: ["Domaine Leflaive", "Pierre-Yves Colin-Morey", "Domaine Ramonet", "Domaine Morey-Coffinet", "Domaine Thomas Morey", "Domaine Paul Pernot"],
     iconicVineyards: ["Bâtard-Montrachet"]
@@ -774,10 +931,14 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 46.9631,
     lng: 4.7567,
     areaHa: 3.69,
+    aocDecreeYear: 1937,
+    elevationRange: "240m – 250m",
     aspect: "East facing gentle slope on the north-eastern flank of Bâtard-Montrachet",
     dominantGrape: "Chardonnay (100%)",
     wineType: "White",
-    soil: "Fine-textured clay-limestone marl with excellent moisture retention",
+    baseYield: "40 hl/ha",
+    minPotentialAbv: "12.0% vol.",
+    soil: "Fine-textured clay-limestone marl with excellent moisture retention situated entirely within Puligny",
     character: "Delicate, floral, honeysuckle, white blossom, hazelnut, silky mouthfeel, and supple aromatic refinement.",
     benchmarkProducers: ["Domaine Leflaive (1.15 ha)", "Domaine Ramonet", "Domaine Paul Pernot", "Domaine Faiveley", "Domaine Vincent Girardin"],
     iconicVineyards: ["Bienvenues-Bâtard-Montrachet (3.69 ha)"]
@@ -793,11 +954,15 @@ export const BURGUNDY_GRAND_CRUS = [
     lat: 46.9589,
     lng: 4.7542,
     areaHa: 1.57,
-    aspect: "Pure South-South-East warm slope directly south of Bâtard-Montrachet (240m elevation)",
+    aocDecreeYear: 1937,
+    elevationRange: "240m",
+    aspect: "Pure South-South-East warm slope directly south of Bâtard-Montrachet",
     dominantGrape: "Chardonnay (100%)",
     wineType: "White",
-    soil: "Stony, chalky limestone scree ('Criots' refers to small chalk stones / craies)",
-    character: "The only Grand Cru situated entirely within Chassagne-Montrachet. Sun-drenched apricot, white peach, toasted pine nut, exotic citrus, and succulent saline finish.",
+    baseYield: "40 hl/ha",
+    minPotentialAbv: "12.0% vol.",
+    soil: "Stony, chalky limestone scree ('Criots' refers to small chalk stones / craies) situated entirely within Chassagne",
+    character: "The only Grand Cru situated entirely within Chassagne-Montrachet (1.57 ha total). Sun-drenched apricot, white peach, toasted pine nut, exotic citrus, and succulent saline finish.",
     benchmarkProducers: ["Domaine d'Auvenay (Leroy)", "Domaine Hubert Lamy", "Domaine Roger Belland", "Domaine Fontaine-Gagnard", "Domaine Caroline Morey"],
     iconicVineyards: ["Criots-Bâtard-Montrachet (1.57 ha)"]
   }
@@ -808,7 +973,9 @@ export const BURGUNDY_GRAND_CRUS = [
 // ============================================================================
 
 export const BURGUNDY_PREMIER_CRUS = [
-  // Côte de Nuits - Gevrey-Chambertin
+  // --------------------------------------------------------------------------
+  // CÔTE DE NUITS - GEVREY-CHAMBERTIN (26 Premier Crus total in commune)
+  // --------------------------------------------------------------------------
   {
     id: 'gevrey-chambertin-clos-saint-jacques',
     name: "Clos Saint-Jacques",
@@ -822,10 +989,10 @@ export const BURGUNDY_PREMIER_CRUS = [
     areaHa: 6.70,
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
-    aspect: "South / South-East slope in the Combe de Lavaux",
+    aspect: "South / South-East slope in the Combe de Lavaux (280m–310m)",
     soil: "White marl and crinoidal limestone on steep 15% slope",
     character: "The undisputed 'unofficial Grand Cru' of Gevrey: sovereign power, dark cherry, Asian spice, graphite minerality, and noble tannins.",
-    historicalSignificance: "Historical 1er Cru divided among only 5 benchmark producers, consistently outperforming several Grand Crus.",
+    historicalSignificance: "Historical 1er Cru divided among only 5 benchmark producers (Rousseau, Sylvie Esmonin, Bruno Clair, Fourrier, Louis Jadot), consistently commanding Grand Cru prestige.",
     benchmarkProducers: ["Domaine Armand Rousseau", "Domaine Sylvie Esmonin", "Domaine Bruno Clair", "Domaine Fourrier", "Maison Louis Jadot"],
     iconicVineyards: ["Clos Saint-Jacques (6.70 ha)"]
   },
@@ -842,11 +1009,30 @@ export const BURGUNDY_PREMIER_CRUS = [
     areaHa: 8.43,
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
-    aspect: "East / South-East steep slope above the village",
-    soil: "Bathonian limestone scree with iron-rich clay",
+    aspect: "East / South-East steep slope adjoining Clos Saint-Jacques (280m–320m)",
+    soil: "Bathonian limestone scree with iron-rich clay and white marl",
     character: "Intense, dark fruits, licorice, smoke, powerful structure, and long cellaring potential.",
     benchmarkProducers: ["Domaine Armand Rousseau", "Domaine Faiveley", "Domaine Bruno Clair", "Domaine Philippe Naddef"],
     iconicVineyards: ["Les Cazetiers"]
+  },
+  {
+    id: 'gevrey-chambertin-lavaux-saint-jacques',
+    name: "Lavaux Saint-Jacques",
+    village: "Gevrey-Chambertin",
+    subregion: "Côte de Nuits",
+    district: "Côte de Nuits",
+    subregionId: 'cote-de-nuits',
+    districtId: 'cote-de-nuits',
+    lat: 47.2281,
+    lng: 4.9542,
+    areaHa: 9.53,
+    dominantGrape: "Pinot Noir (100%)",
+    wineType: "Red",
+    aspect: "South facing slope inside the Combe de Lavaux opening",
+    soil: "Stony limestone scree with cool valley downdrafts",
+    character: "Chiseled, fresh, high-toned red cherry, violet, wet stones, and vibrating acidity.",
+    benchmarkProducers: ["Domaine Denis Mortet", "Domaine Claude Dugat", "Domaine Armand Rousseau", "Domaine Harmand-Geoffroy"],
+    iconicVineyards: ["Lavaux Saint-Jacques"]
   },
   {
     id: 'gevrey-chambertin-clos-des-issarts',
@@ -861,14 +1047,58 @@ export const BURGUNDY_PREMIER_CRUS = [
     areaHa: 0.60,
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
-    aspect: "South-East facing walled enclave",
+    aspect: "South-East facing walled enclave inside Ruchottes",
     soil: "Limestone marl with flinty topsoil",
     character: "Monopole of Domaine Faiveley. Red berries, floral lift, refined tannins, and precise minerality.",
     benchmarkProducers: ["Domaine Faiveley (Monopole - 0.60 ha)"],
     iconicVineyards: ["Clos des Issarts"]
   },
 
-  // Côte de Nuits - Chambolle-Musigny
+  // --------------------------------------------------------------------------
+  // CÔTE DE NUITS - MOREY-SAINT-DENIS (20 Premier Crus total in commune)
+  // --------------------------------------------------------------------------
+  {
+    id: 'morey-saint-denis-clos-de-la-bussiere',
+    name: "Clos de la Bussière",
+    village: "Morey-Saint-Denis",
+    subregion: "Côte de Nuits",
+    district: "Côte de Nuits",
+    subregionId: 'cote-de-nuits',
+    districtId: 'cote-de-nuits',
+    lat: 47.1906,
+    lng: 4.9589,
+    areaHa: 2.59,
+    dominantGrape: "Pinot Noir (100%)",
+    wineType: "Red",
+    aspect: "East facing walled clos on the southern border with Chambolle",
+    soil: "Deep reddish clay over cracked limestone",
+    character: "Monopole of Domaine Georges Roumier since 1953. Savory dark berries, forest floor, wild herbs, and structured mineral backbone.",
+    benchmarkProducers: ["Domaine Georges Roumier (Monopole - 2.59 ha)"],
+    iconicVineyards: ["Clos de la Bussière"]
+  },
+  {
+    id: 'morey-saint-denis-monts-luisants',
+    name: "Monts Luisants",
+    village: "Morey-Saint-Denis",
+    subregion: "Côte de Nuits",
+    district: "Côte de Nuits",
+    subregionId: 'cote-de-nuits',
+    districtId: 'cote-de-nuits',
+    lat: 47.1967,
+    lng: 4.9556,
+    areaHa: 5.39,
+    dominantGrape: "Aligoté (and Chardonnay / Pinot Noir)",
+    wineType: "White & Red",
+    aspect: "Steep high slope (300m–340m) above Clos de la Roche",
+    soil: "Hard Bathonian limestone and white marl",
+    character: "Celebrated for Domaine Ponsot's historic 100% old-vine Aligoté (planted 1911), the sole Premier Cru white Aligoté in the Côte de Nuits.",
+    benchmarkProducers: ["Domaine Ponsot (Cuvée Vieilles Vignes 100% Aligoté)", "Domaine Dujac"],
+    iconicVineyards: ["Monts Luisants"]
+  },
+
+  // --------------------------------------------------------------------------
+  // CÔTE DE NUITS - CHAMBOLLE-MUSIGNY (24 Premier Crus total in commune)
+  // --------------------------------------------------------------------------
   {
     id: 'chambolle-musigny-les-amoureuses',
     name: "Les Amoureuses",
@@ -885,7 +1115,7 @@ export const BURGUNDY_PREMIER_CRUS = [
     aspect: "East / South-East terrace directly below Musigny",
     soil: "Shallow, rocky Bajocian limestone with fractured bedrock and thin red clay",
     character: "The holy grail of Premier Crus: haunting violet, wild raspberry, rose petal, lace, silk, and transcendent ethereal length.",
-    historicalSignificance: "Considered the spiritual twin of Grand Cru Musigny in complexity and global auction value.",
+    historicalSignificance: "Considered the spiritual twin of Grand Cru Musigny in complexity and global prestige.",
     benchmarkProducers: ["Domaine Georges Roumier", "Domaine Jacques-Frédéric Mugnier", "Domaine Comte Georges de Vogüé", "Domaine Robert Groffier", "Domaine Amiot-Servelle"],
     iconicVineyards: ["Les Amoureuses (5.40 ha)"]
   },
@@ -924,11 +1154,55 @@ export const BURGUNDY_PREMIER_CRUS = [
     aspect: "East facing steep slope adjoining Bonnes-Mares",
     soil: "Chalky white limestone scree ('Cras' refers to hard chalk stones)",
     character: "Taut, mineral-driven, dark cherry, graphite tension, and firm noble structure.",
-    benchmarkProducers: ["Domaine G. Roumier / Christophe Roumier", "Domaine Ghislaine Barthod", "Domaine Meo-Camuzet"],
+    benchmarkProducers: ["Domaine G. Roumier / Christophe Roumier", "Domaine Ghislaine Barthod", "Domaine Méo-Camuzet"],
     iconicVineyards: ["Les Cras"]
   },
+  {
+    id: 'chambolle-musigny-les-baudes',
+    name: "Les Baudes",
+    village: "Chambolle-Musigny",
+    subregion: "Côte de Nuits",
+    district: "Côte de Nuits",
+    subregionId: 'cote-de-nuits',
+    districtId: 'cote-de-nuits',
+    lat: 47.1897,
+    lng: 4.9575,
+    areaHa: 3.42,
+    dominantGrape: "Pinot Noir (100%)",
+    wineType: "Red",
+    aspect: "East facing slope directly below Bonnes-Mares",
+    soil: "Limestone gravel over red clay",
+    character: "Combines Chambolle floral elegance with Bonnes-Mares structural depth and dark brambly fruits.",
+    benchmarkProducers: ["Domaine Ghislaine Barthod", "Domaine Louis Jadot", "Domaine Dujac"],
+    iconicVineyards: ["Les Baudes"]
+  },
 
-  // Côte de Nuits - Vosne-Romanée
+  // --------------------------------------------------------------------------
+  // CÔTE DE NUITS - VOUGEOT (8 Premier Crus total in commune)
+  // --------------------------------------------------------------------------
+  {
+    id: 'vougeot-clos-blanc-de-vougeot',
+    name: "Le Clos Blanc de Vougeot",
+    village: "Vougeot",
+    subregion: "Côte de Nuits",
+    district: "Côte de Nuits",
+    subregionId: 'cote-de-nuits',
+    districtId: 'cote-de-nuits',
+    lat: 47.1764,
+    lng: 4.9583,
+    areaHa: 2.29,
+    dominantGrape: "Chardonnay (with Pinot Blanc / Pinot Gris)",
+    wineType: "White",
+    aspect: "East facing walled clos directly adjoining Clos de Vougeot",
+    soil: "White limestone marl cultivated by Cistercians since 1110 (the 'Vigne Blanche')",
+    character: "Monopole of Domaine de la Vougeraie. Rare white Côte de Nuits 1er Cru: candied lemon, hazelnut, smoky flint, and rich saline depth.",
+    benchmarkProducers: ["Domaine de la Vougeraie (Monopole - 2.29 ha)"],
+    iconicVineyards: ["Le Clos Blanc de Vougeot"]
+  },
+
+  // --------------------------------------------------------------------------
+  // CÔTE DE NUITS - VOSNE-ROMANÉE (14 Premier Crus total in commune)
+  // --------------------------------------------------------------------------
   {
     id: 'vosne-romanee-cros-parantoux',
     name: "Cros Parantoux",
@@ -988,26 +1262,47 @@ export const BURGUNDY_PREMIER_CRUS = [
     iconicVineyards: ["Les Suchots"]
   },
   {
-    id: 'vosne-romanee-les-chaumes',
-    name: "Les Chaumes",
+    id: 'vosne-romanee-aux-malconsorts',
+    name: "Aux Malconsorts",
     village: "Vosne-Romanée",
     subregion: "Côte de Nuits",
     district: "Côte de Nuits",
     subregionId: 'cote-de-nuits',
     districtId: 'cote-de-nuits',
-    lat: 47.1578,
-    lng: 4.9536,
-    areaHa: 6.46,
+    lat: 47.1567,
+    lng: 4.9500,
+    areaHa: 5.86,
     dominantGrape: "Pinot Noir (100%)",
     wineType: "Red",
-    aspect: "East facing slope directly below La Tâche",
-    soil: "Clay-limestone over crinoidal marl",
-    character: "Supple, generous, black cherry, floral aromatics, and accessible early charm.",
-    benchmarkProducers: ["Domaine Méo-Camuzet", "Domaine Jean Grivot", "Domaine Arnoux-Lachaux"],
-    iconicVineyards: ["Les Chaumes"]
+    aspect: "East facing mid-slope directly adjoining La Tâche to the south",
+    soil: "Stony Bajocian limestone and brown clay-marl",
+    character: "Regarded as a de facto Grand Cru: soaring perfume, dark spice, black tea, muscular structure, and profound length.",
+    benchmarkProducers: ["Domaine Sylvain Cathiard", "Domaine Dujac", "Domaine de Montille (including Christiane parcel)"],
+    iconicVineyards: ["Aux Malconsorts (5.86 ha)"]
+  },
+  {
+    id: 'vosne-romanee-clos-des-reas',
+    name: "Clos des Réas",
+    village: "Vosne-Romanée",
+    subregion: "Côte de Nuits",
+    district: "Côte de Nuits",
+    subregionId: 'cote-de-nuits',
+    districtId: 'cote-de-nuits',
+    lat: 47.1558,
+    lng: 4.9547,
+    areaHa: 2.12,
+    dominantGrape: "Pinot Noir (100%)",
+    wineType: "Red",
+    aspect: "East facing walled clos at the southern entrance of Vosne",
+    soil: "Calcareous clay over limestone pebbles with high active calcium",
+    character: "Monopole of Domaine Michel Gros since 1860. The sole Premier Cru monopole in Vosne: silky, perfumed red fruits, violet, sweet spice, and graceful tannins.",
+    benchmarkProducers: ["Domaine Michel Gros (Monopole - 2.12 ha)"],
+    iconicVineyards: ["Clos des Réas"]
   },
 
-  // Côte de Nuits - Nuits-Saint-Georges
+  // --------------------------------------------------------------------------
+  // CÔTE DE NUITS - NUITS-SAINT-GEORGES (41 Premier Crus total in commune)
+  // --------------------------------------------------------------------------
   {
     id: 'nuits-saint-georges-les-saint-georges',
     name: "Les Saint-Georges",
@@ -1039,13 +1334,32 @@ export const BURGUNDY_PREMIER_CRUS = [
     lat: 47.1125,
     lng: 4.9397,
     areaHa: 9.76,
-    dominantGrape: "Pinot Noir (and small white Chardonnay parcel)",
-    wineType: "Red & White",
+    dominantGrape: "Pinot Noir (100%)",
+    wineType: "Red",
     aspect: "East facing walled clos on Comblanchien limestone",
     soil: "Comblanchien limestone with rocky clay topsoil",
     character: "Monopole of Domaine Jacques-Frédéric Mugnier. Pure red cherry, floral elegance, refined tannins, and savory finish.",
     benchmarkProducers: ["Domaine Jacques-Frédéric Mugnier (Monopole - 9.76 ha)"],
     iconicVineyards: ["Clos de la Maréchale"]
+  },
+  {
+    id: 'nuits-saint-georges-les-vaucrains',
+    name: "Les Vaucrains",
+    village: "Nuits-Saint-Georges",
+    subregion: "Côte de Nuits",
+    district: "Côte de Nuits",
+    subregionId: 'cote-de-nuits',
+    districtId: 'cote-de-nuits',
+    lat: 47.1264,
+    lng: 4.9417,
+    areaHa: 6.20,
+    dominantGrape: "Pinot Noir (100%)",
+    wineType: "Red",
+    aspect: "East facing steep slope above Les Saint-Georges (260m–280m)",
+    soil: "Stony limestone scree and iron-rich clay",
+    character: "Muscular, deep, earthy, wild blackberry, roasted game, espresso, and massive structural longevity.",
+    benchmarkProducers: ["Domaine Robert Chevillon", "Domaine Henri Gouges", "Domaine Jean Chauvenet"],
+    iconicVineyards: ["Les Vaucrains"]
   },
   {
     id: 'nuits-saint-georges-les-chaignots',
@@ -1067,7 +1381,9 @@ export const BURGUNDY_PREMIER_CRUS = [
     iconicVineyards: ["Les Chaignots"]
   },
 
-  // Côte de Beaune - Beaune
+  // --------------------------------------------------------------------------
+  // CÔTE DE BEAUNE - BEAUNE (42 Premier Crus total in commune)
+  // --------------------------------------------------------------------------
   {
     id: 'beaune-greves-vigne-de-l-enfant-jesus',
     name: "Grèves - Vigne de l'Enfant Jésus",
@@ -1107,7 +1423,9 @@ export const BURGUNDY_PREMIER_CRUS = [
     iconicVineyards: ["Clos des Mouches"]
   },
 
-  // Côte de Beaune - Pommard & Volnay
+  // --------------------------------------------------------------------------
+  // CÔTE DE BEAUNE - POMMARD (28 Premier Crus total in commune)
+  // --------------------------------------------------------------------------
   {
     id: 'pommard-les-rugiens',
     name: "Les Rugiens (Bas & Hauts)",
@@ -1127,6 +1445,29 @@ export const BURGUNDY_PREMIER_CRUS = [
     benchmarkProducers: ["Domaine de Courcel", "Domaine Comte Armand", "Domaine Michel Gaunoux", "Domaine Aleth Girardin"],
     iconicVineyards: ["Rugiens-Bas", "Rugiens-Hauts"]
   },
+  {
+    id: 'pommard-clos-des-epeneaux',
+    name: "Clos des Épeneaux",
+    village: "Pommard",
+    subregion: "Côte de Beaune",
+    district: "Côte de Beaune",
+    subregionId: 'cote-de-beaune',
+    districtId: 'cote-de-beaune',
+    lat: 47.0125,
+    lng: 4.8014,
+    areaHa: 5.23,
+    dominantGrape: "Pinot Noir (100%)",
+    wineType: "Red",
+    aspect: "East facing walled clos in Les Petits Épenots",
+    soil: "Limestone gravel over brown-red clay marl",
+    character: "Monopole of Domaine Comte Armand since 1826. Dark plum, mocha, roasted spice, and formidable cellaring architecture.",
+    benchmarkProducers: ["Domaine Comte Armand (Monopole - 5.23 ha)"],
+    iconicVineyards: ["Clos des Épeneaux"]
+  },
+
+  // --------------------------------------------------------------------------
+  // CÔTE DE BEAUNE - VOLNAY (29 Premier Crus total in commune)
+  // --------------------------------------------------------------------------
   {
     id: 'volnay-clos-des-ducs',
     name: "Clos des Ducs",
@@ -1161,12 +1502,52 @@ export const BURGUNDY_PREMIER_CRUS = [
     wineType: "Red",
     aspect: "East facing mid-slope",
     soil: "Red clay over Bajocian limestone",
-    character: "Rich, voluptuous, dark cherry, sweet spice, and velvety depth.",
+    character: "Rich, voluptuous, dark cherry, sweet spice, and velvety depth (reds from Santenots are sold as Volnay 1er Cru Santenots; whites as Meursault 1er Cru).",
     benchmarkProducers: ["Domaine des Comtes Lafon", "Domaine Arnaud Ente", "Domaine François Mikulski", "Domaine Jacques Prieur"],
     iconicVineyards: ["Santenots-du-Milieu"]
   },
+  {
+    id: 'volnay-taillepieds',
+    name: "Taillepieds",
+    village: "Volnay",
+    subregion: "Côte de Beaune",
+    district: "Côte de Beaune",
+    subregionId: 'cote-de-beaune',
+    districtId: 'cote-de-beaune',
+    lat: 46.9972,
+    lng: 4.7806,
+    areaHa: 7.13,
+    dominantGrape: "Pinot Noir (100%)",
+    wineType: "Red",
+    aspect: "East facing steep rocky upper slope",
+    soil: "Light, chalky, gravelly scree ('cut-feet' from sharp stones)",
+    character: "Taut, mineral-driven, wild strawberry, peony, flinty tension, and razor-sharp elegance.",
+    benchmarkProducers: ["Domaine Marquis d'Angerville", "Domaine de Montille", "Domaine Roblet-Monnot"],
+    iconicVineyards: ["Taillepieds"]
+  },
 
-  // Côte de Beaune - Meursault
+  // --------------------------------------------------------------------------
+  // CÔTE DE BEAUNE - MEURSAULT (19 Premier Crus total in commune)
+  // --------------------------------------------------------------------------
+  {
+    id: 'meursault-clos-des-perrieres-monopole',
+    name: "Clos des Perrières (Monopole)",
+    village: "Meursault",
+    subregion: "Côte de Beaune",
+    district: "Côte de Beaune",
+    subregionId: 'cote-de-beaune',
+    districtId: 'cote-de-beaune',
+    lat: 46.9667,
+    lng: 4.7667,
+    areaHa: 0.94,
+    dominantGrape: "Chardonnay (100%)",
+    wineType: "White",
+    aspect: "East / South-East mid-slope enclosed within Perrières-Dessous",
+    soil: "Ancient Roman limestone quarry with shallow stony scree",
+    character: "Monopole of Domaine Albert Grivault. Laser-focused, electric limestone tension, gunflint, green citrus, hazelnut oil, and astonishing dry extract.",
+    benchmarkProducers: ["Domaine Albert Grivault (Monopole - 0.94 ha)"],
+    iconicVineyards: ["Clos des Perrières"]
+  },
   {
     id: 'meursault-les-perrieres',
     name: "Les Perrières",
@@ -1184,7 +1565,7 @@ export const BURGUNDY_PREMIER_CRUS = [
     soil: "Ancient Roman limestone quarry with thin stony scree over solid Bathonian limestone",
     character: "The de facto Grand Cru of Meursault: piercing crushed flint, lemon oil, wet stones, hazelnut, crystalline tension, and immortal mineral length.",
     benchmarkProducers: ["Domaine Coche-Dury", "Domaine Roulot", "Domaine des Comtes Lafon", "Domaine Pierre-Yves Colin-Morey", "Domaine Jacques Prieur"],
-    iconicVineyards: ["Perrières du Dessus", "Perrières du Bas", "Clos des Perrières (Albert Grivault Monopole)"]
+    iconicVineyards: ["Perrières du Dessus", "Perrières du Bas", "Clos des Perrières"]
   },
   {
     id: 'meursault-les-genevrieres',
@@ -1225,7 +1606,9 @@ export const BURGUNDY_PREMIER_CRUS = [
     iconicVineyards: ["Charmes-Dessus", "Charmes-Dessous"]
   },
 
-  // Côte de Beaune - Puligny-Montrachet & Chassagne-Montrachet
+  // --------------------------------------------------------------------------
+  // CÔTE DE BEAUNE - PULIGNY-MONTRACHET (17 Premier Crus total in commune)
+  // --------------------------------------------------------------------------
   {
     id: 'puligny-montrachet-les-pucelles',
     name: "Les Pucelles",
@@ -1265,6 +1648,48 @@ export const BURGUNDY_PREMIER_CRUS = [
     iconicVineyards: ["Les Folatières", "En la Richarde", "Peux Bois"]
   },
   {
+    id: 'puligny-montrachet-clos-de-la-mouchere-monopole',
+    name: "Clos de la Mouchère (Monopole)",
+    village: "Puligny-Montrachet",
+    subregion: "Côte de Beaune",
+    district: "Côte de Beaune",
+    subregionId: 'cote-de-beaune',
+    districtId: 'cote-de-beaune',
+    lat: 46.9714,
+    lng: 4.7514,
+    areaHa: 3.92,
+    dominantGrape: "Chardonnay (100%)",
+    wineType: "White",
+    aspect: "East facing walled clos inside Les Perrières",
+    soil: "Stony limestone scree with vines planted in 1939",
+    character: "Monopole of Domaine Henri Boillot. Monumental power, smoky reduction, citrus oil, white flowers, crushed rocks, and tremendous structural drive.",
+    benchmarkProducers: ["Domaine Henri Boillot (Monopole - 3.92 ha)"],
+    iconicVineyards: ["Clos de la Mouchère"]
+  },
+  {
+    id: 'puligny-montrachet-les-combettes',
+    name: "Les Combettes",
+    village: "Puligny-Montrachet",
+    subregion: "Côte de Beaune",
+    district: "Côte de Beaune",
+    subregionId: 'cote-de-beaune',
+    districtId: 'cote-de-beaune',
+    lat: 46.9764,
+    lng: 4.7567,
+    areaHa: 6.76,
+    dominantGrape: "Chardonnay (100%)",
+    wineType: "White",
+    aspect: "East facing slope bordering Meursault Charmes",
+    soil: "Clay-limestone over Bajocian limestone",
+    character: "Combines Meursault's opulent hazelnut richness with Puligny's floral limestone tension.",
+    benchmarkProducers: ["Domaine François Carillon", "Domaine Jacques Prieur", "Domaine Etienne Sauzet"],
+    iconicVineyards: ["Les Combettes"]
+  },
+
+  // --------------------------------------------------------------------------
+  // CÔTE DE BEAUNE - CHASSAGNE-MONTRACHET (55 Premier Crus total in commune)
+  // --------------------------------------------------------------------------
+  {
     id: 'chassagne-montrachet-morgeot',
     name: "Morgeot",
     village: "Chassagne-Montrachet",
@@ -1283,8 +1708,75 @@ export const BURGUNDY_PREMIER_CRUS = [
     benchmarkProducers: ["Domaine Bruno Colin", "Domaine Ramonet", "Domaine Fontaine-Gagnard", "Domaine Bernard Moreau"],
     iconicVineyards: ["Clos de la Chapelle", "Fairendes", "La Boudriotte"]
   },
+  {
+    id: 'chassagne-montrachet-les-chenevottes',
+    name: "Les Chenevottes",
+    village: "Chassagne-Montrachet",
+    subregion: "Côte de Beaune",
+    district: "Côte de Beaune",
+    subregionId: 'cote-de-beaune',
+    districtId: 'cote-de-beaune',
+    lat: 46.9406,
+    lng: 4.7431,
+    areaHa: 10.99,
+    dominantGrape: "Chardonnay (100%)",
+    wineType: "White",
+    aspect: "East facing slope bordering Saint-Aubin and Montrachet",
+    soil: "Reddish clay-limestone with flat limestone stones",
+    character: "Linear, vibrant, toasted sesame, lemon verbena, and sharp limestone minerality.",
+    benchmarkProducers: ["Pierre-Yves Colin-Morey (PYCM)", "Domaine Bernard Moreau", "Domaine Marc Colin"],
+    iconicVineyards: ["Les Chenevottes"]
+  },
 
-  // Côte Chalonnaise & Mâconnais 1er Crus
+  // --------------------------------------------------------------------------
+  // CÔTE DE BEAUNE - SAINT-AUBIN (30 Premier Crus total in commune)
+  // --------------------------------------------------------------------------
+  {
+    id: 'saint-aubin-en-remilly',
+    name: "En Remilly",
+    village: "Saint-Aubin",
+    subregion: "Côte de Beaune",
+    district: "Côte de Beaune",
+    subregionId: 'cote-de-beaune',
+    districtId: 'cote-de-beaune',
+    lat: 46.9556,
+    lng: 4.7389,
+    areaHa: 29.74,
+    dominantGrape: "Chardonnay (100%)",
+    wineType: "White",
+    aspect: "South facing steep slope wrapping around the Montrachet hill (300m–350m)",
+    soil: "Poor, rocky, white limestone scree directly uphill from Chevalier-Montrachet",
+    character: "The crown jewel of Saint-Aubin: laser-sharp acidity, crushed chalk, lime zest, smoky reduction, and extraordinary value relative to Grand Crus.",
+    benchmarkProducers: ["Domaine Hubert Lamy", "Pierre-Yves Colin-Morey", "Domaine Marc Colin", "Domaine Larue"],
+    iconicVineyards: ["En Remilly"]
+  },
+
+  // --------------------------------------------------------------------------
+  // CÔTE DE BEAUNE - BLAGNY (Premier Cru White Monopole)
+  // --------------------------------------------------------------------------
+  {
+    id: 'meursault-blagny-la-genelotte-monopole',
+    name: "La Genelotte (Meursault-Blagny 1er Cru Monopole)",
+    village: "Meursault-Blagny",
+    subregion: "Côte de Beaune",
+    district: "Côte de Beaune",
+    subregionId: 'cote-de-beaune',
+    districtId: 'cote-de-beaune',
+    lat: 46.9742,
+    lng: 4.7578,
+    areaHa: 0.50,
+    dominantGrape: "Chardonnay (100%)",
+    wineType: "White",
+    aspect: "High altitude (350m) east facing walled clos in the hamlet of Blagny",
+    soil: "Cracked Oxfordian limestone with thin mountain topsoil",
+    character: "Monopole of Domaine Comtesse de Chérisey (vines planted 1952). White mountain flowers, lemon verbena, chiseled tension, and vibrating chalky minerality.",
+    benchmarkProducers: ["Domaine Comtesse de Chérisey (Monopole - 0.50 ha)"],
+    iconicVineyards: ["La Genelotte"]
+  },
+
+  // --------------------------------------------------------------------------
+  // CÔTE CHALONNAISE - MERCUREY, GIVRY, RULLY & MONTAGNY
+  // --------------------------------------------------------------------------
   {
     id: 'mercurey-clos-du-roi',
     name: "Mercurey 1er Cru Clos du Roi",
@@ -1304,6 +1796,10 @@ export const BURGUNDY_PREMIER_CRUS = [
     benchmarkProducers: ["Domaine Faiveley", "Château de Chamirey", "Domaine Michel Juillot"],
     iconicVineyards: ["Clos du Roi"]
   },
+
+  // --------------------------------------------------------------------------
+  // MÂCONNAIS - POUILLY-FUISSÉ (22 Premier Crus approved in Nov 2020)
+  // --------------------------------------------------------------------------
   {
     id: 'pouilly-fuisse-les-menetrieres',
     name: "Pouilly-Fuissé 1er Cru Les Ménétrières",
@@ -1318,7 +1814,7 @@ export const BURGUNDY_PREMIER_CRUS = [
     dominantGrape: "Chardonnay (100%)",
     wineType: "White",
     aspect: "East facing steep slope under the Roche de Solutré",
-    soil: "Deep Bajocian limestone marl (elevated to Premier Cru in 2020)",
+    soil: "Deep Bajocian limestone marl (elevated to Premier Cru in Nov 2020 by INAO)",
     character: "Opulent white peach, hazelnut cream, citrus blossom, and saline tension representing the new Premier Cru apex of Mâconnais.",
     benchmarkProducers: ["Domaine Ferret (Louis Jadot)", "Domaine Jules Desjourneys", "Château de Fuissé"],
     iconicVineyards: ["Les Ménétrières (Premier Cru approved in 2020)"]
@@ -1336,9 +1832,9 @@ export const BURGUNDY_SUBREGIONS = [
     district: "Chablis",
     lat: 47.81,
     lng: 3.80,
-    terroir: "Upper Jurassic Kimmeridgian limestone marls packed with fossilized Exogyra virgula comma-shaped oysters.",
-    focus: "100% Chardonnay: 7 Grand Cru Climats (Les Clos, Vaudésir, Valmur, Blanchot, Preuses, Bougros, Grenouilles) and 40 Premier Crus.",
-    geology: "Kimmeridgian limestone marl bedrock overlaid with Portlandian limestone on hilltops.",
+    terroir: "Upper Jurassic Kimmeridgian limestone marls packed with fossilized Exogyra virgula comma-shaped oysters along the Serein River valley.",
+    focus: "100% Chardonnay: 1 Grand Cru AOC (7 Climats + La Moutonne) and 40 Premier Crus across Left and Right banks.",
+    geology: "Kimmeridgian limestone marl bedrock overlaid with Portlandian limestone on plateau hilltops.",
     dominantGrapes: "Chardonnay (primary), Sauvignon Blanc (Saint-Bris AOC), Pinot Noir & César (Irancy AOC)",
     microTerroirs: [
       { name: "Grand Cru Hill", focus: "Single continuous southwest-facing slope containing all 7 Grand Cru climats plus La Moutonne" },
@@ -1354,7 +1850,7 @@ export const BURGUNDY_SUBREGIONS = [
     district: "Côte de Nuits",
     lat: 47.18,
     lng: 4.95,
-    terroir: "Steep east-facing limestone escarpment stretching from Marsannay to Corgoloin, home to 24 of Burgundy's 25 red Grand Crus.",
+    terroir: "Steep east-facing limestone fault scarp stretching from Marsannay to Corgoloin, home to 24 of Burgundy's 25 red Grand Crus.",
     focus: "Pinot Noir: Gevrey-Chambertin, Morey-Saint-Denis, Chambolle-Musigny, Vougeot, Flagey-Échézeaux, Vosne-Romanée, Nuits-Saint-Georges.",
     geology: "Middle Jurassic Bajocian crinoidal limestone (Calcaire à Entroques) and Bathonian Comblanchien limestone with iron-rich clay marls.",
     dominantGrapes: "Pinot Noir (95%+), Chardonnay (Musigny Blanc, Marsannay Blanc)",
@@ -1445,7 +1941,7 @@ export const BURGUNDY_SUBREGIONS = [
 
 export const BURGUNDY_TECHNICAL_REGULATIONS = {
   geology: {
-    summary: "Burgundy's micro-terroirs are defined by a complex mosaic of Middle and Upper Jurassic limestone, crinoidal marls, and iron-rich clays shaped 150–175 million years ago.",
+    summary: "Burgundy's micro-terroirs are defined by a complex mosaic of Middle and Upper Jurassic limestone, crinoidal marls, and iron-rich clays shaped 150–175 million years ago along fault scarps and transverse combes.",
     formations: [
       {
         id: 'bathonian-limestone',
@@ -1497,6 +1993,24 @@ export const BURGUNDY_TECHNICAL_REGULATIONS = {
         keyAreas: ["Pommard Les Rugiens", "Bonnes-Mares Terres Rouges", "Chambertin lower slope"],
         wineImpact: "Deepens color, broadens tannins, and adds dark fruit and savory iron/game notes to Pinot Noir."
       }
+    ],
+    combes: [
+      {
+        name: "Combe de Lavaux (Gevrey-Chambertin)",
+        influence: "Channels cool nighttime airflow and formed the massive alluvial fan (cône de déjection) underpinning village vineyards, while sheltering Clos Saint-Jacques on its south-facing slope."
+      },
+      {
+        name: "Combe de Chambolle (Chambolle-Musigny)",
+        influence: "Brings cold air downdrafts and deposited rich red soils that contrast with the austere chalky upper slopes of Amoureuses and Musigny."
+      },
+      {
+        name: "Combe d'Orveau (Flagey / Chambolle)",
+        influence: "Directly moderates temperatures on upper Musigny and the high-altitude En Orveaux parcel of Échézeaux."
+      },
+      {
+        name: "Combe Saint-Désiré & Combe d'Auxey (Meursault)",
+        influence: "Funnel cool breezes from the Hautes-Côtes down through Meursault, preserving laser-sharp natural acidity across Les Perrières."
+      }
     ]
   },
 
@@ -1511,6 +2025,7 @@ export const BURGUNDY_TECHNICAL_REGULATIONS = {
         epicenter: "Côte de Nuits, Côte de Beaune, Mercurey, Irancy",
         profile: "Wild red cherry, raspberry, dried rose petal, black truffle, forest floor (sous-bois), Asian spice, silky tannins",
         role: "The noble red variety of Burgundy. Highly sensitive to subtle soil variations (Climats), yielding wines of transcendent perfume and silken weightless power.",
+        clones: ["Pinot Fin (traditional small-cluster massale selection)", "Pinot Tordu (old twisting vine)", "Pinot Droit (high-yielding upright clone, largely phased out by quality domaines)"],
         benchmarkCuvees: ["DRC Romanée-Conti", "Leroy Musigny", "Armand Rousseau Chambertin", "Georges Roumier Les Amoureuses"]
       },
       {
@@ -1522,6 +2037,7 @@ export const BURGUNDY_TECHNICAL_REGULATIONS = {
         epicenter: "Côte de Beaune, Chablis, Mâconnais, Côte Chalonnaise",
         profile: "Lemon curd, green apple, white peach, toasted hazelnut, flint, crushed chalk, brioche, and electric mineral tension",
         role: "The sovereign white variety of Burgundy. Transmits limestone minerality with laser precision in Chablis, hazelnut richness in Meursault, and monumental power in Montrachet.",
+        clones: ["Chardonnay Melon (classic compact clone)", "Chardonnay Musqué (aromatic, floral clone)"],
         benchmarkCuvees: ["DRC Montrachet", "Coche-Dury Corton-Charlemagne", "Leflaive Chevalier-Montrachet", "Raveneau Les Clos"]
       },
       {
@@ -1530,10 +2046,11 @@ export const BURGUNDY_TECHNICAL_REGULATIONS = {
         frenchSynonym: "Aligoté Doré (Fine golden clone)",
         percentage: 1,
         type: "White",
-        epicenter: "Bouzeron AOC, Auxerrois, Hautes-Côtes",
+        epicenter: "Bouzeron AOC, Auxerrois, Hautes-Côtes, Morey 1er Cru Monts Luisants",
         profile: "Crisp green apple, lemon verbena, acacia blossom, saline minerality, savory flint, vibrant refreshing acidity",
         role: "Historic white grape celebrated for refreshing aperitif wines and age-worthy single-terroir expressions in Bouzeron.",
-        benchmarkCuvees: ["Domaine d'Auvenay Bourgogne-Aligoté", "Domaine de Villaine Bouzeron", "Domaine de Cassiopée En Gerlieus"]
+        clones: ["Aligoté Doré (low yields, golden skin, rich aromatics)", "Aligoté Vert (high yields, aggressive acidity)"],
+        benchmarkCuvees: ["Domaine d'Auvenay Bourgogne-Aligoté", "Domaine de Villaine Bouzeron", "Domaine Ponsot Monts Luisants 1er Cru"]
       }
     ],
     heritage: [
@@ -1543,10 +2060,10 @@ export const BURGUNDY_TECHNICAL_REGULATIONS = {
         frenchSynonym: "Gamay",
         percentage: "<1%",
         type: "Red",
-        epicenter: "Beaujolais Crus, Mâconnais, Bourgogne Passe-Tout-Grains",
+        epicenter: "Mâconnais, Bourgogne Passe-Tout-Grains AOC, Coteaux Bourguignons AOC",
         profile: "Wild strawberry, violet, black pepper, pomegranate, fresh acidity",
         role: "Thrives on granitic soils in the south; blended with Pinot Noir (min 30% Pinot Noir, min 15% Gamay) in Bourgogne Passe-Tout-Grains AOC.",
-        benchmarkCuvees: ["Jean Foillard Morgon Côte du Py", "Marcel Lapierre Morgon"]
+        benchmarkCuvees: ["Domaine Prieuré Roch Passe-Tout-Grains", "Domaine Robert Groffier Bourgogne PTG"]
       },
       {
         id: 'cesar',
@@ -1567,26 +2084,34 @@ export const BURGUNDY_TECHNICAL_REGULATIONS = {
     pyramid: [
       {
         tier: "Grand Cru",
-        sharePct: "1%",
+        sharePct: "1.4%",
         aocCount: "33 AOCs (32 in Côte d'Or + 1 in Chablis)",
+        yieldLimits: "Red: 35–37 hl/ha | White: 40–48 hl/ha",
+        minAbv: "Red: 11.5% vol. | White: 12.0% vol.",
         description: "The absolute pinnacle of Burgundy. Single designated parcels (Climats) entitled to their own independent AOC name (e.g. Romanée-Conti, Chambertin, Montrachet, Musigny, Les Clos)."
       },
       {
         tier: "Premier Cru",
-        sharePct: "10%",
+        sharePct: "10.1%",
         aocCount: "Over 640 Climats across 28 Village AOCs",
+        yieldLimits: "Red: 40–45 hl/ha | White: 45–50 hl/ha",
+        minAbv: "Red: 11.0% vol. | White: 11.5% vol.",
         description: "Distinguished single parcels within village appellations. Label displays Village + Premier Cru Climat name (e.g. Chambolle-Musigny 1er Cru Les Amoureuses, Meursault 1er Cru Perrières)."
       },
       {
         tier: "Village / Communal",
-        sharePct: "37%",
+        sharePct: "36.8%",
         aocCount: "44 Village Appellations",
+        yieldLimits: "Red: 40–50 hl/ha | White: 45–55 hl/ha",
+        minAbv: "Red: 10.5% vol. | White: 11.0% vol.",
         description: "Wines sourced from vineyard land within a specific named commune (e.g. Vosne-Romanée, Gevrey-Chambertin, Meursault, Puligny-Montrachet, Chablis, Pommard, Volnay)."
       },
       {
         tier: "Régionale",
-        sharePct: "52%",
+        sharePct: "51.7%",
         aocCount: "7 Regional Appellations",
+        yieldLimits: "Red: 50–60 hl/ha | White: 55–65 hl/ha",
+        minAbv: "Red: 10.0% vol. | White: 10.5% vol.",
         description: "Regional AOCs spanning greater Burgundy: Bourgogne Rouge, Bourgogne Blanc, Bourgogne Côte d'Or (established 2017), Bourgogne Hautes-Côtes, Crémant de Bourgogne, and Coteaux Bourguignons."
       }
     ],
@@ -1595,23 +2120,23 @@ export const BURGUNDY_TECHNICAL_REGULATIONS = {
 
   vinification: {
     barrelType: "Pièce Bourguignonne (228 Liters)",
-    barrelDescription: "Traditional 228-liter oak cask (compared to Bordeaux's 225L barrique and Champagne's 205L pièce).",
+    barrelDescription: "Traditional 228-liter oak cask (27mm stave thickness, 88cm height). Also utilized: Chablis Feuillette (132L), Côte d'Or Feuillette (114L), Queue (456L = 2 pièces), and modern 350L–500L demi-muids.",
     traditions: [
       {
         practice: "Whole-Cluster Fermentation (Vendange Entière)",
-        details: "Vinifying with un-destemmed grape bunches. Stems absorb heat, add complex floral spice (tea leaf, rose petal), structure, and fine tannins (championed by DRC, Leroy, Dujac)."
+        details: "Vinifying with un-destemmed grape bunches. Lignified green stems absorb fermentation heat, buffer total acidity through potassium extraction, and impart exotic floral spice (sandalwood, tea leaf, dried rose) and fine structural grip (championed by DRC, Leroy, Dujac, Prieuré Roch)."
       },
       {
         practice: "Cold Pre-Fermentation Maceration (Macération à Froid)",
-        details: "Cooling must to 10–14°C for 3–7 days before fermentation to extract delicate water-soluble anthocyanins and pure fruit aromatics without harsh tannins (championed by Henri Jayer)."
+        details: "Chilling must to 10–14°C for 3–7 days prior to alcoholic fermentation. Extracts aqueous fruit anthocyanins and fresh berry esters without harsh seed tannin extraction (championed by Henri Jayer)."
       },
       {
         practice: "Pigeage & Remontage",
-        details: "Traditional gentle manual punch-downs (pigeage) and pump-overs (remontage) during active fermentation in open wooden vats to manage extraction."
+        details: "Gentle manual punch-downs (pigeage) using wooden poles and measured pump-overs (remontage) during peak fermentation (28–32°C) to gently extract color and fine tannins in open wooden vats."
       },
       {
-        practice: "Extended Barrel Élevage on Lees",
-        details: "Aging in French oak barrels (228L) for 12 to 24 months with spontaneous malolactic fermentation and minimal racking to preserve natural CO2 and vitality."
+        practice: "Extended Barrel Élevage on Lees & Reductive Shielding",
+        details: "Aging in French oak barrels (228L) for 12 to 24 months with spontaneous malolactic fermentation. Fine lees contact provides natural anti-oxidative protection against premature oxidation (premox)."
       }
     ]
   },
@@ -1653,10 +2178,24 @@ export const BURGUNDY_TECHNICAL_REGULATIONS = {
       rules: [
         "Must be 100% Aligoté Doré (the delicate golden clone with lower yields and higher aromatic complexity).",
         "Must be planted strictly on hillside slopes (valley floor alluvial plantings are forbidden).",
-        "Yields are strictly capped below generic Bourgogne Aligoté."
+        "Yields are strictly capped below generic Bourgogne Aligoté (max 60 hl/ha)."
       ],
       description: "The sole village appellation dedicated exclusively to Aligoté. Championed by Aubert de Villaine (co-director of DRC) to elevate the grape to world prestige.",
       benchmarkProducers: ["Domaine de Villaine", "Domaine Ramonet", "Domaine Paul et Marie Jacqueson"]
+    },
+    {
+      id: 'vezelay',
+      name: "Vézelay AOC",
+      establishedYear: 2017,
+      type: "Still Dry White",
+      permittedGrapes: ["100% Chardonnay"],
+      rules: [
+        "Elevated in 2017 from Bourgogne Vézelay to standalone communal Village AOC.",
+        "Must be 100% Chardonnay planted on Oxfordian limestone slopes surrounding the UNESCO Basilica of Sainte-Marie-Madeleine.",
+        "Yields capped at 55 hl/ha."
+      ],
+      description: "Burgundy's newest communal Village AOC, celebrated for pristine, crystalline, citrus and saline white wines.",
+      benchmarkProducers: ["Domaine de la Cadette", "Domaine Montanet-Thoden"]
     },
     {
       id: 'irancy',
@@ -1684,6 +2223,19 @@ export const BURGUNDY_TECHNICAL_REGULATIONS = {
       benchmarkProducers: ["Domaine Goisot", "Domaine Félix", "Domaine Bersan"]
     },
     {
+      id: 'bourgogne-cote-d-or',
+      name: "Bourgogne Côte d'Or AOC",
+      establishedYear: 2017,
+      type: "Still Red & White",
+      permittedGrapes: ["Pinot Noir (Red)", "Chardonnay (White)"],
+      rules: [
+        "Created in 2017 to recognize wines sourced strictly within the 40 communes of Côte de Nuits and Côte de Beaune.",
+        "Yields strictly limited (Red: 54 hl/ha, White: 58 hl/ha) and minimum natural alcohol of 11.0% (0.5% higher than generic Bourgogne)."
+      ],
+      description: "A prestigious sub-regional appellation bridging the gap between generic Bourgogne and Village AOCs.",
+      benchmarkProducers: ["Domaine Coche-Dury", "Domaine Leflaive", "Domaine Sylvain Pataille"]
+    },
+    {
       id: 'cremant-de-bourgogne',
       name: "Crémant de Bourgogne AOC",
       establishedYear: 1975,
@@ -1691,7 +2243,7 @@ export const BURGUNDY_TECHNICAL_REGULATIONS = {
       permittedGrapes: ["Pinot Noir", "Chardonnay", "Aligoté", "Gamay"],
       rules: [
         "Traditional second fermentation in bottle (Méthode Traditionnelle).",
-        "Minimum 9 months on lees for standard, 24 months for Eminent, 36 months for Grand Eminent."
+        "Minimum 9 months on lees for standard, 24 months for Éminent, 36 months for Grand Éminent (vintage-dated, Pinot Noir & Chardonnay only, max 15g/L dosage)."
       ],
       description: "Burgundy's premier sparkling wine appellation with historical epicenters in Rully and Nuits-Saint-Georges.",
       benchmarkProducers: ["Domaine Louis Bouillot", "Maison Vitteaut-Alberti", "Domaine Bailly-Lapierre"]
@@ -1700,7 +2252,7 @@ export const BURGUNDY_TECHNICAL_REGULATIONS = {
 };
 
 // ============================================================================
-// 5. BURGUNDY PRESTIGE MONOPOLES & BENCHMARK ESTATES
+// 5. BURGUNDY PRESTIGE MONOPOLES & BENCHMARK ESTATES (RED MONOPOLES)
 // ============================================================================
 
 export const BURGUNDY_PRESTIGE_MONOPOLES = [
@@ -1713,7 +2265,7 @@ export const BURGUNDY_PRESTIGE_MONOPOLES = [
     classification: "Grand Cru Monopole",
     grape: "Pinot Noir (100%)",
     status: "Domaine Monopole",
-    historicalLore: "Acquired in 1760 by Louis-François de Bourbon, Prince de Conti, after a bitter bidding war with Madame de Pompadour. Sourced entirely from a single 1.81-hectare walled parcel.",
+    historicalLore: "Acquired in 1760 by Louis-François de Bourbon, Prince de Conti, after a bitter bidding war with Madame de Pompadour. Sourced entirely from a single 1.81-hectare walled parcel cultivated biodynamically with horse plowing.",
     character: "The holy grail of wine: ethereal rose petals, Asian spices, wild strawberries, truffles, weightless concentration, and infinite multidimensional finish."
   },
   {
@@ -1725,7 +2277,7 @@ export const BURGUNDY_PRESTIGE_MONOPOLES = [
     classification: "Grand Cru Monopole",
     grape: "Pinot Noir (100%)",
     status: "Domaine Monopole",
-    historicalLore: "Monopole of DRC since 1933. Extends across the entire slope from 255m to 300m elevation, encompassing historic La Tâche and Les Gaudichots.",
+    historicalLore: "Monopole of DRC since 1933. Extends across the entire slope from 255m to 300m elevation, encompassing historic La Tâche (1.43 ha) and Les Gaudichots (4.63 ha).",
     character: "Explosive, dramatic, dark cherry, lapsang souchong tea, licorice, sweet leather, and sovereign architectural power."
   },
   {
@@ -2187,4 +2739,3 @@ export const BURGUNDY_WHITE_BENCHMARKS = [
     character: "High-altitude purity, white mountain flowers, lemon verbena, chiseled tension, and vibrating chalky minerality."
   }
 ];
-

@@ -1207,16 +1207,40 @@ export default function WineRegionDetail({
                   </div>
 
                   <div className="cru-meta-rows">
+                    {cru.aocDecreeYear && (
+                      <div className="cru-meta-item">
+                        <strong>AOC Decree:</strong>
+                        <span>Est. {cru.aocDecreeYear}</span>
+                      </div>
+                    )}
                     {cru.areaHa && (
                       <div className="cru-meta-item">
                         <strong>Surface Area:</strong>
                         <span>{cru.areaHa} hectares</span>
                       </div>
                     )}
+                    {cru.elevationRange && (
+                      <div className="cru-meta-item">
+                        <strong>Elevation:</strong>
+                        <span>{cru.elevationRange}</span>
+                      </div>
+                    )}
                     <div className="cru-meta-item">
                       <strong>Slope Aspect:</strong>
                       <span>{cru.aspect}</span>
                     </div>
+                    {cru.baseYield && (
+                      <div className="cru-meta-item">
+                        <strong>Base Yield:</strong>
+                        <span>{cru.baseYield}</span>
+                      </div>
+                    )}
+                    {cru.minPotentialAbv && (
+                      <div className="cru-meta-item">
+                        <strong>Min Alcohol:</strong>
+                        <span>{cru.minPotentialAbv}</span>
+                      </div>
+                    )}
                     {cru.grapeRatio && (
                       <div className="cru-meta-item">
                         <strong>Grape Ratio:</strong>
@@ -1232,6 +1256,12 @@ export default function WineRegionDetail({
                   <p className="cru-character-text">
                     <em>Character:</em> {cru.character}
                   </p>
+
+                  {cru.legalNotes && (
+                    <p className="cru-legal-notes">
+                      <strong>Appellation Nuance:</strong> {cru.legalNotes}
+                    </p>
+                  )}
 
                   {cru.historicalSignificance && (
                     <p className="cru-history-text">
@@ -1327,6 +1357,22 @@ export default function WineRegionDetail({
                       </div>
                     ))}
                   </div>
+
+                  {region.technicalRegulations.geology.combes && (
+                    <div className="geology-combes-section" style={{ marginTop: '14px', paddingTop: '12px', borderTop: '1px solid rgba(212, 175, 55, 0.25)' }}>
+                      <h5 style={{ fontFamily: 'var(--font-serif)', fontSize: '0.95rem', color: '#1a1a1a', marginBottom: '8px' }}>
+                        🌬️ Transverse Dry Valleys (Combes) & Microclimatic Downdrafts:
+                      </h5>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '10px' }}>
+                        {region.technicalRegulations.geology.combes.map((combe, cIdx) => (
+                          <div key={cIdx} style={{ background: '#ffffff', border: '1px solid rgba(212, 175, 55, 0.25)', borderRadius: '8px', padding: '10px' }}>
+                            <strong style={{ fontSize: '0.84rem', color: '#8b0000', display: 'block', marginBottom: '4px' }}>{combe.name}</strong>
+                            <p style={{ fontSize: '0.78rem', color: '#555', margin: 0, lineHeight: 1.4 }}>{combe.influence}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -1365,6 +1411,11 @@ export default function WineRegionDetail({
                         <p className="grape-flavor-profile">{grape.profile}</p>
                         {grape.role && (
                           <p className="grape-role-text"><strong>Structural Role:</strong> {grape.role}</p>
+                        )}
+                        {grape.clones && (
+                          <p className="grape-clones-text" style={{ fontSize: '0.78rem', color: '#666', marginTop: '4px' }}>
+                            <strong>Massale / Clones:</strong> {grape.clones.join(' · ')}
+                          </p>
                         )}
                         {grape.benchmarkCuvees && (
                           <div className="grape-notable-estate">
@@ -1410,6 +1461,11 @@ export default function WineRegionDetail({
                           <h5>{tier.tier}</h5>
                           <span className="tier-aoc-count">{tier.aocCount}</span>
                         </div>
+                        {tier.yieldLimits && (
+                          <div style={{ fontSize: '0.76rem', color: '#8b0000', fontWeight: '600', margin: '4px 0' }}>
+                            ⚖️ Max Yield: {tier.yieldLimits} {tier.minAbv ? `| 🍷 Min ABV: ${tier.minAbv}` : ''}
+                          </div>
+                        )}
                         <p>{tier.description}</p>
                       </div>
                     ))}
