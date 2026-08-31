@@ -1807,7 +1807,7 @@ export const BURGUNDY_PRESTIGE_MONOPOLES = [
     climatOrVineyard: "Clos de la Maréchale (9.76 ha)",
     village: "Nuits-Saint-Georges",
     classification: "Premier Cru Monopole",
-    grape: "Pinot Noir (and Chardonnay)",
+    grape: "Pinot Noir (100%)",
     status: "Domaine Monopole",
     historicalLore: "Largest single monopole in the Côte d'Or; leased to Faiveley for 50 years before returning to Mugnier in 2004.",
     character: "Pure, elegant, floral red cherry, silky tannins, and savory mineral length."
@@ -1976,3 +1976,203 @@ export const BURGUNDY_ICONIC_DOMAINES = [
     keyCuvees: ["Chevalier-Montrachet", "Bâtard-Montrachet", "Corton-Charlemagne", "Chassagne-Montrachet 1er Cru Les Chenevottes", "Puligny-Montrachet 1er Cru Les Folatières", "Saint-Aubin 1er Cru En Remilly"]
   }
 ];
+
+// ============================================================================
+// 7. BURGUNDY BENCHMARK WHITE TERROIRS & ICONIC WHITE MONOPOLES
+// ============================================================================
+
+export const BURGUNDY_WHITE_BENCHMARKS = [
+  {
+    id: 'montrachet-white-benchmark',
+    name: "Montrachet (Grand Cru)",
+    domainOrHouse: "DRC / Leflaive / Ramonet / Comtes Lafon",
+    climatOrVineyard: "Le Montrachet (7.99 ha)",
+    village: "Puligny & Chassagne",
+    classification: "Grand Cru",
+    grape: "Chardonnay (100%)",
+    status: "Benchmark Grand Cru",
+    historicalLore: "The undisputed summit of dry white wine on Earth. First mentioned in 1252 as 'Mont Rachaz' (bald mountain). Situated on the perfect mid-slope ridge between Puligny and Chassagne.",
+    character: "Monumental, explosive multidimensional complexity: white peach, crushed limestone, acacia flower, toasted hazelnut, exotic citrus, and sovereign, infinite mineral length."
+  },
+  {
+    id: 'chevalier-montrachet-white-benchmark',
+    name: "Chevalier-Montrachet (Grand Cru)",
+    domainOrHouse: "Domaine Leflaive / d'Auvenay / Bouchard",
+    climatOrVineyard: "Chevalier-Montrachet (7.59 ha)",
+    village: "Puligny-Montrachet",
+    classification: "Grand Cru",
+    grape: "Chardonnay (100%)",
+    status: "Benchmark Grand Cru",
+    historicalLore: "Perched immediately above Le Montrachet between 260m and 300m elevation on steep, thin Rendzina topsoil over fractured Bajocian limestone bedrock.",
+    character: "Aristocratic, chiseled, laser-sharp stony minerality, ethereal white floral perfume, citrus blossom, and unmatched crystalline tension."
+  },
+  {
+    id: 'corton-charlemagne-white-benchmark',
+    name: "Corton-Charlemagne (Grand Cru)",
+    domainOrHouse: "Coche-Dury / Leroy / Bonneau du Martray / Faiveley",
+    climatOrVineyard: "Corton-Charlemagne (52.44 ha)",
+    village: "Aloxe / Pernand / Ladoix",
+    classification: "Grand Cru",
+    grape: "Chardonnay (100%)",
+    status: "Benchmark Grand Cru",
+    historicalLore: "Legend holds that Holy Roman Emperor Charlemagne ordered white vines planted on the Montagne de Corton so red wine would not stain his white beard. High altitude (280–330m) on Oxfordian white marls.",
+    character: "Monolithic power, crushed flint reduction, green apple, lime blossom, truffle, searing structural acidity, and 30+ year longevity."
+  },
+  {
+    id: 'batard-montrachet-white-benchmark',
+    name: "Bâtard-Montrachet (Grand Cru)",
+    domainOrHouse: "Domaine Leflaive / Ramonet / PYCM",
+    climatOrVineyard: "Bâtard-Montrachet (11.87 ha)",
+    village: "Puligny & Chassagne",
+    classification: "Grand Cru",
+    grape: "Chardonnay (100%)",
+    status: "Benchmark Grand Cru",
+    historicalLore: "Directly downhill from Le Montrachet on richer, deeper brown clay-limestone soils with high active calcium.",
+    character: "Broad-shouldered, opulent, buttery brioche, ripe apricot, marzipan, honeyed stone fruit, and profound structural depth."
+  },
+  {
+    id: 'bienvenues-batard-montrachet-white-benchmark',
+    name: "Bienvenues-Bâtard-Montrachet (Grand Cru)",
+    domainOrHouse: "Domaine Leflaive / Ramonet / Paul Pernot",
+    climatOrVineyard: "Bienvenues-Bâtard-Montrachet (3.69 ha)",
+    village: "Puligny-Montrachet",
+    classification: "Grand Cru",
+    grape: "Chardonnay (100%)",
+    status: "Benchmark Grand Cru",
+    historicalLore: "Situated entirely in Puligny-Montrachet, neighboring Bâtard to the north; Domaine Leflaive holds a dominant 1.15 ha parcel.",
+    character: "Refined, floral delicacy, honeysuckle, white peach, ginger spice, and exquisite silky finesse."
+  },
+  {
+    id: 'criots-batard-montrachet-white-benchmark',
+    name: "Criots-Bâtard-Montrachet (Grand Cru)",
+    domainOrHouse: "Domaine d'Auvenay / Belland / Fontaine-Gagnard",
+    climatOrVineyard: "Criots-Bâtard-Montrachet (1.57 ha)",
+    village: "Chassagne-Montrachet",
+    classification: "Grand Cru",
+    grape: "Chardonnay (100%)",
+    status: "Benchmark Grand Cru",
+    historicalLore: "Burgundy's southernmost Grand Cru and the only white Grand Cru situated entirely within Chassagne-Montrachet (1.57 ha total).",
+    character: "Sunny, ripe exotic citrus, candied lemon, hazelnut butter, and vibrating chalky minerality."
+  },
+  {
+    id: 'chablis-grand-cru-les-clos',
+    name: "Chablis Grand Cru Les Clos",
+    domainOrHouse: "Domaine François Raveneau / Vincent Dauvissat / William Fèvre",
+    climatOrVineyard: "Les Clos (28.39 ha)",
+    village: "Chablis",
+    classification: "Grand Cru",
+    grape: "Chardonnay (100%)",
+    status: "Benchmark Grand Cru",
+    historicalLore: "The undisputed King of Chablis; first cultivated by Cistercian monks in the 12th century. Southwest-facing amphitheater of pure Kimmeridgian marl.",
+    character: "Monumental, crushed oyster shell, iodine, dried citrus, flint, towering density, and legendary longevity."
+  },
+  {
+    id: 'chablis-grand-cru-la-moutonne-monopole',
+    name: "Chablis Grand Cru La Moutonne (Monopole)",
+    domainOrHouse: "Domaine Long-Depaquit (Albert Bichot)",
+    climatOrVineyard: "La Moutonne (2.35 ha)",
+    village: "Chablis",
+    classification: "Grand Cru Monopole",
+    grape: "Chardonnay (100%)",
+    status: "Domaine Monopole",
+    historicalLore: "Historic 2.35 ha monopole natural amphitheater straddling Vaudésir (95%) and Les Preuses (5%); historically recognized as Chablis' eighth Grand Cru climat.",
+    character: "Sunny warmth, floral peach blossom, intense crushed seashell minerality, and silken aristocratic texture."
+  },
+  {
+    id: 'meursault-clos-des-perrieres-monopole',
+    name: "Meursault 1er Cru Clos des Perrières (Monopole)",
+    domainOrHouse: "Domaine Albert Grivault",
+    climatOrVineyard: "Clos des Perrières (0.94 ha)",
+    village: "Meursault",
+    classification: "Premier Cru Monopole",
+    grape: "Chardonnay (100%)",
+    status: "Domaine Monopole",
+    historicalLore: "Enclosed 0.94 ha walled parcel inside Les Perrières-Dessous; celebrated by wine writers since Dr. Lavalle (1855) as a Grand Cru in all but official name.",
+    character: "Laser-focused, electric limestone tension, gunflint, green citrus, hazelnut oil, and astonishing dry extract."
+  },
+  {
+    id: 'meursault-les-perrieres',
+    name: "Meursault 1er Cru Les Perrières",
+    domainOrHouse: "Domaine Coche-Dury / Roulot / Comtes Lafon",
+    climatOrVineyard: "Les Perrières (13.72 ha)",
+    village: "Meursault",
+    classification: "Premier Cru Climat",
+    grape: "Chardonnay (100%)",
+    status: "Benchmark Premier Cru",
+    historicalLore: "Named after the ancient Roman stone quarries (perrières); rocky limestone bedrock with microscopic topsoil delivering unmatched mineral cut.",
+    character: "The gold standard of Meursault: chiseled stony energy, lemon curd, smoked almonds, and breathtaking drive."
+  },
+  {
+    id: 'meursault-les-genevrieres',
+    name: "Meursault 1er Cru Les Genevrières",
+    domainOrHouse: "Domaine Comtes Lafon / Roulot / Rémi Jobard",
+    climatOrVineyard: "Les Genevrières (16.48 ha)",
+    village: "Meursault",
+    classification: "Premier Cru Climat",
+    grape: "Chardonnay (100%)",
+    status: "Benchmark Premier Cru",
+    historicalLore: "Named for the historic wild juniper (genévrier) bushes that once bordered the limestone slope.",
+    character: "Exquisite floral spice, juniper, honeysuckle, hazelnut cream, and seamless silky refinement."
+  },
+  {
+    id: 'meursault-les-charmes',
+    name: "Meursault 1er Cru Les Charmes",
+    domainOrHouse: "Domaine des Comtes Lafon / Roulot / Mikulski",
+    climatOrVineyard: "Les Charmes (31.12 ha)",
+    village: "Meursault",
+    classification: "Premier Cru Climat",
+    grape: "Chardonnay (100%)",
+    status: "Benchmark Premier Cru",
+    historicalLore: "Divided into Charmes-Dessus (rocky mid-slope) and Charmes-Dessous; the quintessential voluptuous expression of Meursault.",
+    character: "Opulent, hazelnut butter, poached yellow pear, white flowers, and silken texture balanced by vibrant limestone acidity."
+  },
+  {
+    id: 'puligny-montrachet-les-pucelles',
+    name: "Puligny-Montrachet 1er Cru Les Pucelles",
+    domainOrHouse: "Domaine Leflaive / Paul Pernot / Morey-Coffinet",
+    climatOrVineyard: "Les Pucelles (6.76 ha)",
+    village: "Puligny-Montrachet",
+    classification: "Premier Cru Climat",
+    grape: "Chardonnay (100%)",
+    status: "Benchmark Premier Cru",
+    historicalLore: "Bordering Bâtard-Montrachet and Bienvenues-Bâtard-Montrachet to the north; revered as Puligny's most Grand Cru-level 1er Cru.",
+    character: "Ethereal white blossom lace, orange blossom, mint, crystalline citrus, and aristocratically silky texture."
+  },
+  {
+    id: 'puligny-montrachet-les-folatieres',
+    name: "Puligny-Montrachet 1er Cru Les Folatières",
+    domainOrHouse: "Domaine Leroy (d'Auvenay) / Leflaive / Chavy-Chouet",
+    climatOrVineyard: "Les Folatières (17.65 ha)",
+    village: "Puligny-Montrachet",
+    classification: "Premier Cru Climat",
+    grape: "Chardonnay (100%)",
+    status: "Benchmark Premier Cru",
+    historicalLore: "High mid-slope vineyard on steep, rocky Bajocian limestone directly uphill from Clavoillon and Clos de la Garenne.",
+    character: "Vibrant energy, crushed chalk, lime zest, white peach, dynamic tension, and long saline finish."
+  },
+  {
+    id: 'puligny-montrachet-clos-de-la-mouchere-monopole',
+    name: "Puligny-Montrachet 1er Cru Clos de la Mouchère (Monopole)",
+    domainOrHouse: "Domaine Henri Boillot",
+    climatOrVineyard: "Clos de la Mouchère (3.92 ha)",
+    village: "Puligny-Montrachet",
+    classification: "Premier Cru Monopole",
+    grape: "Chardonnay (100%)",
+    status: "Domaine Monopole",
+    historicalLore: "Enclosed 3.92 ha monopole situated within Les Perrières, planted in 1939 with ancient massale selection Chardonnay vines.",
+    character: "Monumental power, smoky reduction, citrus oil, white flowers, crushed rocks, and tremendous structural drive."
+  },
+  {
+    id: 'meursault-blagny-la-genelotte-monopole',
+    name: "Meursault-Blagny 1er Cru La Genelotte (Monopole)",
+    domainOrHouse: "Domaine Comtesse de Chérisey",
+    climatOrVineyard: "La Genelotte (0.50 ha)",
+    village: "Meursault-Blagny",
+    classification: "Premier Cru Monopole",
+    grape: "Chardonnay (100%)",
+    status: "Domaine Monopole",
+    historicalLore: "High-altitude (350m) walled monopole vineyard planted in 1952 over cracked Oxfordian limestone in the historic hamlet of Blagny.",
+    character: "High-altitude purity, white mountain flowers, lemon verbena, chiseled tension, and vibrating chalky minerality."
+  }
+];
+

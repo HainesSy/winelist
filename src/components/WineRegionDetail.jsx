@@ -511,6 +511,7 @@ export default function WineRegionDetail({
   const [cruClassificationFilter, setCruClassificationFilter] = useState('all'); // 'all' | 'grandCrus' | 'premierCrus'
   const [cruGrapeFilter, setCruGrapeFilter] = useState('all');
   const [cruSearchQuery, setCruSearchQuery] = useState('');
+  const [prestigeColorFilter, setPrestigeColorFilter] = useState('all'); // 'all' | 'red' | 'white'
   const [regionDropdownOpen, setRegionDropdownOpen] = useState(false);
   const [searchFilter, setSearchFilter] = useState('');
 
@@ -534,6 +535,18 @@ export default function WineRegionDetail({
   const hasPremierCrus = Boolean(region?.premierCrus && region.premierCrus.length > 0);
   const hasTechnicalRegulations = Boolean(region?.technicalRegulations);
   const hasPrestigeCuvees = Boolean((region?.prestigeCuvees && region.prestigeCuvees.length > 0) || (region?.prestigeMonopoles && region.prestigeMonopoles.length > 0));
+
+  // Prestige items list (supporting Burgundy Red Monopoles & White Benchmark Terroirs)
+  const prestigeItems = useMemo(() => {
+    if (isBurgundy) {
+      const reds = region?.prestigeMonopoles || [];
+      const whites = region?.whiteBenchmarks || [];
+      if (prestigeColorFilter === 'red') return reds;
+      if (prestigeColorFilter === 'white') return whites;
+      return [...reds, ...whites];
+    }
+    return region?.prestigeCuvees || [];
+  }, [region, isBurgundy, prestigeColorFilter]);
 
   // Filter cellar wines belonging to this region
   const cellarWines = useMemo(() => {
@@ -1787,18 +1800,48 @@ export default function WineRegionDetail({
         <section className="region-tab-content prestige-tab">
           <div className="prestige-intro">
             <div>
-              <span className="cms-level-badge">{isBurgundy ? 'Monopoles & Benchmark Domaines' : 'Prestige Heritage & Benchmark Estates'}</span>
-              <h3>{isBurgundy ? 'Benchmark Monopoles & Historic Climats of Burgundy' : 'Benchmark Prestige Cuvées of Champagne'}</h3>
+              <span className="cms-level-badge">{isBurgundy ? (prestigeColorFilter === 'white' ? 'White Burgundy Benchmark Terroirs' : prestigeColorFilter === 'red' ? 'Red Monopoles & Iconic Climats' : 'Monopoles & Benchmark Domaines') : 'Prestige Heritage & Benchmark Estates'}</span>
+              <h3>{isBurgundy ? (prestigeColorFilter === 'white' ? 'Benchmark White Terroirs & Iconic White Climats of Burgundy' : prestigeColorFilter === 'red' ? 'Benchmark Red Monopoles & Historic Climats of Burgundy' : 'Benchmark Monopoles & Iconic Terroirs of Burgundy') : 'Benchmark Prestige Cuvées of Champagne'}</h3>
               <p>
                 {isBurgundy 
-                  ? "Legendary single-owner vineyard holdings (Monopoles) and historic clos that embody Burgundy's most coveted terroirs."
+                  ? (prestigeColorFilter === 'white'
+                      ? "The undisputed summits of Chardonnay in the Côte de Beaune and Chablis: legendary Grand Crus, historic white monopoles, and benchmark Premier Crus."
+                      : prestigeColorFilter === 'red'
+                        ? "Legendary single-owner Pinot Noir vineyard holdings (Monopoles) and historic walled clos that embody Burgundy's most coveted red terroirs."
+                        : "Legendary single-owner vineyard holdings (Monopoles) and iconic Grand Cru & Premier Cru terroirs across Burgundy's red and white spectrum."
+                    )
                   : "The iconic tête de cuvées that established Champagne's global prestige, their inaugural debut vintages, terroir sourcing, and assemblage philosophies."
                 }
               </p>
             </div>
           </div>
 
-          {/* Table: Prestige Cuvées (Champagne) or Benchmark Monopoles (Burgundy) */}
+          {/* Burgundy Category Switcher Pills */}
+          {isBurgundy && (
+            <div className="cru-filter-pill-bar prestige-switcher-bar">
+              <span className="filter-group-label">Terroirs:</span>
+              <button 
+                className={`cru-filter-pill-btn ${prestigeColorFilter === 'red' ? 'active red-active' : ''}`}
+                onClick={() => setPrestigeColorFilter('red')}
+              >
+                🍷 Benchmark Red Monopoles ({region.prestigeMonopoles?.length || 12})
+              </button>
+              <button 
+                className={`cru-filter-pill-btn ${prestigeColorFilter === 'white' ? 'active white-active' : ''}`}
+                onClick={() => setPrestigeColorFilter('white')}
+              >
+                🥂 Benchmark White Terroirs ({region.whiteBenchmarks?.length || 16})
+              </button>
+              <button 
+                className={`cru-filter-pill-btn ${prestigeColorFilter === 'all' ? 'active' : ''}`}
+                onClick={() => setPrestigeColorFilter('all')}
+              >
+                ✨ All Benchmark Terroirs ({(region.prestigeMonopoles?.length || 0) + (region.whiteBenchmarks?.length || 0)})
+              </button>
+            </div>
+          )}
+
+          {/* Table: Prestige Cuvées (Champagne) or Benchmark Monopoles / White Terroirs (Burgundy) */}
           <div className="prestige-table-wrapper">
             <table className={`prestige-table ${isBurgundy ? 'monopoles-table' : ''}`}>
               {isBurgundy ? (
@@ -1824,8 +1867,8 @@ export default function WineRegionDetail({
               )}
               <thead>
                 <tr>
-                  <th>{isBurgundy ? 'Monopole Climat' : 'Prestige Cuvée'}</th>
-                  <th>{isBurgundy ? 'Domaine / Owner' : 'House / Estate'}</th>
+                  <th>{isBurgundy ? (prestigeColorFilter === 'white' ? 'White Climat / Terroir' : 'Monopole / Benchmark Climat') : 'Prestige Cuvée'}</th>
+                  <th>{isBurgundy ? 'Benchmark Domaine / Owner' : 'House / Estate'}</th>
                   <th>{isBurgundy ? 'Village & AOC' : 'Debut'}</th>
                   <th>{isBurgundy ? 'Grape Variety' : 'Composition'}</th>
                   <th>{isBurgundy ? 'Classification' : 'Terroir Sourcing'}</th>
@@ -1834,15 +1877,15 @@ export default function WineRegionDetail({
                 </tr>
               </thead>
               <tbody>
-                {(region.prestigeMonopoles || region.prestigeCuvees || []).map((item, idx) => {
+                {prestigeItems.map((item, idx) => {
                   const grapeStr = (item.grape || item.grapeComposition || item.blend || item.dominantGrape || item.wineType || '').toLowerCase();
                   const nameStr = (item.name || '').toLowerCase();
 
                   let colorClass = 'gold';
                   if (grapeStr.includes('rosé') || grapeStr.includes('rose') || nameStr.includes('rosé') || nameStr.includes('rose')) {
                     colorClass = 'rose';
-                  } else if (grapeStr.includes('chardonnay') && grapeStr.includes('pinot')) {
-                    colorClass = 'red-white';
+                  } else if (grapeStr.includes('chardonnay') && !grapeStr.includes('pinot')) {
+                    colorClass = 'white';
                   } else if (grapeStr.includes('pinot noir') || grapeStr.includes('pinot') || grapeStr.includes('red') || grapeStr.includes('rouge') || grapeStr.includes('césar') || grapeStr.includes('gamay')) {
                     colorClass = 'red';
                   } else if (grapeStr.includes('chardonnay') || grapeStr.includes('aligoté') || grapeStr.includes('aligote') || grapeStr.includes('white') || grapeStr.includes('blanc') || grapeStr.includes('sauvignon')) {

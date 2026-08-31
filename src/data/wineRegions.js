@@ -1,10 +1,10 @@
-// Comprehensive Wine Region Knowledge Base & Cartographic Data
 import {
   BURGUNDY_GRAND_CRUS,
   BURGUNDY_PREMIER_CRUS,
   BURGUNDY_SUBREGIONS,
   BURGUNDY_TECHNICAL_REGULATIONS,
   BURGUNDY_PRESTIGE_MONOPOLES,
+  BURGUNDY_WHITE_BENCHMARKS,
   BURGUNDY_ICONIC_DOMAINES
 } from './burgundyData';
 
@@ -14,6 +14,7 @@ export {
   BURGUNDY_SUBREGIONS,
   BURGUNDY_TECHNICAL_REGULATIONS,
   BURGUNDY_PRESTIGE_MONOPOLES,
+  BURGUNDY_WHITE_BENCHMARKS,
   BURGUNDY_ICONIC_DOMAINES
 };
 
@@ -1671,8 +1672,9 @@ export const WINE_REGIONS = {
     // Technical Geology & Winemaking Regulations
     technicalRegulations: BURGUNDY_TECHNICAL_REGULATIONS,
 
-    // Benchmark Monopoles & Estates
+    // Benchmark Monopoles & Estates (Reds & Whites)
     prestigeMonopoles: BURGUNDY_PRESTIGE_MONOPOLES,
+    whiteBenchmarks: BURGUNDY_WHITE_BENCHMARKS,
     prestigeCuvees: BURGUNDY_PRESTIGE_MONOPOLES,
 
     // Iconic Domaines & Cult Producers

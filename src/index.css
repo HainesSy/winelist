@@ -2965,6 +2965,20 @@ button.region-label:hover,
   box-shadow: 0 2px 6px rgba(59, 14, 30, 0.3);
 }
 
+.cru-filter-pill-btn.red-active {
+  background: #8b0000 !important;
+  color: #ffffff !important;
+  border-color: #8b0000 !important;
+  box-shadow: 0 2px 8px rgba(139, 0, 0, 0.35) !important;
+}
+
+.cru-filter-pill-btn.white-active {
+  background: #b8860b !important;
+  color: #ffffff !important;
+  border-color: #b8860b !important;
+  box-shadow: 0 2px 8px rgba(184, 134, 11, 0.35) !important;
+}
+
 .cru-controls-row {
   display: flex;
   justify-content: space-between;
