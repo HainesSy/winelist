@@ -545,7 +545,15 @@ export default function WineRegionDetail({
       const whites = region?.whiteBenchmarks || [];
       if (prestigeColorFilter === 'red') return reds;
       if (prestigeColorFilter === 'white') return whites;
-      return [...reds, ...whites];
+
+      // Equally rank and interleave reds & whites by prominence tier for 'all'
+      const interleaved = [];
+      const maxLen = Math.max(reds.length, whites.length);
+      for (let i = 0; i < maxLen; i++) {
+        if (i < reds.length) interleaved.push(reds[i]);
+        if (i < whites.length) interleaved.push(whites[i]);
+      }
+      return interleaved;
     }
     return region?.prestigeCuvees || [];
   }, [region, isBurgundy, prestigeColorFilter]);
