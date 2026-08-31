@@ -1800,16 +1800,28 @@ export default function WineRegionDetail({
 
           {/* Table: Prestige Cuvées (Champagne) or Benchmark Monopoles (Burgundy) */}
           <div className="prestige-table-wrapper">
-            <table className="prestige-table">
-              <colgroup>
-                <col className="col-cuvee" />
-                <col className="col-house" />
-                <col className="col-debut" />
-                <col className="col-blend" />
-                <col className="col-sourcing" />
-                <col className="col-winemaking" />
-                <col className="col-legacy" />
-              </colgroup>
+            <table className={`prestige-table ${isBurgundy ? 'monopoles-table' : ''}`}>
+              {isBurgundy ? (
+                <colgroup>
+                  <col className="col-bg-monopole" />
+                  <col className="col-bg-owner" />
+                  <col className="col-bg-village" />
+                  <col className="col-bg-grape" />
+                  <col className="col-bg-class" />
+                  <col className="col-bg-lore" />
+                  <col className="col-bg-profile" />
+                </colgroup>
+              ) : (
+                <colgroup>
+                  <col className="col-cuvee" />
+                  <col className="col-house" />
+                  <col className="col-debut" />
+                  <col className="col-blend" />
+                  <col className="col-sourcing" />
+                  <col className="col-winemaking" />
+                  <col className="col-legacy" />
+                </colgroup>
+              )}
               <thead>
                 <tr>
                   <th>{isBurgundy ? 'Monopole Climat' : 'Prestige Cuvée'}</th>
@@ -1835,7 +1847,7 @@ export default function WineRegionDetail({
                     </td>
                     <td className="col-debut-cell">
                       {isBurgundy ? (
-                        <span className="vintage-debut-tag">{item.village}</span>
+                        <span className="monopole-village-tag">{item.village}</span>
                       ) : (
                         renderDebutVintage(item.debutVintage)
                       )}

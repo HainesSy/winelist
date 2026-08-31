@@ -4131,23 +4131,35 @@ button.region-label:hover,
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .prestige-table {
   width: 100%;
+  min-width: 980px;
   table-layout: fixed;
   border-collapse: collapse;
   font-size: 0.85rem;
 }
 
-.prestige-table col.col-cuvee { width: 15%; }
+/* Champagne Columns */
+.prestige-table col.col-cuvee { width: 16%; }
 .prestige-table col.col-house { width: 14%; }
-.prestige-table col.col-debut { width: 11%; }
-.prestige-table col.col-blend { width: 14%; }
+.prestige-table col.col-debut { width: 10%; }
+.prestige-table col.col-blend { width: 13%; }
 .prestige-table col.col-sourcing { width: 14%; }
-.prestige-table col.col-winemaking { width: 16%; }
+.prestige-table col.col-winemaking { width: 17%; }
 .prestige-table col.col-legacy { width: 16%; }
+
+/* Burgundy Monopoles Columns */
+.prestige-table col.col-bg-monopole { width: 16%; }
+.prestige-table col.col-bg-owner { width: 15%; }
+.prestige-table col.col-bg-village { width: 17%; }
+.prestige-table col.col-bg-grape { width: 12%; }
+.prestige-table col.col-bg-class { width: 12%; }
+.prestige-table col.col-bg-lore { width: 15%; }
+.prestige-table col.col-bg-profile { width: 13%; }
 
 .prestige-table th {
   background: #faf7f2;
@@ -4163,11 +4175,10 @@ button.region-label:hover,
 .prestige-table td {
   padding: 12px 10px;
   border-bottom: 1px solid #f0ebe0;
-  vertical-align: top;
+  vertical-align: middle;
   color: #444;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  hyphens: auto;
 }
 
 .cuvee-name-highlight {
@@ -4210,6 +4221,20 @@ button.region-label:hover,
   font-size: 0.78rem;
   display: inline-block;
   white-space: nowrap;
+}
+
+.monopole-village-tag {
+  font-weight: 700;
+  color: var(--accent-dark-gold);
+  background: rgba(212, 175, 55, 0.16);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.76rem;
+  display: inline-block;
+  white-space: normal;
+  word-break: normal;
+  line-height: 1.35;
 }
 
 .debut-subtitle-note {
