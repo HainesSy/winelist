@@ -1,44 +1,89 @@
 import { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Layers, Maximize2, Compass, MapPin } from 'lucide-react';
+import { Layers, Maximize2, Compass, MapPin, Award, Shapes, Crown } from 'lucide-react';
+import { WINE_REGION_BOUNDARIES } from '../data/wineRegionBoundaries';
 
-// Custom Wine Sommelier Tile Providers
-const TILE_LAYERS = {
+// Custom Wine Sommelier Tile Providers supporting Mapbox Token & Free Fallbacks
+const mapboxToken = import.meta.env.VITE_MAPBOX_TOKEN || import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
+const stadiaKey = import.meta.env.VITE_STADIA_API_KEY;
+
+const getTileLayers = () => ({
   parchment: {
-    name: 'Sommelier Cartography',
-    url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-    attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; OpenStreetMap',
-    className: 'sommelier-tile-parchment'
+    name: 'Classic Cartography',
+    url: mapboxToken 
+      ? `https://api.mapbox.com/styles/v1/mapbox/light-v11/tiles/512/{z}/{x}/{y}@2x?access_token=${mapboxToken}`
+      : (stadiaKey
+          ? `https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=${stadiaKey}`
+          : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'),
+    attribution: mapboxToken 
+      ? '&copy; <a href="https://www.mapbox.com/">Mapbox</a>' 
+      : (stadiaKey ? '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> &copy; OpenStreetMap' : '&copy; <a href="https://carto.com/">CARTO</a> &copy; OpenStreetMap'),
+    className: 'sommelier-tile-parchment',
+    tileSize: mapboxToken ? 512 : 256,
+    zoomOffset: mapboxToken ? -1 : 0
   },
   topo: {
     name: 'Terroir & Relief Topo',
-    url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
-    attribution: '&copy; OpenTopoMap contributors',
-    className: 'sommelier-tile-topo'
+    url: mapboxToken 
+      ? `https://api.mapbox.com/styles/v1/mapbox/outdoors-v12/tiles/512/{z}/{x}/{y}@2x?access_token=${mapboxToken}`
+      : (stadiaKey 
+          ? `https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}{r}.png?api_key=${stadiaKey}`
+          : 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'),
+    attribution: mapboxToken 
+      ? '&copy; <a href="https://www.mapbox.com/">Mapbox</a>' 
+      : (stadiaKey ? '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> &copy; Stamen / OSM' : '&copy; OpenStreetMap / Esri'),
+    className: 'sommelier-tile-topo',
+    tileSize: mapboxToken ? 512 : 256,
+    zoomOffset: mapboxToken ? -1 : 0
   },
   satellite: {
     name: 'Vineyard Satellite',
-    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-    attribution: '&copy; Esri World Imagery',
-    className: 'sommelier-tile-sat'
+    url: mapboxToken
+      ? `https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v12/tiles/512/{z}/{x}/{y}@2x?access_token=${mapboxToken}`
+      : 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    attribution: mapboxToken 
+      ? '&copy; <a href="https://www.mapbox.com/">Mapbox</a>' 
+      : '&copy; Esri World Imagery',
+    className: 'sommelier-tile-sat',
+    tileSize: mapboxToken ? 512 : 256,
+    zoomOffset: mapboxToken ? -1 : 0
   }
-};
+});
 
 export default function WineRegionMap({ 
   region, 
   activeSubRegionId, 
   onSelectSubRegion,
-  cellarBottlesCountBySub = {} 
+  cellarBottlesCountBySub = {},
+  selectedCruId = null,
+  onSelectCru = null,
+  onViewCellar = null
 }) {
   const mapContainerRef = useRef(null);
   const mapInstanceRef = useRef(null);
   const markersRef = useRef({});
   const layerGroupRef = useRef(null);
+  const geoJsonGroupRef = useRef(null);
   const onSelectSubRegionRef = useRef(onSelectSubRegion);
-  onSelectSubRegionRef.current = onSelectSubRegion;
+  const onSelectCruRef = useRef(onSelectCru);
+  const onViewCellarRef = useRef(onViewCellar);
+
+  const hasGrandCrus = Boolean(region.grandCrus && region.grandCrus.length > 0);
+  const hasPremierCrus = Boolean(region.premierCrus && region.premierCrus.length > 0);
 
   const [currentLayerType, setCurrentLayerType] = useState('parchment'); // 'parchment' | 'topo' | 'satellite'
+  const [pinViewMode, setPinViewMode] = useState(hasGrandCrus ? 'grandCrus' : 'subregions'); // 'subregions' | 'grandCrus' | 'premierCrus' | 'all'
+  const [showBoundaries, setShowBoundaries] = useState(true);
+
+  // Sync callbacks to refs without triggering React 19 render warnings
+  useEffect(() => {
+    onSelectSubRegionRef.current = onSelectSubRegion;
+    onSelectCruRef.current = onSelectCru;
+    onViewCellarRef.current = onViewCellar;
+  }, [onSelectSubRegion, onSelectCru, onViewCellar]);
+
+  const boundaryData = WINE_REGION_BOUNDARIES[region.id];
 
   // Initialize and update map
   useEffect(() => {
@@ -46,21 +91,18 @@ export default function WineRegionMap({
 
     if (!mapInstanceRef.current) {
       const map = L.map(mapContainerRef.current, {
-        center: region.center || [47.05, 4.83],
+        center: region.center || [49.05, 4.0],
         zoom: region.zoom || 9,
         minZoom: 4,
-        maxZoom: 17,
+        maxZoom: 18,
         zoomControl: false,
         attributionControl: false
       });
 
-      // Add zoom control at bottom-right
-      L.control.zoom({ position: 'bottomright' }).addTo(map);
-
-      // Custom Attribution
-      L.control.attribution({ position: 'bottomleft', prefix: 'Sommelier Wine Atlas' }).addTo(map);
+      L.control.zoom({ position: 'topright' }).addTo(map);
 
       mapInstanceRef.current = map;
+      geoJsonGroupRef.current = L.layerGroup().addTo(map);
       layerGroupRef.current = L.layerGroup().addTo(map);
     }
 
@@ -79,28 +121,138 @@ export default function WineRegionMap({
     });
 
     // Add selected base tile layer
-    const layerConfig = TILE_LAYERS[currentLayerType] || TILE_LAYERS.parchment;
+    const tileLayers = getTileLayers();
+    const layerConfig = tileLayers[currentLayerType] || tileLayers.parchment;
     const tileLayer = L.tileLayer(layerConfig.url, {
       attribution: layerConfig.attribution,
-      maxZoom: 18,
-      className: layerConfig.className
+      maxZoom: 19,
+      className: layerConfig.className,
+      tileSize: layerConfig.tileSize || 256,
+      zoomOffset: layerConfig.zoomOffset || 0
     });
     tileLayer.addTo(map);
 
-    // Clear and redraw sub-region markers
+    // Draw GeoJSON Wine Appellation Boundary Polygons
+    if (geoJsonGroupRef.current) {
+      geoJsonGroupRef.current.clearLayers();
+    }
+
+    if (showBoundaries && boundaryData) {
+      const geoLayer = L.geoJSON(boundaryData, {
+        style: (feature) => {
+          const props = feature.properties || {};
+          const isSelected = activeSubRegionId === (props.id || feature.id);
+          const baseColor = props.color || '#d4af37';
+          const strokeColor = isSelected ? '#ffffff' : (props.accent || baseColor);
+          return {
+            fillColor: baseColor,
+            fillOpacity: isSelected ? 0.50 : (props.fillOpacity ? Math.min(props.fillOpacity + 0.16, 0.40) : 0.34),
+            color: strokeColor,
+            weight: isSelected ? 4.5 : 3.0,
+            opacity: 1.0,
+            className: `aoc-defined-boundary ${isSelected ? 'is-selected-boundary' : ''}`
+          };
+        },
+        onEachFeature: (feature, layer) => {
+          const props = feature.properties || {};
+
+          // Clean hover-only tooltip (no clutter by default)
+          layer.bindTooltip(`
+            <div class="sommelier-poly-tooltip">
+              <div class="poly-tooltip-header">
+                <strong>${props.name}</strong>
+                ${props.category ? `<span class="poly-cat-badge">${props.category}</span>` : ''}
+              </div>
+              ${props.dominantGrape ? `<div class="poly-grape">🍇 ${props.dominantGrape}</div>` : ''}
+            </div>
+          `, {
+            sticky: true,
+            direction: 'top',
+            className: 'sommelier-leaflet-poly-tooltip',
+            offset: [0, -10]
+          });
+
+          layer.on({
+            mouseover: (e) => {
+              const target = e.target;
+              target.setStyle({
+                weight: 5.0,
+                fillOpacity: 0.58,
+                color: '#ffffff'
+              });
+              if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                target.bringToFront();
+              }
+            },
+            mouseout: (e) => {
+              const target = e.target;
+              const isStillSelected = activeSubRegionId === (props.id || feature.id);
+              const baseColor = props.color || '#d4af37';
+              const strokeColor = isStillSelected ? '#ffffff' : (props.accent || baseColor);
+              target.setStyle({
+                fillColor: baseColor,
+                fillOpacity: isStillSelected ? 0.50 : (props.fillOpacity ? Math.min(props.fillOpacity + 0.16, 0.40) : 0.34),
+                color: strokeColor,
+                weight: isStillSelected ? 4.5 : 3.0,
+                opacity: 1.0
+              });
+            },
+            click: (e) => {
+              L.DomEvent.stopPropagation(e);
+              if (onSelectSubRegionRef.current) {
+                onSelectSubRegionRef.current(props.id || feature.id);
+              }
+              if (mapInstanceRef.current && e.target.getBounds) {
+                mapInstanceRef.current.fitBounds(e.target.getBounds(), {
+                  padding: [45, 45],
+                  maxZoom: 12,
+                  animate: true,
+                  duration: 1.0
+                });
+              }
+            }
+          });
+        }
+      });
+      geoLayer.addTo(geoJsonGroupRef.current);
+
+      // Frame all boundaries completely inside viewport by default with adaptive tablet/iPad padding
+      if (!activeSubRegionId && !selectedCruId && geoLayer.getBounds().isValid()) {
+        const isTablet = typeof window !== 'undefined' && window.innerWidth <= 1024;
+        const pad = isTablet ? [28, 28] : [50, 50];
+        map.fitBounds(geoLayer.getBounds(), {
+          padding: pad,
+          maxZoom: isTablet ? 10 : 11,
+          animate: false
+        });
+      }
+    }
+
+    // Ensure Leaflet recalculates size on iPad/tablet resize or orientation shift
+    let resizeObserver = null;
+    if (typeof ResizeObserver !== 'undefined' && mapContainerRef.current) {
+      resizeObserver = new ResizeObserver(() => {
+        if (mapInstanceRef.current) {
+          mapInstanceRef.current.invalidateSize({ pan: false });
+        }
+      });
+      resizeObserver.observe(mapContainerRef.current);
+    }
+
+    // Clear and redraw markers
     if (layerGroupRef.current) {
       layerGroupRef.current.clearLayers();
     }
     markersRef.current = {};
 
-    if (region.subRegions && region.subRegions.length > 0) {
+    // 1. Draw Subregion / District Appellation Markers
+    if ((pinViewMode === 'subregions' || pinViewMode === 'all') && region.subRegions && region.subRegions.length > 0) {
       region.subRegions.forEach(sub => {
         const isSelected = activeSubRegionId === sub.id;
         const bottleCount = cellarBottlesCountBySub[sub.id] || cellarBottlesCountBySub[sub.name] || 0;
 
-        // Custom Sommelier Marker Icon (SVG styled)
         const customHtml = `
-          <div class="custom-sommelier-marker ${isSelected ? 'is-active' : ''}">
+          <div class="custom-sommelier-marker subregion-marker ${isSelected ? 'is-active' : ''}">
             <div class="marker-pin">
               <span class="marker-wine-symbol">🍇</span>
               ${bottleCount > 0 ? `<span class="marker-badge">${bottleCount}</span>` : ''}
@@ -117,27 +269,26 @@ export default function WineRegionMap({
           popupAnchor: [0, -45]
         });
 
-        const marker = L.marker([sub.lat, sub.lng], { icon });
+        const marker = L.marker([sub.lat, sub.lng], { icon, zIndexOffset: 100 });
 
-        // Popup Content
         const popupHtml = `
           <div class="sommelier-map-popup">
             <div class="popup-header">
-              <span class="popup-sub-tag">Appellation Zone</span>
+              <span class="popup-sub-tag">Appellation District</span>
               <h4 class="popup-title">${sub.name}</h4>
             </div>
             <div class="popup-body">
               <div class="popup-row">
                 <strong>Terroir / Soil:</strong>
-                <p>${sub.terroir || 'Limestone, clay, and gravel benches.'}</p>
+                <p>${sub.terroir || 'Limestone, clay, and chalk benches.'}</p>
               </div>
               <div class="popup-row">
                 <strong>Focus:</strong>
-                <p>${sub.focus || 'Signature regional cuvees.'}</p>
+                <p>${sub.focus || 'Signature regional cuvées.'}</p>
               </div>
               ${bottleCount > 0 ? `
-                <div class="popup-cellar-count">
-                  🍷 <strong>${bottleCount} bottle${bottleCount > 1 ? 's' : ''}</strong> in your cellar
+                <div class="popup-cellar-count popup-cellar-clickable" data-cellarsub="${sub.id}">
+                  🍷 <strong>${bottleCount} bottle${bottleCount > 1 ? 's' : ''}</strong> in cellar <span style="text-decoration: underline; font-size: 0.76rem;">(View list →)</span>
                 </div>
               ` : ''}
             </div>
@@ -149,10 +300,7 @@ export default function WineRegionMap({
           </div>
         `;
 
-        marker.bindPopup(popupHtml, {
-          maxWidth: 300,
-          className: 'sommelier-leaflet-popup'
-        });
+        marker.bindPopup(popupHtml, { maxWidth: 300, className: 'sommelier-leaflet-popup' });
 
         marker.on('popupopen', () => {
           const btn = document.querySelector(`.popup-explore-btn[data-subid="${sub.id}"]`);
@@ -160,6 +308,13 @@ export default function WineRegionMap({
             btn.onclick = (e) => {
               e.stopPropagation();
               if (onSelectSubRegionRef.current) onSelectSubRegionRef.current(sub.id);
+            };
+          }
+          const cellarBtn = document.querySelector(`.popup-cellar-clickable[data-cellarsub="${sub.id}"]`);
+          if (cellarBtn) {
+            cellarBtn.onclick = (e) => {
+              e.stopPropagation();
+              if (onViewCellarRef.current) onViewCellarRef.current(sub.id);
             };
           }
         });
@@ -173,10 +328,201 @@ export default function WineRegionMap({
       });
     }
 
+    // 2. Draw 17 Grand Cru Village Markers (Radiant Gold aesthetic, z-index 1000)
+    if ((pinViewMode === 'grandCrus' || pinViewMode === 'all') && hasGrandCrus) {
+      region.grandCrus.forEach(cru => {
+        const isCruSelected = selectedCruId === cru.id;
+        const isPinot = cru.dominantGrape?.toLowerCase().includes('pinot');
+        const grapeSymbol = isPinot ? '🍇' : '🥂';
+        const pinClass = isPinot ? 'pinot-cru' : 'chard-cru';
+
+        const cruHtml = `
+          <div class="custom-sommelier-marker cru-marker grand-cru ${pinClass} ${isCruSelected ? 'is-active' : ''}">
+            <div class="marker-pin grand-cru-pin">
+              <span class="marker-wine-symbol">${grapeSymbol}</span>
+              <span class="cru-star-badge">100%</span>
+            </div>
+            <div class="marker-tooltip-title cru-title">${cru.name}</div>
+          </div>
+        `;
+
+        const cruIcon = L.divIcon({
+          className: 'custom-sommelier-marker-wrapper',
+          html: cruHtml,
+          iconSize: [130, 60],
+          iconAnchor: [65, 48],
+          popupAnchor: [0, -45]
+        });
+
+        const marker = L.marker([cru.lat, cru.lng], { icon: cruIcon, zIndexOffset: 1000 });
+
+        const cruPopupHtml = `
+          <div class="sommelier-map-popup grand-cru-popup">
+            <div class="popup-header">
+              <span class="popup-sub-tag grand-cru-tag">👑 Grand Cru (100% Échelle) · ${cru.district || cru.subregion}</span>
+              <h4 class="popup-title">${cru.name}</h4>
+            </div>
+            <div class="popup-body">
+              <div class="popup-row">
+                <strong>Dominant Grape:</strong>
+                <p><strong>${cru.dominantGrape}</strong> (${cru.grapeRatio || 'Premier assemblage'})</p>
+              </div>
+              <div class="popup-row">
+                <strong>Hillside Aspect:</strong>
+                <p>${cru.aspect || 'Steep solar slope'}</p>
+              </div>
+              <div class="popup-row">
+                <strong>Soil & Geology:</strong>
+                <p>${cru.soil || 'Belemnite chalk (Belemnitella quadrata)'}</p>
+              </div>
+              <div class="popup-row">
+                <strong>Character Profile:</strong>
+                <p>${cru.character || 'Profound structural complexity.'}</p>
+              </div>
+              ${cru.benchmarkProducers && cru.benchmarkProducers.length > 0 ? `
+                <div class="popup-row">
+                  <strong>Benchmark Producers:</strong>
+                  <p>${cru.benchmarkProducers.slice(0, 4).join(', ')}</p>
+                </div>
+              ` : ''}
+              ${cru.iconicVineyards && cru.iconicVineyards.length > 0 ? `
+                <div class="popup-row">
+                  <strong>Iconic Clos / Lieux-Dits:</strong>
+                  <p>${cru.iconicVineyards.slice(0, 3).join(', ')}</p>
+                </div>
+              ` : ''}
+            </div>
+            <div class="popup-footer">
+              <button class="popup-explore-btn cru-explore-btn" data-cruid="${cru.id}">
+                ${isCruSelected ? 'Focused' : 'Study Grand Cru Details →'}
+              </button>
+            </div>
+          </div>
+        `;
+
+        marker.bindPopup(cruPopupHtml, { maxWidth: 320, className: 'sommelier-leaflet-popup' });
+
+        marker.on('popupopen', () => {
+          const btn = document.querySelector(`.popup-explore-btn[data-cruid="${cru.id}"]`);
+          if (btn) {
+            btn.onclick = (e) => {
+              e.stopPropagation();
+              if (onSelectCruRef.current) onSelectCruRef.current(cru.id);
+            };
+          }
+        });
+
+        marker.on('click', () => {
+          if (onSelectCruRef.current) onSelectCruRef.current(cru.id);
+        });
+
+        marker.addTo(layerGroupRef.current);
+        markersRef.current[`cru-${cru.id}`] = marker;
+      });
+    }
+
+    // 3. Draw 16 Essential Premier Cru Village Markers (Warm Bronze/Amber aesthetic, z-index 500)
+    if ((pinViewMode === 'premierCrus' || pinViewMode === 'all') && hasPremierCrus) {
+      region.premierCrus.forEach(pcru => {
+        const isCruSelected = selectedCruId === pcru.id;
+        const isPinot = pcru.dominantGrape?.toLowerCase().includes('pinot');
+        const isChard = pcru.dominantGrape?.toLowerCase().includes('chardonnay');
+        const grapeSymbol = isPinot ? '🍇' : (isChard ? '🥂' : '🌿');
+        const pinClass = isPinot ? 'pinot-cru' : (isChard ? 'chard-cru' : 'meunier-cru');
+
+        const pcruHtml = `
+          <div class="custom-sommelier-marker cru-marker premier-cru ${pinClass} ${isCruSelected ? 'is-active' : ''}">
+            <div class="marker-pin premier-cru-pin">
+              <span class="marker-wine-symbol">${grapeSymbol}</span>
+              <span class="cru-star-badge premier-badge">${pcru.echelleRating}%</span>
+            </div>
+            <div class="marker-tooltip-title cru-title">${pcru.name}</div>
+          </div>
+        `;
+
+        const pcruIcon = L.divIcon({
+          className: 'custom-sommelier-marker-wrapper',
+          html: pcruHtml,
+          iconSize: [130, 60],
+          iconAnchor: [65, 48],
+          popupAnchor: [0, -45]
+        });
+
+        const marker = L.marker([pcru.lat, pcru.lng], { icon: pcruIcon, zIndexOffset: 500 });
+
+        const pcruPopupHtml = `
+          <div class="sommelier-map-popup premier-cru-popup">
+            <div class="popup-header">
+              <span class="popup-sub-tag premier-cru-tag">🥇 Premier Cru (${pcru.echelleRating}% Échelle) · ${pcru.district || pcru.subregion}</span>
+              <h4 class="popup-title">${pcru.name}</h4>
+            </div>
+            <div class="popup-body">
+              <div class="popup-row">
+                <strong>Dominant Grape:</strong>
+                <p><strong>${pcru.dominantGrape}</strong> ${pcru.grapeRatio ? `(${pcru.grapeRatio})` : ''}</p>
+              </div>
+              <div class="popup-row">
+                <strong>Aspect & Soil:</strong>
+                <p>${pcru.aspect ? `${pcru.aspect} · ` : ''}${pcru.soil || 'Chalk-marl slope'}</p>
+              </div>
+              <div class="popup-row">
+                <strong>Character:</strong>
+                <p>${pcru.character || 'Vibrant, terroir-expressive Cru.'}</p>
+              </div>
+              ${pcru.historicalSignificance ? `
+                <div class="popup-row">
+                  <strong>Historical Importance:</strong>
+                  <p>${pcru.historicalSignificance}</p>
+                </div>
+              ` : ''}
+              ${(pcru.benchmarkProducers || pcru.famousProducers) ? `
+                <div class="popup-row">
+                  <strong>Benchmark Producers:</strong>
+                  <p>${(pcru.benchmarkProducers || pcru.famousProducers).slice(0, 4).join(', ')}</p>
+                </div>
+              ` : ''}
+              ${pcru.iconicVineyards && pcru.iconicVineyards.length > 0 ? `
+                <div class="popup-row">
+                  <strong>Iconic Clos / Lieux-Dits:</strong>
+                  <p>${pcru.iconicVineyards.slice(0, 3).join(', ')}</p>
+                </div>
+              ` : ''}
+            </div>
+            <div class="popup-footer">
+              <button class="popup-explore-btn premier-explore-btn" data-cruid="${pcru.id}">
+                ${isCruSelected ? 'Focused' : 'Study Premier Cru Details →'}
+              </button>
+            </div>
+          </div>
+        `;
+
+        marker.bindPopup(pcruPopupHtml, { maxWidth: 320, className: 'sommelier-leaflet-popup' });
+
+        marker.on('popupopen', () => {
+          const btn = document.querySelector(`.popup-explore-btn[data-cruid="${pcru.id}"]`);
+          if (btn) {
+            btn.onclick = (e) => {
+              e.stopPropagation();
+              if (onSelectCruRef.current) onSelectCruRef.current(pcru.id);
+            };
+          }
+        });
+
+        marker.on('click', () => {
+          if (onSelectCruRef.current) onSelectCruRef.current(pcru.id);
+        });
+
+        marker.addTo(layerGroupRef.current);
+        markersRef.current[`premier-${pcru.id}`] = marker;
+      });
+    }
+
     return () => {
-      // Keep map instance cached for seamless re-render
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      }
     };
-  }, [region, currentLayerType, activeSubRegionId, cellarBottlesCountBySub]);
+  }, [region, currentLayerType, pinViewMode, activeSubRegionId, selectedCruId, cellarBottlesCountBySub, showBoundaries, boundaryData, hasGrandCrus, hasPremierCrus]);
 
   // Sync active sub-region focus
   useEffect(() => {
@@ -186,7 +532,7 @@ export default function WineRegionMap({
     if (activeSubRegionId && region.subRegions) {
       const targetSub = region.subRegions.find(s => s.id === activeSubRegionId);
       if (targetSub && targetSub.lat && targetSub.lng) {
-        map.flyTo([targetSub.lat, targetSub.lng], Math.max(region.zoom + 1, 11), {
+        map.flyTo([targetSub.lat, targetSub.lng], Math.max(region.zoom + 1, 10), {
           duration: 1.2,
           easeLinearity: 0.25
         });
@@ -198,15 +544,48 @@ export default function WineRegionMap({
           }, 600);
         }
       }
-    } else if (!activeSubRegionId && region.center) {
+    } else if (!activeSubRegionId && !selectedCruId && region.center) {
       map.flyTo(region.center, region.zoom, { duration: 1.0 });
     }
-  }, [activeSubRegionId, region]);
+  }, [activeSubRegionId, region, selectedCruId]);
+
+  // Sync active Cru focus (searching in both 17 Grand Crus and 16 Premier Crus)
+  useEffect(() => {
+    if (!mapInstanceRef.current || !selectedCruId) return;
+    const map = mapInstanceRef.current;
+
+    const targetCru = (region.grandCrus || []).find(c => c.id === selectedCruId) ||
+                      (region.premierCrus || []).find(c => c.id === selectedCruId);
+
+    if (targetCru && targetCru.lat && targetCru.lng) {
+      map.flyTo([targetCru.lat, targetCru.lng], 13, {
+        duration: 1.2,
+        easeLinearity: 0.25
+      });
+
+      const targetMarker = markersRef.current[`cru-${selectedCruId}`] || markersRef.current[`premier-${selectedCruId}`];
+      if (targetMarker) {
+        setTimeout(() => {
+          targetMarker.openPopup();
+        }, 600);
+      }
+    }
+  }, [selectedCruId, region]);
 
   const handleResetView = () => {
     if (onSelectSubRegion) onSelectSubRegion(null);
-    if (mapInstanceRef.current && region.center) {
-      mapInstanceRef.current.flyTo(region.center, region.zoom, { duration: 1.0 });
+    if (onSelectCru) onSelectCru(null);
+    if (mapInstanceRef.current) {
+      if (boundaryData) {
+        const bounds = L.geoJSON(boundaryData).getBounds();
+        if (bounds.isValid()) {
+          mapInstanceRef.current.fitBounds(bounds, { padding: [55, 55], animate: true, duration: 1.0 });
+          return;
+        }
+      }
+      if (region.center) {
+        mapInstanceRef.current.flyTo(region.center, region.zoom, { duration: 1.0 });
+      }
     }
   };
 
@@ -218,9 +597,9 @@ export default function WineRegionMap({
           <button 
             className={`map-layer-pill ${currentLayerType === 'parchment' ? 'active' : ''}`}
             onClick={() => setCurrentLayerType('parchment')}
-            title="Sommelier Antique Cartography View"
+            title="Classic Cartography View"
           >
-            <Compass size={14} style={{ marginRight: '4px' }} />
+            <Compass size={13} style={{ marginRight: '3px' }} />
             Cartography
           </button>
           <button 
@@ -228,59 +607,80 @@ export default function WineRegionMap({
             onClick={() => setCurrentLayerType('topo')}
             title="Terroir & Relief Elevation Contours"
           >
-            <Layers size={14} style={{ marginRight: '4px' }} />
-            Terroir Relief
+            <Layers size={13} style={{ marginRight: '3px' }} />
+            Terroir
           </button>
           <button 
             className={`map-layer-pill ${currentLayerType === 'satellite' ? 'active' : ''}`}
             onClick={() => setCurrentLayerType('satellite')}
             title="Satellite Vineyard Hillsides"
           >
-            <Maximize2 size={14} style={{ marginRight: '4px' }} />
+            <Maximize2 size={13} style={{ marginRight: '3px' }} />
             Satellite
           </button>
+          {boundaryData && (
+            <button 
+              className={`map-layer-pill ${showBoundaries ? 'active' : ''}`}
+              onClick={() => setShowBoundaries(prev => !prev)}
+              title="Toggle Wine Appellation Boundary Polygons"
+            >
+              <Shapes size={13} style={{ marginRight: '3px', color: showBoundaries ? 'var(--accent-gold)' : 'inherit' }} />
+              Boundaries {showBoundaries ? 'ON' : 'OFF'}
+            </button>
+          )}
         </div>
 
-        <button 
-          className="map-reset-btn" 
-          onClick={handleResetView}
-          title="Reset map view to whole region"
-        >
-          <MapPin size={14} style={{ marginRight: '4px' }} />
-          Reset View
-        </button>
+        <div className="map-toolbar-group">
+          {hasGrandCrus && (
+            <div className="map-layer-selector">
+              <button 
+                className={`map-layer-pill ${pinViewMode === 'subregions' ? 'active' : ''}`}
+                onClick={() => setPinViewMode('subregions')}
+                title="Display Subregion Districts"
+              >
+                Districts
+              </button>
+              <button 
+                className={`map-layer-pill ${pinViewMode === 'grandCrus' ? 'active' : ''}`}
+                onClick={() => setPinViewMode('grandCrus')}
+                title="Display 17 Grand Cru Villages"
+              >
+                <Crown size={12} style={{ marginRight: '2px', color: 'var(--accent-gold)' }} />
+                17 Grand Crus
+              </button>
+              {hasPremierCrus && (
+                <button 
+                  className={`map-layer-pill ${pinViewMode === 'premierCrus' ? 'active' : ''}`}
+                  onClick={() => setPinViewMode('premierCrus')}
+                  title="Display 16 Essential Premier Crus"
+                >
+                  <Award size={12} style={{ marginRight: '2px', color: '#d97706' }} />
+                  Premier Crus
+                </button>
+              )}
+              <button 
+                className={`map-layer-pill ${pinViewMode === 'all' ? 'active' : ''}`}
+                onClick={() => setPinViewMode('all')}
+                title="Display All Pins"
+              >
+                All Pins
+              </button>
+            </div>
+          )}
+
+          <button 
+            className="map-reset-btn" 
+            onClick={handleResetView}
+            title="Reset map view to whole region"
+          >
+            <MapPin size={13} style={{ marginRight: '3px' }} />
+            Reset
+          </button>
+        </div>
       </div>
 
       {/* The Leaflet Container */}
       <div ref={mapContainerRef} className="wine-leaflet-container" />
-
-      {/* Sub-region Quick Bar */}
-      {region.subRegions && region.subRegions.length > 0 && (
-        <div className="map-subregions-overlay">
-          <span className="subregions-overlay-label">Key Appellations:</span>
-          <div className="subregions-chips">
-            <button 
-              className={`subregion-chip ${!activeSubRegionId ? 'active' : ''}`}
-              onClick={() => handleResetView()}
-            >
-              All {region.name}
-            </button>
-            {region.subRegions.map(sub => {
-              const bottleCount = cellarBottlesCountBySub[sub.id] || cellarBottlesCountBySub[sub.name] || 0;
-              return (
-                <button
-                  key={sub.id}
-                  className={`subregion-chip ${activeSubRegionId === sub.id ? 'active' : ''}`}
-                  onClick={() => onSelectSubRegion && onSelectSubRegion(sub.id)}
-                >
-                  {sub.name}
-                  {bottleCount > 0 && <span className="sub-count">({bottleCount})</span>}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      )}
     </div>
   );
 }

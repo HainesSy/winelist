@@ -12,7 +12,9 @@
 
 html {
   width: 100%;
+  max-width: 100%;
   min-height: 100%;
+  overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
@@ -29,6 +31,9 @@ body {
   font-family: var(--font-sans);
   margin: 0;
   padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   display: flex;
   justify-content: center;
   -webkit-font-smoothing: antialiased;
@@ -42,6 +47,8 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   align-items: center;
 }
 
@@ -1338,9 +1345,10 @@ button.region-label:hover,
 
 .region-detail-container {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1120px;
   margin: 1.5rem auto 3rem auto;
-  padding: 0 1.5rem;
+  padding: 0 2.5rem;
+  box-sizing: border-box;
   animation: fadeIn 0.35s ease-out;
 }
 
@@ -1570,6 +1578,20 @@ button.region-label:hover,
   border-radius: 20px;
   border: 1px solid var(--accent-gold);
   color: #fff9e6;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+}
+
+.region-cellar-badge.clickable {
+  cursor: pointer;
+}
+
+.region-cellar-badge.clickable:hover {
+  background: var(--accent-gold);
+  color: #1a1a1a;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.45);
+  transform: translateY(-1.5px);
 }
 
 .region-hero-title {
@@ -1601,10 +1623,14 @@ button.region-label:hover,
 .region-tabs-nav {
   display: flex;
   gap: 8px;
-  overflow-x: auto;
+  flex-wrap: wrap;
+  justify-content: center;
   padding: 4px 0 12px 0;
   margin-bottom: 1.25rem;
   border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .region-tab-btn {
@@ -1613,10 +1639,10 @@ button.region-label:hover,
   gap: 8px;
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(212, 175, 55, 0.3);
-  padding: 10px 18px;
+  padding: 8px 16px;
   border-radius: 30px;
   font-family: var(--font-sans);
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 600;
   color: var(--text-main);
   cursor: pointer;
@@ -1645,6 +1671,8 @@ button.region-label:hover,
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .map-intro-text h3 {
@@ -1668,12 +1696,15 @@ button.region-label:hover,
 .wine-region-map-wrapper {
   position: relative;
   width: 100%;
-  height: 520px;
+  max-width: 100%;
+  height: 820px;
+  min-height: 680px;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid rgba(212, 175, 55, 0.4);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
   margin-bottom: 2rem;
+  box-sizing: border-box;
 }
 
 .wine-leaflet-container {
@@ -1683,45 +1714,84 @@ button.region-label:hover,
   z-index: 1;
 }
 
+/* High Definition AOC Boundary Polygons */
+.aoc-defined-boundary {
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.45));
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  transition: stroke-width 0.2s ease, fill-opacity 0.2s ease, stroke 0.2s ease;
+}
+
+.aoc-defined-boundary.is-selected-boundary {
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.75));
+  animation: boundaryPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes boundaryPulse {
+  0%, 100% {
+    fill-opacity: 0.46;
+  }
+  50% {
+    fill-opacity: 0.62;
+  }
+}
+
 /* Map Glassmorphism Toolbar */
 .map-glass-toolbar {
   position: absolute;
-  top: 14px;
-  left: 14px;
-  right: 14px;
+  top: 12px;
+  left: 12px;
+  right: 12px;
   z-index: 500;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
   pointer-events: none;
+  max-width: calc(100% - 24px);
+  box-sizing: border-box;
 }
 
-.map-layer-selector, .map-reset-btn {
+.map-toolbar-group {
   pointer-events: auto;
-  background: rgba(255, 255, 255, 0.88);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-width: 100%;
+}
+
+.map-layer-selector {
+  pointer-events: auto;
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(212, 175, 55, 0.35);
   border-radius: 30px;
-  padding: 4px 6px;
+  padding: 3px 5px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
-  gap: 4px;
+  flex-wrap: wrap;
+  gap: 3px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .map-layer-pill {
   background: transparent;
   border: none;
-  padding: 6px 12px;
+  padding: 5px 11px;
   border-radius: 20px;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 600;
   color: var(--text-main);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .map-layer-pill:hover {
@@ -1734,12 +1804,22 @@ button.region-label:hover,
 }
 
 .map-reset-btn {
-  padding: 8px 14px;
-  font-size: 0.8rem;
+  pointer-events: auto;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 30px;
+  padding: 6px 13px;
+  font-size: 0.76rem;
   font-weight: 600;
   color: var(--text-main);
   cursor: pointer;
   transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .map-reset-btn:hover {
@@ -1750,25 +1830,29 @@ button.region-label:hover,
 /* Map Sub-regions Overlay */
 .map-subregions-overlay {
   position: absolute;
-  bottom: 16px;
-  left: 14px;
-  right: 14px;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
   z-index: 500;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(212, 175, 55, 0.35);
-  border-radius: 12px;
-  padding: 8px 14px;
+  border-radius: 14px;
+  padding: 8px 12px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  overflow-x: auto;
+  flex-wrap: wrap;
+  gap: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
+  max-width: calc(100% - 24px);
+  max-height: 180px;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .subregions-overlay-label {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -1778,16 +1862,18 @@ button.region-label:hover,
 
 .subregions-chips {
   display: flex;
-  gap: 6px;
-  overflow-x: auto;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+  max-width: 100%;
 }
 
 .subregion-chip {
   background: rgba(0, 0, 0, 0.04);
   border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 0.76rem;
   font-weight: 600;
   color: var(--text-main);
   cursor: pointer;
@@ -1884,6 +1970,10 @@ button.region-label:hover,
   border: 1px solid rgba(212, 175, 55, 0.4);
 }
 
+.leaflet-control-attribution {
+  display: none !important;
+}
+
 /* Custom Leaflet Popups */
 .sommelier-leaflet-popup .leaflet-popup-content-wrapper {
   background: #ffffff;
@@ -1964,6 +2054,80 @@ button.region-label:hover,
   background: var(--accent-dark-gold);
 }
 
+/* Custom Sommelier Polygon Permanent Labels */
+.sommelier-leaflet-permanent-label.leaflet-tooltip {
+  background: rgba(18, 24, 30, 0.88) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(212, 175, 55, 0.75) !important;
+  border-radius: 20px !important;
+  color: #ffffff !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.4px !important;
+  padding: 3px 10px !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45) !important;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.sommelier-leaflet-permanent-label.leaflet-tooltip::before {
+  display: none !important;
+}
+
+/* Custom Sommelier Polygon Tooltip */
+.sommelier-leaflet-poly-tooltip.leaflet-tooltip {
+  background: rgba(28, 40, 51, 0.92) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 175, 55, 0.6) !important;
+  border-radius: 8px !important;
+  color: #fdfbf7 !important;
+  padding: 6px 10px !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
+  font-family: inherit;
+}
+
+.sommelier-leaflet-poly-tooltip::before {
+  border-top-color: rgba(28, 40, 51, 0.92) !important;
+}
+
+.sommelier-poly-tooltip {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.poly-tooltip-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.poly-tooltip-header strong {
+  font-size: 13px;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.poly-cat-badge {
+  font-size: 9px;
+  text-transform: uppercase;
+  background: rgba(212, 175, 55, 0.25);
+  color: #ffd700;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-weight: 600;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.poly-grape {
+  font-size: 11px;
+  color: #e0e0e0;
+}
+
 /* Appellations Cards Grid */
 .appellations-grid-section {
   margin-top: 2rem;
@@ -2033,6 +2197,21 @@ button.region-label:hover,
   border-radius: 12px;
   border: 1px solid rgba(212, 175, 55, 0.4);
   white-space: nowrap;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.appellation-bottle-tag.clickable {
+  cursor: pointer;
+}
+
+.appellation-bottle-tag.clickable:hover {
+  background: var(--accent-gold);
+  color: #ffffff;
+  border-color: var(--accent-gold);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.35);
 }
 
 .appellation-zone-tag {
@@ -2648,6 +2827,1903 @@ button.region-label:hover,
 }
 
 /* ==========================================================================
+   CMS LEVEL 3 SOMMELIER & CHAMPAGNE ENHANCEMENTS
+   ========================================================================== */
+
+.region-cms-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.35) 0%, rgba(139, 0, 0, 0.3) 100%);
+  backdrop-filter: blur(8px);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--accent-gold);
+  color: #fff9e6;
+  letter-spacing: 0.5px;
+}
+
+/* CMS Section Headers & Badges */
+.cms-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 1.5rem;
+  background: #ffffff;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.cms-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.cms-level-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  background: #3b0e1e;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+.cru-count-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(212, 175, 55, 0.18);
+  color: var(--accent-dark-gold);
+  padding: 3px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.cms-section-header h3 {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  margin: 4px 0;
+  color: #1a1a1a;
+}
+
+.cms-section-header p {
+  font-size: 0.88rem;
+  color: #555;
+  margin: 0;
+  max-width: 650px;
+  line-height: 1.45;
+}
+
+/* Cru Explorer Filters & Pill Bars */
+.cru-filter-pill-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  padding: 8px 12px;
+  background: #faf7f2;
+  border-radius: 10px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.filter-group-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-dark-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.cru-filter-pill-btn {
+  background: #ffffff;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 16px;
+  padding: 4px 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cru-filter-pill-btn:hover {
+  background: #fff9e6;
+  border-color: var(--accent-gold);
+}
+
+.cru-filter-pill-btn.active {
+  background: #3b0e1e;
+  color: #ffffff;
+  border-color: #3b0e1e;
+  box-shadow: 0 2px 6px rgba(59, 14, 30, 0.3);
+}
+
+.cru-controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.cru-tier-toggles {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tier-toggle-btn {
+  background: #ffffff;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-main);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.tier-toggle-btn:hover {
+  background: #faf7f2;
+}
+
+.tier-toggle-btn.active {
+  background: #3b0e1e;
+  color: #ffffff;
+  border-color: #3b0e1e;
+}
+
+.cru-filter-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cru-select-filter {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-main);
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cru-select-filter:focus {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+}
+
+.cru-search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cru-search-icon {
+  position: absolute;
+  left: 10px;
+  color: #888;
+  pointer-events: none;
+}
+
+.cru-search-input {
+  padding: 6px 10px 6px 30px;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--text-main);
+  outline: none;
+  width: 220px;
+  transition: all 0.2s ease;
+}
+
+.cru-search-input:focus {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+  width: 260px;
+}
+
+/* 17 Grand Crus & Premier Crus Grid */
+.grand-crus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  margin-bottom: 2.5rem;
+}
+
+.grand-cru-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.grand-cru-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
+  border-color: var(--accent-gold);
+}
+
+.grand-cru-card.grand-cru-tier {
+  border-top: 4px solid var(--accent-gold);
+}
+
+.grand-cru-card.premier-cru-tier {
+  border-top: 4px solid #d97706;
+}
+
+.grand-cru-card.pinot-cru {
+  border-left: 3px solid #8b0000;
+}
+
+.grand-cru-card.chard-cru {
+  border-left: 3px solid #d4af37;
+}
+
+.grand-cru-card.meunier-cru {
+  border-left: 3px solid #059669;
+}
+
+.grand-cru-card.is-selected-cru {
+  box-shadow: 0 0 0 2px #3b0e1e, 0 8px 24px rgba(0, 0, 0, 0.1);
+  background: #fffdfc;
+}
+
+.cru-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 0.75rem;
+}
+
+.cru-badge-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.cru-classification-tag {
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.4px;
+}
+
+.cru-classification-tag.gold-tag {
+  background: linear-gradient(135deg, #d4af37, #b8860b);
+  color: #ffffff;
+}
+
+.cru-classification-tag.amber-tag {
+  background: linear-gradient(135deg, #d97706, #b45309);
+  color: #ffffff;
+}
+
+.cru-district-pill {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+  display: block;
+}
+
+.cru-village-name {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 2px 0 0 0;
+  color: #1a1a1a;
+}
+
+.cru-grape-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 16px;
+  white-space: nowrap;
+}
+
+.cru-grape-badge.pinot {
+  background: #fbf0f2;
+  color: #8b0000;
+  border: 1px solid rgba(139, 0, 0, 0.25);
+}
+
+.cru-grape-badge.chard {
+  background: #fff9e6;
+  color: #7a5800;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.cru-grape-badge.meunier {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid rgba(5, 150, 105, 0.3);
+}
+
+.cru-meta-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 0.75rem;
+  font-size: 0.82rem;
+  background: #faf7f2;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+.cru-meta-item strong {
+  color: #222;
+  margin-right: 4px;
+}
+
+.cru-meta-item span {
+  color: #444;
+}
+
+.cru-character-text, .cru-history-text {
+  font-size: 0.83rem;
+  color: #444;
+  line-height: 1.45;
+  margin-bottom: 0.5rem;
+}
+
+.cru-producers-box {
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid #f0ebe0;
+  font-size: 0.8rem;
+}
+
+.cru-producers-box strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #222;
+}
+
+.producer-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.producer-chip {
+  background: #f0ebe0;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.cru-clos-box {
+  margin-top: 6px;
+  font-size: 0.78rem;
+  color: #666;
+}
+
+.cru-clos-box strong {
+  color: #333;
+}
+
+.cru-clos-box p {
+  margin: 2px 0 0 0;
+  font-style: italic;
+}
+
+.cru-card-footer {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.cru-cellar-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #8b0000;
+  background: #fbf0f2;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(139, 0, 0, 0.3);
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cru-cellar-badge.clickable {
+  cursor: pointer;
+}
+
+.cru-cellar-badge.clickable:hover {
+  background: #8b0000;
+  color: #ffffff;
+  border-color: #8b0000;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(139, 0, 0, 0.35);
+}
+
+.popup-cellar-clickable {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+  padding: 3px 6px;
+  margin: 4px 0;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.popup-cellar-clickable:hover {
+  background: var(--accent-gold);
+  color: #ffffff !important;
+  border-color: var(--accent-gold);
+}
+
+.btn-locate-map {
+  flex: 1;
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: var(--accent-dark-gold);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-locate-map:hover {
+  background: var(--accent-gold);
+  color: #ffffff;
+  border-color: var(--accent-gold);
+}
+
+/* CMS Level 3 Technical Cards */
+.cms-specs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cms-tech-card {
+  background: #ffffff;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.tech-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.tech-icon {
+  color: var(--accent-gold);
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.tech-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--accent-dark-gold);
+  display: block;
+}
+
+.tech-card-header h4 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  margin: 2px 0 0 0;
+  color: #1a1a1a;
+}
+
+.tech-summary {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+/* 4000kg Pressing Extraction Gauge */
+.pressing-flow-gauge {
+  background: #faf7f2;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.pressing-bar-wrapper {
+  margin-bottom: 1rem;
+}
+
+.pressing-fraction-bar {
+  display: flex;
+  height: 36px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.fraction-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  padding: 0 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fraction-segment.cuvee {
+  background: linear-gradient(135deg, #d4af37, #aa7c11);
+}
+
+.fraction-segment.taille {
+  background: linear-gradient(135deg, #d97706, #92400e);
+}
+
+.fraction-segment.rebeche {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+}
+
+.fraction-segment.pomace {
+  background: #78716c;
+}
+
+.pressing-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.metric-item {
+  background: #ffffff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.metric-val {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.metric-val.gold-val {
+  color: var(--accent-dark-gold);
+}
+
+.metric-val.red-val {
+  color: #dc2626;
+}
+
+.pressing-fraction-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 1.25rem;
+}
+
+.fraction-box {
+  border-radius: 10px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.fraction-box.cuvee {
+  background: #fffdf5;
+  border: 1px solid var(--accent-gold);
+}
+
+.fraction-box.taille {
+  background: #faf7f2;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.fraction-box.rebeche {
+  background: #fdf5f5;
+  border: 1px solid rgba(211, 47, 47, 0.3);
+}
+
+.fraction-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 4px;
+}
+
+.fraction-box.cuvee .fraction-badge { color: #8b5a00; }
+.fraction-box.taille .fraction-badge { color: var(--text-muted); }
+.fraction-box.rebeche .fraction-badge { color: #d32f2f; }
+
+.fraction-box h5 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.fraction-vol {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-dark-gold);
+  margin: 4px 0 8px 0;
+  display: block;
+}
+
+.fraction-box.rebeche .fraction-vol { color: #d32f2f; }
+
+.fraction-box p {
+  font-size: 0.84rem;
+  color: #444;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.pressing-rules-box {
+  background: #faf7f2;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.pressing-rules-box h6 {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  margin: 0 0 8px 0;
+  color: #1a1a1a;
+}
+
+.pressing-rules-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.82rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+.pressing-rules-list li {
+  margin-bottom: 4px;
+}
+
+/* CIVC Maturation & Aging Regulations Card */
+.aging-tech-card {
+  background: #ffffff;
+}
+
+.aging-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 1.5rem;
+}
+
+.aging-box {
+  background: #faf7f2;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.aging-box.nv-box {
+  border-top: 4px solid var(--accent-gold);
+}
+
+.aging-box.vintage-box {
+  border-top: 4px solid #3b0e1e;
+}
+
+.aging-header {
+  margin-bottom: 12px;
+}
+
+.aging-type-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--accent-dark-gold);
+  display: block;
+}
+
+.aging-type-tag.vintage-tag {
+  color: #8b0000;
+}
+
+.aging-header h5 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  margin: 4px 0 0 0;
+  color: #1a1a1a;
+}
+
+.aging-stat-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.aging-stat {
+  background: #ffffff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  flex: 1;
+}
+
+.aging-stat-num {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  display: block;
+}
+
+.aging-stat-num.gold-num {
+  color: var(--accent-dark-gold);
+}
+
+.aging-stat-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.aging-rule {
+  font-size: 0.83rem;
+  color: #222;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0 0 6px 0;
+}
+
+.aging-desc {
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.autolysis-note {
+  background: #fffdf5;
+  border: 1px solid var(--accent-gold);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.autolysis-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: #1a1a1a;
+}
+
+.autolysis-text {
+  font-size: 0.84rem;
+  color: #444;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Dosage Sweetness Spectrum & Table */
+.dosage-spectrum-container {
+  margin-bottom: 1.25rem;
+}
+
+.dosage-spectrum-bar {
+  display: flex;
+  height: 28px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dosage-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  padding: 0 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dosage-segment.nature { background: #0284c7; }
+.dosage-segment.extra-brut { background: #0d9488; }
+.dosage-segment.brut { background: #16a34a; }
+.dosage-segment.extra-dry { background: #ca8a04; }
+.dosage-segment.sec { background: #ea580c; }
+.dosage-segment.demi-sec { background: #e11d48; }
+.dosage-segment.doux { background: #9333ea; }
+
+.dosage-table-wrapper {
+  overflow-x: auto;
+}
+
+.dosage-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.dosage-table th {
+  background: #faf7f2;
+  text-align: left;
+  padding: 10px 12px;
+  font-weight: 700;
+  color: #1a1a1a;
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+.dosage-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f0ebe0;
+  color: #444;
+  vertical-align: top;
+}
+
+.dosage-table tr.highlight-row {
+  background: #fffdf8;
+}
+
+.dosage-sub-term {
+  font-size: 0.75rem;
+  color: #888;
+  display: block;
+}
+
+.dosage-profile-text {
+  font-size: 0.82rem;
+  line-height: 1.4;
+  margin: 0;
+  color: #444;
+}
+
+.dosage-pairings-tag {
+  font-size: 0.78rem;
+  color: var(--accent-dark-gold);
+  font-weight: 600;
+}
+
+.sugar-badge {
+  font-weight: 700;
+  color: var(--accent-dark-gold);
+  background: rgba(212, 175, 55, 0.15);
+  padding: 2px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.sugar-free-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0369a1;
+  background: #e0f2fe;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.sugar-allowed-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #15803d;
+  background: #dcfce7;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* 7 Grapes Grid & Complantée */
+.grapes-grid-7 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 1.5rem;
+}
+
+.grape-card-cms {
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.grape-card-cms.primary-grape {
+  background: #ffffff;
+  border: 1px solid var(--accent-gold);
+}
+
+.grape-card-cms.heritage-grape {
+  background: #faf7f2;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.grape-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.grape-category-pill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.grape-category-pill.primary {
+  background: var(--accent-gold);
+  color: #ffffff;
+}
+
+.grape-category-pill.heritage {
+  background: #e8e0d0;
+  color: #555;
+}
+
+.grape-planted-pct {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-dark-gold);
+}
+
+.grape-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  margin: 2px 0 0 0;
+  color: #1a1a1a;
+}
+
+.grape-synonym {
+  font-size: 0.72rem;
+  color: #666;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.grape-color-type {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.grape-flavor-profile {
+  font-size: 0.82rem;
+  color: #444;
+  line-height: 1.4;
+  margin: 0 0 6px 0;
+}
+
+.grape-role-text {
+  font-size: 0.78rem;
+  color: #333;
+  line-height: 1.35;
+  margin: 0 0 8px 0;
+  flex: 1;
+}
+
+.grape-notable-estate {
+  font-size: 0.75rem;
+  color: #666;
+  padding-top: 6px;
+  border-top: 1px solid #f0ebe0;
+}
+
+.complantee-card {
+  background: #fffdf5;
+  border: 1px solid var(--accent-gold);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.complantee-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.complantee-header h5 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.complantee-location {
+  font-size: 0.75rem;
+  color: var(--accent-dark-gold);
+  font-weight: 600;
+}
+
+.complantee-desc {
+  font-size: 0.84rem;
+  color: #444;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Geology Comparison */
+.geology-comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.geo-formation-box {
+  background: #faf7f2;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.geo-era {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--accent-dark-gold);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.geo-formation-box h5 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  margin: 0 0 8px 0;
+  color: #1a1a1a;
+}
+
+.geo-fossil {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 2px 0;
+}
+
+.geo-locations, .geo-impact {
+  font-size: 0.82rem;
+  color: #444;
+  line-height: 1.45;
+  margin: 4px 0;
+}
+
+/* Producer Registration Codes */
+.producer-codes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.producer-code-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #faf7f2;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border-left: 3px solid var(--accent-gold);
+}
+
+.code-badge {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #ffffff;
+  background: #3b0e1e;
+  padding: 4px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.code-info h6 {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  margin: 0 0 2px 0;
+  color: #1a1a1a;
+}
+
+.code-translation {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: normal;
+}
+
+.code-share-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-dark-gold);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.code-info p {
+  font-size: 0.8rem;
+  color: #555;
+  margin: 0 0 4px 0;
+  line-height: 1.35;
+}
+
+.code-examples {
+  font-size: 0.75rem;
+  color: var(--accent-dark-gold);
+  display: block;
+}
+
+/* Ancillary AOCs */
+.ancillary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.ancillary-box {
+  background: #faf7f2;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.ancillary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.ancillary-box h5 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.aoc-est-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent-dark-gold);
+  background: rgba(212, 175, 55, 0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.aoc-styles {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-dark-gold);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.ancillary-box p {
+  font-size: 0.84rem;
+  color: #444;
+  line-height: 1.45;
+  margin: 4px 0;
+}
+
+.aoc-rules-block {
+  margin: 6px 0;
+  font-size: 0.82rem;
+  color: #333;
+}
+
+.aoc-rules-block ul {
+  margin: 4px 0;
+  padding-left: 1.2rem;
+}
+
+/* Prestige Cuvées Tab */
+.prestige-intro {
+  margin-bottom: 1.5rem;
+  background: #ffffff;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.prestige-intro h3 {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  margin: 4px 0 2px 0;
+  color: #1a1a1a;
+}
+
+.prestige-intro p {
+  font-size: 0.88rem;
+  color: #555;
+  margin: 0;
+}
+
+/* Prestige Cuvées 7-Column Table */
+.prestige-table-wrapper {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.prestige-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.prestige-table col.col-cuvee { width: 15%; }
+.prestige-table col.col-house { width: 14%; }
+.prestige-table col.col-debut { width: 11%; }
+.prestige-table col.col-blend { width: 14%; }
+.prestige-table col.col-sourcing { width: 14%; }
+.prestige-table col.col-winemaking { width: 16%; }
+.prestige-table col.col-legacy { width: 16%; }
+
+.prestige-table th {
+  background: #faf7f2;
+  text-align: left;
+  padding: 12px 10px;
+  font-weight: 700;
+  color: #1a1a1a;
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+  font-size: 0.82rem;
+  word-wrap: break-word;
+}
+
+.prestige-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #f0ebe0;
+  vertical-align: top;
+  color: #444;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.cuvee-name-highlight {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: #1a1a1a;
+  display: block;
+  word-wrap: break-word;
+}
+
+.house-name {
+  font-weight: 600;
+  color: #222;
+  display: block;
+  font-size: 0.84rem;
+  word-wrap: break-word;
+}
+
+.house-code-tag {
+  font-size: 0.70rem;
+  color: var(--accent-dark-gold);
+  font-weight: 600;
+  display: block;
+}
+
+.debut-cell-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  max-width: 100%;
+}
+
+.vintage-debut-tag {
+  font-weight: 700;
+  color: var(--accent-dark-gold);
+  background: rgba(212, 175, 55, 0.18);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.debut-subtitle-note {
+  font-size: 0.68rem;
+  color: #666;
+  line-height: 1.25;
+  display: block;
+  word-break: break-word;
+  font-style: italic;
+}
+
+.blend-text {
+  font-size: 0.80rem;
+  color: #333;
+  line-height: 1.35;
+  display: block;
+  word-wrap: break-word;
+}
+
+.sourcing-text {
+  font-size: 0.78rem;
+  color: #555;
+  line-height: 1.35;
+  display: block;
+  word-wrap: break-word;
+}
+
+.vinification-note, .iconic-status-note {
+  font-size: 0.78rem;
+  line-height: 1.35;
+  margin: 0;
+  color: #555;
+  word-wrap: break-word;
+}
+
+/* Growers Directory Section */
+.growers-directory-section {
+  background: #ffffff;
+  padding: 1.25rem;
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.growers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr));
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.grower-card {
+  background: #faf7f2;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 10px;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.grower-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.grower-card-header h5 {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.grower-village {
+  font-size: 0.75rem;
+  color: var(--accent-dark-gold);
+  font-weight: 600;
+  background: rgba(212, 175, 55, 0.15);
+  padding: 2px 7px;
+  border-radius: 10px;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.grower-philosophy, .grower-key-wines {
+  font-size: 0.8rem;
+  color: #444;
+  line-height: 1.4;
+  margin: 2px 0;
+  word-break: break-word;
+}
+
+/* Map Markers: Grand Cru Gold Pins & Premier Cru Amber Pins */
+.custom-sommelier-marker.cru-marker .marker-pin.grand-cru-pin {
+  width: 38px;
+  height: 38px;
+  background: #3b0e1e;
+  border: 2px solid var(--accent-gold);
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.45);
+}
+
+.custom-sommelier-marker.cru-marker.chard-cru .marker-pin.grand-cru-pin {
+  background: #7a5800;
+}
+
+.custom-sommelier-marker.cru-marker.premier-cru .marker-pin.premier-cru-pin {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #d97706, #92400e);
+  border: 2px solid #fef3c7;
+  box-shadow: 0 4px 10px rgba(217, 119, 6, 0.35);
+}
+
+.custom-sommelier-marker.cru-marker.meunier-cru .marker-pin {
+  background: linear-gradient(135deg, #059669, #065f46);
+}
+
+.cru-star-badge {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  background: var(--accent-gold);
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 800;
+  border-radius: 10px;
+  padding: 1px 4px;
+  transform: rotate(45deg);
+  border: 1px solid #ffffff;
+}
+
+.cru-star-badge.premier-badge {
+  background: #d97706;
+  transform: none;
+  font-size: 8.5px;
+  top: -6px;
+  right: -6px;
+}
+
+.cru-title {
+  font-weight: 800;
+  color: #3b0e1e;
+}
+
+.grand-cru-tag {
+  color: #8b0000;
+  font-weight: 800;
+}
+
+.premier-cru-tag {
+  color: #b45309;
+  font-weight: 800;
+}
+
+.cru-chip {
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.cru-chip.active {
+  background: #3b0e1e;
+  border-color: #3b0e1e;
+  color: #ffffff;
+}
+
+.premier-chip.active {
+  background: #d97706;
+  border-color: #d97706;
+  color: #ffffff;
+}
+
+/* Sommelier Cellar Badges */
+.sommelier-wine-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.somm-badge-cru {
+  font-size: 0.72rem;
+  font-weight: 800;
+  background: #fff9e6;
+  color: #8b5a00;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.somm-badge-village {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: #faf7f2;
+  color: #444;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.somm-badge-code {
+  font-size: 0.72rem;
+  font-weight: 800;
+  background: #3b0e1e;
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   RESPONSIVE TABLET & IPAD MEDIA QUERIES (<=1100px & <=768px)
+   ========================================================================== */
+@media (max-width: 1100px) {
+  .region-detail-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 clamp(1.75rem, 4vw, 2.75rem);
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .wine-region-map-wrapper {
+    width: 100%;
+    max-width: 100%;
+    height: clamp(560px, 68vh, 740px);
+    min-height: 520px;
+    border-radius: 14px;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+  }
+
+  .map-glass-toolbar {
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: space-between;
+    align-items: center;
+    max-width: calc(100% - 16px);
+  }
+
+  .map-toolbar-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .map-layer-selector {
+    max-width: 100%;
+    flex-wrap: wrap;
+    padding: 2px 4px;
+    gap: 3px;
+  }
+
+  .map-layer-pill {
+    padding: 4px 8px;
+    font-size: 0.72rem;
+  }
+
+  .map-reset-btn {
+    padding: 4px 10px;
+    font-size: 0.72rem;
+  }
+
+  .map-subregions-overlay {
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+    padding: 6px 10px;
+    max-width: calc(100% - 16px);
+    max-height: 160px;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+
+  .subregions-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    max-width: 100%;
+  }
+
+  .subregion-chip {
+    padding: 3px 8px;
+    font-size: 0.74rem;
+  }
+
+  .region-tabs-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    padding: 4px 0 10px 0;
+  }
+
+  .region-tab-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  /* iPad / Tablet 7-Column Proportional Table Styling */
+  .prestige-table-wrapper {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .prestige-table {
+    width: 100%;
+    table-layout: fixed;
+    font-size: 0.72rem;
+  }
+
+  .prestige-table col.col-cuvee { width: 15%; }
+  .prestige-table col.col-house { width: 14%; }
+  .prestige-table col.col-debut { width: 11%; }
+  .prestige-table col.col-blend { width: 14%; }
+  .prestige-table col.col-sourcing { width: 14%; }
+  .prestige-table col.col-winemaking { width: 16%; }
+  .prestige-table col.col-legacy { width: 16%; }
+
+  .prestige-table th {
+    padding: 8px 5px;
+    font-size: 0.68rem;
+    line-height: 1.2;
+  }
+
+  .prestige-table td {
+    padding: 8px 5px;
+    font-size: 0.68rem;
+    line-height: 1.25;
+  }
+
+  .cuvee-name-highlight {
+    font-size: 0.78rem;
+    line-height: 1.2;
+  }
+
+  .house-name {
+    font-size: 0.72rem;
+  }
+
+  .house-code-tag {
+    font-size: 0.62rem;
+  }
+
+  .vintage-debut-tag {
+    font-size: 0.68rem;
+    padding: 1px 4px;
+  }
+
+  .debut-subtitle-note {
+    font-size: 0.60rem;
+    line-height: 1.15;
+  }
+
+  .blend-text, .sourcing-text {
+    font-size: 0.68rem;
+    line-height: 1.25;
+  }
+
+  .vinification-note, .iconic-status-note {
+    font-size: 0.68rem;
+    line-height: 1.25;
+  }
+
+  .growers-directory-section {
+    padding: 1rem;
+  }
+
+  .growers-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+    gap: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .region-detail-container {
+    padding: 0 1.25rem;
+    margin: 1rem auto 2rem auto;
+    overflow-x: hidden;
+  }
+
+  .region-top-bar-inner {
+    padding: 0.5rem 0.75rem;
+    gap: 8px;
+  }
+
+  .region-hero {
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+  }
+
+  .region-hero-title {
+    font-size: clamp(1.5rem, 5vw, 2.0rem);
+  }
+
+  .region-tabs-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    padding-bottom: 8px;
+  }
+
+  .region-tab-btn {
+    padding: 6px 12px;
+    font-size: 0.78rem;
+  }
+
+  .wine-region-map-wrapper {
+    height: 500px;
+    min-height: 440px;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+  }
+
+  .map-glass-toolbar {
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    max-width: calc(100% - 12px);
+  }
+
+  .map-toolbar-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .map-layer-selector {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 2px 4px;
+  }
+
+  .map-layer-pill, .map-reset-btn {
+    padding: 4px 7px;
+    font-size: 0.70rem;
+  }
+
+  .map-subregions-overlay {
+    bottom: 6px;
+    left: 6px;
+    right: 6px;
+    padding: 5px 8px;
+    max-width: calc(100% - 12px);
+    max-height: 140px;
+    overflow-y: auto;
+  }
+
+  .grand-crus-grid,
+  .appellation-cards-grid,
+  .premier-crus-grid,
+  .growers-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+    gap: 10px;
+  }
+
+  .pressing-fraction-grid,
+  .geology-comparison-grid,
+  .producer-codes-grid,
+  .ancillary-grid,
+  .aging-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .cms-section-header {
+    padding: 0.75rem;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cru-filter-controls {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .cru-select-filter, .cru-search-input {
+    width: 100%;
+  }
+
+  .dosage-table, .prestige-table {
+    min-width: 100%;
+  }
+  
+  .dosage-table-wrapper, .prestige-table-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sommelier-leaflet-popup {
+    max-width: calc(100vw - 24px) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .wine-region-map-wrapper {
+    height: 440px;
+    min-height: 380px;
+  }
+
+  .grand-cru-card,
+  .cms-tech-card,
+  .appellation-card,
+  .aging-box,
+  .fraction-box {
+    padding: 0.85rem;
+  }
+
+  .region-top-bar-inner {
+    flex-wrap: wrap;
+  }
+}
+
+/* ==========================================================================
    PRINT STYLES FIXES
    ========================================================================== */
 @media print {
@@ -2666,4 +4742,4 @@ button.region-label:hover,
     background: transparent !important;
     text-decoration: none !important;
   }
-}
+}
