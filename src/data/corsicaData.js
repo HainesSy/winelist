@@ -704,3 +704,6 @@ export const CORSICA_FOOD_PAIRINGS = [
     decanting: "Not required."
   }
 ];
+
+export const CORSICA_PREMIER_CRUS = [];
+

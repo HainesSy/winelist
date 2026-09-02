@@ -41,6 +41,8 @@ import {
 
 import {
   CORSICA_SUBREGIONS,
+  CORSICA_GRAND_CRUS,
+  CORSICA_PREMIER_CRUS,
   CORSICA_TECHNICAL_REGULATIONS,
   CORSICA_BENCHMARK_ESTATES,
   CORSICA_ICONIC_DOMAINES,
@@ -193,6 +195,8 @@ export {
   ALSACE_ICONIC_DOMAINES,
   ALSACE_FOOD_PAIRINGS,
   CORSICA_SUBREGIONS,
+  CORSICA_GRAND_CRUS,
+  CORSICA_PREMIER_CRUS,
   CORSICA_TECHNICAL_REGULATIONS,
   CORSICA_BENCHMARK_ESTATES,
   CORSICA_ICONIC_DOMAINES,
@@ -565,6 +569,8 @@ export const WINE_REGIONS = {
     foodPairings: CORSICA_FOOD_PAIRINGS,
 
     subRegions: CORSICA_SUBREGIONS,
+    grandCrus: CORSICA_GRAND_CRUS,
+    premierCrus: CORSICA_PREMIER_CRUS,
     technicalRegulations: CORSICA_TECHNICAL_REGULATIONS,
     benchmarkEstates: CORSICA_BENCHMARK_ESTATES,
     prestigeEstates: CORSICA_BENCHMARK_ESTATES,
@@ -1252,7 +1258,7 @@ export const WINE_REGIONS = {
     name: "Spain (Rioja & Ribera del Duero)",
     country: 'Spain',
     countryCode: 'ES',
-    aliases: ['spain', 'rioja', 'ribera del duero', 'priorat', 'rioja alta', 'rioja alavesa', 'haro', 'vega sicilia', 'pingus'],
+    aliases: ['spain', 'rioja', 'ribera del duero', 'priorat', 'rioja alta', 'rioja alavesa', 'haro', 'vega sicilia', 'vega sicilia unico', 'vega sicilia único', 'pingus'],
     tagline: "The Noble Realm of Tempranillo, Gran Reserva & Ancient Slate",
     summary: "From the historic oak-lined bodegas of Haro in Rioja Alta and chalk terraces of Rioja Alavesa to the high-altitude Castilian plateau of Ribera del Duero and llicorella slate of Priorat, Spain crafts immortal Tempranillo and Garnacha balancing rich dark fruit, cedar, tobacco, and profound mineral depth.",
     center: [42.5000, -2.7500],
@@ -1553,38 +1559,59 @@ export function findWineRegion(regionQuery, countryQuery = '') {
       }
     }
 
-    // 4. Word boundary & constrained fuzzy match across all regions
+    // 4. Word boundary & constrained candidate match ranked by match specificity (longest matched string wins)
+    const matches = [];
+
     for (const regKey of Object.keys(WINE_REGIONS)) {
       const r = WINE_REGIONS[regKey];
       const normName = normalizeText(r.name);
       if (isAliasOrNameMatch(cleanReg, normName)) {
-        return r;
+        matches.push({ region: r, score: normName.length });
       }
       if (r.aliases) {
         for (const alias of r.aliases) {
           const normAlias = normalizeText(alias);
           if (isAliasOrNameMatch(cleanReg, normAlias)) {
-            return r;
+            matches.push({ region: r, score: normAlias.length });
           }
         }
       }
       if (r.subRegions) {
         for (const sub of r.subRegions) {
           const normSub = normalizeText(sub.name);
-          if (isAliasOrNameMatch(cleanReg, normSub)) return r;
+          if (isAliasOrNameMatch(cleanReg, normSub)) {
+            matches.push({ region: r, score: normSub.length });
+          }
         }
       }
       if (r.grandCrus) {
         for (const cru of r.grandCrus) {
           const normCru = normalizeText(cru.name);
-          if (isAliasOrNameMatch(cleanReg, normCru)) return r;
-          if (cru.village && isAliasOrNameMatch(cleanReg, normalizeText(cru.village))) return r;
+          if (isAliasOrNameMatch(cleanReg, normCru)) {
+            matches.push({ region: r, score: normCru.length });
+          }
+          if (cru.village && isAliasOrNameMatch(cleanReg, normalizeText(cru.village))) {
+            matches.push({ region: r, score: normalizeText(cru.village).length });
+          }
+        }
+      }
+      if (r.premierCrus) {
+        for (const cru of r.premierCrus) {
+          const normCru = normalizeText(cru.name);
+          if (isAliasOrNameMatch(cleanReg, normCru)) {
+            matches.push({ region: r, score: normCru.length });
+          }
         }
       }
     }
+
+    if (matches.length > 0) {
+      matches.sort((a, b) => b.score - a.score);
+      return matches[0].region;
+    }
   }
 
-  // 4. Country & Regional combination lookup
+  // 5. Country & Regional combination lookup
   if (cleanCountry === 'france') {
     if (cleanReg.includes('champagne') || cleanReg.includes('coteaux champenois') || cleanReg.includes('riceys')) return WINE_REGIONS['champagne'];
     if (cleanReg.includes('burgundy') || cleanReg.includes('bourgogne') || cleanReg.includes('chablis') || cleanReg.includes('beaune') || cleanReg.includes('nuits') || cleanReg.includes('macon') || cleanReg.includes('beaujolais')) return WINE_REGIONS['burgundy'];
@@ -1626,7 +1653,7 @@ export function findWineRegion(regionQuery, countryQuery = '') {
     return WINE_REGIONS['japan-chubu'];
   }
 
-  // 5. Default structured fallback for unknown regions
+  // 6. Default structured fallback for unknown regions
   const fallbackId = cleanReg ? (cleanReg.replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'unknown-wine-region') : 'unknown-wine-region';
   return {
     id: fallbackId,

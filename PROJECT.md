@@ -37,44 +37,26 @@ Every wine region dataset adheres to the benchmark standard established by Champ
 ## Milestones
 | # | Name | Scope | Dependencies | Status |
 |---|---|---|---|---|
-| M1 | Test Suite & Validation Infrastructure | `test/verify_all_17_regions.mjs`, `test/empirical_domain_validation_suite.test.mjs`, `test/adversarial_world_regions_stress.js`, `test/test_ui_gastronomy_cru_integration.js`, `test/test_world_wine_regions.js`, `package.json` | none | PLANNED |
-| M2 | Major Gap Regions Elevation | `src/data/moselData.js`, `src/data/riojaData.js`, `src/data/chileData.js`, `src/data/australiaData.js`, `src/data/wineRegionBoundaries.js` | M1 | PLANNED |
-| M3 | Partially Complete Regions Elevation | `src/data/alsaceData.js`, `src/data/corsicaData.js`, `src/data/oregonData.js`, `src/data/italyOtherData.js`, `src/data/japanData.js`, `src/data/wineRegionBoundaries.js` | M1 | PLANNED |
-| M4 | Benchmark Regions Refinement & Normalization | `src/data/champagneData.js`, `src/data/burgundyData.js`, `src/data/bordeauxData.js`, `src/data/rhoneData.js`, `src/data/loireData.js`, `src/data/piedmontData.js`, `src/data/tuscanyData.js`, `src/data/californiaData.js`, `src/data/wineRegions.js` | M1 | PLANNED |
-| M5 | Full Verification, Hardening & Final Gate Pass | Complete test run across all 17 regions, `npm run build`, Reviewer, Challenger, Forensic Auditor | M2, M3, M4 | PLANNED |
+| M1 | Test Suite & Validation Infrastructure | `test/verify_all_17_regions.mjs`, `test/empirical_domain_validation_suite.test.mjs`, `test/adversarial_world_regions_stress.js`, `test/test_ui_gastronomy_cru_integration.js`, `test/test_world_wine_regions.js`, `package.json` | none | DONE |
+| M2 | Major Gap Regions Elevation | `src/data/moselData.js`, `src/data/riojaData.js`, `src/data/chileData.js`, `src/data/australiaData.js`, `src/data/wineRegionBoundaries.js` | M1 | DONE |
+| M3 | Partially Complete Regions Elevation | `src/data/alsaceData.js`, `src/data/corsicaData.js`, `src/data/oregonData.js`, `src/data/italyOtherData.js`, `src/data/japanData.js`, `src/data/wineRegionBoundaries.js` | M1 | DONE |
+| M4 | Benchmark Regions Refinement & Normalization | `src/data/champagneData.js`, `src/data/burgundyData.js`, `src/data/bordeauxData.js`, `src/data/rhoneData.js`, `src/data/loireData.js`, `src/data/piedmontData.js`, `src/data/tuscanyData.js`, `src/data/californiaData.js`, `src/data/wineRegions.js` | M1 | DONE |
+| M5 | Full Verification, Hardening & Final Gate Pass | Complete test run across all 17 regions, `npm run build`, Reviewer, Challenger, Forensic Auditor | M2, M3, M4 | DONE |
 
 ## Interface Contracts
 ### Regional Dataset ↔ Central Registry (`src/data/wineRegions.js`)
-- Every regional dataset file must export named constants:
-  - `<REGION>_SUBREGIONS` (`subRegions`)
-  - `<REGION>_GRAND_CRUS` (`grandCrus`)
-  - `<REGION>_TECHNICAL_REGULATIONS` (`technicalRegulations`)
-  - `<REGION>_PRESTIGE_<CUVEES/ESTATES/MONOPOLES>` (`prestigeCuvees` / `prestigeMonopoles` / `prestigeEstates`)
-  - `<REGION>_ICONIC_<GROWERS/DOMAINES/PRODUCERS>` (`iconicDomaines` / `iconicGrowers` / `iconicProducers`)
-  - `<REGION>_FOOD_PAIRINGS` (`foodPairings`)
-- The master `WINE_REGIONS` dictionary aggregates these properties under each `regionId`.
+- Every regional dataset file exports named constants for subregions, crus, technicalRegulations, prestige cuvées, iconic domaines, and foodPairings.
+- Master `WINE_REGIONS` dictionary aggregates these properties under each `regionId`.
 
 ### Regional Dataset ↔ Cartography (`src/data/wineRegionBoundaries.js`)
-- Every Cru in `<REGION>_GRAND_CRUS` must have a valid `subregionId` matching `subRegions[i].id`.
-- `WINE_REGION_BOUNDARIES[regionId]` features must have `id` matching corresponding `subRegions[i].id`.
+- Every Cru in `<REGION>_GRAND_CRUS` has a valid `subregionId` matching `subRegions[i].id`.
+- `WINE_REGION_BOUNDARIES[regionId]` features have `id` matching corresponding `subRegions[i].id`.
 
 ### Gastronomy ↔ UI Filtering (`src/components/WineRegionDetail.jsx`)
-- `foodPairings[i].wineType` must strictly be one of `'Red'`, `'White'`, `'Sparkling'`, `'Rosé'`.
-- `servingTemp` must include both Celsius and Fahrenheit values (e.g. `"8–10°C (46–50°F)"`).
+- `foodPairings[i].wineType` is strictly one of `'Red'`, `'White'`, `'Sparkling'`, `'Rosé'`.
+- `servingTemp` includes both Celsius and Fahrenheit values (e.g. `"8–10°C (46–50°F)"`).
 
 ## Code Layout
 - `src/data/` — Regional wine data modules and central registry
-  - `wineRegions.js` — Central master registry
-  - `wineRegionBoundaries.js` — GeoJSON cartographic boundary geometries
-  - `champagneData.js`, `burgundyData.js`, `bordeauxData.js`, `rhoneData.js`, `loireData.js`, `alsaceData.js`, `corsicaData.js` — French wine regions
-  - `piedmontData.js`, `tuscanyData.js`, `italyOtherData.js` — Italian wine regions
-  - `californiaData.js`, `oregonData.js` — American wine regions
-  - `moselData.js`, `riojaData.js`, `chileData.js`, `australiaData.js`, `japanData.js` — Germany, Spain, Chile, Australia, Japan
 - `src/components/` — React UI components (`WineRegionDetail.jsx`, `WineRegionMap.jsx`)
 - `test/` — Validation test suites
-  - `verify_all_17_regions.mjs` — Fast invariant & sommelier query suite
-  - `empirical_domain_validation_suite.test.mjs` — Deep CMS L3 domain validation suite
-  - `adversarial_world_regions_stress.js` — High-throughput fuzzing and cartographic integrity test
-  - `test_ui_gastronomy_cru_integration.js` — UI and gastronomy integration test
-  - `test_world_wine_regions.js` — Comprehensive regional test suite
-  - `validate-champagne-data.js` — Champagne deep scanner (3,177 assertions)
