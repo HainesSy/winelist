@@ -354,38 +354,53 @@ export const MOSEL_ICONIC_DOMAINES = [
 
 export const MOSEL_FOOD_PAIRINGS = [
   {
-    category: "Classic German & Alpine Gastronomy",
-    wineType: "White",
-    targetWine: "Dry Riesling Grosses Gewächs (GG)",
-    dish: "Wiener Schnitzel with Lingonberries, Pan-Fried Trout with Almond Butter, Roasted Pork Knuckle",
-    note: "The electric acidity and citrus drive of dry GG Riesling cuts cleanly through crispy breading and rich veal fat."
+    "category": "Classic German & Alpine Gastronomy",
+    "wineType": "White",
+    "targetWine": "Dry Riesling Grosses Gewächs (GG)",
+    "dish": "Wiener Schnitzel with Lingonberries, Pan-Fried Trout with Almond Butter, Roasted Pork Knuckle",
+    "note": "The electric acidity and citrus drive of dry GG Riesling cuts cleanly through crispy breading and rich veal fat.",
+    "glassware": "Universal White Wine Stem (450ml)",
+    "servingTemp": "10–12°C (50–54°F)",
+    "decanting": "Not required; aerate gently in glass."
   },
   {
-    category: "Spicy Asian Cuisine & Thai Dishes",
-    wineType: "White",
-    targetWine: "Riesling Kabinett & Spätlese Feinherb",
-    dish: "Thai Green Curry with Prawns, Vietnamese Lemongrass Pork, Spicy Dan Dan Noodles",
-    note: "Residual sweetness cools chili heat while high natural acidity matches lime and ginger aromatics without clashing."
+    "category": "Spicy Asian Cuisine & Thai Dishes",
+    "wineType": "White",
+    "targetWine": "Riesling Kabinett & Spätlese Feinherb",
+    "dish": "Thai Green Curry with Prawns, Vietnamese Lemongrass Pork, Spicy Dan Dan Noodles",
+    "note": "Residual sweetness cools chili heat while high natural acidity matches lime and ginger aromatics without clashing.",
+    "glassware": "Universal White Wine Stem (450ml)",
+    "servingTemp": "10–12°C (50–54°F)",
+    "decanting": "Not required; aerate gently in glass."
   },
   {
-    category: "Pungent & Blue Cheeses",
-    wineType: "White",
-    targetWine: "Riesling Auslese & Beerenauslese (BA)",
-    dish: "Roquefort Blue, Gorgonzola Dolce, Munster with Caraway, Fourme d'Ambert",
-    note: "The unctuous noble rot sweetness and high acid create an immortal sweet-salty contrast against pungent blue veining."
+    "category": "Pungent & Blue Cheeses",
+    "wineType": "White",
+    "targetWine": "Riesling Auslese & Beerenauslese (BA)",
+    "dish": "Roquefort Blue, Gorgonzola Dolce, Munster with Caraway, Fourme d'Ambert",
+    "note": "The unctuous noble rot sweetness and high acid create an immortal sweet-salty contrast against pungent blue veining.",
+    "glassware": "Dessert / Sweet Wine Stem (350ml)",
+    "servingTemp": "10–12°C (50–54°F)",
+    "decanting": "Not required; aerate gently in glass."
   },
   {
-    category: "Roasted Game & Feathered Birds",
-    wineType: "Red",
-    targetWine: "German Spätburgunder (Pinot Noir)",
-    dish: "Roasted Partridge with Chanterelles, Spiced Duck Breast, Venison Medallions with Redcurrant",
-    note: "Cool-climate Spätburgunder provides bright red cherry fruit, fine tannins, and earthy forest floor nuances."
+    "category": "Roasted Game & Feathered Birds",
+    "wineType": "Red",
+    "targetWine": "German Spätburgunder (Pinot Noir)",
+    "dish": "Roasted Partridge with Chanterelles, Spiced Duck Breast, Venison Medallions with Redcurrant",
+    "note": "Cool-climate Spätburgunder provides bright red cherry fruit, fine tannins, and earthy forest floor nuances.",
+    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    "servingTemp": "16–18°C (60–64°F)",
+    "decanting": "Decant 1–2 hours before service for optimal aeration."
   },
   {
-    category: "Decadent Desserts & Pâtisserie",
-    wineType: "White",
-    targetWine: "Riesling Trockenbeerenauslese (TBA) & Eiswein",
-    dish: "Apple Strudel with Vanilla Bean Sauce, Meyer Lemon Tart, Crème Brûlée with Apricot",
-    note: "Concentrated noble rot nectar and searing frozen-grape acidity elevate caramelized apples and citrus custard."
+    "category": "Decadent Desserts & Pâtisserie",
+    "wineType": "White",
+    "targetWine": "Riesling Trockenbeerenauslese (TBA) & Eiswein",
+    "dish": "Apple Strudel with Vanilla Bean Sauce, Meyer Lemon Tart, Crème Brûlée with Apricot",
+    "note": "Concentrated noble rot nectar and searing frozen-grape acidity elevate caramelized apples and citrus custard.",
+    "glassware": "Dessert / Sweet Wine Stem (350ml)",
+    "servingTemp": "10–12°C (50–54°F)",
+    "decanting": "Not required; aerate gently in glass."
   }
 ];

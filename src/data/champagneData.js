@@ -1493,31 +1493,43 @@ export const CHAMPAGNE_ICONIC_GROWERS = [
 
 export const CHAMPAGNE_FOOD_PAIRINGS = [
   {
-    category: 'Raw Bar & Caviar',
+    category: 'Raw Bar & Shellfish',
     wineType: 'White',
-    targetWine: 'Blanc de Blancs & Brut Nature (Avize / Le Mesnil)',
-    dish: "Fresh Gillardeau & Belon Oysters on the Half Shell, Royal Oscietra Caviar with Blinis & Crème Fraîche",
-    note: "Searing chalk acidity and intense marine salinity elevate briny oysters and luscious caviar, resetting the palate with electric precision."
+    targetWine: 'Blanc de Blancs & Brut Nature (Le Mesnil / Avize)',
+    dish: "Fresh Oysters (Belon & Gillardeau), Oscietra Caviar, Hamachi Crudo with Yuzu, Hokkaido Scallops",
+    note: "The wine's searing acidity and saline chalk finish effortlessly harmonize with the briny sweetness of raw shellfish.",
+    glassware: "Tulip-shaped Champagne / White Wine Stem (450ml)",
+    servingTemp: "8–10°C (46–50°F)",
+    decanting: "Not recommended; preserve delicate effervescence."
   },
   {
     category: 'Crispy & Fried Delicacies',
     wineType: 'White',
-    targetWine: 'Brut NV & Extra Brut Assemblage',
-    dish: "Black Truffle French Fries, Buttermilk Fried Heritage Chicken, Warm Comté Gougères",
-    note: "Vigorous, micro-fine effervescence and brisk acidity slice through rich frying oils and melting cheese fat with effortless ease."
+    targetWine: 'Brut NV & Extra Brut (Multi-Vintage Cuvées)',
+    dish: "Truffle Pommes Frites, Southern Buttermilk Fried Chicken, Warm Gruyère Gougères, Tempura Langoustines",
+    note: "High effervescence and brisk acidity cleanse the palate after every rich, buttery or crispy bite, preventing palate fatigue.",
+    glassware: "White Wine Tulip Stem",
+    servingTemp: "9–11°C (48–52°F)",
+    decanting: "Not recommended."
   },
   {
-    category: 'Aristocratic Poultry & Crustaceans',
+    category: 'Fine Dining Main Courses',
     wineType: 'Red',
-    targetWine: 'Rosé de Saignée & Grand Cru Blanc de Noirs (Ambonnay / Aÿ)',
-    dish: "Roasted Bresse Duck Breast with Pomegranate Reduction, Butter-Poached Maine Lobster with Caviar Beurre Blanc",
-    note: "Vinous Pinot Noir structure, redcurrant fruit, and autolytic brioche richness marry the opulent texture of butter-poached lobster and rare duck."
+    targetWine: 'Rosé Champagne & Blanc de Noirs (Ambonnay / Aÿ)',
+    dish: "Roast Bresse Duck with Cherry Glaze, Butter-Poached Maine Lobster, Roast Turbot with Caviar Beurre Blanc",
+    note: "Fuller-bodied Blanc de Noirs, Vintage, and Prestige Cuvées possess the textural weight and phenolic grip for poultry and butter sauces.",
+    glassware: "Burgundy Pinot Noir Stem or Wide Tulip (550ml)",
+    servingTemp: "10–12°C (50–54°F)",
+    decanting: "Gentle aeration in wide glass for 10 minutes."
   },
   {
-    category: 'Creamy & Washed-Rind Cheeses',
+    category: 'Artisanal Cheeses',
     wineType: 'White',
-    targetWine: 'Vintage Millésimé & Multi-Vintage Prestige Cuvée',
-    dish: "Triple-Cream Chaource AOP, Brillat-Savarin with Fresh Truffles, 24-Month Aged Comté",
-    note: "Decade-long lees autolysis (toasted hazelnut, brioche, dried mushroom) mirrors the creamy complexity of bloomy-rind regional cheeses."
+    targetWine: 'Vintage Champagne & Prestige Cuvées (10+ Years On Lees)',
+    dish: "Triple-Cream Chaource AOP, Brillat-Savarin, 24-Month Comté, Langres AOP washed with Marc de Champagne",
+    note: "Creamy bloomy-rind and washed-rind regional cheeses are cut by Champagne's mousse, revealing nutty autolytic depth.",
+    glassware: "Prestige Cuvée Tulip Glass (500ml)",
+    servingTemp: "10–12°C (50–54°F)",
+    decanting: "Not recommended."
   }
 ];

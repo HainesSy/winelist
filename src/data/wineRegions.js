@@ -26,7 +26,8 @@ import {
   BURGUNDY_TECHNICAL_REGULATIONS,
   BURGUNDY_PRESTIGE_MONOPOLES,
   BURGUNDY_WHITE_BENCHMARKS,
-  BURGUNDY_ICONIC_DOMAINES
+  BURGUNDY_ICONIC_DOMAINES,
+  BURGUNDY_FOOD_PAIRINGS
 } from './burgundyData.js';
 
 import {
@@ -34,14 +35,16 @@ import {
   ALSACE_SUBREGIONS,
   ALSACE_TECHNICAL_REGULATIONS,
   ALSACE_PRESTIGE_MONOPOLES,
-  ALSACE_ICONIC_DOMAINES
+  ALSACE_ICONIC_DOMAINES,
+  ALSACE_FOOD_PAIRINGS
 } from './alsaceData.js';
 
 import {
   CORSICA_SUBREGIONS,
   CORSICA_TECHNICAL_REGULATIONS,
   CORSICA_BENCHMARK_ESTATES,
-  CORSICA_ICONIC_DOMAINES
+  CORSICA_ICONIC_DOMAINES,
+  CORSICA_FOOD_PAIRINGS
 } from './corsicaData.js';
 
 import {
@@ -182,15 +185,18 @@ export {
   BURGUNDY_PRESTIGE_MONOPOLES,
   BURGUNDY_WHITE_BENCHMARKS,
   BURGUNDY_ICONIC_DOMAINES,
+  BURGUNDY_FOOD_PAIRINGS,
   ALSACE_GRAND_CRUS,
   ALSACE_SUBREGIONS,
   ALSACE_TECHNICAL_REGULATIONS,
   ALSACE_PRESTIGE_MONOPOLES,
   ALSACE_ICONIC_DOMAINES,
+  ALSACE_FOOD_PAIRINGS,
   CORSICA_SUBREGIONS,
   CORSICA_TECHNICAL_REGULATIONS,
   CORSICA_BENCHMARK_ESTATES,
   CORSICA_ICONIC_DOMAINES,
+  CORSICA_FOOD_PAIRINGS,
   BORDEAUX_SUBREGIONS,
   BORDEAUX_GRAND_CRUS,
   BORDEAUX_PREMIER_CRUS,
@@ -345,12 +351,7 @@ export const WINE_REGIONS = {
       palate: "Vibrant, persistent mousse with crystalline acidity, chalky tension, tactile salinity, and an extraordinarily long, expansive finish."
     },
 
-    foodPairings: [
-      { category: 'Raw Bar & Seafood', wineType: 'White', targetWine: 'Blanc de Blancs & Brut Nature', dish: "Fresh Oysters (Belon, Gillardeau), Oscietra Caviar, Hamachi Crudo, Pan-seared Hokkaido Scallops", note: "The wine's searing acidity and saline chalk finish effortlessly harmonize with the briny sweetness of raw shellfish." },
-      { category: 'Rich & Crispy Bites', wineType: 'White', targetWine: 'Brut NV & Extra Brut', dish: "Truffle French Fries, Southern Fried Chicken, Warm Gougères, Tempura Langoustines", note: "The high effervescence and brisk acidity cleanse the palate after every rich, buttery or crispy bite." },
-      { category: 'Fine Dining Main Courses', wineType: 'Red', targetWine: 'Rosé Champagne & Blanc de Noirs', dish: "Roast Bresse Duck (Rosé), Butter-Poached Maine Lobster, Roast Turbot with Caviar Beurre Blanc", note: "Fuller-bodied Blanc de Noirs, Vintage, and Prestige Cuvées possess the textural weight for poultry and butter sauces." },
-      { category: 'Artisanal Cheeses', wineType: 'White', targetWine: 'Vintage Champagne & Prestige Cuvées', dish: "Triple-cream Chaource, Brillat-Savarin, 24-Month Comté, Langres AOP", note: "Creamy bloomy-rind and washed-rind regional cheeses are cut by Champagne's mousse and acidity." }
-    ],
+    foodPairings: CHAMPAGNE_FOOD_PAIRINGS,
 
     subRegions: CHAMPAGNE_SUBREGIONS,
     grandCrus: CHAMPAGNE_GRAND_CRUS,
@@ -417,17 +418,7 @@ export const WINE_REGIONS = {
       palate: "Silken, weightless power with seamless acidity, supple tannins, and kaleidoscopic mineral length."
     },
 
-    foodPairings: [
-      { category: 'Poultry & Game Birds', wineType: 'Red', targetWine: 'Red Burgundy (Pinot Noir)', dish: "Roast Duck Breast with Cherry-Pinot Reduction & Roasted Guinea Fowl", note: "Red Burgundy's vibrant red cherry and wild strawberry fruit cut through rich poultry fat, while delicate tannins preserve the meat's tenderness." },
-      { category: 'Beef & Earthy Stews', wineType: 'Red', targetWine: 'Red Burgundy (Pinot Noir)', dish: "Traditional Boeuf Bourguignon, Braised Short Ribs & Morel Butter Steak", note: "Slow-braised beef collagen and earthy wild morels melt into mature Pinot Noir's savory sous-bois, forest floor, and silky resolved tannins." },
-      { category: 'Game & Truffled Meats', wineType: 'Red', targetWine: 'Red Burgundy (Pinot Noir)', dish: "Pan-Seared Venison Loin, Roasted Squab & Black Truffle Risotto", note: "Premier and Grand Cru Pinot Noir (Gevrey-Chambertin, Pommard, Nuits-Saint-Georges) offers gamey, iron-tinged spice and structure that elevate roasted game without dominating it." },
-      { category: 'Classic Pungent Cheeses', wineType: 'Red', targetWine: 'Red Burgundy (Pinot Noir)', dish: "Époisses de Bourgogne, Soumaintrain, Langres & Aged Gouda", note: "The legendary pairing: pungent, washed-rind Époisses softens against the velvety fruit core and high natural acidity of Côte de Nuits reds." },
-      { category: 'Buttery Seafood & Crustaceans', wineType: 'White', targetWine: 'White Burgundy (Chardonnay)', dish: "Pan-Roasted Dover Sole Meunière, Butter-Poached Maine Lobster & Turbot", note: "Meursault and Puligny-Montrachet deliver toasted brioche, hazelnut richness, and electric limestone tension that effortlessly slice through brown butter and rich shellfish." },
-      { category: 'Shellfish & Raw Bar', wineType: 'White', targetWine: 'White Burgundy (Chablis & Grand Auxerrois)', dish: "Chilled Belon & Fine de Claire Oysters, Plateau de Fruits de Mer & King Crab", note: "Chablis Grand Cru and Premier Cru (Les Clos, Montée de Tonnerre) boast pure Kimmeridgian oyster-fossil salinity and razor-sharp acidity that mirror fresh briny oysters." },
-      { category: 'Cream-Sauced Poultry & Veal', wineType: 'White', targetWine: 'White Burgundy (Chardonnay)', dish: "Poulet de Bresse aux Morilles (Bresse Chicken in Morel Cream Sauce) & Veal Chop", note: "The supreme white Burgundy culinary benchmark: Corton-Charlemagne or Chassagne-Montrachet matches the unctuous cream while earthy morels echo the wine's mineral depth." },
-      { category: 'Caramelized Shellfish & Scallops', wineType: 'White', targetWine: 'White Burgundy (Chardonnay)', dish: "Pan-Seared Sea Scallops with Cauliflower-Hazelnut Purée", note: "Saint-Aubin, Meursault, or Chassagne-Montrachet echoed by caramelized scallop sweetness, toasted hazelnuts, and pure citrus tension." },
-      { category: 'Alpine & Hard Cheeses', wineType: 'White', targetWine: 'White Burgundy (Chardonnay)', dish: "Aged Comté (18–24 Months), Chaource, Brillat-Savarin & Morbier", note: "Mature Côte de Beaune whites and Comté share crystalline tyrosine crunch and toasted hazelnut lactones, creating a sublime, creamy harmonic resonance." }
-    ],
+    foodPairings: BURGUNDY_FOOD_PAIRINGS,
 
     subRegions: BURGUNDY_SUBREGIONS,
     grandCrus: BURGUNDY_GRAND_CRUS,
@@ -501,15 +492,7 @@ export const WINE_REGIONS = {
       palate: "Vibrant, chiseled, highly aromatic attack with soaring crystalline acidity, kaleidoscopic bedrock minerality, and extraordinarily pure length."
     },
 
-    foodPairings: [
-      { category: 'Classic Alsatian Heritage Dishes', wineType: 'White', targetWine: 'Dry Riesling & Pinot Blanc', dish: "Choucroute Garnie (Sauerkraut with Smoked Pork, Bacon & Sausages) & Baeckeoffe", note: "Riesling's electric acidity and citrus drive cut through rich smoked pork fat while harmonizing with fermented cabbage acidity." },
-      { category: 'Rich & Pungent Cheeses', wineType: 'White', targetWine: 'Gewurztraminer & Pinot Gris', dish: "Munster AOP with Cumin Seeds, Epoisses, Roquefort Blue & Aged Comté", note: "Gewurztraminer's opulent texture and rosewater-ginger aromatics tame the pungent washed rind of Munster, creating an immortal regional marriage." },
-      { category: 'Foie Gras & Decadent Starters', wineType: 'White', targetWine: 'Vendanges Tardives & SGN Pinot Gris / Gewurztraminer', dish: "Pan-Seared Foie Gras with Spiced Brioche, Foie Gras Terrine with Quince", note: "Unctuous noble rot sweetness and high natural acidity dissolve decadent duck liver fat into luscious harmony." },
-      { category: 'Freshwater Fish & Shellfish', wineType: 'White', targetWine: 'Grand Cru Riesling (Schlossberg / Rosacker)', dish: "Truite au Bleu (Poached Trout with Brown Butter), Coq au Riesling & King Crab", note: "Granite and limestone-grown Riesling delivers razor-sharp tension and crushed stone salinity that elevate tender river trout." },
-      { category: 'Savory Tarts & Bistro Classics', wineType: 'White', targetWine: 'Crémant d\'Alsace & Sylvaner Grand Cru', dish: "Tarte Flambée (Flammekueche with Lardons & Fromage Blanc), Quiche Lorraine", note: "Crispy dough and rich crème fraîche demand the effervescence of Crémant or the savory, saline snap of old-vine Sylvaner." },
-      { category: 'Roasted Poultry & Game Birds', wineType: 'Red', targetWine: 'Grand Cru Pinot Noir (Hengst / Vorbourg)', dish: "Roast Duck Breast with Cherry Glaze, Squab with Chanterelles & Game Terrine", note: "Alsatian Pinot Noir offers bright red cherry fruit, spicy forest floor, and silky fine tannins that pair seamlessly with feathered game." },
-      { category: 'Charcuterie & Smoked Meats', wineType: 'Red', targetWine: 'Alsace Pinot Noir (Saint-Hippolyte / Rodern)', dish: "Smoked Ham, Knack d\'Alsace, Presskopf & Pork Tenderloin with Morels", note: "Lightly chilled Pinot Noir brings crunchy redcurrant fruit and refreshing acidity to balance savory, smoked Alsatian charcuterie." }
-    ],
+    foodPairings: ALSACE_FOOD_PAIRINGS,
 
     subRegions: ALSACE_SUBREGIONS,
     grandCrus: ALSACE_GRAND_CRUS,
@@ -579,13 +562,7 @@ export const WINE_REGIONS = {
       palate: "Vibrant, sun-drenched attack with electric Mediterranean salinity, crunchy wild red fruit, savory herbal maquis grip, and a long, peppery, mineral finish."
     },
 
-    foodPairings: [
-      { category: 'Corsican Charcuterie (Salumi)', wineType: 'Red', targetWine: 'Sciaccarellu & Niellucciu (Ajaccio & Patrimonio)', dish: "Prisuttu (Dry-Cured Mountain Ham), Lonzu, Coppa & Figatellu (Liver Sausage)", note: "Sciaccarellu's bright redcurrant acidity and white pepper notes cut through rich pork fat, while Niellucciu's firm tannins match the robust, chestnut-fed smoke of Figatellu." },
-      { category: 'Roasted Mountain Game & Lamb', wineType: 'Red', targetWine: 'Aged Patrimonio & Sartène Rouge', dish: "Civet de Sanglier (Wild Boar Stew with Myrtle), Cabri Rôti (Roast Suckling Kid with Rosemary)", note: "The intense herbal garrigue (maquis) aromatics and earthy leather nuances of mature Niellucciu melt into rich, slow-simmered wild boar stew." },
-      { category: 'Mediterranean Seafood & Crustaceans', wineType: 'White', targetWine: 'Patrimonio & Calvi Vermentinu', dish: "Grilled Langoustines with Herb Butter, Denti Fish with Capers, Sea Urchins (Oursins)", note: "Vermentinu's crystalline citrus oil, bitter almond finish, and crushed-rock salinity elevate delicate white fish and briny fresh sea urchins." },
-      { category: 'Traditional Ewe & Goat Cheeses', wineType: 'White / Red', targetWine: 'Biancu Gentile & Sciaccarellu', dish: "Brocciu AOP (Fresh & Passu), Niolo & Sartènes Cheese with Fig Jam", note: "Fresh Brocciu shines alongside the floral richness of Biancu Gentile, while aged, pungent Niolo cheese demands the savory structure of Sartène red." },
-      { category: 'Dessert & VDN Pairing', wineType: 'White', targetWine: 'Muscat du Cap Corse AOC (Sweet VDN)', dish: "Fiadone (Corsican Lemon & Brocciu Cheesecake), Canistrelli (Anise Biscuits)", note: "The unctuous candied orange, apricot, and honeyed floral complexity of Muscat du Cap Corse creates a divine pairing with lemon-scented Fiadone." }
-    ],
+    foodPairings: CORSICA_FOOD_PAIRINGS,
 
     subRegions: CORSICA_SUBREGIONS,
     technicalRegulations: CORSICA_TECHNICAL_REGULATIONS,
@@ -653,12 +630,7 @@ export const WINE_REGIONS = {
       palate: "Broad, commanding architecture with layered dark fruit, fine-grained aristocratic tannins, and aristocratic savory persistence."
     },
 
-    foodPairings: [
-      { category: 'Prime Red Meats', wineType: 'Red', targetWine: 'Left & Right Bank Reds', dish: "Prime Ribeye Steak with Bordelaise Sauce, Rack of Lamb with Rosemary, Chateaubriand", note: "Rich animal protein and fat bind seamlessly with Bordeaux's dense, youthful tannins." },
-      { category: 'Game & Roasted Meats', wineType: 'Red', targetWine: 'Mature Bordeaux Grand Cru', dish: "Roast Duck with Blackberry Reduction, Venison Tenderloin, Braised Short Ribs", note: "Mature Bordeaux develops cedar, leather, and truffle notes that harmonize with wild game." },
-      { category: 'Seafood & White Graves', wineType: 'White', targetWine: 'Dry White Bordeaux (Pessac-Léognan)', dish: "Pan-Roasted Sea Bass with Herb Butter, Grilled Langoustines & Goat Cheese", note: "Oak-aged Sauvignon Blanc / Sémillon blends provide brisk citrus drive and waxy textural richness." },
-      { category: 'Dessert & Foie Gras (Sauternes)', wineType: 'White', targetWine: 'Sauternes & Barsac Sweet Wine', dish: "Foie Gras Terrine, Roquefort Blue Cheese, Lemon Tart, Crème Brûlée", note: "Sauternes botrytized sweet wines create iconic contrasts with salty blue cheese and rich foie gras." }
-    ],
+    foodPairings: BORDEAUX_FOOD_PAIRINGS,
 
     subRegions: BORDEAUX_SUBREGIONS,
     grandCrus: BORDEAUX_GRAND_CRUS,
@@ -727,11 +699,7 @@ export const WINE_REGIONS = {
       palate: "Heady, voluptuous, and spice-laden with muscular tannins, savory depth, and a warm, persistent herbal finish."
     },
 
-    foodPairings: [
-      { category: 'Grilled & Braised Lamb', wineType: 'Red', targetWine: 'Northern & Southern Rhône Crus', dish: "Herb-Crusted Rack of Lamb, Braised Lamb Shank with Rosemary, Slow-roasted Pork Shoulder", note: "Syrah's black pepper and Grenache's garrigue herb aromas are born to be enjoyed with lamb." },
-      { category: 'Game & Barbecue', wineType: 'Red', targetWine: 'Cornas & Hermitage Syrah', dish: "Venison Stew, Wood-Fired Ribeye, Charred Sausages with Polenta, Duck Confit", note: "The smoky, savory undertones of Northern Rhône Syrah harmonize with grilled, charred meats." },
-      { category: 'Provencal Dishes', wineType: 'Red', targetWine: 'Châteauneuf-du-Pape & Gigondas', dish: "Ratatouille with Goat Cheese, Beef Daube, Mushroom Risotto with Truffle Oil", note: "Herbes de Provence and Mediterranean vegetable stews share the soul of Southern Rhône wines." }
-    ],
+    foodPairings: RHONE_FOOD_PAIRINGS,
 
     subRegions: RHONE_SUBREGIONS,
     grandCrus: RHONE_GRAND_CRUS,
@@ -797,11 +765,7 @@ export const WINE_REGIONS = {
       palate: "Racy, electric acidity with vibrant fruit purity, tension, and a long, saline, mineral-dusted finish."
     },
 
-    foodPairings: [
-      { category: 'Goat Cheeses', wineType: 'White', targetWine: 'Sancerre Sauvignon Blanc', dish: "Crottin de Chavignol, Sainte-Maure de Touraine, Valençay with baguette", note: "The quintessential pairing: tangy goat cheese acidity matches Sancerre Sauvignon Blanc line-for-line." },
-      { category: 'Shellfish & Seafood', wineType: 'White', targetWine: 'Muscadet Sur Lie', dish: "Fresh Atlantic Oysters on the Half Shell, Pan-Seared Trout with Lemon Herbs, Moules Marinières", note: "Muscadet and dry Chenin Blanc provide crisp mineral cleansing for fresh shellfish." },
-      { category: 'Poultry & Pork Charcuterie', wineType: 'Red', targetWine: 'Chinon Cabernet Franc', dish: "Rillettes de Tours, Roast Pork Loin with Apples, Roasted Quail with Herbs", note: "Chinon and Saumur Cabernet Franc cut through rich rillettes and pork with bright red fruit and herbal freshness." }
-    ],
+    foodPairings: LOIRE_FOOD_PAIRINGS,
 
     subRegions: LOIRE_SUBREGIONS,
     grandCrus: LOIRE_GRAND_CRUS,
@@ -868,11 +832,7 @@ export const WINE_REGIONS = {
       palate: "Aristocratic translucence with high-octane acidity, gripping fine-grained tannins, and an infinite savory, floral finish."
     },
 
-    foodPairings: [
-      { category: 'Truffles & Fresh Pasta', wineType: 'Red', targetWine: 'Barolo & Barbaresco (Nebbiolo)', dish: "Tajarin Pasta with Butter and Shaved Alba White Truffles, Agnolotti del Plin", note: "Nebbiolo's natural earthy, mushroom, and truffle aromatics create an ethereal harmony with fresh truffles." },
-      { category: 'Braised & Rich Meats', wineType: 'Red', targetWine: 'Barolo Riserva', dish: "Brasato al Barolo (Beef braised in Barolo), Osso Buco with Polenta, Wild Boar Ragu", note: "Heavy collagen and meat fat are effortlessly sliced through by Barolo's formidable tannins and high acidity." },
-      { category: 'Piedmontese Cheeses', wineType: 'Red', targetWine: 'Langhe Nebbiolo & Barbera', dish: "Castelmagno DOP, Robiola di Roccaverano, Taleggio, Aged Parmigiano-Reggiano", note: "Crumbly, intense Castelmagno cheese paired with a glass of mature Nebbiolo is a legendary northern Italian tradition." }
-    ],
+    foodPairings: PIEDMONT_FOOD_PAIRINGS,
 
     subRegions: PIEDMONT_SUBREGIONS,
     grandCrus: PIEDMONT_GRAND_CRUS,
@@ -939,11 +899,7 @@ export const WINE_REGIONS = {
       palate: "Energetic, savory, and structured with mouth-watering acidity, rustic fine tannins, and a long herb-tinged finish."
     },
 
-    foodPairings: [
-      { category: 'Iconic Tuscan Steaks', wineType: 'Red', targetWine: 'Chianti Classico & Brunello', dish: "Bistecca alla Fiorentina (Thick-cut Florentine T-Bone grilled over wood embers)", note: "Sangiovese's high acidity and firm tannins slice cleanly through the rich, rare beef." },
-      { category: 'Pasta with Game Ragu', wineType: 'Red', targetWine: 'Chianti Classico Riserva', dish: "Pappardelle al Cinghiale (Broad pasta ribbons with wild boar sauce), Pici al Ragu", note: "Rich tomato, rosemary, and wild boar savory sauce harmonizes with Tuscan herbal spice." },
-      { category: 'Aged Cheeses & Truffles', wineType: 'Red', targetWine: 'Super Tuscan (Bolgheri)', dish: "Pecorino Toscano Stagionato with honey, White Bean and Cavolo Nero Soup (Ribollita)", note: "Earthy sheep's milk Pecorino and classic Tuscan olive oils sing alongside Chianti Classico." }
-    ],
+    foodPairings: TUSCANY_FOOD_PAIRINGS,
 
     subRegions: TUSCANY_SUBREGIONS,
     grandCrus: TUSCANY_GRAND_CRUS,
@@ -1011,11 +967,7 @@ export const WINE_REGIONS = {
       palate: "Luxuriously full-bodied with seamless, velvety tannins, lavish black fruit concentration, and a lingering cocoa-spice finish."
     },
 
-    foodPairings: [
-      { category: 'Prime Steaks & Wagyu', wineType: 'Red', targetWine: 'Napa Valley Cabernet', dish: "Charbroiled Prime Porterhouse Steak, A5 Miyazaki Wagyu with Truffle Jus, Grilled Ribeye", note: "Napa Cabernet's immense fruit weight and polished tannins match the intensity of marbled prime beef." },
-      { category: 'Braised Dishes & Short Ribs', wineType: 'Red', targetWine: 'Mountain Cabernet', dish: "Slow-Braised Cabernet Short Ribs with Polenta, Rack of Lamb with Blackberry Glaze", note: "Rich reduction sauces and tender meats complement the wine's dark berry and mocha notes." },
-      { category: 'Salmon & Duck (Sonoma Pinot)', wineType: 'Red', targetWine: 'Sonoma Coast Pinot Noir', dish: "Pan-Seared King Salmon with Morel Mushrooms, Crispy Duck Breast with Cherry Demi-Glace", note: "Russian River and Sonoma Coast Pinot Noir pairs flawlessly with fatty salmon and duck." }
-    ],
+    foodPairings: CALIFORNIA_FOOD_PAIRINGS,
 
     subRegions: CALIFORNIA_SUBREGIONS,
     grandCrus: CALIFORNIA_GRAND_CRUS,
@@ -1082,11 +1034,7 @@ export const WINE_REGIONS = {
       palate: "Silken, bright, and energetic with singing red fruit, crunchy acidity, and an authentic earthy, forest-floor finish."
     },
 
-    foodPairings: [
-      { category: 'Wild Pacific Salmon', wineType: 'Red', targetWine: 'Willamette Pinot Noir', dish: "Cedar-Planked Wild Chinook Salmon, Pan-Crisped Steelhead Trout with Pinot Butter", note: "The quintessential Pacific Northwest pairing: salmon's rich omega-3 oils marry Oregon Pinot Noir's bright acidity." },
-      { category: 'Wild Mushrooms & Duck', wineType: 'Red', targetWine: 'Ribbon Ridge Pinot Noir', dish: "Seared Duck Breast with Marionberry Demi, Morel and Chanterelle Risotto, Roasted Pork Chop", note: "Earth-driven Oregon Pinot highlights wild chanterelle mushrooms and tender duck meat." },
-      { category: 'Cheeses', wineType: 'White', targetWine: 'Oregon Chardonnay', dish: "Rogue River Blue (Oregon), Cowgirl Creamery Mt Tam, Aged Gruyère", note: "Artisanal Pacific Northwest cheeses shine alongside both Oregon Pinot Noir and Chardonnay." }
-    ],
+    foodPairings: OREGON_FOOD_PAIRINGS,
 
     subRegions: OREGON_SUBREGIONS,
     grandCrus: OREGON_GRAND_CRUS,
@@ -1154,11 +1102,7 @@ export const WINE_REGIONS = {
       palate: "Deep, multi-dimensional, and savory with vibrant mountain acidity, layered dried fruits, and a lingering volcanic mineral finish."
     },
 
-    foodPairings: [
-      { category: 'Rich Stews & Braises', wineType: 'Red', targetWine: 'Amarone della Valpolicella', dish: "Braised Beef Short Ribs in Amarone, Osso Buco with Saffron Risotto alla Milanese", note: "Amarone's rich dried-fruit concentration and high alcohol match decadent beef and marrow." },
-      { category: 'Alpine & Cured Meats', wineType: 'Red', targetWine: 'Valtellina Superiore', dish: "Bresaola della Valtellina with Arugula & Shaved Bitto Cheese, Pizzoccheri Pasta", note: "Valtellina Nebbiolo pairs naturally with bresaola, buckwheat pizzoccheri, and Alpine cheeses." },
-      { category: 'Mediterranean Seafood & Grilled Meats', wineType: 'Red', targetWine: 'Etna Rosso', dish: "Swordfish with Capers and Olives, Grilled Lamb Chops with Oregano", note: "Etna Rosso's volcanic salinity and red berry crunch elevate Mediterranean seafood and lamb." }
-    ],
+    foodPairings: ITALY_OTHER_FOOD_PAIRINGS,
 
     subRegions: ITALY_OTHER_SUBREGIONS,
     grandCrus: ITALY_OTHER_GRAND_CRUS,
@@ -1223,11 +1167,7 @@ export const WINE_REGIONS = {
       palate: "Whisper-light, delicate, and pure with refreshing citrus acidity, soft textural salinity, and an umami-friendly, clean finish."
     },
 
-    foodPairings: [
-      { category: 'Sashimi & Sushi', wineType: 'White', targetWine: 'Koshu', dish: "Tuna Sashimi, Sea Bream (Tai), Uni (Sea Urchin), Nigiri Sushi", note: "Koshu's delicate profile, low iron content, and citrus freshness never clash with delicate raw fish." },
-      { category: 'Tempura & Yakitori', wineType: 'White', targetWine: 'Koshu Sur Lie', dish: "Crispy Vegetable & Prawn Tempura, Salted Yakitori (Yakitori Shio), Chawanmushi", note: "Bright citrus acidity cuts through light frying tempura batter with effortless elegance." },
-      { category: 'Subtle Seafood Dishes', wineType: 'White', targetWine: 'Koshu', dish: "Steamed Black Cod with Ginger, Crab with Yuzu Ponzu, Dashi Broth Dishes", note: "The gentle umami structure of Koshu resonates harmoniously with dashi and ponzu." }
-    ],
+    foodPairings: JAPAN_FOOD_PAIRINGS,
 
     subRegions: JAPAN_SUBREGIONS,
     grandCrus: JAPAN_GRAND_CRUS,

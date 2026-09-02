@@ -563,38 +563,53 @@ export const JAPAN_ICONIC_PRODUCERS = [
 
 export const JAPAN_FOOD_PAIRINGS = [
   {
-    category: 'Sashimi & Nigiri Sushi',
-    wineType: 'White',
-    targetWine: 'GI Yamanashi Koshu (Grace Wine / Katsunuma Jozo)',
-    dish: "Hon-Maguro Tuna Sashimi, Tai (Sea Bream) Crudo, Hokkaido Uni (Sea Urchin), Nigiri Sushi Flight with Wasabi",
-    note: "Koshu possesses virtually zero iron (<0.1 mg/L), eliminating the metallic, fishy aftertaste caused by high-iron wines. Its delicate yuzu citrus, sudachi acidity, and wet stone salinity harmoniously elevate raw seafood."
+    "category": "Sashimi & Nigiri Sushi",
+    "wineType": "White",
+    "targetWine": "GI Yamanashi Koshu (Grace Wine / Katsunuma Jozo)",
+    "dish": "Hon-Maguro Tuna Sashimi, Tai (Sea Bream) Crudo, Hokkaido Uni (Sea Urchin), Nigiri Sushi Flight with Wasabi",
+    "note": "Koshu possesses virtually zero iron (<0.1 mg/L), eliminating the metallic, fishy aftertaste caused by high-iron wines. Its delicate yuzu citrus, sudachi acidity, and wet stone salinity harmoniously elevate raw seafood.",
+    "glassware": "Universal White Wine Stem (450ml)",
+    "servingTemp": "10–12°C (50–54°F)",
+    "decanting": "Not required; aerate gently in glass."
   },
   {
-    category: 'Crispy Tempura & Yakitori',
-    wineType: 'White / Sparkling',
-    targetWine: 'Koshu Sur Lie & Traditional Method Sparkling Koshu (Aruga Branca Brilhante)',
-    dish: "Prawn & Seasonal Mountain Vegetable Tempura with Matcha Salt, Charcoal-Grilled Yakitori Shio (Salt-Grilled Free-Range Chicken Skewers)",
-    note: "Vibrant effervescence and brisk citrus acidity slice cleanly through crispy tempura batter and rich chicken fats without overwhelming the delicate meat."
+    "category": "Crispy Tempura & Yakitori",
+    "wineType": "White / Sparkling",
+    "targetWine": "Koshu Sur Lie & Traditional Method Sparkling Koshu (Aruga Branca Brilhante)",
+    "dish": "Prawn & Seasonal Mountain Vegetable Tempura with Matcha Salt, Charcoal-Grilled Yakitori Shio (Salt-Grilled Free-Range Chicken Skewers)",
+    "note": "Vibrant effervescence and brisk citrus acidity slice cleanly through crispy tempura batter and rich chicken fats without overwhelming the delicate meat.",
+    "glassware": "Tulip Champagne Stem (450ml)",
+    "servingTemp": "8–10°C (46–50°F)",
+    "decanting": "Not required; aerate gently in glass."
   },
   {
-    category: 'Kaiseki & Dashi-Based Haute Cuisine',
-    wineType: 'White / Amber',
-    targetWine: 'Koshu Sur Lie & Orange Koshu Gris de Gris',
-    dish: "Steamed Black Cod in Dashi Broth, Chawanmushi with Ginkgo Nuts, Sesame Tofu with Wasabi, Sweet Soy-Glazed Eel (Unagi)",
-    note: "Extended lees aging and subtle skin tannins release natural glutamic amino acids that resonate in deep umami harmony with kombu dashi broth and mirin glazes."
+    "category": "Kaiseki & Dashi-Based Haute Cuisine",
+    "wineType": "White / Amber",
+    "targetWine": "Koshu Sur Lie & Orange Koshu Gris de Gris",
+    "dish": "Steamed Black Cod in Dashi Broth, Chawanmushi with Ginkgo Nuts, Sesame Tofu with Wasabi, Sweet Soy-Glazed Eel (Unagi)",
+    "note": "Extended lees aging and subtle skin tannins release natural glutamic amino acids that resonate in deep umami harmony with kombu dashi broth and mirin glazes.",
+    "glassware": "Universal White Wine Stem (450ml)",
+    "servingTemp": "10–12°C (50–54°F)",
+    "decanting": "Not required; aerate gently in glass."
   },
   {
-    category: 'A5 Wagyu Beef & Sukiyaki',
-    wineType: 'Red',
-    targetWine: 'Kikyogahara Merlot (Chateau Mercian) & Muscat Bailey A Barrel Aged',
-    dish: "A5 Miyazaki Wagyu Beef Sukiyaki with Sweet Mirin Broth and Raw Egg Dip, Grilled Wagyu Tenderloin with Grated Wasabi and Soy Sauce",
-    note: "Muscat Bailey A's candied red berry aromatics and soft tannins embrace sweet sukiyaki sauce, while Kikyogahara Merlot's dark plum and cedar structure cut rich Wagyu marbling."
+    "category": "A5 Wagyu Beef & Sukiyaki",
+    "wineType": "Red",
+    "targetWine": "Kikyogahara Merlot (Chateau Mercian) & Muscat Bailey A Barrel Aged",
+    "dish": "A5 Miyazaki Wagyu Beef Sukiyaki with Sweet Mirin Broth and Raw Egg Dip, Grilled Wagyu Tenderloin with Grated Wasabi and Soy Sauce",
+    "note": "Muscat Bailey A's candied red berry aromatics and soft tannins embrace sweet sukiyaki sauce, while Kikyogahara Merlot's dark plum and cedar structure cut rich Wagyu marbling.",
+    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    "servingTemp": "16–18°C (60–64°F)",
+    "decanting": "Decant 1–2 hours before service for optimal aeration."
   },
   {
-    category: 'Freshwater River Fish',
-    wineType: 'White',
-    targetWine: 'High-Altitude Koshu (Grace Cuvée Misawa)',
-    dish: "Salt-Grilled Ayu (Sweetfish) with Fresh Sudachi Lime, Grilled Iwana (Char) with Sansho Pepper",
-    note: "Gentle herbal bitterness in Koshu mirrors the delicate liver bitterness and crispy salted skin of freshly grilled mountain river fish."
+    "category": "Freshwater River Fish",
+    "wineType": "White",
+    "targetWine": "High-Altitude Koshu (Grace Cuvée Misawa)",
+    "dish": "Salt-Grilled Ayu (Sweetfish) with Fresh Sudachi Lime, Grilled Iwana (Char) with Sansho Pepper",
+    "note": "Gentle herbal bitterness in Koshu mirrors the delicate liver bitterness and crispy salted skin of freshly grilled mountain river fish.",
+    "glassware": "Universal White Wine Stem (450ml)",
+    "servingTemp": "10–12°C (50–54°F)",
+    "decanting": "Not required; aerate gently in glass."
   }
 ];

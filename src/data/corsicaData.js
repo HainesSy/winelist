@@ -423,3 +423,57 @@ export const CORSICA_ICONIC_DOMAINES = [
     keyCuvees: ["Clos Venturi Rouge/Blanc", "1769 Rouge", "Brama (Sciaccarellu)"]
   }
 ];
+
+
+export const CORSICA_FOOD_PAIRINGS = [
+  {
+    category: 'Corsican Charcuterie (Salumi)',
+    wineType: 'Red',
+    targetWine: 'Sciaccarellu & Niellucciu (Ajaccio & Patrimonio)',
+    dish: "Prisuttu (Dry-Cured Mountain Ham), Lonzu, Coppa & Figatellu (Liver Sausage)",
+    note: "Sciaccarellu's bright redcurrant acidity and white pepper notes cut through rich pork fat, while Niellucciu's firm tannins match the robust, chestnut-fed smoke of Figatellu.",
+    glassware: "Medium Burgundy / Bordeaux Stem (550ml)",
+    servingTemp: "15–17°C (59–62°F)",
+    decanting: "Decant 30 minutes for Niellucciu."
+  },
+  {
+    category: 'Roasted Mountain Game & Lamb',
+    wineType: 'Red',
+    targetWine: 'Aged Patrimonio & Sartène Rouge (Canarelli / Vaccelli)',
+    dish: "Civet de Sanglier (Wild Boar Stew with Myrtle), Cabri Rôti (Roast Suckling Kid with Rosemary)",
+    note: "The intense herbal garrigue (maquis) aromatics and earthy leather nuances of mature Niellucciu melt into rich, slow-simmered wild boar stew.",
+    glassware: "Large Bordeaux Stem (650ml)",
+    servingTemp: "16–18°C (60–64°F)",
+    decanting: "Decant 1–2 hours."
+  },
+  {
+    category: 'Mediterranean Seafood & Crustaceans',
+    wineType: 'White',
+    targetWine: 'Patrimonio & Calvi Vermentinu (Arena / Leccia)',
+    dish: "Grilled Langoustines with Herb Butter, Denti Fish with Capers, Sea Urchins (Oursins)",
+    note: "Vermentinu's crystalline citrus oil, bitter almond finish, and crushed-rock salinity elevate delicate white fish and briny fresh sea urchins.",
+    glassware: "Universal White Stem (450ml)",
+    servingTemp: "10–12°C (50–54°F)",
+    decanting: "Not required."
+  },
+  {
+    category: 'Traditional Ewe & Goat Cheeses',
+    wineType: 'White',
+    targetWine: 'Biancu Gentile & Aged Sciaccarellu (Abbatucci)',
+    dish: "Brocciu AOP (Fresh & Passu), Niolo & Sartènes Cheese with Fig Jam",
+    note: "Fresh Brocciu shines alongside the floral richness of Biancu Gentile, while aged, pungent Niolo cheese demands the savory structure of Sartène red.",
+    glassware: "White Wine / Burgundy Stem",
+    servingTemp: "11–13°C (52–55°F)",
+    decanting: "Not required."
+  },
+  {
+    category: 'Dessert & VDN Pairing',
+    wineType: 'White',
+    targetWine: 'Muscat du Cap Corse AOC (Sweet VDN)',
+    dish: "Fiadone (Corsican Lemon & Brocciu Cheesecake), Canistrelli (Anise Biscuits)",
+    note: "The unctuous candied orange, apricot, and honeyed floral complexity of Muscat du Cap Corse creates a divine pairing with lemon-scented Fiadone.",
+    glassware: "Dessert Wine Stem (350ml)",
+    servingTemp: "9–11°C (48–52°F)",
+    decanting: "Not required."
+  }
+];

@@ -261,24 +261,33 @@ export const CHILE_ICONIC_DOMAINES = [
 
 export const CHILE_FOOD_PAIRINGS = [
   {
-    category: "South American Asado & Grilled Steaks",
-    wineType: "Red",
-    targetWine: "Alto Maipo Cabernet Sauvignon (Almaviva / Don Melchor)",
-    dish: "Asado Criollo (Charcoal-Grilled Ribeye & Picanha), Lamb Chops with Chimichurri, Empanadas de Pino",
-    note: "The cassis fruit, eucalyptus freshness, and bold tannins of Andean Cabernet effortlessly cut through rich grilled beef."
+    "category": "South American Asado & Grilled Steaks",
+    "wineType": "Red",
+    "targetWine": "Alto Maipo Cabernet Sauvignon (Almaviva / Don Melchor)",
+    "dish": "Asado Criollo (Charcoal-Grilled Ribeye & Picanha), Lamb Chops with Chimichurri, Empanadas de Pino",
+    "note": "The cassis fruit, eucalyptus freshness, and bold tannins of Andean Cabernet effortlessly cut through rich grilled beef.",
+    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    "servingTemp": "16–18°C (60–64°F)",
+    "decanting": "Decant 1–2 hours before service for optimal aeration."
   },
   {
-    category: "Traditional Chilean Comfort Dishes",
-    wineType: "Red",
-    targetWine: "Peumo & Apalta Carmenère",
-    dish: "Pastel de Choclo (Sweet Corn & Beef Casserole), Charquicán (Beef & Vegetable Stew), Braised Pork Belly",
-    note: "Carmenère's savory paprika and sweet tobacco notes mirror the spiced ground beef and sweet corn crust of Pastel de Choclo."
+    "category": "Traditional Chilean Comfort Dishes",
+    "wineType": "Red",
+    "targetWine": "Peumo & Apalta Carmenère",
+    "dish": "Pastel de Choclo (Sweet Corn & Beef Casserole), Charquicán (Beef & Vegetable Stew), Braised Pork Belly",
+    "note": "Carmenère's savory paprika and sweet tobacco notes mirror the spiced ground beef and sweet corn crust of Pastel de Choclo.",
+    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    "servingTemp": "16–18°C (60–64°F)",
+    "decanting": "Decant 1–2 hours before service for optimal aeration."
   },
   {
-    category: "Pacific Coastal Seafood & Ceviche",
-    wineType: "White",
-    targetWine: "Casablanca & Leyda Sauvignon Blanc",
-    dish: "Chilean Sea Bass (Corvina) Ceviche with Lime & Coriander, Grilled Machas (Razor Clams) a la Parmesana",
-    note: "Crisp, saline, jalapeño-kissed Sauvignon Blanc complements raw marinated fish and cuts rich melted cheese over razor clams."
+    "category": "Pacific Coastal Seafood & Ceviche",
+    "wineType": "White",
+    "targetWine": "Casablanca & Leyda Sauvignon Blanc",
+    "dish": "Chilean Sea Bass (Corvina) Ceviche with Lime & Coriander, Grilled Machas (Razor Clams) a la Parmesana",
+    "note": "Crisp, saline, jalapeño-kissed Sauvignon Blanc complements raw marinated fish and cuts rich melted cheese over razor clams.",
+    "glassware": "Universal White Wine Stem (450ml)",
+    "servingTemp": "10–12°C (50–54°F)",
+    "decanting": "Not required; aerate gently in glass."
   }
 ];

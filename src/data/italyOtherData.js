@@ -650,38 +650,53 @@ export const ITALY_OTHER_ICONIC_PRODUCERS = [
 
 export const ITALY_OTHER_FOOD_PAIRINGS = [
   {
-    category: 'Rich Stews & Braises (Amarone)',
-    wineType: 'Red',
-    targetWine: 'Amarone della Valpolicella Classico DOCG (Quintarelli / Dal Forno)',
-    dish: "Slow-Braised Beef Short Ribs in Amarone Reduction with Polenta, Osso Buco alla Milanese with Saffron Risotto and Gremolata",
-    note: "Amarone's decadent dried-cherry and fig richness, high dry extract, and generous alcohol harmonize effortlessly with gelatinous braised beef and rich marrow."
+    "category": "Rich Stews & Braises (Amarone)",
+    "wineType": "Red",
+    "targetWine": "Amarone della Valpolicella Classico DOCG (Quintarelli / Dal Forno)",
+    "dish": "Slow-Braised Beef Short Ribs in Amarone Reduction with Polenta, Osso Buco alla Milanese with Saffron Risotto and Gremolata",
+    "note": "Amarone's decadent dried-cherry and fig richness, high dry extract, and generous alcohol harmonize effortlessly with gelatinous braised beef and rich marrow.",
+    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    "servingTemp": "16–18°C (60–64°F)",
+    "decanting": "Decant 1–2 hours before service for optimal aeration."
   },
   {
-    category: 'Alpine Cured Meats & Cheeses (Valtellina)',
-    wineType: 'Red',
-    targetWine: 'Valtellina Superiore DOCG (AR.PE.PE. Sassella Rocce Rosse)',
-    dish: "Bresaola della Valtellina with Arugula & Shaved Bitto DOP Cheese, Pizzoccheri della Valtellina (Buckwheat Pasta with Savoy Cabbage, Potatoes & Casera Cheese)",
-    note: "Alpine Nebbiolo's translucent cranberry fruit, dried rose petals, and chiseled granite acidity slice through melting mountain cheese and butter in pizzoccheri."
+    "category": "Alpine Cured Meats & Cheeses (Valtellina)",
+    "wineType": "Red",
+    "targetWine": "Valtellina Superiore DOCG (AR.PE.PE. Sassella Rocce Rosse)",
+    "dish": "Bresaola della Valtellina with Arugula & Shaved Bitto DOP Cheese, Pizzoccheri della Valtellina (Buckwheat Pasta with Savoy Cabbage, Potatoes & Casera Cheese)",
+    "note": "Alpine Nebbiolo's translucent cranberry fruit, dried rose petals, and chiseled granite acidity slice through melting mountain cheese and butter in pizzoccheri.",
+    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    "servingTemp": "16–18°C (60–64°F)",
+    "decanting": "Decant 1–2 hours before service for optimal aeration."
   },
   {
-    category: 'Mediterranean Seafood & Grilled Meats (Etna)',
-    wineType: 'Red / White',
-    targetWine: 'Etna Rosso DOC (Nerello Mascalese) & Etna Bianco Superiore (Carricante)',
-    dish: "Grilled Mediterranean Swordfish with Capers, Olives and Cherry Tomatoes; Roasted Sicilian Lamb Chops with Oregano and Charred Eggplant",
-    note: "Nerello Mascalese's wild strawberry crunch, iron backbone, and volcanic salinity pair impeccably with swordfish and roasted lamb."
+    "category": "Mediterranean Seafood & Grilled Meats (Etna)",
+    "wineType": "Red / White",
+    "targetWine": "Etna Rosso DOC (Nerello Mascalese) & Etna Bianco Superiore (Carricante)",
+    "dish": "Grilled Mediterranean Swordfish with Capers, Olives and Cherry Tomatoes; Roasted Sicilian Lamb Chops with Oregano and Charred Eggplant",
+    "note": "Nerello Mascalese's wild strawberry crunch, iron backbone, and volcanic salinity pair impeccably with swordfish and roasted lamb.",
+    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    "servingTemp": "16–18°C (60–64°F)",
+    "decanting": "Decant 1–2 hours before service for optimal aeration."
   },
   {
-    category: 'Campanian Ragù & Wild Game (Taurasi)',
-    wineType: 'Red',
-    targetWine: 'Taurasi DOCG (Mastroberardino Radici Riserva)',
-    dish: "Slow-Simmered Neapolitan Beef & Pork Ragù over Paccheri Pasta, Roasted Wild Boar with Juniper Berries and Polenta",
-    note: "Aglianico's formidable structural tannins, black pepper, and dark savory fruit cut through the rich tomato acidity and dense meat of authentic Neapolitan ragù."
+    "category": "Campanian Ragù & Wild Game (Taurasi)",
+    "wineType": "Red",
+    "targetWine": "Taurasi DOCG (Mastroberardino Radici Riserva)",
+    "dish": "Slow-Simmered Neapolitan Beef & Pork Ragù over Paccheri Pasta, Roasted Wild Boar with Juniper Berries and Polenta",
+    "note": "Aglianico's formidable structural tannins, black pepper, and dark savory fruit cut through the rich tomato acidity and dense meat of authentic Neapolitan ragù.",
+    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    "servingTemp": "16–18°C (60–64°F)",
+    "decanting": "Decant 1–2 hours before service for optimal aeration."
   },
   {
-    category: 'Alpine Whites & Crudo (Alto Adige / Friuli)',
-    wineType: 'White',
-    targetWine: 'Cantina Terlano Vorberg Pinot Bianco & Gravner Ribolla Gialla',
-    dish: "Pan-Roasted Arctic Char with Alpine Herb Butter, San Daniele Prosciutto with Fresh Figs, Wild Mushroom Crostini",
-    note: "Mineral-dusted Pinot Bianco and amber skin-contact Ribolla Gialla provide tactile grip and alpine freshness for cured prosciutto and freshwater char."
+    "category": "Alpine Whites & Crudo (Alto Adige / Friuli)",
+    "wineType": "White",
+    "targetWine": "Cantina Terlano Vorberg Pinot Bianco & Gravner Ribolla Gialla",
+    "dish": "Pan-Roasted Arctic Char with Alpine Herb Butter, San Daniele Prosciutto with Fresh Figs, Wild Mushroom Crostini",
+    "note": "Mineral-dusted Pinot Bianco and amber skin-contact Ribolla Gialla provide tactile grip and alpine freshness for cured prosciutto and freshwater char.",
+    "glassware": "Universal White Wine Stem (450ml)",
+    "servingTemp": "10–12°C (50–54°F)",
+    "decanting": "Not required; aerate gently in glass."
   }
 ];

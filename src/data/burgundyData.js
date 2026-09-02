@@ -2739,3 +2739,96 @@ export const BURGUNDY_WHITE_BENCHMARKS = [
     character: "High-altitude purity, white mountain flowers, lemon verbena, chiseled tension, and vibrating chalky minerality."
   }
 ];
+
+export const BURGUNDY_FOOD_PAIRINGS = [
+  {
+    category: 'Poultry & Game Birds',
+    wineType: 'Red',
+    targetWine: 'Côte de Nuits Rouge (Vosne-Romanée / Chambolle-Musigny)',
+    dish: "Roast Duck Breast with Cherry-Pinot Reduction & Roasted Guinea Fowl",
+    note: "Red Burgundy's vibrant red cherry and wild strawberry fruit cut through rich poultry fat, while delicate tannins preserve the meat's tenderness.",
+    glassware: "Burgundy Pinot Noir Ballon Stem (750-800ml)",
+    servingTemp: "16–17°C (60–63°F)",
+    decanting: "Decant 45–60 minutes for Premier/Grand Crus."
+  },
+  {
+    category: 'Beef & Earthy Stews',
+    wineType: 'Red',
+    targetWine: 'Côte de Beaune Rouge (Pommard / Corton Grand Cru)',
+    dish: "Traditional Boeuf Bourguignon, Braised Short Ribs & Morel Butter Steak",
+    note: "Slow-braised beef collagen and earthy wild morels melt into mature Pinot Noir's savory sous-bois, forest floor, and silky resolved tannins.",
+    glassware: "Burgundy Ballon Stem",
+    servingTemp: "16–18°C (60–64°F)",
+    decanting: "Decant 1 hour before service."
+  },
+  {
+    category: 'Game & Truffled Meats',
+    wineType: 'Red',
+    targetWine: 'Gevrey-Chambertin & Nuits-Saint-Georges Grand Cru',
+    dish: "Pan-Seared Venison Loin, Roasted Squab & Black Truffle Risotto",
+    note: "Grand Cru Pinot Noir offers gamey, iron-tinged spice and structure that elevate roasted game without dominating it.",
+    glassware: "Burgundy Ballon Stem",
+    servingTemp: "16–18°C (60–64°F)",
+    decanting: "Decant 1–2 hours for young vintages."
+  },
+  {
+    category: 'Classic Pungent Cheeses',
+    wineType: 'Red',
+    targetWine: 'Mature Red Burgundy (10+ Years)',
+    dish: "Époisses de Bourgogne, Soumaintrain, Langres & Aged Gouda",
+    note: "The legendary pairing: pungent, washed-rind Époisses softens against the velvety fruit core and high natural acidity of Côte de Nuits reds.",
+    glassware: "Burgundy Ballon Stem",
+    servingTemp: "16–17°C (60–63°F)",
+    decanting: "Decant 30 minutes for sediment separation."
+  },
+  {
+    category: 'Buttery Seafood & Crustaceans',
+    wineType: 'White',
+    targetWine: 'Meursault & Puligny-Montrachet Premier Cru',
+    dish: "Pan-Roasted Dover Sole Meunière, Butter-Poached Maine Lobster & Turbot",
+    note: "Meursault and Puligny-Montrachet deliver toasted brioche, hazelnut richness, and electric limestone tension that effortlessly slice through brown butter and rich shellfish.",
+    glassware: "Burgundy Chardonnay White Stem (500-600ml)",
+    servingTemp: "11–13°C (52–55°F)",
+    decanting: "Aerate 20 minutes in glass."
+  },
+  {
+    category: 'Shellfish & Raw Bar',
+    wineType: 'White',
+    targetWine: 'Chablis Grand Cru & Premier Cru (Les Clos / Montée de Tonnerre)',
+    dish: "Chilled Belon & Fine de Claire Oysters, Plateau de Fruits de Mer & King Crab",
+    note: "Chablis Grand Cru boasts pure Kimmeridgian oyster-fossil salinity and razor-sharp acidity that mirror fresh briny oysters.",
+    glassware: "Chablis / White Wine Stem (400-450ml)",
+    servingTemp: "10–12°C (50–54°F)",
+    decanting: "Not required."
+  },
+  {
+    category: 'Cream-Sauced Poultry & Veal',
+    wineType: 'White',
+    targetWine: 'Corton-Charlemagne & Bâtard-Montrachet Grand Cru',
+    dish: "Poulet de Bresse aux Morilles (Bresse Chicken in Morel Cream Sauce) & Veal Chop",
+    note: "The supreme white Burgundy culinary benchmark: Corton-Charlemagne matches the unctuous cream while earthy morels echo the wine's mineral depth.",
+    glassware: "Large Burgundy Chardonnay Stem (600ml)",
+    servingTemp: "12–14°C (54–57°F)",
+    decanting: "Decant 30 minutes for youthful Grand Crus."
+  },
+  {
+    category: 'Caramelized Shellfish & Scallops',
+    wineType: 'White',
+    targetWine: 'Chassagne-Montrachet & Saint-Aubin 1er Cru',
+    dish: "Pan-Seared Sea Scallops with Cauliflower-Hazelnut Purée",
+    note: "Saint-Aubin or Chassagne-Montrachet echoed by caramelized scallop sweetness, toasted hazelnuts, and pure citrus tension.",
+    glassware: "Burgundy Chardonnay Stem",
+    servingTemp: "11–13°C (52–55°F)",
+    decanting: "Not required."
+  },
+  {
+    category: 'Alpine & Hard Cheeses',
+    wineType: 'White',
+    targetWine: 'Aged White Burgundy (Meursault / Corton-Charlemagne)',
+    dish: "Aged Comté (18–24 Months), Chaource, Brillat-Savarin & Morbier",
+    note: "Mature Côte de Beaune whites and Comté share crystalline tyrosine crunch and toasted hazelnut lactones, creating a sublime harmonic resonance.",
+    glassware: "Burgundy Chardonnay Stem",
+    servingTemp: "12–13°C (54–55°F)",
+    decanting: "Not required."
+  }
+];

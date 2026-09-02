@@ -314,31 +314,43 @@ export const AUSTRALIA_ICONIC_DOMAINES = [
 
 export const AUSTRALIA_FOOD_PAIRINGS = [
   {
-    category: "Wood-Fired Steaks & Barbecue",
-    wineType: "Red",
-    targetWine: "Barossa Valley Shiraz (Grange / RunRig)",
-    dish: "Charbroiled Australian Wagyu Ribeye, Smoked Beef Short Ribs with Molasses Glaze, Rosemary Roast Lamb",
-    note: "Barossa Shiraz's explosive dark fruit, mocha oak, and black pepper harmonize with charred beef and caramelized barbecue smoke."
+    "category": "Wood-Fired Steaks & Barbecue",
+    "wineType": "Red",
+    "targetWine": "Barossa Valley Shiraz (Grange / RunRig)",
+    "dish": "Charbroiled Australian Wagyu Ribeye, Smoked Beef Short Ribs with Molasses Glaze, Rosemary Roast Lamb",
+    "note": "Barossa Shiraz's explosive dark fruit, mocha oak, and black pepper harmonize with charred beef and caramelized barbecue smoke.",
+    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    "servingTemp": "16–18°C (60–64°F)",
+    "decanting": "Decant 1–2 hours before service for optimal aeration."
   },
   {
-    category: "Wild Game & Kangaroo",
-    wineType: "Red",
-    targetWine: "Coonawarra & Margaret River Cabernet",
-    dish: "Pan-Seared Kangaroo Loin with Juniper Berry Jus, Roasted Venison with Berry Compote",
-    note: "Lean, gamey meats are elevated by Cabernet's structural cassis, minty eucalyptus, and fine-grained tannins."
+    "category": "Wild Game & Kangaroo",
+    "wineType": "Red",
+    "targetWine": "Coonawarra & Margaret River Cabernet",
+    "dish": "Pan-Seared Kangaroo Loin with Juniper Berry Jus, Roasted Venison with Berry Compote",
+    "note": "Lean, gamey meats are elevated by Cabernet's structural cassis, minty eucalyptus, and fine-grained tannins.",
+    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    "servingTemp": "16–18°C (60–64°F)",
+    "decanting": "Decant 1–2 hours before service for optimal aeration."
   },
   {
-    category: "Seafood & Crustaceans",
-    wineType: "White",
-    targetWine: "Margaret River Chardonnay (Leeuwin Art Series)",
-    dish: "Butter-Poached Australian Marron / Lobster, Pan-Roasted Kingfish with Lemon Herbs",
-    note: "Margaret River Chardonnay's citrus tension, saline mineral drive, and hazelnut cream elevate fresh lobster and rich buttery sauces."
+    "category": "Seafood & Crustaceans",
+    "wineType": "White",
+    "targetWine": "Margaret River Chardonnay (Leeuwin Art Series)",
+    "dish": "Butter-Poached Australian Marron / Lobster, Pan-Roasted Kingfish with Lemon Herbs",
+    "note": "Margaret River Chardonnay's citrus tension, saline mineral drive, and hazelnut cream elevate fresh lobster and rich buttery sauces.",
+    "glassware": "Universal White Wine Stem (450ml)",
+    "servingTemp": "10–12°C (50–54°F)",
+    "decanting": "Not required; aerate gently in glass."
   },
   {
-    category: "Fresh Oysters & Crudo",
-    wineType: "White",
-    targetWine: "Aged Hunter Valley Semillon & Eden Valley Riesling",
-    dish: "Fresh Sydney Rock Oysters, Kingfish Ceviche with Finger Lime, Poached Scallops",
-    note: "The laser-sharp lime acidity and talc minerality of dry Semillon and Riesling cut cleanly through briny fresh oysters."
+    "category": "Fresh Oysters & Crudo",
+    "wineType": "White",
+    "targetWine": "Aged Hunter Valley Semillon & Eden Valley Riesling",
+    "dish": "Fresh Sydney Rock Oysters, Kingfish Ceviche with Finger Lime, Poached Scallops",
+    "note": "The laser-sharp lime acidity and talc minerality of dry Semillon and Riesling cut cleanly through briny fresh oysters.",
+    "glassware": "Universal White Wine Stem (450ml)",
+    "servingTemp": "10–12°C (50–54°F)",
+    "decanting": "Not required; aerate gently in glass."
   }
 ];

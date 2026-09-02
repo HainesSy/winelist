@@ -1016,38 +1016,53 @@ export const CALIFORNIA_ICONIC_PRODUCERS = [
 
 export const CALIFORNIA_FOOD_PAIRINGS = [
   {
-    category: 'Prime Steaks & Wagyu',
-    wineType: 'Red',
-    targetWine: 'Napa Valley Cult Cabernet Sauvignon (Oakville / Rutherford)',
-    dish: "Dry-Aged Charbroiled Prime Bone-In Ribeye with Truffle Butter, A5 Miyazaki Wagyu Strip with Cabernet Demi-Glace",
-    note: "Napa Cabernet's lavish blackcurrant fruit weight and polished, sweet French oak tannins bond seamlessly with marbled intramuscular beef fat, while the umami demi-glace echoes cedar and cocoa notes."
+    "category": "Prime Steaks & Wagyu",
+    "wineType": "Red",
+    "targetWine": "Napa Valley Cult Cabernet Sauvignon (Oakville / Rutherford)",
+    "dish": "Dry-Aged Charbroiled Prime Bone-In Ribeye with Truffle Butter, A5 Miyazaki Wagyu Strip with Cabernet Demi-Glace",
+    "note": "Napa Cabernet's lavish blackcurrant fruit weight and polished, sweet French oak tannins bond seamlessly with marbled intramuscular beef fat, while the umami demi-glace echoes cedar and cocoa notes.",
+    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    "servingTemp": "16–18°C (60–64°F)",
+    "decanting": "Decant 1–2 hours before service for optimal aeration."
   },
   {
-    category: 'Braised Dishes & Game',
-    wineType: 'Red',
-    targetWine: 'Howell Mountain & Mount Veeder Mountain Cabernet',
-    dish: "Slow-Braised Cabernet Short Ribs with Creamy Polenta, Roasted Venison Loin with Blackberry Juniper Reduction",
-    note: "Inky, brooding mountain tannins and wild sagebrush herbal nuances cut through gelatinous braised beef and rich venison game."
+    "category": "Braised Dishes & Game",
+    "wineType": "Red",
+    "targetWine": "Howell Mountain & Mount Veeder Mountain Cabernet",
+    "dish": "Slow-Braised Cabernet Short Ribs with Creamy Polenta, Roasted Venison Loin with Blackberry Juniper Reduction",
+    "note": "Inky, brooding mountain tannins and wild sagebrush herbal nuances cut through gelatinous braised beef and rich venison game.",
+    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    "servingTemp": "16–18°C (60–64°F)",
+    "decanting": "Decant 1–2 hours before service for optimal aeration."
   },
   {
-    category: 'Wild Salmon & Duck (Sonoma Pinot)',
-    wineType: 'Red',
-    targetWine: 'Sonoma Coast & Russian River Valley Pinot Noir',
-    dish: "Pan-Seared King Salmon with Wild Morel Mushrooms, Crispy Duck Breast with Rainier Cherry Glaze",
-    note: "Velvety Goldridge-grown Pinot Noir delivers bright cranberry acidity, blood orange zest, and damp forest floor notes that marry the rich omega-3 oils of wild salmon and roasted duck."
+    "category": "Wild Salmon & Duck (Sonoma Pinot)",
+    "wineType": "Red",
+    "targetWine": "Sonoma Coast & Russian River Valley Pinot Noir",
+    "dish": "Pan-Seared King Salmon with Wild Morel Mushrooms, Crispy Duck Breast with Rainier Cherry Glaze",
+    "note": "Velvety Goldridge-grown Pinot Noir delivers bright cranberry acidity, blood orange zest, and damp forest floor notes that marry the rich omega-3 oils of wild salmon and roasted duck.",
+    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    "servingTemp": "16–18°C (60–64°F)",
+    "decanting": "Decant 1–2 hours before service for optimal aeration."
   },
   {
-    category: 'Rich Crustaceans & Dungeness Crab',
-    wineType: 'White',
-    targetWine: 'California Old-Vine Chardonnay (Kistler / Mount Eden)',
-    dish: "Fresh Pacific Dungeness Crab with Drawn Butter, Butter-Poached Maine Lobster with Meyer Lemon Beurre Blanc",
-    note: "Rich, toasted brioche and hazelnut lees creaminess harmonizes with sweet crab and lobster, energized by vibrant citrus acid tension."
+    "category": "Rich Crustaceans & Dungeness Crab",
+    "wineType": "White",
+    "targetWine": "California Old-Vine Chardonnay (Kistler / Mount Eden)",
+    "dish": "Fresh Pacific Dungeness Crab with Drawn Butter, Butter-Poached Maine Lobster with Meyer Lemon Beurre Blanc",
+    "note": "Rich, toasted brioche and hazelnut lees creaminess harmonizes with sweet crab and lobster, energized by vibrant citrus acid tension.",
+    "glassware": "Universal White Wine Stem (450ml)",
+    "servingTemp": "10–12°C (50–54°F)",
+    "decanting": "Not required; aerate gently in glass."
   },
   {
-    category: 'Barbecue & Heritage Meats (Zinfandel)',
-    wineType: 'Red',
-    targetWine: 'Dry Creek Valley & Sierra Foothills Heritage Old-Vine Zinfandel',
-    dish: "Smoked Texas-Style Beef Brisket, Grilled Lamb Chops with Rosemary and Cracked Black Pepper",
-    note: "Brambly blackberry fruit and peppery spice handle the smoky caramelization and robust crust of smoked barbecue."
+    "category": "Barbecue & Heritage Meats (Zinfandel)",
+    "wineType": "Red",
+    "targetWine": "Dry Creek Valley & Sierra Foothills Heritage Old-Vine Zinfandel",
+    "dish": "Smoked Texas-Style Beef Brisket, Grilled Lamb Chops with Rosemary and Cracked Black Pepper",
+    "note": "Brambly blackberry fruit and peppery spice handle the smoky caramelization and robust crust of smoked barbecue.",
+    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    "servingTemp": "16–18°C (60–64°F)",
+    "decanting": "Decant 1–2 hours before service for optimal aeration."
   }
 ];

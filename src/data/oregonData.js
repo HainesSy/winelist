@@ -631,31 +631,43 @@ export const OREGON_ICONIC_PRODUCERS = [
 
 export const OREGON_FOOD_PAIRINGS = [
   {
-    category: 'Wild Pacific Salmon',
-    wineType: 'Red',
-    targetWine: 'Dundee Hills & Eola-Amity Hills Pinot Noir',
-    dish: "Cedar-Planked Wild Chinook Salmon with Marionberry Glaze, Pan-Crisped Steelhead Trout with Pinot Butter",
-    note: "The quintessential Pacific Northwest pairing: salmon's rich omega-3 fatty oils marry Oregon Pinot Noir's singing red fruit acidity and forest-floor notes without metallic clash."
+    "category": "Wild Pacific Salmon",
+    "wineType": "Red",
+    "targetWine": "Dundee Hills & Eola-Amity Hills Pinot Noir",
+    "dish": "Cedar-Planked Wild Chinook Salmon with Marionberry Glaze, Pan-Crisped Steelhead Trout with Pinot Butter",
+    "note": "The quintessential Pacific Northwest pairing: salmon's rich omega-3 fatty oils marry Oregon Pinot Noir's singing red fruit acidity and forest-floor notes without metallic clash.",
+    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    "servingTemp": "16–18°C (60–64°F)",
+    "decanting": "Decant 1–2 hours before service for optimal aeration."
   },
   {
-    category: 'Wild Foraged Mushrooms & Duck',
-    wineType: 'Red',
-    targetWine: 'Ribbon Ridge & Yamhill-Carlton Marine Sedimentary Pinot Noir',
-    dish: "Seared Duck Breast with Marionberry Demi, Wild Morel and Chanterelle Mushroom Risotto, Roasted Quail with Oregon Black Truffles",
-    note: "Marine sandstone Pinot Noirs offer dark blackberry, damp conifer needles, and sous-bois truffle earthiness that elevate wild-foraged mushrooms and tender game birds."
+    "category": "Wild Foraged Mushrooms & Duck",
+    "wineType": "Red",
+    "targetWine": "Ribbon Ridge & Yamhill-Carlton Marine Sedimentary Pinot Noir",
+    "dish": "Seared Duck Breast with Marionberry Demi, Wild Morel and Chanterelle Mushroom Risotto, Roasted Quail with Oregon Black Truffles",
+    "note": "Marine sandstone Pinot Noirs offer dark blackberry, damp conifer needles, and sous-bois truffle earthiness that elevate wild-foraged mushrooms and tender game birds.",
+    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    "servingTemp": "16–18°C (60–64°F)",
+    "decanting": "Decant 1–2 hours before service for optimal aeration."
   },
   {
-    category: 'Pacific Coast Crustaceans',
-    wineType: 'White',
-    targetWine: 'Eola-Amity Hills & Dundee Hills Chardonnay (Walter Scott / Bergström)',
-    dish: "Fresh Oregon Dungeness Crab with Drawn Lemon Butter, Pan-Seared Weathervane Scallops with Hazelnut Brown Butter",
-    note: "Laser-sharp natural acidity and crushed oyster shell minerality slice through sweet crab meat and hazelnut brown butter."
+    "category": "Pacific Coast Crustaceans",
+    "wineType": "White",
+    "targetWine": "Eola-Amity Hills & Dundee Hills Chardonnay (Walter Scott / Bergström)",
+    "dish": "Fresh Oregon Dungeness Crab with Drawn Lemon Butter, Pan-Seared Weathervane Scallops with Hazelnut Brown Butter",
+    "note": "Laser-sharp natural acidity and crushed oyster shell minerality slice through sweet crab meat and hazelnut brown butter.",
+    "glassware": "Universal White Wine Stem (450ml)",
+    "servingTemp": "10–12°C (50–54°F)",
+    "decanting": "Not required; aerate gently in glass."
   },
   {
-    category: 'Artisanal Cheeses',
-    wineType: 'White / Red',
-    targetWine: 'Willamette Valley Pinot Noir & Chardonnay',
-    dish: "Rogue River Blue (Southern Oregon, pear-brandy soaked), Cowgirl Creamery Mt Tam, Tumalo Farms Goat Cheese",
-    note: "Award-winning Oregon blue and artisanal goat cheeses find their perfect partner in bright, mineral-laced Oregon Pinot Noir and Chardonnay."
+    "category": "Artisanal Cheeses",
+    "wineType": "White / Red",
+    "targetWine": "Willamette Valley Pinot Noir & Chardonnay",
+    "dish": "Rogue River Blue (Southern Oregon, pear-brandy soaked), Cowgirl Creamery Mt Tam, Tumalo Farms Goat Cheese",
+    "note": "Award-winning Oregon blue and artisanal goat cheeses find their perfect partner in bright, mineral-laced Oregon Pinot Noir and Chardonnay.",
+    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    "servingTemp": "16–18°C (60–64°F)",
+    "decanting": "Decant 1–2 hours before service for optimal aeration."
   }
 ];

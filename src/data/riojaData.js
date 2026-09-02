@@ -324,31 +324,43 @@ export const RIOJA_ICONIC_DOMAINES = [
 
 export const RIOJA_FOOD_PAIRINGS = [
   {
-    category: "Traditional Castilian Roasts",
-    wineType: "Red",
-    targetWine: "Rioja Gran Reserva & Ribera del Duero",
-    dish: "Lechazo Asado (Wood-Fired Roast Suckling Lamb), Chuletillas al Sarmiento (Lamb Chops Grilled over Vine Shoots)",
-    note: "The fine-grained, resolved tannins and cedar-tobacco complexity of mature Tempranillo dissolve rich lamb fat effortlessly."
+    "category": "Traditional Castilian Roasts",
+    "wineType": "Red",
+    "targetWine": "Rioja Gran Reserva & Ribera del Duero",
+    "dish": "Lechazo Asado (Wood-Fired Roast Suckling Lamb), Chuletillas al Sarmiento (Lamb Chops Grilled over Vine Shoots)",
+    "note": "The fine-grained, resolved tannins and cedar-tobacco complexity of mature Tempranillo dissolve rich lamb fat effortlessly.",
+    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    "servingTemp": "16–18°C (60–64°F)",
+    "decanting": "Decant 1–2 hours before service for optimal aeration."
   },
   {
-    category: "Artisanal Charcuterie & Cured Meats",
-    wineType: "Red",
-    targetWine: "Rioja Reserva & Crianza",
-    dish: "Jamón Ibérico de Bellota, Cecina de León, Chorizo Riojano & Aged Manchego AOP",
-    note: "Bright acidity and savory red fruit slice through the unctuous acorn-fed fat of Jamón Ibérico."
+    "category": "Artisanal Charcuterie & Cured Meats",
+    "wineType": "Red",
+    "targetWine": "Rioja Reserva & Crianza",
+    "dish": "Jamón Ibérico de Bellota, Cecina de León, Chorizo Riojano & Aged Manchego AOP",
+    "note": "Bright acidity and savory red fruit slice through the unctuous acorn-fed fat of Jamón Ibérico.",
+    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    "servingTemp": "16–18°C (60–64°F)",
+    "decanting": "Decant 1–2 hours before service for optimal aeration."
   },
   {
-    category: "Wood-Fired Beef & Steaks",
-    wineType: "Red",
-    targetWine: "Ribera del Duero (Vega Sicilia / Pingus) & Priorat",
-    dish: "Chuletón de Buey (Charcoal-Grilled Dry-Aged Ribeye), Oxtail Stew (Rabo de Toro)",
-    note: "The muscular, ink-black concentration and iron-driven tannins of Ribera and Priorat tame charbroiled dry-aged beef."
+    "category": "Wood-Fired Beef & Steaks",
+    "wineType": "Red",
+    "targetWine": "Ribera del Duero (Vega Sicilia / Pingus) & Priorat",
+    "dish": "Chuletón de Buey (Charcoal-Grilled Dry-Aged Ribeye), Oxtail Stew (Rabo de Toro)",
+    "note": "The muscular, ink-black concentration and iron-driven tannins of Ribera and Priorat tame charbroiled dry-aged beef.",
+    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    "servingTemp": "16–18°C (60–64°F)",
+    "decanting": "Decant 1–2 hours before service for optimal aeration."
   },
   {
-    category: "Spanish Seafood & Shellfish Tapas",
-    wineType: "White",
-    targetWine: "Aged White Rioja (Viña Tondonia Blanco)",
-    dish: "Gambas al Ajillo (Garlic Shrimp), Grilled Turbot with Garlic Oil, Salt-Baked Sea Bass",
-    note: "The waxy, nutty, oxidative complexity and lemon-oil acidity of barrel-aged white Rioja elevates rich shellfish and garlic."
+    "category": "Spanish Seafood & Shellfish Tapas",
+    "wineType": "White",
+    "targetWine": "Aged White Rioja (Viña Tondonia Blanco)",
+    "dish": "Gambas al Ajillo (Garlic Shrimp), Grilled Turbot with Garlic Oil, Salt-Baked Sea Bass",
+    "note": "The waxy, nutty, oxidative complexity and lemon-oil acidity of barrel-aged white Rioja elevates rich shellfish and garlic.",
+    "glassware": "Universal White Wine Stem (450ml)",
+    "servingTemp": "10–12°C (50–54°F)",
+    "decanting": "Not required; aerate gently in glass."
   }
 ];

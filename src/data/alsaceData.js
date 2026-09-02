@@ -1527,3 +1527,77 @@ export const ALSACE_ICONIC_DOMAINES = [
     keyCuvees: ["Clos Saint Landelin Vorbourg Grand Cru Pinot Noir", "Vorbourg Grand Cru Riesling", "Steingrubler Grand Cru", "Crémant d'Alsace Prestige"]
   }
 ];
+
+
+export const ALSACE_FOOD_PAIRINGS = [
+  {
+    category: 'Classic Alsatian Heritage Dishes',
+    wineType: 'White',
+    targetWine: 'Dry Riesling & Pinot Blanc (Riquewihr / Ribeauvillé)',
+    dish: "Choucroute Garnie (Sauerkraut with Smoked Pork, Bacon & Sausages) & Baeckeoffe",
+    note: "Riesling's electric acidity and citrus drive cut through rich smoked pork fat while harmonizing with fermented cabbage acidity.",
+    glassware: "Alsace / White Wine Tulip Stem (400ml)",
+    servingTemp: "9–11°C (48–52°F)",
+    decanting: "Not required."
+  },
+  {
+    category: 'Rich & Pungent Cheeses',
+    wineType: 'White',
+    targetWine: 'Gewurztraminer & Pinot Gris Grand Cru (Hengst / Rangen)',
+    dish: "Munster AOP with Cumin Seeds, Époisses, Roquefort Blue & Aged Comté",
+    note: "Gewurztraminer's opulent texture and rosewater-ginger aromatics tame the pungent washed rind of Munster, creating an immortal regional marriage.",
+    glassware: "Alsace Grand Cru White Stem (450ml)",
+    servingTemp: "12–14°C (54–57°F)",
+    decanting: "Not required."
+  },
+  {
+    category: 'Foie Gras & Decadent Starters',
+    wineType: 'White',
+    targetWine: 'Vendanges Tardives (VT) & SGN Pinot Gris / Gewurztraminer',
+    dish: "Pan-Seared Foie Gras with Spiced Brioche, Foie Gras Terrine with Quince",
+    note: "Unctuous noble rot sweetness and high natural acidity dissolve decadent duck liver fat into luscious harmony.",
+    glassware: "Dessert Wine / Sweet Tulip (350ml)",
+    servingTemp: "10–12°C (50–54°F)",
+    decanting: "Not required."
+  },
+  {
+    category: 'Freshwater Fish & Shellfish',
+    wineType: 'White',
+    targetWine: 'Grand Cru Riesling (Schlossberg / Rosacker / Clos Ste Hune)',
+    dish: "Truite au Bleu (Poached Trout with Brown Butter), Coq au Riesling & King Crab",
+    note: "Granite and limestone-grown Riesling delivers razor-sharp tension and crushed stone salinity that elevate tender river trout.",
+    glassware: "White Wine Tulip Stem",
+    servingTemp: "10–12°C (50–54°F)",
+    decanting: "Aerate 15 minutes in glass."
+  },
+  {
+    category: 'Savory Tarts & Bistro Classics',
+    wineType: 'White',
+    targetWine: 'Crémant d\'Alsace Émotion & Sylvaner Grand Cru (Zotzenberg)',
+    dish: "Tarte Flambée (Flammekueche with Lardons & Fromage Blanc), Quiche Lorraine",
+    note: "Crispy dough and rich crème fraîche demand the effervescence of Crémant or the savory, saline snap of old-vine Sylvaner.",
+    glassware: "Sparkling / White Wine Stem",
+    servingTemp: "8–10°C (46–50°F)",
+    decanting: "Not required."
+  },
+  {
+    category: 'Roasted Poultry & Game Birds',
+    wineType: 'Red',
+    targetWine: 'Grand Cru Pinot Noir Rouge (Hengst / Vorbourg)',
+    dish: "Roast Duck Breast with Cherry Glaze, Squab with Chanterelles & Game Terrine",
+    note: "Alsatian Pinot Noir offers bright red cherry fruit, spicy forest floor, and silky fine tannins that pair seamlessly with feathered game.",
+    glassware: "Burgundy Pinot Noir Stem (650ml)",
+    servingTemp: "15–17°C (59–62°F)",
+    decanting: "Decant 30 minutes."
+  },
+  {
+    category: 'Charcuterie & Smoked Meats',
+    wineType: 'Red',
+    targetWine: 'Alsace Pinot Noir (Saint-Hippolyte / Rodern)',
+    dish: "Smoked Ham, Knack d\'Alsace, Presskopf & Pork Tenderloin with Morels",
+    note: "Lightly chilled Pinot Noir brings crunchy redcurrant fruit and refreshing acidity to balance savory, smoked Alsatian charcuterie.",
+    glassware: "Pinot Noir / Universal Stem",
+    servingTemp: "14–16°C (57–60°F)",
+    decanting: "Not required."
+  }
+];
