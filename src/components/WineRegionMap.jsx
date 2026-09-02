@@ -140,10 +140,22 @@ export default function WineRegionMap({
     }
 
     if (showBoundaries && boundaryData) {
+      const isFeatureActive = (feat, activeId) => {
+        if (!activeId) return false;
+        const p = feat.properties || {};
+        const fid = feat.id;
+        return activeId === p.id ||
+               activeId === fid ||
+               activeId === p.subregionId ||
+               activeId === p.parentSubregionId ||
+               (p.id && typeof p.id === 'string' && p.id.startsWith(activeId)) ||
+               (fid && typeof fid === 'string' && fid.startsWith(activeId));
+      };
+
       const geoLayer = L.geoJSON(boundaryData, {
         style: (feature) => {
           const props = feature.properties || {};
-          const isSelected = activeSubRegionId === (props.id || feature.id);
+          const isSelected = isFeatureActive(feature, activeSubRegionId);
           const baseColor = props.color || '#d4af37';
           const strokeColor = isSelected ? '#ffffff' : (props.accent || baseColor);
           return {
@@ -188,7 +200,7 @@ export default function WineRegionMap({
             },
             mouseout: (e) => {
               const target = e.target;
-              const isStillSelected = activeSubRegionId === (props.id || feature.id);
+              const isStillSelected = isFeatureActive(feature, activeSubRegionId);
               const baseColor = props.color || '#d4af37';
               const strokeColor = isStillSelected ? '#ffffff' : (props.accent || baseColor);
               target.setStyle({
@@ -201,8 +213,9 @@ export default function WineRegionMap({
             },
             click: (e) => {
               L.DomEvent.stopPropagation(e);
+              const targetSubId = props.subregionId || props.parentSubregionId || props.id || feature.id;
               if (onSelectSubRegionRef.current) {
-                onSelectSubRegionRef.current(props.id || feature.id);
+                onSelectSubRegionRef.current(targetSubId);
               }
               if (mapInstanceRef.current && e.target.getBounds) {
                 mapInstanceRef.current.fitBounds(e.target.getBounds(), {
@@ -280,14 +293,26 @@ export default function WineRegionMap({
               <h4 class="popup-title">${sub.name}</h4>
             </div>
             <div class="popup-body">
+              ${sub.grapeVarieties && sub.grapeVarieties.length > 0 ? `
+                <div class="popup-row">
+                  <strong>Grape Focus:</strong>
+                  <p>🍇 ${Array.isArray(sub.grapeVarieties) ? sub.grapeVarieties.join(', ') : sub.grapeVarieties}</p>
+                </div>
+              ` : ''}
               <div class="popup-row">
                 <strong>Terroir / Soil:</strong>
-                <p>${sub.terroir || 'Limestone, clay, and chalk benches.'}</p>
+                <p>${sub.terroir || (sub.soilTypes ? (Array.isArray(sub.soilTypes) ? sub.soilTypes.join(', ') : sub.soilTypes) : 'Limestone, clay, and gravel benches.')}</p>
               </div>
               <div class="popup-row">
                 <strong>Focus:</strong>
                 <p>${sub.focus || 'Signature regional cuvées.'}</p>
               </div>
+              ${sub.appellations && sub.appellations.length > 0 ? `
+                <div class="popup-row">
+                  <strong>Appellations:</strong>
+                  <p>${Array.isArray(sub.appellations) ? sub.appellations.join(', ') : sub.appellations}</p>
+                </div>
+              ` : ''}
               ${bottleCount > 0 ? `
                 <div class="popup-cellar-count popup-cellar-clickable" data-cellarsub="${sub.id}">
                   🍷 <strong>${bottleCount} bottle${bottleCount > 1 ? 's' : ''}</strong> in cellar <span style="text-decoration: underline; font-size: 0.76rem;">(View list →)</span>
@@ -330,19 +355,34 @@ export default function WineRegionMap({
       });
     }
 
-    // 2. Draw Grand Cru Markers (Radiant Gold aesthetic, z-index 1000)
+    // 2. Draw Grand Cru & Classified Cru Markers (Radiant Gold aesthetic, z-index 1000)
     if ((pinViewMode === 'grandCrus' || pinViewMode === 'all') && hasGrandCrus) {
       const isBurgundy = region.id === 'burgundy';
       const isAlsace = region.id === 'alsace';
+      const isChampagne = region.id === 'champagne';
       region.grandCrus.forEach(cru => {
         const isCruSelected = selectedCruId === cru.id;
         const dominantLower = (cru.dominantGrape || '').toLowerCase();
-        const isPinot = dominantLower.includes('pinot noir') || dominantLower.includes('rouge') || dominantLower.includes('red');
-        const isChard = dominantLower.includes('chardonnay') || dominantLower.includes('riesling') || dominantLower.includes('gewurztraminer') || dominantLower.includes('pinot gris') || dominantLower.includes('muscat') || dominantLower.includes('sylvaner') || dominantLower.includes('white');
+        const wineTypeLower = (cru.wineType || '').toLowerCase();
+        const isWhite = wineTypeLower === 'white' || dominantLower.includes('chardonnay') || dominantLower.includes('riesling') || dominantLower.includes('gewurztraminer') || dominantLower.includes('pinot gris') || dominantLower.includes('muscat') || dominantLower.includes('sylvaner') || dominantLower.includes('sauvignon') || dominantLower.includes('chenin') || dominantLower.includes('viognier') || dominantLower.includes('vermentinu') || dominantLower.includes('koshu') || dominantLower.includes('cortese') || dominantLower.includes('garganega') || dominantLower.includes('aligoté') || dominantLower.includes('aligote') || dominantLower.includes('sémillon') || dominantLower.includes('semillon');
+        const isSparkling = wineTypeLower === 'sparkling' || dominantLower.includes('champagne') || dominantLower.includes('crémant');
+        const isRose = wineTypeLower === 'rose' || wineTypeLower === 'rosé' || dominantLower.includes('rose') || dominantLower.includes('rosé');
         const isAligote = dominantLower.includes('aligoté') || dominantLower.includes('aligote');
-        const grapeSymbol = isPinot ? '🍷' : (isChard ? '🥂' : (isAligote ? '🌿' : '🍇'));
-        const pinClass = isPinot ? 'pinot-cru' : 'chard-cru';
-        const starBadgeText = (isBurgundy || isAlsace) ? (cru.areaHa ? `${cru.areaHa}ha` : 'GC') : '100%';
+
+        const grapeSymbol = isRose ? '🌸' : (isSparkling ? '🍾' : (isWhite ? (isAligote ? '🌿' : '🥂') : '🍷'));
+        const pinClass = isWhite ? 'chard-cru' : 'pinot-cru';
+
+        let starBadgeText = 'GC';
+        if (cru.badge) {
+          starBadgeText = cru.badge.replace(/^👑\s*/, '').replace(/\s*\(.*?\)/, '').trim().slice(0, 10);
+        } else if (cru.areaHa) {
+          starBadgeText = `${cru.areaHa}ha`;
+        } else if (isChampagne) {
+          starBadgeText = '100%';
+        }
+
+        const cruClassification = cru.classification || cru.badge || ((isBurgundy || isAlsace) ? 'Grand Cru (AOC)' : (isChampagne ? 'Grand Cru (100% Échelle)' : 'Grand Cru'));
+        const locationTag = cru.village || cru.commune || cru.district || cru.subregion || '';
 
         const cruHtml = `
           <div class="custom-sommelier-marker cru-marker grand-cru ${pinClass} ${isCruSelected ? 'is-active' : ''}">
@@ -367,13 +407,13 @@ export default function WineRegionMap({
         const cruPopupHtml = `
           <div class="sommelier-map-popup grand-cru-popup">
             <div class="popup-header">
-              <span class="popup-sub-tag grand-cru-tag">👑 ${(isBurgundy || isAlsace) ? 'Grand Cru (AOC)' : 'Grand Cru (100% Échelle)'} · ${cru.village || cru.commune || cru.district || cru.subregion}${cru.areaHa ? ` · ${cru.areaHa} ha` : ''}</span>
+              <span class="popup-sub-tag grand-cru-tag">👑 ${cruClassification}${locationTag ? ` · ${locationTag}` : ''}${cru.areaHa ? ` · ${cru.areaHa} ha` : ''}</span>
               <h4 class="popup-title">${cru.name}</h4>
             </div>
             <div class="popup-body">
               <div class="popup-row">
                 <strong>Dominant Grape:</strong>
-                <p><strong>${cru.dominantGrape}</strong> ${cru.grapeRatio ? `(${cru.grapeRatio})` : ''}</p>
+                <p>${grapeSymbol} <strong>${cru.dominantGrape || 'Regional Variety'}</strong> ${cru.grapeRatio ? `(${cru.grapeRatio})` : ''}</p>
               </div>
               ${cru.aocDecreeYear || cru.elevationRange ? `
                 <div class="popup-row">
@@ -381,22 +421,30 @@ export default function WineRegionMap({
                   <p>${cru.aocDecreeYear ? `Decree Est. ${cru.aocDecreeYear}` : ''}${cru.aocDecreeYear && cru.elevationRange ? ' · ' : ''}${cru.elevationRange ? `Elevation: ${cru.elevationRange}` : ''}${cru.baseYield ? ` · Yield Cap: ${cru.baseYield}` : ''}</p>
                 </div>
               ` : ''}
-              <div class="popup-row">
-                <strong>Hillside Aspect:</strong>
-                <p>${cru.aspect || 'Steep solar slope'}</p>
-              </div>
+              ${cru.aspect ? `
+                <div class="popup-row">
+                  <strong>Hillside Aspect:</strong>
+                  <p>${cru.aspect}</p>
+                </div>
+              ` : ''}
               <div class="popup-row">
                 <strong>Soil & Geology:</strong>
-                <p>${cru.soil || 'Jurassic limestone & marl'}</p>
+                <p>${cru.soil || 'Calcareous limestone & mineral marl'}</p>
               </div>
               <div class="popup-row">
                 <strong>Character Profile:</strong>
-                <p>${cru.character || 'Profound structural complexity.'}</p>
+                <p>${cru.character || 'Profound structural complexity and cellar potential.'}</p>
               </div>
               ${cru.legalNotes ? `
                 <div class="popup-row">
                   <strong>Appellation Nuance:</strong>
                   <p>${cru.legalNotes}</p>
+                </div>
+              ` : ''}
+              ${cru.historicalSignificance ? `
+                <div class="popup-row">
+                  <strong>History & Lore:</strong>
+                  <p>${cru.historicalSignificance}</p>
                 </div>
               ` : ''}
               ${cru.benchmarkProducers && cru.benchmarkProducers.length > 0 ? `
@@ -414,7 +462,7 @@ export default function WineRegionMap({
             </div>
             <div class="popup-footer">
               <button class="popup-explore-btn cru-explore-btn" data-cruid="${cru.id}">
-                ${isCruSelected ? 'Focused' : 'Study Grand Cru Details →'}
+                ${isCruSelected ? 'Focused' : 'Study Cru Details →'}
               </button>
             </div>
           </div>
@@ -441,17 +489,33 @@ export default function WineRegionMap({
       });
     }
 
-    // 3. Draw Premier Cru Markers (Warm Bronze/Amber aesthetic, z-index 500)
+    // 3. Draw Premier Cru & Benchmark Cru Markers (Warm Bronze/Amber aesthetic, z-index 500)
     if ((pinViewMode === 'premierCrus' || pinViewMode === 'all') && hasPremierCrus) {
       const isBurgundy = region.id === 'burgundy';
+      const isChampagne = region.id === 'champagne';
       region.premierCrus.forEach(pcru => {
         const isCruSelected = selectedCruId === pcru.id;
-        const isPinot = pcru.dominantGrape?.toLowerCase().includes('pinot');
-        const isChard = pcru.dominantGrape?.toLowerCase().includes('chardonnay');
-        const isMeunier = pcru.dominantGrape?.toLowerCase().includes('meunier');
-        const grapeSymbol = isPinot ? '🍷' : (isChard ? '🥂' : (isMeunier ? '🌿' : '🍇'));
-        const pinClass = isPinot ? 'pinot-cru' : (isChard ? 'chard-cru' : 'meunier-cru');
-        const starBadgeText = isBurgundy ? (pcru.areaHa ? `${pcru.areaHa}ha` : '1er') : `${pcru.echelleRating}%`;
+        const dominantLower = (pcru.dominantGrape || '').toLowerCase();
+        const wineTypeLower = (pcru.wineType || '').toLowerCase();
+        const isWhite = wineTypeLower === 'white' || dominantLower.includes('chardonnay') || dominantLower.includes('riesling') || dominantLower.includes('sauvignon') || dominantLower.includes('chenin') || dominantLower.includes('viognier') || dominantLower.includes('white');
+        const isSparkling = wineTypeLower === 'sparkling' || dominantLower.includes('champagne') || dominantLower.includes('crémant');
+        const isRose = wineTypeLower === 'rose' || wineTypeLower === 'rosé' || dominantLower.includes('rose') || dominantLower.includes('rosé');
+        const isMeunier = dominantLower.includes('meunier');
+
+        const grapeSymbol = isRose ? '🌸' : (isSparkling ? '🍾' : (isWhite ? '🥂' : (isMeunier ? '🌿' : '🍷')));
+        const pinClass = isWhite ? 'chard-cru' : (isMeunier ? 'meunier-cru' : 'pinot-cru');
+
+        let starBadgeText = '1er';
+        if (pcru.badge) {
+          starBadgeText = pcru.badge.replace(/^🥇\s*/, '').replace(/\s*\(.*?\)/, '').trim().slice(0, 10);
+        } else if (pcru.areaHa) {
+          starBadgeText = `${pcru.areaHa}ha`;
+        } else if (pcru.echelleRating) {
+          starBadgeText = `${pcru.echelleRating}%`;
+        }
+
+        const pcruClassification = pcru.classification || pcru.badge || (isBurgundy ? 'Premier Cru Climat' : (isChampagne ? `Premier Cru (${pcru.echelleRating || 95}% Échelle)` : 'Premier Cru'));
+        const locationTag = pcru.village || pcru.commune || pcru.district || pcru.subregion || '';
 
         const pcruHtml = `
           <div class="custom-sommelier-marker cru-marker premier-cru ${pinClass} ${isCruSelected ? 'is-active' : ''}">
@@ -476,13 +540,13 @@ export default function WineRegionMap({
         const pcruPopupHtml = `
           <div class="sommelier-map-popup premier-cru-popup">
             <div class="popup-header">
-              <span class="popup-sub-tag premier-cru-tag">🥇 ${isBurgundy ? 'Premier Cru Climat' : `Premier Cru (${pcru.echelleRating}% Échelle)`} · ${pcru.village || pcru.district || pcru.subregion}${pcru.areaHa ? ` · ${pcru.areaHa} ha` : ''}</span>
+              <span class="popup-sub-tag premier-cru-tag">🥇 ${pcruClassification}${locationTag ? ` · ${locationTag}` : ''}${pcru.areaHa ? ` · ${pcru.areaHa} ha` : ''}</span>
               <h4 class="popup-title">${pcru.name}</h4>
             </div>
             <div class="popup-body">
               <div class="popup-row">
                 <strong>Dominant Grape:</strong>
-                <p><strong>${pcru.dominantGrape}</strong> ${pcru.grapeRatio ? `(${pcru.grapeRatio})` : ''}</p>
+                <p>${grapeSymbol} <strong>${pcru.dominantGrape || 'Regional Variety'}</strong> ${pcru.grapeRatio ? `(${pcru.grapeRatio})` : ''}</p>
               </div>
               ${pcru.areaHa || pcru.aspect ? `
                 <div class="popup-row">
@@ -496,11 +560,11 @@ export default function WineRegionMap({
               </div>
               ${pcru.historicalSignificance ? `
                 <div class="popup-row">
-                  <strong>Historical Importance:</strong>
+                  <strong>History & Lore:</strong>
                   <p>${pcru.historicalSignificance}</p>
                 </div>
               ` : ''}
-              ${(pcru.benchmarkProducers || pcru.famousProducers) ? `
+              ${(pcru.benchmarkProducers || pcru.famousProducers) && (pcru.benchmarkProducers || pcru.famousProducers).length > 0 ? `
                 <div class="popup-row">
                   <strong>Benchmark Producers:</strong>
                   <p>${(pcru.benchmarkProducers || pcru.famousProducers).slice(0, 4).join(', ')}</p>
@@ -515,7 +579,7 @@ export default function WineRegionMap({
             </div>
             <div class="popup-footer">
               <button class="popup-explore-btn premier-explore-btn" data-cruid="${pcru.id}">
-                ${isCruSelected ? 'Focused' : 'Study Premier Cru Details →'}
+                ${isCruSelected ? 'Focused' : 'Study Cru Details →'}
               </button>
             </div>
           </div>
@@ -668,19 +732,19 @@ export default function WineRegionMap({
               <button 
                 className={`map-layer-pill ${pinViewMode === 'grandCrus' ? 'active' : ''}`}
                 onClick={() => setPinViewMode('grandCrus')}
-                title={`Display ${region.grandCrus?.length || 0} Grand Crus`}
+                title={`Display ${region.grandCrus?.length || 0} Classified Crus`}
               >
                 <Crown size={12} style={{ marginRight: '2px', color: 'var(--accent-gold)' }} />
-                {region.grandCrus?.length || ''} Grand Crus
+                {region.grandCrus?.length || ''} {(region.id === 'burgundy' || region.id === 'alsace' || region.id === 'champagne') ? 'Grand Crus' : 'Classified Crus'}
               </button>
               {hasPremierCrus && (
                 <button 
                   className={`map-layer-pill ${pinViewMode === 'premierCrus' ? 'active' : ''}`}
                   onClick={() => setPinViewMode('premierCrus')}
-                  title={`Display ${region.premierCrus?.length || 0} Premier Crus`}
+                  title={`Display ${region.premierCrus?.length || 0} Premier Crus / Benchmarks`}
                 >
                   <Award size={12} style={{ marginRight: '2px', color: '#d97706' }} />
-                  {region.premierCrus?.length || ''} Premier Crus
+                  {region.premierCrus?.length || ''} {(region.id === 'burgundy' || region.id === 'champagne') ? 'Premier Crus' : 'Crus / Benchmarks'}
                 </button>
               )}
               <button 
