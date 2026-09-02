@@ -1561,19 +1561,19 @@ export const WINE_REGION_BOUNDARIES = {
   },
 
   // ==========================================================================
-  // SPAIN (Rioja Alta, Alavesa & Oriental)
+  // SPAIN (Rioja Alta, Alavesa, Ribera del Duero & Priorat)
   // ==========================================================================
   'spain-rioja': {
     type: "FeatureCollection",
     features: [
       {
         type: "Feature",
-        id: "rioja-alta-alavesa-alta",
+        id: "rioja-alta",
         properties: {
-          id: "rioja-alta-alavesa-alta",
-          parentSubregionId: "rioja-alta-alavesa",
-          subregionId: "rioja-alta-alavesa",
-          name: "Rioja Alta (Rioja Alta & Alavesa)",
+          id: "rioja-alta",
+          parentSubregionId: "rioja-alta",
+          subregionId: "rioja-alta",
+          name: "Rioja Alta (Western High Rioja)",
           category: "Atlantic Tempranillo Benchmark",
           dominantGrape: "Tempranillo",
           color: "#800020",
@@ -1591,18 +1591,18 @@ export const WINE_REGION_BOUNDARIES = {
       },
       {
         type: "Feature",
-        id: "rioja-alta-alavesa-alavesa",
+        id: "rioja-alavesa",
         properties: {
-          id: "rioja-alta-alavesa-alavesa",
-          parentSubregionId: "rioja-alta-alavesa",
-          subregionId: "rioja-alta-alavesa",
-          name: "Rioja Alavesa (Rioja Alta & Alavesa)",
+          id: "rioja-alavesa",
+          parentSubregionId: "rioja-alavesa",
+          subregionId: "rioja-alavesa",
+          name: "Rioja Alavesa (Basque Rioja)",
           category: "Basque Chalk & Terraced Slopes",
           dominantGrape: "Tempranillo",
           color: "#6c3483",
           accent: "#d7bde2",
           fillOpacity: 0.22,
-          description: "Steep terraced limestone slopes sheltered by the Sierra de Cantabria mountains."
+          description: "Steep terraced limestone slopes sheltered by the Sierra de Cantabria mountains (Las Beatas)."
         },
         geometry: {
           type: "Polygon",
@@ -1614,24 +1614,47 @@ export const WINE_REGION_BOUNDARIES = {
       },
       {
         type: "Feature",
-        id: "rioja-alta-alavesa-oriental",
+        id: "ribera-del-duero",
         properties: {
-          id: "rioja-alta-alavesa-oriental",
-          parentSubregionId: "rioja-alta-alavesa",
-          subregionId: "rioja-alta-alavesa",
-          name: "Rioja Oriental (Rioja Alta & Alavesa)",
-          category: "Mediterranean Garnacha & Sun",
-          dominantGrape: "Garnacha, Tempranillo",
-          color: "#b03a2e",
-          accent: "#f5b7b1",
-          fillOpacity: 0.20,
-          description: "Warmer, drier alluvial basin where Garnacha reaches rich, generous phenolic ripeness."
+          id: "ribera-del-duero",
+          parentSubregionId: "ribera-del-duero",
+          subregionId: "ribera-del-duero",
+          name: "Ribera del Duero (Castilian High Plateau)",
+          category: "High Continental Tinto Fino & Limestone",
+          dominantGrape: "Tinto Fino / Tempranillo",
+          color: "#4a154b",
+          accent: "#ffd700",
+          fillOpacity: 0.25,
+          description: "Castilian high plateau along the Duero River crafting monumental, ageworthy Tinto Fino (Vega Sicilia, Pingus)."
         },
         geometry: {
           type: "Polygon",
           coordinates: [[
-            [-2.400, 42.450], [-1.850, 42.300], [-1.900, 42.050], [-2.350, 42.200],
-            [-2.400, 42.450]
+            [-4.350, 41.720], [-3.450, 41.700], [-3.480, 41.550], [-4.380, 41.580],
+            [-4.350, 41.720]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "priorat",
+        properties: {
+          id: "priorat",
+          parentSubregionId: "priorat",
+          subregionId: "priorat",
+          name: "Priorat (DOQ Priorat & Llicorella Slate)",
+          category: "Devonian Llicorella Slate Amphitheaters",
+          dominantGrape: "Garnacha Tinta & Cariñena",
+          color: "#b03a2e",
+          accent: "#f5b7b1",
+          fillOpacity: 0.26,
+          description: "Steep Llicorella slate terraces producing heroic, mineral-soaked old-vine Garnacha and Cariñena (L'Ermita, Clos Mogador)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [0.700, 41.280], [0.920, 41.260], [0.900, 41.120], [0.680, 41.140],
+            [0.700, 41.280]
           ]]
         }
       }
@@ -1639,25 +1662,25 @@ export const WINE_REGION_BOUNDARIES = {
   },
 
   // ==========================================================================
-  // GERMANY (Mosel River Sub-valleys)
+  // GERMANY (Mosel, Saar, Rheingau & Nahe Sub-valleys)
   // ==========================================================================
   'germany-mosel': {
     type: "FeatureCollection",
     features: [
       {
         type: "Feature",
-        id: "middle-mosel-bernkastel",
+        id: "mittelmosel",
         properties: {
-          id: "middle-mosel-bernkastel",
-          parentSubregionId: "middle-mosel-bernkastel",
-          subregionId: "middle-mosel-bernkastel",
+          id: "mittelmosel",
+          parentSubregionId: "mittelmosel",
+          subregionId: "mittelmosel",
           name: "Middle Mosel (Mittelmosel / Bernkastel)",
           category: "Blue Devonian Slate Steep Slopes",
           dominantGrape: "Riesling",
           color: "#117864",
           accent: "#76d7c4",
           fillOpacity: 0.24,
-          description: "Vertiginous south-facing blue slate amphitheaters (Wehlener Sonnenuhr, Bernkasteler Doctor)."
+          description: "Vertiginous south-facing blue slate amphitheaters (Wehlener Sonnenuhr, Berncasteler Doctor, Ürziger Würzgarten, Erdener Prälat)."
         },
         geometry: {
           type: "Polygon",
@@ -1674,7 +1697,7 @@ export const WINE_REGION_BOUNDARIES = {
           id: "saar-ruwer",
           parentSubregionId: "saar-ruwer",
           subregionId: "saar-ruwer",
-          name: "Saar & Ruwer Valleys",
+          name: "Saar & Ruwer Tributary Valleys",
           category: "Electric High Acidity & Grey Slate",
           dominantGrape: "Riesling",
           color: "#1f618d",
@@ -1689,59 +1712,174 @@ export const WINE_REGION_BOUNDARIES = {
             [6.500, 49.700]
           ]]
         }
+      },
+      {
+        type: "Feature",
+        id: "rheingau",
+        properties: {
+          id: "rheingau",
+          parentSubregionId: "rheingau",
+          subregionId: "rheingau",
+          name: "Rheingau & Central Rhine",
+          category: "Taunus Quartzite & South River Slopes",
+          dominantGrape: "Riesling & Spätburgunder",
+          color: "#b8860b",
+          accent: "#ffd700",
+          fillOpacity: 0.24,
+          description: "Pure south-facing Rhine terraces backed by the Taunus mountains producing aristocratic dry Grosses Gewächs and late harvest botrytis wines."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [7.850, 50.060], [8.300, 50.040], [8.320, 49.950], [7.880, 49.970],
+            [7.850, 50.060]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "nahe-pfalz",
+        properties: {
+          id: "nahe-pfalz",
+          parentSubregionId: "nahe-pfalz",
+          subregionId: "nahe-pfalz",
+          name: "Nahe & Pfalz (Mittelhaardt)",
+          category: "Volcanic Porphyry, Basalt & Limestone",
+          dominantGrape: "Riesling",
+          color: "#7b1fa2",
+          accent: "#ba68c8",
+          fillOpacity: 0.24,
+          description: "Dynamic geological mosaic of volcanic rhyolite, porphyry, and limestone crafting powerful dry Grosses Gewächs (Dönnhoff Hermannshöhle, Keller G-Max)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [7.650, 49.920], [8.250, 49.900], [8.280, 49.300], [7.680, 49.320],
+            [7.650, 49.920]
+          ]]
+        }
       }
     ]
   },
 
   // ==========================================================================
-  // AUSTRALIA (Barossa, McLaren Vale, Margaret River)
+  // AUSTRALIA (Barossa, Eden Valley, Margaret River, Hunter, Coonawarra)
   // ==========================================================================
   'australia': {
     type: "FeatureCollection",
     features: [
       {
         type: "Feature",
-        id: "barossa-valley-sa",
+        id: "barossa-valley",
         properties: {
-          id: "barossa-valley-sa",
-          parentSubregionId: "barossa-valley-sa",
-          subregionId: "barossa-valley-sa",
-          name: "Barossa Valley & Eden Valley (SA)",
-          category: "Ancient Vine Shiraz & Riesling",
-          dominantGrape: "Shiraz & Riesling",
+          id: "barossa-valley",
+          parentSubregionId: "barossa-valley",
+          subregionId: "barossa-valley",
+          name: "Barossa Valley (South Australia)",
+          category: "Ancient Pre-Phylloxera Shiraz (1843)",
+          dominantGrape: "Shiraz & Grenache",
           color: "#800020",
           accent: "#d4af37",
           fillOpacity: 0.26,
-          description: "Centenarian ungrafted Shiraz vines dating to 1843 and high-altitude rocky Eden Valley Riesling."
+          description: "Centenarian ungrafted Shiraz vines dating to 1843 on deep ironstone red clay (Penfolds Grange, Torbreck RunRig)."
         },
         geometry: {
           type: "Polygon",
           coordinates: [[
-            [138.850, -34.380], [139.150, -34.400], [139.180, -34.720], [138.820, -34.700],
-            [138.850, -34.380]
+            [138.800, -34.380], [139.050, -34.400], [139.080, -34.680], [138.780, -34.660],
+            [138.800, -34.380]
           ]]
         }
       },
       {
         type: "Feature",
-        id: "barossa-valley-sa-mclaren",
+        id: "eden-valley",
         properties: {
-          id: "barossa-valley-sa-mclaren",
-          parentSubregionId: "barossa-valley-sa",
-          subregionId: "barossa-valley-sa",
-          name: "Barossa & South Australia (McLaren Vale)",
-          category: "Maritime Gulf Grenache & Shiraz",
-          dominantGrape: "Grenache & Shiraz",
-          color: "#9c27b0",
-          accent: "#ce93d8",
-          fillOpacity: 0.26,
-          description: "Precambrian geology cooled by St Vincent Gulf breezes."
+          id: "eden-valley",
+          parentSubregionId: "eden-valley",
+          subregionId: "eden-valley",
+          name: "Eden Valley & High Eden",
+          category: "Cool-Climate Schist Riesling & Old Vine Shiraz",
+          dominantGrape: "Riesling & Shiraz",
+          color: "#1f618d",
+          accent: "#85c1e9",
+          fillOpacity: 0.24,
+          description: "Elevated windswept Barossa Ranges on mica schist and quartz; home to Henschke Hill of Grace and electric dry Riesling."
         },
         geometry: {
           type: "Polygon",
           coordinates: [[
-            [138.420, -35.150], [138.650, -35.160], [138.620, -35.350], [138.400, -35.320],
-            [138.420, -35.150]
+            [139.050, -34.420], [139.250, -34.440], [139.280, -34.780], [139.080, -34.760],
+            [139.050, -34.420]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "margaret-river",
+        properties: {
+          id: "margaret-river",
+          parentSubregionId: "margaret-river",
+          subregionId: "margaret-river",
+          name: "Margaret River (Western Australia)",
+          category: "Maritime Laterite Gravel Cabernet & Chardonnay",
+          dominantGrape: "Cabernet Sauvignon & Chardonnay",
+          color: "#117864",
+          accent: "#76d7c4",
+          fillOpacity: 0.24,
+          description: "Leeuwin-Naturaliste lateritic ironstone ridge cooled by the Indian and Southern Oceans (Leeuwin Art Series, Cullen)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [114.950, -33.650], [115.200, -33.680], [115.220, -34.350], [114.980, -34.320],
+            [114.950, -33.650]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "hunter-valley",
+        properties: {
+          id: "hunter-valley",
+          parentSubregionId: "hunter-valley",
+          subregionId: "hunter-valley",
+          name: "Hunter Valley (New South Wales)",
+          category: "Ancient Alluvial Flats & Age-Worthy Semillon",
+          dominantGrape: "Semillon & Shiraz",
+          color: "#f57f17",
+          accent: "#fff59d",
+          fillOpacity: 0.24,
+          description: "Australia's oldest wine region producing un-oaked, low-alcohol, ageworthy Semillon (Tyrrell's Vat 1)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [151.150, -32.650], [151.450, -32.680], [151.480, -32.950], [151.180, -32.920],
+            [151.150, -32.650]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "coonawarra",
+        properties: {
+          id: "coonawarra",
+          parentSubregionId: "coonawarra",
+          subregionId: "coonawarra",
+          name: "Coonawarra & Limestone Coast",
+          category: "Terra Rossa Red Clay over Limestone",
+          dominantGrape: "Cabernet Sauvignon",
+          color: "#880e4f",
+          accent: "#f48fb1",
+          fillOpacity: 0.26,
+          description: "Famous 15km cigar-shaped ridge of vibrant red terra rossa over Gambier limestone (Wynns John Riddoch)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [140.750, -37.200], [140.900, -37.200], [140.920, -37.420], [140.780, -37.420],
+            [140.750, -37.200]
           ]]
         }
       }
@@ -1749,31 +1887,100 @@ export const WINE_REGION_BOUNDARIES = {
   },
 
   // ==========================================================================
-  // CHILE (Maipo Valley & Puente Alto)
+  // CHILE (Alto Maipo, Colchagua Apalta, Casablanca, Peumo)
   // ==========================================================================
   'chile-maipo': {
     type: "FeatureCollection",
     features: [
       {
         type: "Feature",
-        id: "alto-maipo-puente-alto",
+        id: "alto-maipo",
         properties: {
-          id: "alto-maipo-puente-alto",
-          parentSubregionId: "alto-maipo-puente-alto",
-          subregionId: "alto-maipo-puente-alto",
+          id: "alto-maipo",
+          parentSubregionId: "alto-maipo",
+          subregionId: "alto-maipo",
           name: "Alto Maipo (Puente Alto & Pirque)",
           category: "Andean Cabernet Sauvignon Benchmark",
-          dominantGrape: "Cabernet Sauvignon & Carménère",
+          dominantGrape: "Cabernet Sauvignon & Carmenère",
           color: "#880e4f",
           accent: "#f48fb1",
           fillOpacity: 0.28,
-          description: "Alluvial gravel cones at the base of the Andes with mint, eucalyptus, and cassis profile (Almaviva, Don Melchor)."
+          description: "Third alluvial gravel terrace at the base of the Andes with mint, eucalyptus, and cassis profile (Almaviva, Don Melchor, Viñedo Chadwick)."
         },
         geometry: {
           type: "Polygon",
           coordinates: [[
             [-70.750, -33.550], [-70.400, -33.600], [-70.480, -33.850], [-70.800, -33.800],
             [-70.750, -33.550]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "colchagua-apalta",
+        properties: {
+          id: "colchagua-apalta",
+          parentSubregionId: "colchagua-apalta",
+          subregionId: "colchagua-apalta",
+          name: "Colchagua Valley & Apalta Amphitheater",
+          category: "Decomposed Pink Granite & Opulent Carmenère",
+          dominantGrape: "Carmenère, Cabernet Sauvignon, Syrah",
+          color: "#4a154b",
+          accent: "#ffd700",
+          fillOpacity: 0.26,
+          description: "Horseshoe-shaped granite amphitheater sheltered from coastal extremes (Clos Apalta, Montes Purple Angel)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-71.500, -34.450], [-71.150, -34.480], [-71.200, -34.750], [-71.550, -34.720],
+            [-71.500, -34.450]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "casablanca-san-antonio",
+        properties: {
+          id: "casablanca-san-antonio",
+          parentSubregionId: "casablanca-san-antonio",
+          subregionId: "casablanca-san-antonio",
+          name: "Casablanca & San Antonio / Leyda Valley",
+          category: "Pacific Humboldt Current Fog & Coastal Whites",
+          dominantGrape: "Sauvignon Blanc, Chardonnay, Pinot Noir",
+          color: "#117864",
+          accent: "#76d7c4",
+          fillOpacity: 0.24,
+          description: "Cool coastal valleys bathed in morning marine fog (Camanchaca) producing electric Sauvignon Blanc and mineral Chardonnay."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-71.600, -33.150], [-71.250, -33.200], [-71.300, -33.700], [-71.650, -33.650],
+            [-71.600, -33.150]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "peumo-cachapoal",
+        properties: {
+          id: "peumo-cachapoal",
+          parentSubregionId: "peumo-cachapoal",
+          subregionId: "peumo-cachapoal",
+          name: "Peumo & Cachapoal Valley",
+          category: "Deep Alluvial Clay Sanctuary for Carmenère",
+          dominantGrape: "Carmenère & Cabernet Sauvignon",
+          color: "#c0392b",
+          accent: "#f5b7b1",
+          fillOpacity: 0.25,
+          description: "Moisture-retaining clay river terraces where late-ripening ungrafted Carmenère reaches supreme physiological maturity (Carmín de Peumo, Terrunyo)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-71.350, -34.100], [-70.950, -34.120], [-71.000, -34.400], [-71.400, -34.380],
+            [-71.350, -34.100]
           ]]
         }
       }

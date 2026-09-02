@@ -935,7 +935,7 @@ export const LOIRE_FOOD_PAIRINGS = [
     wineType: "White",
     targetWine: "Sancerre or Pouilly-Fumé on Silex (Didier Dagueneau Silex / Vacheron)",
     dish: "Warm Baked Crottin de Chavignol Goat Cheese on Toasted Walnut Brioche with Mâche Salad",
-    note: "The tangy lactic acidity and creamy richness of Chavignol goat cheese finds its soulmate in the piercing citrus and gunflint smoke of Kimmeridgian/Silex Sauvignon Blanc.",
+    note: "The quintessential regional pairing: the tangy lactic acidity and creamy richness of artisanal Crottin de Chavignol goat cheese finds its soulmate in the piercing citrus, chalky tension, and gunflint smoke of Kimmeridgian/Silex Sancerre Sauvignon Blanc.",
     glassware: "White Wine / Sauvignon stem (400-500ml)",
     servingTemp: "10–11°C (50–52°F)",
     decanting: "Not required."

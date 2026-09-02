@@ -1,88 +1,80 @@
-# Project: Major World Wine Regions Sommelier Expansion & Exploration System
+# Project: World Wine Regions Sommelier Elevation (All 17 Regions)
 
 ## Architecture
-- **Central Aggregator**: `src/data/wineRegions.js` imports and registers all 13 authoritative world wine regions (`WINE_REGIONS`), providing query resolution (`findWineRegion`), subregion lookups, and technical data indexing.
-- **Dedicated Regional Modules**:
-  - `src/data/champagneData.js` (extracted modular Champagne dataset)
-  - `src/data/burgundyData.js` (existing 33 Grand Crus, 44 1er Crus, 28 Domaines)
-  - `src/data/alsaceData.js` (existing 51 Grand Crus, VT/SGN, 21 Domaines)
-  - `src/data/corsicaData.js` (existing 9 AOCs, 5 winds, ampelography)
-  - `src/data/bordeauxData.js` (1855 Classifications, St-Émilion tiers, Graves, Pomerol, Cru Bourgeois, soils, 225L Barriques, benchmark châteaux)
-  - `src/data/rhoneData.js` (Northern & Southern Rhône crus, climats, 13 grapes, soils, Mistral, Guigal La-La's, Chave, Beaucastel)
-  - `src/data/loireData.js` (Pays Nantais, Anjou-Saumur, Touraine, Centre-Loire, Tuffeau, Silex, Kimmeridgian, benchmark vignerons)
-  - `src/data/piedmontData.js` (Barolo 11 communes & 181 MGAs, Barbaresco 4 communes & 66 MGAs, Roero, Gavi, Barbera, Dolcetto, Conterno, Gaja)
-  - `src/data/tuscanyData.js` (Chianti Classico 11 UGAs & Gran Selezione, Brunello 4 quadrants & Riserva, Bolgheri Sassicaia, Galestro/Alberese)
-  - `src/data/californiaData.js` (Napa 16 AVAs Valley vs Mountain, Sonoma 19 AVAs Goldridge/Coast, Central Coast Paso 11 districts & Sta. Rita Hills, cult estates)
-  - `src/data/oregonData.js` (Willamette 11 AVAs, Jory/Nekia/Willakenzie soils, Van Duzer Corridor, benchmark producers)
-  - `src/data/italyOtherData.js` (Veneto Valpolicella Amarone/Soave, Sicily Etna Contrade, Alto Adige, Friuli, Campania Taurasi)
-  - `src/data/japanData.js` (GI Yamanashi Koshu & GI Nagano Shinshu Chardonnay/Merlot, volcanic soils, high alpine viticulture)
-- **Cartography & Boundaries**: `src/data/wineRegionBoundaries.js` GeoJSON polygon FeatureCollections for all 13 regions with polygon subregion coordinates matching `sub.id`.
-- **Sommelier UI Presentation**: `src/components/WineRegionDetail.jsx` 6-tab interface (`map`, `crus`, `specs`, `prestige`, `pairings`, `cellar`) with dynamic cru badges, specs cards, and color-coded gastronomic pairing taxonomy (`All`, `🍷 Red Wine`, `🥂 White Wine`, `🍾 Sparkling`, `🌸 Rosé`).
-- **Interactive Mapping**: `src/components/WineRegionMap.jsx` Leaflet map with sommelier base layers, custom HTML marker pins, and interactive cru/subregion popups.
+The application organizes world wine region datasets into modular files in `src/data/`, registered centrally in `src/data/wineRegions.js` (`WINE_REGIONS` object and `findWineRegion` query resolution engine), paired with GeoJSON boundary collections in `src/data/wineRegionBoundaries.js` (`WINE_REGION_BOUNDARIES`), and presented dynamically in `src/components/WineRegionDetail.jsx` and `src/components/WineRegionMap.jsx`.
+
+### Master Schema Definition
+Every wine region dataset adheres to the benchmark standard established by Champagne (`src/data/champagneData.js`) and Burgundy (`src/data/burgundyData.js`):
+- `subRegions`: `id`, `name`, `district`, `lat`, `lng`, `terroir`, `focus`, `geology`, `dominantGrapes`, `description`, `microTerroirs[]`
+- `grandCrus` / `premierCrus`: `id`, `name`, `subregionId` (mandatory FK), `subregion`, `district`, `lat`, `lng`, `areaHa`, `aocDecreeYear` / `decreeYear`, `elevationRange`, `aspect`, `dominantGrape`, `grapeRatio`, `wineType`, `soil`, `character`, `benchmarkProducers[]`
+- `technicalRegulations`: `geology` (with `formations[]`), `grapes` (with `major[]`, `heritage[]`), `classification` (with `pyramid[]` or `tiers[]`), `vinification` / `pressing`, `aging`, `dosageTiers` / `sweetness`, `producerCodes` / `businessModels`, `ancillaryAocs`
+- `prestigeCuvees` / `prestigeMonopoles`: `id`, `name`, `producer`, `type`, `status`, `debutVintage`, `grapeComposition`, `sourcing`, `winemaking`, `character`, `iconicStatus`
+- `iconicDomaines` / `iconicGrowers`: `id`, `name`, `village` / `subregion`, `vigneron`, `philosophy`, `keyCuvees[]`
+- `foodPairings`: 5 to 10 entries with `category`, `wineType` (strictly `'Red' | 'White' | 'Sparkling' | 'Rosé'`), `targetWine`, `dish`, `note`, `glassware`, `servingTemp` (with both °C and °F), `decanting`
 
 ## Feature Inventory
 | # | Feature | Description | Milestone | Source |
-|---|---------|-------------|-----------|--------|
-| 1 | Bordeaux Sommelier Dataset | 1855 Classifications (1st-5th growths + d'Yquem), St-Émilion tiers, Graves/Pessac-Léognan 1953/1959, Pomerol plateaus, Cru Bourgeois, Günzian gravels vs molasse, Cabernet/Merlot dynamics, 225L Barriques, botrytis Ciron mists, First Growths & benchmark estates | M1 | ORIGINAL_REQUEST §R1 |
-| 2 | Rhône Valley Sommelier Dataset | Northern Rhône Crus (Côte-Rôtie Brune/Blonde, Condrieu/Château-Grillet, Hermitage 8 climats, Cornas Chaillot, St-Joseph, Crozes, St-Péray) & Southern Rhône Crus (Châteauneuf-du-Pape 13 grapes/galets roulés, Gigondas, Vacqueyras, Vinsobres, Rasteau, Cairanne, Beaumes-de-Venise, Tavel 100% Rosé), Mistral wind, benchmark estates | M1 | ORIGINAL_REQUEST §R1 |
-| 3 | Loire Valley Sommelier Dataset | 4 sectors: Pays Nantais (Muscadet sur lie & Clisson/Gorges Orthogneiss/Gabbro), Anjou-Saumur (Savennières schist, Coulée de Serrant, Quarts de Chaume, Saumur-Champigny tuffeau), Touraine (Chinon, Bourgueil, Vouvray, Montlouis), Centre-Loire (Sancerre, Pouilly-Fumé, Terres Blanches, Caillottes, Silex), benchmark vignerons | M1 | ORIGINAL_REQUEST §R1 |
-| 4 | Piedmont Sommelier Dataset | Barolo DOCG 11 communes & 181 MGAs (Bussia, Cannubi, Brunate, Cerequio, Monprivato, etc.), Tortonian vs Serravallian soils, Nebbiolo biotypes, 38m/62m aging, Barbaresco 4 communes & 66 MGAs (Asili, Rabajà, Ovello, Montestefano, 26m/50m aging), Roero, Gavi, Barbera, Dolcetto, Alta Langa, benchmark producers | M1 | ORIGINAL_REQUEST §R1 |
-| 5 | Tuscany Sommelier Dataset | Chianti Classico 11 UGAs (2021), Gran Selezione min 90% Sangiovese / 30m aging, Galestro vs Alberese, Brunello di Montalcino 100% Sangiovese Grosso / 5yr aging / 4 quadrants, Bolgheri DOC & Sassicaia Super Tuscans, Vino Nobile, benchmark estates | M1 | ORIGINAL_REQUEST §R1 |
-| 6 | California Sommelier Dataset | Napa Valley 16 nested AVAs (Valley vs Mountain, Oakville/Rutherford benchlands), Sonoma County 19 AVAs (Russian River Goldridge, Sonoma Coast fog, Alexander Valley, Dry Creek), Central Coast (Paso Robles 11 districts, Santa Cruz Mountains, Sta. Rita Hills), cult estates | M2 | ORIGINAL_REQUEST §R2 |
-| 7 | Oregon Sommelier Dataset | Willamette Valley 11 nested AVAs (Dundee Hills volcanic Jory, Eola-Amity Hills Nekia & Van Duzer winds, Ribbon Ridge Willakenzie, Yamhill-Carlton, McMinnville, Chehalem, Laurelwood, Mount Pisgah, Lower Long Tom, Tualatin Hills), benchmark producers | M2 | ORIGINAL_REQUEST §R2 |
-| 8 | Italy Other Sommelier Dataset | Veneto (Valpolicella Appassimento Amarone/Ripasso, Soave Classico volcanic basalt), Sicily (Etna DOC Contrade, volcanic soils, Nerello Mascalese & Carricante), Alto Adige, Friuli, Campania (Taurasi Aglianico) | M2 | ORIGINAL_REQUEST §R2 |
-| 9 | Japan Sommelier Dataset | GI Yamanashi (Katsunuma pergola Koshu on volcanic alluvial soil) & GI Nagano (Shinshu high alpine Chardonnay & Merlot), benchmark estates | M2 | ORIGINAL_REQUEST §R2 |
-| 10 | Master Registry Aggregation | Modular export/import architecture in `src/data/wineRegions.js` registering all 13 world wine regions with uniform schemas, query resolver, and Node ESM import compatibility | M2 | ORIGINAL_REQUEST §R1, R2 |
-| 11 | Color-Coded Food Pairings & Gastronomy Taxonomy | Dedicated taxonomy (`Red`, `White`, `Sparkling/Dessert`, `Rosé`) with interactive filter pills (`All`, `🍷 Red Wine`, `🥂 White Wine`, `🍾 Sparkling`), color-coded cards, glassware, decanting, serving temps in `WineRegionDetail.jsx` | M3 | ORIGINAL_REQUEST §R3 |
-| 12 | Dynamic Sommelier UI Components | Polymorphic cru badge rendering (Grand Cru, Premier Cru, 1855 Growth, MGA, UGA, AVA), dynamic subregion filter tabs, technical regulation cards, prestige cuvée indexes in `WineRegionDetail.jsx` & `WineRegionMap.jsx` | M3 | ORIGINAL_REQUEST §R3 |
-| 13 | GeoJSON Cartography & Boundaries | Complete GeoJSON polygon collections in `src/data/wineRegionBoundaries.js` with matching `sub.id` keys, RFC 7946 coordinates, bounding boxes, center coordinates, and zoom levels for all target regions | M4 | ORIGINAL_REQUEST §R4 |
-| 14 | E2E Automated Test Suite (Tiers 1-4) | Comprehensive opaque-box test suite (`test/test_world_wine_regions.js`) covering feature completeness, boundary edge cases, cross-feature relations, and real-world sommelier scenarios across all 13 regions | M5 | ORIGINAL_REQUEST §Acceptance Criteria |
-| 15 | Adversarial Hardening & Build Verification | Tier 5 white-box adversarial stress tests, full clean `npm run build` validation with 0 errors, and forensic audit verification | M5 | ORIGINAL_REQUEST §Acceptance Criteria |
+|---|---|---|---|---|
+| 1 | Master Validation & Invariant Suite | Comprehensive validation of 17 region invariants, schema completeness, and sommelier query resolution | M1 | Survey (Explorer 3) |
+| 2 | Empirical Domain Validation Suite | 31+ sommelier CMS L3 curriculum rules across all 17 regions | M1 | Survey (Explorer 3) |
+| 3 | Adversarial Stress & Integration Suite | Foreign key checks, coordinate bounds, and UI map cartographic integration | M1 | Survey (Explorer 3) |
+| 4 | Germany Mosel & Rheingau Elevation | Complete Grosse Lagen (lat/lng, subregionId, soil), Devonian slate geology, Prädikat laws, 5+ pairings | M2 | Survey (Explorer 2) |
+| 5 | Spain Rioja & Ribera Elevation | Complete Viñedos Singulares/Pagos (lat/lng, subregionId, soil), oak aging laws, Llicorella, 5+ pairings | M2 | Survey (Explorer 2) |
+| 6 | Chile Maipo & Colchagua Elevation | Complete Puente Alto/Apalta crus (lat/lng, subregionId, soil), Andean katabatic cooling, Carménère, 5+ pairings | M2 | Survey (Explorer 2) |
+| 7 | Australia Barossa & Margaret River Elevation | Complete Grand Cru blocks (lat/lng, subregionId, soil), 1843 pre-phylloxera vines, Gingin clone, 5+ pairings | M2 | Survey (Explorer 2) |
+| 8 | Cartographic GeoJSON Boundary Alignment | Align boundary feature IDs with subregion IDs across Mosel, Rioja, Chile, Australia | M2 | Survey (Explorer 2) |
+| 9 | Alsace Grand Crus Foreign Key Linking | Link all 51 Grand Crus with `subregionId: 'haut-rhin' \| 'bas-rhin'`, add prestige debut vintages | M3 | Survey (Explorer 2) |
+| 10 | Corsica Benchmark Crus & Boundaries | Populate Corsica Grand/Benchmark Crus array with 9 AOCs + coordinates, add missing subregion boundaries | M3 | Survey (Explorer 2) |
+| 11 | Oregon Food Pairing & Taxonomy Normalization | Expand pairings to 5+, eliminate compound `wineType`, verify nested AVAs | M3 | Survey (Explorer 2) |
+| 12 | Italy Other Classification & Pairing Normalization | Normalize compound `wineType`, add structured classification pyramid for Etna/Amarone/Valtellina | M3 | Survey (Explorer 2) |
+| 13 | Japan Chūbu Pairing Normalization & Boundaries | Normalize compound `wineType` to strictly `Sparkling` / `White`, add missing GeoJSON features | M3 | Survey (Explorer 2) |
+| 14 | Champagne Food Pairings & Benchmark Parity | Expand pairings to 5–6 with Rosé Champagne pairing, maintain 3,177 assertion gold standard | M4 | Survey (Explorer 1 & 2) |
+| 15 | Burgundy Prestige Monopoles Standard | Add debut vintages across all 12 prestige monopoles, maintain benchmark gold standard | M4 | Survey (Explorer 1 & 2) |
+| 16 | Bordeaux 1855 & Sauternes Perfection | Ensure pairings note botrytis and Sauternes, verify all 5 1855 tiers detail | M4 | Survey (Explorer 2) |
+| 17 | Rhône, Loire, Piedmont, Tuscany, California Parity | Fix Rhône `Rose` -> `Rosé`, verify Sancerre pairing notes, ensure glassware & °C/°F across all pairings | M4 | Survey (Explorer 2) |
+| 18 | Full Test Suite Execution & Production Build | Execute all automated suites, green status across 100% of tests, zero build errors/warnings | M5 | Survey (Explorer 3) |
 
 ## Milestones
-| # | Name | Scope | Dependencies | Status | Key Outputs |
-|---|------|-------|-------------|--------|-------------|
-| M1 | Classical Titans Datasets | `bordeauxData.js`, `rhoneData.js`, `loireData.js`, `piedmontData.js`, `tuscanyData.js` | none | DONE | 5 comprehensive CMS L3 datasets |
-| M2 | New World & Additional Datasets | `californiaData.js`, `oregonData.js`, `italyOtherData.js`, `japanData.js`, `champagneData.js`, `wineRegions.js` | M1 | DONE | 4 regional datasets, modular Champagne, master registry |
-| M3 | UI Gastronomy & Component Integration | `WineRegionDetail.jsx`, `WineRegionMap.jsx`, filter pills, color-coded pairings, polymorphic badges | M1, M2 | DONE | Color-coded cards, dynamic filter pills, polymorphic cru badges |
-| M4 | Cartography & GeoJSON Boundaries | `wineRegionBoundaries.js` GeoJSON collections for all 9 target regions | M1, M2 | DONE | 87 GeoJSON polygon boundaries in RFC 7946 format |
-| M5 | E2E Test Suite & Final Hardening | `test/test_world_wine_regions.js` (Tiers 1-5), `TEST_READY.md`, `npm run build` | M1, M2, M3, M4 | DONE | 5 passing test suites (211 + 180 + 3165 + 31 + 8 tests), clean Vite build |
+| # | Name | Scope | Dependencies | Status |
+|---|---|---|---|---|
+| M1 | Test Suite & Validation Infrastructure | `test/verify_all_17_regions.mjs`, `test/empirical_domain_validation_suite.test.mjs`, `test/adversarial_world_regions_stress.js`, `test/test_ui_gastronomy_cru_integration.js`, `test/test_world_wine_regions.js`, `package.json` | none | PLANNED |
+| M2 | Major Gap Regions Elevation | `src/data/moselData.js`, `src/data/riojaData.js`, `src/data/chileData.js`, `src/data/australiaData.js`, `src/data/wineRegionBoundaries.js` | M1 | PLANNED |
+| M3 | Partially Complete Regions Elevation | `src/data/alsaceData.js`, `src/data/corsicaData.js`, `src/data/oregonData.js`, `src/data/italyOtherData.js`, `src/data/japanData.js`, `src/data/wineRegionBoundaries.js` | M1 | PLANNED |
+| M4 | Benchmark Regions Refinement & Normalization | `src/data/champagneData.js`, `src/data/burgundyData.js`, `src/data/bordeauxData.js`, `src/data/rhoneData.js`, `src/data/loireData.js`, `src/data/piedmontData.js`, `src/data/tuscanyData.js`, `src/data/californiaData.js`, `src/data/wineRegions.js` | M1 | PLANNED |
+| M5 | Full Verification, Hardening & Final Gate Pass | Complete test run across all 17 regions, `npm run build`, Reviewer, Challenger, Forensic Auditor | M2, M3, M4 | PLANNED |
 
 ## Interface Contracts
-### Regional Dataset Module (`src/data/<region>Data.js`) ↔ `wineRegions.js`
-- Export constants:
-  - `<REGION>_SUBREGIONS`: Array of `{ id: string, name: string, appellations: string[], grapeVarieties: string[], soilTypes: string[], climate: string, description: string, coordinates: [lat, lng] }`
-  - `<REGION>_GRAND_CRUS` / `<REGION>_CRUS`: Array of `{ id: string, name: string, subregion: string, dominantGrapes: string[], soilType: string, aspect?: string, elevation?: string, classification: string, badge?: string, coordinates: [lat, lng], profile: string }`
-  - `<REGION>_PREMIER_CRUS` (optional where applicable): Array of Cru objects
-  - `<REGION>_TECHNICAL_REGULATIONS`: Object with `{ geologyPedology: string, climatology: string, authorizedGrapes: Array<{ name: string, type: 'red'|'white'|'heritage', role: string, description: string }>, classificationHierarchy: Array<{ tier: string, description: string, requirements: string }>, vinificationTraditions: string, agingLaws: Array<{ category: string, minAging: string, oakRequirements: string, details: string }>, ancillaryAOCs: Array<{ name: string, type: string, description: string }> }`
-  - `<REGION>_PRESTIGE_CUVEES` / `<REGION>_PRESTIGE_MONOPOLES`: Array of `{ name: string, producer: string, inauguralVintage?: string, subregion: string, composition: string, terroir: string, significance: string }`
-  - `<REGION>_ICONIC_DOMAINES` / `<REGION>_BENCHMARK_ESTATES`: Array of `{ name: string, commune: string, specialty: string, benchmarkBottling: string, description: string }`
-  - Food pairings attached to region object: Array of `{ dish: string, wineType: 'red' | 'white' | 'sparkling' | 'rose', pairingType: string, classicRegion: string, tastingNotes: string, recommendedGlassware: string, servingTemp: string, decanting: string, whyItWorks: string }`
+### Regional Dataset ↔ Central Registry (`src/data/wineRegions.js`)
+- Every regional dataset file must export named constants:
+  - `<REGION>_SUBREGIONS` (`subRegions`)
+  - `<REGION>_GRAND_CRUS` (`grandCrus`)
+  - `<REGION>_TECHNICAL_REGULATIONS` (`technicalRegulations`)
+  - `<REGION>_PRESTIGE_<CUVEES/ESTATES/MONOPOLES>` (`prestigeCuvees` / `prestigeMonopoles` / `prestigeEstates`)
+  - `<REGION>_ICONIC_<GROWERS/DOMAINES/PRODUCERS>` (`iconicDomaines` / `iconicGrowers` / `iconicProducers`)
+  - `<REGION>_FOOD_PAIRINGS` (`foodPairings`)
+- The master `WINE_REGIONS` dictionary aggregates these properties under each `regionId`.
 
-### GeoJSON Boundaries (`src/data/wineRegionBoundaries.js`) ↔ `WineRegionMap.jsx`
-- `WINE_REGION_BOUNDARIES[regionId]`: GeoJSON `FeatureCollection` where each feature is a `Feature` with `geometry` (`Polygon` or `MultiPolygon`, coordinates in `[lng, lat]`) and `properties` containing `id` (matching `sub.id`), `parentSubregionId`, `name`, `fillColor`, `strokeColor`.
+### Regional Dataset ↔ Cartography (`src/data/wineRegionBoundaries.js`)
+- Every Cru in `<REGION>_GRAND_CRUS` must have a valid `subregionId` matching `subRegions[i].id`.
+- `WINE_REGION_BOUNDARIES[regionId]` features must have `id` matching corresponding `subRegions[i].id`.
 
-### Gastronomy Taxonomy ↔ `WineRegionDetail.jsx`
-- Filter pill options: `All`, `🍷 Red Wine` (`red`), `🥂 White Wine` (`white`), `🍾 Sparkling` (`sparkling`), `🌸 Rosé` (`rose`).
-- Dynamic card header accents, sommelier service badges (Glassware, Serving Temp, Decanting), and flavor pairing rationale.
+### Gastronomy ↔ UI Filtering (`src/components/WineRegionDetail.jsx`)
+- `foodPairings[i].wineType` must strictly be one of `'Red'`, `'White'`, `'Sparkling'`, `'Rosé'`.
+- `servingTemp` must include both Celsius and Fahrenheit values (e.g. `"8–10°C (46–50°F)"`).
 
 ## Code Layout
-- `src/data/wineRegions.js` (Master registry aggregator)
-- `src/data/champagneData.js` (Champagne dataset)
-- `src/data/burgundyData.js` (Burgundy dataset)
-- `src/data/alsaceData.js` (Alsace dataset)
-- `src/data/corsicaData.js` (Corsica dataset)
-- `src/data/bordeauxData.js` (Bordeaux dataset)
-- `src/data/rhoneData.js` (Rhône Valley dataset)
-- `src/data/loireData.js` (Loire Valley dataset)
-- `src/data/piedmontData.js` (Piedmont dataset)
-- `src/data/tuscanyData.js` (Tuscany dataset)
-- `src/data/californiaData.js` (California dataset)
-- `src/data/oregonData.js` (Oregon dataset)
-- `src/data/italyOtherData.js` (Italy Other dataset)
-- `src/data/japanData.js` (Japan dataset)
-- `src/data/wineRegionBoundaries.js` (Cartographic GeoJSON collections)
-- `src/components/WineRegionDetail.jsx` (Sommelier regional learning & exploration UI)
-- `src/components/WineRegionMap.jsx` (Interactive Leaflet cartographic map)
-- `test/test_world_wine_regions.js` (Automated E2E multi-tier test suite)
-- `test/adversarial_world_regions_stress.js` (Adversarial stress and query fuzzing suite)
+- `src/data/` — Regional wine data modules and central registry
+  - `wineRegions.js` — Central master registry
+  - `wineRegionBoundaries.js` — GeoJSON cartographic boundary geometries
+  - `champagneData.js`, `burgundyData.js`, `bordeauxData.js`, `rhoneData.js`, `loireData.js`, `alsaceData.js`, `corsicaData.js` — French wine regions
+  - `piedmontData.js`, `tuscanyData.js`, `italyOtherData.js` — Italian wine regions
+  - `californiaData.js`, `oregonData.js` — American wine regions
+  - `moselData.js`, `riojaData.js`, `chileData.js`, `australiaData.js`, `japanData.js` — Germany, Spain, Chile, Australia, Japan
+- `src/components/` — React UI components (`WineRegionDetail.jsx`, `WineRegionMap.jsx`)
+- `test/` — Validation test suites
+  - `verify_all_17_regions.mjs` — Fast invariant & sommelier query suite
+  - `empirical_domain_validation_suite.test.mjs` — Deep CMS L3 domain validation suite
+  - `adversarial_world_regions_stress.js` — High-throughput fuzzing and cartographic integrity test
+  - `test_ui_gastronomy_cru_integration.js` — UI and gastronomy integration test
+  - `test_world_wine_regions.js` — Comprehensive regional test suite
+  - `validate-champagne-data.js` — Champagne deep scanner (3,177 assertions)

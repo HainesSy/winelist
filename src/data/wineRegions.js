@@ -783,7 +783,7 @@ export const WINE_REGIONS = {
     name: "Piedmont (Piemonte)",
     country: 'Italy',
     countryCode: 'IT',
-    aliases: ['piedmont', 'piemonte', 'barolo', 'barbaresco', 'langhe', 'roero', 'alba', 'asti', 'valtellina', 'nebbiolo', 'barbera'],
+    aliases: ['piedmont', 'piemonte', 'barolo', 'barbaresco', 'langhe', 'roero', 'alba', 'asti', 'nebbiolo', 'barbera'],
     tagline: "The Land of Fog, Nebbiolo Kings & White Truffles",
     summary: "Nestled at the foot of the Italian Alps in northwestern Italy, Piedmont is Italy's culinary and fine-wine crown jewel. Famous for its autumn fog (nebbia) and limestone hillsides of the Langhe, Piedmont produces Barolo (\"The King of Wines and Wine of Kings\") and Barbaresco from the noble Nebbiolo grape.",
     center: [44.6500, 7.9500],
@@ -1519,6 +1519,40 @@ export function findWineRegion(regionQuery, countryQuery = '') {
       }
     }
 
+    // 3.5 Exact match on Grand Crus, Premier Crus, Subregions, and Appellations
+    for (const regKey of Object.keys(WINE_REGIONS)) {
+      const r = WINE_REGIONS[regKey];
+      if (r.grandCrus) {
+        for (const cru of r.grandCrus) {
+          if (cru.name && normalizeText(cru.name) === cleanReg) return r;
+          if (cru.id && normalizeText(cru.id) === cleanReg) return r;
+          if (cru.village && normalizeText(cru.village) === cleanReg) return r;
+          if (cru.commune && normalizeText(cru.commune) === cleanReg) return r;
+        }
+      }
+      if (r.premierCrus) {
+        for (const cru of r.premierCrus) {
+          if (cru.name && normalizeText(cru.name) === cleanReg) return r;
+          if (cru.id && normalizeText(cru.id) === cleanReg) return r;
+          if (cru.village && normalizeText(cru.village) === cleanReg) return r;
+          if (cru.commune && normalizeText(cru.commune) === cleanReg) return r;
+        }
+      }
+      if (r.subRegions) {
+        for (const sub of r.subRegions) {
+          if (sub.name && normalizeText(sub.name) === cleanReg) return r;
+          if (sub.id && normalizeText(sub.id) === cleanReg) return r;
+          if (sub.appellations) {
+            for (const app of sub.appellations) {
+              const cleanApp = normalizeText(app);
+              if (cleanApp === cleanReg) return r;
+              if (cleanApp.replace(/\s+(aoc|docg|doc|gi|ava|qualitätswein|d\.o\.|do|doq)$/i, '') === cleanReg) return r;
+            }
+          }
+        }
+      }
+    }
+
     // 4. Word boundary & constrained fuzzy match across all regions
     for (const regKey of Object.keys(WINE_REGIONS)) {
       const r = WINE_REGIONS[regKey];
@@ -1532,6 +1566,19 @@ export function findWineRegion(regionQuery, countryQuery = '') {
           if (isAliasOrNameMatch(cleanReg, normAlias)) {
             return r;
           }
+        }
+      }
+      if (r.subRegions) {
+        for (const sub of r.subRegions) {
+          const normSub = normalizeText(sub.name);
+          if (isAliasOrNameMatch(cleanReg, normSub)) return r;
+        }
+      }
+      if (r.grandCrus) {
+        for (const cru of r.grandCrus) {
+          const normCru = normalizeText(cru.name);
+          if (isAliasOrNameMatch(cleanReg, normCru)) return r;
+          if (cru.village && isAliasOrNameMatch(cleanReg, normalizeText(cru.village))) return r;
         }
       }
     }

@@ -1938,7 +1938,7 @@ export const BORDEAUX_FOOD_PAIRINGS = [
     wineType: "White",
     targetWine: "Sauternes Premier Cru Supérieur (Château d'Yquem / Château Climens)",
     dish: "Pan-Seared Duck Foie Gras with Caramelized Yellow Peaches & Aged Roquefort AOP",
-    note: "The salty, pungent blue veins of Roquefort create a legendary tension with the saffron, honeyed botrytis, and apricot nectar of Sauternes sweet wines.",
+    note: "The salty, pungent blue veins of Roquefort create a legendary tension with the saffron, honeyed botrytis, and apricot nectar of Sauternes botrytized sweet wines.",
     glassware: "Sauternes / Sweet Wine tulip stem (300-400ml)",
     servingTemp: "10–12°C (50–54°F)",
     decanting: "Not required; serve lightly chilled."

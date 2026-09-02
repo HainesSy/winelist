@@ -8,7 +8,8 @@
     "sync-server": "node server/sync-server.js",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node test/verify_all_17_regions.mjs && node test/empirical_domain_validation_suite.test.mjs && node test/adversarial_world_regions_stress.js"
   },
   "dependencies": {
     "cors": "^2.8.6",

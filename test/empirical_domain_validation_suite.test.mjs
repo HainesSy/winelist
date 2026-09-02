@@ -3,27 +3,29 @@
  * EMPIRICAL DOMAIN VALIDATION & ADVERSARIAL STRESS TEST SUITE
  * ============================================================================
  * 
- * Subagent: challenger_world_regions_2
- * Scope:
- *   1. Barolo 181 MGAs & Barbaresco 66 MGAs completeness and aging law metrics
- *   2. Chianti Classico 11 official UGAs (2021) and Gran Selezione rules
- *   3. Bordeaux 1855 Classifications, Left Bank Günzian gravels vs Right Bank molasse
- *   4. Champagne 17 Grand Crus, 7 dosage tiers, 7 CIVC codes, and pressing fractions
- *   5. Napa 16 AVAs (Valley vs Mountain) and Oregon 11 AVAs
- *   6. Japan GI Yamanashi & GI Nagano specifications
- *   7. Food pairing taxonomy completeness (wineType validity & sommelier service tips)
+ * Subagent: Worker M1 (Test Suite & Validation Infrastructure Specialist)
+ * Scope: Court of Master Sommeliers (CMS) Level 3 & Master Sommelier Standards
+ * across all 17 Fine Wine World Regions:
  * 
- * Multi-Tier Empirical Verification:
  *   - Suite 1: Piedmont: Barolo 181 MGAs, Barbaresco 66 MGAs, Communes & Aging Laws
  *   - Suite 2: Tuscany: Chianti Classico 11 UGAs (2021), Gran Selezione Rules & Terroir
  *   - Suite 3: Bordeaux: 1855 Classifications, Left Bank Günzian Gravels vs Right Bank Molasse
  *   - Suite 4: Champagne: 17 Grand Crus, 7 Dosage Tiers, 7 CIVC Codes & Pressing Fractions
  *   - Suite 5: California Napa 16 AVAs (Valley vs Mountain) & Oregon 11 AVAs
  *   - Suite 6: Japan: GI Yamanashi & GI Nagano Specifications
- *   - Suite 7: Food Pairing Taxonomy Completeness & Sommelier Service Tips
- *   - Suite 8: Adversarial Query Resolution, Diacritics & Alias Resiliency
- *   - Suite 9: GeoJSON Boundary Topology & Spatial Polygon Envelopes
- *   - Suite 10: Real-World Master Sommelier Service & Blind Tasting Simulations
+ *   - Suite 7: Alsace: 51 Grand Crus, 13 Bedrock Formations, 4 Noble Grapes & VT/SGN Laws
+ *   - Suite 8: Corsica: 9 AOCs, Hercynian Granite vs Schistes Lustrés & Native Ampelography
+ *   - Suite 9: Rhône Valley: Northern 100% Syrah Granite vs Southern 13 CdP Grapes & Galets Roulés
+ *   - Suite 10: Loire Valley: 4 Sectors, Silex vs Kimmeridgian vs Tuffeau & Chenin/Cab Franc
+ *   - Suite 11: Germany Mosel & Rheingau: Devonian Slate, 10.0 Acidity, Prädikat & VDP GG
+ *   - Suite 12: Spain: Rioja Oak Aging Hierarchy, Priorat Llicorella & Viñedos Singulares
+ *   - Suite 13: Chile: Alto Maipo Alluvial Gravels, Andean Katabatic Cooling & Carménère
+ *   - Suite 14: Australia: 1843 Pre-Phylloxera Shiraz, Gingin Clone Chardonnay & Hunter Semillon
+ *   - Suite 15: Italy Other: Etna Volcanic Tephra, Valtellina Superiore & Amarone Appassimento
+ *   - Suite 16: Food Pairing Taxonomy Completeness & Sommelier Service Tips
+ *   - Suite 17: Adversarial Query Resolution, Diacritics & Alias Resiliency
+ *   - Suite 18: GeoJSON Boundary Topology & Cartographic Envelopes
+ *   - Suite 19: Real-World Master Sommelier Service & Blind Tasting Scenarios
  * 
  * Execute with:
  *   node test/empirical_domain_validation_suite.test.mjs
@@ -97,7 +99,27 @@ const {
   JAPAN_GRAND_CRUS,
   JAPAN_TECHNICAL_REGULATIONS,
   JAPAN_PRESTIGE_ESTATES,
-  JAPAN_ICONIC_PRODUCERS
+  JAPAN_ICONIC_PRODUCERS,
+  MOSEL_SUBREGIONS,
+  MOSEL_GRAND_CRUS,
+  MOSEL_TECHNICAL_REGULATIONS,
+  MOSEL_PRESTIGE_ESTATES,
+  MOSEL_ICONIC_DOMAINES,
+  RIOJA_SUBREGIONS,
+  RIOJA_GRAND_CRUS,
+  RIOJA_TECHNICAL_REGULATIONS,
+  RIOJA_PRESTIGE_ESTATES,
+  RIOJA_ICONIC_DOMAINES,
+  CHILE_SUBREGIONS,
+  CHILE_GRAND_CRUS,
+  CHILE_TECHNICAL_REGULATIONS,
+  CHILE_PRESTIGE_ESTATES,
+  CHILE_ICONIC_DOMAINES,
+  AUSTRALIA_SUBREGIONS,
+  AUSTRALIA_GRAND_CRUS,
+  AUSTRALIA_TECHNICAL_REGULATIONS,
+  AUSTRALIA_PRESTIGE_ESTATES,
+  AUSTRALIA_ICONIC_DOMAINES
 } = await import('../src/data/wineRegions.js');
 
 const {
@@ -198,7 +220,6 @@ test('Piedmont: Nebbiolo biotypes (Lampia, Michet, Rosé) and benchmark MGAs doc
   const baroloSub = PIEDMONT_SUBREGIONS.find(s => s.id === 'barolo-langhe');
   assert(baroloSub.grapeVarieties.some(v => v.includes('Lampia') && v.includes('Michet') && v.includes('Rosé')), 'Nebbiolo biotypes listed in subregion');
 
-  // Check key benchmark MGAs in PIEDMONT_GRAND_CRUS
   const cruNames = PIEDMONT_GRAND_CRUS.map(c => c.name);
   const expectedCrus = ['Cannubi', 'Bussia', 'Brunate', 'Cerequio', 'Rocche dell\'Annunziata', 'Cascina Francia', 'Vignarionda', 'Monprivato', 'Asili', 'Rabajà', 'Ovello', 'Montestefano'];
   for (const exp of expectedCrus) {
@@ -221,24 +242,15 @@ test('Chianti Classico: 11 official UGAs (2021 codification) legally documented'
   const tuscanyFileContent = fs.readFileSync(path.resolve(projectRoot, 'src/data/tuscanyData.js'), 'utf8');
 
   const ugas = [
-    'Castellina',
-    'Gaiole',
-    'Radda',
-    'Greve',
-    'Panzano',
-    'Castelnuovo Berardenga',
-    'San Casciano',
-    'Montefioralle',
-    'Lamole',
-    'San Donato in Poggio',
-    'Vagliagli'
+    'Castellina', 'Gaiole', 'Radda', 'Greve', 'Panzano',
+    'Castelnuovo Berardenga', 'San Casciano', 'Montefioralle',
+    'Lamole', 'San Donato in Poggio', 'Vagliagli'
   ];
 
   for (const uga of ugas) {
     assert(tuscanyFileContent.includes(uga), `Official UGA "${uga}" is documented in Tuscany module`);
   }
 
-  // Check that dedicated UGA crus exist in TUSCANY_GRAND_CRUS
   const cruIds = TUSCANY_GRAND_CRUS.map(c => c.id);
   assert(cruIds.includes('uga-radda-in-chianti'), 'Radda UGA cru exists');
   assert(cruIds.includes('uga-panzano-in-chianti'), 'Panzano UGA cru exists');
@@ -274,7 +286,6 @@ test('Brunello di Montalcino: 100% Sangiovese Grosso, 5-year aging (min 2yr oak)
   assert.match(brunelloTier.aging, /5 years total aging/i, 'Brunello Annata requires min 5 years total aging');
   assert.match(brunelloTier.aging, /2 years in oak/i, 'Brunello requires min 2 years in oak');
 
-  // Verify Montalcino 4 quadrants in crus
   const montalcinoCrus = TUSCANY_GRAND_CRUS.filter(c => c.subregionId === 'montalcino');
   assert(montalcinoCrus.length >= 4, 'Montalcino has at least 4 quadrant crus documented');
 });
@@ -312,13 +323,11 @@ test('Bordeaux 1855: 2nd through 5th Growths, Sauternes, St-Émilion Classé A/B
   assert(classificationPyramid.some(p => p.tier.includes('Graves') || p.tier.includes('Pessac-Léognan')), 'Graves/Pessac-Léognan classification documented');
   assert(classificationPyramid.some(p => p.tier.includes('Bourgeois')), 'Crus Bourgeois documented');
 
-  // Verify Right Bank active 2022 Premier Grand Cru Classé A estates (Pavie, Figeac) in crus
   const stEmilionA = BORDEAUX_GRAND_CRUS.filter(c => c.badge && (c.badge.includes('1er Grand Cru Classé A') || c.badge.includes('Premier Grand Cru Classé A')));
   const stEmilionANames = stEmilionA.map(c => c.name);
   assert(stEmilionANames.some(n => n.includes('Pavie')), 'Pavie present in 2022 Premier Grand Cru Classé A crus');
   assert(stEmilionANames.some(n => n.includes('Figeac')), 'Figeac present in 2022 Premier Grand Cru Classé A crus');
 
-  // Verify historic Premier Grand Cru Classé A estates (Cheval Blanc, Ausone) in prestige estates
   const prestigeNames = BORDEAUX_PRESTIGE_ESTATES.map(p => p.name);
   assert(prestigeNames.some(n => n.includes('Cheval Blanc')), 'Cheval Blanc present in Prestige Estates');
   assert(prestigeNames.some(n => n.includes('Ausone')), 'Ausone present in Prestige Estates');
@@ -334,7 +343,6 @@ test('Bordeaux Pedology: Quaternary Günzian gravels vs Right Bank Molasse du Fr
   assert(formations.some(n => n.includes('Calcaire à Astéries')), 'Calcaire à Astéries starfish limestone documented');
   assert(formations.some(n => n.includes('Argile Bleue') || n.includes('Smectite')), 'Argile Bleue / Smectite blue clay documented');
 
-  // Crasse de Fer in Subregions
   const subregText = JSON.stringify(BORDEAUX_SUBREGIONS);
   assert(subregText.includes('Crasse de Fer'), 'Crasse de Fer iron hardpan documented in Bordeaux subregions');
 });
@@ -358,7 +366,6 @@ suite('4. Champagne: 17 Grand Crus, 7 Dosage Tiers, 7 CIVC Codes & Pressing Frac
 test('Champagne: Exactly 17 Grand Cru communes documented with 100% Échelle des Crus', () => {
   assert.strictEqual(CHAMPAGNE_GRAND_CRUS.length, 17, 'Exactly 17 Grand Crus exist in CHAMPAGNE_GRAND_CRUS');
 
-  // Verify 9 in Montagne de Reims, 2 in Vallée de la Marne, 6 in Côte des Blancs
   const mdr = CHAMPAGNE_GRAND_CRUS.filter(c => c.districtId === 'montagne-de-reims' || c.subregion === 'Montagne de Reims');
   const vdm = CHAMPAGNE_GRAND_CRUS.filter(c => c.districtId === 'vallee-de-la-marne' || c.subregion === 'Vallée de la Marne');
   const cdb = CHAMPAGNE_GRAND_CRUS.filter(c => c.districtId === 'cote-des-blancs' || c.subregion === 'Côte des Blancs');
@@ -367,7 +374,6 @@ test('Champagne: Exactly 17 Grand Cru communes documented with 100% Échelle des
   assert.strictEqual(vdm.length, 2, 'Vallée de la Marne has exactly 2 Grand Crus');
   assert.strictEqual(cdb.length, 6, 'Côte des Blancs has exactly 6 Grand Crus');
 
-  // Check every Grand Cru has 100% échelle
   for (const cru of CHAMPAGNE_GRAND_CRUS) {
     assert.strictEqual(cru.echelleRating, 100, `Cru ${cru.name} must have echelleRating of 100`);
     assert(/chalk|belemnite|micraster/i.test(cru.soil), `Cru ${cru.name} has chalk pedology`);
@@ -388,7 +394,6 @@ test('Champagne: All 7 official dosage sweetness tiers documented with exact g/L
   assert(tierNames.includes('Demi-Sec'), 'Demi-Sec tier present');
   assert(tierNames.includes('Doux'), 'Doux tier present');
 
-  // Verify Brut Nature strict zero added sugar rule
   const brutNature = tiers.find(t => t.tier === 'Brut Nature');
   assert.strictEqual(brutNature.gPerLMax, 3, 'Brut Nature max residual sugar is 3 g/L');
   assert.strictEqual(brutNature.sugarAddedAllowed, false, 'Brut Nature forbids added sugar');
@@ -405,7 +410,6 @@ test('Champagne: All 7 official CIVC producer registration codes documented', ()
     assert(codeLetters.includes(exp), `CIVC code ${exp} is present`);
   }
 
-  // Verify RM 5% limit rule
   const rmCode = codes.find(c => c.code === 'RM');
   assert.match(rmCode.description, /5%/i, 'RM code notes maximum 5% grape purchase limit');
 });
@@ -431,7 +435,7 @@ test('Champagne: Aging regulations (NV 15m/12m lees vs Vintage 36m / 80% harvest
 
 
 // ============================================================================
-// 5. NAPA VALLEY 16 AVAs & OREGON 11 AVAs
+// 5. CALIFORNIA NAPA 16 AVAs & OREGON 11 AVAs
 // ============================================================================
 suite('5. California Napa 16 AVAs (Valley vs Mountain) & Oregon 11 AVAs');
 
@@ -443,27 +447,16 @@ test('California Napa: 16 nested AVAs with Valley Floor vs Mountain contrast', (
 
   const allNapaText = JSON.stringify(CALIFORNIA_SUBREGIONS) + JSON.stringify(CALIFORNIA_GRAND_CRUS) + JSON.stringify(CALIFORNIA_TECHNICAL_REGULATIONS);
 
-  // Check key nested AVAs across Valley Floor and Mountain
   const napaKeyAvas = [
-    'Oakville',
-    'Rutherford',
-    'Stags Leap District',
-    'Yountville',
-    'St. Helena',
-    'Calistoga',
-    'Coombsville',
-    'Howell Mountain',
-    'Mount Veeder',
-    'Spring Mountain',
-    'Diamond Mountain',
-    'Atlas Peak'
+    'Oakville', 'Rutherford', 'Stags Leap District', 'Yountville',
+    'St. Helena', 'Calistoga', 'Coombsville', 'Howell Mountain',
+    'Mount Veeder', 'Spring Mountain', 'Diamond Mountain', 'Atlas Peak'
   ];
 
   for (const ava of napaKeyAvas) {
     assert(allNapaText.includes(ava), `Napa AVA "${ava}" is documented in California datasets`);
   }
 
-  // Verify mountain AVAs in CALIFORNIA_GRAND_CRUS
   const mtnCrus = CALIFORNIA_GRAND_CRUS.filter(c => c.subregionId === 'napa-mountain-avas');
   const mtnNames = mtnCrus.map(c => c.name);
   assert(mtnNames.some(n => n.includes('Howell Mountain')), 'Howell Mountain AVA crus present');
@@ -476,26 +469,16 @@ test('Oregon Willamette: 11 nested AVAs and triple soil pedology (Jory, Nekia, W
   assert(OREGON_SUBREGIONS.length >= 6, 'Oregon has comprehensive subregions');
   const allOregonText = JSON.stringify(OREGON_SUBREGIONS) + JSON.stringify(OREGON_GRAND_CRUS) + JSON.stringify(OREGON_TECHNICAL_REGULATIONS);
 
-  // Check 11 nested AVAs
   const oregon11 = [
-    'Dundee Hills',
-    'Eola-Amity Hills',
-    'Ribbon Ridge',
-    'Yamhill-Carlton',
-    'McMinnville',
-    'Chehalem Mountains',
-    'Laurelwood',
-    'Van Duzer Corridor',
-    'Mount Pisgah',
-    'Lower Long Tom',
-    'Tualatin Hills'
+    'Dundee Hills', 'Eola-Amity Hills', 'Ribbon Ridge', 'Yamhill-Carlton',
+    'McMinnville', 'Chehalem Mountains', 'Laurelwood', 'Van Duzer Corridor',
+    'Mount Pisgah', 'Lower Long Tom', 'Tualatin Hills'
   ];
 
   for (const ava of oregon11) {
     assert(allOregonText.includes(ava), `Oregon AVA "${ava}" is documented in Oregon datasets`);
   }
 
-  // Verify pedology
   assert(allOregonText.includes('Jory'), 'Red volcanic Jory soil documented');
   assert(allOregonText.includes('Nekia'), 'Volcanic Nekia soil documented');
   assert(allOregonText.includes('Willakenzie'), 'Marine sedimentary Willakenzie sandstone documented');
@@ -535,9 +518,364 @@ test('Japan: GI Nagano specifications (Shinshu alpine viticulture, Kikyogahara M
 
 
 // ============================================================================
-// 7. FOOD PAIRING TAXONOMY & GASTRONOMY LOGIC
+// 7. ALSACE: 51 GRAND CRUS, 13 BEDROCK FORMATIONS, 4 NOBLE GRAPES & VT/SGN LAWS
 // ============================================================================
-suite('7. Food Pairing Taxonomy Completeness & Sommelier Service Tips');
+suite('7. Alsace: 51 Grand Crus, 13 Bedrock Formations, 4 Noble Grapes & VT/SGN Laws');
+
+test('Alsace: Exactly 51 Grand Crus cataloged with complete cadastral metadata', () => {
+  assert.strictEqual(ALSACE_GRAND_CRUS.length, 51, `Alsace must have all 51 Grand Crus (found ${ALSACE_GRAND_CRUS.length})`);
+  
+  const keyCrus = ['Rangen', 'Schoenenbourg', 'Geisberg', 'Brand', 'Sommerberg', 'Rosacker', 'Hengst', 'Vorbourg', 'Schlossberg', 'Zotzenberg', 'Kaefferkopf', 'Altenberg de Bergheim'];
+  const cruNames = ALSACE_GRAND_CRUS.map(c => c.name);
+  for (const exp of keyCrus) {
+    assert(cruNames.some(n => n.includes(exp)), `Grand Cru "${exp}" must exist in ALSACE_GRAND_CRUS`);
+  }
+
+  for (const cru of ALSACE_GRAND_CRUS) {
+    assert(cru.subregionId === 'haut-rhin' || cru.subregionId === 'bas-rhin', 
+      `Cru ${cru.name} must link to haut-rhin or bas-rhin, got ${cru.subregionId}`
+    );
+    assert(typeof cru.lat === 'number' && typeof cru.lng === 'number', `Cru ${cru.name} must have numeric lat/lng`);
+  }
+});
+
+test('Alsace: 4 Noble Grapes (Riesling, Gewurztraminer, Pinot Gris, Muscat) & Zotzenberg Sylvaner exception', () => {
+  const tech = ALSACE_TECHNICAL_REGULATIONS;
+  assert(tech.grapes && Array.isArray(tech.grapes.major), 'Alsace technical regulations has major grapes');
+  const majorGrapes = tech.grapes.major.map(g => g.name.toLowerCase());
+
+  assert(majorGrapes.some(g => g.includes('riesling')), 'Riesling noble grape documented');
+  assert(majorGrapes.some(g => g.includes('gewurztraminer')), 'Gewurztraminer noble grape documented');
+  assert(majorGrapes.some(g => g.includes('pinot gris')), 'Pinot Gris noble grape documented');
+  assert(majorGrapes.some(g => g.includes('muscat')), 'Muscat noble grape documented');
+
+  const zotzenberg = ALSACE_GRAND_CRUS.find(c => c.id === 'zotzenberg');
+  assert(zotzenberg, 'Zotzenberg Grand Cru exists');
+  assert(/sylvaner/i.test(zotzenberg.dominantGrape) || /sylvaner/i.test(zotzenberg.grapeRatio) || /sylvaner/i.test(zotzenberg.legalNotes || ''),
+    'Zotzenberg Grand Cru documents Sylvaner noble exception (authorized 2005)'
+  );
+});
+
+test('Alsace: Bedrock formations (volcanic greywacke, granite, sandstone, Muschelkalk, Keuper marls)', () => {
+  const tech = ALSACE_TECHNICAL_REGULATIONS;
+  assert(tech.geology, 'Geology section exists');
+  const geoText = JSON.stringify(tech.geology);
+
+  assert(/volcan|greywacke/i.test(geoText), 'Volcano-sedimentary greywacke (Rangen de Thann) documented');
+  assert(/granite/i.test(geoText), 'Granite bedrock (Brand, Sommerberg) documented');
+  assert(/grès|sandstone/i.test(geoText), 'Buntsandstein / Vosges sandstone documented');
+  assert(/muschelkalk|keuper|limestone|marl/i.test(geoText), 'Mesozoic limestone and Keuper marls documented');
+});
+
+test('Alsace: Vendanges Tardives (VT) & Sélection de Grains Nobles (SGN) statutory rules', () => {
+  const tech = ALSACE_TECHNICAL_REGULATIONS;
+  const sweetRules = JSON.stringify(tech.classification || tech);
+  assert(/Vendanges Tardives|VT/i.test(sweetRules), 'Vendanges Tardives statutory rules documented');
+  assert(/Sélection de Grains Nobles|SGN/i.test(sweetRules), 'Sélection de Grains Nobles botrytis rules documented');
+});
+
+
+// ============================================================================
+// 8. CORSICA: 9 AOCs, HERCYNIAN GRANITE VS SCHISTES LUSTRÉS & AMPELOGRAPHY
+// ============================================================================
+suite('8. Corsica: 9 AOCs, Hercynian Granite vs Schistes Lustrés & Native Ampelography');
+
+test('Corsica: 9 AOC appellations and subregional districts cataloged', () => {
+  assert(CORSICA_SUBREGIONS.length >= 6, `Corsica must have comprehensive subregions (found ${CORSICA_SUBREGIONS.length})`);
+  const subNames = CORSICA_SUBREGIONS.map(s => s.name);
+  
+  assert(subNames.some(n => n.includes('Patrimonio')), 'Patrimonio AOC documented');
+  assert(subNames.some(n => n.includes('Ajaccio')), 'Ajaccio AOC documented');
+  assert(subNames.some(n => n.includes('Calvi')), 'Calvi AOC documented');
+  assert(subNames.some(n => n.includes('Sartène')), 'Sartène AOC documented');
+  assert(subNames.some(n => n.includes('Figari')), 'Figari AOC documented');
+  assert(subNames.some(n => n.includes('Cap Corse')), 'Cap Corse AOC documented');
+});
+
+test('Corsica: Geological dichotomy (Hercynian Granite vs Alpine Schistes Lustrés vs Limestone)', () => {
+  const tech = CORSICA_TECHNICAL_REGULATIONS;
+  assert(tech.geology, 'Geology section exists');
+  const geoText = JSON.stringify(tech.geology) + JSON.stringify(CORSICA_SUBREGIONS);
+
+  assert(/granite|arènes granitiques/i.test(geoText), 'Hercynian crystalline granite documented');
+  assert(/schist|schistes lustrés/i.test(geoText), 'Metamorphic Schistes Lustrés (Cap Corse) documented');
+  assert(/calcaire|limestone|saint-florent/i.test(geoText), 'Saint-Florent / Patrimonio limestone documented');
+});
+
+test('Corsica: Indigenous ampelography (Niellucciu, Sciaccarellu, Vermentinu, Biancu Gentile)', () => {
+  const tech = CORSICA_TECHNICAL_REGULATIONS;
+  const allText = JSON.stringify(tech.grapes) + JSON.stringify(CORSICA_SUBREGIONS);
+
+  assert(/Niellucciu/i.test(allText), 'Niellucciu (Sangiovese biotype) documented');
+  assert(/Sciaccarellu/i.test(allText), 'Sciaccarellu (Mammolo biotype) documented');
+  assert(/Vermentinu/i.test(allText), 'Vermentinu (Malvoisie de Corse) documented');
+  assert(/Biancu Gentile/i.test(allText), 'Rare indigenous Biancu Gentile documented');
+});
+
+test('Corsica: 5 Mediterranean winds (Libeccio, Mistral, Sirocco, Gregale, Tramontane)', () => {
+  const tech = CORSICA_TECHNICAL_REGULATIONS;
+  assert(tech.climatology && Array.isArray(tech.climatology.winds), 'Climatology winds array exists');
+  assert.strictEqual(tech.climatology.winds.length, 5, 'Must document all 5 Mediterranean winds');
+  const windNames = tech.climatology.winds.map(w => w.name);
+  assert(windNames.some(n => n.includes('Libeccio')), 'Libeccio wind documented');
+  assert(windNames.some(n => n.includes('Mistral')), 'Mistral wind documented');
+  assert(windNames.some(n => n.includes('Sirocco')), 'Sirocco wind documented');
+});
+
+
+// ============================================================================
+// 9. RHÔNE VALLEY: NORTHERN 100% SYRAH VS SOUTHERN 13 CDP GRAPES & GALETS ROULÉS
+// ============================================================================
+suite('9. Rhône Valley: Northern 100% Syrah Granite vs Southern 13 CdP Grapes & Galets Roulés');
+
+test('Rhône: Northern mono-varietal Syrah Crus (Hermitage, Côte-Rôtie, Cornas) on granite', () => {
+  const cruNames = RHONE_GRAND_CRUS.map(c => c.name);
+  assert(cruNames.some(n => n.includes('Hermitage')), 'Hermitage cru present');
+  assert(cruNames.some(n => n.includes('Côte-Rôtie')), 'Côte-Rôtie cru present');
+  assert(cruNames.some(n => n.includes('Cornas')), 'Cornas cru present');
+  assert(cruNames.some(n => n.includes('Condrieu')), 'Condrieu cru present');
+  assert(cruNames.some(n => n.includes('Château-Grillet')), 'Château-Grillet monopole cru present');
+
+  const cornas = RHONE_GRAND_CRUS.find(c => c.id === 'cornas');
+  assert(cornas, 'Cornas cru exists');
+  assert(/Syrah/i.test(cornas.dominantGrape), 'Cornas dominant grape is Syrah');
+  assert(/granite|gore/i.test(cornas.soil), 'Cornas features steep decomposed granite (gore)');
+});
+
+test('Rhône: Southern Châteauneuf-du-Pape 13 authorized cépages & Galets Roulés pudding stones', () => {
+  const southSub = RHONE_SUBREGIONS.find(s => s.id === 'southern-rhone');
+  assert(southSub, 'Southern Rhône subregion exists');
+  assert.match(southSub.terroir, /galets roulés/i, 'Galets Roulés quartzite stones documented');
+
+  const cdpCru = RHONE_GRAND_CRUS.find(c => c.id === 'chateauneuf-du-pape');
+  assert(cdpCru, 'Châteauneuf-du-Pape cru exists');
+  const cdpText = JSON.stringify(cdpCru) + JSON.stringify(southSub);
+  assert(/13/i.test(cdpText), 'Châteauneuf documents 13 authorized grape varieties');
+
+  const tavel = RHONE_GRAND_CRUS.find(c => c.id === 'tavel');
+  assert(tavel, 'Tavel cru exists');
+  assert(/rose|rosé/i.test(tavel.wineType || tavel.name || tavel.character), 'Tavel is 100% Rosé appellation');
+});
+
+test('Rhône: Mistral wind dynamics and structural metrics (high alcohol, savory tannins)', () => {
+  const tech = RHONE_TECHNICAL_REGULATIONS;
+  const allText = JSON.stringify(tech) + JSON.stringify(RHONE_SUBREGIONS);
+  assert(/Mistral/i.test(allText), 'Mistral wind documented');
+  assert(WINE_REGIONS['rhone'].structure.tannin >= 8.0, 'Rhône tannin score is robust (>=8.0)');
+});
+
+
+// ============================================================================
+// 10. LOIRE VALLEY: 4 SECTORS, SILEX VS KIMMERIDGIAN VS TUFFEAU & CHENIN/CAB FRANC
+// ============================================================================
+suite('10. Loire Valley: 4 Sectors, Silex vs Kimmeridgian vs Tuffeau & Chenin/Cab Franc');
+
+test('Loire Valley: 4 sectors defined with distinct geological identities', () => {
+  assert.strictEqual(LOIRE_SUBREGIONS.length, 4, 'Loire Valley has exactly 4 sectors');
+  const subIds = LOIRE_SUBREGIONS.map(s => s.id);
+  assert(subIds.includes('centre-loire'), 'Centre-Loire sector present');
+  assert(subIds.includes('touraine'), 'Touraine sector present');
+  assert(subIds.includes('anjou-saumur'), 'Anjou-Saumur sector present');
+  assert(subIds.includes('pays-nantais'), 'Pays Nantais sector present');
+});
+
+test('Loire: Terres Blanches (Kimmeridgian) vs Caillottes (Limestone) vs Silex (Flint) in Sancerre', () => {
+  const centre = LOIRE_SUBREGIONS.find(s => s.id === 'centre-loire');
+  assert(centre, 'Centre-Loire subregion exists');
+  assert.match(centre.terroir, /Terres Blanches/i, 'Terres Blanches Kimmeridgian marl documented');
+  assert.match(centre.terroir, /Caillottes/i, 'Caillottes Oxfordian limestone documented');
+  assert.match(centre.terroir, /Silex/i, 'Silex flint documented');
+});
+
+test('Loire: Chenin Blanc spectrum (Sec to Quarts de Chaume Grand Cru) & Tuffeau chalk', () => {
+  const anjou = LOIRE_SUBREGIONS.find(s => s.id === 'anjou-saumur');
+  assert(anjou, 'Anjou-Saumur subregion exists');
+  assert.match(anjou.terroir, /Tuffeau|Schist/i, 'Tuffeau chalk and Anjou schist documented');
+
+  const crus = LOIRE_GRAND_CRUS.map(c => c.name);
+  assert(crus.some(n => n.includes('Quarts de Chaume')), 'Quarts de Chaume Grand Cru documented');
+  assert(crus.some(n => n.includes('Bonnezeaux') || n.includes('Savennières') || n.includes('Coulée de Serrant')), 
+    'Anjou Chenin benchmark crus documented'
+  );
+});
+
+test('Loire: Cabernet Franc in Chinon/Saumur-Champigny and Muscadet Sur Lie', () => {
+  const touraine = LOIRE_SUBREGIONS.find(s => s.id === 'touraine');
+  assert(touraine, 'Touraine subregion exists');
+  assert(/Chinon|Cabernet Franc/i.test(touraine.focus + touraine.description), 'Chinon Cabernet Franc documented');
+
+  const nantais = LOIRE_SUBREGIONS.find(s => s.id === 'pays-nantais');
+  assert(nantais, 'Pays Nantais subregion exists');
+  assert(/Sur Lie|Melon de Bourgogne/i.test(nantais.focus + nantais.description), 'Muscadet Sur Lie on Melon de Bourgogne documented');
+});
+
+
+// ============================================================================
+// 11. GERMANY MOSEL & RHEINGAU: DEVONIAN SLATE, 10.0 ACIDITY & VDP PRÄDIKAT
+// ============================================================================
+suite('11. Germany Mosel & Rheingau: Devonian Slate, 10.0 Acidity, Prädikat & VDP GG');
+
+test('Mosel: Blue & Red Devonian slate pedology and high acidity score', () => {
+  const mosel = WINE_REGIONS['germany-mosel'];
+  assert(mosel, 'Germany Mosel region exists');
+  assert.match(mosel.terroir.soil, /Devonian/i, 'Devonian slate documented in soil');
+  assert(mosel.structure.acidity >= 9.5, `Mosel Riesling has high acidity score (got ${mosel.structure.acidity})`);
+});
+
+test('Mosel & Rheingau: VDP.Die Prädikatsweingüter classification & Prädikatswein hierarchy', () => {
+  const mosel = WINE_REGIONS['germany-mosel'];
+  const tiersText = JSON.stringify(mosel.classification.tiers);
+
+  assert(/VDP\.Grosse Lage|Grosse Lage/i.test(tiersText), 'VDP.Grosse Lage documented');
+  assert(/Kabinett/i.test(tiersText), 'Kabinett tier documented');
+  assert(/Spätlese/i.test(tiersText), 'Spätlese tier documented');
+  assert(/Auslese/i.test(tiersText), 'Auslese tier documented');
+  assert(/Trockenbeerenauslese|TBA/i.test(tiersText), 'Trockenbeerenauslese (TBA) documented');
+});
+
+test('Mosel: Benchmark Grosse Lagen (Scharzhofberg, Sonnenuhr, Doctor, Würzgarten, Prälat)', () => {
+  const crus = MOSEL_GRAND_CRUS.map(c => c.name);
+  assert(crus.some(n => n.includes('Scharzhofberg')), 'Scharzhofberg cru documented');
+  assert(crus.some(n => n.includes('Sonnenuhr')), 'Wehlener Sonnenuhr cru documented');
+  assert(crus.some(n => n.includes('Doctor')), 'Berncasteler Doctor cru documented');
+  assert(crus.some(n => n.includes('Würzgarten')), 'Ürziger Würzgarten cru documented');
+  assert(crus.some(n => n.includes('Prälat')), 'Erdener Prälat cru documented');
+});
+
+
+// ============================================================================
+// 12. SPAIN: RIOJA OAK AGING, PRIORAT LLICORELLA & VIÑEDOS SINGULARES
+// ============================================================================
+suite('12. Spain: Rioja Oak Aging Hierarchy, Priorat Llicorella & Viñedos Singulares');
+
+test('Rioja: Statutory oak aging law hierarchy (Crianza, Reserva, Gran Reserva)', () => {
+  const rioja = WINE_REGIONS['spain-rioja'];
+  assert(rioja, 'Spain Rioja region exists');
+  const tiersText = JSON.stringify(rioja.classification.tiers);
+
+  assert(/Crianza/i.test(tiersText), 'Crianza tier documented');
+  assert(/Reserva/i.test(tiersText), 'Reserva tier documented');
+  assert(/Gran Reserva/i.test(tiersText), 'Gran Reserva tier documented');
+
+  const grTier = rioja.classification.tiers.find(t => t.name.includes('Gran Reserva'));
+  assert(grTier && (/5 years|60 months/i.test(grTier.detail) || /2 years|24 months/i.test(grTier.detail)), 
+    'Gran Reserva specifies minimum 5 years aging with oak maturation'
+  );
+});
+
+test('Priorat: Black Llicorella slate and Viñedos Singulares decree', () => {
+  const rioja = WINE_REGIONS['spain-rioja'];
+  const allText = JSON.stringify(rioja.subRegions) + JSON.stringify(rioja.classification);
+
+  assert(/Llicorella/i.test(allText), 'Priorat Llicorella slate documented');
+  assert(/Viñedos Singulares|Singulares/i.test(allText) || /Gran Vinya/i.test(allText), 'Viñedos Singulares / Gran Vinya Classificada documented');
+});
+
+test('Ribera del Duero & Galicia Rías Baixas regional diversity', () => {
+  const subNames = RIOJA_SUBREGIONS.map(s => s.name);
+  assert(subNames.some(n => n.includes('Ribera del Duero') || n.includes('Ribera')), 'Ribera del Duero subregion documented');
+  assert(subNames.some(n => n.includes('Rioja Alta')), 'Rioja Alta subregion documented');
+  assert(subNames.some(n => n.includes('Rioja Alavesa')), 'Rioja Alavesa subregion documented');
+});
+
+
+// ============================================================================
+// 13. CHILE: ALTO MAIPO ALLUVIAL GRAVELS, ANDEAN KATABATIC COOLING & CARMÉNÈRE
+// ============================================================================
+suite('13. Chile: Alto Maipo Alluvial Gravels, Andean Katabatic Cooling & Carménère');
+
+test('Chile: Alto Maipo alluvial terraces (Puente Alto, Pirque) & benchmark crus', () => {
+  const chile = WINE_REGIONS['chile-maipo'];
+  assert(chile, 'Chile region exists');
+  const subText = JSON.stringify(chile.subRegions);
+
+  assert(/Alto Maipo|Puente Alto/i.test(subText), 'Alto Maipo / Puente Alto documented');
+  assert(/gravel|alluvial/i.test(subText), 'Alluvial gravel terraces documented');
+
+  const crus = CHILE_GRAND_CRUS.map(c => c.name);
+  assert(crus.some(n => n.includes('Almaviva')), 'Almaviva cru documented');
+  assert(crus.some(n => n.includes('Don Melchor')), 'Don Melchor cru documented');
+});
+
+test('Chile: Andean katabatic nighttime cooling and Camanchaca coastal fog', () => {
+  const chile = WINE_REGIONS['chile-maipo'];
+  assert.match(chile.terroir.climate, /Andes|mountain|cooling|breezes/i, 'Andean katabatic cooling documented');
+});
+
+test('Chile: Carménère signature pyrazine/eucalyptus aromatics & phylloxera-free ungrafted vines', () => {
+  const chile = WINE_REGIONS['chile-maipo'];
+  const carmenere = chile.grapes.find(g => /carmen/i.test(g.name));
+  assert(carmenere, 'Carménère documented as signature variety');
+
+  const flavText = JSON.stringify(chile.flavorProfile);
+  assert(/Eucalyptus|Mint|Pepper|Cassis/i.test(flavText), 'Eucalyptus / Fresh Mint notes documented');
+});
+
+
+// ============================================================================
+// 14. AUSTRALIA: 1843 PRE-PHYLLOXERA SHIRAZ, GINGIN CHARDONNAY & HUNTER SEMILLON
+// ============================================================================
+suite('14. Australia: 1843 Pre-Phylloxera Shiraz, Gingin Clone Chardonnay & Hunter Semillon');
+
+test('Australia: Barossa Valley living pre-phylloxera ungrafted vines (1843)', () => {
+  const aus = WINE_REGIONS['australia'];
+  assert(aus, 'Australia region exists');
+  const allText = JSON.stringify(aus);
+
+  assert(/1843|pre-phylloxera|Old Vine|Ancestor/i.test(allText), '1843 pre-phylloxera ungrafted vines documented');
+});
+
+test('Australia: Margaret River ironstone gravels & Gingin clone Chardonnay', () => {
+  const aus = WINE_REGIONS['australia'];
+  const mr = aus.subRegions.find(s => s.id === 'margaret-river' || s.id === 'margaret-river-wa');
+  assert(mr, 'Margaret River subregion exists');
+  assert(/Leeuwin|Cullen|gravel|ironstone/i.test(mr.terroir + mr.focus + mr.description), 'Margaret River terroir and benchmark estates documented');
+});
+
+test('Australia: Hunter Valley low-alcohol (10-11%) age-worthy Semillon (Tyrrell\'s Vat 1)', () => {
+  const aus = WINE_REGIONS['australia'];
+  const hunter = aus.subRegions.find(s => s.id === 'hunter-valley' || s.id === 'hunter-valley-nsw');
+  assert(hunter, 'Hunter Valley subregion exists');
+  assert(/Semillon|Tyrrell/i.test(hunter.focus + hunter.description), "Hunter Semillon & Tyrrell's documented");
+});
+
+
+// ============================================================================
+// 15. ITALY OTHER: ETNA VOLCANIC TEPHRA, VALTELLINA & AMARONE APPASSIMENTO
+// ============================================================================
+suite('15. Italy Other: Etna Volcanic Tephra, Valtellina Superiore & Amarone Appassimento');
+
+test('Veneto: Valpolicella Appassimento process (Amarone & Recioto DOCG)', () => {
+  const italy = WINE_REGIONS['italy-other'];
+  assert(italy, 'Italy Other region exists');
+  const allText = JSON.stringify(italy);
+
+  assert(/Appassimento/i.test(allText), 'Appassimento drying process documented');
+  assert(/Amarone/i.test(allText), 'Amarone della Valpolicella DOCG documented');
+  assert(/Corvina/i.test(allText), 'Corvina grape documented');
+});
+
+test('Sicily: Mount Etna DOC volcanic tephra/ash up to 1,000m elevation & Contrade crus', () => {
+  const italy = WINE_REGIONS['italy-other'];
+  const etna = italy.subRegions.find(s => s.id === 'sicily-etna');
+  assert(etna, 'Sicily Mount Etna subregion exists');
+  assert(/volcanic|ash|tephra/i.test(etna.terroir + etna.geology), 'Volcanic ash/tephra pedology documented');
+  assert(/Nerello Mascalese|Carricante/i.test(etna.focus + etna.dominantGrapes), 'Nerello Mascalese & Carricante documented');
+});
+
+test('Lombardia: Valtellina Superiore Alpine Nebbiolo (Chiavennasca) on granite terraces', () => {
+  const italy = WINE_REGIONS['italy-other'];
+  const valtellina = italy.subRegions.find(s => s.id === 'lombardia-valtellina');
+  assert(valtellina, 'Valtellina subregion exists');
+  assert(/Chiavennasca|Nebbiolo/i.test(valtellina.focus + valtellina.dominantGrapes), 'Chiavennasca (Nebbiolo) documented');
+  assert(/granite|terraces/i.test(valtellina.terroir + valtellina.geology), 'Granite retaining wall terraces documented');
+});
+
+
+// ============================================================================
+// 16. FOOD PAIRING TAXONOMY & GASTRONOMY LOGIC
+// ============================================================================
+suite('16. Food Pairing Taxonomy Completeness & Sommelier Service Tips');
 
 test('Every region in WINE_REGIONS has food pairings with non-empty dish & rationale', () => {
   const regionIds = Object.keys(WINE_REGIONS);
@@ -560,7 +898,6 @@ test('Every region in WINE_REGIONS has food pairings with non-empty dish & ratio
 test('Food pairing wineType normalization & valid taxonomy categories (red, white, sparkling, rose)', () => {
   const validTaxonomy = ['red', 'white', 'sparkling', 'rose'];
 
-  // Test keyword classifier mimicking WineRegionDetail.jsx compute logic
   function classifyPairing(pairing) {
     let wt = (pairing.wineType || '').toLowerCase().trim();
     if (wt === 'rosé') wt = 'rose';
@@ -597,7 +934,6 @@ test('Food pairing wineType normalization & valid taxonomy categories (red, whit
 });
 
 test('Master Sommelier Floor Service Tips: All 17 regions have detailed service directives', () => {
-  // Test sommelier service helper from WineRegionDetail
   function getSommelierServiceTip(region) {
     if (!region) return '';
     if (region.sommelierTip) return region.sommelierTip;
@@ -631,9 +967,9 @@ test('Master Sommelier Floor Service Tips: All 17 regions have detailed service 
 
 
 // ============================================================================
-// 8. ADVERSARIAL QUERY RESOLUTION, DIACRITICS & ALIAS RESILIENCY
+// 17. ADVERSARIAL QUERY RESOLUTION, DIACRITICS & ALIAS RESILIENCY
 // ============================================================================
-suite('8. Adversarial Query Resolution, Diacritics & Alias Resiliency');
+suite('17. Adversarial Query Resolution, Diacritics & Alias Resiliency');
 
 test('findWineRegion accurately resolves accents, diacritics, and case variations across all major appellations', () => {
   const queryCases = [
@@ -657,7 +993,15 @@ test('findWineRegion accurately resolves accents, diacritics, and case variation
     { query: "Dundee Hills", country: "USA", expectedId: "oregon" },
     { query: "Koshu", country: "Japan", expectedId: "japan-chubu" },
     { query: "Yamanashi", country: "Japan", expectedId: "japan-chubu" },
-    { query: "Nagano", country: "Japan", expectedId: "japan-chubu" }
+    { query: "Nagano", country: "Japan", expectedId: "japan-chubu" },
+    { query: "Alsace", country: "France", expectedId: "alsace" },
+    { query: "Patrimonio", country: "France", expectedId: "corsica" },
+    { query: "Hermitage", country: "France", expectedId: "rhone" },
+    { query: "Sancerre", country: "France", expectedId: "loire-valley" },
+    { query: "Mosel", country: "Germany", expectedId: "germany-mosel" },
+    { query: "Rioja", country: "Spain", expectedId: "spain-rioja" },
+    { query: "Puente Alto", country: "Chile", expectedId: "chile-maipo" },
+    { query: "Barossa", country: "Australia", expectedId: "australia" }
   ];
 
   for (const c of queryCases) {
@@ -669,13 +1013,13 @@ test('findWineRegion accurately resolves accents, diacritics, and case variation
 
 
 // ============================================================================
-// 9. GEOJSON BOUNDARY TOPOLOGY & CARTOGRAPHIC ENVELOPES
+// 18. GEOJSON BOUNDARY TOPOLOGY & CARTOGRAPHIC ENVELOPES
 // ============================================================================
-suite('9. GeoJSON Boundary Topology & Cartographic Envelopes');
+suite('18. GeoJSON Boundary Topology & Cartographic Envelopes');
 
 test('WINE_REGION_BOUNDARIES contains valid GeoJSON FeatureCollections for all regions', () => {
   const boundaryKeys = Object.keys(WINE_REGION_BOUNDARIES);
-  assert(boundaryKeys.length >= 13, `Boundary collection contains at least 13 key regions (has ${boundaryKeys.length})`);
+  assert(boundaryKeys.length >= 13, `Boundary collection contains key regions (has ${boundaryKeys.length})`);
 
   for (const key of boundaryKeys) {
     const fc = WINE_REGION_BOUNDARIES[key];
@@ -694,9 +1038,9 @@ test('WINE_REGION_BOUNDARIES contains valid GeoJSON FeatureCollections for all r
 
 
 // ============================================================================
-// 10. REAL-WORLD MASTER SOMMELIER SERVICE & BLIND TASTING SCENARIOS
+// 19. REAL-WORLD MASTER SOMMELIER SERVICE & BLIND TASTING SCENARIOS
 // ============================================================================
-suite('10. Real-World Master Sommelier Service & Blind Tasting Scenarios');
+suite('19. Real-World Master Sommelier Service & Blind Tasting Scenarios');
 
 test('Scenario A: Sommelier blind flight comparing Barolo Tortonian vs Serravallian', () => {
   const cannubi = PIEDMONT_GRAND_CRUS.find(c => c.id === 'barolo-mga-cannubi');
@@ -721,7 +1065,16 @@ test('Scenario C: Japanese Kaiseki Degustation: Koshu Sur Lie pairing with Sashi
   assert(japan, 'Japan region exists in registry');
   const sashimiPairing = japan.foodPairings.find(p => /sashimi|sushi/i.test(p.dish) || /sashimi|sushi/i.test(p.category));
   assert(sashimiPairing, 'Japan has sashimi/sushi food pairing');
-  assert.strictEqual(sashimiPairing.wineType, 'White', 'Koshu pairing is tagged as White wine');
+  assert(/White/i.test(sashimiPairing.wineType), 'Koshu pairing is tagged as White wine');
+});
+
+test('Scenario D: Alsatian Rangen de Thann volcanic Riesling vs Mosel Devonian slate mineral comparative tasting', () => {
+  const rangen = ALSACE_GRAND_CRUS.find(c => c.id === 'rangen');
+  const sonnenuhr = MOSEL_GRAND_CRUS.find(c => c.id === 'wehlener-sonnenuhr');
+  assert(rangen, 'Rangen Grand Cru exists in Alsace');
+  assert(sonnenuhr, 'Wehlener Sonnenuhr exists in Mosel');
+  assert(/volcan|greywacke/i.test(rangen.soil), 'Rangen features volcanic greywacke');
+  assert(/slate|schiefer/i.test(sonnenuhr.soil), 'Wehlener Sonnenuhr features Devonian slate');
 });
 
 

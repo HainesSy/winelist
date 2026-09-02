@@ -423,6 +423,53 @@ export const ITALY_OTHER_TECHNICAL_REGULATIONS = {
         benchmarkCuvees: ["Pieropan Calvarino", "Benanti Pietramarina"]
       }
     ]
+  },
+
+  classification: {
+    system: "Italian Quality Denomination Hierarchy: DOCG, DOC & IGT Quality Pyramids",
+    description: "Regional and sub-regional quality pyramids detailing statutory yield caps, mandatory aging regimens, appassimento drying windows, and single-vineyard Contrade/UGA codifications across Veneto, Lombardia, Sicily, and Campania.",
+    pyramid: [
+      {
+        tier: "Amarone della Valpolicella DOCG (Veneto)",
+        sharePct: "Top Tier",
+        yieldLimits: "Max 31 hl/ha (after 35-40% drying weight loss)",
+        minAbv: "14.0% vol. (regularly 15.0–16.5%)",
+        aging: "Minimum 2 years (24 months) from January 1 following harvest; Riserva minimum 4 years (48 months)",
+        criteria: "Mandatory Appassimento grape drying for 90–120 days; min. 45–95% Corvina/Corvinone, 5–30% Rondinella; residual sugar legally capped based on alcohol level."
+      },
+      {
+        tier: "Valtellina Superiore DOCG & Sforzato DOCG (Lombardia)",
+        sharePct: "Alpine Summit",
+        yieldLimits: "Max 56 hl/ha (Valtellina Superiore) / 28 hl/ha (Sforzato)",
+        minAbv: "12.0% vol. (14.0% for Sforzato di Valtellina)",
+        aging: "Valtellina Superiore: min. 24 months (min. 12 months in wood); Riserva: min. 36 months; Sforzato: min. 20 months (min. 12 months in wood)",
+        criteria: "Min. 90% Chiavennasca (Nebbiolo); 5 official sub-zones: Sassella, Grumello, Inferno, Valgella, Maroggia; Sforzato requires appassimento drying until Dec 1."
+      },
+      {
+        tier: "Etna DOC (Contrade & Superiore - Sicily)",
+        sharePct: "Volcanic Grand Cru",
+        yieldLimits: "Max 56 hl/ha (Rosso) / 52 hl/ha (Bianco Superiore)",
+        minAbv: "12.5% vol. (Rosso), 13.0% vol. (Riserva), 12.0% vol. (Bianco Superiore)",
+        aging: "Etna Rosso: min. 12 months; Riserva: min. 48 months (min. 12 months in wood); Bianco: release following spring",
+        criteria: "Rosso: min. 80% Nerello Mascalese, max. 20% Nerello Cappuccio; Bianco Superiore: min. 80% Carricante restricted to the commune of Milo; 133 official Contrade recognized."
+      },
+      {
+        tier: "Taurasi DOCG (Campania)",
+        sharePct: "Southern Titan",
+        yieldLimits: "Max 49 hl/ha",
+        minAbv: "12.0% vol. (typically 13.5–15.0%)",
+        aging: "Minimum 3 years (36 months) with min. 12 months in oak/chestnut barrels; Riserva: min. 4 years (48 months) with min. 18 months in wood",
+        criteria: "Min. 85% Aglianico (100% in benchmark bottlings); planted on volcanic and calcareous hillside slopes between 350m and 700m elevation."
+      },
+      {
+        tier: "Soave Classico DOC & Recioto di Soave DOCG (Veneto)",
+        sharePct: "Volcanic White Cru",
+        yieldLimits: "Max 70 hl/ha (Soave Classico) / 28 hl/ha (Recioto)",
+        minAbv: "11.5% vol. (12.0% Superiore), 13.0% vol. (Recioto)",
+        aging: "Soave Superiore: min. 8 months; Recioto: min. 6 months",
+        criteria: "Min. 70% Garganega, max. 30% Trebbiano di Soave / Chardonnay; Classico restricted to historical volcanic and limestone hillside slopes."
+      }
+    ]
   }
 };
 
@@ -650,53 +697,63 @@ export const ITALY_OTHER_ICONIC_PRODUCERS = [
 
 export const ITALY_OTHER_FOOD_PAIRINGS = [
   {
-    "category": "Rich Stews & Braises (Amarone)",
-    "wineType": "Red",
-    "targetWine": "Amarone della Valpolicella Classico DOCG (Quintarelli / Dal Forno)",
-    "dish": "Slow-Braised Beef Short Ribs in Amarone Reduction with Polenta, Osso Buco alla Milanese with Saffron Risotto and Gremolata",
-    "note": "Amarone's decadent dried-cherry and fig richness, high dry extract, and generous alcohol harmonize effortlessly with gelatinous braised beef and rich marrow.",
-    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
-    "servingTemp": "16–18°C (60–64°F)",
-    "decanting": "Decant 1–2 hours before service for optimal aeration."
+    category: "Rich Stews & Braises (Amarone)",
+    wineType: "Red",
+    targetWine: "Amarone della Valpolicella Classico DOCG (Quintarelli / Dal Forno)",
+    dish: "Slow-Braised Beef Short Ribs in Amarone Reduction with Polenta, Osso Buco alla Milanese with Saffron Risotto and Gremolata",
+    note: "Amarone's decadent dried-cherry and fig richness, high dry extract, and generous alcohol harmonize effortlessly with gelatinous braised beef and rich marrow.",
+    glassware: "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
+    servingTemp: "16–18°C (60–64°F)",
+    decanting: "Decant 1–2 hours before service for optimal aeration."
   },
   {
-    "category": "Alpine Cured Meats & Cheeses (Valtellina)",
-    "wineType": "Red",
-    "targetWine": "Valtellina Superiore DOCG (AR.PE.PE. Sassella Rocce Rosse)",
-    "dish": "Bresaola della Valtellina with Arugula & Shaved Bitto DOP Cheese, Pizzoccheri della Valtellina (Buckwheat Pasta with Savoy Cabbage, Potatoes & Casera Cheese)",
-    "note": "Alpine Nebbiolo's translucent cranberry fruit, dried rose petals, and chiseled granite acidity slice through melting mountain cheese and butter in pizzoccheri.",
-    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
-    "servingTemp": "16–18°C (60–64°F)",
-    "decanting": "Decant 1–2 hours before service for optimal aeration."
+    category: "Alpine Cured Meats & Cheeses (Valtellina)",
+    wineType: "Red",
+    targetWine: "Valtellina Superiore DOCG (AR.PE.PE. Sassella Rocce Rosse)",
+    dish: "Bresaola della Valtellina with Arugula & Shaved Bitto DOP Cheese, Pizzoccheri della Valtellina (Buckwheat Pasta with Savoy Cabbage, Potatoes & Casera Cheese)",
+    note: "Alpine Nebbiolo's translucent cranberry fruit, dried rose petals, and chiseled granite acidity slice through melting mountain cheese and butter in pizzoccheri.",
+    glassware: "Burgundy Ballon Stem (700ml)",
+    servingTemp: "16–18°C (60–64°F)",
+    decanting: "Decant 1 hour before service."
   },
   {
-    "category": "Mediterranean Seafood & Grilled Meats (Etna)",
-    "wineType": "Red / White",
-    "targetWine": "Etna Rosso DOC (Nerello Mascalese) & Etna Bianco Superiore (Carricante)",
-    "dish": "Grilled Mediterranean Swordfish with Capers, Olives and Cherry Tomatoes; Roasted Sicilian Lamb Chops with Oregano and Charred Eggplant",
-    "note": "Nerello Mascalese's wild strawberry crunch, iron backbone, and volcanic salinity pair impeccably with swordfish and roasted lamb.",
-    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
-    "servingTemp": "16–18°C (60–64°F)",
-    "decanting": "Decant 1–2 hours before service for optimal aeration."
+    category: "Volcanic Reds & Roasted Meats (Etna Rosso)",
+    wineType: "Red",
+    targetWine: "Etna Rosso Contrada DOC (Tenuta delle Terre Nere / Passopisciaro)",
+    dish: "Roasted Sicilian Lamb Chops with Wild Oregano and Charred Eggplant, Grilled Salsiccia al Finocchietto & Arancini al Ragù",
+    note: "Nerello Mascalese's wild strawberry crunch, volcanic ash minerality, blood orange acidity, and fine dusty tannins cut through succulent roast lamb and savory Sicilian pork.",
+    glassware: "Burgundy Pinot Noir / Etna Stem (650ml)",
+    servingTemp: "15–17°C (59–62°F)",
+    decanting: "Decant 45 minutes."
   },
   {
-    "category": "Campanian Ragù & Wild Game (Taurasi)",
-    "wineType": "Red",
-    "targetWine": "Taurasi DOCG (Mastroberardino Radici Riserva)",
-    "dish": "Slow-Simmered Neapolitan Beef & Pork Ragù over Paccheri Pasta, Roasted Wild Boar with Juniper Berries and Polenta",
-    "note": "Aglianico's formidable structural tannins, black pepper, and dark savory fruit cut through the rich tomato acidity and dense meat of authentic Neapolitan ragù.",
-    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
-    "servingTemp": "16–18°C (60–64°F)",
-    "decanting": "Decant 1–2 hours before service for optimal aeration."
+    category: "Campanian Ragù & Wild Game (Taurasi)",
+    wineType: "Red",
+    targetWine: "Taurasi DOCG (Mastroberardino Radici Riserva)",
+    dish: "Slow-Simmered Neapolitan Beef & Pork Ragù over Paccheri Pasta, Roasted Wild Boar with Juniper Berries and Polenta",
+    note: "Aglianico's formidable structural tannins, black pepper, and dark savory fruit cut through the rich tomato acidity and dense meat of authentic Neapolitan ragù.",
+    glassware: "Bordeaux Grand Cru Stem (750ml)",
+    servingTemp: "16–18°C (60–64°F)",
+    decanting: "Decant 1–2 hours before service for optimal aeration."
   },
   {
-    "category": "Alpine Whites & Crudo (Alto Adige / Friuli)",
-    "wineType": "White",
-    "targetWine": "Cantina Terlano Vorberg Pinot Bianco & Gravner Ribolla Gialla",
-    "dish": "Pan-Roasted Arctic Char with Alpine Herb Butter, San Daniele Prosciutto with Fresh Figs, Wild Mushroom Crostini",
-    "note": "Mineral-dusted Pinot Bianco and amber skin-contact Ribolla Gialla provide tactile grip and alpine freshness for cured prosciutto and freshwater char.",
-    "glassware": "Universal White Wine Stem (450ml)",
-    "servingTemp": "10–12°C (50–54°F)",
-    "decanting": "Not required; aerate gently in glass."
+    category: "Volcanic Whites & Mediterranean Seafood (Etna & Soave)",
+    wineType: "White",
+    targetWine: "Etna Bianco Superiore (Carricante from Milo) & Soave Classico (Pieropan Calvarino)",
+    dish: "Grilled Mediterranean Swordfish with Capers, Olives and Cherry Tomatoes, Spaghetti ai Ricci di Mare (Sea Urchin) & Pan-Seared Branzino",
+    note: "Volcanic basalt and volcanic sand Carricante and Garganega provide electric saline tension, lemon oil, flinty reduction, and crushed-rock minerality that elevate fresh sea urchin and grilled swordfish.",
+    glassware: "Universal White Wine Stem (450ml)",
+    servingTemp: "10–12°C (50–54°F)",
+    decanting: "Not required; aerate 15 minutes in glass."
+  },
+  {
+    category: "Alpine Whites & Crudo (Alto Adige / Friuli)",
+    wineType: "White",
+    targetWine: "Cantina Terlano Vorberg Pinot Bianco & Gravner Ribolla Gialla / Collio Friulano",
+    dish: "Pan-Roasted Arctic Char with Alpine Herb Butter, San Daniele Prosciutto with Fresh Figs, Wild Mushroom Crostini",
+    note: "Mineral-dusted Pinot Bianco and amber skin-contact Ribolla Gialla provide tactile almond grip, alpine acidity, and savory herbal notes that melt into delicate sweet San Daniele ham.",
+    glassware: "Universal White Wine Stem (450ml)",
+    servingTemp: "10–12°C (50–54°F)",
+    decanting: "Not required; aerate gently in glass."
   }
 ];

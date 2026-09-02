@@ -179,7 +179,7 @@ export const OREGON_GRAND_CRUS = [
     aspect: "East and west-facing slopes directly aligned with the Van Duzer Corridor",
     dominantGrape: "Pinot Noir & Chardonnay",
     grapeRatio: "Pinot Noir (75%), Chardonnay (20%), Gamay Noir (5%)",
-    wineType: "Red / White",
+    wineType: "Dual",
     tier: "grandCru",
     badge: "🌬️ Van Duzer Marine AVA",
     baseYield: "30–35 hl/ha",
@@ -631,43 +631,63 @@ export const OREGON_ICONIC_PRODUCERS = [
 
 export const OREGON_FOOD_PAIRINGS = [
   {
-    "category": "Wild Pacific Salmon",
-    "wineType": "Red",
-    "targetWine": "Dundee Hills & Eola-Amity Hills Pinot Noir",
-    "dish": "Cedar-Planked Wild Chinook Salmon with Marionberry Glaze, Pan-Crisped Steelhead Trout with Pinot Butter",
-    "note": "The quintessential Pacific Northwest pairing: salmon's rich omega-3 fatty oils marry Oregon Pinot Noir's singing red fruit acidity and forest-floor notes without metallic clash.",
-    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
-    "servingTemp": "16–18°C (60–64°F)",
-    "decanting": "Decant 1–2 hours before service for optimal aeration."
+    category: "Wild Pacific Salmon & Steelhead",
+    wineType: "Red",
+    targetWine: "Dundee Hills & Eola-Amity Hills Pinot Noir",
+    dish: "Cedar-Planked Wild Chinook Salmon with Marionberry Glaze, Pan-Crisped Steelhead Trout with Pinot Butter",
+    note: "The quintessential Pacific Northwest pairing: salmon's rich omega-3 fatty oils marry Oregon Pinot Noir's singing red fruit acidity and forest-floor notes without metallic clash.",
+    glassware: "Oregon Pinot Noir / Burgundy Ballon Stem (750ml)",
+    servingTemp: "15–17°C (59–62°F)",
+    decanting: "Decant 30–45 minutes for young vintages."
   },
   {
-    "category": "Wild Foraged Mushrooms & Duck",
-    "wineType": "Red",
-    "targetWine": "Ribbon Ridge & Yamhill-Carlton Marine Sedimentary Pinot Noir",
-    "dish": "Seared Duck Breast with Marionberry Demi, Wild Morel and Chanterelle Mushroom Risotto, Roasted Quail with Oregon Black Truffles",
-    "note": "Marine sandstone Pinot Noirs offer dark blackberry, damp conifer needles, and sous-bois truffle earthiness that elevate wild-foraged mushrooms and tender game birds.",
-    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
-    "servingTemp": "16–18°C (60–64°F)",
-    "decanting": "Decant 1–2 hours before service for optimal aeration."
+    category: "Wild Foraged Mushrooms & Duck",
+    wineType: "Red",
+    targetWine: "Ribbon Ridge & Yamhill-Carlton Marine Sedimentary Pinot Noir",
+    dish: "Seared Duck Breast with Marionberry Demi, Wild Morel and Chanterelle Mushroom Risotto, Roasted Quail with Oregon Black Truffles",
+    note: "Marine sandstone Pinot Noirs offer dark blackberry, damp conifer needles, and sous-bois truffle earthiness that elevate wild-foraged mushrooms and tender game birds.",
+    glassware: "Burgundy Pinot Noir Stem (750ml)",
+    servingTemp: "16–18°C (60–64°F)",
+    decanting: "Decant 45–60 minutes."
   },
   {
-    "category": "Pacific Coast Crustaceans",
-    "wineType": "White",
-    "targetWine": "Eola-Amity Hills & Dundee Hills Chardonnay (Walter Scott / Bergström)",
-    "dish": "Fresh Oregon Dungeness Crab with Drawn Lemon Butter, Pan-Seared Weathervane Scallops with Hazelnut Brown Butter",
-    "note": "Laser-sharp natural acidity and crushed oyster shell minerality slice through sweet crab meat and hazelnut brown butter.",
-    "glassware": "Universal White Wine Stem (450ml)",
-    "servingTemp": "10–12°C (50–54°F)",
-    "decanting": "Not required; aerate gently in glass."
+    category: "Pacific Coast Crustaceans & Shellfish",
+    wineType: "White",
+    targetWine: "Eola-Amity Hills & Dundee Hills Chardonnay (Walter Scott / Bergström)",
+    dish: "Fresh Oregon Dungeness Crab with Drawn Lemon Butter, Pan-Seared Weathervane Scallops with Hazelnut Brown Butter",
+    note: "Laser-sharp natural acidity and crushed oyster shell minerality slice through sweet crab meat and hazelnut brown butter.",
+    glassware: "Universal White Wine / Chardonnay Stem (500ml)",
+    servingTemp: "10–12°C (50–54°F)",
+    decanting: "Not required; aerate 15 minutes in glass."
   },
   {
-    "category": "Artisanal Cheeses",
-    "wineType": "White / Red",
-    "targetWine": "Willamette Valley Pinot Noir & Chardonnay",
-    "dish": "Rogue River Blue (Southern Oregon, pear-brandy soaked), Cowgirl Creamery Mt Tam, Tumalo Farms Goat Cheese",
-    "note": "Award-winning Oregon blue and artisanal goat cheeses find their perfect partner in bright, mineral-laced Oregon Pinot Noir and Chardonnay.",
-    "glassware": "Bordeaux Grand Cru or Large Burgundy Stem (700ml)",
-    "servingTemp": "16–18°C (60–64°F)",
-    "decanting": "Decant 1–2 hours before service for optimal aeration."
+    category: "Pacific Northwest Pork & White Meat",
+    wineType: "White",
+    targetWine: "Willamette Valley Pinot Gris & Pinot Blanc (The Eyrie / Bethel Heights)",
+    dish: "Roasted Pork Loin with Baked Apples & Hazelnuts, Olympia Provisions Artisanal Charcuterie & Rillettes",
+    note: "Bright orchard fruit, white peach, spicy ginger, and rich phenolic texture harmonize with savory roast pork and spiced artisan charcuterie.",
+    glassware: "Universal White Wine Stem (450ml)",
+    servingTemp: "9–11°C (48–52°F)",
+    decanting: "Not required."
+  },
+  {
+    category: "Artisanal Blue & Mountain Cheeses",
+    wineType: "Red",
+    targetWine: "Chehalem Mountains & Dundee Hills Reserve Pinot Noir",
+    dish: "Rogue River Blue (Southern Oregon, pear-brandy soaked), Face Rock Aged Cheddar & Briar Rose Creamery Cheeses",
+    note: "Award-winning Rogue River Blue's savory umami and pear-brandy notes find an ideal partner in the lush black cherry fruit, forest floor, and silky tannins of mature Oregon Pinot Noir.",
+    glassware: "Large Burgundy Stem (700ml)",
+    servingTemp: "15–17°C (59–62°F)",
+    decanting: "Decant 30–60 minutes."
+  },
+  {
+    category: "Fresh Coastal Oysters & Crudo",
+    wineType: "Sparkling",
+    targetWine: "Oregon Méthode Champenoise Sparkling (Argyle Vintage Brut / Soter Mineral Springs Brut Rosé)",
+    dish: "Fresh Netarts Bay & Kumamoto Oysters with Mignonette, Hamachi Crudo with Citrus & Oregon Sea Salt",
+    note: "Vibrant cool-climate acidity and fine creamy mousse cleanse the palate while matching the briny, mineral-sweet richness of Pacific Northwest oysters.",
+    glassware: "Tulip Sparkling / Champagne Stem (450ml)",
+    servingTemp: "8–10°C (46–50°F)",
+    decanting: "Not recommended; preserve delicate effervescence."
   }
 ];

@@ -933,6 +933,43 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
     }
   },
 
+  classification: {
+    system: "Échelle des Crus (100% Grand Cru, 90–99% Premier Cru)",
+    description: "Historical price-fixing scale (established 1911) classifying entire communes rather than single parcels. Grand Crus rate 100%, Premier Crus rate 90–99%, and Autre Crus rate 80–89%.",
+    pyramid: [
+      {
+        tier: "Grand Cru (100%)",
+        sharePct: "8.5%",
+        count: "17 Communes",
+        yieldLimits: "10,000–12,000 kg/ha",
+        minAbv: "9.0% vol. (base wine)",
+        aging: "Min 15 mo NV (12 mo on lees), 36 mo Vintage",
+        criteria: "100% rating on historical Échelle des Crus; 17 demarcated communes across Montagne de Reims, Vallée de la Marne, and Côte des Blancs.",
+        description: "The apex of Champagne terroir, exclusively situated on pure Belemnite chalk mid-slopes."
+      },
+      {
+        tier: "Premier Cru (90–99%)",
+        sharePct: "21.5%",
+        count: "42 Communes",
+        yieldLimits: "10,000–12,000 kg/ha",
+        minAbv: "9.0% vol. (base wine)",
+        aging: "Min 15 mo NV (12 mo on lees), 36 mo Vintage",
+        criteria: "90% to 99% rating on historical Échelle des Crus across 42 communes.",
+        description: "Exceptional hillside sites bordering Grand Crus, offering remarkable mineral tension and purity."
+      },
+      {
+        tier: "Autre Cru / Terroir (80–89%)",
+        sharePct: "70.0%",
+        count: "260 Communes",
+        yieldLimits: "10,000–12,000 kg/ha",
+        minAbv: "9.0% vol. (base wine)",
+        aging: "Min 15 mo NV (12 mo on lees), 36 mo Vintage",
+        criteria: "Demarcated Champagne AOC communes rated 80% to 89% on Échelle des Crus.",
+        description: "Regional AOC vineyards across the Marne, Aube, and Aisne delivering fruit for flagship house blends."
+      }
+    ]
+  },
+
   pressing: {
     marcKg: 4000,
     maxAocMustLiters: 2550,
@@ -1515,12 +1552,22 @@ export const CHAMPAGNE_FOOD_PAIRINGS = [
   {
     category: 'Fine Dining Main Courses',
     wineType: 'Red',
-    targetWine: 'Rosé Champagne & Blanc de Noirs (Ambonnay / Aÿ)',
-    dish: "Roast Bresse Duck with Cherry Glaze, Butter-Poached Maine Lobster, Roast Turbot with Caviar Beurre Blanc",
-    note: "Fuller-bodied Blanc de Noirs, Vintage, and Prestige Cuvées possess the textural weight and phenolic grip for poultry and butter sauces.",
+    targetWine: 'Blanc de Noirs & Coteaux Champenois Rouge (Ambonnay / Aÿ / Bouzy)',
+    dish: "Roast Bresse Pigeon with Truffle Jus, Butter-Poached Maine Lobster, Roast Turbot with Caviar Beurre Blanc",
+    note: "Fuller-bodied Blanc de Noirs and still Coteaux Champenois reds possess the textural weight and phenolic grip for poultry, pigeon, and rich butter sauces.",
     glassware: "Burgundy Pinot Noir Stem or Wide Tulip (550ml)",
     servingTemp: "10–12°C (50–54°F)",
     decanting: "Gentle aeration in wide glass for 10 minutes."
+  },
+  {
+    category: 'Roasted Meats & Charcuterie',
+    wineType: 'Rosé',
+    targetWine: "Rosé de Saignée & Grand Cru Rosé Champagne",
+    dish: "Roasted Duck Breast with Cherry-Pinot Reduction & Pata Negra Charcuterie",
+    note: "Structured saignée maceration extracts phenolic tannins and red berry aromatics (blood orange, wild raspberry) that cut through the unctuous richness of duck fat and cure-aged Iberico ham.",
+    glassware: "Tulip-shaped Champagne / Pinot Noir Stem (500ml)",
+    servingTemp: "9–11°C (48–52°F)",
+    decanting: "Optional; 15–20 minutes in glass to open aromatic red-fruit aromatics without losing effervescence."
   },
   {
     category: 'Artisanal Cheeses',
@@ -1533,3 +1580,4 @@ export const CHAMPAGNE_FOOD_PAIRINGS = [
     decanting: "Not recommended."
   }
 ];
+
