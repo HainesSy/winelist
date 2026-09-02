@@ -165,30 +165,28 @@ for (const id of EXPECTED_REGIONS) {
     );
   }
 
-  // Crus & Single Vineyards (where applicable)
-  const crus = r.grandCrus || r.crus || r.benchmarkCrus || [];
-  if (crus.length > 0) {
-    for (const cru of crus) {
-      check(`Cru in "${id}" has id`, typeof cru.id === 'string' && cru.id.length > 0);
-      check(`Cru "${cru.id}" in "${id}" has name`, typeof cru.name === 'string' && cru.name.length > 0);
-      check(`Cru "${cru.name}" in "${id}" has numeric lat`, typeof cru.lat === 'number' && !Number.isNaN(cru.lat) && cru.lat >= -90 && cru.lat <= 90);
-      check(`Cru "${cru.name}" in "${id}" has numeric lng`, typeof cru.lng === 'number' && !Number.isNaN(cru.lng) && cru.lng >= -180 && cru.lng <= 180);
-      
-      // Foreign Key: subregionId must match a valid subRegion in parent region
-      const fk = cru.subregionId || cru.districtId;
-      check(`Cru "${cru.name}" in "${id}" has subregionId foreign key`, typeof fk === 'string' && fk.length > 0);
-      check(`Cru "${cru.name}" subregionId "${fk}" matches valid subregion in "${id}"`, 
-        subregionIds.has(fk) || Array.from(subregionIds).some(sid => fk.includes(sid) || sid.includes(fk)),
-        `Cru "${cru.name}" references invalid subregionId "${fk}". Valid IDs: [${Array.from(subregionIds).join(', ')}]`
-      );
+  // Grand Crus & Single Vineyards (strictly asserted for ALL 17 regions)
+  check(`Region "${id}" has grandCrus array with >= 1 items`, Array.isArray(r.grandCrus) && r.grandCrus.length >= 1, `Region ${id} grandCrus must be non-empty array (found ${r.grandCrus?.length})`);
+  for (const cru of r.grandCrus) {
+    check(`Cru in "${id}" has id`, typeof cru.id === 'string' && cru.id.length > 0);
+    check(`Cru "${cru.id}" in "${id}" has name`, typeof cru.name === 'string' && cru.name.length > 0);
+    check(`Cru "${cru.name}" in "${id}" has numeric lat`, typeof cru.lat === 'number' && !Number.isNaN(cru.lat) && cru.lat >= -90 && cru.lat <= 90);
+    check(`Cru "${cru.name}" in "${id}" has numeric lng`, typeof cru.lng === 'number' && !Number.isNaN(cru.lng) && cru.lng >= -180 && cru.lng <= 180);
+    
+    // Foreign Key: subregionId must match a valid subRegion in parent region
+    const fk = cru.subregionId || cru.districtId;
+    check(`Cru "${cru.name}" in "${id}" has subregionId foreign key`, typeof fk === 'string' && fk.length > 0);
+    check(`Cru "${cru.name}" subregionId "${fk}" matches valid subregion in "${id}"`, 
+      subregionIds.has(fk) || Array.from(subregionIds).some(sid => fk.includes(sid) || sid.includes(fk)),
+      `Cru "${cru.name}" references invalid subregionId "${fk}". Valid IDs: [${Array.from(subregionIds).join(', ')}]`
+    );
 
-      check(`Cru "${cru.name}" in "${id}" has soil description`, typeof cru.soil === 'string' && cru.soil.length > 5);
-      check(`Cru "${cru.name}" in "${id}" has dominantGrape`, typeof cru.dominantGrape === 'string' && cru.dominantGrape.length > 2);
-      check(`Cru "${cru.name}" in "${id}" has benchmarkProducers array`, 
-        (Array.isArray(cru.benchmarkProducers) && cru.benchmarkProducers.length >= 1) ||
-        (Array.isArray(cru.famousProducers) && cru.famousProducers.length >= 1)
-      );
-    }
+    check(`Cru "${cru.name}" in "${id}" has soil description`, typeof cru.soil === 'string' && cru.soil.length > 5);
+    check(`Cru "${cru.name}" in "${id}" has dominantGrape`, typeof cru.dominantGrape === 'string' && cru.dominantGrape.length > 2);
+    check(`Cru "${cru.name}" in "${id}" has benchmarkProducers array`, 
+      (Array.isArray(cru.benchmarkProducers) && cru.benchmarkProducers.length >= 1) ||
+      (Array.isArray(cru.famousProducers) && cru.famousProducers.length >= 1)
+    );
   }
 
   // Technical Regulations
@@ -352,6 +350,10 @@ const sommelierQueries = [
   ['Patrimonio', 'corsica'],
   ['Ajaccio', 'corsica'],
   ['Calvi', 'corsica'],
+  ['Carco', 'corsica'],
+  ['Grotte di Sole', 'corsica'],
+  ['Clos d\'Alzeto', 'corsica'],
+  ['Clos Canarelli', 'corsica'],
   // Bordeaux
   ['Bordeaux', 'bordeaux'],
   ['Pauillac', 'bordeaux'],
@@ -426,6 +428,9 @@ const sommelierQueries = [
   ['Rioja', 'spain-rioja'],
   ['Priorat', 'spain-rioja'],
   ['Ribera del Duero', 'spain-rioja'],
+  ['Vega Sicilia Único', 'spain-rioja'],
+  ['Vega Sicilia', 'spain-rioja'],
+  ['Pingus', 'spain-rioja'],
   // Chile Maipo
   ['Chile', 'chile-maipo'],
   ['Maipo', 'chile-maipo'],
