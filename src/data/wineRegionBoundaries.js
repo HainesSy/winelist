@@ -2346,3 +2346,551 @@ export const WINE_REGION_BOUNDARIES = {
     ]
   }
 };
+
+// ============================================================================
+// MINIMALIST REGIONAL OUTLINES & MACRO APPELLATION BORDERS (ALL 17 REGIONS)
+// Strictly conforms to RFC 7946 GeoJSON format ([longitude, latitude])
+// ============================================================================
+
+export const WINE_REGION_OUTLINES = {
+  // 1. CHAMPAGNE AOC
+  'champagne': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "champagne-outline",
+        properties: {
+          id: "champagne-outline",
+          name: "Champagne AOC Delimited Wine Region",
+          frenchName: "Zone Viticole Délimitée de l'AOC Champagne",
+          category: "Official Regional Appellation Boundary",
+          areaHa: 34300,
+          departments: ["Marne", "Aube", "Aisne", "Haute-Marne", "Seine-et-Marne"],
+          color: "#d4af37",
+          accent: "#800020",
+          description: "Official delimited viticultural boundary of Champagne AOC (Law of 1927), encompassing 319 wine-growing communes across the Montagne de Reims, Vallée de la Marne, Côte des Blancs, Sézanne, Vitryat, and Côte des Bar."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [3.85, 49.36], [4.10, 49.34], [4.32, 49.25], [4.45, 49.12],
+            [4.62, 48.96], [4.74, 48.78], [4.80, 48.42], [4.84, 48.22],
+            [4.72, 48.06], [4.48, 47.95], [4.32, 47.93], [4.14, 48.05],
+            [3.95, 48.24], [3.76, 48.46], [3.60, 48.65], [3.48, 48.82],
+            [3.20, 48.98], [3.22, 49.10], [3.42, 49.16], [3.64, 49.26],
+            [3.85, 49.36]
+          ]]
+        }
+      }
+    ]
+  },
+
+  // 2. BURGUNDY (BOURGOGNE)
+  'burgundy': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "burgundy-outline",
+        properties: {
+          id: "burgundy-outline",
+          name: "Burgundy (Bourgogne) AOC Delimited Wine Region",
+          frenchName: "Vignoble de Bourgogne",
+          category: "Official Regional Appellation Boundary",
+          areaHa: 30052,
+          color: "#800020",
+          accent: "#d4af37",
+          description: "Delimited perimeter of Burgundy fine wine terroirs from Chablis and the Grand Auxerrois in the north down the limestone escarpment of the Côte d'Or, Côte Chalonnaise, and Mâconnais."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [3.48, 47.88], [3.88, 47.96], [4.38, 47.95], [4.65, 47.88],
+            [4.98, 47.45], [5.12, 47.24], [5.08, 46.96], [4.98, 46.72],
+            [4.90, 46.48], [4.84, 46.20], [4.68, 46.18], [4.58, 46.36],
+            [4.56, 46.68], [4.52, 46.95], [4.40, 47.22], [4.12, 47.48],
+            [3.68, 47.65], [3.48, 47.88]
+          ]]
+        }
+      }
+    ]
+  },
+
+  // 3. ALSACE
+  'alsace': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "alsace-outline",
+        properties: {
+          id: "alsace-outline",
+          name: "Alsace AOC Delimited Wine Region",
+          frenchName: "Vignoble d'Alsace",
+          category: "Official Regional Appellation Boundary",
+          areaHa: 15600,
+          color: "#2E7D32",
+          accent: "#D4AF37",
+          description: "The 120km slender sub-Vosgian fault corridor stretching from Wissembourg and Marlenheim (Bas-Rhin) south through Colmar to Thann (Haut-Rhin), sheltered between the Vosges crest and the Rhine plain."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [7.42, 48.76], [7.58, 48.68], [7.54, 48.42], [7.52, 48.18],
+            [7.44, 47.92], [7.32, 47.76], [7.08, 47.78], [7.10, 48.02],
+            [7.18, 48.26], [7.28, 48.52], [7.42, 48.76]
+          ]]
+        }
+      }
+    ]
+  },
+
+  // 4. CORSICA (CORSE)
+  'corsica': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "corsica-outline",
+        properties: {
+          id: "corsica-outline",
+          name: "Corsica (Corse AOC & Île de Beauté)",
+          frenchName: "Vignoble de Corse",
+          category: "Official Regional Appellation Boundary",
+          areaHa: 7000,
+          color: "#E65100",
+          accent: "#00838F",
+          description: "Maritime perimeter of the Isle of Beauty, enclosing 9 AOC appellations spanning granite slopes (Ajaccio, Sartène), Cap Corse schist, Saint-Florent limestone (Patrimonio), and coastal alluvium."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [9.38, 43.04], [9.52, 42.82], [9.56, 42.45], [9.48, 42.02],
+            [9.42, 41.72], [9.32, 41.48], [9.15, 41.36], [8.96, 41.42],
+            [8.78, 41.65], [8.62, 41.98], [8.55, 42.36], [8.65, 42.62],
+            [8.92, 42.75], [9.22, 42.88], [9.38, 43.04]
+          ]]
+        }
+      }
+    ]
+  },
+
+  // 5. BORDEAUX
+  'bordeaux': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "bordeaux-outline",
+        properties: {
+          id: "bordeaux-outline",
+          name: "Bordeaux AOC Delimited Wine Region",
+          frenchName: "Vignoble de Bordeaux (Gironde)",
+          category: "Official Regional Appellation Boundary",
+          areaHa: 111000,
+          color: "#4A0E17",
+          accent: "#D4AF37",
+          description: "The complete Gironde fine wine territory framing the Gironde Estuary, Garonne, and Dordogne rivers: Médoc, Graves, Sauternes, Entre-Deux-Mers, Saint-Émilion, Pomerol, Blaye and Bourg."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-1.06, 45.56], [-0.92, 45.38], [-0.48, 45.28], [-0.22, 45.22],
+            [0.12, 45.08], [0.22, 44.88], [0.08, 44.62], [-0.18, 44.45],
+            [-0.45, 44.42], [-0.68, 44.52], [-0.85, 44.75], [-1.02, 45.02],
+            [-1.16, 45.32], [-1.06, 45.56]
+          ]]
+        }
+      }
+    ]
+  },
+
+  // 6. RHÔNE VALLEY
+  'rhone': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "rhone-outline",
+        properties: {
+          id: "rhone-outline",
+          name: "Rhône Valley (Vallée du Rhône AOC)",
+          frenchName: "Vignoble de la Vallée du Rhône",
+          category: "Official Regional Appellation Boundary",
+          areaHa: 71000,
+          color: "#722F37",
+          accent: "#E65100",
+          description: "The classic north-to-south Rhône river corridor linking the steep granitic amphitheaters of Northern Rhône (Côte-Rôtie, Hermitage, Cornas) with the sprawling sun-drenched galets roulés terraces of Southern Rhône (Châteauneuf-du-Pape, Gigondas)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [4.78, 45.58], [4.95, 45.35], [4.98, 45.08], [5.08, 44.72],
+            [5.20, 44.42], [5.18, 44.12], [5.06, 43.85], [4.75, 43.82],
+            [4.58, 44.02], [4.62, 44.35], [4.68, 44.72], [4.72, 45.05],
+            [4.68, 45.35], [4.78, 45.58]
+          ]]
+        }
+      }
+    ]
+  },
+
+  // 7. LOIRE VALLEY
+  'loire-valley': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "loire-outline",
+        properties: {
+          id: "loire-outline",
+          name: "Loire Valley (Vallée de la Loire AOC)",
+          frenchName: "Vignoble de la Vallée de la Loire",
+          category: "Official Regional Appellation Boundary",
+          areaHa: 57200,
+          color: "#00695C",
+          accent: "#FBC02D",
+          description: "France's royal river wine axis spanning 1,000 kilometers from the Atlantic coast of Pays Nantais (Muscadet) through Anjou-Saumur, Touraine (Chinon, Vouvray), to the flinty hills of Centre-Loire (Sancerre, Pouilly-Fumé)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-1.85, 47.18], [-1.35, 47.38], [-0.85, 47.45], [-0.22, 47.48],
+            [0.45, 47.46], [1.12, 47.52], [1.85, 47.62], [2.65, 47.52],
+            [3.12, 47.35], [3.08, 47.18], [2.48, 47.05], [1.65, 47.12],
+            [0.95, 47.08], [0.25, 47.02], [-0.45, 47.05], [-1.15, 47.02],
+            [-1.75, 47.06], [-1.85, 47.18]
+          ]]
+        }
+      }
+    ]
+  },
+
+  // 8. PIEDMONT
+  'piedmont': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "piedmont-outline",
+        properties: {
+          id: "piedmont-outline",
+          name: "Piedmont (Piemonte DOC/DOCG Wine Region)",
+          italianName: "Regione Vitivinicola del Piemonte",
+          category: "Official Regional Appellation Boundary",
+          areaHa: 44000,
+          color: "#5C102A",
+          accent: "#D4AF37",
+          description: "The fog-kissed Langhe, Roero, and Monferrato hills sheltered by the western Alps, home to the noble Nebbiolo kingdoms of Barolo and Barbaresco."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [7.82, 45.05], [8.22, 45.18], [8.65, 45.08], [8.88, 44.78],
+            [8.82, 44.52], [8.55, 44.40], [8.18, 44.42], [7.85, 44.48],
+            [7.78, 44.75], [7.82, 45.05]
+          ]]
+        }
+      }
+    ]
+  },
+
+  // 9. TUSCANY
+  'tuscany': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "tuscany-outline",
+        properties: {
+          id: "tuscany-outline",
+          name: "Tuscany (Toscana IGT/DOCG Wine Region)",
+          italianName: "Regione Vitivinicola della Toscana",
+          category: "Official Regional Appellation Boundary",
+          areaHa: 58000,
+          color: "#8B0000",
+          accent: "#D4AF37",
+          description: "The sun-bathed cypress hills and coastal plains of central Italy, from the historic galestro schist of Chianti Classico to Montalcino, Montepulciano, and coastal Bolgheri."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [11.15, 43.85], [11.55, 43.78], [11.85, 43.52], [11.88, 43.15],
+            [11.72, 42.82], [11.45, 42.48], [10.98, 42.42], [10.52, 42.65],
+            [10.45, 43.12], [10.55, 43.48], [10.82, 43.75], [11.15, 43.85]
+          ]]
+        }
+      }
+    ]
+  },
+
+  // 10. CALIFORNIA
+  'california': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "california-outline",
+        properties: {
+          id: "california-outline",
+          name: "California North Coast Wine Region (Napa & Sonoma)",
+          category: "Official Regional AVA Boundary",
+          areaHa: 60000,
+          color: "#1B5E20",
+          accent: "#F57F17",
+          description: "California's benchmark North Coast fine wine perimeter framing the Napa Valley floor and mountain benches, Sonoma Valley, Russian River Valley, and Pacific coastal fog corridor."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-122.58, 38.82], [-122.25, 38.72], [-122.18, 38.45], [-122.28, 38.18],
+            [-122.52, 38.12], [-122.88, 38.18], [-123.15, 38.38], [-123.38, 38.65],
+            [-123.05, 38.85], [-122.58, 38.82]
+          ]]
+        }
+      }
+    ]
+  },
+
+  // 11. OREGON
+  'oregon': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "oregon-outline",
+        properties: {
+          id: "oregon-outline",
+          name: "Willamette Valley AVA Delimited Wine Region",
+          category: "Official Regional AVA Boundary",
+          areaHa: 10400,
+          color: "#33691E",
+          accent: "#D4AF37",
+          description: "The complete Willamette Valley AVA boundary stretching 150 miles between the Oregon Coast Range and Cascade Mountains, encompassing all 11 nested AVAs (Dundee Hills, Eola-Amity, Ribbon Ridge)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-122.75, 45.62], [-122.65, 45.32], [-122.72, 44.92], [-122.85, 44.45],
+            [-123.02, 44.02], [-123.28, 43.98], [-123.42, 44.45], [-123.48, 44.95],
+            [-123.38, 45.38], [-123.12, 45.65], [-122.75, 45.62]
+          ]]
+        }
+      }
+    ]
+  },
+
+  // 12. GERMANY (MOSEL & RHEINGAU)
+  'germany-mosel': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "mosel-outline",
+        properties: {
+          id: "mosel-outline",
+          name: "Mosel-Saar-Ruwer & Rheingau Quality Wine Regions",
+          germanName: "Bestimmte Anbaugebiete Mosel & Rheingau",
+          category: "Official Regional Appellation Boundary",
+          areaHa: 12000,
+          color: "#0D47A1",
+          accent: "#FFD54F",
+          description: "Delimited boundaries of the dramatic Devonian slate meanders of the Mosel, Saar, and Ruwer river valleys alongside the historic south-facing quartz hillsides of the Rheingau."
+        },
+        geometry: {
+          type: "MultiPolygon",
+          coordinates: [
+            // Mosel Valley
+            [[
+              [6.42, 49.62], [6.68, 49.95], [7.08, 50.05], [7.48, 50.25],
+              [7.58, 50.35], [7.62, 50.22], [7.32, 49.98], [6.95, 49.78],
+              [6.62, 49.52], [6.42, 49.62]
+            ]],
+            // Rheingau
+            [[
+              [7.88, 50.08], [8.28, 50.08], [8.32, 49.98], [8.02, 49.96],
+              [7.85, 50.00], [7.88, 50.08]
+            ]]
+          ]
+        }
+      }
+    ]
+  },
+
+  // 13. SPAIN (RIOJA & RIBERA DEL DUERO)
+  'spain-rioja': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "spain-outline",
+        properties: {
+          id: "spain-outline",
+          name: "Rioja DOCa & Northern Spain Fine Wine Axis",
+          spanishName: "Denominaciones de Origen Rioja y Ribera del Duero",
+          category: "Official Regional Appellation Boundary",
+          areaHa: 66000,
+          color: "#8B0000",
+          accent: "#FFB300",
+          description: "The premier northern Spanish quality wine axis spanning Rioja DOCa along the Ebro River (Alta, Alavesa, Oriental) and the high Castilian plateau of Ribera del Duero."
+        },
+        geometry: {
+          type: "MultiPolygon",
+          coordinates: [
+            // Rioja DOCa
+            [[
+              [-3.15, 42.62], [-2.75, 42.65], [-2.35, 42.55], [-1.88, 42.32],
+              [-1.65, 42.08], [-1.75, 41.98], [-2.15, 42.15], [-2.65, 42.35],
+              [-3.05, 42.45], [-3.15, 42.62]
+            ]],
+            // Ribera del Duero
+            [[
+              [-4.42, 41.62], [-3.62, 41.72], [-3.35, 41.65], [-3.75, 41.52],
+              [-4.35, 41.55], [-4.42, 41.62]
+            ]]
+          ]
+        }
+      }
+    ]
+  },
+
+  // 14. CHILE (MAIPO & CENTRAL VALLEY)
+  'chile-maipo': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "chile-outline",
+        properties: {
+          id: "chile-outline",
+          name: "Chile Central Valley Fine Wine Region",
+          category: "Official Regional DO Boundary",
+          areaHa: 32000,
+          color: "#B71C1C",
+          accent: "#00ACC1",
+          description: "The viticultural heart of Chile framed between the Coastal Range and the High Andes: Maipo Valley (Puente Alto, Pirque), Cachapoal (Peumo), and Colchagua (Apalta)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-70.42, -33.22], [-70.38, -33.68], [-70.52, -34.22], [-70.82, -34.75],
+            [-71.45, -34.72], [-71.65, -34.25], [-71.55, -33.62], [-71.25, -33.28],
+            [-70.78, -33.15], [-70.42, -33.22]
+          ]]
+        }
+      }
+    ]
+  },
+
+  // 15. AUSTRALIA (BAROSSA & MARGARET RIVER)
+  'australia': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "australia-outline",
+        properties: {
+          id: "australia-outline",
+          name: "Barossa Zone & Margaret River Fine Wine Regions",
+          category: "Official Regional GI Boundary",
+          areaHa: 18000,
+          color: "#BF360C",
+          accent: "#D4AF37",
+          description: "Australia's classical fine wine pillars: the pre-phylloxera ironstone soils of the Barossa Zone (Barossa & Eden Valleys) and the maritime gravel loam of Margaret River."
+        },
+        geometry: {
+          type: "MultiPolygon",
+          coordinates: [
+            // Barossa Zone
+            [[
+              [138.82, -34.32], [139.18, -34.42], [139.25, -34.75], [138.98, -34.88],
+              [138.68, -34.72], [138.65, -34.45], [138.82, -34.32]
+            ]],
+            // Margaret River
+            [[
+              [114.95, -33.65], [115.22, -33.72], [115.25, -34.25], [115.02, -34.32],
+              [114.92, -34.02], [114.95, -33.65]
+            ]]
+          ]
+        }
+      }
+    ]
+  },
+
+  // 16. ITALY OTHER (VENETO, VALTELLINA & ETNA)
+  'italy-other': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "italy-other-outline",
+        properties: {
+          id: "italy-other-outline",
+          name: "Veneto, Valtellina & Mount Etna Wine Regions",
+          italianName: "Regioni Vitivinicole del Veneto, Valtellina ed Etna",
+          category: "Official Regional Appellation Boundary",
+          areaHa: 35000,
+          color: "#701C45",
+          accent: "#FFB300",
+          description: "Italy's distinctive regional enclaves: the appassimento hills of Valpolicella/Amarone and Soave in Veneto alongside the active volcanic ash slopes of Mount Etna in Sicily."
+        },
+        geometry: {
+          type: "MultiPolygon",
+          coordinates: [
+            // Veneto
+            [[
+              [10.75, 45.62], [11.35, 45.58], [11.55, 45.42], [11.25, 45.32],
+              [10.82, 45.38], [10.75, 45.62]
+            ]],
+            // Mount Etna
+            [[
+              [14.92, 37.85], [15.18, 37.88], [15.22, 37.65], [14.98, 37.62],
+              [14.92, 37.85]
+            ]]
+          ]
+        }
+      }
+    ]
+  },
+
+  // 17. JAPAN (YAMANASHI & NAGANO)
+  'japan-chubu': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "japan-outline",
+        properties: {
+          id: "japan-outline",
+          name: "GI Yamanashi & GI Nagano Wine Regions",
+          japaneseName: "山梨・長野 地理的表示(GI)ワイン産地",
+          category: "Official Regional GI Boundary",
+          areaHa: 4500,
+          color: "#3F51B5",
+          accent: "#E91E63",
+          description: "Japan's fine wine epicenters: the historic Katsunuma pergola Koshu basin of GI Yamanashi beneath Mount Fuji and the high alpine valleys of GI Nagano (Shinshu)."
+        },
+        geometry: {
+          type: "MultiPolygon",
+          coordinates: [
+            // GI Yamanashi (Katsunuma)
+            [[
+              [138.45, 35.75], [138.78, 35.72], [138.82, 35.58], [138.52, 35.56],
+              [138.45, 35.75]
+            ]],
+            // GI Nagano (Chikuma / Kikyogahara)
+            [[
+              [137.88, 36.65], [138.25, 36.62], [138.22, 36.12], [137.92, 36.15],
+              [137.88, 36.65]
+            ]]
+          ]
+        }
+      }
+    ]
+  }
+};
+
+export function getRegionOutline(regionId) {
+  return WINE_REGION_OUTLINES[regionId] || null;
+}

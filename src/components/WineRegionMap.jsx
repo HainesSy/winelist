@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Layers, Maximize2, Compass, MapPin, Award, Shapes, Crown } from 'lucide-react';
-import { WINE_REGION_BOUNDARIES } from '../data/wineRegionBoundaries';
+import { WINE_REGION_BOUNDARIES, WINE_REGION_OUTLINES } from '../data/wineRegionBoundaries';
 
 // Custom Wine Sommelier Tile Providers supporting Mapbox Token, Stadia Key & Free Fallbacks
 const mapboxToken = import.meta.env.VITE_MAPBOX_TOKEN || import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
@@ -66,6 +66,7 @@ export default function WineRegionMap({
   const mapInstanceRef = useRef(null);
   const markersRef = useRef({});
   const layerGroupRef = useRef(null);
+  const outlineGroupRef = useRef(null);
   const geoJsonGroupRef = useRef(null);
   const onSelectSubRegionRef = useRef(onSelectSubRegion);
   const onSelectCruRef = useRef(onSelectCru);
@@ -77,6 +78,7 @@ export default function WineRegionMap({
   const [currentLayerType, setCurrentLayerType] = useState('parchment'); // 'parchment' | 'topo' | 'satellite'
   const [pinViewMode, setPinViewMode] = useState(hasGrandCrus ? 'grandCrus' : 'subregions'); // 'subregions' | 'grandCrus' | 'premierCrus' | 'all'
   const [showBoundaries, setShowBoundaries] = useState(true);
+  const [showRegionOutline, setShowRegionOutline] = useState(true);
 
   // Sync callbacks to refs without triggering React 19 render warnings
   useEffect(() => {
@@ -86,6 +88,7 @@ export default function WineRegionMap({
   }, [onSelectSubRegion, onSelectCru, onViewCellar]);
 
   const boundaryData = WINE_REGION_BOUNDARIES[region.id];
+  const outlineData = WINE_REGION_OUTLINES ? WINE_REGION_OUTLINES[region.id] : null;
 
   // Initialize and update map
   useEffect(() => {
@@ -104,6 +107,7 @@ export default function WineRegionMap({
       L.control.zoom({ position: 'topright' }).addTo(map);
 
       mapInstanceRef.current = map;
+      outlineGroupRef.current = L.layerGroup().addTo(map);
       geoJsonGroupRef.current = L.layerGroup().addTo(map);
       layerGroupRef.current = L.layerGroup().addTo(map);
     }
@@ -134,11 +138,91 @@ export default function WineRegionMap({
     });
     tileLayer.addTo(map);
 
-    // Draw GeoJSON Wine Appellation Boundary Polygons
+    // Clear previous vector layers
+    if (outlineGroupRef.current) {
+      outlineGroupRef.current.clearLayers();
+    }
     if (geoJsonGroupRef.current) {
       geoJsonGroupRef.current.clearLayers();
     }
 
+    // 1. Draw Minimalist Regional Boundary Outline (Macro Appellation Border)
+    let outlineLayer = null;
+    if (showRegionOutline && outlineData) {
+      const defaultOutlineColor = region.accentColor || '#d4af37';
+      outlineLayer = L.geoJSON(outlineData, {
+        style: (feature) => {
+          const p = feature.properties || {};
+          const color = p.color || defaultOutlineColor;
+          return {
+            color: color,
+            weight: 2.4,
+            dashArray: '5, 8', // elegant minimalist sommelier dashed border
+            opacity: 0.90,
+            fillColor: color,
+            fillOpacity: 0.035, // subtle, minimalist translucent tint to frame the region
+            className: 'sommelier-region-outline'
+          };
+        },
+        onEachFeature: (feature, layer) => {
+          const p = feature.properties || {};
+          const nativeName = p.frenchName || p.italianName || p.germanName || p.spanishName || p.japaneseName;
+          
+          layer.bindTooltip(`
+            <div class="sommelier-regional-outline-tooltip">
+              <div class="outline-tooltip-badge">Delimited Region Border</div>
+              <strong>${p.name || region.name}</strong>
+              ${nativeName ? `<em class="outline-native-name">${nativeName}</em>` : ''}
+              ${p.areaHa ? `<div class="outline-area">Surface: ~${Number(p.areaHa).toLocaleString()} hectares</div>` : ''}
+              <p class="outline-tooltip-desc">${p.description || 'Official delimited viticultural production perimeter.'}</p>
+            </div>
+          `, {
+            sticky: true,
+            direction: 'top',
+            className: 'sommelier-leaflet-outline-tooltip',
+            offset: [0, -10]
+          });
+
+          layer.on({
+            mouseover: (e) => {
+              const target = e.target;
+              target.setStyle({
+                weight: 3.8,
+                dashArray: null,
+                opacity: 1.0,
+                fillOpacity: 0.08
+              });
+            },
+            mouseout: (e) => {
+              const target = e.target;
+              const p = feature.properties || {};
+              const color = p.color || defaultOutlineColor;
+              target.setStyle({
+                color: color,
+                weight: 2.4,
+                dashArray: '5, 8',
+                opacity: 0.90,
+                fillOpacity: 0.035
+              });
+            },
+            click: (e) => {
+              L.DomEvent.stopPropagation(e);
+              if (mapInstanceRef.current && e.target.getBounds) {
+                mapInstanceRef.current.fitBounds(e.target.getBounds(), {
+                  padding: [45, 45],
+                  animate: true,
+                  duration: 1.0
+                });
+              }
+            }
+          });
+        }
+      });
+      outlineLayer.addTo(outlineGroupRef.current);
+    }
+
+    // 2. Draw GeoJSON Wine Appellation Sub-District Polygons
+    let geoLayer = null;
     if (showBoundaries && boundaryData) {
       const isFeatureActive = (feat, activeId) => {
         if (!activeId) return false;
@@ -152,7 +236,7 @@ export default function WineRegionMap({
                (fid && typeof fid === 'string' && fid.startsWith(activeId));
       };
 
-      const geoLayer = L.geoJSON(boundaryData, {
+      geoLayer = L.geoJSON(boundaryData, {
         style: (feature) => {
           const props = feature.properties || {};
           const isSelected = isFeatureActive(feature, activeSubRegionId);
@@ -230,12 +314,21 @@ export default function WineRegionMap({
         }
       });
       geoLayer.addTo(geoJsonGroupRef.current);
+    }
 
-      // Frame all boundaries completely inside viewport by default with adaptive tablet/iPad padding
-      if (!activeSubRegionId && !selectedCruId && geoLayer.getBounds().isValid()) {
+    // Frame map bounds: Prioritize regional outline for whole-region framing, then district boundaries
+    if (!activeSubRegionId && !selectedCruId) {
+      let targetBounds = null;
+      if (showRegionOutline && outlineLayer && outlineLayer.getBounds().isValid()) {
+        targetBounds = outlineLayer.getBounds();
+      } else if (showBoundaries && geoLayer && geoLayer.getBounds().isValid()) {
+        targetBounds = geoLayer.getBounds();
+      }
+
+      if (targetBounds) {
         const isTablet = typeof window !== 'undefined' && window.innerWidth <= 1024;
         const pad = isTablet ? [28, 28] : [50, 50];
-        map.fitBounds(geoLayer.getBounds(), {
+        map.fitBounds(targetBounds, {
           padding: pad,
           maxZoom: isTablet ? 10 : 11,
           animate: false
@@ -611,7 +704,7 @@ export default function WineRegionMap({
         resizeObserver.disconnect();
       }
     };
-  }, [region, currentLayerType, pinViewMode, activeSubRegionId, selectedCruId, cellarBottlesCountBySub, showBoundaries, boundaryData, hasGrandCrus, hasPremierCrus]);
+  }, [region, currentLayerType, pinViewMode, activeSubRegionId, selectedCruId, cellarBottlesCountBySub, showBoundaries, boundaryData, showRegionOutline, outlineData, hasGrandCrus, hasPremierCrus]);
 
   // Sync active sub-region focus
   useEffect(() => {
@@ -665,6 +758,13 @@ export default function WineRegionMap({
     if (onSelectSubRegion) onSelectSubRegion(null);
     if (onSelectCru) onSelectCru(null);
     if (mapInstanceRef.current) {
+      if (outlineData && showRegionOutline) {
+        const bounds = L.geoJSON(outlineData).getBounds();
+        if (bounds.isValid()) {
+          mapInstanceRef.current.fitBounds(bounds, { padding: [55, 55], animate: true, duration: 1.0 });
+          return;
+        }
+      }
       if (boundaryData) {
         const bounds = L.geoJSON(boundaryData).getBounds();
         if (bounds.isValid()) {
@@ -707,14 +807,24 @@ export default function WineRegionMap({
             <Maximize2 size={13} style={{ marginRight: '3px' }} />
             Satellite
           </button>
+          {outlineData && (
+            <button 
+              className={`map-layer-pill ${showRegionOutline ? 'active' : ''}`}
+              onClick={() => setShowRegionOutline(prev => !prev)}
+              title="Toggle Minimalist Regional Border Outline"
+            >
+              <Compass size={13} style={{ marginRight: '3px', color: showRegionOutline ? 'var(--accent-gold)' : 'inherit' }} />
+              Region Border {showRegionOutline ? 'ON' : 'OFF'}
+            </button>
+          )}
           {boundaryData && (
             <button 
               className={`map-layer-pill ${showBoundaries ? 'active' : ''}`}
               onClick={() => setShowBoundaries(prev => !prev)}
-              title="Toggle Wine Appellation Boundary Polygons"
+              title="Toggle Sub-appellation District Polygons"
             >
               <Shapes size={13} style={{ marginRight: '3px', color: showBoundaries ? 'var(--accent-gold)' : 'inherit' }} />
-              Boundaries {showBoundaries ? 'ON' : 'OFF'}
+              Districts {showBoundaries ? 'ON' : 'OFF'}
             </button>
           )}
         </div>

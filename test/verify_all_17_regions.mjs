@@ -22,7 +22,7 @@
 
 import assert from 'node:assert';
 import { WINE_REGIONS, findWineRegion } from '../src/data/wineRegions.js';
-import { WINE_REGION_BOUNDARIES } from '../src/data/wineRegionBoundaries.js';
+import { WINE_REGION_BOUNDARIES, WINE_REGION_OUTLINES } from '../src/data/wineRegionBoundaries.js';
 
 console.log('================================================================');
 console.log('🍷 WORLD WINE REGIONS: MASTER INVARIANT & SCHEMA VALIDATION');
@@ -316,6 +316,54 @@ for (const id of EXPECTED_REGIONS) {
   }
 
   console.log(`  ✓ Verified GeoJSON FeatureCollection for ${id} (${fc.features.length} features)`);
+}
+
+// ----------------------------------------------------------------------------
+// 4b. VALIDATING MINIMALIST REGIONAL OUTLINES (ALL 17 REGIONS)
+// ----------------------------------------------------------------------------
+console.log('\n━━━ 4b. Validating Minimalist Regional Outlines RFC 7946 Topology ━━━');
+
+for (const id of EXPECTED_REGIONS) {
+  const fc = WINE_REGION_OUTLINES[id];
+  check(`Regional outline FeatureCollection exists for "${id}"`, !!fc, `Missing outline for ${id}`);
+  check(`Regional outline for "${id}" is a FeatureCollection`, fc.type === 'FeatureCollection');
+  check(`Regional outline for "${id}" has at least 1 feature`, Array.isArray(fc.features) && fc.features.length >= 1);
+
+  for (let fIdx = 0; fIdx < fc.features.length; fIdx++) {
+    const feat = fc.features[fIdx];
+    check(`Outline feature #${fIdx} in "${id}" has type "Feature"`, feat.type === 'Feature');
+    check(`Outline feature #${fIdx} in "${id}" has properties`, !!feat.properties && typeof feat.properties === 'object');
+    check(`Outline feature #${fIdx} in "${id}" has name`, !!feat.properties.name);
+    check(`Outline feature #${fIdx} in "${id}" has description`, !!feat.properties.description);
+    check(`Outline feature #${fIdx} in "${id}" geometry is Polygon or MultiPolygon`,
+      ['Polygon', 'MultiPolygon'].includes(feat.geometry.type)
+    );
+
+    const polys = feat.geometry.type === 'Polygon' ? [feat.geometry.coordinates] : feat.geometry.coordinates;
+    for (const poly of polys) {
+      for (const ring of poly) {
+        check(`Outline LinearRing in "${id}" has >= 4 coordinate points`, ring.length >= 4);
+
+        const first = ring[0];
+        const last = ring[ring.length - 1];
+        check(`Outline LinearRing in "${id}" is closed (first coord matches last coord)`,
+          first[0] === last[0] && first[1] === last[1],
+          `Outline ring not closed in ${id}: [${first}] !== [${last}]`
+        );
+
+        for (const [lng, lat] of ring) {
+          check(`Outline coord [${lng}, ${lat}] in "${id}" has valid lng in [-180, 180]`,
+            typeof lng === 'number' && !Number.isNaN(lng) && lng >= -180 && lng <= 180
+          );
+          check(`Outline coord [${lng}, ${lat}] in "${id}" has valid lat in [-90, 90]`,
+            typeof lat === 'number' && !Number.isNaN(lat) && lat >= -90 && lat <= 90
+          );
+        }
+      }
+    }
+  }
+
+  console.log(`  ✓ Verified Minimalist Regional Outline for ${id} (${fc.features[0].geometry.type})`);
 }
 
 // ----------------------------------------------------------------------------
