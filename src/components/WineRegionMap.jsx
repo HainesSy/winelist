@@ -76,9 +76,14 @@ export default function WineRegionMap({
   const hasPremierCrus = Boolean(region.premierCrus && region.premierCrus.length > 0);
 
   const [currentLayerType, setCurrentLayerType] = useState('parchment'); // 'parchment' | 'topo' | 'satellite'
-  const [pinViewMode, setPinViewMode] = useState(hasGrandCrus ? 'grandCrus' : 'subregions'); // 'subregions' | 'grandCrus' | 'premierCrus' | 'all'
+  const [pinViewMode, setPinViewMode] = useState('subregions'); // Default to 'subregions' (Districts)
   const [showBoundaries, setShowBoundaries] = useState(true);
   const [showRegionOutline, setShowRegionOutline] = useState(true);
+
+  // Reset pin view mode to districts when navigating between regions
+  useEffect(() => {
+    setPinViewMode('subregions');
+  }, [region.id]);
 
   // Sync callbacks to refs without triggering React 19 render warnings
   useEffect(() => {
@@ -736,6 +741,15 @@ export default function WineRegionMap({
     if (!mapInstanceRef.current || !selectedCruId) return;
     const map = mapInstanceRef.current;
 
+    const isGrand = (region.grandCrus || []).some(c => c.id === selectedCruId);
+    const isPremier = (region.premierCrus || []).some(c => c.id === selectedCruId);
+
+    if (isGrand && pinViewMode !== 'grandCrus' && pinViewMode !== 'all') {
+      setPinViewMode('grandCrus');
+    } else if (isPremier && pinViewMode !== 'premierCrus' && pinViewMode !== 'all') {
+      setPinViewMode('premierCrus');
+    }
+
     const targetCru = (region.grandCrus || []).find(c => c.id === selectedCruId) ||
                       (region.premierCrus || []).find(c => c.id === selectedCruId);
 
@@ -757,6 +771,7 @@ export default function WineRegionMap({
   const handleResetView = () => {
     if (onSelectSubRegion) onSelectSubRegion(null);
     if (onSelectCru) onSelectCru(null);
+    setPinViewMode('subregions');
     if (mapInstanceRef.current) {
       if (outlineData && showRegionOutline) {
         const bounds = L.geoJSON(outlineData).getBounds();
@@ -837,6 +852,7 @@ export default function WineRegionMap({
                 onClick={() => setPinViewMode('subregions')}
                 title="Display Subregion Districts"
               >
+                <Layers size={12} style={{ marginRight: '2px', color: pinViewMode === 'subregions' ? 'var(--accent-gold)' : 'inherit' }} />
                 Districts
               </button>
               <button 
