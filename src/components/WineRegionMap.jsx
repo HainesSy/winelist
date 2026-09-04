@@ -255,15 +255,18 @@ export default function WineRegionMap({
           const strokeColor = isSelected ? '#ffffff' : (props.accent || baseColor);
           return {
             fillColor: baseColor,
-            fillOpacity: isSelected ? 0.50 : (props.fillOpacity ? Math.min(props.fillOpacity + 0.16, 0.40) : 0.34),
+            fillOpacity: isSelected ? 0.22 : 0.08, // Subtle, nuanced watercolor wash
             color: strokeColor,
-            weight: isSelected ? 4.5 : 3.0,
-            opacity: 1.0,
+            weight: isSelected ? 2.2 : 1.2, // Fine, minimalist hairline contour
+            opacity: isSelected ? 0.95 : 0.50, // Gentle, restrained stroke opacity
             className: `aoc-defined-boundary ${isSelected ? 'is-selected-boundary' : ''}`
           };
         },
         onEachFeature: (feature, layer) => {
           const props = feature.properties || {};
+          const targetSubId = props.subregionId || props.parentSubregionId || props.id || feature.id;
+          const isSelected = isFeatureActive(feature, activeSubRegionId);
+          const bottleCount = cellarBottlesCountBySub[targetSubId] || cellarBottlesCountBySub[props.name] || 0;
 
           // Clean hover-only tooltip (no clutter by default)
           layer.bindTooltip(`
@@ -285,8 +288,9 @@ export default function WineRegionMap({
             mouseover: (e) => {
               const target = e.target;
               target.setStyle({
-                weight: 5.0,
-                fillOpacity: 0.58,
+                weight: 2.0,
+                fillOpacity: 0.18,
+                opacity: 0.90,
                 color: '#ffffff'
               });
               if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
@@ -300,10 +304,10 @@ export default function WineRegionMap({
               const strokeColor = isStillSelected ? '#ffffff' : (props.accent || baseColor);
               target.setStyle({
                 fillColor: baseColor,
-                fillOpacity: isStillSelected ? 0.50 : (props.fillOpacity ? Math.min(props.fillOpacity + 0.16, 0.40) : 0.34),
+                fillOpacity: isStillSelected ? 0.22 : 0.08,
                 color: strokeColor,
-                weight: isStillSelected ? 4.5 : 3.0,
-                opacity: 1.0
+                weight: isStillSelected ? 2.2 : 1.2,
+                opacity: isStillSelected ? 0.95 : 0.50
               });
             },
             click: (e) => {
@@ -311,8 +315,6 @@ export default function WineRegionMap({
               if (e.originalEvent?.target && typeof e.originalEvent.target.blur === 'function') {
                 e.originalEvent.target.blur();
               }
-              const props = feature.properties || {};
-              const targetSubId = props.subregionId || props.parentSubregionId || props.id || feature.id;
               if (onSelectSubRegionRef.current) {
                 onSelectSubRegionRef.current(targetSubId);
               }
@@ -326,6 +328,70 @@ export default function WineRegionMap({
               }
             }
           });
+
+          // Small, centered cartographic text label fitting seamlessly with map typography
+          if (layer.getBounds && layer.getBounds().isValid()) {
+            const center = layer.getBounds().getCenter();
+            const labelIcon = L.divIcon({
+              className: 'sommelier-district-center-label-wrapper',
+              html: `
+                <div class="sommelier-district-center-label ${isSelected ? 'is-active' : ''}">
+                  <span class="district-center-name">${props.name}</span>
+                  ${bottleCount > 0 ? `<span class="district-center-bottle-pill">🍷 ${bottleCount}</span>` : ''}
+                </div>
+              `,
+              iconSize: [160, 24],
+              iconAnchor: [80, 12]
+            });
+
+            const labelMarker = L.marker(center, {
+              icon: labelIcon,
+              interactive: true,
+              zIndexOffset: 150
+            });
+
+            labelMarker.on('click', (e) => {
+              L.DomEvent.stopPropagation(e);
+              if (e.originalEvent?.target && typeof e.originalEvent.target.blur === 'function') {
+                e.originalEvent.target.blur();
+              }
+              if (onSelectSubRegionRef.current) {
+                onSelectSubRegionRef.current(targetSubId);
+              }
+              if (mapInstanceRef.current && layer.getBounds) {
+                mapInstanceRef.current.fitBounds(layer.getBounds(), {
+                  padding: [45, 45],
+                  maxZoom: 12,
+                  animate: true,
+                  duration: 1.0
+                });
+              }
+            });
+
+            labelMarker.on('mouseover', () => {
+              layer.setStyle({
+                weight: 2.0,
+                fillOpacity: 0.18,
+                opacity: 0.90,
+                color: '#ffffff'
+              });
+            });
+
+            labelMarker.on('mouseout', () => {
+              const isStillSelected = isFeatureActive(feature, activeSubRegionId);
+              const baseColor = props.color || '#d4af37';
+              const strokeColor = isStillSelected ? '#ffffff' : (props.accent || baseColor);
+              layer.setStyle({
+                fillColor: baseColor,
+                fillOpacity: isStillSelected ? 0.22 : 0.08,
+                color: strokeColor,
+                weight: isStillSelected ? 2.2 : 1.2,
+                opacity: isStillSelected ? 0.95 : 0.50
+              });
+            });
+
+            labelMarker.addTo(geoJsonGroupRef.current);
+          }
         }
       });
       geoLayer.addTo(geoJsonGroupRef.current);
@@ -371,6 +437,12 @@ export default function WineRegionMap({
     // 1. Draw Subregion / District Appellation Markers
     if ((pinViewMode === 'subregions' || pinViewMode === 'all') && region.subRegions && region.subRegions.length > 0) {
       region.subRegions.forEach(sub => {
+        // If boundaries are active and this subregion has a boundary polygon with centered label, avoid duplicate pin clutter
+        const hasBoundaryPolygon = showBoundaries && boundaryData && boundaryData.features &&
+          boundaryData.features.some(f => f.id === sub.id || f.properties?.id === sub.id || f.properties?.subregionId === sub.id);
+
+        if (hasBoundaryPolygon) return;
+
         const isSelected = activeSubRegionId === sub.id;
         const bottleCount = cellarBottlesCountBySub[sub.id] || cellarBottlesCountBySub[sub.name] || 0;
 
