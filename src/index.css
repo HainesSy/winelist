@@ -1838,6 +1838,68 @@ button.region-label:hover,
   line-height: 1.3;
 }
 
+/* Dynamic Level-of-Detail (LOD): Smoothly hide markers when zoomed out to country/macro scale */
+.wine-leaflet-container.zoom-hide-pins .leaflet-marker-pane,
+.wine-leaflet-container.zoom-hide-pins .custom-sommelier-marker-wrapper,
+.wine-leaflet-container.zoom-hide-pins .leaflet-popup-pane {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.wine-leaflet-container .leaflet-marker-pane,
+.wine-leaflet-container .custom-sommelier-marker-wrapper,
+.wine-leaflet-container .leaflet-popup-pane {
+  transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Floating Level-of-Detail Prompt Pill when Zoomed Out */
+.map-zoom-in-prompt-pill {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(22, 27, 34, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  border-radius: 30px;
+  padding: 8px 18px;
+  color: #f0f6fc;
+  font-size: 0.82rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInZoomPrompt 0.35s ease-out;
+}
+
+.map-zoom-in-prompt-pill:hover {
+  background: rgba(33, 38, 45, 0.98);
+  border-color: var(--accent-gold, #d4af37);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55), 0 0 14px rgba(212, 175, 55, 0.40);
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.map-zoom-in-prompt-pill strong {
+  color: var(--accent-gold, #d4af37);
+  margin-left: 2px;
+}
+
+@keyframes fadeInZoomPrompt {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
 /* Map Glassmorphism Toolbar */
 .map-glass-toolbar {
   position: absolute;

@@ -80,10 +80,39 @@ export default function WineRegionMap({
   const [showBoundaries, setShowBoundaries] = useState(true);
   const [showRegionOutline, setShowRegionOutline] = useState(true);
 
+  const minMarkerZoom = Math.max((region.zoom || 9) - 1, 7);
+  const [currentZoom, setCurrentZoom] = useState(region.zoom || 9);
+  const isZoomedOut = currentZoom < minMarkerZoom;
+
   // Reset pin view mode to districts when navigating between regions
   useEffect(() => {
     setPinViewMode('subregions');
   }, [region.id]);
+
+  // Dynamic Level of Detail (LOD): track zoom to smoothly hide markers when zoomed out to macro scale
+  useEffect(() => {
+    const map = mapInstanceRef.current;
+    if (!map) return;
+
+    const handleZoomCheck = () => {
+      const z = map.getZoom();
+      setCurrentZoom(z);
+      if (mapContainerRef.current) {
+        if (z < minMarkerZoom) {
+          mapContainerRef.current.classList.add('zoom-hide-pins');
+        } else {
+          mapContainerRef.current.classList.remove('zoom-hide-pins');
+        }
+      }
+    };
+
+    map.on('zoomend', handleZoomCheck);
+    handleZoomCheck();
+
+    return () => {
+      map.off('zoomend', handleZoomCheck);
+    };
+  }, [region.id, minMarkerZoom]);
 
   // Sync callbacks to refs without triggering React 19 render warnings
   useEffect(() => {
@@ -856,15 +885,25 @@ export default function WineRegionMap({
             <div className="map-layer-selector">
               <button 
                 className={`map-layer-pill ${pinViewMode === 'subregions' ? 'active' : ''}`}
-                onClick={() => setPinViewMode('subregions')}
-                title="Display Subregion Districts"
+                onClick={() => {
+                  setPinViewMode('subregions');
+                  if (isZoomedOut && mapInstanceRef.current && region.center && region.zoom) {
+                    mapInstanceRef.current.flyTo(region.center, region.zoom, { duration: 1.0 });
+                  }
+                }}
+                title={isZoomedOut ? "Zoom in to display Subregion Districts" : "Display Subregion Districts"}
               >
                 <Layers size={12} style={{ marginRight: '2px', color: pinViewMode === 'subregions' ? 'var(--accent-gold)' : 'inherit' }} />
-                Districts
+                Districts {isZoomedOut ? '(Zoom in)' : ''}
               </button>
               <button 
                 className={`map-layer-pill ${pinViewMode === 'grandCrus' ? 'active' : ''}`}
-                onClick={() => setPinViewMode('grandCrus')}
+                onClick={() => {
+                  setPinViewMode('grandCrus');
+                  if (isZoomedOut && mapInstanceRef.current && region.center) {
+                    mapInstanceRef.current.flyTo(region.center, Math.max(region.zoom, 10), { duration: 1.0 });
+                  }
+                }}
                 title={`Display ${region.grandCrus?.length || 0} Classified Crus`}
               >
                 <Crown size={12} style={{ marginRight: '2px', color: 'var(--accent-gold)' }} />
@@ -873,7 +912,12 @@ export default function WineRegionMap({
               {hasPremierCrus && (
                 <button 
                   className={`map-layer-pill ${pinViewMode === 'premierCrus' ? 'active' : ''}`}
-                  onClick={() => setPinViewMode('premierCrus')}
+                  onClick={() => {
+                    setPinViewMode('premierCrus');
+                    if (isZoomedOut && mapInstanceRef.current && region.center) {
+                      mapInstanceRef.current.flyTo(region.center, Math.max(region.zoom, 10), { duration: 1.0 });
+                    }
+                  }}
                   title={`Display ${region.premierCrus?.length || 0} Premier Crus / Benchmarks`}
                 >
                   <Award size={12} style={{ marginRight: '2px', color: '#d97706' }} />
@@ -882,7 +926,12 @@ export default function WineRegionMap({
               )}
               <button 
                 className={`map-layer-pill ${pinViewMode === 'all' ? 'active' : ''}`}
-                onClick={() => setPinViewMode('all')}
+                onClick={() => {
+                  setPinViewMode('all');
+                  if (isZoomedOut && mapInstanceRef.current && region.center) {
+                    mapInstanceRef.current.flyTo(region.center, Math.max(region.zoom, 10), { duration: 1.0 });
+                  }
+                }}
                 title="Display All Pins"
               >
                 All Pins
@@ -903,6 +952,22 @@ export default function WineRegionMap({
 
       {/* The Leaflet Container */}
       <div ref={mapContainerRef} className="wine-leaflet-container" />
+
+      {/* Floating Level-of-Detail Prompt Pill when Zoomed Out */}
+      {isZoomedOut && (
+        <button
+          className="map-zoom-in-prompt-pill"
+          onClick={() => {
+            if (mapInstanceRef.current && region.center && region.zoom) {
+              mapInstanceRef.current.flyTo(region.center, region.zoom, { duration: 1.0 });
+            }
+          }}
+          title="Click to zoom in and reveal districts"
+        >
+          <Compass size={14} style={{ marginRight: '6px', color: 'var(--accent-gold)' }} />
+          <span>Macro Region View · <strong>Click to reveal districts</strong></span>
+        </button>
+      )}
     </div>
   );
 }
