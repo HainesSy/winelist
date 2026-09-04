@@ -81,38 +81,12 @@ export default function WineRegionMap({
   const [showRegionOutline, setShowRegionOutline] = useState(true);
 
   const minMarkerZoom = Math.max((region.zoom || 9) - 1, 7);
-  const [currentZoom, setCurrentZoom] = useState(region.zoom || 9);
-  const isZoomedOut = currentZoom < minMarkerZoom;
+  const [isZoomedOut, setIsZoomedOut] = useState(false);
 
   // Reset pin view mode to districts when navigating between regions
   useEffect(() => {
     setPinViewMode('subregions');
   }, [region.id]);
-
-  // Dynamic Level of Detail (LOD): track zoom to smoothly hide markers when zoomed out to macro scale
-  useEffect(() => {
-    const map = mapInstanceRef.current;
-    if (!map) return;
-
-    const handleZoomCheck = () => {
-      const z = map.getZoom();
-      setCurrentZoom(z);
-      if (mapContainerRef.current) {
-        if (z < minMarkerZoom) {
-          mapContainerRef.current.classList.add('zoom-hide-pins');
-        } else {
-          mapContainerRef.current.classList.remove('zoom-hide-pins');
-        }
-      }
-    };
-
-    map.on('zoomend', handleZoomCheck);
-    handleZoomCheck();
-
-    return () => {
-      map.off('zoomend', handleZoomCheck);
-    };
-  }, [region.id, minMarkerZoom]);
 
   // Sync callbacks to refs without triggering React 19 render warnings
   useEffect(() => {
@@ -740,12 +714,46 @@ export default function WineRegionMap({
       });
     }
 
+    // Dynamic Level of Detail (LOD): directly attach zoom listeners and manage layer group
+    const updateZoomLOD = () => {
+      if (!mapInstanceRef.current) return;
+      const currentZ = mapInstanceRef.current.getZoom();
+      const zoomedOut = currentZ < minMarkerZoom;
+      setIsZoomedOut(zoomedOut);
+
+      if (layerGroupRef.current) {
+        if (zoomedOut) {
+          if (mapInstanceRef.current.hasLayer(layerGroupRef.current)) {
+            mapInstanceRef.current.removeLayer(layerGroupRef.current);
+          }
+        } else {
+          if (!mapInstanceRef.current.hasLayer(layerGroupRef.current)) {
+            mapInstanceRef.current.addLayer(layerGroupRef.current);
+          }
+        }
+      }
+
+      if (mapContainerRef.current) {
+        if (zoomedOut) {
+          mapContainerRef.current.classList.add('zoom-hide-pins');
+        } else {
+          mapContainerRef.current.classList.remove('zoom-hide-pins');
+        }
+      }
+    };
+
+    map.on('zoom', updateZoomLOD);
+    map.on('zoomend', updateZoomLOD);
+    updateZoomLOD();
+
     return () => {
+      map.off('zoom', updateZoomLOD);
+      map.off('zoomend', updateZoomLOD);
       if (resizeObserver) {
         resizeObserver.disconnect();
       }
     };
-  }, [region, currentLayerType, pinViewMode, activeSubRegionId, selectedCruId, cellarBottlesCountBySub, showBoundaries, boundaryData, showRegionOutline, outlineData, hasGrandCrus, hasPremierCrus]);
+  }, [region, currentLayerType, pinViewMode, activeSubRegionId, selectedCruId, cellarBottlesCountBySub, showBoundaries, boundaryData, showRegionOutline, outlineData, hasGrandCrus, hasPremierCrus, minMarkerZoom]);
 
   // Sync active sub-region focus
   useEffect(() => {
