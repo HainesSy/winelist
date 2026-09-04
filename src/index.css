@@ -1736,6 +1736,27 @@ button.region-label:hover,
   }
 }
 
+/* Suppress default browser focus outline rectangle on SVG paths, vectors, and Leaflet interactive elements */
+.leaflet-container svg,
+.leaflet-container path,
+.leaflet-interactive,
+.leaflet-interactive:focus,
+.leaflet-interactive:focus-visible,
+.leaflet-interactive:active,
+.sommelier-region-outline,
+.sommelier-region-outline:focus,
+.sommelier-region-outline:focus-visible,
+.sommelier-region-outline:active,
+.aoc-defined-boundary,
+.aoc-defined-boundary:focus,
+.aoc-defined-boundary:focus-visible,
+.aoc-defined-boundary:active {
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* Minimalist Regional Boundary Outline */
 .sommelier-region-outline {
   stroke-linejoin: round;
@@ -1744,6 +1765,16 @@ button.region-label:hover,
   cursor: pointer;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
   transition: stroke-width 0.2s ease, fill-opacity 0.2s ease, filter 0.2s ease;
+  outline: none !important;
+  outline-width: 0 !important;
+}
+
+.sommelier-region-outline:focus,
+.sommelier-region-outline:focus-visible,
+.sommelier-region-outline:active {
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none !important;
 }
 
 .sommelier-region-outline:hover {

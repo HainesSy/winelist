@@ -212,6 +212,9 @@ export default function WineRegionMap({
             },
             click: (e) => {
               L.DomEvent.stopPropagation(e);
+              if (e.originalEvent?.target && typeof e.originalEvent.target.blur === 'function') {
+                e.originalEvent.target.blur();
+              }
               if (mapInstanceRef.current && e.target.getBounds) {
                 mapInstanceRef.current.fitBounds(e.target.getBounds(), {
                   padding: [45, 45],
@@ -302,6 +305,10 @@ export default function WineRegionMap({
             },
             click: (e) => {
               L.DomEvent.stopPropagation(e);
+              if (e.originalEvent?.target && typeof e.originalEvent.target.blur === 'function') {
+                e.originalEvent.target.blur();
+              }
+              const props = feature.properties || {};
               const targetSubId = props.subregionId || props.parentSubregionId || props.id || feature.id;
               if (onSelectSubRegionRef.current) {
                 onSelectSubRegionRef.current(targetSubId);
