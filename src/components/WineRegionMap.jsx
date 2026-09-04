@@ -329,19 +329,33 @@ export default function WineRegionMap({
             }
           });
 
-          // Small, centered cartographic text label fitting seamlessly with map typography
+          // Small, centered cartographic text label that scales with the boundary size and zoom
           if (layer.getBounds && layer.getBounds().isValid()) {
-            const center = layer.getBounds().getCenter();
+            const bounds = layer.getBounds();
+            const center = bounds.getCenter();
+
+            // Calculate geographic dimensions of this boundary polygon
+            const dLng = Math.abs(bounds.getEast() - bounds.getWest());
+            const dLat = Math.abs(bounds.getNorth() - bounds.getSouth());
+            const geoSpan = Math.sqrt(dLng * dLat);
+
+            // Scale factor proportional to the boundary polygon's physical size
+            // Smaller/compact borders get scaled down (~0.72 - 0.85); larger districts get standard size (~1.0 - 1.15)
+            const polySizeScale = Math.min(Math.max(0.70 + (geoSpan * 1.6), 0.72), 1.15).toFixed(2);
+            // Dynamic max-width tailored to boundary width so long names wrap elegantly
+            const maxLabelWidth = Math.round(Math.min(Math.max(dLng * 420, 80), 140));
+
             const labelIcon = L.divIcon({
               className: 'sommelier-district-center-label-wrapper',
               html: `
-                <div class="sommelier-district-center-label ${isSelected ? 'is-active' : ''}">
+                <div class="sommelier-district-center-label ${isSelected ? 'is-active' : ''}" 
+                     style="--poly-size-scale: ${polySizeScale}; max-width: ${maxLabelWidth}px;">
                   <span class="district-center-name">${props.name}</span>
                   ${bottleCount > 0 ? `<span class="district-center-bottle-pill">🍷 ${bottleCount}</span>` : ''}
                 </div>
               `,
-              iconSize: [160, 24],
-              iconAnchor: [80, 12]
+              iconSize: [0, 0],
+              iconAnchor: [0, 0]
             });
 
             const labelMarker = L.marker(center, {
@@ -786,12 +800,30 @@ export default function WineRegionMap({
       });
     }
 
-    // Dynamic Level of Detail (LOD): directly attach zoom listeners and manage layer group
+    // Dynamic Level of Detail (LOD) & Zoom-Scaled Typography:
+    // Scale text smaller proportionally with the borders as the map zooms out
+    const baseZoom = region.zoom || 9;
+
     const updateZoomLOD = () => {
       if (!mapInstanceRef.current) return;
       const currentZ = mapInstanceRef.current.getZoom();
       const zoomedOut = currentZ < minMarkerZoom;
       setIsZoomedOut(zoomedOut);
+
+      // Compute dynamic border-proportional zoom scale factor:
+      // At baseZoom: 1.0. As zoom decreases, scale down progressively (0.80, 0.64, 0.50)
+      const zoomDiff = currentZ - baseZoom;
+      const zoomScaleFactor = Math.min(Math.max(Math.pow(1.24, zoomDiff), 0.45), 1.50).toFixed(3);
+
+      if (mapContainerRef.current) {
+        mapContainerRef.current.style.setProperty('--district-zoom-scale', zoomScaleFactor);
+
+        if (zoomedOut) {
+          mapContainerRef.current.classList.add('zoom-hide-pins');
+        } else {
+          mapContainerRef.current.classList.remove('zoom-hide-pins');
+        }
+      }
 
       if (layerGroupRef.current) {
         if (zoomedOut) {
@@ -802,14 +834,6 @@ export default function WineRegionMap({
           if (!mapInstanceRef.current.hasLayer(layerGroupRef.current)) {
             mapInstanceRef.current.addLayer(layerGroupRef.current);
           }
-        }
-      }
-
-      if (mapContainerRef.current) {
-        if (zoomedOut) {
-          mapContainerRef.current.classList.add('zoom-hide-pins');
-        } else {
-          mapContainerRef.current.classList.remove('zoom-hide-pins');
         }
       }
     };
