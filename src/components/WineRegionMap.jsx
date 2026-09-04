@@ -332,7 +332,32 @@ export default function WineRegionMap({
           // Small, centered cartographic text label that scales with the boundary size and zoom
           if (layer.getBounds && layer.getBounds().isValid()) {
             const bounds = layer.getBounds();
-            const center = bounds.getCenter();
+            let center = bounds.getCenter();
+
+            // Calculate precise geometric centroid (center of mass) of the boundary polygon
+            if (feature.geometry && feature.geometry.coordinates) {
+              let pts = feature.geometry.coordinates;
+              if (Array.isArray(pts[0]) && Array.isArray(pts[0][0])) pts = pts[0]; // exterior ring
+              let area = 0, cx = 0, cy = 0;
+              const n = pts.length;
+              for (let i = 0; i < n - 1; i++) {
+                const [x0, y0] = pts[i];
+                const [x1, y1] = pts[i + 1];
+                const cross = (x0 * y1 - x1 * y0);
+                area += cross;
+                cx += (x0 + x1) * cross;
+                cy += (y0 + y1) * cross;
+              }
+              area = area / 2;
+              if (Math.abs(area) > 1e-7) {
+                cx = cx / (6 * area);
+                cy = cy / (6 * area);
+                if (cy >= bounds.getSouth() && cy <= bounds.getNorth() &&
+                    cx >= bounds.getWest() && cx <= bounds.getEast()) {
+                  center = L.latLng(cy, cx);
+                }
+              }
+            }
 
             // Calculate geographic dimensions of this boundary polygon
             const dLng = Math.abs(bounds.getEast() - bounds.getWest());

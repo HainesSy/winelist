@@ -1864,17 +1864,19 @@ button.region-label:hover,
   background: transparent !important;
   border: none !important;
   pointer-events: auto !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  display: block !important;
   overflow: visible !important;
 }
 
 .sommelier-district-center-label {
+  position: absolute;
+  left: 0;
+  top: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
+  width: max-content;
   font-family: var(--font-serif, 'Playfair Display', Georgia, 'Times New Roman', serif);
   font-size: 0.65rem; /* ~10px refined base */
   font-weight: 700;
