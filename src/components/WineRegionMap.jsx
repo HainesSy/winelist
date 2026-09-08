@@ -53,6 +53,94 @@ const getTileLayers = () => ({
   }
 });
 
+// Dynamic polygon boundary geometric clearance and label fitting helpers
+function getPolygonRings(feature) {
+  if (!feature.geometry || !feature.geometry.coordinates) return [];
+  if (feature.geometry.type === 'Polygon') {
+    return [feature.geometry.coordinates[0]];
+  } else if (feature.geometry.type === 'MultiPolygon') {
+    return feature.geometry.coordinates.map(poly => poly[0]);
+  }
+  return [];
+}
+
+function getInnerClearance(ring, cx, cy) {
+  let minLeft = Infinity;
+  let minRight = Infinity;
+  let minTop = Infinity;
+  let minBottom = Infinity;
+
+  const n = ring.length;
+  for (let i = 0; i < n - 1; i++) {
+    const [x1, y1] = ring[i];
+    const [x2, y2] = ring[i + 1];
+
+    if ((y1 <= cy && cy <= y2) || (y2 <= cy && cy <= y1)) {
+      if (Math.abs(y2 - y1) > 1e-7) {
+        const t = (cy - y1) / (y2 - y1);
+        const xInt = x1 + t * (x2 - x1);
+        if (xInt <= cx) {
+          const d = cx - xInt;
+          if (d < minLeft) minLeft = d;
+        }
+        if (xInt >= cx) {
+          const d = xInt - cx;
+          if (d < minRight) minRight = d;
+        }
+      }
+    }
+
+    if ((x1 <= cx && cx <= x2) || (x2 <= cx && cx <= x1)) {
+      if (Math.abs(x2 - x1) > 1e-7) {
+        const t = (cx - x1) / (x2 - x1);
+        const yInt = y1 + t * (y2 - y1);
+        if (yInt <= cy) {
+          const d = cy - yInt;
+          if (d < minBottom) minBottom = d;
+        }
+        if (yInt >= cy) {
+          const d = yInt - cy;
+          if (d < minTop) minTop = d;
+        }
+      }
+    }
+  }
+  return { minLeft, minRight, minTop, minBottom };
+}
+
+function generateLayoutCandidates(name, isNarrow) {
+  const parenMatch = name.match(/^(.*?)\s*\((.*?)\)$/);
+  let main = name;
+  let sub = null;
+  if (parenMatch) {
+    main = parenMatch[1].trim();
+    sub = '(' + parenMatch[2].trim() + ')';
+  }
+
+  const words = main.split(/\s+/);
+  const candidates = [];
+
+  if (isNarrow && words.length >= 3) {
+    candidates.push({ lines: [...words], sub });
+  }
+
+  if (words.length === 2) {
+    candidates.push({ lines: [words[0], words[1]], sub });
+  } else if (words.length === 3) {
+    candidates.push({ lines: [words[0] + ' ' + words[1], words[2]], sub });
+    candidates.push({ lines: [words[0], words[1] + ' ' + words[2]], sub });
+  } else if (words.length >= 4) {
+    const mid = Math.ceil(words.length / 2);
+    candidates.push({ lines: [words.slice(0, mid).join(' '), words.slice(mid).join(' ')], sub });
+    if (words.length === 4) {
+      candidates.push({ lines: [words[0], words[1] + ' ' + words[2], words[3]], sub });
+    }
+  }
+
+  candidates.push({ lines: [main], sub });
+  return candidates;
+}
+
 export default function WineRegionMap({ 
   region, 
   activeSubRegionId, 
@@ -68,6 +156,7 @@ export default function WineRegionMap({
   const layerGroupRef = useRef(null);
   const outlineGroupRef = useRef(null);
   const geoJsonGroupRef = useRef(null);
+  const boundaryLabelsRef = useRef([]);
   const onSelectSubRegionRef = useRef(onSelectSubRegion);
   const onSelectCruRef = useRef(onSelectCru);
   const onViewCellarRef = useRef(onViewCellar);
@@ -153,6 +242,7 @@ export default function WineRegionMap({
     if (geoJsonGroupRef.current) {
       geoJsonGroupRef.current.clearLayers();
     }
+    boundaryLabelsRef.current = [];
 
     // 1. Draw Minimalist Regional Boundary Outline (Macro Appellation Border)
     let outlineLayer = null;
@@ -329,7 +419,7 @@ export default function WineRegionMap({
             }
           });
 
-          // Small, centered cartographic text label that scales with the boundary size and zoom
+          // Centered cartographic boundary label with dynamic border clearance fitting
           if (layer.getBounds && layer.getBounds().isValid()) {
             const bounds = layer.getBounds();
             let center = bounds.getCenter();
@@ -359,24 +449,17 @@ export default function WineRegionMap({
               }
             }
 
-            // Calculate geographic dimensions of this boundary polygon
-            const dLng = Math.abs(bounds.getEast() - bounds.getWest());
-            const dLat = Math.abs(bounds.getNorth() - bounds.getSouth());
-            const geoSpan = Math.sqrt(dLng * dLat);
-
-            // Scale factor proportional to the boundary polygon's physical size
-            // Smaller/compact borders get scaled down (~0.72 - 0.85); larger districts get standard size (~1.0 - 1.15)
-            const polySizeScale = Math.min(Math.max(0.70 + (geoSpan * 1.6), 0.72), 1.15).toFixed(2);
-            // Dynamic max-width tailored to boundary width so long names wrap elegantly
-            const maxLabelWidth = Math.round(Math.min(Math.max(dLng * 420, 80), 140));
+            const rings = getPolygonRings(feature);
+            const ring = rings[0];
+            const clearance = ring ? getInnerClearance(ring, center.lng, center.lat) : null;
+            const domId = `sommelier-lbl-${String(feature.id || Math.random().toString(36).slice(2, 8)).replace(/[^a-zA-Z0-9_-]/g, '_')}`;
 
             const labelIcon = L.divIcon({
               className: 'sommelier-district-center-label-wrapper',
               html: `
-                <div class="sommelier-district-center-label ${isSelected ? 'is-active' : ''}" 
-                     style="--poly-size-scale: ${polySizeScale}; max-width: ${maxLabelWidth}px;">
-                  <span class="district-center-name">${props.name}</span>
-                  ${bottleCount > 0 ? `<span class="district-center-bottle-pill">🍷 ${bottleCount}</span>` : ''}
+                <div class="sommelier-district-center-label ${isSelected ? 'is-active' : ''}" id="${domId}">
+                  <span class="district-line">${props.name}</span>
+                  ${bottleCount > 0 ? `<span class="district-bottle-count">(🍷${bottleCount})</span>` : ''}
                 </div>
               `,
               iconSize: [0, 0],
@@ -430,10 +513,32 @@ export default function WineRegionMap({
             });
 
             labelMarker.addTo(geoJsonGroupRef.current);
+            boundaryLabelsRef.current.push({
+              domId,
+              id: feature.id,
+              name: props.name,
+              bottleCount,
+              bounds,
+              center,
+              clearance,
+              marker: labelMarker
+            });
           }
         }
       });
       geoLayer.addTo(geoJsonGroupRef.current);
+      setTimeout(() => {
+        if (typeof updateBoundaryLabelFitting === 'function') {
+          updateBoundaryLabelFitting();
+        }
+      }, 30);
+      if (typeof requestAnimationFrame !== 'undefined') {
+        requestAnimationFrame(() => {
+          if (typeof updateBoundaryLabelFitting === 'function') {
+            updateBoundaryLabelFitting();
+          }
+        });
+      }
     }
 
     // Frame map bounds: Prioritize regional outline for whole-region framing, then district boundaries
@@ -825,6 +930,113 @@ export default function WineRegionMap({
       });
     }
 
+    // Dynamic Boundary Label Fitting Engine:
+    // Strictly bounds district text within internal geometric borders and bounding box
+    const updateBoundaryLabelFitting = () => {
+      if (!mapInstanceRef.current) return;
+      const map = mapInstanceRef.current;
+      if (!boundaryLabelsRef.current || !boundaryLabelsRef.current.length) return;
+
+      let ctx = null;
+      try {
+        const canvas = document.createElement('canvas');
+        ctx = canvas.getContext('2d');
+      } catch {
+        // Context fallback
+      }
+
+      boundaryLabelsRef.current.forEach(item => {
+        const cp = map.latLngToLayerPoint(item.center);
+        let distLeft, distRight, distTop, distBottom;
+
+        if (item.clearance && isFinite(item.clearance.minLeft) && isFinite(item.clearance.minRight)) {
+          const ptLeft = map.latLngToLayerPoint([item.center.lat, item.center.lng - item.clearance.minLeft]);
+          const ptRight = map.latLngToLayerPoint([item.center.lat, item.center.lng + item.clearance.minRight]);
+          const ptTop = map.latLngToLayerPoint([item.center.lat + item.clearance.minTop, item.center.lng]);
+          const ptBottom = map.latLngToLayerPoint([item.center.lat - item.clearance.minBottom, item.center.lng]);
+
+          distLeft = Math.abs(cp.x - ptLeft.x);
+          distRight = Math.abs(ptRight.x - cp.x);
+          distTop = Math.abs(cp.y - ptTop.y);
+          distBottom = Math.abs(ptBottom.y - cp.y);
+        } else {
+          const nw = map.latLngToLayerPoint(item.bounds.getNorthWest());
+          const se = map.latLngToLayerPoint(item.bounds.getSouthEast());
+          distLeft = Math.abs(cp.x - nw.x);
+          distRight = Math.abs(se.x - cp.x);
+          distTop = Math.abs(cp.y - nw.y);
+          distBottom = Math.abs(se.y - cp.y);
+        }
+
+        const nw = map.latLngToLayerPoint(item.bounds.getNorthWest());
+        const se = map.latLngToLayerPoint(item.bounds.getSouthEast());
+        const envDistLeft = Math.abs(cp.x - nw.x);
+        const envDistRight = Math.abs(se.x - cp.x);
+        const envDistTop = Math.abs(cp.y - nw.y);
+        const envDistBottom = Math.abs(se.y - cp.y);
+
+        const maxW = Math.min(distLeft, distRight, envDistLeft, envDistRight) * 2 * 0.82;
+        const maxH = Math.min(distTop, distBottom, envDistTop, envDistBottom) * 2 * 0.82;
+
+        const el = document.getElementById(item.domId) || (item.marker.getElement && item.marker.getElement()?.querySelector('.sommelier-district-center-label'));
+        if (!el) return;
+
+        const isNarrow = maxW < (maxH * 1.25);
+        const candidates = generateLayoutCandidates(item.name, isNarrow);
+
+        let bestFit = null;
+        if (ctx) {
+          ctx.font = '700 10px "Playfair Display", Georgia, serif';
+          for (const cand of candidates) {
+            const testWithSub = cand.sub ? [...cand.lines, cand.sub] : cand.lines;
+            const testWithoutSub = cand.lines;
+
+            for (const testLines of [testWithSub, testWithoutSub]) {
+              const lineWidths10 = testLines.map(line => {
+                const isSub = line.startsWith('(') && line.endsWith(')');
+                return ctx.measureText(line.toUpperCase()).width * 1.05 * (isSub ? 0.78 : 1.0);
+              });
+              const maxW10 = Math.max(...lineWidths10);
+              const totalH10 = (testLines.length - (testLines.some(l => l.startsWith('(')) ? 0.22 : 0)) * 10 * 1.10;
+
+              const fsW = (maxW / maxW10) * 10;
+              const fsH = (maxH / totalH10) * 10;
+              const fs = Math.min(fsW, fsH, 11.5);
+
+              if (fs >= 6.0 && maxW >= 22 && maxH >= 12) {
+                if (!bestFit || fs > bestFit.fontSize) {
+                  bestFit = {
+                    fontSize: fs,
+                    lines: testLines
+                  };
+                }
+              }
+            }
+          }
+        }
+
+        if (bestFit && bestFit.fontSize >= 6.0) {
+          el.style.display = 'inline-flex';
+          el.style.opacity = '1';
+          el.style.fontSize = bestFit.fontSize.toFixed(1) + 'px';
+          el.style.maxWidth = Math.floor(maxW) + 'px';
+
+          const bottleHtml = item.bottleCount > 0 ? `<span class="district-bottle-count">(🍷${item.bottleCount})</span>` : '';
+          el.innerHTML = bestFit.lines.map((l, idx) => {
+            const isSub = l.startsWith('(') && l.endsWith(')');
+            const isLast = idx === bestFit.lines.length - 1;
+            if (isSub) {
+              return `<span class="district-subline">${l}${isLast ? bottleHtml : ''}</span>`;
+            }
+            return `<span class="district-line">${l}${isLast ? bottleHtml : ''}</span>`;
+          }).join('');
+        } else {
+          el.style.display = 'none';
+          el.style.opacity = '0';
+        }
+      });
+    };
+
     // Dynamic Level of Detail (LOD) & Zoom-Scaled Typography:
     // Scale text smaller proportionally with the borders as the map zooms out
     const baseZoom = region.zoom || 9;
@@ -861,15 +1073,21 @@ export default function WineRegionMap({
           }
         }
       }
+
+      updateBoundaryLabelFitting();
     };
 
     map.on('zoom', updateZoomLOD);
     map.on('zoomend', updateZoomLOD);
+    map.on('moveend', updateBoundaryLabelFitting);
+    map.on('resize', updateBoundaryLabelFitting);
     updateZoomLOD();
 
     return () => {
       map.off('zoom', updateZoomLOD);
       map.off('zoomend', updateZoomLOD);
+      map.off('moveend', updateBoundaryLabelFitting);
+      map.off('resize', updateBoundaryLabelFitting);
       if (resizeObserver) {
         resizeObserver.disconnect();
       }
