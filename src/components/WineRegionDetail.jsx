@@ -187,8 +187,6 @@ const BURGUNDY_PRODUCER_MAP = {
   'domaine comtesse de cherisey': { commune: 'Meursault-Blagny', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
   'faiveley': { commune: 'Nuits-Saint-Georges', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
   'domaine faiveley': { commune: 'Nuits-Saint-Georges', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
-  'jean foillard': { commune: 'Morgon', subregionId: 'maconnais', subregion: 'Beaujolais', cruType: 'Cru Beaujolais Benchmark' },
-  'foillard': { commune: 'Morgon', subregionId: 'maconnais', subregion: 'Beaujolais' },
   'domaine ghislaine barthod': { commune: 'Chambolle-Musigny', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
   'ghislaine barthod': { commune: 'Chambolle-Musigny', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
   'domaine jean grivot': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits', cruType: '🥇 1er Cru Climat' },
@@ -197,8 +195,6 @@ const BURGUNDY_PRODUCER_MAP = {
   'domaine remi jobard': { commune: 'Meursault', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
   'remi jobard': { commune: 'Meursault', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
   'kosta browne': { commune: 'Beaune / Pommard', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
-  'marcel lapierre': { commune: 'Morgon', subregionId: 'maconnais', subregion: 'Beaujolais', cruType: 'Cru Beaujolais Benchmark' },
-  'lapierre': { commune: 'Morgon', subregionId: 'maconnais', subregion: 'Beaujolais' },
   'domaine larue': { commune: 'Saint-Aubin', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
   'larue': { commune: 'Saint-Aubin', subregionId: 'cote-de-beaune', subregion: 'Côte de Beaune' },
   'roland lavantureux': { commune: 'Chablis', subregionId: 'chablis', subregion: 'Chablis & Grand Auxerrois' },
@@ -259,6 +255,122 @@ const BURGUNDY_PRODUCER_MAP = {
   'domaine sylvain cathiard': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' },
   'sylvain cathiard': { commune: 'Vosne-Romanée', subregionId: 'cote-de-nuits', subregion: 'Côte de Nuits' }
 };
+
+// Helper: match Beaujolais producers & crus
+const BEAUJOLAIS_PRODUCER_MAP = {
+  'jean foillard': { commune: 'Morgon', subregionId: 'beaujolais-crus', cruId: 'morgon', cruType: 'Cru Beaujolais Benchmark' },
+  'foillard': { commune: 'Morgon', subregionId: 'beaujolais-crus', cruId: 'morgon' },
+  'marcel lapierre': { commune: 'Morgon', subregionId: 'beaujolais-crus', cruId: 'morgon', cruType: 'Cru Beaujolais Benchmark' },
+  'lapierre': { commune: 'Morgon', subregionId: 'beaujolais-crus', cruId: 'morgon' },
+  'guy breton': { commune: 'Morgon', subregionId: 'beaujolais-crus', cruId: 'morgon', cruType: 'Cru Beaujolais Benchmark' },
+  'breton': { commune: 'Morgon', subregionId: 'beaujolais-crus', cruId: 'morgon' },
+  'jean-paul thévenet': { commune: 'Morgon', subregionId: 'beaujolais-crus', cruId: 'morgon', cruType: 'Cru Beaujolais Benchmark' },
+  'jean-paul thevenet': { commune: 'Morgon', subregionId: 'beaujolais-crus', cruId: 'morgon', cruType: 'Cru Beaujolais Benchmark' },
+  'jean paul thevenet': { commune: 'Morgon', subregionId: 'beaujolais-crus', cruId: 'morgon' },
+  'thevenet': { commune: 'Morgon', subregionId: 'beaujolais-crus', cruId: 'morgon' },
+  'yvon métras': { commune: 'Fleurie', subregionId: 'beaujolais-crus', cruId: 'fleurie', cruType: 'Cru Beaujolais Cult Domaine' },
+  'yvon metras': { commune: 'Fleurie', subregionId: 'beaujolais-crus', cruId: 'fleurie' },
+  'metras': { commune: 'Fleurie', subregionId: 'beaujolais-crus', cruId: 'fleurie' },
+  'clos de la roilette': { commune: 'Fleurie', subregionId: 'beaujolais-crus', cruId: 'fleurie', cruType: 'Cru Beaujolais Benchmark' },
+  'château des jacques': { commune: 'Moulin-à-Vent', subregionId: 'beaujolais-crus', cruId: 'moulin-a-vent', cruType: 'Cru Beaujolais Benchmark' },
+  'chateau des jacques': { commune: 'Moulin-à-Vent', subregionId: 'beaujolais-crus', cruId: 'moulin-a-vent' },
+  'domaine thillardon': { commune: 'Chénas', subregionId: 'beaujolais-crus', cruId: 'chenas', cruType: 'Cru Beaujolais Benchmark' },
+  'thillardon': { commune: 'Chénas', subregionId: 'beaujolais-crus', cruId: 'chenas' },
+  'château thivin': { commune: 'Côte de Brouilly', subregionId: 'beaujolais-crus', cruId: 'cote-de-brouilly', cruType: 'Cru Beaujolais Benchmark' },
+  'chateau thivin': { commune: 'Côte de Brouilly', subregionId: 'beaujolais-crus', cruId: 'cote-de-brouilly', cruType: 'Cru Beaujolais Benchmark' },
+  'thivin': { commune: 'Côte de Brouilly', subregionId: 'beaujolais-crus', cruId: 'cote-de-brouilly', cruType: 'Cru Beaujolais Benchmark' },
+  'domaine de la grand\'cour': { commune: 'Fleurie', subregionId: 'beaujolais-crus', cruId: 'fleurie', cruType: 'Cru Beaujolais Benchmark' },
+  'dutraive': { commune: 'Fleurie', subregionId: 'beaujolais-crus', cruId: 'fleurie' }
+};
+
+function matchBeaujolaisWine(wine, region) {
+  const prodLower = (wine.Producer || '').toLowerCase();
+  const wineLower = (wine.Wine || '').toLowerCase();
+  const locLower = (wine.Locale || wine.Region || '').toLowerCase();
+  const combinedText = `${prodLower} ${wineLower} ${locLower}`;
+
+  let matchedSubId = null;
+  let matchedCruId = null;
+  let cruClassification = null;
+  let commune = null;
+
+  if (BEAUJOLAIS_PRODUCER_MAP[prodLower]) {
+    const info = BEAUJOLAIS_PRODUCER_MAP[prodLower];
+    matchedSubId = info.subregionId;
+    matchedCruId = info.cruId || null;
+    cruClassification = info.cruType || null;
+    commune = info.commune;
+  } else {
+    for (const [key, info] of Object.entries(BEAUJOLAIS_PRODUCER_MAP)) {
+      if (prodLower.includes(key) || combinedText.includes(key)) {
+        matchedSubId = info.subregionId;
+        matchedCruId = info.cruId || null;
+        cruClassification = info.cruType || null;
+        commune = info.commune;
+        break;
+      }
+    }
+  }
+
+  if (region?.grandCrus) {
+    const sortedCrus = [...region.grandCrus].sort((a, b) => (b.name?.length || 0) - (a.name?.length || 0));
+    for (const cru of sortedCrus) {
+      const cruNameClean = cru.name.toLowerCase().replace(/\(.*?\)/g, '').trim();
+      const cruIdClean = cru.id.toLowerCase();
+      const cruNameNorm = cruNameClean.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[-_]+/g, ' ');
+      const cruIdNorm = cruIdClean.replace(/[-_]+/g, ' ');
+      const combinedNorm = combinedText.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[-_]+/g, ' ');
+
+      if (
+        combinedText.includes(cruNameClean) ||
+        (cru.id && combinedText.includes(cruIdClean)) ||
+        combinedNorm.includes(cruNameNorm) ||
+        (cru.id && combinedNorm.includes(cruIdNorm))
+      ) {
+        if (matchedCruId !== cru.id) {
+          matchedCruId = cru.id;
+          cruClassification = '🍇 Cru Beaujolais (AOC)';
+          commune = cru.village || cru.name;
+        } else {
+          cruClassification = cruClassification || '🍇 Cru Beaujolais (AOC)';
+          commune = commune || cru.village || cru.name;
+        }
+        if (cru.subregionId) matchedSubId = cru.subregionId;
+        break;
+      }
+    }
+  }
+
+  if (!matchedSubId && region?.subRegions) {
+    for (const sub of region.subRegions) {
+      const subNameLower = sub.name.toLowerCase();
+      if (combinedText.includes(subNameLower) || (sub.focus && combinedText.includes(sub.focus.toLowerCase()))) {
+        matchedSubId = sub.id;
+        break;
+      }
+    }
+  }
+
+  if (!matchedSubId) {
+    if (combinedText.includes('village')) {
+      matchedSubId = 'beaujolais-villages';
+      cruClassification = '🍇 Beaujolais-Villages AOC';
+    } else if (combinedText.includes('bas-beaujolais') || combinedText.includes('doree') || combinedText.includes('dorée')) {
+      matchedSubId = 'bas-beaujolais';
+      cruClassification = '🍇 Beaujolais AOC (Pierres Dorées)';
+    } else if (matchedCruId) {
+      matchedSubId = 'beaujolais-crus';
+    }
+  }
+
+  return {
+    matchedSubId,
+    matchedCruId,
+    cruClassification,
+    commune,
+    producerCode: null
+  };
+}
 
 // Match resolver for Champagne cellar items
 function matchChampagneWine(wine, region) {
@@ -466,10 +578,7 @@ function matchBurgundyWine(wine, region) {
       { name: 'Montagny', subId: 'cote-chalonnaise' },
       { name: 'Pouilly-Fuissé', subId: 'maconnais' },
       { name: 'Saint-Véran', subId: 'maconnais' },
-      { name: 'Viré-Clessé', subId: 'maconnais' },
-      { name: 'Morgon', subId: 'maconnais' },
-      { name: 'Fleurie', subId: 'maconnais' },
-      { name: 'Moulin-à-Vent', subId: 'maconnais' }
+      { name: 'Viré-Clessé', subId: 'maconnais' }
     ];
 
     for (const v of villages) {
@@ -593,6 +702,7 @@ export default function WineRegionDetail({
 
   const isChampagne = region?.id === 'champagne';
   const isBurgundy = region?.id === 'burgundy';
+  const isBeaujolais = region?.id === 'beaujolais';
   const isAlsace = region?.id === 'alsace';
   const isCorsica = region?.id === 'corsica';
 
@@ -736,6 +846,13 @@ export default function WineRegionDetail({
         cruClassification = match.cruClassification;
         commune = match.commune;
         producerCode = match.producerCode;
+      } else if (isBeaujolais) {
+        const match = matchBeaujolaisWine(w, region);
+        matchedSubId = match.matchedSubId;
+        matchedCruId = match.matchedCruId;
+        cruClassification = match.cruClassification;
+        commune = match.commune;
+        producerCode = match.producerCode;
       } else {
         const locale = (w.Locale || '').toLowerCase();
         const wineName = (w.Wine || '').toLowerCase();
@@ -828,15 +945,15 @@ export default function WineRegionDetail({
       enrichedCellarWines: enriched,
       filteredCellarWines: filtered
     };
-  }, [cellarWines, region, activeSubRegionId, searchFilter, isChampagne, isBurgundy]);
+  }, [cellarWines, region, activeSubRegionId, searchFilter, isChampagne, isBurgundy, isBeaujolais]);
 
   // Unified Filtered Crus for the Cru Directory tab supporting polymorphic badges across all 13 world regions
   const unifiedCrus = useMemo(() => {
     const list = [];
     if (region?.grandCrus) {
       region.grandCrus.forEach(cru => {
-        const badge = cru.badge || (isBurgundy ? (cru.areaHa ? `${cru.areaHa} ha` : 'Grand Cru') : (isChampagne ? '100% Échelle' : 'Grand Cru'));
-        const classification = cru.classification || (isBurgundy ? 'Grand Cru (AOC)' : (isChampagne ? 'Grand Cru (100%)' : 'Grand Cru'));
+        const badge = cru.badge || (isBurgundy ? (cru.areaHa ? `${cru.areaHa} ha` : 'Grand Cru') : (isChampagne ? '100% Échelle' : (isBeaujolais ? 'Cru Beaujolais' : 'Grand Cru')));
+        const classification = cru.classification || (isBurgundy ? 'Grand Cru (AOC)' : (isChampagne ? 'Grand Cru (100%)' : (isBeaujolais ? 'Cru Beaujolais (AOC)' : 'Grand Cru')));
         list.push({ ...cru, tier: cru.tier || 'grandCru', classification, badge });
       });
     }
@@ -848,7 +965,7 @@ export default function WineRegionDetail({
       });
     }
     return list;
-  }, [region, isBurgundy, isChampagne]);
+  }, [region, isBurgundy, isChampagne, isBeaujolais]);
 
   // District filter pills dynamically derived from region.subRegions or crus
   const districtList = useMemo(() => {
@@ -916,12 +1033,19 @@ export default function WineRegionDetail({
         premierCrus: 'Premier Crus'
       };
     }
+    if (isBeaujolais) {
+      return {
+        all: `All Crus (${unifiedCrus.length})`,
+        grandCrus: '10 Crus du Beaujolais',
+        premierCrus: 'Premier Crus'
+      };
+    }
     return {
       all: `All Crus (${unifiedCrus.length})`,
       grandCrus: gcCount > 0 ? `Grand Crus / Classified (${gcCount})` : 'Grand Crus',
       premierCrus: pcCount > 0 ? `Premier Crus / Benchmarks (${pcCount})` : 'Premier Crus'
     };
-  }, [isChampagne, isBurgundy, isAlsace, unifiedCrus]);
+  }, [isChampagne, isBurgundy, isAlsace, isBeaujolais, unifiedCrus]);
 
   // Dynamic Grape filter options
   const grapeOptions = useMemo(() => {

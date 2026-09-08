@@ -879,7 +879,7 @@ suite('16. Food Pairing Taxonomy Completeness & Sommelier Service Tips');
 
 test('Every region in WINE_REGIONS has food pairings with non-empty dish & rationale', () => {
   const regionIds = Object.keys(WINE_REGIONS);
-  assert.strictEqual(regionIds.length, 17, 'Master registry contains all 17 world wine regions');
+  assert.strictEqual(regionIds.length, 22, 'Master registry contains all 22 world wine regions');
 
   for (const rid of regionIds) {
     const r = WINE_REGIONS[rid];
@@ -955,6 +955,11 @@ test('Master Sommelier Floor Service Tips: All 17 regions have detailed service 
     if (id === 'chile-maipo') return "Serve Maipo Valley Cabernet Sauvignon at 16–18°C in Bordeaux stems...";
     if (id === 'japan-chubu') return "Serve GI Yamanashi Koshu at 8–10°C in delicate white wine tulip glasses...";
     if (id === 'italy-other') return "Serve Amarone della Valpolicella at 17–18°C with 2–3 hours decanting...";
+    if (id === 'beaujolais') return "Serve Cru Beaujolais (Morgon, Moulin-à-Vent) at 14–16°C in wide Burgundy stems with light decanting...";
+    if (id === 'argentina-mendoza') return "Serve high-altitude Uco Valley Malbec and Cabernet Franc at 16–18°C in expansive Bordeaux stems with 45–60 minutes decanting...";
+    if (id === 'south-africa') return "Serve old-vine Swartland Chenin Blanc at 10–12°C and Stellenbosch Cabernet at 16–18°C in Bordeaux stems...";
+    if (id === 'new-zealand') return "Serve Marlborough Sauvignon Blanc at 8–10°C and Central Otago Pinot Noir at 14–16°C in Burgundy balloon stems...";
+    if (id === 'portugal') return "Serve Douro reds at 16–18°C and Vintage Port at 16–18°C after careful decanting off sediment; Vinho Verde Alvarinho at 8–10°C...";
     return `Serve ${region.name} red expressions at 16–18°C, white at 10–12°C.`;
   }
 
@@ -1001,7 +1006,21 @@ test('findWineRegion accurately resolves accents, diacritics, and case variation
     { query: "Mosel", country: "Germany", expectedId: "germany-mosel" },
     { query: "Rioja", country: "Spain", expectedId: "spain-rioja" },
     { query: "Puente Alto", country: "Chile", expectedId: "chile-maipo" },
-    { query: "Barossa", country: "Australia", expectedId: "australia" }
+    { query: "Barossa", country: "Australia", expectedId: "australia" },
+    { query: "Beaujolais", country: "France", expectedId: "beaujolais" },
+    { query: "Morgon", country: "France", expectedId: "beaujolais" },
+    { query: "Fleurie", country: "France", expectedId: "beaujolais" },
+    { query: "Mendoza", country: "Argentina", expectedId: "argentina-mendoza" },
+    { query: "Valle de Uco", country: "Argentina", expectedId: "argentina-mendoza" },
+    { query: "Uco Valley", country: "Argentina", expectedId: "argentina-mendoza" },
+    { query: "Stellenbosch", country: "South Africa", expectedId: "south-africa" },
+    { query: "Swartland", country: "South Africa", expectedId: "south-africa" },
+    { query: "Marlborough", country: "New Zealand", expectedId: "new-zealand" },
+    { query: "Central Otago", country: "New Zealand", expectedId: "new-zealand" },
+    { query: "Douro", country: "Portugal", expectedId: "portugal" },
+    { query: "Vinho Verde", country: "Portugal", expectedId: "portugal" },
+    { query: "Rías Baixas", country: "Spain", expectedId: "spain-rioja" },
+    { query: "Rias Baixas", country: "Spain", expectedId: "spain-rioja" }
   ];
 
   for (const c of queryCases) {
@@ -1077,6 +1096,145 @@ test('Scenario D: Alsatian Rangen de Thann volcanic Riesling vs Mosel Devonian s
   assert(/slate|schiefer/i.test(sonnenuhr.soil), 'Wehlener Sonnenuhr features Devonian slate');
 });
 
+
+
+// ============================================================================
+// 20. NEW WORLD TITANS & DECOUPLED REGIONS (BEAUJOLAIS, MENDOZA, RIAS BAIXAS, SA, NZ, PORTUGAL)
+// ============================================================================
+suite('20. Global Wine Titans & Standalone Appellation Modules');
+
+test('Beaujolais: Complete decoupling from Burgundy, all 10 Crus, pink granite & blue diorite, Gamay', () => {
+  const bj = WINE_REGIONS['beaujolais'];
+  assert(bj, 'Beaujolais region exists in master registry');
+  assert.strictEqual(bj.id, 'beaujolais');
+  assert.strictEqual(bj.country, 'France');
+
+  const crus = bj.crus || bj.grandCrus || [];
+  assert.strictEqual(crus.length, 10, `Beaujolais contains exactly 10 Crus (found ${crus.length})`);
+
+  const cruNames = crus.map(c => c.name.toLowerCase());
+  const expectedCrus = ['morgon', 'moulin-à-vent', 'fleurie', 'brouilly', 'côte de brouilly', 'chénas', 'chiroubles', 'juliénas', 'régnié', 'saint-amour'];
+  for (const ec of expectedCrus) {
+    assert(cruNames.some(cn => cn.includes(ec.replace(/[-àé]/g, '')) || cn.includes(ec)), `Cru ${ec} missing from Beaujolais`);
+  }
+
+  // Ensure Burgundy has no lingering Beaujolais crus
+  const burg = WINE_REGIONS['burgundy'];
+  const burgCrus = (burg.grandCrus || []).concat(burg.premierCrus || []).concat(burg.crus || []);
+  for (const bc of burgCrus) {
+    const text = (bc.name + ' ' + (bc.subregion || '')).toLowerCase();
+    assert(!text.includes('beaujolais') && !text.includes('morgon') && !text.includes('fleurie'),
+      `Burgundy still contains Beaujolais cru: ${bc.name}`);
+  }
+
+  // Geology & Vinification
+  const allText = JSON.stringify(bj);
+  assert(/granite|gore|arène/i.test(allText), 'Pink granite / gore pedology documented');
+  assert(/diorite|côrnes vertes/i.test(allText), 'Blue diorite côrnes vertes documented');
+  assert(/semi-carbonic|carbonic/i.test(allText), 'Semi-carbonic maceration documented');
+  assert(/Gang of Four|Lapierre|Foillard/i.test(allText), 'Gang of Four natural wine pioneers documented');
+});
+
+test('Argentina Mendoza: High-altitude Uco Valley, caliche limestone, Zonda winds & Malbec icons', () => {
+  const mendoza = WINE_REGIONS['argentina-mendoza'];
+  assert(mendoza, 'Argentina Mendoza exists in master registry');
+  assert.strictEqual(mendoza.country, 'Argentina');
+
+  // Subregions
+  const subIds = mendoza.subRegions.map(s => s.id);
+  assert(subIds.includes('valle-de-uco') || subIds.includes('uco-valley'), 'Uco Valley subregion present');
+  assert(subIds.includes('lujan-de-cuyo'), 'Luján de Cuyo subregion present');
+
+  // Terroir: Caliche, Zonda, Altitude
+  const allText = JSON.stringify(mendoza);
+  assert(/caliche|calcium carbonate/i.test(allText), 'Caliche limestone encrustations documented');
+  assert(/Zonda/i.test(allText), 'Zonda Foehn winds documented');
+  assert(/altitude|elevation|1,000m|1650m/i.test(allText), 'High altitude viticulture documented');
+  assert(/acequia/i.test(allText), 'Snowmelt acequia canal system documented');
+
+  // Cult producers & Crus
+  assert(/Catena Zapata/i.test(allText), 'Catena Zapata benchmark documented');
+  assert(/Zuccardi/i.test(allText), 'Zuccardi Valle de Uco documented');
+  assert(/Gualtallary/i.test(allText), 'Gualtallary cru documented');
+  assert(/Paraje Altamira/i.test(allText), 'Paraje Altamira cru documented');
+});
+
+test('Spain DO Rías Baixas: 5 sub-zones, granite xabre pedology, pergola viticulture & Albariño', () => {
+  const spain = WINE_REGIONS['spain-rioja'];
+  const rb = spain.subRegions.find(s => s.id === 'rias-baixas');
+  assert(rb, 'DO Rías Baixas subregion exists in Spain');
+
+  const rbText = JSON.stringify(rb) + ' ' + JSON.stringify(spain.crus) + ' ' + JSON.stringify(spain.terroir);
+  assert(/Val do Saln[eé]s/i.test(rbText), 'Val do Salnés sub-zone documented');
+  assert(/O Rosal/i.test(rbText), 'O Rosal sub-zone documented');
+  assert(/Condado do Tea/i.test(rbText), 'Condado do Tea sub-zone documented');
+  assert(/xabre|granite/i.test(rbText), 'Granite xabre pedology documented');
+  assert(/emparrado|pergola/i.test(rbText), 'Pergola / emparrado vine training documented');
+  assert(/Albariño/i.test(rbText), 'Albariño grape documented');
+  assert(/Do Ferreiro|Cepas Vellas|Pazo de Se[nñ]orans/i.test(JSON.stringify(spain)), 'Benchmark Albariño producers documented');
+});
+
+test('South Africa Western Cape: Stellenbosch, Swartland, Walker Bay, Old Vine Project (OVP) & Benguela Current', () => {
+  const sa = WINE_REGIONS['south-africa'];
+  assert(sa, 'South Africa region exists in master registry');
+  assert.strictEqual(sa.country, 'South Africa');
+
+  const subIds = sa.subRegions.map(s => s.id);
+  assert(subIds.includes('stellenbosch'), 'Stellenbosch subregion present');
+  assert(subIds.includes('swartland'), 'Swartland subregion present');
+  assert(subIds.includes('walker-bay'), 'Walker Bay subregion present');
+  assert(subIds.includes('constantia'), 'Constantia subregion present');
+
+  const saText = JSON.stringify(sa);
+  assert(/Benguela/i.test(saText), 'Antarctic Benguela Current documented');
+  assert(/Cape Doctor/i.test(saText), 'Cape Doctor southeasterly wind documented');
+  assert(/Old Vine Project|OVP|bush vines/i.test(saText), 'Old Vine Project / bush vines documented');
+  assert(/Sadie Family|Columella/i.test(saText), 'The Sadie Family documented');
+  assert(/Kanonkop|Paul Sauer/i.test(saText), 'Kanonkop Paul Sauer documented');
+  assert(/Vin de Constance/i.test(saText), 'Historic Vin de Constance documented');
+});
+
+test('New Zealand: Marlborough, Central Otago, Hawke\'s Bay, greywacke gravels & mica schist', () => {
+  const nz = WINE_REGIONS['new-zealand'];
+  assert(nz, 'New Zealand region exists in master registry');
+  assert.strictEqual(nz.country, 'New Zealand');
+
+  const subIds = nz.subRegions.map(s => s.id);
+  assert(subIds.includes('marlborough'), 'Marlborough subregion present');
+  assert(subIds.includes('central-otago'), 'Central Otago subregion present');
+  assert(subIds.includes('hawkes-bay'), 'Hawke\'s Bay subregion present');
+  assert(subIds.includes('martinborough'), 'Martinborough subregion present');
+
+  const nzText = JSON.stringify(nz);
+  assert(/greywacke/i.test(nzText), 'Greywacke riverstone gravels documented');
+  assert(/schist|mica schist/i.test(nzText), 'Haast metamorphic mica schist documented');
+  assert(/Gimblett Gravels/i.test(nzText), 'Gimblett Gravels documented');
+  assert(/Bannockburn/i.test(nzText), 'Bannockburn subdistrict documented');
+  assert(/Cloudy Bay/i.test(nzText), 'Cloudy Bay documented');
+  assert(/Felton Road/i.test(nzText), 'Felton Road documented');
+  assert(/Te Mata|Coleraine/i.test(nzText), 'Te Mata Coleraine documented');
+});
+
+test('Portugal: Douro Valley vertical schist terraces (xisto), Dão granite, Baga & Touriga Nacional', () => {
+  const pt = WINE_REGIONS['portugal'];
+  assert(pt, 'Portugal region exists in master registry');
+  assert.strictEqual(pt.country, 'Portugal');
+
+  const subIds = pt.subRegions.map(s => s.id);
+  assert(subIds.includes('douro') || subIds.includes('douro-valley'), 'Douro subregion present');
+  assert(subIds.includes('dao'), 'Dão subregion present');
+  assert(subIds.includes('alentejo'), 'Alentejo subregion present');
+  assert(subIds.includes('vinho-verde'), 'Vinho Verde subregion present');
+  assert(subIds.includes('bairrada'), 'Bairrada subregion present');
+
+  const ptText = JSON.stringify(pt);
+  assert(/xisto|schist/i.test(ptText), 'Vertical metamorphic schist (xisto) documented');
+  assert(/Touriga Nacional/i.test(ptText), 'Touriga Nacional grape documented');
+  assert(/Baga/i.test(ptText), 'Baga grape documented');
+  assert(/Alvarinho/i.test(ptText), 'Alvarinho grape documented');
+  assert(/Barca-Velha/i.test(ptText), 'Barca-Velha benchmark documented');
+  assert(/Quinta do Noval|Nacional/i.test(ptText), 'Quinta do Noval Nacional documented');
+});
 
 // ============================================================================
 // SUITE SUMMARY & VERDICT

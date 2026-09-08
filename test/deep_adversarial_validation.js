@@ -39,10 +39,11 @@ function assertCheck(description, condition, failureMessage) {
 }
 
 const REGION_IDS = [
-  'champagne', 'burgundy', 'alsace', 'corsica', 'bordeaux',
+  'champagne', 'burgundy', 'beaujolais', 'alsace', 'corsica', 'bordeaux',
   'rhone', 'loire-valley', 'piedmont', 'tuscany', 'california',
   'oregon', 'italy-other', 'japan-chubu', 'germany-mosel',
-  'spain-rioja', 'chile-maipo', 'australia'
+  'spain-rioja', 'chile-maipo', 'australia',
+  'argentina-mendoza', 'south-africa', 'new-zealand', 'portugal'
 ];
 
 // Expected geographic hemisphere bounding boundaries
@@ -61,9 +62,14 @@ const EXPECTED_HEMISPHERES = {
   'italy-other':   { latMin: 36, latMax: 47, lngMin: 8, lngMax: 19 },
   'japan-chubu':   { latMin: 34, latMax: 44.5, lngMin: 136, lngMax: 142 },
   'germany-mosel': { latMin: 48.5, latMax: 51.5, lngMin: 6, lngMax: 9 },
-  'spain-rioja':   { latMin: 40, latMax: 44, lngMin: -4, lngMax: 2 },
-  'chile-maipo':   { latMin: -36, latMax: -32, lngMin: -72, lngMax: -69 },
-  'australia':     { latMin: -39, latMax: -30, lngMin: 114, lngMax: 153 }
+  'beaujolais':        { latMin: 45.5, latMax: 46.5, lngMin: 4.4, lngMax: 4.9 },
+  'spain-rioja':       { latMin: 40, latMax: 44, lngMin: -10, lngMax: 2 },
+  'chile-maipo':       { latMin: -36, latMax: -32, lngMin: -72, lngMax: -69 },
+  'australia':         { latMin: -39, latMax: -30, lngMin: 114, lngMax: 153 },
+  'argentina-mendoza': { latMin: -36, latMax: -31, lngMin: -71, lngMax: -67 },
+  'south-africa':      { latMin: -35, latMax: -31, lngMin: 17, lngMax: 21 },
+  'new-zealand':       { latMin: -46, latMax: -38, lngMin: 167, lngMax: 179 },
+  'portugal':          { latMin: 36, latMax: 43, lngMin: -10, lngMax: -6 }
 };
 
 // ----------------------------------------------------------------------------

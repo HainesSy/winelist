@@ -29,10 +29,11 @@ console.log('🍷 WORLD WINE REGIONS: MASTER INVARIANT & SCHEMA VALIDATION');
 console.log('================================================================\n');
 
 const EXPECTED_REGIONS = [
-  'champagne', 'burgundy', 'alsace', 'corsica', 'bordeaux',
+  'champagne', 'burgundy', 'beaujolais', 'alsace', 'corsica', 'bordeaux',
   'rhone', 'loire-valley', 'piedmont', 'tuscany', 'california',
   'oregon', 'italy-other', 'japan-chubu', 'germany-mosel',
-  'spain-rioja', 'chile-maipo', 'australia'
+  'spain-rioja', 'chile-maipo', 'australia',
+  'argentina-mendoza', 'south-africa', 'new-zealand', 'portugal'
 ];
 
 const VALID_WINE_TYPES = new Set(['Red', 'White', 'Sparkling', 'Rosé']);
@@ -52,11 +53,11 @@ function check(desc, condition, errorMsg) {
 // ----------------------------------------------------------------------------
 // 1. TOP-LEVEL REGION INVARIANTS & COMPLETE METADATA
 // ----------------------------------------------------------------------------
-console.log('━━━ 1. Validating All 17 Regions Core Metadata & Top-Level Invariants ━━━');
+console.log('━━━ 1. Validating All Regions Core Metadata & Top-Level Invariants ━━━');
 
-check('Master registry must contain exactly 17 wine regions', 
-  Object.keys(WINE_REGIONS).length === 17, 
-  `Expected 17 regions, found ${Object.keys(WINE_REGIONS).length}`
+check('Master registry must contain exactly 22 wine regions', 
+  Object.keys(WINE_REGIONS).length === 22, 
+  `Expected 22 regions, found ${Object.keys(WINE_REGIONS).length}`
 );
 
 for (const id of EXPECTED_REGIONS) {
@@ -387,6 +388,18 @@ const sommelierQueries = [
   ['Côte de Beaune', 'burgundy'],
   ['Gevrey-Chambertin', 'burgundy'],
   ['Vosne-Romanée', 'burgundy'],
+  // Beaujolais
+  ['Beaujolais', 'beaujolais'],
+  ['Morgon', 'beaujolais'],
+  ['Moulin-à-Vent', 'beaujolais'],
+  ['Fleurie', 'beaujolais'],
+  ['Côte de Brouilly', 'beaujolais'],
+  ['Brouilly', 'beaujolais'],
+  ['Chénas', 'beaujolais'],
+  ['Chiroubles', 'beaujolais'],
+  ['Juliénas', 'beaujolais'],
+  ['Régnié', 'beaujolais'],
+  ['Saint-Amour', 'beaujolais'],
   // Alsace
   ['Alsace', 'alsace'],
   ['Rangen', 'alsace'],
@@ -479,6 +492,10 @@ const sommelierQueries = [
   ['Vega Sicilia Único', 'spain-rioja'],
   ['Vega Sicilia', 'spain-rioja'],
   ['Pingus', 'spain-rioja'],
+  ['Rías Baixas', 'spain-rioja'],
+  ['Rias Baixas', 'spain-rioja'],
+  ['Val do Salnés', 'spain-rioja'],
+  ['Albariño', 'spain-rioja'],
   // Chile Maipo
   ['Chile', 'chile-maipo'],
   ['Maipo', 'chile-maipo'],
@@ -490,7 +507,40 @@ const sommelierQueries = [
   ['Barossa Valley', 'australia'],
   ['Margaret River', 'australia'],
   ['Eden Valley', 'australia'],
-  ['Hunter Valley', 'australia']
+  ['Hunter Valley', 'australia'],
+  // Argentina Mendoza
+  ['Argentina', 'argentina-mendoza'],
+  ['Mendoza', 'argentina-mendoza'],
+  ['Valle de Uco', 'argentina-mendoza'],
+  ['Uco Valley', 'argentina-mendoza'],
+  ['Luján de Cuyo', 'argentina-mendoza'],
+  ['Gualtallary', 'argentina-mendoza'],
+  ['Catena Zapata', 'argentina-mendoza'],
+  // South Africa
+  ['South Africa', 'south-africa'],
+  ['Stellenbosch', 'south-africa'],
+  ['Swartland', 'south-africa'],
+  ['Walker Bay', 'south-africa'],
+  ['Hemel-en-Aarde', 'south-africa'],
+  ['Constantia', 'south-africa'],
+  ['Vin de Constance', 'south-africa'],
+  // New Zealand
+  ['New Zealand', 'new-zealand'],
+  ['Marlborough', 'new-zealand'],
+  ['Central Otago', 'new-zealand'],
+  ['Bannockburn', 'new-zealand'],
+  ['Hawke\'s Bay', 'new-zealand'],
+  ['Martinborough', 'new-zealand'],
+  ['Cloudy Bay', 'new-zealand'],
+  // Portugal
+  ['Portugal', 'portugal'],
+  ['Douro', 'portugal'],
+  ['Dão', 'portugal'],
+  ['Alentejo', 'portugal'],
+  ['Vinho Verde', 'portugal'],
+  ['Bairrada', 'portugal'],
+  ['Barca-Velha', 'portugal'],
+  ['Quinta do Noval', 'portugal']
 ];
 
 check('Must have at least 50 sommelier test queries', sommelierQueries.length >= 50, `Found ${sommelierQueries.length} queries`);

@@ -89,16 +89,17 @@ console.log('================================================================\n'
 console.log('━━━ SECTION 1: DEEP PROPERTY TRAVERSAL & SCHEMA CONFORMANCE ━━━');
 
 const REQUIRED_17_REGIONS = [
-  'champagne', 'burgundy', 'alsace', 'corsica',
+  'champagne', 'burgundy', 'beaujolais', 'alsace', 'corsica',
   'bordeaux', 'rhone', 'loire-valley', 'piedmont', 'tuscany',
   'california', 'oregon', 'italy-other', 'japan-chubu',
-  'germany-mosel', 'spain-rioja', 'chile-maipo', 'australia'
+  'germany-mosel', 'spain-rioja', 'chile-maipo', 'australia',
+  'argentina-mendoza', 'south-africa', 'new-zealand', 'portugal'
 ];
 
-test('Registry contains all 17 required world wine regions with exact keys', () => {
+test('Registry contains all 22 required world wine regions with exact keys', () => {
   const actualKeys = Object.keys(WINE_REGIONS);
   metrics.totalRegions = actualKeys.length;
-  assert.strictEqual(actualKeys.length, 17, `Expected exactly 17 regions, found ${actualKeys.length}`);
+  assert.strictEqual(actualKeys.length, 22, `Expected exactly 22 regions, found ${actualKeys.length}`);
   for (const regKey of REQUIRED_17_REGIONS) {
     assert(actualKeys.includes(regKey), `Missing required region key: ${regKey}`);
   }
@@ -430,8 +431,26 @@ const sommelierQueries = [
   { query: 'Burgundy', country: 'France', expectedId: 'burgundy' },
   { query: 'Bourgogne', country: 'France', expectedId: 'burgundy' },
   { query: 'Chablis', country: '', expectedId: 'burgundy' },
-  { query: 'Côte de Nuits', country: '', expectedId: 'burgundy' },
+  { query: 'Côte de Beaune', country: '', expectedId: 'burgundy' },
   { query: 'Cote de Beaune', country: '', expectedId: 'burgundy' },
+  // Beaujolais
+  { query: 'Beaujolais', country: 'France', expectedId: 'beaujolais' },
+  { query: 'Morgon', country: '', expectedId: 'beaujolais' },
+  { query: 'Moulin-à-Vent', country: '', expectedId: 'beaujolais' },
+  { query: 'Moulin a Vent', country: '', expectedId: 'beaujolais' },
+  { query: 'Fleurie', country: '', expectedId: 'beaujolais' },
+  { query: 'Côte de Brouilly', country: '', expectedId: 'beaujolais' },
+  { query: 'Cote de Brouilly', country: '', expectedId: 'beaujolais' },
+  { query: 'Brouilly', country: '', expectedId: 'beaujolais' },
+  { query: 'Chénas', country: '', expectedId: 'beaujolais' },
+  { query: 'Chenas', country: '', expectedId: 'beaujolais' },
+  { query: 'Chiroubles', country: '', expectedId: 'beaujolais' },
+  { query: 'Juliénas', country: '', expectedId: 'beaujolais' },
+  { query: 'Julienas', country: '', expectedId: 'beaujolais' },
+  { query: 'Régnié', country: '', expectedId: 'beaujolais' },
+  { query: 'Regnie', country: '', expectedId: 'beaujolais' },
+  { query: 'Saint-Amour', country: '', expectedId: 'beaujolais' },
+  { query: 'Saint Amour', country: '', expectedId: 'beaujolais' },
   { query: 'Bordeaux', country: 'France', expectedId: 'bordeaux' },
   { query: 'Pauillac', country: '', expectedId: 'bordeaux' },
   { query: 'Margaux', country: '', expectedId: 'bordeaux' },
@@ -488,7 +507,29 @@ const sommelierQueries = [
   { query: 'Priorat', country: 'Spain', expectedId: 'spain-rioja' },
   { query: 'Maipo Valley', country: 'Chile', expectedId: 'chile-maipo' },
   { query: 'Barossa Valley', country: 'Australia', expectedId: 'australia' },
-  { query: 'Margaret River', country: 'Australia', expectedId: 'australia' }
+  { query: 'Margaret River', country: 'Australia', expectedId: 'australia' },
+  { query: 'Rías Baixas', country: 'Spain', expectedId: 'spain-rioja' },
+  { query: 'Rias Baixas', country: '', expectedId: 'spain-rioja' },
+  { query: 'Val do Salnés', country: '', expectedId: 'spain-rioja' },
+  { query: 'Albariño', country: '', expectedId: 'spain-rioja' },
+  { query: 'Mendoza', country: 'Argentina', expectedId: 'argentina-mendoza' },
+  { query: 'Valle de Uco', country: '', expectedId: 'argentina-mendoza' },
+  { query: 'Uco Valley', country: '', expectedId: 'argentina-mendoza' },
+  { query: 'Luján de Cuyo', country: '', expectedId: 'argentina-mendoza' },
+  { query: 'Catena Zapata', country: '', expectedId: 'argentina-mendoza' },
+  { query: 'Stellenbosch', country: 'South Africa', expectedId: 'south-africa' },
+  { query: 'Swartland', country: '', expectedId: 'south-africa' },
+  { query: 'Walker Bay', country: '', expectedId: 'south-africa' },
+  { query: 'Constantia', country: '', expectedId: 'south-africa' },
+  { query: 'Marlborough', country: 'New Zealand', expectedId: 'new-zealand' },
+  { query: 'Central Otago', country: '', expectedId: 'new-zealand' },
+  { query: 'Hawke\'s Bay', country: '', expectedId: 'new-zealand' },
+  { query: 'Martinborough', country: '', expectedId: 'new-zealand' },
+  { query: 'Douro', country: 'Portugal', expectedId: 'portugal' },
+  { query: 'Dão', country: 'Portugal', expectedId: 'portugal' },
+  { query: 'Alentejo', country: '', expectedId: 'portugal' },
+  { query: 'Vinho Verde', country: '', expectedId: 'portugal' },
+  { query: 'Bairrada', country: '', expectedId: 'portugal' }
 ];
 
 test('findWineRegion accurately resolves all sommelier test queries & aliases without substring collision', () => {
@@ -511,13 +552,13 @@ console.log('\n━━━ SECTION 5: HIGH-THROUGHPUT RANDOMIZED FUZZING HARNESS �
 
 test('2,000 randomized mutated queries execute with 0 crashes in under 5000ms', () => {
   const baseTokens = [
-    'champagne', 'burgundy', 'bordeaux', 'rhone', 'loire', 'piedmont', 'tuscany',
+    'champagne', 'burgundy', 'beaujolais', 'morgon', 'fleurie', 'bordeaux', 'rhone', 'loire', 'piedmont', 'tuscany',
     'california', 'napa', 'sonoma', 'oregon', 'willamette', 'etna', 'valpolicella',
-    'japan', 'yamanashi', 'nagano', 'mosel', 'rioja', 'maipo', 'barossa',
+    'japan', 'yamanashi', 'nagano', 'mosel', 'rioja', 'maipo', 'barossa', 'mendoza', 'uco', 'stellenbosch', 'swartland', 'marlborough', 'otago', 'douro', 'rias baixas',
     'grand cru', 'premier cru', 'aoc', 'docg', 'ava', 'mga', 'uga',
     '<script>', "' OR 1=1", "__proto__", "12345", "null", "undefined"
   ];
-  const countries = ['', 'France', 'Italy', 'USA', 'Germany', 'Spain', 'Chile', 'Australia', 'Japan', 'Mars', '123'];
+  const countries = ['', 'France', 'Italy', 'USA', 'Germany', 'Spain', 'Chile', 'Australia', 'Japan', 'Argentina', 'South Africa', 'New Zealand', 'Portugal', 'Mars', '123'];
 
   const startTime = Date.now();
   const NUM_FUZZ = 2000;
@@ -540,7 +581,7 @@ test('2,000 randomized mutated queries execute with 0 crashes in under 5000ms', 
       if (res !== null) {
         assert(typeof res.id === 'string', 'Resolved region must have id string');
       }
-    } catch (err) {
+    } catch {
       errorCount++;
     }
   }

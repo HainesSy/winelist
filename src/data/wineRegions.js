@@ -31,6 +31,16 @@ import {
 } from './burgundyData.js';
 
 import {
+  BEAUJOLAIS_GRAND_CRUS,
+  BEAUJOLAIS_SUBREGIONS,
+  BEAUJOLAIS_TECHNICAL_REGULATIONS,
+  BEAUJOLAIS_PRESTIGE_CUVEES,
+  BEAUJOLAIS_ICONIC_DOMAINES,
+  BEAUJOLAIS_FOOD_PAIRINGS,
+  BEAUJOLAIS_DATA
+} from './beaujolaisData.js';
+
+import {
   ALSACE_GRAND_CRUS,
   ALSACE_SUBREGIONS,
   ALSACE_TECHNICAL_REGULATIONS,
@@ -171,6 +181,61 @@ import {
   AUSTRALIA_FOOD_PAIRINGS
 } from './australiaData.js';
 
+// Spain (Enhanced with Rías Baixas & Galicia)
+import {
+  SPAIN_SUBREGIONS,
+  SPAIN_GRAND_CRUS,
+  SPAIN_TECHNICAL_REGULATIONS,
+  SPAIN_PRESTIGE_ESTATES,
+  SPAIN_ICONIC_DOMAINES,
+  SPAIN_FOOD_PAIRINGS,
+  SPAIN_DATA
+} from './spainData.js';
+
+// Argentina (Mendoza & Uco Valley)
+import {
+  MENDOZA_SUBREGIONS,
+  MENDOZA_GRAND_CRUS,
+  MENDOZA_TECHNICAL_REGULATIONS,
+  MENDOZA_PRESTIGE_CUVEES,
+  MENDOZA_ICONIC_DOMAINES,
+  MENDOZA_FOOD_PAIRINGS,
+  MENDOZA_DATA
+} from './argentinaMendozaData.js';
+
+// South Africa (Western Cape)
+import {
+  SOUTH_AFRICA_SUBREGIONS,
+  SOUTH_AFRICA_GRAND_CRUS,
+  SOUTH_AFRICA_TECHNICAL_REGULATIONS,
+  SOUTH_AFRICA_PRESTIGE_CUVEES,
+  SOUTH_AFRICA_ICONIC_DOMAINES,
+  SOUTH_AFRICA_FOOD_PAIRINGS,
+  SOUTH_AFRICA_DATA
+} from './southAfricaData.js';
+
+// New Zealand (Aotearoa)
+import {
+  NEW_ZEALAND_SUBREGIONS,
+  NEW_ZEALAND_GRAND_CRUS,
+  NEW_ZEALAND_TECHNICAL_REGULATIONS,
+  NEW_ZEALAND_PRESTIGE_CUVEES,
+  NEW_ZEALAND_ICONIC_DOMAINES,
+  NEW_ZEALAND_FOOD_PAIRINGS,
+  NEW_ZEALAND_DATA
+} from './newZealandData.js';
+
+// Portugal (Douro, Dão, Alentejo, Vinho Verde & Bairrada)
+import {
+  PORTUGAL_SUBREGIONS,
+  PORTUGAL_GRAND_CRUS,
+  PORTUGAL_TECHNICAL_REGULATIONS,
+  PORTUGAL_PRESTIGE_CUVEES,
+  PORTUGAL_ICONIC_DOMAINES,
+  PORTUGAL_FOOD_PAIRINGS,
+  PORTUGAL_DATA
+} from './portugalData.js';
+
 // Re-export all modular constants for direct consumer access
 export {
   CHAMPAGNE_GRAND_CRUS,
@@ -188,6 +253,13 @@ export {
   BURGUNDY_WHITE_BENCHMARKS,
   BURGUNDY_ICONIC_DOMAINES,
   BURGUNDY_FOOD_PAIRINGS,
+  BEAUJOLAIS_GRAND_CRUS,
+  BEAUJOLAIS_SUBREGIONS,
+  BEAUJOLAIS_TECHNICAL_REGULATIONS,
+  BEAUJOLAIS_PRESTIGE_CUVEES,
+  BEAUJOLAIS_ICONIC_DOMAINES,
+  BEAUJOLAIS_FOOD_PAIRINGS,
+  BEAUJOLAIS_DATA,
   ALSACE_GRAND_CRUS,
   ALSACE_SUBREGIONS,
   ALSACE_TECHNICAL_REGULATIONS,
@@ -281,6 +353,41 @@ export {
   AUSTRALIA_PRESTIGE_ESTATES,
   AUSTRALIA_ICONIC_DOMAINES,
   AUSTRALIA_FOOD_PAIRINGS,
+  SPAIN_SUBREGIONS,
+  SPAIN_GRAND_CRUS,
+  SPAIN_TECHNICAL_REGULATIONS,
+  SPAIN_PRESTIGE_ESTATES,
+  SPAIN_ICONIC_DOMAINES,
+  SPAIN_FOOD_PAIRINGS,
+  SPAIN_DATA,
+  MENDOZA_SUBREGIONS,
+  MENDOZA_GRAND_CRUS,
+  MENDOZA_TECHNICAL_REGULATIONS,
+  MENDOZA_PRESTIGE_CUVEES,
+  MENDOZA_ICONIC_DOMAINES,
+  MENDOZA_FOOD_PAIRINGS,
+  MENDOZA_DATA,
+  SOUTH_AFRICA_SUBREGIONS,
+  SOUTH_AFRICA_GRAND_CRUS,
+  SOUTH_AFRICA_TECHNICAL_REGULATIONS,
+  SOUTH_AFRICA_PRESTIGE_CUVEES,
+  SOUTH_AFRICA_ICONIC_DOMAINES,
+  SOUTH_AFRICA_FOOD_PAIRINGS,
+  SOUTH_AFRICA_DATA,
+  NEW_ZEALAND_SUBREGIONS,
+  NEW_ZEALAND_GRAND_CRUS,
+  NEW_ZEALAND_TECHNICAL_REGULATIONS,
+  NEW_ZEALAND_PRESTIGE_CUVEES,
+  NEW_ZEALAND_ICONIC_DOMAINES,
+  NEW_ZEALAND_FOOD_PAIRINGS,
+  NEW_ZEALAND_DATA,
+  PORTUGAL_SUBREGIONS,
+  PORTUGAL_GRAND_CRUS,
+  PORTUGAL_TECHNICAL_REGULATIONS,
+  PORTUGAL_PRESTIGE_CUVEES,
+  PORTUGAL_ICONIC_DOMAINES,
+  PORTUGAL_FOOD_PAIRINGS,
+  PORTUGAL_DATA,
 };
 
 export const WINE_REGIONS = {
@@ -374,7 +481,7 @@ export const WINE_REGIONS = {
     name: "Burgundy (Bourgogne)",
     country: 'France',
     countryCode: 'FR',
-    aliases: ['burgundy', 'bourgogne', 'cote de nuits', 'cote de beaune', 'côte de nuits', 'côte de beaune', 'chablis', 'cote chalonnaise', 'maconnais', 'mâconnais', 'beaujolais'],
+    aliases: ['burgundy', 'bourgogne', 'cote de nuits', 'cote de beaune', 'côte de nuits', 'côte de beaune', 'chablis', 'cote chalonnaise', 'maconnais', 'mâconnais'],
     tagline: "The World Benchmark for Pinot Noir & Chardonnay Terroir",
     summary: "Stretching from Chablis in the north down to the Mâconnais in the south, Burgundy is the spiritual home of terroir-driven winemaking. Here, microscopic variations in Jurassic limestone and clay soils produce the most sought-after Pinot Noir and Chardonnay on Earth.",
     center: [47.0500, 4.8333],
@@ -434,6 +541,11 @@ export const WINE_REGIONS = {
     iconicDomaines: BURGUNDY_ICONIC_DOMAINES,
     iconicGrowers: BURGUNDY_ICONIC_DOMAINES
   },
+
+  // ==========================================================================
+  // BEAUJOLAIS
+  // ==========================================================================
+  'beaujolais': BEAUJOLAIS_DATA,
 
   // ==========================================================================
   // 3. ALSACE
@@ -1254,69 +1366,7 @@ export const WINE_REGIONS = {
   // ==========================================================================
   // 15. SPAIN (RIOJA & PRIORAT)
   // ==========================================================================
-  'spain-rioja': {
-    id: 'spain-rioja',
-    name: "Spain (Rioja & Ribera del Duero)",
-    country: 'Spain',
-    countryCode: 'ES',
-    aliases: ['spain', 'rioja', 'ribera del duero', 'priorat', 'rioja alta', 'rioja alavesa', 'haro', 'vega sicilia', 'vega sicilia unico', 'vega sicilia único', 'vega-sicilia', 'unico', 'pingus'],
-    tagline: "The Noble Realm of Tempranillo, Gran Reserva & Ancient Slate",
-    summary: "From the historic oak-lined bodegas of Haro in Rioja Alta and chalk terraces of Rioja Alavesa to the high-altitude Castilian plateau of Ribera del Duero and llicorella slate of Priorat, Spain crafts immortal Tempranillo and Garnacha balancing rich dark fruit, cedar, tobacco, and profound mineral depth.",
-    center: [42.5000, -2.7500],
-    zoom: 9,
-    bounds: [[41.00, -4.50], [43.00, 0.50]],
-    heroGradient: 'linear-gradient(135deg, #3d0c11 0%, #681822 50%, #d4af37 100%)',
-    accentColor: '#8b0000',
-
-    terroir: {
-      climate: "Atlantic-Continental in Rioja Alta/Alavesa; Extreme High Continental in Ribera del Duero (750-1000m); Mediterranean in Priorat.",
-      soil: "Calcareous clay-limestone (Arcillo-Calcarie), ferruginous clay, alluvial gravel terraces, white chalk marl, and Devonian Llicorella slate.",
-      elevation: "400m to 1,000m across the Ebro valley and Castilian high plateau.",
-      riverInfluence: "The Ebro and Duero rivers provide essential air drainage and diurnal temperature moderation."
-    },
-
-    grapes: [
-      { name: 'Tempranillo (Tinto Fino)', percentage: 75, type: 'Red', role: "Spain's noble flagship: dried cherry, plum, tobacco, leather, vanilla, and cedar." },
-      { name: 'Garnacha (Grenache)', percentage: 15, type: 'Red', role: "Lush wild strawberry, blood orange, white pepper, and opulent warmth." },
-      { name: 'Graciano & Mazuelo', percentage: 5, type: 'Red', role: "Inky color, piercing acidity, and structured tannins for long-term aging." },
-      { name: 'Viura (Macabeo)', percentage: 5, type: 'White', role: "Aristocratic oak-aged white Rioja with dried chamomile and hazelnut." }
-    ],
-
-    structure: {
-      body: 7.5,
-      acidity: 7.5,
-      tannin: 7.5,
-      sweetness: 1,
-      alcohol: 14.0,
-      agingPotential: "5 - 40+ Years"
-    },
-
-    classification: {
-      system: "DOCa / DO Aging Hierarchy & Viñedo Singular (2017)",
-      description: "Rigorous barrel and bottle aging requirements (Crianza, Reserva, Gran Reserva) alongside single-vineyard Viñedo Singular classification.",
-      tiers: [
-        { name: 'Viñedo Singular & Pagos', detail: "Strictly delimited single vineyard parcels (e.g. Las Beatas, Viña Tondonia, Vega Sicilia Único, Pingus, L'Ermita)." },
-        { name: 'Gran Reserva', detail: "Minimum 5 years aging (2 in oak barricas, 2 in bottle) crafting legendary tertiary complexity." },
-        { name: 'Reserva', detail: "Minimum 3 years aging (1 in oak barricas, 6 months in bottle) with harmonious fruit and oak balance." },
-        { name: 'Crianza', detail: "Minimum 2 years aging (1 in oak barricas) emphasizing vibrant fruit and subtle spice." }
-      ]
-    },
-
-    flavorProfile: {
-      primary: ['Dried Red Cherry & Plum', 'Blackberry Liqueur', 'Vanilla Bean', 'Dill & Coconut (American Oak)', 'Tobacco Leaf'],
-      secondary: ['Cigar Box & Leather', 'Balsamic Fig', 'Dark Cocoa', 'Crushed Slate', 'Roasted Hazelnuts'],
-      palate: "Rich, velvety, and aristocratic with melted fine tannins, savory leather complexity, and enduring balsamic freshness."
-    },
-
-    foodPairings: RIOJA_FOOD_PAIRINGS,
-    subRegions: RIOJA_SUBREGIONS,
-    grandCrus: RIOJA_GRAND_CRUS,
-    technicalRegulations: RIOJA_TECHNICAL_REGULATIONS,
-    prestigeMonopoles: RIOJA_PRESTIGE_ESTATES,
-    prestigeCuvees: RIOJA_PRESTIGE_ESTATES,
-    iconicDomaines: RIOJA_ICONIC_DOMAINES,
-    iconicGrowers: RIOJA_ICONIC_DOMAINES
-  },
+  'spain-rioja': SPAIN_DATA,
 
   // ==========================================================================
   // 16. CHILE (MAIPO VALLEY)
@@ -1448,7 +1498,27 @@ export const WINE_REGIONS = {
     prestigeCuvees: AUSTRALIA_PRESTIGE_ESTATES,
     iconicDomaines: AUSTRALIA_ICONIC_DOMAINES,
     iconicGrowers: AUSTRALIA_ICONIC_DOMAINES
-  }
+  },
+
+  // ==========================================================================
+  // 19. ARGENTINA (MENDOZA & UCO VALLEY)
+  // ==========================================================================
+  'argentina-mendoza': MENDOZA_DATA,
+
+  // ==========================================================================
+  // 20. SOUTH AFRICA (WESTERN CAPE)
+  // ==========================================================================
+  'south-africa': SOUTH_AFRICA_DATA,
+
+  // ==========================================================================
+  // 21. NEW ZEALAND (AOTEAROA)
+  // ==========================================================================
+  'new-zealand': NEW_ZEALAND_DATA,
+
+  // ==========================================================================
+  // 22. PORTUGAL
+  // ==========================================================================
+  'portugal': PORTUGAL_DATA
 };
 
 /**
@@ -1514,12 +1584,13 @@ export function findWineRegion(regionQuery, countryQuery = '') {
     for (const regKey of Object.keys(WINE_REGIONS)) {
       const r = WINE_REGIONS[regKey];
       const normName = normalizeText(r.name);
-      if (normName === cleanReg) {
+      if (normName === cleanReg || normName.replace(/[-_]+/g, ' ') === cleanReg.replace(/[-_]+/g, ' ')) {
         return r;
       }
       if (r.aliases) {
         for (const alias of r.aliases) {
-          if (normalizeText(alias) === cleanReg) {
+          const normAlias = normalizeText(alias);
+          if (normAlias === cleanReg || normAlias.replace(/[-_]+/g, ' ') === cleanReg.replace(/[-_]+/g, ' ')) {
             return r;
           }
         }
@@ -1531,16 +1602,16 @@ export function findWineRegion(regionQuery, countryQuery = '') {
       const r = WINE_REGIONS[regKey];
       if (r.grandCrus) {
         for (const cru of r.grandCrus) {
-          if (cru.name && normalizeText(cru.name) === cleanReg) return r;
-          if (cru.id && normalizeText(cru.id) === cleanReg) return r;
+          if (cru.name && (normalizeText(cru.name) === cleanReg || normalizeText(cru.name).replace(/[-_]+/g, ' ') === cleanReg.replace(/[-_]+/g, ' '))) return r;
+          if (cru.id && (normalizeText(cru.id) === cleanReg || normalizeText(cru.id).replace(/[-_]+/g, ' ') === cleanReg.replace(/[-_]+/g, ' '))) return r;
           if (cru.village && normalizeText(cru.village) === cleanReg) return r;
           if (cru.commune && normalizeText(cru.commune) === cleanReg) return r;
         }
       }
       if (r.premierCrus) {
         for (const cru of r.premierCrus) {
-          if (cru.name && normalizeText(cru.name) === cleanReg) return r;
-          if (cru.id && normalizeText(cru.id) === cleanReg) return r;
+          if (cru.name && (normalizeText(cru.name) === cleanReg || normalizeText(cru.name).replace(/[-_]+/g, ' ') === cleanReg.replace(/[-_]+/g, ' '))) return r;
+          if (cru.id && (normalizeText(cru.id) === cleanReg || normalizeText(cru.id).replace(/[-_]+/g, ' ') === cleanReg.replace(/[-_]+/g, ' '))) return r;
           if (cru.village && normalizeText(cru.village) === cleanReg) return r;
           if (cru.commune && normalizeText(cru.commune) === cleanReg) return r;
         }
@@ -1615,7 +1686,8 @@ export function findWineRegion(regionQuery, countryQuery = '') {
   // 5. Country & Regional combination lookup
   if (cleanCountry === 'france') {
     if (cleanReg.includes('champagne') || cleanReg.includes('coteaux champenois') || cleanReg.includes('riceys')) return WINE_REGIONS['champagne'];
-    if (cleanReg.includes('burgundy') || cleanReg.includes('bourgogne') || cleanReg.includes('chablis') || cleanReg.includes('beaune') || cleanReg.includes('nuits') || cleanReg.includes('macon') || cleanReg.includes('beaujolais')) return WINE_REGIONS['burgundy'];
+    if (cleanReg.includes('burgundy') || cleanReg.includes('bourgogne') || cleanReg.includes('chablis') || cleanReg.includes('beaune') || cleanReg.includes('nuits') || cleanReg.includes('macon')) return WINE_REGIONS['burgundy'];
+    if (cleanReg.includes('beaujolais') || cleanReg.includes('morgon') || cleanReg.includes('fleurie') || cleanReg.includes('moulin-a-vent') || cleanReg.includes('moulin a vent') || cleanReg.includes('brouilly') || cleanReg.includes('chenas') || cleanReg.includes('chénas') || cleanReg.includes('chiroubles') || cleanReg.includes('julienas') || cleanReg.includes('juliénas') || cleanReg.includes('regnie') || cleanReg.includes('régnié') || cleanReg.includes('saint-amour') || cleanReg.includes('cote de brouilly') || cleanReg.includes('côte de brouilly')) return WINE_REGIONS['beaujolais'];
     if (cleanReg.includes('alsace') || cleanReg.includes('haut-rhin') || cleanReg.includes('bas-rhin') || cleanReg.includes('colmar') || cleanReg.includes('cremant d\'alsace')) return WINE_REGIONS['alsace'];
     if (cleanReg.includes('corsica') || cleanReg.includes('corse') || cleanReg.includes('patrimonio') || cleanReg.includes('ajaccio') || cleanReg.includes('figari') || cleanReg.includes('calvi')) return WINE_REGIONS['corsica'];
     if (cleanReg.includes('bordeaux') || cleanReg.includes('medoc') || cleanReg.includes('pauillac') || cleanReg.includes('margaux') || cleanReg.includes('saint-emilion') || cleanReg.includes('pomerol') || cleanReg.includes('sauternes') || cleanReg.includes('graves')) return WINE_REGIONS['bordeaux'];
@@ -1640,6 +1712,22 @@ export function findWineRegion(regionQuery, countryQuery = '') {
 
   if (cleanCountry === 'spain' || cleanCountry === 'espana' || cleanCountry === 'espana') {
     return WINE_REGIONS['spain-rioja'];
+  }
+
+  if (cleanCountry === 'argentina') {
+    return WINE_REGIONS['argentina-mendoza'];
+  }
+
+  if (cleanCountry === 'south africa' || cleanCountry === 'south-africa' || cleanCountry === 'rsa' || cleanCountry === 'southafrica') {
+    return WINE_REGIONS['south-africa'];
+  }
+
+  if (cleanCountry === 'new zealand' || cleanCountry === 'new-zealand' || cleanCountry === 'nz') {
+    return WINE_REGIONS['new-zealand'];
+  }
+
+  if (cleanCountry === 'portugal') {
+    return WINE_REGIONS['portugal'];
   }
 
   if (cleanCountry === 'chile') {

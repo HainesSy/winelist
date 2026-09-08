@@ -273,29 +273,6 @@ export const WINE_REGION_BOUNDARIES = {
             [4.680, 46.520]
           ]]
         }
-      },
-      {
-        type: "Feature",
-        id: "maconnais-beaujolais",
-        properties: {
-          id: "maconnais-beaujolais",
-          parentSubregionId: "maconnais",
-          subregionId: "maconnais",
-          name: "Mâconnais & Beaujolais Crus",
-          category: "Granite Gamay Kingdom",
-          dominantGrape: "Gamay",
-          color: "#880e4f",
-          accent: "#f48fb1",
-          fillOpacity: 0.22,
-          description: "Pink granite schist terroirs producing the 10 Cru Beaujolais (Morgon, Moulin-à-Vent, Fleurie)."
-        },
-        geometry: {
-          type: "Polygon",
-          coordinates: [[
-            [4.600, 46.250], [4.780, 46.230], [4.740, 45.850], [4.550, 45.900],
-            [4.600, 46.250]
-          ]]
-        }
       }
     ]
   },
@@ -1563,52 +1540,29 @@ export const WINE_REGION_BOUNDARIES = {
   // ==========================================================================
   // SPAIN (Rioja Alta, Alavesa, Ribera del Duero & Priorat)
   // ==========================================================================
-  'spain-rioja': {
+        'spain-rioja': {
     type: "FeatureCollection",
     features: [
       {
         type: "Feature",
-        id: "rioja-alta",
+        id: "rioja-alta-alavesa",
         properties: {
-          id: "rioja-alta",
-          parentSubregionId: "rioja-alta",
-          subregionId: "rioja-alta",
-          name: "Rioja Alta (Western High Rioja)",
-          category: "Atlantic Tempranillo Benchmark",
+          id: "rioja-alta-alavesa",
+          parentSubregionId: "rioja-alta-alavesa",
+          subregionId: "rioja-alta-alavesa",
+          name: "Rioja Alta & Rioja Alavesa",
+          category: "Atlantic Tempranillo & Cantabria Limestone",
           dominantGrape: "Tempranillo",
           color: "#800020",
           accent: "#d4af37",
           fillOpacity: 0.22,
-          description: "High-altitude calcareous clay and alluvial terraces around Haro producing structural Gran Reservas."
+          description: "High-altitude calcareous clay-limestone terraces beneath the Sierra de Cantabria producing aristocratic Gran Reservas."
         },
         geometry: {
           type: "Polygon",
           coordinates: [[
-            [-2.950, 42.600], [-2.650, 42.580], [-2.600, 42.380], [-2.920, 42.400],
+            [-2.950, 42.600], [-2.450, 42.580], [-2.480, 42.500], [-2.920, 42.400],
             [-2.950, 42.600]
-          ]]
-        }
-      },
-      {
-        type: "Feature",
-        id: "rioja-alavesa",
-        properties: {
-          id: "rioja-alavesa",
-          parentSubregionId: "rioja-alavesa",
-          subregionId: "rioja-alavesa",
-          name: "Rioja Alavesa (Basque Rioja)",
-          category: "Basque Chalk & Terraced Slopes",
-          dominantGrape: "Tempranillo",
-          color: "#6c3483",
-          accent: "#d7bde2",
-          fillOpacity: 0.22,
-          description: "Steep terraced limestone slopes sheltered by the Sierra de Cantabria mountains (Las Beatas)."
-        },
-        geometry: {
-          type: "Polygon",
-          coordinates: [[
-            [-2.750, 42.620], [-2.450, 42.580], [-2.480, 42.500], [-2.720, 42.520],
-            [-2.750, 42.620]
           ]]
         }
       },
@@ -1620,7 +1574,7 @@ export const WINE_REGION_BOUNDARIES = {
           parentSubregionId: "ribera-del-duero",
           subregionId: "ribera-del-duero",
           name: "Ribera del Duero (Castilian High Plateau)",
-          category: "High Continental Tinto Fino & Limestone",
+          category: "High Continental Tinto Fino & Limestone Páramos",
           dominantGrape: "Tinto Fino / Tempranillo",
           color: "#4a154b",
           accent: "#ffd700",
@@ -1655,6 +1609,52 @@ export const WINE_REGION_BOUNDARIES = {
           coordinates: [[
             [0.700, 41.280], [0.920, 41.260], [0.900, 41.120], [0.680, 41.140],
             [0.700, 41.280]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "rias-baixas",
+        properties: {
+          id: "rias-baixas",
+          parentSubregionId: "rias-baixas",
+          subregionId: "rias-baixas",
+          name: "Rías Baixas (Val do Salnés & Atlantic Galicia)",
+          category: "Granite Xabre & Coastal Pergola Albariño",
+          dominantGrape: "Albariño (96%+)",
+          color: "#00796B",
+          accent: "#80CBC4",
+          fillOpacity: 0.25,
+          description: "Lush green Atlantic coastal fjords over decomposed granite xabre, crafting crystalline, saline, long-lived Albariño (Do Ferreiro, Pazo de Señorans)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-8.950, 42.620], [-8.650, 42.650], [-8.600, 42.350], [-8.920, 42.380],
+            [-8.950, 42.620]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "rioja-oriental",
+        properties: {
+          id: "rioja-oriental",
+          parentSubregionId: "rioja-oriental",
+          subregionId: "rioja-oriental",
+          name: "Rioja Oriental (Warm Ebro Lowlands)",
+          category: "Mediterranean Warmth & Old Garnacha",
+          dominantGrape: "Garnacha & Tempranillo",
+          color: "#D35400",
+          accent: "#F39C12",
+          fillOpacity: 0.22,
+          description: "Lower warmer section of the Rioja DOCa producing round, opulent Garnacha-driven reds."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-2.300, 42.400], [-1.800, 42.150], [-1.850, 41.980], [-2.350, 42.200],
+            [-2.300, 42.400]
           ]]
         }
       }
@@ -2345,6 +2345,534 @@ export const WINE_REGION_BOUNDARIES = {
       }
     ]
   }
+,
+  // ==========================================================================
+  // BEAUJOLAIS (10 Northern Crus & Pierres Dorées)
+  // ==========================================================================
+  'beaujolais': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "beaujolais-crus",
+        properties: {
+          id: "beaujolais-crus",
+          subregionId: "beaujolais-crus",
+          name: "Cru Beaujolais",
+          category: "Hercynian Granite & Volcanic Diorite Crus",
+          dominantGrape: "Gamay Noir à Jus Blanc",
+          color: "#722b44",
+          accent: "#d4af37",
+          fillOpacity: 0.24,
+          description: "The 10 legendary Crus of Beaujolais (Saint-Amour, Juliénas, Chénas, Moulin-à-Vent, Fleurie, Chiroubles, Morgon, Régnié, Côte de Brouilly, Brouilly) established upon pink granite (gore), blue volcanic diorite (côrnes vertes), and manganese veins."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [4.720, 46.280], [4.770, 46.270], [4.780, 46.210], [4.750, 46.130],
+            [4.730, 46.060], [4.630, 46.060], [4.610, 46.120], [4.630, 46.180],
+            [4.670, 46.250], [4.720, 46.280]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "beaujolais-villages",
+        properties: {
+          id: "beaujolais-villages",
+          subregionId: "beaujolais-villages",
+          name: "Beaujolais-Villages",
+          category: "Granite & Porphyry Slopes (38 Communes)",
+          dominantGrape: "Gamay",
+          color: "#9c27b0",
+          accent: "#ce93d8",
+          fillOpacity: 0.20,
+          description: "38 delimited hillside communes surrounding the crus on steep granitic and porphyry slopes between 200m and 400m elevation."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [4.620, 46.240], [4.680, 46.220], [4.640, 46.140], [4.660, 46.050],
+            [4.740, 46.040], [4.760, 45.980], [4.720, 45.920], [4.600, 45.930],
+            [4.550, 46.050], [4.560, 46.160], [4.620, 46.240]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "bas-beaujolais",
+        properties: {
+          id: "bas-beaujolais",
+          subregionId: "bas-beaujolais",
+          name: "Bas-Beaujolais (Pierres Dorées)",
+          category: "Golden Limestone & Clay Sedimentary",
+          dominantGrape: "Gamay & Chardonnay",
+          color: "#c2185b",
+          accent: "#f48fb1",
+          fillOpacity: 0.20,
+          description: "Southern Beaujolais characterized by golden ochre Jurassic limestone (Pierres Dorées) and rolling clay hills, producing joyful, fruit-forward Beaujolais and Beaujolais Nouveau."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [4.600, 45.980], [4.740, 45.980], [4.770, 45.900], [4.730, 45.800],
+            [4.650, 45.780], [4.560, 45.820], [4.540, 45.900], [4.600, 45.980]
+          ]]
+        }
+      }
+    ]
+  },
+
+  // ==========================================================================
+  // ARGENTINA (Mendoza & Uco Valley Delimited IGs)
+  // ==========================================================================
+  'argentina-mendoza': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "valle-de-uco",
+        properties: {
+          id: "valle-de-uco",
+          parentSubregionId: "valle-de-uco",
+          subregionId: "valle-de-uco",
+          name: "Valle de Uco (Gualtallary & Altamira IGs)",
+          category: "High-Altitude Andean Calcareous Terraces",
+          dominantGrape: "Malbec & Cabernet Franc",
+          color: "#4A0E2E",
+          accent: "#D4AF37",
+          fillOpacity: 0.25,
+          description: "Extreme high-altitude Andean corridor (900m-1,500m+) featuring white caliche limestone soils and Zonda winds (Catena Zapata Adrianna Vineyard, Zuccardi Piedra Infinita)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-69.35, -33.30], [-68.95, -33.25], [-68.85, -33.80], [-69.25, -34.05],
+            [-69.40, -33.65], [-69.35, -33.30]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "lujan-de-cuyo",
+        properties: {
+          id: "lujan-de-cuyo",
+          parentSubregionId: "lujan-de-cuyo",
+          subregionId: "lujan-de-cuyo",
+          name: "Luján de Cuyo ('First Zone' DOC)",
+          category: "Historic Old-Vine Malbec Cradle",
+          dominantGrape: "Malbec (Massale Selections)",
+          color: "#7209B7",
+          accent: "#F72585",
+          fillOpacity: 0.22,
+          description: "Centenarian ungrafted Malbec bush vines rooted in Mendoza River alluvial gravel terraces in Perdriel, Agrelo, and Las Compuertas."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-69.05, -33.02], [-68.75, -33.02], [-68.75, -33.22], [-69.05, -33.22],
+            [-69.05, -33.02]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "maipu",
+        properties: {
+          id: "maipu",
+          parentSubregionId: "maipu",
+          subregionId: "maipu",
+          name: "Maipú (Barrancas & Lunlunta)",
+          category: "Warm Alluvial Stone Terraces",
+          dominantGrape: "Malbec & Cabernet Sauvignon",
+          color: "#8B0000",
+          accent: "#FFB300",
+          fillOpacity: 0.20,
+          description: "Sun-drenched rocky river terraces yielding plush, generous, blackberry-dense Malbec and historic 19th-century cellar estates."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-68.80, -32.95], [-68.50, -32.95], [-68.50, -33.18], [-68.80, -33.18],
+            [-68.80, -32.95]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "san-rafael",
+        properties: {
+          id: "san-rafael",
+          parentSubregionId: "san-rafael",
+          subregionId: "san-rafael",
+          name: "San Rafael (Valle de Atuel)",
+          category: "Southern Oasis & Chenin/Cabernet",
+          dominantGrape: "Cabernet Sauvignon & Bonarda",
+          color: "#B03A2E",
+          accent: "#F5B7B1",
+          fillOpacity: 0.22,
+          description: "Southern Mendoza oasis nourished by the Atuel and Diamante rivers, yielding fresh, structured, altitude-cooled reds."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-68.60, -34.45], [-68.10, -34.45], [-68.10, -34.80], [-68.60, -34.80],
+            [-68.60, -34.45]
+          ]]
+        }
+      }
+    ]
+  },
+
+  // ==========================================================================
+  // SOUTH AFRICA (Western Cape Districts & Wards)
+  // ==========================================================================
+  'south-africa': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "stellenbosch",
+        properties: {
+          id: "stellenbosch",
+          parentSubregionId: "stellenbosch",
+          subregionId: "stellenbosch",
+          name: "Stellenbosch (Simonsberg & Helderberg)",
+          category: "Pre-Cambrian Granite & Cabernet Benchmark",
+          dominantGrape: "Cabernet Sauvignon & Pinotage",
+          color: "#1B4332",
+          accent: "#D4AF37",
+          fillOpacity: 0.24,
+          description: "Aristocratic granite mountain slopes cooled by False Bay breezes, producing benchmark Cabernet Sauvignon, Pinotage, and old-vine Chenin Blanc."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [18.72, -33.85], [18.98, -33.85], [18.98, -34.08], [18.72, -34.08],
+            [18.72, -33.85]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "swartland",
+        properties: {
+          id: "swartland",
+          parentSubregionId: "swartland",
+          subregionId: "swartland",
+          name: "Swartland (Paardeberg Granite & Schist)",
+          category: "Old Bush Vine Revolution & Artisanal Syrah",
+          dominantGrape: "Chenin Blanc & Syrah",
+          color: "#2D6A4F",
+          accent: "#74C69D",
+          fillOpacity: 0.22,
+          description: "Dry-farmed old bush vines rooted in Paardeberg granite and Kasteelberg schist (The Sadie Family, Mullineux)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [18.50, -33.25], [19.00, -33.25], [19.00, -33.65], [18.50, -33.65],
+            [18.50, -33.25]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "walker-bay",
+        properties: {
+          id: "walker-bay",
+          parentSubregionId: "walker-bay",
+          subregionId: "walker-bay",
+          name: "Walker Bay (Hemel-en-Aarde Valley)",
+          category: "Bokkeveld Shale & Benguela Ocean Air",
+          dominantGrape: "Pinot Noir & Chardonnay",
+          color: "#40916C",
+          accent: "#B7E4C7",
+          fillOpacity: 0.25,
+          description: "Narrow coastal valley chilled by Antarctic currents, crafting Burgundian-caliber Pinot Noir and mineral Chardonnay (Hamilton Russell)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [19.12, -34.32], [19.48, -34.32], [19.48, -34.52], [19.12, -34.52],
+            [19.12, -34.32]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "constantia",
+        properties: {
+          id: "constantia",
+          parentSubregionId: "constantia",
+          subregionId: "constantia",
+          name: "Constantia (Historic Peninsula Slopes)",
+          category: "Historical 1685 Cradle & Vin de Constance",
+          dominantGrape: "Muscat de Frontignan & Sauvignon Blanc",
+          color: "#52B788",
+          accent: "#D8F3DC",
+          fillOpacity: 0.22,
+          description: "Table Mountain granite mid-slopes cooled by dual oceans, home to historic Vin de Constance since 1685."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [18.38, -33.98], [18.46, -33.98], [18.46, -34.08], [18.38, -34.08],
+            [18.38, -33.98]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "franschhoek",
+        properties: {
+          id: "franschhoek",
+          parentSubregionId: "franschhoek",
+          subregionId: "franschhoek",
+          name: "Franschhoek Valley",
+          category: "Huguenot Mountain Amphitheater",
+          dominantGrape: "Cabernet Sauvignon & Sémillon",
+          color: "#74C69D",
+          accent: "#2D6A4F",
+          fillOpacity: 0.20,
+          description: "Towering sandstone peaks cradling ancient 1902 bush-vine Sémillon and concentrated Syrah (Boekenhoutskloof)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [19.02, -33.86], [19.20, -33.86], [19.20, -33.98], [19.02, -33.98],
+            [19.02, -33.86]
+          ]]
+        }
+      }
+    ]
+  },
+
+  // ==========================================================================
+  // NEW ZEALAND (Premier GIs & Sub-zones)
+  // ==========================================================================
+  'new-zealand': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "marlborough",
+        properties: {
+          id: "marlborough",
+          parentSubregionId: "marlborough",
+          subregionId: "marlborough",
+          name: "Marlborough (Wairau & Awatere Valleys)",
+          category: "Greywacke River Stones & Coastal Sun",
+          dominantGrape: "Sauvignon Blanc & Pinot Noir",
+          color: "#0D3B66",
+          accent: "#0077B6",
+          fillOpacity: 0.22,
+          description: "Quaternary greywacke gravels and extreme diurnal swings creating pungent passionfruit and crystalline flint expressions (Cloudy Bay)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [173.65, -41.42], [174.15, -41.48], [174.10, -41.80], [173.60, -41.70],
+            [173.65, -41.42]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "central-otago",
+        properties: {
+          id: "central-otago",
+          parentSubregionId: "central-otago",
+          subregionId: "central-otago",
+          name: "Central Otago (Bannockburn & Gibbston)",
+          category: "Alpine Mica Schist & Continental Swings",
+          dominantGrape: "Pinot Noir",
+          color: "#0077B6",
+          accent: "#90E0EF",
+          fillOpacity: 0.25,
+          description: "The world's southernmost commercial vineyards; glacial mica schist terraces yielding wild-thyme-infused, heroic Pinot Noir (Felton Road)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [169.05, -44.95], [169.45, -44.95], [169.45, -45.20], [169.05, -45.20],
+            [169.05, -44.95]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "hawkes-bay",
+        properties: {
+          id: "hawkes-bay",
+          parentSubregionId: "hawkes-bay",
+          subregionId: "hawkes-bay",
+          name: "Hawke's Bay (Gimblett Gravels)",
+          category: "Stony Alluvial Shingle Heat Sink",
+          dominantGrape: "Syrah & Cabernet Blends",
+          color: "#023E8A",
+          accent: "#48CAE4",
+          fillOpacity: 0.24,
+          description: "800-hectare stony greywacke riverbed gravels crafting aristocratic Syrah and Bordeaux-style icons (Te Mata Coleraine, Craggy Range Le Sol)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [176.60, -39.50], [177.00, -39.50], [177.00, -39.80], [176.60, -39.80],
+            [176.60, -39.50]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "martinborough",
+        properties: {
+          id: "martinborough",
+          parentSubregionId: "martinborough",
+          subregionId: "martinborough",
+          name: "Martinborough (Wairarapa Terrace)",
+          category: "Wind-Swept Alluvial Gravel Terraces",
+          dominantGrape: "Pinot Noir (Abel Clone)",
+          color: "#0096C7",
+          accent: "#ADE8F4",
+          fillOpacity: 0.22,
+          description: "Cool Antarctic winds funneling through Cook Strait onto river terraces, producing savory, earthy, ageworthy Pinot Noir (Ata Rangi)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [175.35, -41.12], [175.60, -41.12], [175.60, -41.35], [175.35, -41.35],
+            [175.35, -41.12]
+          ]]
+        }
+      }
+    ]
+  },
+
+  // ==========================================================================
+  // PORTUGAL (Premier DOC Regions & River Terraces)
+  // ==========================================================================
+  'portugal': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "douro",
+        properties: {
+          id: "douro",
+          parentSubregionId: "douro",
+          subregionId: "douro",
+          name: "Douro Valley (Cima Corgo & Douro Superior)",
+          category: "Vertical Pre-Cambrian Metamorphic Schist (Xisto)",
+          dominantGrape: "Touriga Nacional & Touriga Franca",
+          color: "#400010",
+          accent: "#D4AF37",
+          fillOpacity: 0.25,
+          description: "Steep hand-walled schist terraces along the Douro River, birthplace of legendary Vintage Ports and dry icon Barca-Velha."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-7.95, 41.22], [-6.90, 41.20], [-6.95, 40.98], [-7.95, 41.05],
+            [-7.95, 41.22]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "dao",
+        properties: {
+          id: "dao",
+          parentSubregionId: "dao",
+          subregionId: "dao",
+          name: "Dão (Serra da Estrela High Granite Plateau)",
+          category: "High Elevated Granite & Aristocratic Restraint",
+          dominantGrape: "Touriga Nacional & Encruzado",
+          color: "#7209B7",
+          accent: "#B5179E",
+          fillOpacity: 0.22,
+          description: "High mountain plateau sheltered by granite ranges; aristocratic, violet-perfumed reds and crystalline mineral Encruzado whites."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-8.15, 40.75], [-7.45, 40.72], [-7.50, 40.32], [-8.15, 40.35],
+            [-8.15, 40.75]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "alentejo",
+        properties: {
+          id: "alentejo",
+          parentSubregionId: "alentejo",
+          subregionId: "alentejo",
+          name: "Alentejo (Plains & Portalegre Mountains)",
+          category: "Sun-Drenched Plains & Ancient Amphorae (Talha)",
+          dominantGrape: "Aragonez, Trincadeira & Alicante Bouschet",
+          color: "#8B0000",
+          accent: "#FFB300",
+          fillOpacity: 0.20,
+          description: "Rolling cork-oak landscapes and high mountain enclaves producing opulent reds and ancient Roman-style Vinho de Talha."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-8.05, 38.95], [-7.35, 38.90], [-7.40, 38.30], [-8.05, 38.35],
+            [-8.05, 38.95]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "vinho-verde",
+        properties: {
+          id: "vinho-verde",
+          parentSubregionId: "vinho-verde",
+          subregionId: "vinho-verde",
+          name: "Vinho Verde (Monção & Melgaço Alvarinho)",
+          category: "Atlantic Granite River Terraces",
+          dominantGrape: "Alvarinho (100%)",
+          color: "#2E7D32",
+          accent: "#A5D6A7",
+          fillOpacity: 0.22,
+          description: "Lush green Atlantic microclimate along the Minho River crafting dry, saline, ageworthy Alvarinho (Anselmo Mendes)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-8.70, 42.18], [-8.18, 42.18], [-8.22, 41.72], [-8.70, 41.72],
+            [-8.70, 42.18]
+          ]]
+        }
+      },
+      {
+        type: "Feature",
+        id: "bairrada",
+        properties: {
+          id: "bairrada",
+          parentSubregionId: "bairrada",
+          subregionId: "bairrada",
+          name: "Bairrada (Barro Clay-Limestone & Sand)",
+          category: "Atlantic Fog & Noble High-Tannin Baga",
+          dominantGrape: "Baga",
+          color: "#5E17EB",
+          accent: "#C77DFF",
+          fillOpacity: 0.24,
+          description: "Chalky clay and coastal sand dunes hosting pre-phylloxera ungrafted bush vines of heroic, ageworthy Baga (Luis Pato)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-8.65, 40.55], [-8.38, 40.55], [-8.40, 40.25], [-8.65, 40.25],
+            [-8.65, 40.55]
+          ]]
+        }
+      }
+    ]
+  }
+
 };
 
 // ============================================================================
@@ -2719,7 +3247,7 @@ export const WINE_REGION_OUTLINES = {
   },
 
   // 13. SPAIN (RIOJA & RIBERA DEL DUERO)
-  'spain-rioja': {
+    'spain-rioja': {
     type: "FeatureCollection",
     features: [
       {
@@ -2727,13 +3255,13 @@ export const WINE_REGION_OUTLINES = {
         id: "spain-outline",
         properties: {
           id: "spain-outline",
-          name: "Rioja DOCa & Northern Spain Fine Wine Axis",
-          spanishName: "Denominaciones de Origen Rioja y Ribera del Duero",
+          name: "Spain Fine Wine Axis (Rioja, Ribera, Priorat & Rías Baixas)",
+          spanishName: "Eje de Calidad: Rioja, Ribera del Duero, Priorat y Rías Baixas",
           category: "Official Regional Appellation Boundary",
-          areaHa: 66000,
+          areaHa: 95000,
           color: "#8B0000",
           accent: "#FFB300",
-          description: "The premier northern Spanish quality wine axis spanning Rioja DOCa along the Ebro River (Alta, Alavesa, Oriental) and the high Castilian plateau of Ribera del Duero."
+          description: "Spain's premier fine wine axis: the classical Rioja DOCa, high-altitude Ribera del Duero, dramatic black slate amphitheaters of Priorat, and green granite coastal fjords of Rías Baixas."
         },
         geometry: {
           type: "MultiPolygon",
@@ -2748,6 +3276,16 @@ export const WINE_REGION_OUTLINES = {
             [[
               [-4.42, 41.62], [-3.62, 41.72], [-3.35, 41.65], [-3.75, 41.52],
               [-4.35, 41.55], [-4.42, 41.62]
+            ]],
+            // Priorat DOQ
+            [[
+              [0.68, 41.28], [0.95, 41.25], [0.92, 41.10], [0.65, 41.12],
+              [0.68, 41.28]
+            ]],
+            // Rías Baixas Galicia
+            [[
+              [-9.05, 42.68], [-8.55, 42.75], [-8.42, 42.05], [-8.90, 42.02],
+              [-8.98, 42.45], [-9.05, 42.68]
             ]]
           ]
         }
@@ -2889,6 +3427,177 @@ export const WINE_REGION_OUTLINES = {
       }
     ]
   }
+,
+  // 2. BEAUJOLAIS OUTLINE
+  'beaujolais': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "beaujolais-outline",
+        properties: {
+          id: "beaujolais-outline",
+          name: "Beaujolais AOC Delimited Wine Region",
+          frenchName: "Vignoble du Beaujolais",
+          category: "Official Regional Appellation Boundary",
+          areaHa: 16500,
+          color: "#c2185b",
+          accent: "#d4af37",
+          description: "Official delimited perimeter of Beaujolais viticultural territory spanning the 10 Northern Crus on Hercynian granite down through the rolling clay-limestone Pierres Dorées of Bas-Beaujolais to the northern outskirts of Lyon."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [4.68, 46.33], [4.78, 46.28], [4.80, 46.12], [4.77, 45.92],
+            [4.72, 45.78], [4.58, 45.80], [4.52, 46.00], [4.54, 46.18],
+            [4.60, 46.30], [4.68, 46.33]
+          ]]
+        }
+      }
+    ]
+  },
+
+  // 18. ARGENTINA (MENDOZA & UCO VALLEY)
+  'argentina-mendoza': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "argentina-outline",
+        properties: {
+          id: "argentina-outline",
+          name: "Mendoza & Uco Valley Wine Region",
+          spanishName: "Región Vitivinícola de Mendoza y Valle de Uco",
+          category: "Official Delimited IG Regional Boundary",
+          areaHa: 155000,
+          color: "#4A0E2E",
+          accent: "#D4AF37",
+          description: "Andean high-altitude fine wine oasis spanning Luján de Cuyo, Maipú, and the extreme calcareous alluvial terroirs of Valle de Uco (Gualtallary, Altamira)."
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-69.45, -32.80], [-68.45, -32.80], [-68.05, -34.85], [-69.45, -34.85],
+            [-69.45, -32.80]
+          ]]
+        }
+      }
+    ]
+  },
+
+  // 19. SOUTH AFRICA (WESTERN CAPE)
+  'south-africa': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "south-africa-outline",
+        properties: {
+          id: "south-africa-outline",
+          name: "Western Cape Wine of Origin (WO) Region",
+          afrikaansName: "Wes-Kaap Wyn van Oorsprong Streek",
+          category: "Official Wine of Origin Regional Boundary",
+          areaHa: 92000,
+          color: "#1B4332",
+          accent: "#D4AF37",
+          description: "Premier Western Cape fine wine districts: historic Stellenbosch granites, the old-bush-vine Swartland revolution, cool maritime Hemel-en-Aarde, and 1685 Constantia."
+        },
+        geometry: {
+          type: "MultiPolygon",
+          coordinates: [
+            // Stellenbosch, Swartland & Franschhoek
+            [[
+              [18.45, -33.15], [19.25, -33.15], [19.25, -34.15], [18.45, -34.15],
+              [18.45, -33.15]
+            ]],
+            // Walker Bay / Hemel-en-Aarde
+            [[
+              [19.05, -34.25], [19.55, -34.25], [19.55, -34.55], [19.05, -34.55],
+              [19.05, -34.25]
+            ]]
+          ]
+        }
+      }
+    ]
+  },
+
+  // 20. NEW ZEALAND
+  'new-zealand': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "new-zealand-outline",
+        properties: {
+          id: "new-zealand-outline",
+          name: "New Zealand Fine Wine Geographical Indications",
+          maoriName: "Wāhanga Waina o Aotearoa",
+          category: "Official Delimited GI National Boundary",
+          areaHa: 42000,
+          color: "#0077B6",
+          accent: "#90E0EF",
+          description: "New Zealand's premier fine wine GIs: Marlborough greywacke gravels, alpine mica schist terraces of Central Otago, warm Gimblett Gravels in Hawke's Bay, and Martinborough terraces."
+        },
+        geometry: {
+          type: "MultiPolygon",
+          coordinates: [
+            // South Island: Marlborough
+            [[
+              [173.55, -41.35], [174.20, -41.45], [174.15, -41.85], [173.55, -41.75],
+              [173.55, -41.35]
+            ]],
+            // South Island: Central Otago
+            [[
+              [168.95, -44.85], [169.55, -44.85], [169.55, -45.25], [168.95, -45.25],
+              [168.95, -44.85]
+            ]],
+            // North Island: Hawke's Bay & Martinborough
+            [[
+              [175.25, -41.40], [177.10, -39.40], [176.45, -39.40], [175.25, -41.10],
+              [175.25, -41.40]
+            ]]
+          ]
+        }
+      }
+    ]
+  },
+
+  // 21. PORTUGAL
+  'portugal': {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        id: "portugal-outline",
+        properties: {
+          id: "portugal-outline",
+          name: "Portugal Fine Wine DOCs & River Terraces",
+          portugueseName: "Denominações de Origem Controlada de Portugal",
+          category: "Official Regional DOC Boundary",
+          areaHa: 190000,
+          color: "#7209B7",
+          accent: "#D4AF37",
+          description: "Portugal's timeless terroirs: vertical schist canyons of the Douro, high granite plateau of Dão, sun-drenched rolling plains of Alentejo, green granite terraces of Vinho Verde, and Atlantic Bairrada."
+        },
+        geometry: {
+          type: "MultiPolygon",
+          coordinates: [
+            // Douro & Dão & Vinho Verde (Northern Portugal)
+            [[
+              [-8.75, 42.22], [-6.85, 42.20], [-6.85, 40.25], [-8.75, 40.25],
+              [-8.75, 42.22]
+            ]],
+            // Alentejo (Southern Portugal)
+            [[
+              [-8.15, 39.05], [-7.25, 39.05], [-7.25, 38.20], [-8.15, 38.20],
+              [-8.15, 39.05]
+            ]]
+          ]
+        }
+      }
+    ]
+  }
+
 };
 
 export function getRegionOutline(regionId) {

@@ -61,7 +61,7 @@ console.log('━━━ [Test Suite 1] Food Pairing Color-Coding & Sommelier Spec
 
 it('Every region in WINE_REGIONS (all 17 world regions) has foodPairings with valid category, dish, and flavor rationale', () => {
   const regionKeys = Object.keys(WINE_REGIONS);
-  assert.equal(regionKeys.length, 17, `Expected 17 regions, found ${regionKeys.length}`);
+  assert.equal(regionKeys.length, 22, `Expected 22 regions, found ${regionKeys.length}`);
   
   Object.values(WINE_REGIONS).forEach(region => {
     assert.ok(Array.isArray(region.foodPairings), `${region.id} missing foodPairings array`);
