@@ -171,42 +171,262 @@ export const SOUTH_AFRICA_GRAND_CRUS = [
 
 export const SOUTH_AFRICA_TECHNICAL_REGULATIONS = {
   geology: {
+    title: "Ancient Gondwana Bedrock: Decomposed Cape Granite & Bokkeveld Shales",
+    summary: "The Western Cape is home to some of the oldest viticultural soils on Earth, dating back 600 to 1,000 million years. The stratigraphy is dominated by weathered Pre-Cambrian granite, Devonian marine shales, and sandstone scree.",
     formations: [
-      "Cape Supergroup Sandstone",
-      "Pre-Cambrian Decomposed Cape Granite",
-      "Bokkeveld Group Marine Shales",
-      "Malmesbury Group Metamorphic Shales",
-      "Koffieklip (Iron-Ferruginous Gravels)"
-    ],
-    soilTypes: [
-      "Decomposed Granite (Paardeberg & Polkadraai)",
-      "Red Hutton & Clovelly Clay-Loams",
-      "Bokkeveld Weathered Shale",
-      "Alluvial Silts and Table Mountain Sands"
+      {
+        id: 'table-mountain-sandstone',
+        name: "Table Mountain Sandstone (Cape Supergroup)",
+        period: "Ordovician to Silurian (~500–400 Ma)",
+        fossil: "Rare trace fossils in marine sandstone",
+        characteristics: "Coarse quartzitic sandstone capping prominent mountain peaks, producing weathered, acidic, and well-draining sandy scree on upper slopes.",
+        keyAreas: ["Table Mountain", "Simonsberg upper slopes", "Franschhoek"],
+        wineImpact: "Rapid drainage and low nutrient fertility naturally restrain vine vigor, yielding energetic white wines with taut citrus acidity."
+      },
+      {
+        id: 'cape-granite',
+        name: "Pre-Cambrian Decomposed Cape Granite (Plutons)",
+        period: "Late Neoproterozoic to Cambrian (~600–540 Ma)",
+        fossil: "None (Plutonic igneous crystalline basement)",
+        characteristics: "Coarse quartz sand and weathered feldspar clay (kaolin), rich in silica and potassium, decomposing into porous, crumbly gravels.",
+        keyAreas: ["Paardeberg (Swartland)", "Polkadraai Hills (Stellenbosch)", "Darling"],
+        wineImpact: "Imparts intoxicating floral aromatics, crystalline tension, flinty reduction, and chiseled vertical minerality to Syrah and Chenin Blanc."
+      },
+      {
+        id: 'bokkeveld-shale',
+        name: "Bokkeveld Group Metamorphic Marine Shales",
+        period: "Early Devonian (~400–380 Ma)",
+        fossil: "Devonian trilobites, brachiopods & crinoids",
+        characteristics: "Weathered marine mudstones and iron-rich fissile shales with high clay content, retaining moisture deep underground through hot summers.",
+        keyAreas: ["Hemel-en-Aarde Ridge & Valley", "Upper Hemel-en-Aarde", "Elgin plateau"],
+        wineImpact: "Provides dense mid-palate texture, savory dried herbs, dark cherry fruit, and lingering maritime salinity to cool-climate Pinot Noir and Chardonnay."
+      },
+      {
+        id: 'malmesbury-shale',
+        name: "Malmesbury Group Metamorphic Basement",
+        period: "Late Neoproterozoic (~750–550 Ma)",
+        fossil: "None (Ancient metamorphic turbidites & shales)",
+        characteristics: "Dark fissile metamorphic phyllite, quartzitic hornfels, and weathered clay-loam formed under immense tectonic pressure.",
+        keyAreas: ["Swartland rolling hills (Malmesbury, Riebeek Kasteel)"],
+        wineImpact: "Forces vine taproots deep into subterranean fissures, generating deep structural grip, black olive tapenade notes, and drought resilience."
+      },
+      {
+        id: 'koffieklip-gravel',
+        name: "Koffieklip (Ferruginous Laterite Gravel)",
+        period: "Tertiary to Quaternary Deep Weathering",
+        fossil: "None (Iron-rich ferricrete buckshot concretions)",
+        characteristics: "Hard, rust-colored nodular iron-rich gravels resembling crushed coffee beans ('koffieklip'), resting above rich red clay subsoils.",
+        keyAreas: ["Stellenbosch lower slopes", "Helderberg foothill benches"],
+        wineImpact: "Concentrates dark berry fruit, sweet iron filings, and aristocratic velvety tannins in premier Cabernet Sauvignon and Pinotage."
+      }
     ]
   },
-  grapes: {
-    major: ["Chenin Blanc (Steen)", "Cabernet Sauvignon", "Syrah", "Pinotage", "Chardonnay", "Sauvignon Blanc"],
-    heritage: ["Muscat de Frontignan", "Cinsault", "Sémillon (Groendruif)", "Tinta Barroca", "Grenache Blanc"]
+
+  climatology: {
+    system: "Mediterranean Maritime Climate with Benguela Current & Cape Doctor Winds",
+    description: "Cooled by the Antarctic Benguela Current and the famous southeasterly Cape Doctor wind, the Western Cape combines warm Mediterranean sunshine with cool coastal sea breezes.",
+    winds: [
+      {
+        name: "The Cape Doctor (Southeasterly Gale)",
+        effect: "Fierce, dry wind blowing from False Bay across Cape Peninsula and Stellenbosch. Clears smog, dries morning dew instantly, and completely prevents fungal rot while suppressing excess canopy vigor."
+      },
+      {
+        name: "Benguela Current Sea Breezes",
+        effect: "Pushes cool Antarctic ocean upwelling along the western coast and Walker Bay, blanketing coastal vineyards in maritime fog and dropping night temperatures."
+      }
+    ]
   },
+
+  grapes: {
+    title: "South African Ampelography: Chenin Blanc, Pinotage & Old Bush Vine Cépages",
+    description: "South Africa blends centuries of Huguenot viticultural heritage with cutting-edge clonal selections and precious pre-phylloxera old bush vines:",
+    major: [
+      {
+        id: 'chenin-blanc',
+        name: "Chenin Blanc (Steen)",
+        percentage: 18.5,
+        type: "White",
+        epicenter: "Swartland, Stellenbosch & Breedekloof",
+        profile: "South Africa's undisputed white benchmark. Unites crisp green apple, white peach, and lime with honeyed quince, baked pear, lanolin, and wet stone from old bush vines.",
+        role: "The nation's most widely planted noble variety, crafting dry, botrytized, and sparkling masterpieces.",
+        benchmarkCuvees: ["The Sadie Family 'Mev. Kirsten'", "Mullineux Old Vines White", "Alheit Vineyards 'Cartology'"]
+      },
+      {
+        id: 'cabernet-sauvignon',
+        name: "Cabernet Sauvignon",
+        percentage: 11.0,
+        type: "Red",
+        epicenter: "Stellenbosch (Simonsberg & Helderberg slopes)",
+        profile: "Cassis, blackcurrant leaf, graphite, cedar, and fine, muscular tannins that rival top Left Bank Bordeaux.",
+        role: "The structural foundation of Stellenbosch's global reputation for majestic age-worthy red wines.",
+        benchmarkCuvees: ["Kanonkop Cabernet Sauvignon", "Rust en Vrede Estate 1694", "Le Riche Reserve"]
+      },
+      {
+        id: 'syrah',
+        name: "Syrah (Shiraz)",
+        percentage: 10.0,
+        type: "Red",
+        epicenter: "Swartland & Stellenbosch",
+        profile: "Cracked black pepper, biltong, blackberry, fynbos mountain herbs, and savory dried meat on granitic soils.",
+        role: "Superstar variety of the modern Swartland Revolution and Rhône-style blends.",
+        benchmarkCuvees: ["The Sadie Family Columella", "Boekenhoutskloof Syrah", "Mullineux Schist Syrah"]
+      },
+      {
+        id: 'pinotage',
+        name: "Pinotage",
+        percentage: 7.5,
+        type: "Red",
+        epicenter: "Stellenbosch & Swartland",
+        profile: "Indigenous South African crossing of Pinot Noir × Cinsault (created in 1925 by Prof. Abraham Perold). Dark brambly plum, roasted rooibos, sweet tobacco, and velvet tannins.",
+        role: "South Africa's unique indigenous red variety, celebrated in old bush vine single-vineyard bottlings.",
+        benchmarkCuvees: ["Kanonkop Black Label Pinotage", "Beeslaar Pinotage", "Southern Right Pinotage"]
+      },
+      {
+        id: 'chardonnay',
+        name: "Chardonnay",
+        percentage: 7.0,
+        type: "White",
+        epicenter: "Hemel-en-Aarde Valley, Elgin & Robertson",
+        profile: "Cool maritime sites deliver Burgundian elegance with crisp green apple, white peach, toasted hazelnut, and marine oyster shell minerality.",
+        role: "Benchmark cool-climate white and primary cépage for Cap Classique sparkling wines.",
+        benchmarkCuvees: ["Hamilton Russell Chardonnay", "Kershaw Elgin Chardonnay", "Capensis Silene"]
+      },
+      {
+        id: 'sauvignon-blanc',
+        name: "Sauvignon Blanc",
+        percentage: 10.5,
+        type: "White",
+        epicenter: "Durbanville, Constantia & Elgin",
+        profile: "Pungent passionfruit, lemongrass, flint, blackcurrant leaf, and saline sea-breeze crispness.",
+        role: "Vibrant, food-friendly white thriving in maritime wind-cooled coastal pockets.",
+        benchmarkCuvees: ["Klein Constantia Sauvignon Blanc", "Iona Sauvignon Blanc"]
+      }
+    ],
+    heritage: [
+      {
+        id: 'cinsault',
+        name: "Cinsault (Hermitage)",
+        percentage: 2.0,
+        type: "Red",
+        epicenter: "Swartland & Darling old vines",
+        profile: "Historic blending red now reborn as pure, aromatic single-varietal wines. Translucent ruby, wild red berries, Turkish delight, and breezy freshness.",
+        role: "Heritage variety providing perfumed lift and parent grape of Pinotage."
+      },
+      {
+        id: 'semillon',
+        name: "Sémillon (Groendruif)",
+        percentage: 1.0,
+        type: "White",
+        epicenter: "Franschhoek old bush vines",
+        profile: "Historic centenarian vines deliver waxy lemon curd, lanolin, beeswax, and profound cellaring potential.",
+        role: "Historic white variety dating back to the earliest 19th-century Cape plantings."
+      },
+      {
+        id: 'muscat-de-frontignan',
+        name: "Muscat de Frontignan",
+        percentage: 0.5,
+        type: "White",
+        epicenter: "Constantia",
+        profile: "Grape of the historic 18th-century Vin de Constance. Dried apricot, Seville orange marmalade, honeycomb, and electric balancing acidity.",
+        role: "The iconic dessert cépage celebrated across European royal courts since Napoleon."
+      }
+    ]
+  },
+
   classification: {
+    system: "Wine of Origin (WO) Scheme & Old Vine Project (OVP)",
+    description: "Established in 1973 under the Wine and Spirit Board (SAWIS), the Wine of Origin (WO) scheme legally defines geographical boundaries and enforces strict truth-in-labeling standards.",
     pyramid: [
-      "Geographical Unit (e.g. Western Cape)",
-      "Region (e.g. Coastal Region, Cape South Coast)",
-      "District (e.g. Stellenbosch, Swartland, Walker Bay)",
-      "Ward (e.g. Simonsberg-Stellenbosch, Hemel-en-Aarde Valley, Constantia)",
-      "Single Vineyard Wine (Certified single registered parcel under 6 hectares)"
+      {
+        tier: "Single Vineyard Wine (Certified Single Parcel)",
+        sharePct: "3.0%",
+        aocCount: "Registered Parcels",
+        yieldLimits: "Max 6 Hectares per parcel",
+        description: "The apex of origin certification: wine produced from a single contiguous registered parcel under 6 hectares planted to a single grape variety."
+      },
+      {
+        tier: "Ward (Demarcated Terroir Enclave)",
+        sharePct: "12.0%",
+        aocCount: "58 Official Wards",
+        description: "Smallest formal district defined by homogeneous soil, topography, and meso-climate (e.g. Simonsberg-Stellenbosch, Hemel-en-Aarde Ridge, Constantia)."
+      },
+      {
+        tier: "District (Viticultural Region)",
+        sharePct: "35.0%",
+        aocCount: "30 Official Districts",
+        description: "Established viticultural centers sharing broader regional macroclimatic conditions (e.g. Stellenbosch, Swartland, Paarl, Walker Bay, Elgin)."
+      },
+      {
+        tier: "Region & Geographical Unit",
+        sharePct: "50.0%",
+        aocCount: "6 Regions / Western Cape",
+        description: "Broad overarching geographical boundaries such as Coastal Region, Cape South Coast, or Western Cape."
+      }
     ],
-    tiers: [
-      "Wine of Origin (WO) - 100% of grapes sourced from declared boundary",
-      "Certified Heritage Vineyards (Old Vine Project - 35+ years old)",
-      "Cap Classique (MCC - Traditional method bottle-fermented sparkling)",
-      "Estate Wine - 100% grown, vinified, and bottled on a contiguous estate"
-    ],
-    agingRules: {
-      capClassique: "Minimum 12 months on lees for standard MCC; 36+ months for prestige prestige cuvées",
-      oldVineProject: "Certified Heritage Vineyards must be planted a minimum of 35 years prior with official verification",
-      varietalVintage: "Minimum 85% of stated variety and vintage year must be present in the wine"
+    agingRules: [
+      { tier: "Cap Classique (MCC Lees Aging)", rule: "Traditional bottle-fermented sparkling wines must spend a minimum of 12 months aging on lees (increased from 9 months in 2021); prestige cuvées often age 36 to 60+ months." },
+      { tier: "Old Vine Project (Certified Heritage Vineyards)", rule: "Vines must be certified at least 35 years of age by SAWIS. Certified bottles bear the official Certified Heritage Vineyards seal on the neck." },
+      { tier: "Wine of Origin 85% Rules", rule: "Minimum 85% of stated grape variety, 85% of declared vintage year, and 100% of stated geographical boundary must be present in the bottle." }
+    ]
+  },
+
+  vinification: {
+    title: "Swartland Revolution Cellar Craft: Old Bush Vines, Concrete Eggs & Foudres",
+    summary: "South Africa's artisanal renaissance marries ancestral dry-farmed bush vines with minimal intervention, ambient fermentations, and large neutral cooperage:",
+    traditions: [
+      {
+        practice: "Old Bush Vine Viticulture (Droëland Wingerde)",
+        details: "Dry-farmed, untrellised bush vines with deep taproots that withstand summer droughts and yield naturally balanced, low-yield berries with immense concentration."
+      },
+      {
+        practice: "Ambient Wild Yeast & Low Intervention",
+        details: "Uninoculated native fermentations with zero enzyme additions or acidification, preserving natural vineyard microflora and unadorned terroir expression."
+      },
+      {
+        practice: "Raw Concrete Tanks & Foudres",
+        details: "Aging in unlined concrete tanks, ceramic amphorae, and large neutral oak foudres, eliminating aggressive new oak flavors while encouraging gentle micro-oxygenation."
+      },
+      {
+        practice: "Cap Classique Traditional Method",
+        details: "Secondary bottle fermentation with prolonged autolysis sur lattes, creating fine mousse and brioche complexity."
+      }
+    ]
+  },
+
+  businessModels: {
+    title: "Production Models & The South African Wine Landscape",
+    models: [
+      {
+        type: "Historic Cape Dutch Wine Estates",
+        frenchTerm: "Domaines Historiques",
+        description: "Centuries-old contiguous estates founded in the 17th and 18th centuries with magnificent Cape Dutch manor houses and historic gravity-fed cellars.",
+        examples: ["Klein Constantia", "Vergelegen", "Kanonkop", "Meerlust"]
+      },
+      {
+        type: "Swartland Independent Producers & Artisans",
+        frenchTerm: "Vignerons Indépendants",
+        description: "Dynamic cooperative of minimal-intervention winemakers celebrating old bush vines and low-intervention cellar craft.",
+        examples: ["The Sadie Family", "Mullineux & Leeu Family Wines", "A.A. Badenhorst"]
+      }
+    ]
+  },
+
+  aging: {
+    title: "Maturation Decrees & Cellar Longevity",
+    summary: "South African wine regulations mandate strict standards for traditional sparkling and fine aged reserve wines:",
+    vintage: {
+      title: "Estate Reserve & Wood-Aged Maturation",
+      minTotalMonths: 12,
+      minWoodMonths: 6,
+      rule: "Fine estate red wines typically undergo 12 to 24 months of oak barrel maturation followed by extensive cellar resting prior to commercial release.",
+      description: "Ensures structural integration of tannins and develops complex tertiary aromas of cigar box, leather, and dried fynbos."
+    },
+    nonVintage: {
+      title: "Cap Classique Standard",
+      minTotalMonths: 12,
+      minLeesMonths: 12,
+      rule: "Cap Classique sparkling wines require a minimum of 12 months aging on lees from tirage to disgorgement.",
+      description: "Imparts delicate yeast autolysis brioche notes and a creamy mousse texture."
     }
   }
 };

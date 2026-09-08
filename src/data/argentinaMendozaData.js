@@ -354,39 +354,331 @@ export const MENDOZA_GRAND_CRUS = [
 
 export const MENDOZA_TECHNICAL_REGULATIONS = {
   geology: {
-    title: "Andean Orogeny & Calcium Carbonate (Caliche) Stratigraphy",
+    title: "Andean Orogeny, Calcareous Pedology & Quaternary Alluvial Stratigraphy",
+    summary: "Mendoza's vineyards span the piedmont of the Cordillera Principal and Frontal Andes. Soil stratigraphy is dictated by torrential post-glacial flash floods (aluviones) depositing granite and metamorphic gravels, combined with arid desert weathering that coats subterranean pebbles in brilliant white calcium carbonate (caliche).",
     formations: [
-      { name: "Cenozoic Andean Uplift", desc: "Formed 20–5 million years ago as the Nazca oceanic plate subducted beneath the South American continental plate, elevating the Cordillera de los Andes to over 6,000 meters (Aconcagua 6,961m) and casting a profound rain shadow over Mendoza." },
-      { name: "Quaternary Alluvial Cones (Abanicos Aluviales)", desc: "Violent post-glacial meltwater floods and summer mountain flash floods (aluviones) deposited massive gravel, boulder, and sand cones across the piedmont." },
-      { name: "Calcium Carbonate / Caliche Encrustations", desc: "Arid desert weathering and microscopic evaporation in high-altitude Uco Valley soils caused subterranean calcium carbonate to precipitate, forming bright white chalk crusts (caliche) that coat granite gravels and impart tactile saline-chalk minerality to the wine." }
+      {
+        id: 'andean-uplift',
+        name: "Cenozoic Andean Uplift (Cordillera Principal & Frontal)",
+        spanishName: "Levantamiento Andino Cenozoico",
+        period: "Neogene to Quaternary (Miocene Uplift, ~20–5 Ma)",
+        fossil: "High cordillera marine limestones & Ammonites",
+        characteristics: "Subduction of the oceanic Nazca Plate beneath the continental South American Plate forced the Andes upward to 6,961m (Mount Aconcagua). Blocks Pacific maritime moisture completely, creating a hyper-arid continental desert with under 200mm annual rainfall.",
+        keyAreas: ["Entire Mendoza viticultural corridor", "Uco Valley", "Luján de Cuyo"],
+        wineImpact: "Guarantees intense solar irradiance (300+ days/year), low disease pressure, dry vine canopies, and massive diurnal thermal swings up to 22°C (40°F) that preserve vibrant malic acidity."
+      },
+      {
+        id: 'calcium-carbonate-caliche',
+        name: "Pedogenic Calcium Carbonate (Caliche / Caliza Superficial)",
+        spanishName: "Costras de Carbonato de Calcio (Caliche)",
+        period: "Late Pleistocene to Holocene (Pedogenic Evaporitic Crusts)",
+        fossil: "Rhizosphere microbiomes & rhizobacteria fossil coats (Bacillus)",
+        characteristics: "Arid desert evaporation draws calcium-rich subterranean water upward, precipitating dense, chalky white calcium carbonate (CaCO3) coatings on granite, rhyolite, and schist pebbles between 30cm and 120cm depth.",
+        keyAreas: ["Gualtallary (Monasterio & Tupungato Winelands)", "Paraje Altamira alluvial cone", "San Pablo IG", "El Cepillo"],
+        wineImpact: "Restricts root depth, limits vegetative vigor, lowers berry pH (3.45–3.60), and imparts an electric, tactile, chalky-saline textural grip to high-altitude Malbec and Cabernet Franc."
+      },
+      {
+        id: 'alluvial-cones-aluviones',
+        name: "Quaternary Alluvial Cones & Glacial Wash (Aluviones)",
+        spanishName: "Abanicos Aluviales Cuaternarios del Río Tunuyán y Mendoza",
+        period: "Pleistocene to Holocene (<1.8 Ma)",
+        fossil: "None (Fluvio-glacial and torrential alluvium)",
+        characteristics: "Torrential melting of Andean glaciers and episodic summer mountain flash floods (aluviones) deposited immense debris fans of rounded granite boulders, metamorphic gravels, and coarse quartz sand.",
+        keyAreas: ["Tunuyán River Basin (Los Chacayes, Vista Flores)", "Mendoza River Alluvial Plain (Las Compuertas, Perdriel, Agrelo)"],
+        wineImpact: "Exceptional free drainage forcing vine taproots deep into subterranean gravels, preventing waterlogging and producing concentrated, thick-skinned berries rich in anthocyanins."
+      },
+      {
+        id: 'aeolian-loess-silt',
+        name: "Aeolian Sand & Fine Desert Loess (Arenas Eólicas)",
+        spanishName: "Depósitos Eólicos y Limos Finos",
+        period: "Holocene (<10,000 years)",
+        fossil: "None (Windblown volcanic dust and quartz sands)",
+        characteristics: "Fine sandy and silty topsoils blown from the Patagonian steppe and Andean foothills, layered over rocky gravel subsoils.",
+        keyAreas: ["Central Luján de Cuyo", "Maipú (Barrancas)", "Eastern Plain (Santa Rosa)"],
+        wineImpact: "Enhances aromatic fruit forwardness, sweet ripe tannins, and generous plush mid-palate texture in classic Mendoza Malbec and Bonarda."
+      },
+      {
+        id: 'precordillera-volcanic-tuff',
+        name: "Precordillera Metamorphic Basement & Volcanic Tuff",
+        spanishName: "Basamento Metamórfico y Cenizas Volcánicas Andinas",
+        period: "Paleozoic to Tertiary (~300–15 Ma)",
+        fossil: "Paleozoic marine trilobites in Precordillera marine sediments",
+        characteristics: "Ancient metamorphic schist, phyllite, and volcanic rhyolite tufts forming the foothills of the Frontal Cordillera.",
+        keyAreas: ["Las Compuertas", "Cacheuta", "Ugarteche foothill benches"],
+        wineImpact: "Yields structured, mineral-laden wines with firm savory backbone, graphite notes, and lingering iron-like tension."
+      }
     ]
   },
+
+  climatology: {
+    system: "High-Altitude Semi-Arid Desert Climatology (Winkler Region III to IV / Helvitia Zones)",
+    description: "Located between 32° and 34° South latitude in the extreme rain shadow of the 6,000m Andes, Mendoza receives a mere 180–250mm of annual precipitation. Vineyards thrive between 650m and 1,650m elevation, where solar ultraviolet (UV-B) radiation is intense, stimulating the vine to synthesize thick skins rich in anthocyanins, resveratrol, and supple tannins. Diurnal temperature variations regularly exceed 15–22°C (27–40°F), allowing nights to cool down to 10–14°C, locking in brisk natural acidity.",
+    winds: [
+      {
+        name: "El Viento Zonda (Andean Foehn Wind)",
+        effect: "A violent, hot, hyper-dry foehn wind descending from the Pacific over the 6,000m Andean crest into the western valleys in spring and early summer. Air compresses and heats adiabatically, driving temperatures over 38°C (100°F) while relative humidity plunges below 10%. Cleanses the vineyard atmosphere, eliminates fungal rot entirely, but requires careful canopy shading and irrigation during spring flowering to prevent coulure (shatter)."
+      },
+      {
+        name: "El Pampero (Polar Cold Front)",
+        effect: "A frigid, dry southwesterly wind blowing up from Antarctica and the Patagonian ice fields. Sweeps through Mendoza following autumn cold fronts, plummeting night temperatures and bringing severe risks of spring frosts (heladas tardías) in low-lying valley bottoms, necessitating active wind machines, vineyard sprinklers, and higher-altitude hillside planting."
+      },
+      {
+        name: "La Sudestada (Southeasterly Maritime Infusion)",
+        effect: "A cool, moist air mass pushing inland from the South Atlantic and Río de la Plata estuary. Moderates mid-summer heatwaves, introduces refreshing evening breezes into Eastern Mendoza and Maipú, and provides temporary cloud cover that shields ripening grape skins from sunburn during veraison."
+      }
+    ]
+  },
+
   grapes: {
+    title: "Argentine Ampelography: Malbec Massale Selections, High-Altitude Cabernet Franc & Heritage Varieties",
+    description: "Argentina holds the world's most valuable genetic repository of pre-phylloxera French massale cuttings imported before the 1870s European phylloxera epidemic. Malbec reigns supreme alongside thrilling high-altitude Cabernet Franc, indigenous Torrontés, and ancient Criolla varieties:",
     major: [
-      { name: "Malbec", desc: "Argentina's signature red grape, brought from Cahors and Bordeaux in 1853 by French agronomist Michel Aimé Pouget. Pre-phylloxera massale selections feature tight clusters, small berries, intense anthocyanin color, sweet floral violet aromas, dark plum fruit, and velvety round tannins." },
-      { name: "Cabernet Franc", desc: "The rising superstar of high-altitude Uco Valley (Gualtallary and San Carlos). Displays vibrant red berry fruit, crushed red pepper, graphite, pencil shavings, and electric natural acidity." },
-      { name: "Bonarda (Corbeau / Charbono)", desc: "Historic red variety of Savoie origin, widely planted in eastern Mendoza and Maipú. Delivers juicy black cherry, wild plum, low tannins, and vibrant food-friendly freshness." },
-      { name: "Torrontés Riojano", desc: "Argentina's only indigenous noble white grape, a historic natural crossing of Criolla Chica (Mission) × Muscat of Alexandria. Exuberantly aromatic with notes of jasmine, white peach, rosewater, and refreshing dry citrus." }
+      {
+        id: 'malbec',
+        name: "Malbec (Côt / Auxerrois)",
+        frenchSynonym: "Côt de Cahors / Pressac",
+        percentage: 58.0,
+        type: "Red",
+        epicenter: "Uco Valley (Gualtallary, Paraje Altamira) & Luján de Cuyo (Las Compuertas, Perdriel, Agrelo)",
+        profile: "Argentina's crowning glory. Sourced from pre-phylloxera massale selections featuring small tight clusters and minuscule berries. Shows intoxicating aromas of fresh violets, black cherries, blueberries, plums, dark cocoa, and graphite. At high altitude on caliche soils, it develops an electric mineral tension, saline chalkiness, and vibrant natural acidity without herbaceous greenness.",
+        role: "Primary noble variety forming single-varietal icons and the structural core of prestige Andean blends.",
+        clones: ["Catena Massale Selections (1898)", "INRA 595", "INRA 598", "Mendoza Pre-Phylloxera Massale"],
+        benchmarkCuvees: ["Catena Zapata Adrianna Vineyard Mundus Bacillus Terrae", "Zuccardi Finca Piedra Infinita", "Achaval-Ferrer Finca Bella Vista", "Cobos Chañares Estate"]
+      },
+      {
+        id: 'cabernet-franc',
+        name: "Cabernet Franc",
+        frenchSynonym: "Bouchet / Breton",
+        percentage: 14.0,
+        type: "Red",
+        epicenter: "Gualtallary, San Pablo & Paraje Altamira (Valle de Uco)",
+        profile: "The critical darling and stylistic vanguard of the high-altitude Uco Valley. Yields crystalline redcurrant, wild raspberry, pink peppercorn, bell pepper nuances, crushed stone, and laser-like acidity with chiseled, linear tannins.",
+        role: "Key standalone superstar variety and vital structural partner in Bordeaux-style prestige cuvées.",
+        clones: ["Clone 214", "Clone 327", "Massale Uco Valley"],
+        benchmarkCuvees: ["El Enemigo Gran Enemigo Gualtallary Single Vineyard", "Zorzal Eggo Franco", "Catena Zapata Angélica Zapata Alta"]
+      },
+      {
+        id: 'bonarda',
+        name: "Bonarda (Corbeau / Douce Noire)",
+        frenchSynonym: "Charbono / Corbeau de Savoie",
+        percentage: 12.0,
+        type: "Red",
+        epicenter: "Eastern Mendoza (Rivadavia, San Martín) & Maipú (Ugarteche)",
+        profile: "Historically Argentina's most planted red grape before being surpassed by Malbec. Originating in Savoie (Douce Noire), it produces deep ruby wines with ripe black cherry, wild plum, fig, sweet baking spice, supple tannins, and bright natural acidity.",
+        role: "Essential food-friendly red, historic workhorse, and increasingly crafted into artisanal old-vine single-cru cuvées.",
+        clones: ["Historic Mendoza Criolla Field Selections"],
+        benchmarkCuvees: ["Passionate Wine 'Vía Revolucionaria' Bonarda Pura", "Catena Zapata La Marchigiana Bonarda Tinaja", "Colomé / Altocedro Reserva"]
+      },
+      {
+        id: 'torrontes-riojano',
+        name: "Torrontés Riojano",
+        frenchSynonym: "Torrontés Argentino",
+        percentage: 8.0,
+        type: "White",
+        epicenter: "Cafayate (Salta) & Uco Valley high terraces (1,200m+)",
+        profile: "Argentina's only indigenous noble grape variety, a historic natural cross of Criolla Chica (Listán Prieto) × Muscat of Alexandria. Exuberantly aromatic with orange blossom, jasmine, white peach, lychee, and rosewater, yet surprises on the palate with a bone-dry, refreshing citrus finish.",
+        role: "Argentina's signature white wine, perfected in high-altitude sandy vineyards.",
+        benchmarkCuvees: ["Susana Balbo Signature Torrontés", "Colomé Torrontés Calchaquí", "Catena Zapata White Stones"]
+      },
+      {
+        id: 'chardonnay',
+        name: "Chardonnay",
+        frenchSynonym: "Beaunois",
+        percentage: 5.0,
+        type: "White",
+        epicenter: "Gualtallary (Adrianna Vineyard 1,450m) & San Pablo (1,400m)",
+        profile: "At extreme Andean elevations (1,300m–1,600m), Chardonnay thrives in limestone-rich soils. Explodes with aromas of Meyer lemon, white peach, flint, crushed chalk, hazelnut, and intense saline minerality with Burgundian tension and zero flabbiness.",
+        role: "The leading white variety for world-class, age-worthy single-terroir whites and traditional method sparkling wines.",
+        benchmarkCuvees: ["Catena Zapata Adrianna Vineyard White Stones", "Catena Zapata White Bones", "Zuccardi Botánico Chardonnay"]
+      },
+      {
+        id: 'semillon',
+        name: "Semillon",
+        frenchSynonym: "Sémillon de Bordeaux",
+        percentage: 3.0,
+        type: "White",
+        epicenter: "Historic La Consulta, Perdriel & Tupungato old vines",
+        profile: "Planted heavily in the late 19th and early 20th centuries. Centenarian ungrafted bush vines yield textured, waxy, lemon curd, chamomile, lanolin, and beeswax-laced dry whites with sensational 20+ year cellaring capacity.",
+        role: "Historic white treasure experiencing a profound artisanal sommelier revival.",
+        benchmarkCuvees: ["Matias Riccitelli Old Vines from Patagonia & Uco Semillon", "Mendel Semillon", "Finca Suarez Semillon"]
+      }
     ],
     heritage: [
-      { name: "Semillon", desc: "Old-vine white grape dating back to the late 19th century in Luján de Cuyo and Uco Valley; crafts waxy, honeyed, lanolin and lemon curd-scented dry whites of profound ageability." },
-      { name: "Criolla Chica (Listán Prieto / Mission)", desc: "Centuries-old heritage variety brought by Spanish conquistadors and Jesuit missionaries in the 16th century, currently celebrated in artisanal, low-extraction natural wines." },
-      { name: "Petit Verdot", desc: "Late-ripening Bordeaux variety that achieves complete phenolic ripeness in Mendoza's high-altitude sunshine, providing structural backbone, inkiness, and violet notes to prestige blends." }
+      {
+        id: 'criolla-chica',
+        name: "Criolla Chica (Listán Prieto / Mission)",
+        frenchSynonym: "País (Chile) / Mission (California)",
+        percentage: "<1.0",
+        type: "Red",
+        epicenter: "Lavalle, Maipú & Santa Rosa old pergolas",
+        profile: "Brought to Argentina by Jesuit missionaries and Spanish conquistadors in the 16th century. Pale ruby, bursting with wild strawberries, sour cherries, hibiscus tea, dry oregano, and crunchy low-tannin freshness.",
+        role: "Ancestral genetic heritage variety now championed in minimal-intervention, whole-cluster natural wines.",
+        benchmarkCuvees: ["El Esteco Old Vines Criolla", "Polígonos del Valle de Uco Criolla", "Passionate Wine Criolla"]
+      },
+      {
+        id: 'petit-verdot',
+        name: "Petit Verdot",
+        percentage: "<1.0",
+        type: "Red",
+        epicenter: "Luján de Cuyo & Eastern Uco Valley",
+        profile: "Late-ripening Bordeaux grape that struggles in cold climates but achieves breathtaking physiological maturity under Mendoza's 300+ days of mountain sun. Deep violet-black, black pepper, leather, and immense structural tannins.",
+        role: "Crucial blending agent for color and backbone; occasionally bottled as rare, cult single-varietal wines.",
+        benchmarkCuvees: ["Finca Decero Mini Ediciones Petit Verdot", "Ruca Malen Petit Verdot Terroir Series"]
+      },
+      {
+        id: 'cabernet-sauvignon',
+        name: "Cabernet Sauvignon",
+        percentage: "<1.0",
+        type: "Red",
+        epicenter: "Perdriel & Agrelo (Luján de Cuyo)",
+        profile: "Ripens to perfection in the warmer gravel benches of Luján de Cuyo. Cassis, tobacco leaf, roasted red pepper, cedar box, and structured, ripe muscular tannins.",
+        role: "Historic staple of classic Argentine Bordeaux-style blends.",
+        benchmarkCuvees: ["Cobos Marchiori Vineyard Cabernet Sauvignon", "Catena Zapata Nicolás Catena Zapata"]
+      }
     ]
   },
+
   classification: {
-    system: "INV (Instituto Nacional de Vitivinicultura) Appellation & IG Law",
-    description: "Governed nationally by Law 25.163, regulating Indicación de Procedencia (IP), Indicación Geográfica (IG), and Denominación de Origen Controlada (DOC).",
+    system: "INV (Instituto Nacional de Vitivinicultura) & Appellation Law (Ley 25.163)",
+    description: "Argentine wine law is administered federally by the Instituto Nacional de Vitivinicultura (INV) under Law 25.163 (enacted 1999). It establishes an official three-tier geographical hierarchy, while also codifying strict statutory barrel/bottle aging decrees (Reserva and Gran Reserva) and grape varietal labeling purity laws (minimum 85% rule).",
     pyramid: [
-      { name: "DOC (Denominación de Origen Controlada)", desc: "Top statutory tier: Luján de Cuyo DOC (established 1989) and San Rafael DOC (established 1993). Requires strict yields, native grape standards (min 85% Malbec in Luján), and mandatory barrel aging (min 12 months in oak, 12 in bottle)." },
-      { name: "Indicación Geográfica (IG)", desc: "Modern terroir-delimited appellations defined strictly by geopedological and climatic criteria (e.g. Paraje Altamira, Gualtallary, Los Chacayes, Las Compuertas, San Pablo). The primary driver of high-end single-terroir Argentine wine." },
-      { name: "Indicación de Procedencia (IP)", desc: "Regional geographical indications identifying broad viticultural origin (e.g. Mendoza, Valle de Uco, Patagonia)." }
+      {
+        tier: "DOC (Denominación de Origen Controlada)",
+        sharePct: "2.5%",
+        aocCount: "2 Recognized DOCs",
+        yieldLimits: "Max 70–80 hl/ha (Luján de Cuyo DOC)",
+        minAbv: "13.5% vol.",
+        criteria: "Strict legal boundaries, certified grape varieties (min 85% Malbec in Luján de Cuyo), maximum yields, and mandatory wood aging (minimum 12 months in oak barrels followed by 12 months in bottle prior to release).",
+        description: "The traditional top statutory tier created by visionary producers: Luján de Cuyo DOC (established 1989, recognized internationally in 1991) and San Rafael DOC (established 1993 in southern Mendoza for Malbec/Cabernet)."
+      },
+      {
+        tier: "Indicación Geográfica (IG / Terroir Appellations)",
+        sharePct: "22.5%",
+        aocCount: "112 Delimited IGs",
+        yieldLimits: "Max 100 hl/ha for certified estate wines",
+        minAbv: "12.5% – 14.5% vol.",
+        criteria: "Delimited strictly according to rigorous geopedological, topographical, and climatic criteria based on extensive soil pit (calicata) analysis and electrical conductivity terroir mapping.",
+        description: "The dynamic engine of fine Argentine viticulture. World-renowned terroir IGs include Paraje Altamira, Gualtallary, Los Chacayes, San Pablo, Pampa El Cepillo, and Las Compuertas."
+      },
+      {
+        tier: "Indicación de Procedencia (IP / Regional Indications)",
+        sharePct: "75.0%",
+        aocCount: "Province & Regional Zones",
+        yieldLimits: "No statutory maximum limit",
+        minAbv: "11.5% vol.",
+        criteria: "Broad geographical origin certifying that at least 80% of the grapes originated within the stated province or political territory.",
+        description: "Regional classifications identifying broad wine origins such as Mendoza, Valle de Uco, Cuyo, or Patagonia, providing reliable geographic tracing for everyday and entry-level wines."
+      }
     ],
     agingRules: [
-      { tier: "Reserva", rule: "Minimum 12 months aging for reds, 6 months for whites/rosés, with recognized quality grapes and restricted yields." },
-      { tier: "Gran Reserva", rule: "Minimum 24 months aging for reds (min 12 in oak), 12 months for whites/rosés (min 6 in oak), demonstrating superior phenolic concentration." }
+      { tier: "Reserva (INV Statutory Decree)", rule: "Minimum 12 months aging for red wines (min 6 months in wood); minimum 6 months aging for white and rosé wines (no wood minimum mandatory). Must be made from 100% noble recognized vinifera varieties with restricted yields." },
+      { tier: "Gran Reserva (INV Statutory Decree)", rule: "Minimum 24 months total aging for red wines (at least 12 months in oak barrels); minimum 12 months aging for white and rosé wines (at least 6 months in oak barrels). Represents the pinnacle of estate wood-aged cuvées." },
+      { tier: "DOC Luján de Cuyo Maturation Mandate", rule: "Minimum 24 months aging from harvest, including a mandatory minimum of 12 months in oak barrels (barricas de roble) followed by 12 months of maturation in glass bottle prior to commercial release." },
+      { tier: "Varietal Purity Law (85% Rule)", rule: "To state a single grape variety, vintage year, or geographic IG on the front label, Argentine federal law requires that a minimum of 85% of the wine must be derived strictly from that stated cépage, harvest, or IG." }
     ]
   },
+
+  vinification: {
+    title: "Modern Andean Cellar Craft: Uncoated Concrete Eggs, Calicatas & Large Neutral Oak",
+    summary: "The contemporary Argentine winemaking philosophy has undergone a radical terroir-driven evolution away from heavy new 225L American oak barriques and high-extraction fruit bombs toward unadorned expression of high-altitude mountain minerality, tension, and native floral freshness:",
+    traditions: [
+      {
+        practice: "Uncoated Concrete Eggs & Epoxyless Vats (Huevos de Hormigón)",
+        details: "Pioneered in Mendoza by Zuccardi, Matías Michelini, and Sebastian Zuccardi. Oval concrete vessels induce continuous natural vortex convection currents during fermentation without electricity. The raw microporous concrete allows gentle micro-oxygenation while imparting zero wood flavoring, accentuating pure fruit aromatics and chalky caliche mineral salinity."
+      },
+      {
+        practice: "Whole-Cluster & Stem Inclusion Fermentation",
+        details: "Elite high-altitude winemakers ferment with 20% to 100% whole clusters (racimos enteros). The ripe lignified green stems absorb heat during vigorous fermentations, lower overall alcohol levels slightly, supply natural potassium, and infuse high-toned herbal spice, white pepper, and grippy vertical tannins."
+      },
+      {
+        practice: "Calicatas (Soil Pits) & Electrical Conductivity Terroir Mapping",
+        details: "Vineyards are dissected into micro-parcels using mechanical backhoe soil pits (calicatas) and EM38 electromagnetic soil conductivity scanners. Grapes from patches with high calcium carbonate (caliche) coating are harvested, fermented, and aged completely independently in separate concrete vats."
+      },
+      {
+        practice: "Large Neutral Oak Foudres (Fudres) & Stockinger Casks",
+        details: "A wholesale migration from 225L small new barriques to large 2,500L to 5,000L untoasted Austrian and French oak foudres (Stockinger). Allows slow oxidative evolution and polymerizes tannins without masking delicate floral violet and mountain thyme notes under vanilla or toast."
+      },
+      {
+        practice: "Acequia Snowmelt Canal Irrigation & Controlled Deficit Regimes",
+        details: "Centuries-old canal networks (acequias) originally engineered by the pre-Columbian Huarpe people channel pure mineral-rich Andean snowmelt from the Mendoza and Tunuyán rivers. Modern estates combine traditional flood irrigation (surco) with precision drip systems (goteo) using regulated deficit irrigation (RDI) to limit vine canopy size and concentrate polyphenol development."
+      },
+      {
+        practice: "Parral (Pergola) vs. Espaldera (VSP) Canopy Architecture",
+        details: "Historic vineyards utilize overhead pergola training (parral) at 1.8m height, shielding grapes from extreme solar UV radiation and violent summer hailstorms (granizo). Modern high-density vineyards favor Vertical Shoot Positioned (espaldera) trellising, often covered with anti-hail protective netting (malla antigranizo)."
+      }
+    ]
+  },
+
+  businessModels: {
+    title: "Production Models & The Argentine Viticultural Landscape",
+    models: [
+      {
+        type: "Historic Dynasty Bodegas & Centennial Estancias",
+        frenchTerm: "Grandes Bodegas Históricas",
+        description: "Established in the late 19th and early 20th centuries by visionary European immigrant families (Catena, Peñaflor, Trapiche, Norton, Luigi Bosca). These landmark estates control thousands of hectares across multiple elevations and pioneered the modern global export boom of Argentine Malbec.",
+        examples: ["Bodega Catena Zapata", "Bodega Norton", "Luigi Bosca", "Trapiche"]
+      },
+      {
+        type: "Franco-Argentine Joint Ventures & Cult Collaborations",
+        frenchTerm: "Partenariats Franco-Argentins",
+        description: "Prestigious collaborations between Bordeaux/Burgundian icons and Mendoza pioneers, fusing Old World assemblage craft and centuries of cellar tradition with extreme high-altitude Andean terroir.",
+        examples: ["Cheval des Andes (Château Cheval Blanc × Terrazas de los Andes)", "Caro (Château Lafite Rothschild × Catena)", "Clos de los Siete (Michel Rolland)"]
+      },
+      {
+        type: "Artisanal Terroirists & Minimal-Intervention Micro-Vignerons",
+        frenchTerm: "Vignerons Artisans & Vins Vivants",
+        description: "A dynamic vanguard of young vignerons leading the organic, biodynamic, and low-intervention revolution in Uco Valley. Utilizing raw concrete eggs, amphorae, flor yeast maturation, and ancient field blends to redefine South American wine.",
+        examples: ["Zuccardi Valle de Uco", "Matías Riccitelli", "SuperUco (Michelini Brothers)", "Per Se", "El Enemigo"]
+      }
+    ]
+  },
+
+  aging: {
+    title: "Statutory INV & DOC Barrel and Bottle Aging Requirements",
+    summary: "Argentine wine law decrees rigorous statutory maturation thresholds for wines bearing the prestigious Reserva and Gran Reserva quality designations:",
+    vintage: {
+      title: "Gran Reserva & DOC Statutory Maturation",
+      minTotalMonths: 24,
+      minWoodMonths: 12,
+      rule: "Red Gran Reserva wines require a minimum of 24 months total aging, with at least 12 months spent maturing in oak barrels (barricas de roble). DOC Luján de Cuyo requires 24 months total aging including 12 months in oak and 12 months in bottle prior to commercial release.",
+      description: "Guarantees complete integration of anthocyanins, wood ellagitannins, and velvety polymerization, ensuring bottles possess 15 to 30 years of graceful cellar potential."
+    },
+    nonVintage: {
+      title: "Reserva Quality Designation",
+      minTotalMonths: 12,
+      minLeesMonths: 6,
+      rule: "Red Reserva wines require a minimum of 12 months aging with mandatory oak contact (typically 6 to 12 months in barriques or foudres). White and Rosé Reserva wines require 6 months aging with restricted vineyard yields.",
+      description: "Provides elevated structural complexity, rich spice, and supple fruit balance compared to youthful entry-level young wines."
+    }
+  },
+
+  ancillaryAocs: [
+    {
+      name: "Patagonia IG (Río Negro & Neuquén)",
+      establishedYear: 2002,
+      type: "Cool-Climate Southern Frontier IG",
+      permittedGrapes: ["Pinot Noir", "Malbec", "Merlot", "Semillon", "Chardonnay"],
+      description: "Located 1,000 km south of Mendoza at lower elevations (250m–400m) along the 39th parallel South. Extreme howling Patagonian winds, long daylight hours, and cool nights produce diaphanous, earthy Pinot Noir and mineral-driven, crunchy Malbec.",
+      benchmarkProducers: ["Bodega Chacra (Piero Incisa della Rocchetta)", "Bodega Noemía", "Humberto Canale"]
+    },
+    {
+      name: "Cafayate & Calchaquí Valleys IG (Salta & Catamarca)",
+      establishedYear: 2003,
+      type: "Extreme Ultra-High Altitude IG",
+      permittedGrapes: ["Torrontés Riojano", "Malbec", "Tannat", "Cabernet Sauvignon"],
+      description: "Among the highest commercial vineyards on Earth, ascending from 1,700m to an astonishing 3,111m elevation at Colomé (Altura Máxima). Intense UV rays generate nearly black, inky Malbec and Tannat with monumental tannins and floral Torrontés of unmatched intensity.",
+      benchmarkProducers: ["Bodega Colomé (Altura Máxima)", "El Esteco", "San Pedro de Yacochuya"]
+    },
+    {
+      name: "Pedernal Valley IG (San Juan)",
+      establishedYear: 2013,
+      type: "High-Altitude Limestone Valley IG",
+      permittedGrapes: ["Malbec", "Syrah", "Cabernet Sauvignon", "Chardonnay"],
+      description: "A secluded high mountain valley at 1,400m in San Juan province, resting on genuine geological limestone and flint gravels rather than just caliche coatings. Yields piercingly fresh Malbec and Syrah with cool herbal notes and razor-sharp acidity.",
+      benchmarkProducers: ["Pyros Wines", "Fuego Blanco", "Graffigna"]
+    }
+  ],
+
   viticulture: {
     irrigation: "Ancient canal system (Acequias) originally engineered by the indigenous Huarpe people, transporting pure mineral-rich Andean snowmelt from the Mendoza, Tunuyán, and Diamante rivers to nourish the desert vineyards.",
     zondaWind: "A scorching, hyper-arid Foehn wind descending from the Pacific over the high Andean peaks into the western valleys in spring, desiccating vines and causing sudden humidity drops to below 10%, mitigating all fungal diseases naturally."

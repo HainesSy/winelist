@@ -159,44 +159,242 @@ export const PORTUGAL_GRAND_CRUS = [
 
 export const PORTUGAL_TECHNICAL_REGULATIONS = {
   geology: {
+    title: "Hercynian Metamorphic Schist (Xisto) & Granite Terroirs",
+    summary: "Portugal's viticultural landscape is founded upon ancient Iberian Massif crystalline metamorphic schists in the Douro, Hercynian granite batholiths in Dão and Minho, and Jurassic marine clay-limestone in Bairrada.",
     formations: [
-      "Pre-Cambrian Crystalline Metamorphic Schist (Xisto)",
-      "Hercynian Granite Batholiths",
-      "Jurassic Marine Clay-Limestone (Bairrada Barro)",
-      "Metamorphic Marble Beds (Estremoz)",
-      "Coastal Atlantic Dune Sands"
-    ],
-    soilTypes: [
-      "Vertical Slate/Schist Fractures",
-      "Decomposed Granite Sands (Saibro)",
-      "Calcareous Clay Marl",
-      "Alluvial River Silts"
+      {
+        id: 'douro-schist',
+        name: "Pre-Cambrian Crystalline Metamorphic Schist (Xisto)",
+        period: "Pre-Cambrian to Cambrian (~600–500 Ma)",
+        fossil: "None (High-pressure crystalline metamorphic slate)",
+        characteristics: "Vertical, fissile metamorphic slate and schist strata fractured vertically, allowing vine roots to burrow 10–20 meters deep for moisture during scorching Mediterranean summers.",
+        keyAreas: ["Douro Valley (Cima Corgo & Douro Superior)", "Portalegre (Northern Alentejo)"],
+        wineImpact: "Concentrates intense black fruit, balsamic nuances, slatey minerality, and profound structural longevity in benchmark dry Douro reds and Vintage Ports."
+      },
+      {
+        id: 'hercynian-granite',
+        name: "Hercynian Granite Batholiths & Saibro Sands",
+        period: "Late Carboniferous to Permian (~320–280 Ma)",
+        fossil: "None (Plutonic crystalline igneous rock)",
+        characteristics: "Coarse-grained intrusive plutonic granite decomposing into acidic, quartz-rich sandy grus ('saibro') with low organic matter and excellent drainage.",
+        keyAreas: ["Dão high plateau", "Vinho Verde (Monção e Melgaço)", "Beira Interior"],
+        wineImpact: "Delivers laser-like natural acidity, crystalline citrus, white flower aromatics, and refined, silky, fine-grained tannins."
+      },
+      {
+        id: 'bairrada-barro',
+        name: "Jurassic Marine Clay-Limestone (Barro)",
+        period: "Middle to Late Jurassic (~160–140 Ma)",
+        fossil: "Marine ammonites, belemnites & bivalves",
+        characteristics: "Dense, calcareous clays ('barro') interbedded with fossiliferous limestone marls, providing high water retention and calcium-rich alkaline soils.",
+        keyAreas: ["Bairrada AOC", "Lisboa (Colares, Bucelas)"],
+        wineImpact: "Provides powerful structured tannins, blood orange, plum, and incredible 30+ year longevity to 100% Baga wines."
+      },
+      {
+        id: 'alentejo-marble',
+        name: "Paleozoic Metamorphic Marble & Red Calcareous Soils",
+        period: "Paleozoic Era (~400–300 Ma)",
+        fossil: "Metamorphosed ancient coral reefs",
+        characteristics: "Crystalline limestone and metamorphic marble beds weathering into alkaline, mineral-rich red clays over hard rock basements.",
+        keyAreas: ["Alentejo (Estremoz, Borba, Vila Viçosa)"],
+        wineImpact: "Imparts plush, velvety dark fruit, Mediterranean garrigue herbs, and supple rounded tannins with generous mouthfeel."
+      }
     ]
   },
-  grapes: {
-    major: ["Touriga Nacional", "Touriga Franca", "Tinta Roriz (Aragonez)", "Baga", "Alvarinho", "Encruzado"],
-    heritage: ["Tinta Barroca", "Tinto Cão", "Sousão", "Arinto", "Loureiro", "Alicante Bouschet", "Trincadeira"]
+
+  climatology: {
+    system: "Atlantic Maritime to Continental Mediterranean Climates",
+    description: "Portugal transitions rapidly from hyper-humid Atlantic conditions in the northwest (Vinho Verde) through rain-shadowed continental heat in the Douro, to dry Mediterranean baking sun in Alentejo.",
+    winds: [
+      {
+        name: "Atlantic Maritime Westerlies",
+        effect: "Brings humid ocean mists and rainfall up to 1,500mm in Minho and Bairrada, buffering against extreme heat spikes and fostering crisp natural acidity."
+      },
+      {
+        name: "Marão Mountain Rain Shadow",
+        effect: "The Serra do Marão mountain range blocks Atlantic moisture from penetrating the Douro Valley, creating scorching continental summers exceeding 42°C (108°F)."
+      }
+    ]
   },
+
+  grapes: {
+    title: "Portuguese Ampelography: Touriga Nacional, Baga, Alvarinho & Indigenous Cépages",
+    description: "Portugal possesses over 250 indigenous grape varieties, forming one of the most unique and genetically preserved ampelographic treasures in world viticulture:",
+    major: [
+      {
+        id: 'touriga-nacional',
+        name: "Touriga Nacional",
+        percentage: 22.0,
+        type: "Red",
+        epicenter: "Douro & Dão",
+        profile: "Noble flagship variety. Tiny thick-skinned berries producing opaque violet-black wine with bergamot, earl grey tea, violet florals, dark blackberry, rockrose (esteva), and muscular, aristocratic tannins.",
+        role: "The soul of benchmark dry Douro reds and Vintage Ports.",
+        benchmarkCuvees: ["Barca-Velha", "Quinta do Noval Nacional", "Quinta do Vale Meão"]
+      },
+      {
+        id: 'touriga-franca',
+        name: "Touriga Franca",
+        percentage: 20.0,
+        type: "Red",
+        epicenter: "Douro Valley (warm mid-slopes)",
+        profile: "Floral elegance, wild rose petals, pomegranate, black cherry, and velvety textured tannins.",
+        role: "Workhorse noble blending variety supplying aromatics and seamless balance to Douro assemblages.",
+        benchmarkCuvees: ["Chryseia", "Pintas", "Quinta do Crasto Reserva"]
+      },
+      {
+        id: 'tinta-roriz',
+        name: "Tinta Roriz (Aragonez / Tempranillo)",
+        percentage: 16.0,
+        type: "Red",
+        epicenter: "Douro, Dão & Alentejo",
+        profile: "The Portuguese Tempranillo. Ripe plum, leather, sweet tobacco, dried fig, and fine-grained structural tannins.",
+        role: "Essential component providing aromatic complexity and mid-palate weight."
+      },
+      {
+        id: 'baga',
+        name: "Baga",
+        percentage: 8.0,
+        type: "Red",
+        epicenter: "Bairrada",
+        profile: "Late-ripening, high-acid red grape with sour cherry, damson plum, dried pine needles, black olive, and profound Nebbiolo-like aging power.",
+        role: "Bairrada's legendary single-varietal icon, yielding immortal cellar wines.",
+        benchmarkCuvees: ["Luis Pato Quinta do Ribeirinho Pé Franco", "Filipa Pato Post-Quercus Baga"]
+      },
+      {
+        id: 'alvarinho',
+        name: "Alvarinho (Albariño)",
+        percentage: 7.0,
+        type: "White",
+        epicenter: "Vinho Verde (Monção e Melgaço sub-region)",
+        profile: "Peach skin, orange blossom, green apple, crushed granite, and mouthwatering mineral salinity with vibrant natural acidity.",
+        role: "Portugal's premier fine dry white grape.",
+        benchmarkCuvees: ["Anselmo Mendes Contacto", "Soalheiro Primeiras Vinhas"]
+      },
+      {
+        id: 'encruzado',
+        name: "Encruzado",
+        percentage: 5.0,
+        type: "White",
+        epicenter: "Dão high granite slopes",
+        profile: "Burgundian weight, lemon zest, white pear, toasted hazelnut, wet stone, and superb 15+ year cellaring potential.",
+        role: "Dão's premier noble white variety.",
+        benchmarkCuvees: ["Quinta dos Carvalhais Encruzado", "Ribeiro Santo Encruzado"]
+      }
+    ],
+    heritage: [
+      {
+        id: 'tinta-barroca',
+        name: "Tinta Barroca",
+        percentage: 4.0,
+        type: "Red",
+        epicenter: "Douro Valley",
+        profile: "Plush sweet fruit, baked cherry, chocolate, and soft round tannins, adding generosity to Port blends.",
+        role: "Traditional Port blending grape favored on cooler north-facing Douro slopes."
+      },
+      {
+        id: 'tinto-cao',
+        name: "Tinto Cão",
+        percentage: 2.0,
+        type: "Red",
+        epicenter: "Douro Valley",
+        profile: "Ancient late-ripening variety with high acidity, floral spice, and stubborn longevity.",
+        role: "Provides acidity and finesse to long-aged Tawny and Vintage Ports."
+      },
+      {
+        id: 'arinto',
+        name: "Arinto (Pedernã)",
+        percentage: 3.0,
+        type: "White",
+        epicenter: "Bucelas & Alentejo",
+        profile: "The 'Riesling of Portugal', celebrated for preserving razor-sharp natural acidity in hot Mediterranean climates.",
+        role: "Essential blending and single-varietal white grape."
+      }
+    ]
+  },
+
   classification: {
+    system: "Denominação de Origem Controlada (DOC) & Douro Benefício System",
+    description: "Portugal created the world's first officially demarcated wine region (the Douro in 1756 by the Marquês de Pombal). Modern wine law is governed by the Instituto da Vinha e do Vinho (IVV).",
     pyramid: [
-      "DOC (Denominação de Origem Controlada - 31 official DOCs)",
-      "Vinho Regional / IGP (Indicação Geográfica Protegida - 14 regions)",
-      "Vinho (Table Wine without geographical indication)",
-      "Douro Benefício Cadastral Ranking (Parcels graded A through F)",
-      "Garrafeira Statutory Aging Decrees (Wood and bottle aged)"
+      {
+        tier: "DOC (Denominação de Origem Controlada)",
+        sharePct: "28.0%",
+        aocCount: "31 Official DOCs",
+        description: "Top statutory appellation tier strictly regulating geographical boundaries, authorized grape varieties, maximum yields, minimum alcohol, and aging decrees."
+      },
+      {
+        tier: "Vinho Regional / IGP (Indicação Geográfica Protegida)",
+        sharePct: "52.0%",
+        aocCount: "14 Regional IGPs",
+        description: "Flexible regional denominations (e.g. Alentejano, Duriense, Beira Atlântico) allowing international varieties and creative assemblage styles."
+      },
+      {
+        tier: "Vinho (Table Wine)",
+        sharePct: "20.0%",
+        aocCount: "National Classification",
+        description: "Entry-level wine classification without geographical boundary mandates."
+      }
     ],
-    tiers: [
-      "Vintage Port - Declared in exceptional years; bottled after 2 years in wood",
-      "Tawny Port with Indication of Age (10, 20, 30, 40, 50+ Years)",
-      "Colheita Port - Single-vintage tawny aged minimum 7 years in pipas",
-      "Garrafeira - Minimum 30m aging (12m in bottle) for reds; 12m (6m in bottle) for whites",
-      "Vinho de Talha DOC - Clay amphora fermented wines in Alentejo"
-    ],
-    agingRules: {
-      portVintage: "Must be bottled between July 1 of the 2nd year and Dec 31 of the 3rd year after harvest",
-      garrafeiraRed: "Must undergo at least 30 months total aging with a minimum of 12 months in glass bottles",
-      garrafeiraWhite: "Must undergo at least 12 months total aging with a minimum of 6 months in glass bottles",
-      reservaDoc: "Exceeds minimum natural alcohol by at least 0.5% ABV and passes official regional tasting board"
+    agingRules: [
+      { tier: "Garrafeira Red Decree", rule: "Must undergo a minimum of 30 months total aging, with at least 12 months in glass bottles following wooden cask aging, and achieve superior natural ABV." },
+      { tier: "Garrafeira White / Rosé Decree", rule: "Must undergo a minimum of 12 months total aging, with at least 6 months resting in glass bottles prior to commercial release." },
+      { tier: "Reserva DOC Decree", rule: "Must achieve minimum natural alcohol at least 0.5% ABV above the statutory DOC baseline and pass strict blind panel analysis by the regional commission." },
+      { tier: "Vintage Port Bottling Window", rule: "Must be bottled between July 1 of the second year and December 31 of the third year following the declared harvest, following IVDP certification." }
+    ]
+  },
+
+  vinification: {
+    title: "Traditional Portuguese Cellar Craft: Granite Lagares & Amphorae (Talhas)",
+    summary: "Portugal preserves some of the world's most historic artisanal vinification techniques alongside modern precision temperature control:",
+    traditions: [
+      {
+        practice: "Foot Treading in Granite Lagares (Pisa a Pé)",
+        details: "Hand-picked grape clusters are trodden by human foot in shallow open granite stone troughs (lagares). The human sole gently extracts deep color, anthocyanins, and skins without crushing bitter grape seeds."
+      },
+      {
+        practice: "Vinho de Talha (Clay Amphora Fermentation)",
+        details: "Centuries-old Roman winemaking tradition in Alentejo. Grape must ferments in giant porous clay vessels (talhas) coated inside with resin and beeswax, maturing on skins until Saint Martin's Day."
+      },
+      {
+        practice: "Pipe (Pipa) Maturation in Vila Nova de Gaia",
+        details: "Port wines age in traditional 550L–600L oak pipes in the cool maritime lodges of Vila Nova de Gaia, where ocean humidity minimizes evaporative losses over decades."
+      }
+    ]
+  },
+
+  businessModels: {
+    title: "Production Models & Commercial Landscape",
+    models: [
+      {
+        type: "Historic Douro Shippers & Dynastic Lodges",
+        frenchTerm: "Maisons de Porto",
+        description: "British and Portuguese merchant houses established in the 17th and 18th centuries controlling historic aging lodges in Vila Nova de Gaia.",
+        examples: ["Symington Family Estates", "The Fladgate Partnership", "Ferreira", "Ramos Pinto"]
+      },
+      {
+        type: "Quinta Single-Estate Producers",
+        frenchTerm: "Quintas Indépendantes",
+        description: "Estate-grown viticultural movement sparked in the 1990s focusing on unfortified dry terroir-driven DOC table wines.",
+        examples: ["Quinta do Vale Meão", "Niepoort", "Quinta do Crasto", "Wine & Soul"]
+      }
+    ]
+  },
+
+  aging: {
+    title: "Maturation Decrees & Cellar Longevity",
+    summary: "Portuguese wine law enforces some of the world's most rigorous bottle-aging mandates (Garrafeira):",
+    vintage: {
+      title: "Garrafeira & Vintage Maturation Decrees",
+      minTotalMonths: 30,
+      minWoodMonths: 18,
+      rule: "Garrafeira red wines require a mandatory minimum of 30 months total maturation, including at least 12 months in glass bottles after wooden cask aging.",
+      description: "Guarantees complete integration of tannins, giving silky texture, balsamic complexity, and decades of cellaring power."
+    },
+    nonVintage: {
+      title: "Colheita & Aged Tawny Port (10, 20, 30, 40+ Years)",
+      minTotalMonths: 84,
+      minWoodMonths: 84,
+      rule: "Colheita Ports require a minimum of 7 years maturation in wooden pipas before bottling; age-indicated Tawnies represent master assemblages averaging 10, 20, 30, or 40+ years in cask.",
+      description: "Develops oxidative golden-amber hues and tertiary flavors of dried fig, toasted walnut, toffee, and orange peel."
     }
   }
 };

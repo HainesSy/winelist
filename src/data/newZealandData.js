@@ -145,41 +145,222 @@ export const NEW_ZEALAND_GRAND_CRUS = [
 
 export const NEW_ZEALAND_TECHNICAL_REGULATIONS = {
   geology: {
+    title: "Alpine Fault Orogeny, Torlesse Greywacke & Glacial Schist Stratigraphy",
+    summary: "New Zealand viticultural geology is forged by dynamic Pacific and Indo-Australian tectonic plate collision along the Alpine Fault, depositing ancient indurated greywacke sandstones, mica schists, and fertile post-glacial alluvial outwash fans.",
     formations: [
-      "Torlesse Terrane Greywacke Sandstone",
-      "Haast Schist (Mica & Quartz Schist)",
-      "Quaternary Glacial Moraines",
-      "Gimblett Gravels Alluvial Shingle",
-      "Windblown Silt Loess"
-    ],
-    soilTypes: [
-      "Greywacke River Stones & Silt",
-      "Decomposed Mica Schist",
-      "Red Metal Alluvial Shingle",
-      "Sedimentary River Terraces"
+      {
+        id: 'greywacke-sandstone',
+        name: "Torlesse Terrane Greywacke Sandstone & Argillite",
+        period: "Triassic to Early Cretaceous (~250–100 Ma)",
+        fossil: "Rare marine bivalves (Monotis & Daonella)",
+        characteristics: "Extremely hard, fine-grained indurated quartz-feldspar sandstone and dark argillite eroded by alpine meltwater into smooth, rounded river stones ('greywacke pebbles').",
+        keyAreas: ["Marlborough (Wairau Valley riverbed)", "Hawke's Bay river terraces", "Wairarapa"],
+        wineImpact: "High radiant heat absorption during the day that reradiates into grape clusters at night, promoting explosive tropical and thiol aromas in Sauvignon Blanc."
+      },
+      {
+        id: 'haast-schist',
+        name: "Haast Metamorphic Quartz & Mica Schist",
+        period: "Mesozoic Metamorphism (~180–120 Ma)",
+        fossil: "None (High-grade crystalline metamorphic rock)",
+        characteristics: "Foliated, glittering metamorphic rock rich in quartz, albite, and muscovite/biotite mica plates that crumble into porous, mineral-laden scree.",
+        keyAreas: ["Central Otago (Bannockburn, Bendigo, Gibbston, Lowburn)"],
+        wineImpact: "Imparts intense savory wild herb nuances (thyme, sage), dark cherry richness, and chiseled vertical mineral tension to high-altitude Pinot Noir."
+      },
+      {
+        id: 'gimblett-gravels',
+        name: "Gimblett Gravels Alluvial River Shingle",
+        period: "Holocene (Ngaruroro River Avulsion 1867)",
+        fossil: "None (Recent fluvial gravel shingle)",
+        characteristics: "Deep beds of unweathered greywacke gravel, sand, and silt up to 30 meters deep with virtually zero organic matter or water retention.",
+        keyAreas: ["Hawke's Bay (Gimblett Gravels Wine District)"],
+        wineImpact: "Rapid drainage and intense root stress limit vegetative vigor, producing tiny berries with profound phenolic ripeness for benchmark Syrah and Cabernet blends."
+      },
+      {
+        id: 'glacial-loess',
+        name: "Quaternary Glacial Moraines & Windblown Loess",
+        period: "Late Pleistocene (<100,000 years)",
+        fossil: "None (Windblown fine rock flour)",
+        characteristics: "Finely ground rock flour deposited by howling post-glacial winds across elevated river terraces, layering nutrient-balanced silts over gravel basements.",
+        keyAreas: ["Central Otago upper terraces", "Waipara Valley", "Awatere Valley"],
+        wineImpact: "Supplies balanced soil nutrients and moderate water retention, giving textured, round mouthfeel and spicy aromatics to Pinot Noir and Riesling."
+      }
     ]
   },
-  grapes: {
-    major: ["Sauvignon Blanc", "Pinot Noir", "Chardonnay", "Syrah", "Pinot Gris", "Riesling"],
-    heritage: ["Cabernet Sauvignon", "Merlot", "Gewürztraminer", "Chenin Blanc"]
+
+  climatology: {
+    system: "Maritime Cool-Climate with Southern Alps Rain Shadow & Roaring Forties",
+    description: "Flanked by the Tasman Sea and Pacific Ocean, New Zealand's long, narrow islands enjoy extreme maritime cooling, crystal clear sunlight, and high UV levels, protected by the rain shadow of the towering Southern Alps.",
+    winds: [
+      {
+        name: "The Roaring Forties & Foehn Nor'wester",
+        effect: "Moist westerly winds dump heavy rain on the western alpine slopes and descend eastward as dry, warm foehn winds, raising daytime temperatures in Marlborough and Hawke's Bay."
+      },
+      {
+        name: "Antarctic Southerly Busters",
+        effect: "Periodic Antarctic polar cold fronts that surge northward, causing sudden freezing temperature plunges and severe spring frost hazards in Central Otago and Wairarapa."
+      }
+    ]
   },
+
+  grapes: {
+    title: "New Zealand Ampelography: Sauvignon Blanc, Pinot Noir & Cool-Climate Cépages",
+    description: "New Zealand's viticultural identity combines world-defining aromatic white wines with internationally celebrated cool-climate Pinot Noir and elegant Syrah:",
+    major: [
+      {
+        id: 'sauvignon-blanc',
+        name: "Sauvignon Blanc",
+        percentage: 72.0,
+        type: "White",
+        epicenter: "Marlborough (Wairau & Awatere Valleys)",
+        profile: "Pungent, exuberant aromas of passionfruit, pink grapefruit, fresh gooseberry, lemongrass, tomato vine, and crushed flint with electric lime acidity.",
+        role: "The nation's flagship export variety that redefined global expectations for aromatic white wine.",
+        benchmarkCuvees: ["Cloudy Bay Sauvignon Blanc", "Dog Point Section 94", "Greywacke Wild Sauvignon"]
+      },
+      {
+        id: 'pinot-noir',
+        name: "Pinot Noir",
+        percentage: 15.0,
+        type: "Red",
+        epicenter: "Central Otago, Martinborough & Marlborough",
+        profile: "Silky, luminous ruby with dark plum, black cherry, wild mountain thyme, violet florals, forest floor, and savory sous-bois on schist and gravels.",
+        role: "The premier red variety, crafting world-class single-vineyard bottlings of Burgundian finesse.",
+        benchmarkCuvees: ["Felton Road Block 3", "Ata Rangi Pinot Noir", "Bell Hill Pinot Noir", "Burn Cottage"]
+      },
+      {
+        id: 'chardonnay',
+        name: "Chardonnay",
+        percentage: 6.0,
+        type: "White",
+        epicenter: "Hawke's Bay, Gisborne, Kumeu & Marlborough",
+        profile: "White peach, citrus blossom, toasted hazelnut, flinty struck-match reduction, and crystalline saline acidity.",
+        role: "Aristocratic white cépage producing taut, age-worthy, mineral-driven dry whites.",
+        benchmarkCuvees: ["Kumeu River Maté's Vineyard", "Te Mata Elston Chardonnay", "Neudorf Moutere Chardonnay"]
+      },
+      {
+        id: 'pinot-gris',
+        name: "Pinot Gris",
+        percentage: 3.5,
+        type: "White",
+        epicenter: "Marlborough & Central Otago",
+        profile: "Poached pear, red apple skin, ginger spice, baked quince, and rich viscous texture with clean acidity.",
+        role: "Popular cool-climate aromatic white wine with delightful gastronomic versatility."
+      },
+      {
+        id: 'syrah',
+        name: "Syrah",
+        percentage: 1.5,
+        type: "Red",
+        epicenter: "Hawke's Bay (Gimblett Gravels) & Waiheke Island",
+        profile: "Northern Rhône styling with cracked black pepper, violets, dark blackberry, plum, and savory olive tapenade.",
+        role: "Boutique fine red variety celebrated for its aromatic elegance and longevity.",
+        benchmarkCuvees: ["Craggy Range Le Sol", "Bilancia La Collina", "Te Mata Bullnose Syrah"]
+      },
+      {
+        id: 'riesling',
+        name: "Riesling",
+        percentage: 1.0,
+        type: "White",
+        epicenter: "Waipara (North Canterbury) & Central Otago",
+        profile: "Lime juice, green apple, mandarin blossom, wet stone, and electric mineral drive from bone dry to luscious noble late harvest.",
+        role: "Cool-climate specialty excelling in prolonged autumn hang-times."
+      }
+    ],
+    heritage: [
+      {
+        id: 'cabernet-sauvignon-merlot',
+        name: "Cabernet Sauvignon & Merlot",
+        percentage: 1.0,
+        type: "Red",
+        epicenter: "Hawke's Bay & Waiheke Island",
+        profile: "Classic Bordeaux-blend components delivering cassis, cedar box, cigar leaf, and structured, fine-grained aristocratic tannins.",
+        role: "Heritage red plantings producing some of New Zealand's most collectible icon wines.",
+        benchmarkCuvees: ["Te Mata Coleraine", "Destiny Bay Magna Praemia", "Puriri Hills Pope"]
+      }
+    ]
+  },
+
   classification: {
+    system: "Geographical Indications (GI) Registration Act (2006/2017)",
+    description: "Governed under the Geographical Indications (Wine and Spirits) Registration Act, establishing official legal protection and demarcation for New Zealand's premier wine-growing regions.",
     pyramid: [
-      "National Boundary (New Zealand)",
-      "Regional Geographical Indication (GI - e.g. Marlborough, Central Otago)",
-      "Sub-Regional Delimited GI (e.g. Bannockburn, Martinborough, Gimblett Gravels)",
-      "Single Vineyard Certified Estate Designation"
+      {
+        tier: "Sub-Regional Delimited GI",
+        sharePct: "8.0%",
+        aocCount: "Bannockburn, Martinborough, etc.",
+        description: "Rigidly demarcated terroir enclaves with distinct soil or climatic identities (e.g. Bannockburn in Central Otago, Martinborough in Wairarapa, Gimblett Gravels in Hawke's Bay)."
+      },
+      {
+        tier: "Regional Geographical Indication (GI)",
+        sharePct: "62.0%",
+        aocCount: "18 Registered GIs",
+        description: "Established premier regions sharing broad geographic and climatic continuity (e.g. Marlborough, Central Otago, Hawke's Bay, Nelson, North Canterbury)."
+      },
+      {
+        tier: "New Zealand National Boundary",
+        sharePct: "30.0%",
+        aocCount: "National Territory",
+        description: "Country-level origin designation ensuring full traceability under the national Wine Act 2003."
+      }
     ],
-    tiers: [
-      "Geographical Indications (Wine and Spirits) Registration Act (2006/2017)",
-      "85% Rule - Minimum 85% of grapes from stated variety, vintage, and GI",
-      "Sustainable Winegrowing New Zealand (SWNZ - 96%+ national audit compliance)",
-      "Organic / Biodynamic Winegrowers New Zealand Certification"
-    ],
-    agingRules: {
-      vintageRule: "Minimum 85% of grapes harvested in the declared vintage year",
-      varietyRule: "Minimum 85% of grapes from the stated grape variety",
-      giOriginRule: "Minimum 85% of grapes sourced strictly within the delimited Geographical Indication boundary"
+    agingRules: [
+      { tier: "The 85% Labeling Decree", rule: "Federal law mandates that any wine stating a specific grape variety, vintage year, or GI must contain a minimum of 85% of grapes harvested from that declared variety, harvest year, and delimited boundary." },
+      { tier: "Sustainable Winegrowing NZ (SWNZ)", rule: "Over 96% of New Zealand vineyard area is independently audited and certified under SWNZ environmental sustainability protocols." }
+    ]
+  },
+
+  vinification: {
+    title: "Modern Kiwi Winemaking: Wild Fermentation, Whole Bunch & Screwcap Precision",
+    summary: "New Zealand cellar craft marries technological precision with low-intervention artisanal winemaking:",
+    traditions: [
+      {
+        practice: "Ambient Wild Yeast Fermentation",
+        details: "Widespread reliance on uninoculated native fermentations for Pinot Noir and Chardonnay to enhance savory complexity, texture, and individual vineyard character."
+      },
+      {
+        practice: "Whole-Bunch Pinot Noir Vinification",
+        details: "Inclusion of 20% to 50% lignified stems and whole clusters in Central Otago and Martinborough to impart herbal spice, rose petal aromatics, and structural tension."
+      },
+      {
+        practice: "Universal Screwcap (Stelvin) Bottling",
+        details: "New Zealand spearheaded the global screwcap revolution in 2001, eliminating TCA cork taint and guaranteeing pure fruit aromatics and pristine cellar longevity."
+      }
+    ]
+  },
+
+  businessModels: {
+    title: "Production Models & Commercial Landscape",
+    models: [
+      {
+        type: "Pioneering Independent Family Estates",
+        frenchTerm: "Domaines Familiaux",
+        description: "Boutique vignerons who planted the original ungrafted rootstocks in the 1970s and 1980s, driving New Zealand's fine wine reputation.",
+        examples: ["Ata Rangi", "Te Mata Estate", "Felton Road", "Kumeu River"]
+      },
+      {
+        type: "High-Elevation Single-Vineyard Cults",
+        frenchTerm: "Vignerons d'Altitude",
+        description: "Extreme-terroir specialists cultivating steep glacial terraces in rugged alpine micro-climates.",
+        examples: ["Bell Hill", "Burn Cottage", "Dry River", "Rippon"]
+      }
+    ]
+  },
+
+  aging: {
+    title: "Maturation & Cellar Potential",
+    summary: "High natural acidity and vibrant fruit enable New Zealand wines to mature gracefully over decades:",
+    vintage: {
+      title: "French Oak Maturation & Cellar Aging",
+      minTotalMonths: 12,
+      minWoodMonths: 10,
+      rule: "Fine Pinot Noir and Syrah spend 10 to 18 months maturing in fine-grained French oak barriques (typically 20%–35% new).",
+      description: "Allows gradual oxygenation, softens firm grape tannins, and develops intricate tertiary complexity of forest floor, truffle, and dried florals over 10 to 20+ years."
+    },
+    nonVintage: {
+      title: "Traditional Method Sparkling (Méthode Marlborough)",
+      minTotalMonths: 18,
+      minLeesMonths: 18,
+      rule: "Méthode Marlborough sparkling wines require a minimum of 18 months of maturation on lees prior to disgorgement.",
+      description: "Generates fine persistent bead mousse with toasted brioche, biscuit, and nutty autolytic character."
     }
   }
 };

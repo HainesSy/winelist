@@ -1704,15 +1704,24 @@ export default function WineRegionDetail({
                   </p>
 
                   <div className="geology-comparison-grid">
-                    {region.technicalRegulations.geology.formations?.map((geo, idx) => (
-                      <div key={idx} className="geo-formation-box">
-                        <span className="geo-era">{geo.period || geo.era}</span>
-                        <h5>{geo.name} {geo.frenchName ? `(${geo.frenchName})` : ''}</h5>
-                        {geo.fossil && <p className="geo-fossil"><strong>Fossil Index:</strong> <em>{geo.fossil}</em></p>}
-                        <p className="geo-locations"><strong>Key Locations:</strong> {Array.isArray(geo.keyAreas) ? geo.keyAreas.join(', ') : (geo.keyAreas || geo.locations)}</p>
-                        <p className="geo-impact"><strong>Viticultural Impact:</strong> {geo.wineImpact || geo.impact}</p>
-                      </div>
-                    ))}
+                    {region.technicalRegulations.geology.formations?.map((geo, idx) => {
+                      const isStr = typeof geo === 'string';
+                      const era = isStr ? null : (geo.period || geo.era);
+                      const name = isStr ? geo : (geo.name || geo.formation || geo.title);
+                      const keyAreas = isStr ? null : (Array.isArray(geo.keyAreas) ? geo.keyAreas.join(', ') : (geo.keyAreas || geo.locations || geo.areas));
+                      const impact = isStr ? null : (geo.wineImpact || geo.impact || geo.desc || geo.description || geo.characteristics);
+                      const fossil = isStr ? null : geo.fossil;
+
+                      return (
+                        <div key={idx} className="geo-formation-box">
+                          {era && <span className="geo-era">{era}</span>}
+                          <h5>{name} {!isStr && (geo.frenchName || geo.spanishName) ? `(${geo.frenchName || geo.spanishName})` : ''}</h5>
+                          {fossil && <p className="geo-fossil"><strong>Fossil Index:</strong> <em>{fossil}</em></p>}
+                          {keyAreas && <p className="geo-locations"><strong>Key Locations:</strong> {keyAreas}</p>}
+                          {impact && <p className="geo-impact"><strong>Viticultural Impact:</strong> {impact}</p>}
+                        </div>
+                      );
+                    })}
                   </div>
 
                   {region.technicalRegulations.geology.combes && (
@@ -1791,35 +1800,47 @@ export default function WineRegionDetail({
                   </p>
 
                   <div className="grapes-grid-7">
-                    {[...(region.technicalRegulations.grapes.major || []), ...(region.technicalRegulations.grapes.heritage || [])].map(grape => (
-                      <div key={grape.id || grape.name} className={`grape-card-cms ${grape.percentage && !String(grape.percentage).includes('<') ? 'primary-grape' : 'heritage-grape'}`}>
-                        <div className="grape-card-header">
-                          <span className={`grape-category-pill ${grape.percentage && !String(grape.percentage).includes('<') ? 'primary' : 'heritage'}`}>
-                            {grape.percentage && !String(grape.percentage).includes('<') ? 'Primary Variety' : 'Heritage Variety'}
-                          </span>
-                          {grape.percentage && <span className="grape-planted-pct">{grape.percentage}%</span>}
-                        </div>
-                        <h5 className="grape-title">{grape.name}</h5>
-                        {grape.frenchSynonym && (
-                          <span className="grape-synonym">Synonyms: <em>{grape.frenchSynonym}</em></span>
-                        )}
-                        <span className="grape-color-type">{grape.type} · {grape.epicenter || ''}</span>
-                        <p className="grape-flavor-profile">{grape.profile}</p>
-                        {grape.role && (
-                          <p className="grape-role-text"><strong>Structural Role:</strong> {grape.role}</p>
-                        )}
-                        {grape.clones && (
-                          <p className="grape-clones-text" style={{ fontSize: '0.78rem', color: '#666', marginTop: '4px' }}>
-                            <strong>Massale / Clones:</strong> {grape.clones.join(' · ')}
-                          </p>
-                        )}
-                        {grape.benchmarkCuvees && (
-                          <div className="grape-notable-estate">
-                            <em>Benchmark:</em> {grape.benchmarkCuvees.join(', ')}
+                    {[
+                      ...(region.technicalRegulations.grapes.major || []).map(g => typeof g === 'string' ? { name: g, isMajor: true } : { ...g, isMajor: true }), 
+                      ...(region.technicalRegulations.grapes.heritage || []).map(g => typeof g === 'string' ? { name: g, isMajor: false } : { ...g, isMajor: false })
+                    ].map((grape, idx) => {
+                      const isPrimary = grape.isMajor ?? (grape.percentage && !String(grape.percentage).includes('<'));
+                      const badgeLabel = isPrimary ? 'Primary Variety' : 'Heritage Variety';
+                      const profile = grape.profile || grape.desc || grape.description;
+                      const role = grape.role || grape.characteristics;
+
+                      return (
+                        <div key={grape.id || grape.name || idx} className={`grape-card-cms ${isPrimary ? 'primary-grape' : 'heritage-grape'}`}>
+                          <div className="grape-card-header">
+                            <span className={`grape-category-pill ${isPrimary ? 'primary' : 'heritage'}`}>
+                              {badgeLabel}
+                            </span>
+                            {grape.percentage != null && <span className="grape-planted-pct">{grape.percentage}%</span>}
                           </div>
-                        )}
-                      </div>
-                    ))}
+                          <h5 className="grape-title">{grape.name}</h5>
+                          {(grape.frenchSynonym || grape.synonyms) && (
+                            <span className="grape-synonym">Synonyms: <em>{Array.isArray(grape.synonyms) ? grape.synonyms.join(', ') : (grape.frenchSynonym || grape.synonyms)}</em></span>
+                          )}
+                          {(grape.type || grape.epicenter) && (
+                            <span className="grape-color-type">{[grape.type, grape.epicenter].filter(Boolean).join(' · ')}</span>
+                          )}
+                          {profile && <p className="grape-flavor-profile">{profile}</p>}
+                          {role && (
+                            <p className="grape-role-text"><strong>Structural Role:</strong> {role}</p>
+                          )}
+                          {grape.clones && (
+                            <p className="grape-clones-text" style={{ fontSize: '0.78rem', color: '#666', marginTop: '4px' }}>
+                              <strong>Massale / Clones:</strong> {Array.isArray(grape.clones) ? grape.clones.join(' · ') : grape.clones}
+                            </p>
+                          )}
+                          {grape.benchmarkCuvees && (
+                            <div className="grape-notable-estate">
+                              <em>Benchmark:</em> {Array.isArray(grape.benchmarkCuvees) ? grape.benchmarkCuvees.join(', ') : grape.benchmarkCuvees}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
 
                   {/* Iconic Complantée Highlight Card */}
@@ -1850,22 +1871,52 @@ export default function WineRegionDetail({
                   </div>
 
                   <div className="classification-pyramid-grid">
-                    {region.technicalRegulations.classification.pyramid?.map((tier, idx) => (
-                      <div key={idx} className="climat-pyramid-box">
-                        <div className="tier-header">
-                          {tier.sharePct && <span className="tier-badge-share">{tier.sharePct} Share</span>}
-                          <h5>{tier.tier}</h5>
-                          {tier.aocCount && <span className="tier-aoc-count">{tier.aocCount}</span>}
-                        </div>
-                        {tier.yieldLimits && (
-                          <div style={{ fontSize: '0.76rem', color: '#8b0000', fontWeight: '600', margin: '4px 0' }}>
-                            ⚖️ Max Yield: {tier.yieldLimits} {tier.minAbv ? `| 🍷 Min ABV: ${tier.minAbv}` : ''}
+                    {(region.technicalRegulations.classification.pyramid || region.technicalRegulations.classification.tiers || []).map((tier, idx) => {
+                      const isStr = typeof tier === 'string';
+                      const title = isStr ? tier : (tier.tier || tier.name || tier.title);
+                      const desc = isStr ? null : (tier.description || tier.desc || tier.detail || tier.criteria);
+                      const sharePct = !isStr && (tier.sharePct || tier.share);
+                      const count = !isStr && (tier.aocCount || tier.count);
+                      const yieldLimits = !isStr && tier.yieldLimits;
+                      const minAbv = !isStr && tier.minAbv;
+
+                      return (
+                        <div key={idx} className="climat-pyramid-box">
+                          <div className="tier-header">
+                            {sharePct && <span className="tier-badge-share">{sharePct} Share</span>}
+                            <h5>{title}</h5>
+                            {count && <span className="tier-aoc-count">{count}</span>}
                           </div>
-                        )}
-                        <p>{tier.description}</p>
-                      </div>
-                    ))}
+                          {yieldLimits && (
+                            <div style={{ fontSize: '0.76rem', color: '#8b0000', fontWeight: '600', margin: '4px 0' }}>
+                              ⚖️ Max Yield: {yieldLimits} {minAbv ? `| 🍷 Min ABV: ${minAbv}` : ''}
+                            </div>
+                          )}
+                          {desc && <p>{desc}</p>}
+                        </div>
+                      );
+                    })}
                   </div>
+
+                  {/* Statutory Maturation & Classification Aging Decrees */}
+                  {region.technicalRegulations.classification.agingRules && (
+                    <div className="aging-rules-summary-section" style={{ marginTop: '14px', paddingTop: '12px', borderTop: '1px solid rgba(212, 175, 55, 0.25)' }}>
+                      <h5 style={{ fontFamily: 'var(--font-serif)', fontSize: '0.92rem', color: '#1a1a1a', marginBottom: '8px' }}>
+                        ⏳ Statutory Maturation & Classification Aging Decrees:
+                      </h5>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '10px' }}>
+                        {(Array.isArray(region.technicalRegulations.classification.agingRules)
+                          ? region.technicalRegulations.classification.agingRules
+                          : Object.entries(region.technicalRegulations.classification.agingRules).map(([tier, rule]) => ({ tier, rule }))
+                        ).map((ruleItem, rIdx) => (
+                          <div key={rIdx} style={{ background: '#faf8f2', border: '1px solid rgba(212, 175, 55, 0.3)', borderRadius: '8px', padding: '10px' }}>
+                            <strong style={{ fontSize: '0.84rem', color: '#8b0000', display: 'block', marginBottom: '4px' }}>{ruleItem.tier || ruleItem.name || ruleItem.category}</strong>
+                            <p style={{ fontSize: '0.78rem', color: '#444', margin: 0, lineHeight: 1.4 }}>{ruleItem.rule || ruleItem.details || ruleItem.description || String(ruleItem)}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   {/* Mandatory Sweetness Scale & Noble Late Harvest Regulations */}
                   {region.technicalRegulations.classification.sweetnessRules && (
@@ -1915,12 +1966,26 @@ export default function WineRegionDetail({
                   </p>
 
                   <div className="vinification-traditions-grid">
-                    {region.technicalRegulations.vinification.traditions?.map((trad, idx) => (
-                      <div key={idx} className="vinification-tradition-box">
-                        <h5>{trad.practice}</h5>
-                        <p>{trad.details}</p>
-                      </div>
-                    ))}
+                    {(() => {
+                      const v = region.technicalRegulations.vinification;
+                      let traditions = [];
+                      if (Array.isArray(v.traditions)) {
+                        traditions = v.traditions;
+                      } else {
+                        traditions = Object.entries(v)
+                          .filter(([key, val]) => typeof val === 'object' && val !== null && !Array.isArray(val) && (val.practice || val.name || val.method))
+                          .map(([key, val]) => ({
+                            practice: val.practice || val.name || val.title || key,
+                            details: val.details || val.method || val.desc || val.description || val.summary
+                          }));
+                      }
+                      return traditions.map((trad, idx) => (
+                        <div key={idx} className="vinification-tradition-box">
+                          <h5>{trad.practice}</h5>
+                          <p>{trad.details}</p>
+                        </div>
+                      ));
+                    })()}
                   </div>
                 </div>
               )}
