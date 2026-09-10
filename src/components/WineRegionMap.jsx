@@ -422,10 +422,15 @@ export default function WineRegionMap({
           // Centered cartographic boundary label with dynamic border clearance fitting
           if (layer.getBounds && layer.getBounds().isValid()) {
             const bounds = layer.getBounds();
+            const props = feature.properties || {};
             let center = bounds.getCenter();
 
-            // Calculate precise geometric centroid (center of mass) of the boundary polygon
-            if (feature.geometry && feature.geometry.coordinates) {
+            // Prioritize explicitly specified labelCenter / center if provided
+            if (props.labelCenter && Array.isArray(props.labelCenter) && props.labelCenter.length >= 2) {
+              center = L.latLng(props.labelCenter[1], props.labelCenter[0]);
+            } else if (props.center && Array.isArray(props.center) && props.center.length >= 2) {
+              center = L.latLng(props.center[1], props.center[0]);
+            } else if (feature.geometry && feature.geometry.coordinates) {
               let pts = feature.geometry.coordinates;
               if (Array.isArray(pts[0]) && Array.isArray(pts[0][0])) pts = pts[0]; // exterior ring
               let area = 0, cx = 0, cy = 0;
@@ -554,7 +559,8 @@ export default function WineRegionMap({
         const isTablet = typeof window !== 'undefined' && window.innerWidth <= 1024;
         const pad = isTablet ? [28, 28] : [50, 50];
         map.fitBounds(targetBounds, {
-          padding: pad,
+          paddingTopLeft: [pad[0], pad[1] + 32], // extra vertical headroom below top floating control buttons
+          paddingBottomRight: [pad[0], pad[1]],
           maxZoom: isTablet ? 10 : 11,
           animate: false
         });
@@ -975,8 +981,9 @@ export default function WineRegionMap({
         const envDistTop = Math.abs(cp.y - nw.y);
         const envDistBottom = Math.abs(se.y - cp.y);
 
-        const maxW = Math.min(distLeft, distRight, envDistLeft, envDistRight) * 2 * 0.82;
-        const maxH = Math.min(distTop, distBottom, envDistTop, envDistBottom) * 2 * 0.82;
+        const effectiveW = Math.min(distLeft, distRight) * 1.35 + Math.max(distLeft, distRight) * 0.65;
+        const maxW = Math.min(effectiveW, (distLeft + distRight) * 0.88, envDistLeft * 2, envDistRight * 2);
+        const maxH = Math.min(distTop, distBottom, envDistTop, envDistBottom) * 2 * 0.85;
 
         const el = document.getElementById(item.domId) || (item.marker.getElement && item.marker.getElement()?.querySelector('.sommelier-district-center-label'));
         if (!el) return;
@@ -1003,7 +1010,7 @@ export default function WineRegionMap({
               const fsH = (maxH / totalH10) * 10;
               const fs = Math.min(fsW, fsH, 11.5);
 
-              if (fs >= 6.0 && maxW >= 22 && maxH >= 12) {
+              if (fs >= 5.0 && maxW >= 16 && maxH >= 10) {
                 if (!bestFit || fs > bestFit.fontSize) {
                   bestFit = {
                     fontSize: fs,

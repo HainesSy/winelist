@@ -28,3 +28,4 @@ dist-ssr
 
 # Agents workspace
 .agents/
+scratch/
