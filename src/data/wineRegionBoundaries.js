@@ -384,96 +384,76 @@ export const WINE_REGION_BOUNDARIES = {
         "type": "Feature",
         "id": "chablis",
         "properties": {
-                  "id": "chablis",
-                  "parentSubregionId": "chablis",
-                  "subregionId": "chablis",
-                  "name": "Chablis & Grand Auxerrois",
-                  "category": "Kimmeridgian Chardonnay Apex",
-                  "dominantGrape": "Chardonnay",
-                  "color": "#D4AF37",
-                  "accent": "#fff176",
-                  "fillOpacity": 0.22,
-                  "labelCenter": [
-                            3.795,
-                            47.815
-                  ],
-                  "description": "Prehistoric Jurassic seabed of fossilized Exogyra virgula oysters yielding steely, high-acid, mineral Chardonnays along the Serein River valley."
+          "id": "chablis",
+          "parentSubregionId": "chablis",
+          "subregionId": "chablis",
+          "name": "Chablis & Grand Auxerrois",
+          "category": "Kimmeridgian Chardonnay Apex",
+          "dominantGrape": "Chardonnay",
+          "color": "#D4AF37",
+          "accent": "#fff176",
+          "fillOpacity": 0.22,
+          "labelCenter": [
+            3.795,
+            47.815
+          ],
+          "description": "Prehistoric Jurassic seabed of fossilized Exogyra virgula oysters yielding steely, high-acid, mineral Chardonnays along the Serein River valley."
         },
         "geometry": {
           "type": "Polygon",
           "coordinates": [
             [
               [
-                3.74,
-                47.88
+                3.775,
+                47.875
               ],
               [
-                3.77,
-                47.89
-              ],
-              [
-                3.81,
-                47.885
-              ],
-              [
-                3.85,
+                3.825,
                 47.865
               ],
               [
-                3.89,
-                47.85
-              ],
-              [
-                3.92,
+                3.835,
                 47.825
               ],
               [
-                3.93,
+                3.865,
                 47.795
               ],
               [
-                3.9,
-                47.77
+                3.895,
+                47.805
               ],
               [
-                3.86,
-                47.75
+                3.855,
+                47.745
               ],
               [
-                3.82,
+                3.785,
                 47.735
               ],
               [
-                3.78,
-                47.73
+                3.715,
+                47.745
               ],
               [
-                3.73,
-                47.74
+                3.655,
+                47.715
               ],
               [
-                3.67,
-                47.755
+                3.695,
+                47.765
               ],
               [
-                3.64,
-                47.775
+                3.755,
+                47.815
               ],
               [
-                3.65,
-                47.81
+                3.765,
+                47.845
               ],
               [
-                3.68,
-                47.84
-              ],
-              [
-                3.71,
-                47.865
-              ],
-              [
-                3.74,
-                47.88
+                3.775,
+                47.875
               ]
             ]
           ]
@@ -483,88 +463,96 @@ export const WINE_REGION_BOUNDARIES = {
         "type": "Feature",
         "id": "cote-de-nuits",
         "properties": {
-                  "id": "cote-de-nuits",
-                  "parentSubregionId": "cote-de-nuits",
-                  "subregionId": "cote-de-nuits",
-                  "name": "Côte de Nuits",
-                  "category": "Pinot Noir Grand Cru Sanctum",
-                  "dominantGrape": "Pinot Noir",
-                  "color": "#800020",
-                  "accent": "#d4af37",
-                  "fillOpacity": 0.26,
-                  "labelCenter": [
-                            4.955,
-                            47.165
-                  ],
-                  "description": "The golden slope of 24 red Grand Crus (Romanée-Conti, Chambertin, Musigny, Clos de Vougeot) etched into eastern limestone hillsides."
+          "id": "cote-de-nuits",
+          "parentSubregionId": "cote-de-nuits",
+          "subregionId": "cote-de-nuits",
+          "name": "Côte de Nuits",
+          "category": "Pinot Noir Grand Cru Sanctum",
+          "dominantGrape": "Pinot Noir",
+          "color": "#800020",
+          "accent": "#d4af37",
+          "fillOpacity": 0.26,
+          "labelCenter": [
+            4.945,
+            47.165
+          ],
+          "description": "The golden slope of 24 red Grand Crus (Romanée-Conti, Chambertin, Musigny, Clos de Vougeot) etched into eastern limestone hillsides."
         },
         "geometry": {
           "type": "Polygon",
           "coordinates": [
             [
               [
-                4.97,
-                47.28
-              ],
-              [
-                4.995,
+                4.985,
                 47.275
               ],
               [
-                5.01,
-                47.25
-              ],
-              [
-                5.01,
-                47.22
+                4.975,
+                47.245
               ],
               [
                 4.995,
-                47.18
+                47.215
+              ],
+              [
+                4.985,
+                47.195
+              ],
+              [
+                4.975,
+                47.185
               ],
               [
                 4.98,
-                47.14
+                47.175
               ],
               [
-                4.965,
-                47.1
-              ],
-              [
-                4.945,
-                47.075
-              ],
-              [
-                4.92,
-                47.075
-              ],
-              [
-                4.91,
-                47.095
-              ],
-              [
-                4.915,
-                47.13
-              ],
-              [
-                4.925,
+                4.975,
                 47.165
               ],
               [
+                4.965,
+                47.155
+              ],
+              [
+                4.96,
+                47.135
+              ],
+              [
                 4.935,
-                47.2
+                47.105
               ],
               [
-                4.94,
-                47.235
+                4.92,
+                47.085
               ],
               [
-                4.95,
+                4.895,
+                47.105
+              ],
+              [
+                4.905,
+                47.145
+              ],
+              [
+                4.915,
+                47.185
+              ],
+              [
+                4.935,
+                47.205
+              ],
+              [
+                4.945,
+                47.225
+              ],
+              [
+                4.965,
                 47.265
               ],
               [
-                4.97,
-                47.28
+                4.985,
+                47.275
               ]
             ]
           ]
@@ -574,96 +562,100 @@ export const WINE_REGION_BOUNDARIES = {
         "type": "Feature",
         "id": "cote-de-beaune",
         "properties": {
-                  "id": "cote-de-beaune",
-                  "parentSubregionId": "cote-de-beaune",
-                  "subregionId": "cote-de-beaune",
-                  "name": "Côte de Beaune",
-                  "category": "White Grand Cru & Noble Red Epicenter",
-                  "dominantGrape": "Chardonnay & Pinot Noir",
-                  "color": "#C5A059",
-                  "accent": "#ffd54f",
-                  "fillOpacity": 0.24,
-                  "labelCenter": [
-                            4.815,
-                            47.005
-                  ],
-                  "description": "Home of Montrachet, Corton-Charlemagne, Meursault, Puligny, Volnay, and Pommard spanning curving limestone slopes."
+          "id": "cote-de-beaune",
+          "parentSubregionId": "cote-de-beaune",
+          "subregionId": "cote-de-beaune",
+          "name": "Côte de Beaune",
+          "category": "White Grand Cru & Noble Red Epicenter",
+          "dominantGrape": "Chardonnay & Pinot Noir",
+          "color": "#C5A059",
+          "accent": "#ffd54f",
+          "fillOpacity": 0.24,
+          "labelCenter": [
+            4.795,
+            46.995
+          ],
+          "description": "Home of Montrachet, Corton-Charlemagne, Meursault, Puligny, Volnay, and Pommard spanning curving limestone slopes."
         },
         "geometry": {
           "type": "Polygon",
           "coordinates": [
             [
               [
-                4.86,
-                47.085
-              ],
-              [
-                4.89,
+                4.895,
                 47.075
               ],
               [
-                4.915,
-                47.06
+                4.885,
+                47.05
               ],
               [
-                4.9,
-                47.03
+                4.855,
+                47.025
               ],
               [
-                4.87,
-                46.995
+                4.835,
+                47.005
               ],
               [
-                4.84,
-                46.965
-              ],
-              [
-                4.8,
-                46.94
-              ],
-              [
-                4.76,
-                46.915
-              ],
-              [
-                4.72,
-                46.895
-              ],
-              [
-                4.68,
-                46.89
-              ],
-              [
-                4.67,
-                46.91
-              ],
-              [
-                4.69,
-                46.935
-              ],
-              [
-                4.72,
-                46.96
-              ],
-              [
-                4.745,
+                4.815,
                 46.985
               ],
               [
-                4.76,
+                4.785,
+                46.965
+              ],
+              [
+                4.765,
+                46.945
+              ],
+              [
+                4.745,
+                46.935
+              ],
+              [
+                4.705,
+                46.915
+              ],
+              [
+                4.665,
+                46.905
+              ],
+              [
+                4.685,
+                46.935
+              ],
+              [
+                4.715,
+                46.955
+              ],
+              [
+                4.735,
+                46.975
+              ],
+              [
+                4.755,
+                46.995
+              ],
+              [
+                4.775,
                 47.015
               ],
               [
-                4.785,
+                4.795,
                 47.045
               ],
               [
-                4.82,
-                47.07
+                4.825,
+                47.065
               ],
               [
-                4.86,
-                47.085
+                4.865,
+                47.075
+              ],
+              [
+                4.895,
+                47.075
               ]
             ]
           ]
@@ -673,84 +665,76 @@ export const WINE_REGION_BOUNDARIES = {
         "type": "Feature",
         "id": "cote-chalonnaise",
         "properties": {
-                  "id": "cote-chalonnaise",
-                  "parentSubregionId": "cote-chalonnaise",
-                  "subregionId": "cote-chalonnaise",
-                  "name": "Côte Chalonnaise",
-                  "category": "Limestone Value & Crémant",
-                  "dominantGrape": "Pinot Noir, Chardonnay, Aligoté",
-                  "color": "#a1887f",
-                  "accent": "#d7ccc8",
-                  "fillOpacity": 0.2,
-                  "labelCenter": [
-                            4.715,
-                            46.805
-                  ],
-                  "description": "Rolling limestone hills featuring Mercurey, Rully, Givry, Montagny, and Bouzeron framed between valleys and forested ridges."
+          "id": "cote-chalonnaise",
+          "parentSubregionId": "cote-chalonnaise",
+          "subregionId": "cote-chalonnaise",
+          "name": "Côte Chalonnaise",
+          "category": "Limestone Value & Crémant",
+          "dominantGrape": "Pinot Noir, Chardonnay, Aligoté",
+          "color": "#a1887f",
+          "accent": "#d7ccc8",
+          "fillOpacity": 0.2,
+          "labelCenter": [
+            4.715,
+            46.805
+          ],
+          "description": "Rolling limestone hills featuring Mercurey, Rully, Givry, Montagny, and Bouzeron framed between valleys and forested ridges."
         },
         "geometry": {
           "type": "Polygon",
           "coordinates": [
             [
               [
-                4.73,
-                46.9
+                4.735,
+                46.895
+              ],
+              [
+                4.755,
+                46.875
               ],
               [
                 4.765,
-                46.885
+                46.835
               ],
               [
-                4.78,
-                46.85
+                4.725,
+                46.825
               ],
               [
-                4.77,
-                46.81
+                4.705,
+                46.815
               ],
               [
-                4.75,
-                46.77
+                4.755,
+                46.785
               ],
               [
-                4.73,
-                46.73
+                4.695,
+                46.775
               ],
               [
-                4.7,
+                4.685,
+                46.705
+              ],
+              [
+                4.665,
                 46.685
               ],
               [
-                4.66,
-                46.66
+                4.655,
+                46.745
               ],
               [
-                4.635,
-                46.67
+                4.685,
+                46.825
               ],
               [
-                4.63,
-                46.71
-              ],
-              [
-                4.64,
-                46.76
-              ],
-              [
-                4.66,
-                46.81
-              ],
-              [
-                4.675,
-                46.855
-              ],
-              [
-                4.7,
+                4.705,
                 46.885
               ],
               [
-                4.73,
-                46.9
+                4.735,
+                46.895
               ]
             ]
           ]
@@ -760,88 +744,88 @@ export const WINE_REGION_BOUNDARIES = {
         "type": "Feature",
         "id": "maconnais",
         "properties": {
-                  "id": "maconnais",
-                  "parentSubregionId": "maconnais",
-                  "subregionId": "maconnais",
-                  "name": "Mâconnais",
-                  "category": "Sun-drenched Limestone Chardonnay",
-                  "dominantGrape": "Chardonnay",
-                  "color": "#D4AF37",
-                  "accent": "#fff59d",
-                  "fillOpacity": 0.2,
-                  "labelCenter": [
-                            4.765,
-                            46.385
-                  ],
-                  "description": "Limestone cliffs of Solutré and Vergisson producing Pouilly-Fuissé, Saint-Véran, and Viré-Clessé across sun-drenched amphitheatres."
+          "id": "maconnais",
+          "parentSubregionId": "maconnais",
+          "subregionId": "maconnais",
+          "name": "Mâconnais",
+          "category": "Sun-drenched Limestone Chardonnay",
+          "dominantGrape": "Chardonnay",
+          "color": "#D4AF37",
+          "accent": "#fff59d",
+          "fillOpacity": 0.2,
+          "labelCenter": [
+            4.765,
+            46.385
+          ],
+          "description": "Limestone cliffs of Solutré and Vergisson producing Pouilly-Fuissé, Saint-Véran, and Viré-Clessé across sun-drenched amphitheatres."
         },
         "geometry": {
           "type": "Polygon",
           "coordinates": [
             [
               [
-                4.77,
-                46.54
+                4.825,
+                46.545
               ],
               [
-                4.82,
-                46.52
+                4.815,
+                46.485
               ],
               [
-                4.855,
-                46.48
+                4.845,
+                46.435
               ],
               [
-                4.86,
-                46.43
+                4.835,
+                46.375
               ],
               [
-                4.84,
-                46.37
+                4.795,
+                46.325
               ],
               [
-                4.82,
-                46.31
-              ],
-              [
-                4.8,
-                46.26
-              ],
-              [
-                4.76,
-                46.225
-              ],
-              [
-                4.71,
-                46.22
-              ],
-              [
-                4.68,
-                46.245
-              ],
-              [
-                4.67,
-                46.29
-              ],
-              [
-                4.685,
-                46.34
-              ],
-              [
-                4.7,
-                46.4
-              ],
-              [
-                4.72,
-                46.46
+                4.765,
+                46.285
               ],
               [
                 4.745,
-                46.51
+                46.245
               ],
               [
-                4.77,
-                46.54
+                4.735,
+                46.225
+              ],
+              [
+                4.685,
+                46.265
+              ],
+              [
+                4.695,
+                46.295
+              ],
+              [
+                4.725,
+                46.315
+              ],
+              [
+                4.705,
+                46.345
+              ],
+              [
+                4.705,
+                46.385
+              ],
+              [
+                4.745,
+                46.445
+              ],
+              [
+                4.805,
+                46.515
+              ],
+              [
+                4.825,
+                46.545
               ]
             ]
           ]
@@ -2890,116 +2874,116 @@ export const WINE_REGION_BOUNDARIES = {
         "type": "Feature",
         "id": "napa-valley-floor",
         "properties": {
-                  "id": "napa-valley-floor",
-                  "parentSubregionId": "napa-valley-floor",
-                  "subregionId": "napa-valley-floor",
-                  "name": "Napa Valley Floor AVAs",
-                  "category": "Cabernet Sauvignon Sovereign & 16 Sub-AVAs",
-                  "dominantGrape": "Cabernet Sauvignon",
-                  "color": "#4a154b",
-                  "accent": "#d4af37",
-                  "fillOpacity": 0.28,
-                  "labelCenter": [
-                            -122.39,
-                            38.42
-                  ],
-                  "description": "World-renowned 30-mile valley graben flanked by Mayacamas and Vaca ranges (Oakville, Rutherford, Stags Leap, Howell Mtn)."
+          "id": "napa-valley-floor",
+          "parentSubregionId": "napa-valley-floor",
+          "subregionId": "napa-valley-floor",
+          "name": "Napa Valley Floor AVAs",
+          "category": "Cabernet Sauvignon Sovereign & 16 Sub-AVAs",
+          "dominantGrape": "Cabernet Sauvignon",
+          "color": "#4a154b",
+          "accent": "#d4af37",
+          "fillOpacity": 0.28,
+          "labelCenter": [
+            -122.375,
+            38.365
+          ],
+          "description": "World-renowned 30-mile valley graben flanked by Mayacamas and Vaca ranges (Oakville, Rutherford, Stags Leap, Howell Mtn)."
         },
         "geometry": {
           "type": "Polygon",
           "coordinates": [
             [
               [
-                -122.585,
-                38.588
+                -122.592,
+                38.595
               ],
               [
-                -122.555,
-                38.558
-              ],
-              [
-                -122.52,
-                38.525
+                -122.545,
+                38.568
               ],
               [
                 -122.485,
-                38.49
+                38.515
               ],
               [
                 -122.455,
+                38.485
+              ],
+              [
+                -122.415,
                 38.455
               ],
               [
-                -122.425,
-                38.415
+                -122.385,
+                38.425
+              ],
+              [
+                -122.315,
+                38.41
+              ],
+              [
+                -122.31,
+                38.375
+              ],
+              [
+                -122.285,
+                38.345
+              ],
+              [
+                -122.26,
+                38.295
+              ],
+              [
+                -122.275,
+                38.245
+              ],
+              [
+                -122.315,
+                38.225
+              ],
+              [
+                -122.375,
+                38.22
+              ],
+              [
+                -122.415,
+                38.24
+              ],
+              [
+                -122.44,
+                38.265
+              ],
+              [
+                -122.385,
+                38.32
               ],
               [
                 -122.395,
                 38.38
               ],
               [
-                -122.37,
-                38.345
-              ],
-              [
-                -122.345,
-                38.305
-              ],
-              [
-                -122.325,
-                38.255
-              ],
-              [
-                -122.285,
-                38.225
-              ],
-              [
-                -122.245,
-                38.25
-              ],
-              [
-                -122.23,
-                38.29
-              ],
-              [
-                -122.245,
-                38.335
-              ],
-              [
-                -122.28,
-                38.375
-              ],
-              [
-                -122.315,
-                38.415
-              ],
-              [
-                -122.35,
-                38.455
-              ],
-              [
-                -122.385,
-                38.49
-              ],
-              [
-                -122.42,
-                38.525
+                -122.425,
+                38.42
               ],
               [
                 -122.46,
-                38.555
+                38.45
               ],
               [
-                -122.505,
-                38.575
+                -122.495,
+                38.495
               ],
               [
-                -122.55,
-                38.592
+                -122.535,
+                38.54
               ],
               [
                 -122.585,
-                38.588
+                38.575
+              ],
+              [
+                -122.592,
+                38.595
               ]
             ]
           ]
@@ -3009,112 +2993,88 @@ export const WINE_REGION_BOUNDARIES = {
         "type": "Feature",
         "id": "sonoma-coast-rrv",
         "properties": {
-                  "id": "sonoma-coast-rrv",
-                  "parentSubregionId": "sonoma-coast-rrv",
-                  "subregionId": "sonoma-coast-rrv",
-                  "name": "Sonoma Coast & Russian River Valley",
-                  "category": "Goldridge Loam, Pacific Fog & Pinot/Chard",
-                  "dominantGrape": "Pinot Noir, Chardonnay, Zinfandel",
-                  "color": "#2e7d32",
-                  "accent": "#a5d6a7",
-                  "fillOpacity": 0.24,
-                  "labelCenter": [
-                            -122.92,
-                            38.48
-                  ],
-                  "description": "Diverse microclimates influenced by Petaluma Gap marine fog and Goldridge sandy loam (Kistler, Rochioli, Littorai)."
+          "id": "sonoma-coast-rrv",
+          "parentSubregionId": "sonoma-coast-rrv",
+          "subregionId": "sonoma-coast-rrv",
+          "name": "Sonoma Coast & Russian River Valley",
+          "category": "Goldridge Loam, Pacific Fog & Pinot/Chard",
+          "dominantGrape": "Pinot Noir, Chardonnay, Zinfandel",
+          "color": "#2e7d32",
+          "accent": "#a5d6a7",
+          "fillOpacity": 0.24,
+          "labelCenter": [
+            -122.915,
+            38.495
+          ],
+          "description": "Diverse microclimates influenced by Petaluma Gap marine fog and Goldridge sandy loam (Kistler, Rochioli, Littorai)."
         },
         "geometry": {
           "type": "Polygon",
           "coordinates": [
             [
               [
-                -122.865,
-                38.625
+                -122.845,
+                38.615
               ],
               [
-                -122.81,
-                38.605
+                -122.785,
+                38.545
               ],
               [
-                -122.765,
-                38.56
+                -122.755,
+                38.445
               ],
               [
-                -122.735,
-                38.5
+                -122.825,
+                38.375
               ],
               [
-                -122.73,
-                38.435
+                -122.895,
+                38.315
               ],
               [
-                -122.75,
-                38.365
+                -122.995,
+                38.31
               ],
               [
-                -122.79,
-                38.305
-              ],
-              [
-                -122.855,
-                38.275
-              ],
-              [
-                -122.94,
-                38.27
-              ],
-              [
-                -123.015,
-                38.29
+                -123.045,
+                38.315
               ],
               [
                 -123.065,
-                38.335
+                38.355
               ],
               [
-                -123.085,
-                38.4
+                -123.118,
+                38.45
               ],
               [
-                -123.125,
-                38.48
+                -123.235,
+                38.515
               ],
               [
-                -123.185,
-                38.535
+                -123.325,
+                38.568
               ],
               [
-                -123.265,
-                38.6
+                -123.365,
+                38.685
               ],
               [
-                -123.34,
-                38.665
-              ],
-              [
-                -123.32,
-                38.715
-              ],
-              [
-                -123.22,
+                -123.165,
                 38.71
               ],
               [
-                -123.12,
-                38.67
+                -123.045,
+                38.685
               ],
               [
-                -123.02,
-                38.64
+                -122.925,
+                38.635
               ],
               [
-                -122.945,
-                38.63
-              ],
-              [
-                -122.865,
-                38.625
+                -122.845,
+                38.615
               ]
             ]
           ]
@@ -3124,76 +3084,88 @@ export const WINE_REGION_BOUNDARIES = {
         "type": "Feature",
         "id": "central-coast-paso",
         "properties": {
-                  "id": "central-coast-paso",
-                  "parentSubregionId": "central-coast-paso",
-                  "subregionId": "central-coast-paso",
-                  "name": "Central Coast & Paso Robles AVA",
-                  "category": "Expansive Pacific Maritime Valleys",
-                  "dominantGrape": "Chardonnay, Pinot Noir, Syrah, Cabernet",
-                  "color": "#0288d1",
-                  "accent": "#81d4fa",
-                  "fillOpacity": 0.18,
-                  "labelCenter": [
-                            -120.7,
-                            35.63
-                  ],
-                  "description": "Spanning from Monterey through San Luis Obispo and Santa Barbara cooled by direct Pacific Ocean airflow."
+          "id": "central-coast-paso",
+          "parentSubregionId": "central-coast-paso",
+          "subregionId": "central-coast-paso",
+          "name": "Central Coast & Paso Robles AVA",
+          "category": "Expansive Pacific Maritime Valleys",
+          "dominantGrape": "Chardonnay, Pinot Noir, Syrah, Cabernet",
+          "color": "#0288d1",
+          "accent": "#81d4fa",
+          "fillOpacity": 0.18,
+          "labelCenter": [
+            -121.385,
+            36.415
+          ],
+          "description": "Spanning from Monterey through San Luis Obispo and Santa Barbara cooled by direct Pacific Ocean airflow."
         },
         "geometry": {
           "type": "Polygon",
           "coordinates": [
             [
               [
-                -120.92,
-                35.78
+                -121.805,
+                36.685
               ],
               [
-                -120.76,
-                35.81
+                -121.655,
+                36.665
               ],
               [
-                -120.58,
-                35.8
+                -121.455,
+                36.615
               ],
               [
-                -120.44,
-                35.74
+                -121.325,
+                36.565
               ],
               [
-                -120.36,
-                35.65
+                -121.185,
+                36.485
               ],
               [
-                -120.4,
-                35.54
+                -121.055,
+                36.185
               ],
               [
-                -120.52,
-                35.43
+                -120.955,
+                35.915
               ],
               [
-                -120.66,
-                35.42
+                -121.125,
+                35.965
               ],
               [
-                -120.78,
-                35.47
+                -121.285,
+                36.185
               ],
               [
-                -120.92,
-                35.53
+                -121.415,
+                36.385
               ],
               [
-                -121,
-                35.62
+                -121.525,
+                36.265
               ],
               [
-                -120.98,
-                35.72
+                -121.565,
+                36.395
               ],
               [
-                -120.92,
-                35.78
+                -121.485,
+                36.515
+              ],
+              [
+                -121.685,
+                36.485
+              ],
+              [
+                -121.755,
+                36.595
+              ],
+              [
+                -121.805,
+                36.685
               ]
             ]
           ]
@@ -3203,72 +3175,80 @@ export const WINE_REGION_BOUNDARIES = {
         "type": "Feature",
         "id": "central-coast-paso-robles",
         "properties": {
-                  "id": "central-coast-paso-robles",
-                  "parentSubregionId": "central-coast-paso",
-                  "subregionId": "central-coast-paso",
-                  "name": "Central Coast (Paso Robles AVA)",
-                  "category": "Marine Limestone Benches & Opulent Rhône / Cabernets",
-                  "dominantGrape": "Cabernet Sauvignon, Syrah, Zinfandel",
-                  "color": "#c0392b",
-                  "accent": "#f5b7b1",
-                  "fillOpacity": 0.26,
-                  "labelCenter": [
-                            -120.72,
-                            35.62
-                  ],
-                  "description": "High diurnal temperature swings and rare marine limestone benches producing opulent Cabernet and Rhône blends (Saxum, Tablas Creek)."
+          "id": "central-coast-paso-robles",
+          "parentSubregionId": "central-coast-paso",
+          "subregionId": "central-coast-paso",
+          "name": "Central Coast (Paso Robles AVA)",
+          "category": "Marine Limestone Benches & Opulent Rhône / Cabernets",
+          "dominantGrape": "Cabernet Sauvignon, Syrah, Zinfandel",
+          "color": "#c0392b",
+          "accent": "#f5b7b1",
+          "fillOpacity": 0.26,
+          "labelCenter": [
+            -120.685,
+            35.625
+          ],
+          "description": "High diurnal temperature swings and rare marine limestone benches producing opulent Cabernet and Rhône blends (Saxum, Tablas Creek)."
         },
         "geometry": {
           "type": "Polygon",
           "coordinates": [
             [
               [
-                -120.9,
-                35.7
+                -120.715,
+                35.765
               ],
               [
-                -120.8,
-                35.71
+                -120.585,
+                35.775
               ],
               [
-                -120.68,
-                35.69
+                -120.485,
+                35.745
               ],
               [
-                -120.59,
-                35.67
+                -120.355,
+                35.655
               ],
               [
-                -120.54,
-                35.61
+                -120.415,
+                35.585
               ],
               [
-                -120.57,
-                35.54
+                -120.485,
+                35.535
               ],
               [
-                -120.65,
-                35.51
+                -120.615,
+                35.515
               ],
               [
-                -120.74,
-                35.51
+                -120.745,
+                35.535
               ],
               [
-                -120.83,
-                35.54
+                -120.845,
+                35.545
               ],
               [
-                -120.89,
-                35.59
+                -120.945,
+                35.625
               ],
               [
-                -120.91,
-                35.65
+                -120.925,
+                35.685
               ],
               [
-                -120.9,
-                35.7
+                -120.895,
+                35.725
+              ],
+              [
+                -120.765,
+                35.755
+              ],
+              [
+                -120.715,
+                35.765
               ]
             ]
           ]
@@ -3278,88 +3258,80 @@ export const WINE_REGION_BOUNDARIES = {
         "type": "Feature",
         "id": "santa-cruz-mountains",
         "properties": {
-                  "id": "santa-cruz-mountains",
-                  "parentSubregionId": "santa-cruz-mountains",
-                  "subregionId": "santa-cruz-mountains",
-                  "name": "Santa Cruz Mountains AVA",
-                  "category": "High Elevation Coastal Ridge & Ridge Monte Bello",
-                  "dominantGrape": "Cabernet Sauvignon & Chardonnay",
-                  "color": "#512da8",
-                  "accent": "#b39ddb",
-                  "fillOpacity": 0.26,
-                  "labelCenter": [
-                            -122.08,
-                            37.18
-                  ],
-                  "description": "Forested coastal mountain ridge producing structured, mineral, European-style Cabernets that age for half a century (Ridge Monte Bello, Mount Eden)."
+          "id": "santa-cruz-mountains",
+          "parentSubregionId": "santa-cruz-mountains",
+          "subregionId": "santa-cruz-mountains",
+          "name": "Santa Cruz Mountains AVA",
+          "category": "High Elevation Coastal Ridge & Ridge Monte Bello",
+          "dominantGrape": "Cabernet Sauvignon & Chardonnay",
+          "color": "#512da8",
+          "accent": "#b39ddb",
+          "fillOpacity": 0.26,
+          "labelCenter": [
+            -122.085,
+            37.185
+          ],
+          "description": "Forested coastal mountain ridge producing structured, mineral, European-style Cabernets that age for half a century (Ridge Monte Bello, Mount Eden)."
         },
         "geometry": {
           "type": "Polygon",
           "coordinates": [
             [
               [
-                -122.3,
-                37.4
+                -122.275,
+                37.395
               ],
               [
-                -122.23,
-                37.38
+                -122.145,
+                37.335
               ],
               [
-                -122.16,
-                37.35
+                -122.065,
+                37.255
               ],
               [
-                -122.09,
-                37.31
+                -121.985,
+                37.185
               ],
               [
-                -122.02,
-                37.25
+                -121.895,
+                37.105
               ],
               [
-                -121.96,
-                37.18
+                -121.815,
+                37.035
               ],
               [
-                -121.88,
-                37.12
+                -121.825,
+                36.995
               ],
               [
-                -121.8,
-                37.04
+                -121.885,
+                37.015
               ],
               [
-                -121.8,
-                36.96
+                -121.995,
+                37.065
               ],
               [
-                -121.9,
-                36.94
+                -122.125,
+                37.115
               ],
               [
-                -122,
-                36.98
+                -122.215,
+                37.185
               ],
               [
-                -122.1,
-                37.04
+                -122.275,
+                37.265
               ],
               [
-                -122.18,
-                37.12
+                -122.295,
+                37.345
               ],
               [
-                -122.25,
-                37.22
-              ],
-              [
-                -122.28,
-                37.32
-              ],
-              [
-                -122.3,
-                37.4
+                -122.275,
+                37.395
               ]
             ]
           ]
@@ -3369,72 +3341,72 @@ export const WINE_REGION_BOUNDARIES = {
         "type": "Feature",
         "id": "central-coast-paso-sta-rita-hills",
         "properties": {
-                  "id": "central-coast-paso-sta-rita-hills",
-                  "parentSubregionId": "central-coast-paso",
-                  "subregionId": "central-coast-paso",
-                  "name": "Central Coast (Sta. Rita Hills AVA)",
-                  "category": "Transverse East-West Maritime Pacific Corridor",
-                  "dominantGrape": "Pinot Noir & Chardonnay",
-                  "color": "#d81b60",
-                  "accent": "#f48fb1",
-                  "fillOpacity": 0.28,
-                  "labelCenter": [
-                            -120.36,
-                            34.63
-                  ],
-                  "description": "Rare east-west transverse maritime corridor funneling Pacific fog and winds onto diatomaceous earth slopes (Domaine de la Côte, Sea Smoke)."
+          "id": "central-coast-paso-sta-rita-hills",
+          "parentSubregionId": "central-coast-paso",
+          "subregionId": "central-coast-paso",
+          "name": "Central Coast (Sta. Rita Hills AVA)",
+          "category": "Transverse East-West Maritime Pacific Corridor",
+          "dominantGrape": "Pinot Noir & Chardonnay",
+          "color": "#d81b60",
+          "accent": "#f48fb1",
+          "fillOpacity": 0.28,
+          "labelCenter": [
+            -120.345,
+            34.635
+          ],
+          "description": "Rare east-west transverse maritime corridor funneling Pacific fog and winds onto diatomaceous earth slopes (Domaine de la Côte, Sea Smoke)."
         },
         "geometry": {
           "type": "Polygon",
           "coordinates": [
             [
               [
-                -120.485,
-                34.65
+                -120.455,
+                34.655
               ],
               [
-                -120.45,
+                -120.415,
                 34.675
               ],
               [
-                -120.395,
-                34.69
+                -120.365,
+                34.675
               ],
               [
-                -120.34,
-                34.685
-              ],
-              [
-                -120.275,
+                -120.295,
                 34.665
               ],
               [
-                -120.22,
+                -120.215,
                 34.635
               ],
               [
-                -120.245,
-                34.595
+                -120.225,
+                34.605
+              ],
+              [
+                -120.275,
+                34.59
               ],
               [
                 -120.315,
-                34.57
+                34.585
               ],
               [
-                -120.385,
-                34.575
+                -120.375,
+                34.585
               ],
               [
-                -120.44,
-                34.6
+                -120.415,
+                34.595
               ],
               [
-                -120.47,
+                -120.465,
                 34.625
               ],
               [
-                -120.485,
-                34.65
+                -120.455,
+                34.655
               ]
             ]
           ]
@@ -7297,198 +7269,142 @@ export const WINE_REGION_OUTLINES = {
         "type": "Feature",
         "id": "burgundy-outline",
         "properties": {
-                  "id": "burgundy-outline",
-                  "name": "Burgundy (Bourgogne) AOC Delimited Wine Region",
-                  "frenchName": "Vignoble de Bourgogne",
-                  "category": "Official Regional Appellation Boundary",
-                  "areaHa": 30052,
-                  "color": "#800020",
-                  "accent": "#d4af37",
-                  "description": "Delimited perimeter of Burgundy fine wine terroirs from Chablis and the Grand Auxerrois in the north down the limestone escarpment of the Côte d'Or, Côte Chalonnaise, and Mâconnais."
+          "id": "burgundy-outline",
+          "name": "Burgundy (Bourgogne) AOC Delimited Wine Region",
+          "frenchName": "Vignoble de Bourgogne",
+          "category": "Official Regional Appellation Boundary",
+          "areaHa": 30052,
+          "color": "#800020",
+          "accent": "#d4af37",
+          "description": "Delimited perimeter of Burgundy fine wine terroirs from Chablis and the Grand Auxerrois in the north down the limestone escarpment of the Côte d'Or, Côte Chalonnaise, and Mâconnais."
         },
         "geometry": {
           "type": "Polygon",
           "coordinates": [
             [
               [
-                3.68,
-                47.92
+                3.715,
+                47.925
               ],
               [
-                3.76,
-                47.95
+                3.825,
+                47.915
               ],
               [
-                3.86,
-                47.96
+                3.965,
+                47.885
               ],
               [
-                3.98,
-                47.94
+                4.185,
+                47.835
               ],
               [
-                4.1,
-                47.9
+                4.425,
+                47.785
               ],
               [
-                4.25,
-                47.84
+                4.685,
+                47.625
               ],
               [
-                4.42,
-                47.76
+                4.915,
+                47.455
               ],
               [
-                4.58,
-                47.65
+                5.035,
+                47.365
               ],
               [
-                4.72,
-                47.53
+                5.085,
+                47.235
               ],
               [
-                4.86,
-                47.45
+                5.035,
+                47.125
               ],
               [
-                4.98,
-                47.4
+                4.935,
+                47.025
               ],
               [
-                5.08,
-                47.34
+                4.885,
+                46.815
               ],
               [
-                5.14,
-                47.26
+                4.905,
+                46.565
               ],
               [
-                5.15,
-                47.16
+                4.845,
+                46.335
               ],
               [
-                5.11,
-                47.06
+                4.765,
+                46.225
               ],
               [
-                5.05,
-                46.96
+                4.695,
+                46.285
               ],
               [
-                4.99,
-                46.86
+                4.635,
+                46.435
               ],
               [
-                4.95,
-                46.74
+                4.625,
+                46.615
               ],
               [
-                4.93,
-                46.6
+                4.605,
+                46.755
               ],
               [
-                4.91,
-                46.46
+                4.645,
+                46.905
               ],
               [
-                4.87,
-                46.32
+                4.695,
+                47.035
               ],
               [
-                4.82,
-                46.21
+                4.845,
+                47.225
               ],
               [
-                4.74,
-                46.17
+                4.935,
+                47.335
               ],
               [
-                4.66,
-                46.19
+                4.615,
+                47.415
               ],
               [
-                4.6,
-                46.25
+                4.485,
+                47.545
               ],
               [
-                4.57,
-                46.35
+                4.285,
+                47.625
               ],
               [
-                4.56,
-                46.48
+                4.015,
+                47.685
               ],
               [
-                4.58,
-                46.6
+                3.645,
+                47.725
               ],
               [
-                4.58,
-                46.72
+                3.565,
+                47.815
               ],
               [
-                4.6,
-                46.84
+                3.615,
+                47.895
               ],
               [
-                4.6,
-                46.94
-              ],
-              [
-                4.63,
-                47.05
-              ],
-              [
-                4.68,
-                47.16
-              ],
-              [
-                4.73,
-                47.26
-              ],
-              [
-                4.72,
-                47.36
-              ],
-              [
-                4.62,
-                47.44
-              ],
-              [
-                4.46,
-                47.52
-              ],
-              [
-                4.28,
-                47.58
-              ],
-              [
-                4.05,
-                47.62
-              ],
-              [
-                3.85,
-                47.66
-              ],
-              [
-                3.66,
-                47.68
-              ],
-              [
-                3.54,
-                47.74
-              ],
-              [
-                3.5,
-                47.82
-              ],
-              [
-                3.56,
-                47.88
-              ],
-              [
-                3.68,
-                47.92
+                3.715,
+                47.925
               ]
             ]
           ]
@@ -8441,213 +8357,181 @@ export const WINE_REGION_OUTLINES = {
         "type": "Feature",
         "id": "california-outline",
         "properties": {
-                  "id": "california-outline",
-                  "name": "California North Coast Wine Region (Napa & Sonoma)",
-                  "category": "Official Regional AVA Boundary",
-                  "areaHa": 60000,
-                  "color": "#1B5E20",
-                  "accent": "#F57F17",
-                  "description": "California's benchmark North Coast fine wine perimeter framing the Napa Valley floor and mountain benches, Sonoma Valley, Russian River Valley, and Pacific coastal fog corridor."
+          "id": "california-outline",
+          "name": "California North Coast Wine Region (Napa & Sonoma)",
+          "category": "Official Regional AVA Boundary",
+          "areaHa": 60000,
+          "color": "#1B5E20",
+          "accent": "#F57F17",
+          "description": "California's benchmark North Coast fine wine perimeter framing the Napa Valley floor and mountain benches, Sonoma Valley, Russian River Valley, and Pacific coastal fog corridor."
         },
         "geometry": {
           "type": "Polygon",
           "coordinates": [
             [
               [
-                -123.53,
-                38.76
+                -123.531,
+                38.756
               ],
               [
-                -123.47,
-                38.71
+                -123.485,
+                38.718
               ],
               [
-                -123.41,
-                38.68
+                -123.402,
+                38.653
               ],
               [
-                -123.38,
-                38.64
+                -123.335,
+                38.567
               ],
               [
-                -123.35,
-                38.6
+                -123.298,
+                38.552
               ],
               [
-                -123.32,
-                38.57
+                -123.275,
+                38.532
               ],
               [
-                -123.29,
-                38.54
-              ],
-              [
-                -123.26,
-                38.52
-              ],
-              [
-                -123.23,
-                38.49
-              ],
-              [
-                -123.21,
-                38.48
+                -123.244,
+                38.514
               ],
               [
                 -123.16,
-                38.46
+                38.468
               ],
               [
-                -123.13,
-                38.45
+                -123.125,
+                38.448
               ],
               [
-                -123.11,
-                38.44
-              ],
-              [
-                -123.09,
-                38.41
+                -123.098,
+                38.398
               ],
               [
                 -123.07,
-                38.36
+                38.356
               ],
               [
-                -123.05,
-                38.31
+                -123.064,
+                38.308
               ],
               [
-                -123.03,
-                38.29
+                -123.048,
+                38.305
               ],
               [
-                -122.99,
+                -122.998,
+                38.293
+              ],
+              [
+                -122.965,
                 38.25
               ],
               [
-                -122.95,
-                38.22
+                -122.825,
+                38.095
               ],
               [
-                -122.9,
-                38.18
+                -122.685,
+                38.165
               ],
               [
-                -122.82,
+                -122.585,
                 38.15
               ],
               [
-                -122.72,
-                38.13
+                -122.505,
+                38.115
               ],
               [
-                -122.6,
-                38.12
+                -122.485,
+                38.112
               ],
               [
-                -122.5,
-                38.13
+                -122.425,
+                38.125
               ],
               [
-                -122.4,
+                -122.405,
                 38.14
               ],
               [
-                -122.3,
-                38.15
-              ],
-              [
-                -122.25,
-                38.18
-              ],
-              [
-                -122.21,
-                38.22
-              ],
-              [
-                -122.18,
-                38.28
-              ],
-              [
-                -122.19,
-                38.35
-              ],
-              [
-                -122.21,
-                38.42
-              ],
-              [
-                -122.24,
-                38.48
+                -122.285,
+                38.105
               ],
               [
                 -122.26,
-                38.54
+                38.155
               ],
               [
-                -122.3,
-                38.6
+                -122.245,
+                38.21
               ],
               [
-                -122.36,
+                -122.215,
+                38.27
+              ],
+              [
+                -122.205,
+                38.345
+              ],
+              [
+                -122.24,
+                38.435
+              ],
+              [
+                -122.27,
+                38.495
+              ],
+              [
+                -122.315,
+                38.56
+              ],
+              [
+                -122.385,
                 38.65
               ],
               [
-                -122.42,
-                38.7
-              ],
-              [
                 -122.48,
-                38.75
+                38.695
               ],
               [
-                -122.6,
-                38.8
+                -122.545,
+                38.61
               ],
               [
-                -122.68,
-                38.83
+                -122.635,
+                38.67
               ],
               [
-                -122.78,
-                38.85
+                -122.765,
+                38.785
               ],
               [
-                -122.86,
-                38.86
+                -122.945,
+                38.825
               ],
               [
-                -122.95,
-                38.88
+                -123.015,
+                38.835
               ],
               [
-                -123.05,
-                38.86
+                -123.125,
+                38.765
               ],
               [
-                -123.14,
-                38.82
+                -123.325,
+                38.745
               ],
               [
-                -123.22,
-                38.78
+                -123.48,
+                38.775
               ],
               [
-                -123.32,
-                38.74
-              ],
-              [
-                -123.42,
-                38.73
-              ],
-              [
-                -123.5,
-                38.75
-              ],
-              [
-                -123.53,
-                38.76
+                -123.531,
+                38.756
               ]
             ]
           ]
