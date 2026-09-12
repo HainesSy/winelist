@@ -1,628 +1,1263 @@
+import { GEO_BOUNDARIES } from './geo_boundaries.js';
 // src/data/wineRegionBoundaries.js
 // Sommelier-grade cartographic boundary polygons and regional macro outlines
 // Conforms strictly to GeoJSON RFC 7946 specifications ([longitude, latitude])
 
 export const WINE_REGION_BOUNDARIES = {
   "champagne": {
-        "type": "FeatureCollection",
-        "features": [
-                {
-                        "type": "Feature",
-                        "id": "montagne-de-reims",
-                        "properties": {
-                                "id": "montagne-de-reims",
-                                "parentSubregionId": "montagne-de-reims",
-                                "subregionId": "montagne-de-reims",
-                                "name": "Montagne de Reims",
-                                "shortName": "Montagne de Reims",
-                                "category": "Grand Cru Pinot Noir Amphitheaters",
-                                "dominantGrape": "Pinot Noir",
-                                "color": "#8B1E3F",
-                                "accent": "#ffffff",
-                                "borderColor": "#ffffff",
-                                "fillOpacity": 0.7,
-                                "labelCenter": [
-                                        4.1,
-                                        49.16
-                                ],
-                                "description": "Forested chalk mountain plateau renowned for 9 Pinot Noir Grand Crus (Ambonnay, Bouzy, Verzenay, Verzy, Mailly)."
-                        },
-                        "geometry": {
-                                "type": "Polygon",
-                                "coordinates": [
-                                        [
-                                                [
-                                                        3.89,
-                                                        49.245
-                                                ],
-                                                [
-                                                        3.935,
-                                                        49.24
-                                                ],
-                                                [
-                                                        3.985,
-                                                        49.205
-                                                ],
-                                                [
-                                                        4.05,
-                                                        49.185
-                                                ],
-                                                [
-                                                        4.09,
-                                                        49.18
-                                                ],
-                                                [
-                                                        4.12,
-                                                        49.205
-                                                ],
-                                                [
-                                                        4.145,
-                                                        49.215
-                                                ],
-                                                [
-                                                        4.2,
-                                                        49.195
-                                                ],
-                                                [
-                                                        4.23,
-                                                        49.165
-                                                ],
-                                                [
-                                                        4.225,
-                                                        49.135
-                                                ],
-                                                [
-                                                        4.21,
-                                                        49.095
-                                                ],
-                                                [
-                                                        4.2,
-                                                        49.07
-                                                ],
-                                                [
-                                                        4.185,
-                                                        49.065
-                                                ],
-                                                [
-                                                        4.14,
-                                                        49.07
-                                                ],
-                                                [
-                                                        4.1,
-                                                        49.08
-                                                ],
-                                                [
-                                                        4.07,
-                                                        49.1
-                                                ],
-                                                [
-                                                        4.05,
-                                                        49.12
-                                                ],
-                                                [
-                                                        4.01,
-                                                        49.135
-                                                ],
-                                                [
-                                                        3.95,
-                                                        49.155
-                                                ],
-                                                [
-                                                        3.9,
-                                                        49.18
-                                                ],
-                                                [
-                                                        3.88,
-                                                        49.22
-                                                ],
-                                                [
-                                                        3.89,
-                                                        49.245
-                                                ]
-                                        ]
-                                ]
-                        }
-                },
-                {
-                        "type": "Feature",
-                        "id": "vallee-de-la-marne",
-                        "properties": {
-                                "id": "vallee-de-la-marne",
-                                "parentSubregionId": "vallee-de-la-marne",
-                                "subregionId": "vallee-de-la-marne",
-                                "name": "Vallée de la Marne",
-                                "shortName": "Vallée de la Marne",
-                                "category": "Meunier & Steep River Amphitheaters",
-                                "dominantGrape": "Meunier & Pinot Noir",
-                                "color": "#7B1FA2",
-                                "accent": "#ffffff",
-                                "borderColor": "#ffffff",
-                                "fillOpacity": 0.7,
-                                "labelCenter": [
-                                        3.78,
-                                        49.09
-                                ],
-                                "description": "Stretching 100km along the Marne River. The world capital of Meunier, yielding generous, round wines alongside legendary Pinot Noir in Grand Cru Aÿ."
-                        },
-                        "geometry": {
-                                "type": "Polygon",
-                                "coordinates": [
-                                        [
-                                                [
-                                                        3.42,
-                                                        49.03
-                                                ],
-                                                [
-                                                        3.48,
-                                                        49.075
-                                                ],
-                                                [
-                                                        3.56,
-                                                        49.09
-                                                ],
-                                                [
-                                                        3.65,
-                                                        49.11
-                                                ],
-                                                [
-                                                        3.75,
-                                                        49.13
-                                                ],
-                                                [
-                                                        3.84,
-                                                        49.135
-                                                ],
-                                                [
-                                                        3.92,
-                                                        49.105
-                                                ],
-                                                [
-                                                        3.955,
-                                                        49.085
-                                                ],
-                                                [
-                                                        3.99,
-                                                        49.075
-                                                ],
-                                                [
-                                                        4.03,
-                                                        49.068
-                                                ],
-                                                [
-                                                        4.06,
-                                                        49.058
-                                                ],
-                                                [
-                                                        4.105,
-                                                        49.055
-                                                ],
-                                                [
-                                                        4.14,
-                                                        49.055
-                                                ],
-                                                [
-                                                        4.135,
-                                                        49.035
-                                                ],
-                                                [
-                                                        4.06,
-                                                        49.035
-                                                ],
-                                                [
-                                                        4.015,
-                                                        49.04
-                                                ],
-                                                [
-                                                        3.96,
-                                                        49.045
-                                                ],
-                                                [
-                                                        3.89,
-                                                        49.055
-                                                ],
-                                                [
-                                                        3.78,
-                                                        49.06
-                                                ],
-                                                [
-                                                        3.68,
-                                                        49.05
-                                                ],
-                                                [
-                                                        3.58,
-                                                        49.02
-                                                ],
-                                                [
-                                                        3.48,
-                                                        48.995
-                                                ],
-                                                [
-                                                        3.42,
-                                                        49.03
-                                                ]
-                                        ]
-                                ]
-                        }
-                },
-                {
-                        "type": "Feature",
-                        "id": "cote-des-blancs",
-                        "properties": {
-                                "id": "cote-des-blancs",
-                                "parentSubregionId": "cote-des-blancs",
-                                "subregionId": "cote-des-blancs",
-                                "name": "Côte des Blancs",
-                                "shortName": "Côte des Blancs",
-                                "category": "Pure Chalk Cuesta & Blanc de Blancs",
-                                "dominantGrape": "Chardonnay",
-                                "color": "#D4AF37",
-                                "accent": "#ffffff",
-                                "borderColor": "#ffffff",
-                                "fillOpacity": 0.7,
-                                "labelCenter": [
-                                        4.01,
-                                        48.95
-                                ],
-                                "description": "The global benchmark for Blanc de Blancs Chardonnay. A 20km cliff of pure Belemnite chalk featuring 6 iconic Grand Crus (Avize, Cramant, Le Mesnil)."
-                        },
-                        "geometry": {
-                                "type": "Polygon",
-                                "coordinates": [
-                                        [
-                                                [
-                                                        3.95,
-                                                        49.015
-                                                ],
-                                                [
-                                                        3.995,
-                                                        49.025
-                                                ],
-                                                [
-                                                        4.035,
-                                                        49.02
-                                                ],
-                                                [
-                                                        4.065,
-                                                        48.99
-                                                ],
-                                                [
-                                                        4.045,
-                                                        48.965
-                                                ],
-                                                [
-                                                        4.045,
-                                                        48.935
-                                                ],
-                                                [
-                                                        4.03,
-                                                        48.895
-                                                ],
-                                                [
-                                                        4.025,
-                                                        48.87
-                                                ],
-                                                [
-                                                        3.985,
-                                                        48.87
-                                                ],
-                                                [
-                                                        3.98,
-                                                        48.905
-                                                ],
-                                                [
-                                                        3.99,
-                                                        48.945
-                                                ],
-                                                [
-                                                        3.98,
-                                                        48.97
-                                                ],
-                                                [
-                                                        3.95,
-                                                        48.99
-                                                ],
-                                                [
-                                                        3.95,
-                                                        49.015
-                                                ]
-                                        ]
-                                ]
-                        }
-                },
-                {
-                        "type": "Feature",
-                        "id": "coteaux-sud-epernay",
-                        "properties": {
-                                "id": "coteaux-sud-epernay",
-                                "parentSubregionId": "coteaux-sud-epernay",
-                                "subregionId": "coteaux-sud-epernay",
-                                "name": "Coteaux Sud d’Épernay",
-                                "shortName": "Coteaux Sud d'Épernay",
-                                "category": "Flint & Clay-Marl Rolling Slopes",
-                                "dominantGrape": "Meunier & Chardonnay",
-                                "color": "#00897B",
-                                "accent": "#ffffff",
-                                "borderColor": "#ffffff",
-                                "fillOpacity": 0.7,
-                                "labelCenter": [
-                                        3.92,
-                                        49
-                                ],
-                                "description": "Rolling hills south of Épernay bridging Vallée de la Marne and Côte des Blancs. Home to Pierry Premier Cru and artisanal grower estates."
-                        },
-                        "geometry": {
-                                "type": "Polygon",
-                                "coordinates": [
-                                        [
-                                                [
-                                                        3.925,
-                                                        49.035
-                                                ],
-                                                [
-                                                        3.95,
-                                                        49.03
-                                                ],
-                                                [
-                                                        3.95,
-                                                        48.99
-                                                ],
-                                                [
-                                                        3.945,
-                                                        48.955
-                                                ],
-                                                [
-                                                        3.905,
-                                                        48.965
-                                                ],
-                                                [
-                                                        3.88,
-                                                        48.995
-                                                ],
-                                                [
-                                                        3.89,
-                                                        49.025
-                                                ],
-                                                [
-                                                        3.925,
-                                                        49.035
-                                                ]
-                                        ]
-                                ]
-                        }
-                },
-                {
-                        "type": "Feature",
-                        "id": "cote-de-sezanne",
-                        "properties": {
-                                "id": "cote-de-sezanne",
-                                "parentSubregionId": "cote-de-sezanne",
-                                "subregionId": "cote-de-sezanne",
-                                "name": "Côte de Sézanne",
-                                "shortName": "Côte de Sézanne",
-                                "category": "Warm Sun-Drenched Chalk & Marl Slopes",
-                                "dominantGrape": "Chardonnay",
-                                "color": "#D87D2A",
-                                "accent": "#ffffff",
-                                "borderColor": "#ffffff",
-                                "fillOpacity": 0.7,
-                                "labelCenter": [
-                                        3.77,
-                                        48.72
-                                ],
-                                "description": "South-facing chalk slopes with warmer microclimate producing fleshier, rounder, stone-fruit-driven Chardonnays."
-                        },
-                        "geometry": {
-                                "type": "Polygon",
-                                "coordinates": [
-                                        [
-                                                [
-                                                        3.74,
-                                                        48.885
-                                                ],
-                                                [
-                                                        3.83,
-                                                        48.895
-                                                ],
-                                                [
-                                                        3.89,
-                                                        48.865
-                                                ],
-                                                [
-                                                        3.86,
-                                                        48.815
-                                                ],
-                                                [
-                                                        3.82,
-                                                        48.745
-                                                ],
-                                                [
-                                                        3.78,
-                                                        48.705
-                                                ],
-                                                [
-                                                        3.75,
-                                                        48.655
-                                                ],
-                                                [
-                                                        3.73,
-                                                        48.615
-                                                ],
-                                                [
-                                                        3.68,
-                                                        48.625
-                                                ],
-                                                [
-                                                        3.71,
-                                                        48.685
-                                                ],
-                                                [
-                                                        3.73,
-                                                        48.755
-                                                ],
-                                                [
-                                                        3.71,
-                                                        48.835
-                                                ],
-                                                [
-                                                        3.74,
-                                                        48.885
-                                                ]
-                                        ]
-                                ]
-                        }
-                },
-                {
-                        "type": "Feature",
-                        "id": "vitryat",
-                        "properties": {
-                                "id": "vitryat",
-                                "parentSubregionId": "vitryat",
-                                "subregionId": "vitryat",
-                                "name": "Vitryat (Côtes de Vitry)",
-                                "shortName": "Vitryat",
-                                "category": "Eastern Turonian Chalk Enclave",
-                                "dominantGrape": "Chardonnay",
-                                "color": "#F4B400",
-                                "accent": "#ffffff",
-                                "borderColor": "#ffffff",
-                                "fillOpacity": 0.7,
-                                "labelCenter": [
-                                        4.62,
-                                        48.82
-                                ],
-                                "description": "Pure white Turonian chalk hillsides producing pristine, high-tension mineral Chardonnay."
-                        },
-                        "geometry": {
-                                "type": "Polygon",
-                                "coordinates": [
-                                        [
-                                                [
-                                                        4.56,
-                                                        48.87
-                                                ],
-                                                [
-                                                        4.64,
-                                                        48.875
-                                                ],
-                                                [
-                                                        4.71,
-                                                        48.845
-                                                ],
-                                                [
-                                                        4.71,
-                                                        48.795
-                                                ],
-                                                [
-                                                        4.64,
-                                                        48.765
-                                                ],
-                                                [
-                                                        4.57,
-                                                        48.785
-                                                ],
-                                                [
-                                                        4.53,
-                                                        48.825
-                                                ],
-                                                [
-                                                        4.56,
-                                                        48.87
-                                                ]
-                                        ]
-                                ]
-                        }
-                },
-                {
-                        "type": "Feature",
-                        "id": "cote-des-bar",
-                        "properties": {
-                                "id": "cote-des-bar",
-                                "parentSubregionId": "cote-des-bar",
-                                "subregionId": "cote-des-bar",
-                                "name": "Côte des Bar (Aube)",
-                                "shortName": "Côte des Bar",
-                                "category": "Kimmeridgian Marl & Artisanal Growers",
-                                "dominantGrape": "Pinot Noir",
-                                "color": "#A04020",
-                                "accent": "#ffffff",
-                                "borderColor": "#ffffff",
-                                "fillOpacity": 0.7,
-                                "labelCenter": [
-                                        4.52,
-                                        48.15
-                                ],
-                                "description": "The southern frontier of Champagne in the Aube department. Kimmeridgian marls (identical to Chablis) yielding structured, vinous Pinot Noir."
-                        },
-                        "geometry": {
-                                "type": "Polygon",
-                                "coordinates": [
-                                        [
-                                                [
-                                                        4.68,
-                                                        48.31
-                                                ],
-                                                [
-                                                        4.78,
-                                                        48.27
-                                                ],
-                                                [
-                                                        4.78,
-                                                        48.18
-                                                ],
-                                                [
-                                                        4.69,
-                                                        48.14
-                                                ],
-                                                [
-                                                        4.56,
-                                                        48.09
-                                                ],
-                                                [
-                                                        4.48,
-                                                        48.06
-                                                ],
-                                                [
-                                                        4.45,
-                                                        47.98
-                                                ],
-                                                [
-                                                        4.42,
-                                                        47.95
-                                                ],
-                                                [
-                                                        4.33,
-                                                        47.97
-                                                ],
-                                                [
-                                                        4.34,
-                                                        48.05
-                                                ],
-                                                [
-                                                        4.38,
-                                                        48.14
-                                                ],
-                                                [
-                                                        4.44,
-                                                        48.19
-                                                ],
-                                                [
-                                                        4.55,
-                                                        48.24
-                                                ],
-                                                [
-                                                        4.62,
-                                                        48.29
-                                                ],
-                                                [
-                                                        4.68,
-                                                        48.31
-                                                ]
-                                        ]
-                                ]
-                        }
-                }
-        ]
-},
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "montagne-de-reims",
+          "properties": {
+            "id": "montagne-de-reims",
+            "parentSubregionId": "montagne-de-reims",
+            "subregionId": "montagne-de-reims",
+            "name": "Montagne de Reims",
+            "shortName": "Montagne de Reims",
+            "category": "Grand Cru Pinot Noir Amphitheaters & Chalk Slopes",
+            "dominantGrape": "Pinot Noir",
+            "color": "#E6732B",
+            "accent": "#ffffff",
+            "borderColor": "#ffffff",
+            "fillOpacity": 0.7,
+            "labelCenter": [
+              4.11,
+              49.16
+            ],
+            "description": "Curved horseshoe of chalk amphitheaters wrapping around the central mountain forest plateau with Massif de Saint-Thierry and Monts de Berne satellite chalk hills, renowned for 9 Pinot Noir Grand Crus."
+          },
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    3.842,
+                    49.302
+                  ],
+                  [
+                    3.845,
+                    49.318
+                  ],
+                  [
+                    3.852,
+                    49.332
+                  ],
+                  [
+                    3.865,
+                    49.348
+                  ],
+                  [
+                    3.878,
+                    49.362
+                  ],
+                  [
+                    3.896,
+                    49.374
+                  ],
+                  [
+                    3.918,
+                    49.378
+                  ],
+                  [
+                    3.936,
+                    49.372
+                  ],
+                  [
+                    3.948,
+                    49.356
+                  ],
+                  [
+                    3.955,
+                    49.338
+                  ],
+                  [
+                    3.968,
+                    49.324
+                  ],
+                  [
+                    3.979,
+                    49.31
+                  ],
+                  [
+                    3.988,
+                    49.298
+                  ],
+                  [
+                    3.984,
+                    49.284
+                  ],
+                  [
+                    3.966,
+                    49.278
+                  ],
+                  [
+                    3.945,
+                    49.276
+                  ],
+                  [
+                    3.922,
+                    49.28
+                  ],
+                  [
+                    3.898,
+                    49.284
+                  ],
+                  [
+                    3.872,
+                    49.288
+                  ],
+                  [
+                    3.855,
+                    49.294
+                  ],
+                  [
+                    3.842,
+                    49.302
+                  ]
+                ]
+              ],
+              [
+                [
+                  [
+                    4.088,
+                    49.252
+                  ],
+                  [
+                    4.098,
+                    49.268
+                  ],
+                  [
+                    4.115,
+                    49.28
+                  ],
+                  [
+                    4.138,
+                    49.29
+                  ],
+                  [
+                    4.165,
+                    49.295
+                  ],
+                  [
+                    4.186,
+                    49.288
+                  ],
+                  [
+                    4.198,
+                    49.272
+                  ],
+                  [
+                    4.196,
+                    49.255
+                  ],
+                  [
+                    4.184,
+                    49.24
+                  ],
+                  [
+                    4.158,
+                    49.234
+                  ],
+                  [
+                    4.128,
+                    49.236
+                  ],
+                  [
+                    4.102,
+                    49.242
+                  ],
+                  [
+                    4.088,
+                    49.252
+                  ]
+                ]
+              ],
+              [
+                [
+                  [
+                    3.882,
+                    49.228
+                  ],
+                  [
+                    3.89,
+                    49.242
+                  ],
+                  [
+                    3.908,
+                    49.25
+                  ],
+                  [
+                    3.928,
+                    49.254
+                  ],
+                  [
+                    3.952,
+                    49.254
+                  ],
+                  [
+                    3.975,
+                    49.248
+                  ],
+                  [
+                    3.996,
+                    49.242
+                  ],
+                  [
+                    4.018,
+                    49.234
+                  ],
+                  [
+                    4.042,
+                    49.228
+                  ],
+                  [
+                    4.068,
+                    49.224
+                  ],
+                  [
+                    4.095,
+                    49.22
+                  ],
+                  [
+                    4.122,
+                    49.218
+                  ],
+                  [
+                    4.148,
+                    49.218
+                  ],
+                  [
+                    4.172,
+                    49.21
+                  ],
+                  [
+                    4.196,
+                    49.192
+                  ],
+                  [
+                    4.212,
+                    49.178
+                  ],
+                  [
+                    4.226,
+                    49.158
+                  ],
+                  [
+                    4.232,
+                    49.14
+                  ],
+                  [
+                    4.23,
+                    49.122
+                  ],
+                  [
+                    4.226,
+                    49.11
+                  ],
+                  [
+                    4.238,
+                    49.098
+                  ],
+                  [
+                    4.238,
+                    49.082
+                  ],
+                  [
+                    4.225,
+                    49.07
+                  ],
+                  [
+                    4.202,
+                    49.064
+                  ],
+                  [
+                    4.176,
+                    49.06
+                  ],
+                  [
+                    4.148,
+                    49.062
+                  ],
+                  [
+                    4.122,
+                    49.07
+                  ],
+                  [
+                    4.092,
+                    49.08
+                  ],
+                  [
+                    4.084,
+                    49.098
+                  ],
+                  [
+                    4.102,
+                    49.112
+                  ],
+                  [
+                    4.124,
+                    49.12
+                  ],
+                  [
+                    4.14,
+                    49.132
+                  ],
+                  [
+                    4.138,
+                    49.146
+                  ],
+                  [
+                    4.112,
+                    49.15
+                  ],
+                  [
+                    4.082,
+                    49.146
+                  ],
+                  [
+                    4.056,
+                    49.142
+                  ],
+                  [
+                    4.032,
+                    49.144
+                  ],
+                  [
+                    4.008,
+                    49.146
+                  ],
+                  [
+                    3.974,
+                    49.144
+                  ],
+                  [
+                    3.948,
+                    49.158
+                  ],
+                  [
+                    3.93,
+                    49.18
+                  ],
+                  [
+                    3.904,
+                    49.2
+                  ],
+                  [
+                    3.882,
+                    49.228
+                  ]
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "vallee-de-la-marne",
+          "properties": {
+            "id": "vallee-de-la-marne",
+            "parentSubregionId": "vallee-de-la-marne",
+            "subregionId": "vallee-de-la-marne",
+            "name": "Vallée de la Marne",
+            "shortName": "Vallée de la Marne",
+            "category": "Meunier & Steep River Amphitheaters",
+            "dominantGrape": "Meunier & Pinot Noir",
+            "color": "#9B2C78",
+            "accent": "#ffffff",
+            "borderColor": "#ffffff",
+            "fillOpacity": 0.7,
+            "labelCenter": [
+              3.78,
+              49.09
+            ],
+            "description": "Serpentine river corridor tracing the true curves of the Marne River from Charly-sur-Marne through Dormans to Grand Cru Aÿ and Tours-sur-Marne, the world epicenter of Meunier."
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  3.226,
+                  48.97
+                ],
+                [
+                  3.242,
+                  48.992
+                ],
+                [
+                  3.268,
+                  49.01
+                ],
+                [
+                  3.305,
+                  49.016
+                ],
+                [
+                  3.338,
+                  49.024
+                ],
+                [
+                  3.372,
+                  49.042
+                ],
+                [
+                  3.402,
+                  49.056
+                ],
+                [
+                  3.438,
+                  49.062
+                ],
+                [
+                  3.478,
+                  49.056
+                ],
+                [
+                  3.518,
+                  49.076
+                ],
+                [
+                  3.546,
+                  49.096
+                ],
+                [
+                  3.572,
+                  49.098
+                ],
+                [
+                  3.602,
+                  49.09
+                ],
+                [
+                  3.632,
+                  49.09
+                ],
+                [
+                  3.662,
+                  49.106
+                ],
+                [
+                  3.702,
+                  49.114
+                ],
+                [
+                  3.742,
+                  49.12
+                ],
+                [
+                  3.782,
+                  49.134
+                ],
+                [
+                  3.812,
+                  49.144
+                ],
+                [
+                  3.842,
+                  49.142
+                ],
+                [
+                  3.872,
+                  49.124
+                ],
+                [
+                  3.894,
+                  49.104
+                ],
+                [
+                  3.916,
+                  49.09
+                ],
+                [
+                  3.934,
+                  49.094
+                ],
+                [
+                  3.962,
+                  49.094
+                ],
+                [
+                  3.982,
+                  49.084
+                ],
+                [
+                  4.004,
+                  49.076
+                ],
+                [
+                  4.028,
+                  49.076
+                ],
+                [
+                  4.054,
+                  49.074
+                ],
+                [
+                  4.084,
+                  49.064
+                ],
+                [
+                  4.114,
+                  49.058
+                ],
+                [
+                  4.138,
+                  49.054
+                ],
+                [
+                  4.142,
+                  49.036
+                ],
+                [
+                  4.116,
+                  49.034
+                ],
+                [
+                  4.086,
+                  49.03
+                ],
+                [
+                  4.052,
+                  49.032
+                ],
+                [
+                  4.022,
+                  49.036
+                ],
+                [
+                  3.996,
+                  49.042
+                ],
+                [
+                  3.966,
+                  49.052
+                ],
+                [
+                  3.926,
+                  49.056
+                ],
+                [
+                  3.882,
+                  49.058
+                ],
+                [
+                  3.842,
+                  49.056
+                ],
+                [
+                  3.802,
+                  49.05
+                ],
+                [
+                  3.766,
+                  49.038
+                ],
+                [
+                  3.736,
+                  49.036
+                ],
+                [
+                  3.696,
+                  49.05
+                ],
+                [
+                  3.656,
+                  49.052
+                ],
+                [
+                  3.602,
+                  49.046
+                ],
+                [
+                  3.548,
+                  49.038
+                ],
+                [
+                  3.488,
+                  49.024
+                ],
+                [
+                  3.438,
+                  49.014
+                ],
+                [
+                  3.376,
+                  48.994
+                ],
+                [
+                  3.306,
+                  48.964
+                ],
+                [
+                  3.256,
+                  48.958
+                ],
+                [
+                  3.226,
+                  48.97
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "cote-des-blancs",
+          "properties": {
+            "id": "cote-des-blancs",
+            "parentSubregionId": "cote-des-blancs",
+            "subregionId": "cote-des-blancs",
+            "name": "Côte des Blancs",
+            "shortName": "Côte des Blancs",
+            "category": "Pure Chalk Cuesta & Blanc de Blancs",
+            "dominantGrape": "Chardonnay",
+            "color": "#199778",
+            "accent": "#ffffff",
+            "borderColor": "#ffffff",
+            "fillOpacity": 0.7,
+            "labelCenter": [
+              4.01,
+              48.95
+            ],
+            "description": "The global benchmark for Blanc de Blancs Chardonnay. High-resolution eastern chalk cuesta from Chouilly through Cramant, Avize, Oger, and Le Mesnil-sur-Oger, extending south through Vertus into Val du Petit Morin."
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  3.958,
+                  48.996
+                ],
+                [
+                  3.978,
+                  49.01
+                ],
+                [
+                  4.004,
+                  49.02
+                ],
+                [
+                  4.03,
+                  49.02
+                ],
+                [
+                  4.054,
+                  49.006
+                ],
+                [
+                  4.068,
+                  48.986
+                ],
+                [
+                  4.072,
+                  48.97
+                ],
+                [
+                  4.062,
+                  48.954
+                ],
+                [
+                  4.056,
+                  48.934
+                ],
+                [
+                  4.066,
+                  48.916
+                ],
+                [
+                  4.052,
+                  48.898
+                ],
+                [
+                  4.042,
+                  48.874
+                ],
+                [
+                  4.036,
+                  48.848
+                ],
+                [
+                  4.006,
+                  48.838
+                ],
+                [
+                  3.966,
+                  48.846
+                ],
+                [
+                  3.926,
+                  48.858
+                ],
+                [
+                  3.876,
+                  48.866
+                ],
+                [
+                  3.836,
+                  48.854
+                ],
+                [
+                  3.784,
+                  48.818
+                ],
+                [
+                  3.764,
+                  48.834
+                ],
+                [
+                  3.794,
+                  48.858
+                ],
+                [
+                  3.834,
+                  48.886
+                ],
+                [
+                  3.884,
+                  48.894
+                ],
+                [
+                  3.944,
+                  48.904
+                ],
+                [
+                  3.97,
+                  48.924
+                ],
+                [
+                  3.978,
+                  48.946
+                ],
+                [
+                  3.974,
+                  48.966
+                ],
+                [
+                  3.964,
+                  48.984
+                ],
+                [
+                  3.958,
+                  48.996
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "coteaux-sud-epernay",
+          "properties": {
+            "id": "coteaux-sud-epernay",
+            "parentSubregionId": "coteaux-sud-epernay",
+            "subregionId": "coteaux-sud-epernay",
+            "name": "Coteaux Sud d’Épernay",
+            "shortName": "Coteaux Sud d'Épernay",
+            "category": "Flint & Clay-Marl Rolling Slopes",
+            "dominantGrape": "Meunier & Chardonnay",
+            "color": "#199778",
+            "accent": "#ffffff",
+            "borderColor": "#ffffff",
+            "fillOpacity": 0.7,
+            "labelCenter": [
+              3.92,
+              49.0
+            ],
+            "description": "Rolling hills south of Épernay bridging Vallée de la Marne and Côte des Blancs, including Pierry Premier Cru, Moussy, Chavot-Courcourt, and Grauves."
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  3.918,
+                  49.034
+                ],
+                [
+                  3.944,
+                  49.03
+                ],
+                [
+                  3.954,
+                  49.02
+                ],
+                [
+                  3.956,
+                  48.998
+                ],
+                [
+                  3.954,
+                  48.978
+                ],
+                [
+                  3.944,
+                  48.964
+                ],
+                [
+                  3.908,
+                  48.958
+                ],
+                [
+                  3.874,
+                  48.974
+                ],
+                [
+                  3.858,
+                  48.998
+                ],
+                [
+                  3.874,
+                  49.02
+                ],
+                [
+                  3.904,
+                  49.034
+                ],
+                [
+                  3.918,
+                  49.034
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "cote-de-sezanne",
+          "properties": {
+            "id": "cote-de-sezanne",
+            "parentSubregionId": "cote-de-sezanne",
+            "subregionId": "cote-de-sezanne",
+            "name": "Côte de Sézanne",
+            "shortName": "Côte de Sézanne",
+            "category": "Warm Sun-Drenched Chalk & Marl Slopes",
+            "dominantGrape": "Chardonnay",
+            "color": "#E8A816",
+            "accent": "#ffffff",
+            "borderColor": "#ffffff",
+            "fillOpacity": 0.7,
+            "labelCenter": [
+              3.71,
+              48.69
+            ],
+            "description": "Slender north-south curving hillside strip with warm south-facing chalk slopes from Allemant and Broyes through Sézanne to Bethon and Villenauxe-la-Grande."
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  3.744,
+                  48.778
+                ],
+                [
+                  3.784,
+                  48.78
+                ],
+                [
+                  3.814,
+                  48.764
+                ],
+                [
+                  3.816,
+                  48.744
+                ],
+                [
+                  3.784,
+                  48.724
+                ],
+                [
+                  3.764,
+                  48.704
+                ],
+                [
+                  3.748,
+                  48.674
+                ],
+                [
+                  3.738,
+                  48.644
+                ],
+                [
+                  3.744,
+                  48.614
+                ],
+                [
+                  3.714,
+                  48.6
+                ],
+                [
+                  3.658,
+                  48.596
+                ],
+                [
+                  3.614,
+                  48.594
+                ],
+                [
+                  3.538,
+                  48.578
+                ],
+                [
+                  3.534,
+                  48.596
+                ],
+                [
+                  3.584,
+                  48.616
+                ],
+                [
+                  3.644,
+                  48.634
+                ],
+                [
+                  3.678,
+                  48.664
+                ],
+                [
+                  3.688,
+                  48.698
+                ],
+                [
+                  3.704,
+                  48.738
+                ],
+                [
+                  3.724,
+                  48.764
+                ],
+                [
+                  3.744,
+                  48.778
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "vitryat",
+          "properties": {
+            "id": "vitryat",
+            "parentSubregionId": "vitryat",
+            "subregionId": "vitryat",
+            "name": "Vitryat (Côtes de Vitry)",
+            "shortName": "Vitryat",
+            "category": "Eastern Turonian Chalk Enclave",
+            "dominantGrape": "Chardonnay",
+            "color": "#9BC53D",
+            "accent": "#ffffff",
+            "borderColor": "#ffffff",
+            "fillOpacity": 0.7,
+            "labelCenter": [
+              4.62,
+              48.8
+            ],
+            "description": "Distinct chalk island around Vitry-le-François featuring pure white Turonian chalk hillsides producing pristine, mineral Chardonnay."
+          },
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.544,
+                    48.808
+                  ],
+                  [
+                    4.564,
+                    48.834
+                  ],
+                  [
+                    4.614,
+                    48.844
+                  ],
+                  [
+                    4.674,
+                    48.84
+                  ],
+                  [
+                    4.734,
+                    48.828
+                  ],
+                  [
+                    4.784,
+                    48.814
+                  ],
+                  [
+                    4.808,
+                    48.788
+                  ],
+                  [
+                    4.784,
+                    48.764
+                  ],
+                  [
+                    4.734,
+                    48.744
+                  ],
+                  [
+                    4.668,
+                    48.734
+                  ],
+                  [
+                    4.604,
+                    48.744
+                  ],
+                  [
+                    4.558,
+                    48.774
+                  ],
+                  [
+                    4.544,
+                    48.808
+                  ]
+                ]
+              ],
+              [
+                [
+                  [
+                    4.414,
+                    48.848
+                  ],
+                  [
+                    4.444,
+                    48.878
+                  ],
+                  [
+                    4.494,
+                    48.908
+                  ],
+                  [
+                    4.524,
+                    48.914
+                  ],
+                  [
+                    4.528,
+                    48.894
+                  ],
+                  [
+                    4.484,
+                    48.864
+                  ],
+                  [
+                    4.444,
+                    48.838
+                  ],
+                  [
+                    4.414,
+                    48.848
+                  ]
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "cote-des-bar",
+          "properties": {
+            "id": "cote-des-bar",
+            "parentSubregionId": "cote-des-bar",
+            "subregionId": "cote-des-bar",
+            "name": "Côte des Bar (Aube)",
+            "shortName": "Côte des Bar",
+            "category": "Kimmeridgian Marl & Artisanal Growers",
+            "dominantGrape": "Pinot Noir",
+            "color": "#673482",
+            "accent": "#8B7BB0",
+            "borderColor": "#ffffff",
+            "fillOpacity": 0.7,
+            "labelCenter": [
+              4.45,
+              48.08
+            ],
+            "description": "The southern frontier of Champagne in the Aube department. Detailed dual-valley system of Barséquanais along the Seine/Ource and Bar-sur-Aubois along the Aube River, plus the Montgueux chalk mound."
+          },
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.358,
+                    48.134
+                  ],
+                  [
+                    4.404,
+                    48.138
+                  ],
+                  [
+                    4.454,
+                    48.134
+                  ],
+                  [
+                    4.498,
+                    48.124
+                  ],
+                  [
+                    4.564,
+                    48.126
+                  ],
+                  [
+                    4.614,
+                    48.114
+                  ],
+                  [
+                    4.628,
+                    48.084
+                  ],
+                  [
+                    4.608,
+                    48.054
+                  ],
+                  [
+                    4.558,
+                    48.034
+                  ],
+                  [
+                    4.508,
+                    48.014
+                  ],
+                  [
+                    4.464,
+                    47.994
+                  ],
+                  [
+                    4.428,
+                    47.964
+                  ],
+                  [
+                    4.394,
+                    47.938
+                  ],
+                  [
+                    4.338,
+                    47.928
+                  ],
+                  [
+                    4.284,
+                    47.944
+                  ],
+                  [
+                    4.248,
+                    47.968
+                  ],
+                  [
+                    4.258,
+                    48.008
+                  ],
+                  [
+                    4.294,
+                    48.036
+                  ],
+                  [
+                    4.328,
+                    48.064
+                  ],
+                  [
+                    4.338,
+                    48.098
+                  ],
+                  [
+                    4.358,
+                    48.134
+                  ]
+                ]
+              ],
+              [
+                [
+                  [
+                    4.638,
+                    48.198
+                  ],
+                  [
+                    4.664,
+                    48.234
+                  ],
+                  [
+                    4.704,
+                    48.264
+                  ],
+                  [
+                    4.754,
+                    48.28
+                  ],
+                  [
+                    4.804,
+                    48.284
+                  ],
+                  [
+                    4.844,
+                    48.264
+                  ],
+                  [
+                    4.848,
+                    48.234
+                  ],
+                  [
+                    4.814,
+                    48.198
+                  ],
+                  [
+                    4.768,
+                    48.164
+                  ],
+                  [
+                    4.718,
+                    48.134
+                  ],
+                  [
+                    4.658,
+                    48.144
+                  ],
+                  [
+                    4.624,
+                    48.168
+                  ],
+                  [
+                    4.638,
+                    48.198
+                  ]
+                ]
+              ],
+              [
+                [
+                  [
+                    3.934,
+                    48.304
+                  ],
+                  [
+                    3.954,
+                    48.32
+                  ],
+                  [
+                    3.984,
+                    48.318
+                  ],
+                  [
+                    3.988,
+                    48.3
+                  ],
+                  [
+                    3.964,
+                    48.294
+                  ],
+                  [
+                    3.934,
+                    48.304
+                  ]
+                ]
+              ]
+            ]
+          }
+        }
+      ]
+    },
   "burgundy": {
     "type": "FeatureCollection",
     "features": [
@@ -1079,1002 +1714,7 @@ export const WINE_REGION_BOUNDARIES = {
       }
     ]
   },
-  "bordeaux": {
-    "type": "FeatureCollection",
-    "features": [
-        {
-            "type": "Feature",
-            "id": "left-bank-medoc-bas-medoc",
-            "properties": {
-                "id": "left-bank-medoc-bas-medoc",
-                "parentSubregionId": "left-bank-medoc",
-                "subregionId": "left-bank-medoc",
-                "name": "Bas-Médoc (Médoc AOC)",
-                "shortName": "Bas-Médoc",
-                "category": "Northern Maritime Gravel & Alluvial Terraces",
-                "dominantGrape": "Cabernet Sauvignon & Merlot",
-                "color": "#D32F2F",
-                "borderColor": "#FFFFFF",
-                "accent": "#B71C1C",
-                "fillOpacity": 0.68,
-                "labelCenter": [
-                    -1.01,
-                    45.43
-                ],
-                "description": "Northern maritime sector of the Médoc peninsula along the Gironde Estuary, home to fresh, structured Cabernet Sauvignon and Merlot."
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            -1.065,
-                            45.57
-                        ],
-                        [
-                            -1.085,
-                            45.54
-                        ],
-                        [
-                            -1.11,
-                            45.49
-                        ],
-                        [
-                            -1.125,
-                            45.44
-                        ],
-                        [
-                            -1.11,
-                            45.38
-                        ],
-                        [
-                            -1.06,
-                            45.31
-                        ],
-                        [
-                            -0.98,
-                            45.3
-                        ],
-                        [
-                            -0.91,
-                            45.31
-                        ],
-                        [
-                            -0.85,
-                            45.295
-                        ],
-                        [
-                            -0.795,
-                            45.285
-                        ],
-                        [
-                            -0.84,
-                            45.33
-                        ],
-                        [
-                            -0.89,
-                            45.36
-                        ],
-                        [
-                            -0.94,
-                            45.38
-                        ],
-                        [
-                            -0.97,
-                            45.42
-                        ],
-                        [
-                            -0.995,
-                            45.465
-                        ],
-                        [
-                            -1.02,
-                            45.51
-                        ],
-                        [
-                            -1.048,
-                            45.55
-                        ],
-                        [
-                            -1.065,
-                            45.57
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "left-bank-medoc-haut-medoc",
-            "properties": {
-                "id": "left-bank-medoc-haut-medoc",
-                "parentSubregionId": "left-bank-medoc",
-                "subregionId": "left-bank-medoc",
-                "name": "Haut-Médoc & Communal Crus",
-                "shortName": "Haut-Médoc",
-                "category": "Günzian Gravel Croupes & 1855 Classified Growths",
-                "dominantGrape": "Cabernet Sauvignon",
-                "color": "#B71C1C",
-                "borderColor": "#FFFFFF",
-                "accent": "#D32F2F",
-                "fillOpacity": 0.7,
-                "labelCenter": [
-                    -0.81,
-                    45.13
-                ],
-                "description": "Legendary gravel terraces hugging the western bank of the Gironde, encompassing Pauillac, Margaux, Saint-Julien, Saint-Estèphe, Listrac, and Moulis."
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            -0.795,
-                            45.285
-                        ],
-                        [
-                            -0.85,
-                            45.295
-                        ],
-                        [
-                            -0.91,
-                            45.31
-                        ],
-                        [
-                            -0.98,
-                            45.3
-                        ],
-                        [
-                            -1.06,
-                            45.31
-                        ],
-                        [
-                            -1.01,
-                            45.23
-                        ],
-                        [
-                            -0.95,
-                            45.16
-                        ],
-                        [
-                            -0.89,
-                            45.08
-                        ],
-                        [
-                            -0.82,
-                            45.01
-                        ],
-                        [
-                            -0.74,
-                            44.95
-                        ],
-                        [
-                            -0.67,
-                            44.91
-                        ],
-                        [
-                            -0.62,
-                            44.905
-                        ],
-                        [
-                            -0.585,
-                            44.91
-                        ],
-                        [
-                            -0.595,
-                            44.95
-                        ],
-                        [
-                            -0.615,
-                            44.99
-                        ],
-                        [
-                            -0.655,
-                            45.04
-                        ],
-                        [
-                            -0.69,
-                            45.09
-                        ],
-                        [
-                            -0.71,
-                            45.13
-                        ],
-                        [
-                            -0.73,
-                            45.17
-                        ],
-                        [
-                            -0.745,
-                            45.21
-                        ],
-                        [
-                            -0.765,
-                            45.26
-                        ],
-                        [
-                            -0.795,
-                            45.285
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "graves-pessac-leognan",
-            "properties": {
-                "id": "graves-pessac-leognan",
-                "parentSubregionId": "graves-pessac",
-                "subregionId": "graves-pessac",
-                "name": "Pessac-Léognan AOC",
-                "shortName": "Pessac-Léognan",
-                "category": "Historical Cradle & Classified Gravel Plateau",
-                "dominantGrape": "Cabernet Sauvignon & Sauvignon Blanc",
-                "color": "#E65100",
-                "borderColor": "#FFFFFF",
-                "accent": "#EA6C28",
-                "fillOpacity": 0.7,
-                "labelCenter": [
-                    -0.59,
-                    44.755
-                ],
-                "description": "Northern elite sector of Graves immediately south of Bordeaux city, home to Château Haut-Brion and all 16 classified Crus of Graves."
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            -0.575,
-                            44.82
-                        ],
-                        [
-                            -0.625,
-                            44.82
-                        ],
-                        [
-                            -0.665,
-                            44.795
-                        ],
-                        [
-                            -0.66,
-                            44.735
-                        ],
-                        [
-                            -0.625,
-                            44.69
-                        ],
-                        [
-                            -0.56,
-                            44.69
-                        ],
-                        [
-                            -0.49,
-                            44.7
-                        ],
-                        [
-                            -0.51,
-                            44.74
-                        ],
-                        [
-                            -0.535,
-                            44.77
-                        ],
-                        [
-                            -0.55,
-                            44.8
-                        ],
-                        [
-                            -0.575,
-                            44.82
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "graves-pessac",
-            "properties": {
-                "id": "graves-pessac",
-                "parentSubregionId": "graves-pessac",
-                "subregionId": "graves-pessac",
-                "name": "Graves AOC",
-                "shortName": "Graves",
-                "category": "Pyrenean Quartz & Flint River Terraces",
-                "dominantGrape": "Cabernet Sauvignon, Merlot & Sémillon",
-                "color": "#EA6C28",
-                "borderColor": "#FFFFFF",
-                "accent": "#E65100",
-                "fillOpacity": 0.68,
-                "labelCenter": [
-                    -0.47,
-                    44.59
-                ],
-                "description": "Ancient quartz and flint pebble river terraces along the left bank of the Garonne, framing Sauternes to the west."
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            -0.49,
-                            44.7
-                        ],
-                        [
-                            -0.56,
-                            44.69
-                        ],
-                        [
-                            -0.625,
-                            44.69
-                        ],
-                        [
-                            -0.61,
-                            44.63
-                        ],
-                        [
-                            -0.575,
-                            44.56
-                        ],
-                        [
-                            -0.51,
-                            44.5
-                        ],
-                        [
-                            -0.44,
-                            44.46
-                        ],
-                        [
-                            -0.37,
-                            44.445
-                        ],
-                        [
-                            -0.3,
-                            44.455
-                        ],
-                        [
-                            -0.24,
-                            44.49
-                        ],
-                        [
-                            -0.22,
-                            44.535
-                        ],
-                        [
-                            -0.24,
-                            44.545
-                        ],
-                        [
-                            -0.27,
-                            44.525
-                        ],
-                        [
-                            -0.32,
-                            44.505
-                        ],
-                        [
-                            -0.37,
-                            44.51
-                        ],
-                        [
-                            -0.395,
-                            44.545
-                        ],
-                        [
-                            -0.38,
-                            44.58
-                        ],
-                        [
-                            -0.34,
-                            44.615
-                        ],
-                        [
-                            -0.36,
-                            44.64
-                        ],
-                        [
-                            -0.4,
-                            44.665
-                        ],
-                        [
-                            -0.445,
-                            44.685
-                        ],
-                        [
-                            -0.49,
-                            44.7
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "sauternais",
-            "properties": {
-                "id": "sauternais",
-                "parentSubregionId": "sauternais",
-                "subregionId": "sauternais",
-                "name": "Sauternes & Barsac AOC",
-                "shortName": "Sauternes",
-                "category": "Botrytis Cinerea Noble Rot Enclave",
-                "dominantGrape": "Sémillon & Sauvignon Blanc",
-                "color": "#F8C832",
-                "borderColor": "#FFFFFF",
-                "accent": "#E5A91A",
-                "fillOpacity": 0.72,
-                "labelCenter": [
-                    -0.31,
-                    44.56
-                ],
-                "description": "Unique microclimate at the confluence of the cold spring-fed Ciron and warmer Garonne, creating world-famous botrytized sweet wines (Château d'Yquem)."
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            -0.34,
-                            44.615
-                        ],
-                        [
-                            -0.305,
-                            44.6
-                        ],
-                        [
-                            -0.27,
-                            44.57
-                        ],
-                        [
-                            -0.24,
-                            44.545
-                        ],
-                        [
-                            -0.27,
-                            44.525
-                        ],
-                        [
-                            -0.32,
-                            44.505
-                        ],
-                        [
-                            -0.37,
-                            44.51
-                        ],
-                        [
-                            -0.395,
-                            44.545
-                        ],
-                        [
-                            -0.38,
-                            44.58
-                        ],
-                        [
-                            -0.34,
-                            44.615
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "cotes-de-bordeaux-blaye-bourg",
-            "properties": {
-                "id": "cotes-de-bordeaux-blaye-bourg",
-                "parentSubregionId": "cotes-de-bordeaux",
-                "subregionId": "cotes-de-bordeaux",
-                "name": "Bourg & Blaye (Côtes de Bordeaux)",
-                "shortName": "Bourg & Blaye",
-                "category": "Sun-Drenched Estuary Cliffs & Rolling Hills",
-                "dominantGrape": "Merlot & Cabernet Sauvignon",
-                "color": "#DE5D6E",
-                "borderColor": "#FFFFFF",
-                "accent": "#D44A5C",
-                "fillOpacity": 0.68,
-                "labelCenter": [
-                    -0.55,
-                    45.16
-                ],
-                "description": "Sunny south-facing hillsides and limestone bluffs bordering the Right Bank of the Gironde Estuary directly opposite the Médoc."
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            -0.66,
-                            45.3
-                        ],
-                        [
-                            -0.64,
-                            45.24
-                        ],
-                        [
-                            -0.65,
-                            45.18
-                        ],
-                        [
-                            -0.665,
-                            45.13
-                        ],
-                        [
-                            -0.645,
-                            45.1
-                        ],
-                        [
-                            -0.605,
-                            45.06
-                        ],
-                        [
-                            -0.56,
-                            45.04
-                        ],
-                        [
-                            -0.51,
-                            45.02
-                        ],
-                        [
-                            -0.46,
-                            45.01
-                        ],
-                        [
-                            -0.44,
-                            45.07
-                        ],
-                        [
-                            -0.445,
-                            45.14
-                        ],
-                        [
-                            -0.47,
-                            45.215
-                        ],
-                        [
-                            -0.52,
-                            45.275
-                        ],
-                        [
-                            -0.58,
-                            45.305
-                        ],
-                        [
-                            -0.66,
-                            45.3
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "right-bank-libournais-fronsac",
-            "properties": {
-                "id": "right-bank-libournais-fronsac",
-                "parentSubregionId": "right-bank-libournais",
-                "subregionId": "right-bank-libournais",
-                "name": "Fronsac & Canon-Fronsac AOC",
-                "shortName": "Fronsac",
-                "category": "Molasse du Fronsadais & River Bluffs",
-                "dominantGrape": "Merlot & Cabernet Franc",
-                "color": "#A82D70",
-                "borderColor": "#FFFFFF",
-                "accent": "#9E2A6C",
-                "fillOpacity": 0.68,
-                "labelCenter": [
-                    -0.31,
-                    44.955
-                ],
-                "description": "Steep dramatic amphitheaters of Fronsac molasse and limestone overlooking the confluence of the Isle and Dordogne rivers."
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            -0.37,
-                            44.965
-                        ],
-                        [
-                            -0.34,
-                            44.95
-                        ],
-                        [
-                            -0.3,
-                            44.93
-                        ],
-                        [
-                            -0.25,
-                            44.915
-                        ],
-                        [
-                            -0.27,
-                            44.95
-                        ],
-                        [
-                            -0.29,
-                            44.995
-                        ],
-                        [
-                            -0.34,
-                            44.995
-                        ],
-                        [
-                            -0.37,
-                            44.965
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "right-bank-libournais-pomerol",
-            "properties": {
-                "id": "right-bank-libournais-pomerol",
-                "parentSubregionId": "right-bank-libournais",
-                "subregionId": "right-bank-libournais",
-                "name": "Pomerol & Lalande AOC",
-                "shortName": "Pomerol",
-                "category": "Smectite Blue Clay Boutonnière",
-                "dominantGrape": "Merlot",
-                "color": "#7B1F54",
-                "borderColor": "#FFFFFF",
-                "accent": "#9E2A6C",
-                "fillOpacity": 0.7,
-                "labelCenter": [
-                    -0.23,
-                    44.955
-                ],
-                "description": "Legendary high plateau with unique smectite blue clay (*argile bleue*) yielding velvety, sumptuous Pomerol icons (Château Pétrus, Le Pin)."
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            -0.25,
-                            44.915
-                        ],
-                        [
-                            -0.27,
-                            44.95
-                        ],
-                        [
-                            -0.29,
-                            44.995
-                        ],
-                        [
-                            -0.24,
-                            45.01
-                        ],
-                        [
-                            -0.18,
-                            45
-                        ],
-                        [
-                            -0.185,
-                            44.945
-                        ],
-                        [
-                            -0.21,
-                            44.925
-                        ],
-                        [
-                            -0.25,
-                            44.915
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "right-bank-libournais-saint-emilion",
-            "properties": {
-                "id": "right-bank-libournais-saint-emilion",
-                "parentSubregionId": "right-bank-libournais",
-                "subregionId": "right-bank-libournais",
-                "name": "Saint-Émilion & Satellites",
-                "shortName": "Saint-Émilion",
-                "category": "Asteriated Limestone Plateau & Côtes",
-                "dominantGrape": "Merlot & Cabernet Franc",
-                "color": "#9E2A6C",
-                "borderColor": "#FFFFFF",
-                "accent": "#7B1F54",
-                "fillOpacity": 0.7,
-                "labelCenter": [
-                    -0.07,
-                    44.92
-                ],
-                "description": "UNESCO World Heritage limestone plateau and clay-limestone amphitheaters celebrated for Premier Grand Cru Classé estates (Cheval Blanc, Ausone), extending east through Castillon and Francs."
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            -0.25,
-                            44.915
-                        ],
-                        [
-                            -0.21,
-                            44.925
-                        ],
-                        [
-                            -0.185,
-                            44.945
-                        ],
-                        [
-                            -0.18,
-                            45
-                        ],
-                        [
-                            -0.12,
-                            45.005
-                        ],
-                        [
-                            -0.04,
-                            44.985
-                        ],
-                        [
-                            0.05,
-                            44.96
-                        ],
-                        [
-                            0.12,
-                            44.92
-                        ],
-                        [
-                            0.1,
-                            44.86
-                        ],
-                        [
-                            0.03,
-                            44.855
-                        ],
-                        [
-                            -0.04,
-                            44.853
-                        ],
-                        [
-                            -0.1,
-                            44.85
-                        ],
-                        [
-                            -0.14,
-                            44.86
-                        ],
-                        [
-                            -0.19,
-                            44.88
-                        ],
-                        [
-                            -0.25,
-                            44.915
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "entre-deux-mers",
-            "properties": {
-                "id": "entre-deux-mers",
-                "parentSubregionId": "entre-deux-mers",
-                "subregionId": "entre-deux-mers",
-                "name": "Entre-Deux-Mers AOC",
-                "shortName": "Entre-Deux-Mers",
-                "category": "Interfluvial Rolling Limestone & Loam Plateau",
-                "dominantGrape": "Sauvignon Blanc, Sémillon & Muscadelle",
-                "color": "#169873",
-                "borderColor": "#FFFFFF",
-                "accent": "#1FA882",
-                "fillOpacity": 0.68,
-                "labelCenter": [
-                    -0.12,
-                    44.73
-                ],
-                "description": "Vast undulating interfluvial plateau bounded by the tidal Dordogne and Garonne rivers, renowned for crisp, citrusy dry white blends."
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            -0.34,
-                            44.91
-                        ],
-                        [
-                            -0.27,
-                            44.88
-                        ],
-                        [
-                            -0.21,
-                            44.84
-                        ],
-                        [
-                            -0.15,
-                            44.82
-                        ],
-                        [
-                            -0.08,
-                            44.815
-                        ],
-                        [
-                            -0.02,
-                            44.82
-                        ],
-                        [
-                            0.07,
-                            44.82
-                        ],
-                        [
-                            0.18,
-                            44.82
-                        ],
-                        [
-                            0.14,
-                            44.75
-                        ],
-                        [
-                            0.08,
-                            44.66
-                        ],
-                        [
-                            0.01,
-                            44.6
-                        ],
-                        [
-                            -0.04,
-                            44.58
-                        ],
-                        [
-                            -0.14,
-                            44.575
-                        ],
-                        [
-                            -0.2,
-                            44.565
-                        ],
-                        [
-                            -0.23,
-                            44.6
-                        ],
-                        [
-                            -0.27,
-                            44.63
-                        ],
-                        [
-                            -0.32,
-                            44.67
-                        ],
-                        [
-                            -0.37,
-                            44.72
-                        ],
-                        [
-                            -0.43,
-                            44.76
-                        ],
-                        [
-                            -0.47,
-                            44.78
-                        ],
-                        [
-                            -0.46,
-                            44.83
-                        ],
-                        [
-                            -0.42,
-                            44.88
-                        ],
-                        [
-                            -0.34,
-                            44.91
-                        ]
-                    ]
-                ]
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "cotes-de-bordeaux-cadillac",
-            "properties": {
-                "id": "cotes-de-bordeaux-cadillac",
-                "parentSubregionId": "cotes-de-bordeaux",
-                "subregionId": "cotes-de-bordeaux",
-                "name": "Premières Côtes & Cadillac",
-                "shortName": "Cadillac",
-                "category": "Garonne Right Bank Escarpment & Sweet Satellites",
-                "dominantGrape": "Merlot, Sémillon & Cabernet",
-                "color": "#E27D60",
-                "borderColor": "#FFFFFF",
-                "accent": "#DE5D6E",
-                "fillOpacity": 0.68,
-                "labelCenter": [
-                    -0.33,
-                    44.66
-                ],
-                "description": "Scenic hillside bluffs overlooking the Garonne, famed for botrytized golden dessert wines (Cadillac, Loupiac, Sainte-Croix-du-Mont) and fruit-forward reds."
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            -0.49,
-                            44.78
-                        ],
-                        [
-                            -0.45,
-                            44.74
-                        ],
-                        [
-                            -0.4,
-                            44.7
-                        ],
-                        [
-                            -0.35,
-                            44.67
-                        ],
-                        [
-                            -0.3,
-                            44.64
-                        ],
-                        [
-                            -0.26,
-                            44.615
-                        ],
-                        [
-                            -0.24,
-                            44.595
-                        ],
-                        [
-                            -0.21,
-                            44.565
-                        ],
-                        [
-                            -0.2,
-                            44.565
-                        ],
-                        [
-                            -0.23,
-                            44.6
-                        ],
-                        [
-                            -0.27,
-                            44.63
-                        ],
-                        [
-                            -0.32,
-                            44.67
-                        ],
-                        [
-                            -0.37,
-                            44.72
-                        ],
-                        [
-                            -0.43,
-                            44.76
-                        ],
-                        [
-                            -0.47,
-                            44.78
-                        ],
-                        [
-                            -0.49,
-                            44.78
-                        ]
-                    ]
-                ]
-            }
-        }
-    ]
-},
+  "bordeaux": GEO_BOUNDARIES['bordeaux'],
   "rhone": {
         "type": "FeatureCollection",
         "features": [
@@ -9213,147 +8853,179 @@ export const WINE_REGION_BOUNDARIES = {
 
 export const WINE_REGION_OUTLINES = {
   "champagne": {
-        "type": "FeatureCollection",
-        "features": [
-                {
-                        "type": "Feature",
-                        "id": "champagne-outline",
-                        "properties": {
-                                "name": "Champagne AOC Delimited Region",
-                                "description": "The historic northern and southern viticultural basins of Champagne."
-                        },
-                        "geometry": {
-                                "type": "MultiPolygon",
-                                "coordinates": [
-                                        [
-                                                [
-                                                        [
-                                                                3.38,
-                                                                49
-                                                        ],
-                                                        [
-                                                                3.44,
-                                                                49.09
-                                                        ],
-                                                        [
-                                                                3.56,
-                                                                49.12
-                                                        ],
-                                                        [
-                                                                3.7,
-                                                                49.16
-                                                        ],
-                                                        [
-                                                                3.84,
-                                                                49.26
-                                                        ],
-                                                        [
-                                                                3.98,
-                                                                49.27
-                                                        ],
-                                                        [
-                                                                4.14,
-                                                                49.25
-                                                        ],
-                                                        [
-                                                                4.26,
-                                                                49.2
-                                                        ],
-                                                        [
-                                                                4.28,
-                                                                49.1
-                                                        ],
-                                                        [
-                                                                4.24,
-                                                                49.04
-                                                        ],
-                                                        [
-                                                                4.16,
-                                                                49.02
-                                                        ],
-                                                        [
-                                                                4.08,
-                                                                48.98
-                                                        ],
-                                                        [
-                                                                4.06,
-                                                                48.85
-                                                        ],
-                                                        [
-                                                                3.92,
-                                                                48.83
-                                                        ],
-                                                        [
-                                                                3.9,
-                                                                48.6
-                                                        ],
-                                                        [
-                                                                3.65,
-                                                                48.6
-                                                        ],
-                                                        [
-                                                                3.68,
-                                                                48.85
-                                                        ],
-                                                        [
-                                                                3.8,
-                                                                48.96
-                                                        ],
-                                                        [
-                                                                3.7,
-                                                                49.02
-                                                        ],
-                                                        [
-                                                                3.38,
-                                                                49
-                                                        ]
-                                                ]
-                                        ],
-                                        [
-                                                [
-                                                        [
-                                                                4.28,
-                                                                47.93
-                                                        ],
-                                                        [
-                                                                4.48,
-                                                                47.92
-                                                        ],
-                                                        [
-                                                                4.74,
-                                                                48.12
-                                                        ],
-                                                        [
-                                                                4.82,
-                                                                48.24
-                                                        ],
-                                                        [
-                                                                4.74,
-                                                                48.35
-                                                        ],
-                                                        [
-                                                                4.54,
-                                                                48.3
-                                                        ],
-                                                        [
-                                                                4.32,
-                                                                48.16
-                                                        ],
-                                                        [
-                                                                4.28,
-                                                                48.02
-                                                        ],
-                                                        [
-                                                                4.28,
-                                                                47.93
-                                                        ]
-                                                ]
-                                        ]
-                                ]
-                        }
-                }
-        ]
-},
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "champagne-outline",
+          "properties": {
+            "name": "Champagne AOC Delimited Region",
+            "description": "The historic northern and southern viticultural basins of Champagne."
+          },
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    3.22,
+                    48.95
+                  ],
+                  [
+                    3.23,
+                    49.01
+                  ],
+                  [
+                    3.34,
+                    49.07
+                  ],
+                  [
+                    3.62,
+                    49.18
+                  ],
+                  [
+                    3.82,
+                    49.385
+                  ],
+                  [
+                    3.95,
+                    49.385
+                  ],
+                  [
+                    4.1,
+                    49.33
+                  ],
+                  [
+                    4.22,
+                    49.3
+                  ],
+                  [
+                    4.26,
+                    49.2
+                  ],
+                  [
+                    4.28,
+                    49.07
+                  ],
+                  [
+                    4.42,
+                    48.93
+                  ],
+                  [
+                    4.82,
+                    48.84
+                  ],
+                  [
+                    4.82,
+                    48.73
+                  ],
+                  [
+                    4.54,
+                    48.72
+                  ],
+                  [
+                    4.12,
+                    48.82
+                  ],
+                  [
+                    3.84,
+                    48.8
+                  ],
+                  [
+                    3.82,
+                    48.74
+                  ],
+                  [
+                    3.74,
+                    48.6
+                  ],
+                  [
+                    3.52,
+                    48.56
+                  ],
+                  [
+                    3.44,
+                    48.75
+                  ],
+                  [
+                    3.22,
+                    48.95
+                  ]
+                ]
+              ],
+              [
+                [
+                  [
+                    3.92,
+                    48.28
+                  ],
+                  [
+                    3.99,
+                    48.33
+                  ],
+                  [
+                    4.24,
+                    48.33
+                  ],
+                  [
+                    4.62,
+                    48.3
+                  ],
+                  [
+                    4.86,
+                    48.3
+                  ],
+                  [
+                    4.87,
+                    48.18
+                  ],
+                  [
+                    4.65,
+                    48.1
+                  ],
+                  [
+                    4.65,
+                    48.04
+                  ],
+                  [
+                    4.48,
+                    47.92
+                  ],
+                  [
+                    4.32,
+                    47.91
+                  ],
+                  [
+                    4.23,
+                    47.94
+                  ],
+                  [
+                    4.23,
+                    48.04
+                  ],
+                  [
+                    4.32,
+                    48.15
+                  ],
+                  [
+                    4.48,
+                    48.16
+                  ],
+                  [
+                    4.32,
+                    48.24
+                  ],
+                  [
+                    3.92,
+                    48.28
+                  ]
+                ]
+              ]
+            ]
+          }
+        }
+      ]
+    },
   "burgundy": {
     "type": "FeatureCollection",
     "features": [
