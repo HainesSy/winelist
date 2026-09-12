@@ -891,851 +891,1000 @@ export const WINE_REGION_BOUNDARIES = {
     ]
   },
   "bordeaux": {
-        "type": "FeatureCollection",
-        "features": [
-                {
-                        "type": "Feature",
-                        "id": "left-bank-medoc",
-                        "properties": {
-                                "id": "left-bank-medoc",
-                                "parentSubregionId": "left-bank-medoc",
-                                "subregionId": "left-bank-medoc",
-                                "name": "Left Bank Médoc (Bas-Médoc)",
-                                "category": "Northern Gravel & Alluvial Terraces",
-                                "dominantGrape": "Cabernet Sauvignon & Merlot",
-                                "color": "#6a1b38",
-                                "accent": "#d4af37",
-                                "fillOpacity": 0.24,
-                                "labelCenter": [
-                                        -1.03,
-                                        45.44
-                                ],
-                                "description": "Northern coastal sector extending along the Gironde estuary with maritime gravel terraces."
-                        },
-                        "geometry": {
-                                "type": "Polygon",
-                                "coordinates": [
-                                        [
-                                                [
-                                                        -1.065,
-                                                        45.571
-                                                ],
-                                                [
-                                                        -1.047,
-                                                        45.555
-                                                ],
-                                                [
-                                                        -1.02,
-                                                        45.53
-                                                ],
-                                                [
-                                                        -1.003,
-                                                        45.49
-                                                ],
-                                                [
-                                                        -0.98,
-                                                        45.45
-                                                ],
-                                                [
-                                                        -0.96,
-                                                        45.41
-                                                ],
-                                                [
-                                                        -0.94,
-                                                        45.368
-                                                ],
-                                                [
-                                                        -0.94,
-                                                        45.34
-                                                ],
-                                                [
-                                                        -1,
-                                                        45.32
-                                                ],
-                                                [
-                                                        -1.06,
-                                                        45.34
-                                                ],
-                                                [
-                                                        -1.1,
-                                                        45.38
-                                                ],
-                                                [
-                                                        -1.12,
-                                                        45.42
-                                                ],
-                                                [
-                                                        -1.115,
-                                                        45.47
-                                                ],
-                                                [
-                                                        -1.095,
-                                                        45.51
-                                                ],
-                                                [
-                                                        -1.08,
-                                                        45.545
-                                                ],
-                                                [
-                                                        -1.065,
-                                                        45.571
-                                                ]
-                                        ]
-                                ]
-                        }
-                },
-                {
-                        "type": "Feature",
-                        "id": "left-bank-medoc-haut-medoc",
-                        "properties": {
-                                "id": "left-bank-medoc-haut-medoc",
-                                "parentSubregionId": "left-bank-medoc",
-                                "subregionId": "left-bank-medoc",
-                                "name": "Left Bank Haut-Médoc & Communal Crus",
-                                "category": "Günzian Gravel Croupes & 1855 1st Growths",
-                                "dominantGrape": "Cabernet Sauvignon",
-                                "color": "#5b0e2d",
-                                "accent": "#d4af37",
-                                "fillOpacity": 0.26,
-                                "labelCenter": [
-                                        -0.78,
-                                        45.12
-                                ],
-                                "description": "Deep Pyrenean gravel mounds home to Pauillac, Margaux, Saint-Julien, Saint-Estèphe, and First Growths."
-                        },
-                        "geometry": {
-                                "type": "Polygon",
-                                "coordinates": [
-                                        [
-                                                [
-                                                        -0.94,
-                                                        45.34
-                                                ],
-                                                [
-                                                        -0.895,
-                                                        45.31
-                                                ],
-                                                [
-                                                        -0.84,
-                                                        45.285
-                                                ],
-                                                [
-                                                        -0.77,
-                                                        45.26
-                                                ],
-                                                [
-                                                        -0.755,
-                                                        45.22
-                                                ],
-                                                [
-                                                        -0.75,
-                                                        45.2
-                                                ],
-                                                [
-                                                        -0.74,
-                                                        45.16
-                                                ],
-                                                [
-                                                        -0.72,
-                                                        45.12
-                                                ],
-                                                [
-                                                        -0.695,
-                                                        45.08
-                                                ],
-                                                [
-                                                        -0.665,
-                                                        45.04
-                                                ],
-                                                [
-                                                        -0.64,
-                                                        45.01
-                                                ],
-                                                [
-                                                        -0.625,
-                                                        44.99
-                                                ],
-                                                [
-                                                        -0.595,
-                                                        44.94
-                                                ],
-                                                [
-                                                        -0.585,
-                                                        44.91
-                                                ],
-                                                [
-                                                        -0.65,
-                                                        44.9
-                                                ],
-                                                [
-                                                        -0.72,
-                                                        44.92
-                                                ],
-                                                [
-                                                        -0.78,
-                                                        44.95
-                                                ],
-                                                [
-                                                        -0.83,
-                                                        44.99
-                                                ],
-                                                [
-                                                        -0.87,
-                                                        45.04
-                                                ],
-                                                [
-                                                        -0.9,
-                                                        45.09
-                                                ],
-                                                [
-                                                        -0.92,
-                                                        45.15
-                                                ],
-                                                [
-                                                        -0.94,
-                                                        45.2
-                                                ],
-                                                [
-                                                        -0.96,
-                                                        45.26
-                                                ],
-                                                [
-                                                        -0.96,
-                                                        45.31
-                                                ],
-                                                [
-                                                        -0.94,
-                                                        45.34
-                                                ]
-                                        ]
-                                ]
-                        }
-                },
-                {
-                        "type": "Feature",
-                        "id": "graves-pessac",
-                        "properties": {
-                                "id": "graves-pessac",
-                                "parentSubregionId": "graves-pessac",
-                                "subregionId": "graves-pessac",
-                                "name": "Graves AOC",
-                                "category": "Historic Cradle & River Terraces",
-                                "dominantGrape": "Cabernet Sauvignon, Merlot & Sémillon",
-                                "color": "#7c223c",
-                                "accent": "#d4af37",
-                                "fillOpacity": 0.22,
-                                "labelCenter": [
-                                        -0.5,
-                                        44.7
-                                ],
-                                "description": "Historic pebble-rich gravel soils along the left bank of the Garonne River south of Bordeaux."
-                        },
-                        "geometry": {
-                                "type": "Polygon",
-                                "coordinates": [
-                                        [
-                                                [
-                                                        -0.585,
-                                                        44.91
-                                                ],
-                                                [
-                                                        -0.56,
-                                                        44.88
-                                                ],
-                                                [
-                                                        -0.54,
-                                                        44.84
-                                                ],
-                                                [
-                                                        -0.51,
-                                                        44.78
-                                                ],
-                                                [
-                                                        -0.475,
-                                                        44.72
-                                                ],
-                                                [
-                                                        -0.435,
-                                                        44.66
-                                                ],
-                                                [
-                                                        -0.38,
-                                                        44.61
-                                                ],
-                                                [
-                                                        -0.35,
-                                                        44.57
-                                                ],
-                                                [
-                                                        -0.4,
-                                                        44.54
-                                                ],
-                                                [
-                                                        -0.48,
-                                                        44.56
-                                                ],
-                                                [
-                                                        -0.55,
-                                                        44.6
-                                                ],
-                                                [
-                                                        -0.62,
-                                                        44.66
-                                                ],
-                                                [
-                                                        -0.66,
-                                                        44.74
-                                                ],
-                                                [
-                                                        -0.67,
-                                                        44.8
-                                                ],
-                                                [
-                                                        -0.65,
-                                                        44.87
-                                                ],
-                                                [
-                                                        -0.585,
-                                                        44.91
-                                                ]
-                                        ]
-                                ]
-                        }
-                },
-                {
-                        "type": "Feature",
-                        "id": "graves-pessac-leognan",
-                        "properties": {
-                                "id": "graves-pessac-leognan",
-                                "parentSubregionId": "graves-pessac",
-                                "subregionId": "graves-pessac",
-                                "name": "Pessac-Léognan AOC (Graves)",
-                                "category": "Elite Pyrenean Gravel Plateau",
-                                "dominantGrape": "Cabernet Sauvignon & Sauvignon Blanc",
-                                "color": "#60122e",
-                                "accent": "#d4af37",
-                                "fillOpacity": 0.26,
-                                "labelCenter": [
-                                        -0.6,
-                                        44.81
-                                ],
-                                "description": "Northern elite Graves sector right beside Bordeaux city, home to Château Haut-Brion and Cru Classé estates."
-                        },
-                        "geometry": {
-                                "type": "Polygon",
-                                "coordinates": [
-                                        [
-                                                [
-                                                        -0.585,
-                                                        44.91
-                                                ],
-                                                [
-                                                        -0.56,
-                                                        44.88
-                                                ],
-                                                [
-                                                        -0.54,
-                                                        44.84
-                                                ],
-                                                [
-                                                        -0.51,
-                                                        44.79
-                                                ],
-                                                [
-                                                        -0.515,
-                                                        44.76
-                                                ],
-                                                [
-                                                        -0.56,
-                                                        44.74
-                                                ],
-                                                [
-                                                        -0.63,
-                                                        44.73
-                                                ],
-                                                [
-                                                        -0.67,
-                                                        44.76
-                                                ],
-                                                [
-                                                        -0.68,
-                                                        44.81
-                                                ],
-                                                [
-                                                        -0.67,
-                                                        44.85
-                                                ],
-                                                [
-                                                        -0.65,
-                                                        44.88
-                                                ],
-                                                [
-                                                        -0.585,
-                                                        44.91
-                                                ]
-                                        ]
-                                ]
-                        }
-                },
-                {
-                        "type": "Feature",
-                        "id": "sauternais",
-                        "properties": {
-                                "id": "sauternais",
-                                "parentSubregionId": "sauternais",
-                                "subregionId": "sauternais",
-                                "name": "Sauternes & Barsac AOC (Sauternais)",
-                                "category": "Botrytis Noble Rot Amphitheater",
-                                "dominantGrape": "Sémillon & Sauvignon Blanc",
-                                "color": "#c89d2c",
-                                "accent": "#ffd700",
-                                "fillOpacity": 0.28,
-                                "labelCenter": [
-                                        -0.34,
-                                        44.54
-                                ],
-                                "description": "Morning mist microclimate at the confluence of the cold Ciron and warmer Garonne creating legendary botrytized golden nectars."
-                        },
-                        "geometry": {
-                                "type": "Polygon",
-                                "coordinates": [
-                                        [
-                                                [
-                                                        -0.35,
-                                                        44.59
-                                                ],
-                                                [
-                                                        -0.32,
-                                                        44.58
-                                                ],
-                                                [
-                                                        -0.29,
-                                                        44.565
-                                                ],
-                                                [
-                                                        -0.275,
-                                                        44.545
-                                                ],
-                                                [
-                                                        -0.29,
-                                                        44.52
-                                                ],
-                                                [
-                                                        -0.32,
-                                                        44.5
-                                                ],
-                                                [
-                                                        -0.36,
-                                                        44.49
-                                                ],
-                                                [
-                                                        -0.4,
-                                                        44.51
-                                                ],
-                                                [
-                                                        -0.41,
-                                                        44.545
-                                                ],
-                                                [
-                                                        -0.385,
-                                                        44.57
-                                                ],
-                                                [
-                                                        -0.35,
-                                                        44.59
-                                                ]
-                                        ]
-                                ]
-                        }
-                },
-                {
-                        "type": "Feature",
-                        "id": "right-bank-libournais-saint-emilion",
-                        "properties": {
-                                "id": "right-bank-libournais-saint-emilion",
-                                "parentSubregionId": "right-bank-libournais",
-                                "subregionId": "right-bank-libournais",
-                                "name": "Right Bank Saint-Émilion Grand Cru",
-                                "category": "Asteriated Limestone Plateau & Clay Slopes",
-                                "dominantGrape": "Merlot & Cabernet Franc",
-                                "color": "#5c1328",
-                                "accent": "#d4af37",
-                                "fillOpacity": 0.28,
-                                "labelCenter": [
-                                        -0.145,
-                                        44.91
-                                ],
-                                "description": "UNESCO World Heritage limestone amphitheater and clay-limestone slopes renowned for Premier Grand Cru Classé estates."
-                        },
-                        "geometry": {
-                                "type": "Polygon",
-                                "coordinates": [
-                                        [
-                                                [
-                                                        -0.19,
-                                                        44.95
-                                                ],
-                                                [
-                                                        -0.14,
-                                                        44.96
-                                                ],
-                                                [
-                                                        -0.09,
-                                                        44.95
-                                                ],
-                                                [
-                                                        -0.06,
-                                                        44.92
-                                                ],
-                                                [
-                                                        -0.08,
-                                                        44.885
-                                                ],
-                                                [
-                                                        -0.12,
-                                                        44.87
-                                                ],
-                                                [
-                                                        -0.165,
-                                                        44.87
-                                                ],
-                                                [
-                                                        -0.195,
-                                                        44.88
-                                                ],
-                                                [
-                                                        -0.22,
-                                                        44.9
-                                                ],
-                                                [
-                                                        -0.21,
-                                                        44.93
-                                                ],
-                                                [
-                                                        -0.19,
-                                                        44.95
-                                                ]
-                                        ]
-                                ]
-                        }
-                },
-                {
-                        "type": "Feature",
-                        "id": "right-bank-libournais-pomerol",
-                        "properties": {
-                                "id": "right-bank-libournais-pomerol",
-                                "parentSubregionId": "right-bank-libournais",
-                                "subregionId": "right-bank-libournais",
-                                "name": "Right Bank Pomerol AOC",
-                                "category": "Blue Clay 'Boutonnière' & Caillebotte Gravel",
-                                "dominantGrape": "Merlot",
-                                "color": "#4a0a1f",
-                                "accent": "#d4af37",
-                                "fillOpacity": 0.3,
-                                "labelCenter": [
-                                        -0.21,
-                                        44.938
-                                ],
-                                "description": "Legendary high plateau with unique smectite blue clay (*crasse de fer*) creating opulent, velvety Pomerols (Pétrus, Le Pin)."
-                        },
-                        "geometry": {
-                                "type": "Polygon",
-                                "coordinates": [
-                                        [
-                                                [
-                                                        -0.23,
-                                                        44.96
-                                                ],
-                                                [
-                                                        -0.195,
-                                                        44.965
-                                                ],
-                                                [
-                                                        -0.175,
-                                                        44.95
-                                                ],
-                                                [
-                                                        -0.17,
-                                                        44.93
-                                                ],
-                                                [
-                                                        -0.19,
-                                                        44.915
-                                                ],
-                                                [
-                                                        -0.22,
-                                                        44.91
-                                                ],
-                                                [
-                                                        -0.245,
-                                                        44.92
-                                                ],
-                                                [
-                                                        -0.25,
-                                                        44.94
-                                                ],
-                                                [
-                                                        -0.23,
-                                                        44.96
-                                                ]
-                                        ]
-                                ]
-                        }
-                },
-                {
-                        "type": "Feature",
-                        "id": "right-bank-libournais-fronsac",
-                        "properties": {
-                                "id": "right-bank-libournais-fronsac",
-                                "parentSubregionId": "right-bank-libournais",
-                                "subregionId": "right-bank-libournais",
-                                "name": "Right Bank Fronsac & Canon-Fronsac AOC",
-                                "category": "High Molasse Hills & Isle Confluence",
-                                "dominantGrape": "Merlot & Cabernet Franc",
-                                "color": "#6e1d35",
-                                "accent": "#d4af37",
-                                "fillOpacity": 0.22,
-                                "labelCenter": [
-                                        -0.285,
-                                        44.938
-                                ],
-                                "description": "Steep dramatic hillsides of Fronsac molasse and asteriated limestone rising above the Dordogne River."
-                        },
-                        "geometry": {
-                                "type": "Polygon",
-                                "coordinates": [
-                                        [
-                                                [
-                                                        -0.31,
-                                                        44.965
-                                                ],
-                                                [
-                                                        -0.265,
-                                                        44.97
-                                                ],
-                                                [
-                                                        -0.235,
-                                                        44.955
-                                                ],
-                                                [
-                                                        -0.235,
-                                                        44.93
-                                                ],
-                                                [
-                                                        -0.255,
-                                                        44.912
-                                                ],
-                                                [
-                                                        -0.29,
-                                                        44.905
-                                                ],
-                                                [
-                                                        -0.325,
-                                                        44.915
-                                                ],
-                                                [
-                                                        -0.34,
-                                                        44.935
-                                                ],
-                                                [
-                                                        -0.33,
-                                                        44.955
-                                                ],
-                                                [
-                                                        -0.31,
-                                                        44.965
-                                                ]
-                                        ]
-                                ]
-                        }
-                },
-                {
-                        "type": "Feature",
-                        "id": "entre-deux-mers",
-                        "properties": {
-                                "id": "entre-deux-mers",
-                                "parentSubregionId": "entre-deux-mers",
-                                "subregionId": "entre-deux-mers",
-                                "name": "Entre-Deux-Mers AOC",
-                                "category": "Interfluvial Rolling Limestone & Loam Plateau",
-                                "dominantGrape": "Sauvignon Blanc, Sémillon & Merlot",
-                                "color": "#8f4426",
-                                "accent": "#e6a15c",
-                                "fillOpacity": 0.2,
-                                "labelCenter": [
-                                        -0.15,
-                                        44.74
-                                ],
-                                "description": "Vast undulating plateau cradled between the tidal Garonne and Dordogne rivers renowned for crisp whites and approachable reds."
-                        },
-                        "geometry": {
-                                "type": "Polygon",
-                                "coordinates": [
-                                        [
-                                                [
-                                                        -0.49,
-                                                        44.86
-                                                ],
-                                                [
-                                                        -0.41,
-                                                        44.87
-                                                ],
-                                                [
-                                                        -0.31,
-                                                        44.87
-                                                ],
-                                                [
-                                                        -0.18,
-                                                        44.86
-                                                ],
-                                                [
-                                                        -0.05,
-                                                        44.84
-                                                ],
-                                                [
-                                                        0.05,
-                                                        44.81
-                                                ],
-                                                [
-                                                        0.08,
-                                                        44.75
-                                                ],
-                                                [
-                                                        0.04,
-                                                        44.68
-                                                ],
-                                                [
-                                                        -0.035,
-                                                        44.61
-                                                ],
-                                                [
-                                                        -0.13,
-                                                        44.58
-                                                ],
-                                                [
-                                                        -0.25,
-                                                        44.585
-                                                ],
-                                                [
-                                                        -0.35,
-                                                        44.6
-                                                ],
-                                                [
-                                                        -0.43,
-                                                        44.66
-                                                ],
-                                                [
-                                                        -0.48,
-                                                        44.74
-                                                ],
-                                                [
-                                                        -0.52,
-                                                        44.8
-                                                ],
-                                                [
-                                                        -0.49,
-                                                        44.86
-                                                ]
-                                        ]
-                                ]
-                        }
-                },
-                {
-                        "type": "Feature",
-                        "id": "cotes-de-bordeaux",
-                        "properties": {
-                                "id": "cotes-de-bordeaux",
-                                "parentSubregionId": "cotes-de-bordeaux",
-                                "subregionId": "cotes-de-bordeaux",
-                                "name": "Côtes de Bordeaux & Blaye/Bourg",
-                                "category": "Sun-Drenched Limestone Slopes & Estuary Cliffs",
-                                "dominantGrape": "Merlot & Cabernet Franc",
-                                "color": "#541022",
-                                "accent": "#d4af37",
-                                "fillOpacity": 0.22,
-                                "labelCenter": [
-                                        -0.54,
-                                        45.16
-                                ],
-                                "description": "Sunny south-facing hillside slopes and limestone bluffs bordering the Right Bank of the Gironde estuary and Dordogne valley."
-                        },
-                        "geometry": {
-                                "type": "Polygon",
-                                "coordinates": [
-                                        [
-                                                [
-                                                        -0.58,
-                                                        45.28
-                                                ],
-                                                [
-                                                        -0.54,
-                                                        45.29
-                                                ],
-                                                [
-                                                        -0.49,
-                                                        45.27
-                                                ],
-                                                [
-                                                        -0.46,
-                                                        45.23
-                                                ],
-                                                [
-                                                        -0.445,
-                                                        45.18
-                                                ],
-                                                [
-                                                        -0.46,
-                                                        45.13
-                                                ],
-                                                [
-                                                        -0.48,
-                                                        45.085
-                                                ],
-                                                [
-                                                        -0.505,
-                                                        45.05
-                                                ],
-                                                [
-                                                        -0.54,
-                                                        45.04
-                                                ],
-                                                [
-                                                        -0.58,
-                                                        45.05
-                                                ],
-                                                [
-                                                        -0.615,
-                                                        45.08
-                                                ],
-                                                [
-                                                        -0.64,
-                                                        45.12
-                                                ],
-                                                [
-                                                        -0.66,
-                                                        45.16
-                                                ],
-                                                [
-                                                        -0.66,
-                                                        45.2
-                                                ],
-                                                [
-                                                        -0.64,
-                                                        45.24
-                                                ],
-                                                [
-                                                        -0.61,
-                                                        45.27
-                                                ],
-                                                [
-                                                        -0.58,
-                                                        45.28
-                                                ]
-                                        ]
-                                ]
-                        }
-                }
-        ]
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "id": "left-bank-medoc-bas-medoc",
+            "properties": {
+                "id": "left-bank-medoc-bas-medoc",
+                "parentSubregionId": "left-bank-medoc",
+                "subregionId": "left-bank-medoc",
+                "name": "Bas-Médoc (Médoc AOC)",
+                "shortName": "Bas-Médoc",
+                "category": "Northern Maritime Gravel & Alluvial Terraces",
+                "dominantGrape": "Cabernet Sauvignon & Merlot",
+                "color": "#D32F2F",
+                "borderColor": "#FFFFFF",
+                "accent": "#B71C1C",
+                "fillOpacity": 0.68,
+                "labelCenter": [
+                    -1.01,
+                    45.43
+                ],
+                "description": "Northern maritime sector of the Médoc peninsula along the Gironde Estuary, home to fresh, structured Cabernet Sauvignon and Merlot."
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -1.065,
+                            45.57
+                        ],
+                        [
+                            -1.085,
+                            45.54
+                        ],
+                        [
+                            -1.11,
+                            45.49
+                        ],
+                        [
+                            -1.125,
+                            45.44
+                        ],
+                        [
+                            -1.11,
+                            45.38
+                        ],
+                        [
+                            -1.06,
+                            45.31
+                        ],
+                        [
+                            -0.98,
+                            45.3
+                        ],
+                        [
+                            -0.91,
+                            45.31
+                        ],
+                        [
+                            -0.85,
+                            45.295
+                        ],
+                        [
+                            -0.795,
+                            45.285
+                        ],
+                        [
+                            -0.84,
+                            45.33
+                        ],
+                        [
+                            -0.89,
+                            45.36
+                        ],
+                        [
+                            -0.94,
+                            45.38
+                        ],
+                        [
+                            -0.97,
+                            45.42
+                        ],
+                        [
+                            -0.995,
+                            45.465
+                        ],
+                        [
+                            -1.02,
+                            45.51
+                        ],
+                        [
+                            -1.048,
+                            45.55
+                        ],
+                        [
+                            -1.065,
+                            45.57
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "left-bank-medoc-haut-medoc",
+            "properties": {
+                "id": "left-bank-medoc-haut-medoc",
+                "parentSubregionId": "left-bank-medoc",
+                "subregionId": "left-bank-medoc",
+                "name": "Haut-Médoc & Communal Crus",
+                "shortName": "Haut-Médoc",
+                "category": "Günzian Gravel Croupes & 1855 Classified Growths",
+                "dominantGrape": "Cabernet Sauvignon",
+                "color": "#B71C1C",
+                "borderColor": "#FFFFFF",
+                "accent": "#D32F2F",
+                "fillOpacity": 0.7,
+                "labelCenter": [
+                    -0.81,
+                    45.13
+                ],
+                "description": "Legendary gravel terraces hugging the western bank of the Gironde, encompassing Pauillac, Margaux, Saint-Julien, Saint-Estèphe, Listrac, and Moulis."
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -0.795,
+                            45.285
+                        ],
+                        [
+                            -0.85,
+                            45.295
+                        ],
+                        [
+                            -0.91,
+                            45.31
+                        ],
+                        [
+                            -0.98,
+                            45.3
+                        ],
+                        [
+                            -1.06,
+                            45.31
+                        ],
+                        [
+                            -1.01,
+                            45.23
+                        ],
+                        [
+                            -0.95,
+                            45.16
+                        ],
+                        [
+                            -0.89,
+                            45.08
+                        ],
+                        [
+                            -0.82,
+                            45.01
+                        ],
+                        [
+                            -0.74,
+                            44.95
+                        ],
+                        [
+                            -0.67,
+                            44.91
+                        ],
+                        [
+                            -0.62,
+                            44.905
+                        ],
+                        [
+                            -0.585,
+                            44.91
+                        ],
+                        [
+                            -0.595,
+                            44.95
+                        ],
+                        [
+                            -0.615,
+                            44.99
+                        ],
+                        [
+                            -0.655,
+                            45.04
+                        ],
+                        [
+                            -0.69,
+                            45.09
+                        ],
+                        [
+                            -0.71,
+                            45.13
+                        ],
+                        [
+                            -0.73,
+                            45.17
+                        ],
+                        [
+                            -0.745,
+                            45.21
+                        ],
+                        [
+                            -0.765,
+                            45.26
+                        ],
+                        [
+                            -0.795,
+                            45.285
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves-pessac-leognan",
+            "properties": {
+                "id": "graves-pessac-leognan",
+                "parentSubregionId": "graves-pessac",
+                "subregionId": "graves-pessac",
+                "name": "Pessac-Léognan AOC",
+                "shortName": "Pessac-Léognan",
+                "category": "Historical Cradle & Classified Gravel Plateau",
+                "dominantGrape": "Cabernet Sauvignon & Sauvignon Blanc",
+                "color": "#E65100",
+                "borderColor": "#FFFFFF",
+                "accent": "#EA6C28",
+                "fillOpacity": 0.7,
+                "labelCenter": [
+                    -0.59,
+                    44.755
+                ],
+                "description": "Northern elite sector of Graves immediately south of Bordeaux city, home to Château Haut-Brion and all 16 classified Crus of Graves."
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -0.575,
+                            44.82
+                        ],
+                        [
+                            -0.625,
+                            44.82
+                        ],
+                        [
+                            -0.665,
+                            44.795
+                        ],
+                        [
+                            -0.66,
+                            44.735
+                        ],
+                        [
+                            -0.625,
+                            44.69
+                        ],
+                        [
+                            -0.56,
+                            44.69
+                        ],
+                        [
+                            -0.49,
+                            44.7
+                        ],
+                        [
+                            -0.51,
+                            44.74
+                        ],
+                        [
+                            -0.535,
+                            44.77
+                        ],
+                        [
+                            -0.55,
+                            44.8
+                        ],
+                        [
+                            -0.575,
+                            44.82
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves-pessac",
+            "properties": {
+                "id": "graves-pessac",
+                "parentSubregionId": "graves-pessac",
+                "subregionId": "graves-pessac",
+                "name": "Graves AOC",
+                "shortName": "Graves",
+                "category": "Pyrenean Quartz & Flint River Terraces",
+                "dominantGrape": "Cabernet Sauvignon, Merlot & Sémillon",
+                "color": "#EA6C28",
+                "borderColor": "#FFFFFF",
+                "accent": "#E65100",
+                "fillOpacity": 0.68,
+                "labelCenter": [
+                    -0.47,
+                    44.59
+                ],
+                "description": "Ancient quartz and flint pebble river terraces along the left bank of the Garonne, framing Sauternes to the west."
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -0.49,
+                            44.7
+                        ],
+                        [
+                            -0.56,
+                            44.69
+                        ],
+                        [
+                            -0.625,
+                            44.69
+                        ],
+                        [
+                            -0.61,
+                            44.63
+                        ],
+                        [
+                            -0.575,
+                            44.56
+                        ],
+                        [
+                            -0.51,
+                            44.5
+                        ],
+                        [
+                            -0.44,
+                            44.46
+                        ],
+                        [
+                            -0.37,
+                            44.445
+                        ],
+                        [
+                            -0.3,
+                            44.455
+                        ],
+                        [
+                            -0.24,
+                            44.49
+                        ],
+                        [
+                            -0.22,
+                            44.535
+                        ],
+                        [
+                            -0.24,
+                            44.545
+                        ],
+                        [
+                            -0.27,
+                            44.525
+                        ],
+                        [
+                            -0.32,
+                            44.505
+                        ],
+                        [
+                            -0.37,
+                            44.51
+                        ],
+                        [
+                            -0.395,
+                            44.545
+                        ],
+                        [
+                            -0.38,
+                            44.58
+                        ],
+                        [
+                            -0.34,
+                            44.615
+                        ],
+                        [
+                            -0.36,
+                            44.64
+                        ],
+                        [
+                            -0.4,
+                            44.665
+                        ],
+                        [
+                            -0.445,
+                            44.685
+                        ],
+                        [
+                            -0.49,
+                            44.7
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "sauternais",
+            "properties": {
+                "id": "sauternais",
+                "parentSubregionId": "sauternais",
+                "subregionId": "sauternais",
+                "name": "Sauternes & Barsac AOC",
+                "shortName": "Sauternes",
+                "category": "Botrytis Cinerea Noble Rot Enclave",
+                "dominantGrape": "Sémillon & Sauvignon Blanc",
+                "color": "#F8C832",
+                "borderColor": "#FFFFFF",
+                "accent": "#E5A91A",
+                "fillOpacity": 0.72,
+                "labelCenter": [
+                    -0.31,
+                    44.56
+                ],
+                "description": "Unique microclimate at the confluence of the cold spring-fed Ciron and warmer Garonne, creating world-famous botrytized sweet wines (Château d'Yquem)."
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -0.34,
+                            44.615
+                        ],
+                        [
+                            -0.305,
+                            44.6
+                        ],
+                        [
+                            -0.27,
+                            44.57
+                        ],
+                        [
+                            -0.24,
+                            44.545
+                        ],
+                        [
+                            -0.27,
+                            44.525
+                        ],
+                        [
+                            -0.32,
+                            44.505
+                        ],
+                        [
+                            -0.37,
+                            44.51
+                        ],
+                        [
+                            -0.395,
+                            44.545
+                        ],
+                        [
+                            -0.38,
+                            44.58
+                        ],
+                        [
+                            -0.34,
+                            44.615
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "cotes-de-bordeaux-blaye-bourg",
+            "properties": {
+                "id": "cotes-de-bordeaux-blaye-bourg",
+                "parentSubregionId": "cotes-de-bordeaux",
+                "subregionId": "cotes-de-bordeaux",
+                "name": "Bourg & Blaye (Côtes de Bordeaux)",
+                "shortName": "Bourg & Blaye",
+                "category": "Sun-Drenched Estuary Cliffs & Rolling Hills",
+                "dominantGrape": "Merlot & Cabernet Sauvignon",
+                "color": "#DE5D6E",
+                "borderColor": "#FFFFFF",
+                "accent": "#D44A5C",
+                "fillOpacity": 0.68,
+                "labelCenter": [
+                    -0.55,
+                    45.16
+                ],
+                "description": "Sunny south-facing hillsides and limestone bluffs bordering the Right Bank of the Gironde Estuary directly opposite the Médoc."
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -0.66,
+                            45.3
+                        ],
+                        [
+                            -0.64,
+                            45.24
+                        ],
+                        [
+                            -0.65,
+                            45.18
+                        ],
+                        [
+                            -0.665,
+                            45.13
+                        ],
+                        [
+                            -0.645,
+                            45.1
+                        ],
+                        [
+                            -0.605,
+                            45.06
+                        ],
+                        [
+                            -0.56,
+                            45.04
+                        ],
+                        [
+                            -0.51,
+                            45.02
+                        ],
+                        [
+                            -0.46,
+                            45.01
+                        ],
+                        [
+                            -0.44,
+                            45.07
+                        ],
+                        [
+                            -0.445,
+                            45.14
+                        ],
+                        [
+                            -0.47,
+                            45.215
+                        ],
+                        [
+                            -0.52,
+                            45.275
+                        ],
+                        [
+                            -0.58,
+                            45.305
+                        ],
+                        [
+                            -0.66,
+                            45.3
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "right-bank-libournais-fronsac",
+            "properties": {
+                "id": "right-bank-libournais-fronsac",
+                "parentSubregionId": "right-bank-libournais",
+                "subregionId": "right-bank-libournais",
+                "name": "Fronsac & Canon-Fronsac AOC",
+                "shortName": "Fronsac",
+                "category": "Molasse du Fronsadais & River Bluffs",
+                "dominantGrape": "Merlot & Cabernet Franc",
+                "color": "#A82D70",
+                "borderColor": "#FFFFFF",
+                "accent": "#9E2A6C",
+                "fillOpacity": 0.68,
+                "labelCenter": [
+                    -0.31,
+                    44.955
+                ],
+                "description": "Steep dramatic amphitheaters of Fronsac molasse and limestone overlooking the confluence of the Isle and Dordogne rivers."
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -0.37,
+                            44.965
+                        ],
+                        [
+                            -0.34,
+                            44.95
+                        ],
+                        [
+                            -0.3,
+                            44.93
+                        ],
+                        [
+                            -0.25,
+                            44.915
+                        ],
+                        [
+                            -0.27,
+                            44.95
+                        ],
+                        [
+                            -0.29,
+                            44.995
+                        ],
+                        [
+                            -0.34,
+                            44.995
+                        ],
+                        [
+                            -0.37,
+                            44.965
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "right-bank-libournais-pomerol",
+            "properties": {
+                "id": "right-bank-libournais-pomerol",
+                "parentSubregionId": "right-bank-libournais",
+                "subregionId": "right-bank-libournais",
+                "name": "Pomerol & Lalande AOC",
+                "shortName": "Pomerol",
+                "category": "Smectite Blue Clay Boutonnière",
+                "dominantGrape": "Merlot",
+                "color": "#7B1F54",
+                "borderColor": "#FFFFFF",
+                "accent": "#9E2A6C",
+                "fillOpacity": 0.7,
+                "labelCenter": [
+                    -0.23,
+                    44.955
+                ],
+                "description": "Legendary high plateau with unique smectite blue clay (*argile bleue*) yielding velvety, sumptuous Pomerol icons (Château Pétrus, Le Pin)."
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -0.25,
+                            44.915
+                        ],
+                        [
+                            -0.27,
+                            44.95
+                        ],
+                        [
+                            -0.29,
+                            44.995
+                        ],
+                        [
+                            -0.24,
+                            45.01
+                        ],
+                        [
+                            -0.18,
+                            45
+                        ],
+                        [
+                            -0.185,
+                            44.945
+                        ],
+                        [
+                            -0.21,
+                            44.925
+                        ],
+                        [
+                            -0.25,
+                            44.915
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "right-bank-libournais-saint-emilion",
+            "properties": {
+                "id": "right-bank-libournais-saint-emilion",
+                "parentSubregionId": "right-bank-libournais",
+                "subregionId": "right-bank-libournais",
+                "name": "Saint-Émilion & Satellites",
+                "shortName": "Saint-Émilion",
+                "category": "Asteriated Limestone Plateau & Côtes",
+                "dominantGrape": "Merlot & Cabernet Franc",
+                "color": "#9E2A6C",
+                "borderColor": "#FFFFFF",
+                "accent": "#7B1F54",
+                "fillOpacity": 0.7,
+                "labelCenter": [
+                    -0.07,
+                    44.92
+                ],
+                "description": "UNESCO World Heritage limestone plateau and clay-limestone amphitheaters celebrated for Premier Grand Cru Classé estates (Cheval Blanc, Ausone), extending east through Castillon and Francs."
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -0.25,
+                            44.915
+                        ],
+                        [
+                            -0.21,
+                            44.925
+                        ],
+                        [
+                            -0.185,
+                            44.945
+                        ],
+                        [
+                            -0.18,
+                            45
+                        ],
+                        [
+                            -0.12,
+                            45.005
+                        ],
+                        [
+                            -0.04,
+                            44.985
+                        ],
+                        [
+                            0.05,
+                            44.96
+                        ],
+                        [
+                            0.12,
+                            44.92
+                        ],
+                        [
+                            0.1,
+                            44.86
+                        ],
+                        [
+                            0.03,
+                            44.855
+                        ],
+                        [
+                            -0.04,
+                            44.853
+                        ],
+                        [
+                            -0.1,
+                            44.85
+                        ],
+                        [
+                            -0.14,
+                            44.86
+                        ],
+                        [
+                            -0.19,
+                            44.88
+                        ],
+                        [
+                            -0.25,
+                            44.915
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "entre-deux-mers",
+            "properties": {
+                "id": "entre-deux-mers",
+                "parentSubregionId": "entre-deux-mers",
+                "subregionId": "entre-deux-mers",
+                "name": "Entre-Deux-Mers AOC",
+                "shortName": "Entre-Deux-Mers",
+                "category": "Interfluvial Rolling Limestone & Loam Plateau",
+                "dominantGrape": "Sauvignon Blanc, Sémillon & Muscadelle",
+                "color": "#169873",
+                "borderColor": "#FFFFFF",
+                "accent": "#1FA882",
+                "fillOpacity": 0.68,
+                "labelCenter": [
+                    -0.12,
+                    44.73
+                ],
+                "description": "Vast undulating interfluvial plateau bounded by the tidal Dordogne and Garonne rivers, renowned for crisp, citrusy dry white blends."
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -0.34,
+                            44.91
+                        ],
+                        [
+                            -0.27,
+                            44.88
+                        ],
+                        [
+                            -0.21,
+                            44.84
+                        ],
+                        [
+                            -0.15,
+                            44.82
+                        ],
+                        [
+                            -0.08,
+                            44.815
+                        ],
+                        [
+                            -0.02,
+                            44.82
+                        ],
+                        [
+                            0.07,
+                            44.82
+                        ],
+                        [
+                            0.18,
+                            44.82
+                        ],
+                        [
+                            0.14,
+                            44.75
+                        ],
+                        [
+                            0.08,
+                            44.66
+                        ],
+                        [
+                            0.01,
+                            44.6
+                        ],
+                        [
+                            -0.04,
+                            44.58
+                        ],
+                        [
+                            -0.14,
+                            44.575
+                        ],
+                        [
+                            -0.2,
+                            44.565
+                        ],
+                        [
+                            -0.23,
+                            44.6
+                        ],
+                        [
+                            -0.27,
+                            44.63
+                        ],
+                        [
+                            -0.32,
+                            44.67
+                        ],
+                        [
+                            -0.37,
+                            44.72
+                        ],
+                        [
+                            -0.43,
+                            44.76
+                        ],
+                        [
+                            -0.47,
+                            44.78
+                        ],
+                        [
+                            -0.46,
+                            44.83
+                        ],
+                        [
+                            -0.42,
+                            44.88
+                        ],
+                        [
+                            -0.34,
+                            44.91
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "cotes-de-bordeaux-cadillac",
+            "properties": {
+                "id": "cotes-de-bordeaux-cadillac",
+                "parentSubregionId": "cotes-de-bordeaux",
+                "subregionId": "cotes-de-bordeaux",
+                "name": "Premières Côtes & Cadillac",
+                "shortName": "Cadillac",
+                "category": "Garonne Right Bank Escarpment & Sweet Satellites",
+                "dominantGrape": "Merlot, Sémillon & Cabernet",
+                "color": "#E27D60",
+                "borderColor": "#FFFFFF",
+                "accent": "#DE5D6E",
+                "fillOpacity": 0.68,
+                "labelCenter": [
+                    -0.33,
+                    44.66
+                ],
+                "description": "Scenic hillside bluffs overlooking the Garonne, famed for botrytized golden dessert wines (Cadillac, Loupiac, Sainte-Croix-du-Mont) and fruit-forward reds."
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -0.49,
+                            44.78
+                        ],
+                        [
+                            -0.45,
+                            44.74
+                        ],
+                        [
+                            -0.4,
+                            44.7
+                        ],
+                        [
+                            -0.35,
+                            44.67
+                        ],
+                        [
+                            -0.3,
+                            44.64
+                        ],
+                        [
+                            -0.26,
+                            44.615
+                        ],
+                        [
+                            -0.24,
+                            44.595
+                        ],
+                        [
+                            -0.21,
+                            44.565
+                        ],
+                        [
+                            -0.2,
+                            44.565
+                        ],
+                        [
+                            -0.23,
+                            44.6
+                        ],
+                        [
+                            -0.27,
+                            44.63
+                        ],
+                        [
+                            -0.32,
+                            44.67
+                        ],
+                        [
+                            -0.37,
+                            44.72
+                        ],
+                        [
+                            -0.43,
+                            44.76
+                        ],
+                        [
+                            -0.47,
+                            44.78
+                        ],
+                        [
+                            -0.49,
+                            44.78
+                        ]
+                    ]
+                ]
+            }
+        }
+    ]
 },
   "rhone": {
         "type": "FeatureCollection",
@@ -9726,382 +9875,489 @@ export const WINE_REGION_OUTLINES = {
     ]
   },
   "bordeaux": {
-        "type": "FeatureCollection",
-        "features": [
-                {
-                        "type": "Feature",
-                        "id": "bordeaux-outline",
-                        "properties": {
-                                "name": "Bordeaux Wine Region",
-                                "description": "The monumental Atlantic wine capital defined by the Gironde estuary and the convergence of the Garonne and Dordogne rivers."
-                        },
-                        "geometry": {
-                                "type": "MultiPolygon",
-                                "coordinates": [
-                                        [
-                                                [
-                                                        [
-                                                                -1.065,
-                                                                45.58
-                                                        ],
-                                                        [
-                                                                -1.015,
-                                                                45.54
-                                                        ],
-                                                        [
-                                                                -0.985,
-                                                                45.49
-                                                        ],
-                                                        [
-                                                                -0.945,
-                                                                45.43
-                                                        ],
-                                                        [
-                                                                -0.92,
-                                                                45.365
-                                                        ],
-                                                        [
-                                                                -0.865,
-                                                                45.31
-                                                        ],
-                                                        [
-                                                                -0.79,
-                                                                45.28
-                                                        ],
-                                                        [
-                                                                -0.74,
-                                                                45.26
-                                                        ],
-                                                        [
-                                                                -0.725,
-                                                                45.2
-                                                        ],
-                                                        [
-                                                                -0.715,
-                                                                45.16
-                                                        ],
-                                                        [
-                                                                -0.69,
-                                                                45.115
-                                                        ],
-                                                        [
-                                                                -0.66,
-                                                                45.075
-                                                        ],
-                                                        [
-                                                                -0.63,
-                                                                45.035
-                                                        ],
-                                                        [
-                                                                -0.595,
-                                                                44.985
-                                                        ],
-                                                        [
-                                                                -0.565,
-                                                                44.935
-                                                        ],
-                                                        [
-                                                                -0.54,
-                                                                44.875
-                                                        ],
-                                                        [
-                                                                -0.515,
-                                                                44.82
-                                                        ],
-                                                        [
-                                                                -0.485,
-                                                                44.765
-                                                        ],
-                                                        [
-                                                                -0.435,
-                                                                44.705
-                                                        ],
-                                                        [
-                                                                -0.39,
-                                                                44.65
-                                                        ],
-                                                        [
-                                                                -0.33,
-                                                                44.6
-                                                        ],
-                                                        [
-                                                                -0.26,
-                                                                44.57
-                                                        ],
-                                                        [
-                                                                -0.245,
-                                                                44.54
-                                                        ],
-                                                        [
-                                                                -0.255,
-                                                                44.48
-                                                        ],
-                                                        [
-                                                                -0.3,
-                                                                44.44
-                                                        ],
-                                                        [
-                                                                -0.38,
-                                                                44.43
-                                                        ],
-                                                        [
-                                                                -0.45,
-                                                                44.44
-                                                        ],
-                                                        [
-                                                                -0.52,
-                                                                44.48
-                                                        ],
-                                                        [
-                                                                -0.62,
-                                                                44.55
-                                                        ],
-                                                        [
-                                                                -0.7,
-                                                                44.63
-                                                        ],
-                                                        [
-                                                                -0.73,
-                                                                44.74
-                                                        ],
-                                                        [
-                                                                -0.745,
-                                                                44.84
-                                                        ],
-                                                        [
-                                                                -0.755,
-                                                                44.9
-                                                        ],
-                                                        [
-                                                                -0.81,
-                                                                44.935
-                                                        ],
-                                                        [
-                                                                -0.87,
-                                                                44.97
-                                                        ],
-                                                        [
-                                                                -0.92,
-                                                                45.03
-                                                        ],
-                                                        [
-                                                                -0.96,
-                                                                45.1
-                                                        ],
-                                                        [
-                                                                -0.98,
-                                                                45.18
-                                                        ],
-                                                        [
-                                                                -1,
-                                                                45.26
-                                                        ],
-                                                        [
-                                                                -1.05,
-                                                                45.315
-                                                        ],
-                                                        [
-                                                                -1.11,
-                                                                45.365
-                                                        ],
-                                                        [
-                                                                -1.155,
-                                                                45.415
-                                                        ],
-                                                        [
-                                                                -1.155,
-                                                                45.475
-                                                        ],
-                                                        [
-                                                                -1.135,
-                                                                45.525
-                                                        ],
-                                                        [
-                                                                -1.065,
-                                                                45.58
-                                                        ]
-                                                ]
-                                        ],
-                                        [
-                                                [
-                                                        [
-                                                                -0.59,
-                                                                45.32
-                                                        ],
-                                                        [
-                                                                -0.51,
-                                                                45.33
-                                                        ],
-                                                        [
-                                                                -0.43,
-                                                                45.285
-                                                        ],
-                                                        [
-                                                                -0.39,
-                                                                45.2
-                                                        ],
-                                                        [
-                                                                -0.31,
-                                                                45.12
-                                                        ],
-                                                        [
-                                                                -0.19,
-                                                                45.06
-                                                        ],
-                                                        [
-                                                                -0.11,
-                                                                45.035
-                                                        ],
-                                                        [
-                                                                -0.025,
-                                                                44.98
-                                                        ],
-                                                        [
-                                                                -0.025,
-                                                                44.905
-                                                        ],
-                                                        [
-                                                                -0.04,
-                                                                44.85
-                                                        ],
-                                                        [
-                                                                -0.11,
-                                                                44.84
-                                                        ],
-                                                        [
-                                                                -0.2,
-                                                                44.845
-                                                        ],
-                                                        [
-                                                                -0.26,
-                                                                44.88
-                                                        ],
-                                                        [
-                                                                -0.36,
-                                                                44.89
-                                                        ],
-                                                        [
-                                                                -0.47,
-                                                                44.97
-                                                        ],
-                                                        [
-                                                                -0.55,
-                                                                45.02
-                                                        ],
-                                                        [
-                                                                -0.595,
-                                                                45.035
-                                                        ],
-                                                        [
-                                                                -0.645,
-                                                                45.075
-                                                        ],
-                                                        [
-                                                                -0.685,
-                                                                45.13
-                                                        ],
-                                                        [
-                                                                -0.675,
-                                                                45.2
-                                                        ],
-                                                        [
-                                                                -0.655,
-                                                                45.255
-                                                        ],
-                                                        [
-                                                                -0.59,
-                                                                45.32
-                                                        ]
-                                                ]
-                                        ],
-                                        [
-                                                [
-                                                        [
-                                                                -0.555,
-                                                                44.975
-                                                        ],
-                                                        [
-                                                                -0.43,
-                                                                44.955
-                                                        ],
-                                                        [
-                                                                -0.33,
-                                                                44.935
-                                                        ],
-                                                        [
-                                                                -0.25,
-                                                                44.91
-                                                        ],
-                                                        [
-                                                                -0.18,
-                                                                44.875
-                                                        ],
-                                                        [
-                                                                -0.11,
-                                                                44.845
-                                                        ],
-                                                        [
-                                                                -0.02,
-                                                                44.855
-                                                        ],
-                                                        [
-                                                                0.1,
-                                                                44.835
-                                                        ],
-                                                        [
-                                                                0.165,
-                                                                44.75
-                                                        ],
-                                                        [
-                                                                0.105,
-                                                                44.63
-                                                        ],
-                                                        [
-                                                                -0.01,
-                                                                44.56
-                                                        ],
-                                                        [
-                                                                -0.13,
-                                                                44.545
-                                                        ],
-                                                        [
-                                                                -0.215,
-                                                                44.545
-                                                        ],
-                                                        [
-                                                                -0.305,
-                                                                44.575
-                                                        ],
-                                                        [
-                                                                -0.37,
-                                                                44.595
-                                                        ],
-                                                        [
-                                                                -0.445,
-                                                                44.655
-                                                        ],
-                                                        [
-                                                                -0.505,
-                                                                44.73
-                                                        ],
-                                                        [
-                                                                -0.545,
-                                                                44.8
-                                                        ],
-                                                        [
-                                                                -0.56,
-                                                                44.87
-                                                        ],
-                                                        [
-                                                                -0.555,
-                                                                44.975
-                                                        ]
-                                                ]
-                                        ]
-                                ]
-                        }
-                }
-        ]
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "id": "bordeaux-outline",
+            "properties": {
+                "name": "Bordeaux Wine Region",
+                "frenchName": "Vignoble de Bordeaux",
+                "category": "Delimited Regional Viticultural Perimeter",
+                "color": "#d4af37",
+                "description": "The world benchmark fine wine region structured cleanly around the Gironde estuary and the convergence of the Garonne and Dordogne rivers."
+            },
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                -1.065,
+                                45.57
+                            ],
+                            [
+                                -1.085,
+                                45.54
+                            ],
+                            [
+                                -1.11,
+                                45.49
+                            ],
+                            [
+                                -1.125,
+                                45.44
+                            ],
+                            [
+                                -1.11,
+                                45.38
+                            ],
+                            [
+                                -1.06,
+                                45.31
+                            ],
+                            [
+                                -1.01,
+                                45.23
+                            ],
+                            [
+                                -0.95,
+                                45.16
+                            ],
+                            [
+                                -0.89,
+                                45.08
+                            ],
+                            [
+                                -0.82,
+                                45.01
+                            ],
+                            [
+                                -0.74,
+                                44.95
+                            ],
+                            [
+                                -0.67,
+                                44.91
+                            ],
+                            [
+                                -0.625,
+                                44.82
+                            ],
+                            [
+                                -0.665,
+                                44.795
+                            ],
+                            [
+                                -0.66,
+                                44.735
+                            ],
+                            [
+                                -0.625,
+                                44.69
+                            ],
+                            [
+                                -0.61,
+                                44.63
+                            ],
+                            [
+                                -0.575,
+                                44.56
+                            ],
+                            [
+                                -0.51,
+                                44.5
+                            ],
+                            [
+                                -0.44,
+                                44.46
+                            ],
+                            [
+                                -0.37,
+                                44.445
+                            ],
+                            [
+                                -0.3,
+                                44.455
+                            ],
+                            [
+                                -0.24,
+                                44.49
+                            ],
+                            [
+                                -0.22,
+                                44.535
+                            ],
+                            [
+                                -0.24,
+                                44.545
+                            ],
+                            [
+                                -0.27,
+                                44.57
+                            ],
+                            [
+                                -0.305,
+                                44.6
+                            ],
+                            [
+                                -0.34,
+                                44.615
+                            ],
+                            [
+                                -0.36,
+                                44.64
+                            ],
+                            [
+                                -0.4,
+                                44.665
+                            ],
+                            [
+                                -0.445,
+                                44.685
+                            ],
+                            [
+                                -0.49,
+                                44.7
+                            ],
+                            [
+                                -0.51,
+                                44.74
+                            ],
+                            [
+                                -0.535,
+                                44.77
+                            ],
+                            [
+                                -0.55,
+                                44.8
+                            ],
+                            [
+                                -0.575,
+                                44.82
+                            ],
+                            [
+                                -0.585,
+                                44.91
+                            ],
+                            [
+                                -0.595,
+                                44.95
+                            ],
+                            [
+                                -0.615,
+                                44.99
+                            ],
+                            [
+                                -0.655,
+                                45.04
+                            ],
+                            [
+                                -0.69,
+                                45.09
+                            ],
+                            [
+                                -0.71,
+                                45.13
+                            ],
+                            [
+                                -0.73,
+                                45.17
+                            ],
+                            [
+                                -0.745,
+                                45.21
+                            ],
+                            [
+                                -0.765,
+                                45.26
+                            ],
+                            [
+                                -0.795,
+                                45.285
+                            ],
+                            [
+                                -0.84,
+                                45.33
+                            ],
+                            [
+                                -0.89,
+                                45.36
+                            ],
+                            [
+                                -0.94,
+                                45.38
+                            ],
+                            [
+                                -0.97,
+                                45.42
+                            ],
+                            [
+                                -0.995,
+                                45.465
+                            ],
+                            [
+                                -1.02,
+                                45.51
+                            ],
+                            [
+                                -1.048,
+                                45.55
+                            ],
+                            [
+                                -1.065,
+                                45.57
+                            ]
+                        ]
+                    ],
+                    [
+                        [
+                            [
+                                -0.66,
+                                45.3
+                            ],
+                            [
+                                -0.64,
+                                45.24
+                            ],
+                            [
+                                -0.65,
+                                45.18
+                            ],
+                            [
+                                -0.665,
+                                45.13
+                            ],
+                            [
+                                -0.645,
+                                45.1
+                            ],
+                            [
+                                -0.605,
+                                45.06
+                            ],
+                            [
+                                -0.56,
+                                45.04
+                            ],
+                            [
+                                -0.51,
+                                45.02
+                            ],
+                            [
+                                -0.46,
+                                45.01
+                            ],
+                            [
+                                -0.37,
+                                44.965
+                            ],
+                            [
+                                -0.34,
+                                44.95
+                            ],
+                            [
+                                -0.3,
+                                44.93
+                            ],
+                            [
+                                -0.25,
+                                44.915
+                            ],
+                            [
+                                -0.19,
+                                44.88
+                            ],
+                            [
+                                -0.14,
+                                44.86
+                            ],
+                            [
+                                -0.1,
+                                44.85
+                            ],
+                            [
+                                -0.04,
+                                44.853
+                            ],
+                            [
+                                0.03,
+                                44.855
+                            ],
+                            [
+                                0.1,
+                                44.86
+                            ],
+                            [
+                                0.12,
+                                44.92
+                            ],
+                            [
+                                0.05,
+                                44.96
+                            ],
+                            [
+                                -0.04,
+                                44.985
+                            ],
+                            [
+                                -0.12,
+                                45.005
+                            ],
+                            [
+                                -0.18,
+                                45
+                            ],
+                            [
+                                -0.24,
+                                45.01
+                            ],
+                            [
+                                -0.29,
+                                44.995
+                            ],
+                            [
+                                -0.34,
+                                44.995
+                            ],
+                            [
+                                -0.44,
+                                45.07
+                            ],
+                            [
+                                -0.445,
+                                45.14
+                            ],
+                            [
+                                -0.47,
+                                45.215
+                            ],
+                            [
+                                -0.52,
+                                45.275
+                            ],
+                            [
+                                -0.58,
+                                45.305
+                            ],
+                            [
+                                -0.66,
+                                45.3
+                            ]
+                        ]
+                    ],
+                    [
+                        [
+                            [
+                                -0.34,
+                                44.91
+                            ],
+                            [
+                                -0.27,
+                                44.88
+                            ],
+                            [
+                                -0.21,
+                                44.84
+                            ],
+                            [
+                                -0.15,
+                                44.82
+                            ],
+                            [
+                                -0.08,
+                                44.815
+                            ],
+                            [
+                                -0.02,
+                                44.82
+                            ],
+                            [
+                                0.07,
+                                44.82
+                            ],
+                            [
+                                0.18,
+                                44.82
+                            ],
+                            [
+                                0.14,
+                                44.75
+                            ],
+                            [
+                                0.08,
+                                44.66
+                            ],
+                            [
+                                0.01,
+                                44.6
+                            ],
+                            [
+                                -0.04,
+                                44.58
+                            ],
+                            [
+                                -0.14,
+                                44.575
+                            ],
+                            [
+                                -0.2,
+                                44.565
+                            ],
+                            [
+                                -0.21,
+                                44.565
+                            ],
+                            [
+                                -0.24,
+                                44.595
+                            ],
+                            [
+                                -0.26,
+                                44.615
+                            ],
+                            [
+                                -0.3,
+                                44.64
+                            ],
+                            [
+                                -0.35,
+                                44.67
+                            ],
+                            [
+                                -0.4,
+                                44.7
+                            ],
+                            [
+                                -0.45,
+                                44.74
+                            ],
+                            [
+                                -0.49,
+                                44.78
+                            ],
+                            [
+                                -0.47,
+                                44.78
+                            ],
+                            [
+                                -0.46,
+                                44.83
+                            ],
+                            [
+                                -0.42,
+                                44.88
+                            ],
+                            [
+                                -0.34,
+                                44.91
+                            ]
+                        ]
+                    ]
+                ]
+            }
+        }
+    ]
 },
   "rhone": {
         "type": "FeatureCollection",

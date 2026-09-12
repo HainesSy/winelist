@@ -16,6 +16,7 @@ export const BORDEAUX_SUBREGIONS = [
   {
     id: 'left-bank-medoc',
     name: "Left Bank (Médoc & Haut-Médoc)",
+    color: '#C81D31', // Wine Folly Crimson
     lat: 45.1800,
     lng: -0.7500,
     appellations: ["Médoc AOC", "Haut-Médoc AOC", "Saint-Estèphe AOC", "Pauillac AOC", "Saint-Julien AOC", "Margaux AOC", "Listrac-Médoc AOC", "Moulis-en-Médoc AOC"],
@@ -29,6 +30,7 @@ export const BORDEAUX_SUBREGIONS = [
   {
     id: 'graves-pessac',
     name: "Graves & Pessac-Léognan",
+    color: '#E66E22', // Wine Folly Amber / Orange
     lat: 44.7500,
     lng: -0.6000,
     appellations: ["Pessac-Léognan AOC", "Graves AOC", "Graves Supérieures AOC"],
@@ -42,6 +44,7 @@ export const BORDEAUX_SUBREGIONS = [
   {
     id: 'sauternais',
     name: "Sauternes & Barsac",
+    color: '#F8C832', // Wine Folly Honey / Gold
     lat: 44.5350,
     lng: -0.3400,
     appellations: ["Sauternes AOC", "Barsac AOC", "Cérons AOC"],
@@ -55,6 +58,7 @@ export const BORDEAUX_SUBREGIONS = [
   {
     id: 'right-bank-libournais',
     name: "Right Bank (Saint-Émilion & Pomerol)",
+    color: '#9E2A6C', // Wine Folly Magenta / Purple
     lat: 44.8950,
     lng: -0.1900,
     appellations: ["Saint-Émilion AOC", "Saint-Émilion Grand Cru AOC", "Pomerol AOC", "Lalande-de-Pomerol AOC", "Fronsac AOC", "Canon-Fronsac AOC", "Montagne-Saint-Émilion AOC", "Lussac-Saint-Émilion AOC", "Puisseguin-Saint-Émilion AOC", "Saint-Georges-Saint-Émilion AOC"],
@@ -68,6 +72,7 @@ export const BORDEAUX_SUBREGIONS = [
   {
     id: 'entre-deux-mers',
     name: "Entre-Deux-Mers & Sweet Satellites",
+    color: '#169873', // Wine Folly Teal / Emerald Green
     lat: 44.7500,
     lng: -0.2500,
     appellations: ["Entre-Deux-Mers AOC", "Entre-Deux-Mers Haut-Benauge AOC", "Premières Côtes de Bordeaux AOC", "Cadillac AOC", "Loupiac AOC", "Sainte-Croix-du-Mont AOC", "Sainte-Foy-Bordeaux AOC", "Graves de Vayres AOC"],
@@ -81,6 +86,7 @@ export const BORDEAUX_SUBREGIONS = [
   {
     id: 'cotes-de-bordeaux',
     name: "Côtes de Bordeaux & Right Bank Hills",
+    color: '#DE5D6E', // Wine Folly Salmon / Rose
     lat: 45.0500,
     lng: -0.5000,
     appellations: ["Blaye-Côtes de Bordeaux AOC", "Castillon-Côtes de Bordeaux AOC", "Francs-Côtes de Bordeaux AOC", "Cadillac-Côtes de Bordeaux AOC", "Côtes de Bourg AOC"],

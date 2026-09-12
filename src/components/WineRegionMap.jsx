@@ -167,7 +167,7 @@ export default function WineRegionMap({
   const [currentLayerType, setCurrentLayerType] = useState('parchment'); // 'parchment' | 'topo' | 'satellite'
   const [pinViewMode, setPinViewMode] = useState('subregions'); // Default to 'subregions' (Districts)
   const [showBoundaries, setShowBoundaries] = useState(true);
-  const [showRegionOutline, setShowRegionOutline] = useState(true);
+  const [showRegionOutline, setShowRegionOutline] = useState(false);
 
   const minMarkerZoom = Math.max((region.zoom || 9) - 1, 7);
   const [isZoomedOut, setIsZoomedOut] = useState(false);
@@ -342,13 +342,14 @@ export default function WineRegionMap({
           const props = feature.properties || {};
           const isSelected = isFeatureActive(feature, activeSubRegionId);
           const baseColor = props.color || '#d4af37';
-          const strokeColor = isSelected ? '#ffffff' : (props.accent || baseColor);
+          const strokeColor = isSelected ? '#ffffff' : (props.borderColor || props.accent || baseColor);
+          const baseFillOpacity = props.fillOpacity !== undefined ? props.fillOpacity : 0.55;
           return {
             fillColor: baseColor,
-            fillOpacity: isSelected ? 0.22 : 0.08, // Subtle, nuanced watercolor wash
+            fillOpacity: isSelected ? Math.min(baseFillOpacity + 0.22, 0.88) : baseFillOpacity,
             color: strokeColor,
-            weight: isSelected ? 2.2 : 1.2, // Fine, minimalist hairline contour
-            opacity: isSelected ? 0.95 : 0.50, // Gentle, restrained stroke opacity
+            weight: isSelected ? 2.6 : 1.5,
+            opacity: isSelected ? 1.0 : 0.92,
             className: `aoc-defined-boundary ${isSelected ? 'is-selected-boundary' : ''}`
           };
         },
@@ -378,9 +379,9 @@ export default function WineRegionMap({
             mouseover: (e) => {
               const target = e.target;
               target.setStyle({
-                weight: 2.0,
-                fillOpacity: 0.18,
-                opacity: 0.90,
+                weight: 2.5,
+                fillOpacity: 0.80,
+                opacity: 1.0,
                 color: '#ffffff'
               });
               if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
@@ -391,13 +392,14 @@ export default function WineRegionMap({
               const target = e.target;
               const isStillSelected = isFeatureActive(feature, activeSubRegionId);
               const baseColor = props.color || '#d4af37';
-              const strokeColor = isStillSelected ? '#ffffff' : (props.accent || baseColor);
+              const strokeColor = isStillSelected ? '#ffffff' : (props.borderColor || props.accent || baseColor);
+              const baseFillOpacity = props.fillOpacity !== undefined ? props.fillOpacity : 0.55;
               target.setStyle({
                 fillColor: baseColor,
-                fillOpacity: isStillSelected ? 0.22 : 0.08,
+                fillOpacity: isStillSelected ? Math.min(baseFillOpacity + 0.22, 0.88) : baseFillOpacity,
                 color: strokeColor,
-                weight: isStillSelected ? 2.2 : 1.2,
-                opacity: isStillSelected ? 0.95 : 0.50
+                weight: isStillSelected ? 2.6 : 1.5,
+                opacity: isStillSelected ? 1.0 : 0.92
               });
             },
             click: (e) => {
@@ -459,11 +461,12 @@ export default function WineRegionMap({
             const clearance = ring ? getInnerClearance(ring, center.lng, center.lat) : null;
             const domId = `sommelier-lbl-${String(feature.id || Math.random().toString(36).slice(2, 8)).replace(/[^a-zA-Z0-9_-]/g, '_')}`;
 
+            const labelText = props.shortName || props.name;
             const labelIcon = L.divIcon({
               className: 'sommelier-district-center-label-wrapper',
               html: `
                 <div class="sommelier-district-center-label ${isSelected ? 'is-active' : ''}" id="${domId}">
-                  <span class="district-line">${props.name}</span>
+                  <span class="district-line">${labelText}</span>
                   ${bottleCount > 0 ? `<span class="district-bottle-count">(🍷${bottleCount})</span>` : ''}
                 </div>
               `,
@@ -497,9 +500,9 @@ export default function WineRegionMap({
 
             labelMarker.on('mouseover', () => {
               layer.setStyle({
-                weight: 2.0,
-                fillOpacity: 0.18,
-                opacity: 0.90,
+                weight: 2.6,
+                fillOpacity: 0.82,
+                opacity: 1.0,
                 color: '#ffffff'
               });
             });
@@ -507,13 +510,14 @@ export default function WineRegionMap({
             labelMarker.on('mouseout', () => {
               const isStillSelected = isFeatureActive(feature, activeSubRegionId);
               const baseColor = props.color || '#d4af37';
-              const strokeColor = isStillSelected ? '#ffffff' : (props.accent || baseColor);
+              const strokeColor = isStillSelected ? '#ffffff' : (props.borderColor || props.accent || baseColor);
+              const baseFillOpacity = props.fillOpacity !== undefined ? props.fillOpacity : 0.55;
               layer.setStyle({
                 fillColor: baseColor,
-                fillOpacity: isStillSelected ? 0.22 : 0.08,
+                fillOpacity: isStillSelected ? Math.min(baseFillOpacity + 0.22, 0.88) : baseFillOpacity,
                 color: strokeColor,
-                weight: isStillSelected ? 2.2 : 1.2,
-                opacity: isStillSelected ? 0.95 : 0.50
+                weight: isStillSelected ? 2.6 : 1.5,
+                opacity: isStillSelected ? 1.0 : 0.92
               });
             });
 
@@ -521,7 +525,7 @@ export default function WineRegionMap({
             boundaryLabelsRef.current.push({
               domId,
               id: feature.id,
-              name: props.name,
+              name: labelText,
               bottleCount,
               bounds,
               center,
