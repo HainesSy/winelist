@@ -1881,7 +1881,7 @@ export const WINE_REGION_BOUNDARIES = {
           "fillOpacity": 0.26,
           "description": "Atlantic coastal schist and orthogneiss producing saline, sur lie Muscadet Sèvre-et-Maine and Crus Clisson/Gorges.",
           "labelCenter": [
-            -1.44,
+            -1.42,
             47.14
           ]
         },
@@ -1890,32 +1890,76 @@ export const WINE_REGION_BOUNDARIES = {
           "coordinates": [
             [
               [
-                -1.68,
-                47.24
+                -1.76,
+                47.22
               ],
               [
-                -1.34,
+                -1.64,
                 47.28
               ],
               [
-                -1.18,
-                47.16
+                -1.48,
+                47.31
+              ],
+              [
+                -1.32,
+                47.35
               ],
               [
                 -1.22,
-                47.02
+                47.36
+              ],
+              [
+                -1.16,
+                47.29
+              ],
+              [
+                -1.18,
+                47.19
+              ],
+              [
+                -1.22,
+                47.08
+              ],
+              [
+                -1.28,
+                47.01
+              ],
+              [
+                -1.38,
+                46.96
               ],
               [
                 -1.52,
+                46.95
+              ],
+              [
+                -1.66,
                 47
               ],
               [
-                -1.68,
-                47.12
+                -1.78,
+                47.07
               ],
               [
-                -1.68,
-                47.24
+                -1.92,
+                47.14
+              ],
+              [
+                -2.05,
+                47.21
+              ],
+              [
+                -2.02,
+                47.28
+              ],
+              [
+                -1.88,
+                47.25
+              ],
+              [
+                -1.76,
+                47.22
               ]
             ]
           ]
@@ -1936,7 +1980,7 @@ export const WINE_REGION_BOUNDARIES = {
           "fillOpacity": 0.26,
           "description": "Schist Anjou Noir (Savennières, Coulée de Serrant) and chalky tuffeau limestone Saumur (Saumur-Champigny, Clos Rougeard).",
           "labelCenter": [
-            -0.44,
+            -0.42,
             47.3
           ]
         },
@@ -1945,32 +1989,72 @@ export const WINE_REGION_BOUNDARIES = {
           "coordinates": [
             [
               [
+                -0.96,
+                47.39
+              ],
+              [
                 -0.82,
+                47.43
+              ],
+              [
+                -0.68,
+                47.45
+              ],
+              [
+                -0.52,
+                47.49
+              ],
+              [
+                -0.38,
                 47.46
               ],
               [
-                -0.35,
-                47.48
+                -0.2,
+                47.42
               ],
               [
-                -0.02,
-                47.34
+                -0.04,
+                47.35
               ],
               [
-                -0.08,
+                0.08,
+                47.28
+              ],
+              [
+                0.08,
+                47.18
+              ],
+              [
+                0.02,
                 47.12
               ],
               [
-                -0.48,
+                -0.14,
                 47.1
               ],
               [
-                -0.85,
-                47.25
+                -0.28,
+                47.14
               ],
               [
-                -0.82,
-                47.46
+                -0.42,
+                47.18
+              ],
+              [
+                -0.56,
+                47.22
+              ],
+              [
+                -0.72,
+                47.28
+              ],
+              [
+                -0.85,
+                47.32
+              ],
+              [
+                -0.96,
+                47.39
               ]
             ]
           ]
@@ -1991,7 +2075,7 @@ export const WINE_REGION_BOUNDARIES = {
           "fillOpacity": 0.26,
           "description": "Epicenter of Vouvray still/sparkling Chenin and gravelly/tuffeau Chinon & Bourgueil Cabernet Franc (Domaine Huet, Bernard Baudry).",
           "labelCenter": [
-            0.62,
+            0.66,
             47.32
           ]
         },
@@ -2000,32 +2084,80 @@ export const WINE_REGION_BOUNDARIES = {
           "coordinates": [
             [
               [
-                0.05,
-                47.45
-              ],
-              [
-                0.65,
-                47.52
-              ],
-              [
-                1.15,
-                47.44
-              ],
-              [
-                1.1,
+                0.06,
                 47.22
               ],
               [
-                0.65,
-                47.15
-              ],
-              [
                 0.1,
-                47.18
+                47.31
               ],
               [
-                0.05,
-                47.45
+                0.22,
+                47.36
+              ],
+              [
+                0.42,
+                47.38
+              ],
+              [
+                0.62,
+                47.44
+              ],
+              [
+                0.78,
+                47.46
+              ],
+              [
+                0.96,
+                47.46
+              ],
+              [
+                1.18,
+                47.5
+              ],
+              [
+                1.38,
+                47.56
+              ],
+              [
+                1.48,
+                47.5
+              ],
+              [
+                1.44,
+                47.38
+              ],
+              [
+                1.26,
+                47.3
+              ],
+              [
+                1.08,
+                47.26
+              ],
+              [
+                0.85,
+                47.22
+              ],
+              [
+                0.6,
+                47.14
+              ],
+              [
+                0.42,
+                47.1
+              ],
+              [
+                0.24,
+                47.12
+              ],
+              [
+                0.12,
+                47.16
+              ],
+              [
+                0.06,
+                47.22
               ]
             ]
           ]
@@ -2046,8 +2178,8 @@ export const WINE_REGION_BOUNDARIES = {
           "fillOpacity": 0.26,
           "description": "White Caillottes limestone, Kimmeridgian Terres Blanches, and flinty Silex across Sancerre, Pouilly-Fumé, Menetou-Salon, Quincy, Reuilly.",
           "labelCenter": [
-            2.86,
-            47.28
+            2.52,
+            47.2
           ]
         },
         "geometry": {
@@ -2055,28 +2187,64 @@ export const WINE_REGION_BOUNDARIES = {
           "coordinates": [
             [
               [
-                2.62,
-                47.45
+                1.96,
+                47.05
               ],
               [
-                3.1,
-                47.42
-              ],
-              [
-                3.18,
+                2.08,
                 47.15
               ],
               [
-                2.78,
-                47.08
+                2.22,
+                47.22
               ],
               [
-                2.58,
-                47.25
+                2.42,
+                47.28
               ],
               [
                 2.62,
-                47.45
+                47.44
+              ],
+              [
+                2.78,
+                47.58
+              ],
+              [
+                2.96,
+                47.54
+              ],
+              [
+                3.1,
+                47.44
+              ],
+              [
+                3.16,
+                47.28
+              ],
+              [
+                3.08,
+                47.14
+              ],
+              [
+                2.92,
+                47.04
+              ],
+              [
+                2.68,
+                46.98
+              ],
+              [
+                2.4,
+                46.95
+              ],
+              [
+                2.14,
+                46.98
+              ],
+              [
+                1.96,
+                47.05
               ]
             ]
           ]
@@ -2097,8 +2265,8 @@ export const WINE_REGION_BOUNDARIES = {
           "fillOpacity": 0.3,
           "description": "Laser-focused limestone and flint hillsides producing world benchmark Sauvignon Blanc (Didier Dagueneau Silex, Vacheron, Cotat).",
           "labelCenter": [
-            2.89,
-            47.31
+            2.88,
+            47.33
           ]
         },
         "geometry": {
@@ -2106,27 +2274,47 @@ export const WINE_REGION_BOUNDARIES = {
           "coordinates": [
             [
               [
-                2.78,
+                2.76,
                 47.38
               ],
               [
+                2.84,
+                47.41
+              ],
+              [
+                2.92,
+                47.39
+              ],
+              [
                 2.98,
-                47.36
+                47.35
               ],
               [
                 3.02,
+                47.29
+              ],
+              [
+                2.98,
                 47.24
               ],
               [
+                2.9,
+                47.23
+              ],
+              [
                 2.82,
-                47.26
+                47.25
+              ],
+              [
+                2.74,
+                47.29
+              ],
+              [
+                2.72,
+                47.34
               ],
               [
                 2.76,
-                47.32
-              ],
-              [
-                2.78,
                 47.38
               ]
             ]
@@ -3419,72 +3607,21 @@ export const WINE_REGION_BOUNDARIES = {
     "features": [
       {
         "type": "Feature",
-        "id": "dundee-hills-willamette",
-        "properties": {
-          "id": "dundee-hills-willamette",
-          "parentSubregionId": "dundee-hills",
-          "subregionId": "dundee-hills",
-          "name": "Willamette Valley (Dundee Hills & Envelope)",
-          "category": "45th Parallel Cool-Climate Pinot Noir Kingdom",
-          "dominantGrape": "Pinot Noir & Chardonnay",
-          "color": "#6a1b9a",
-          "accent": "#e1bee7",
-          "fillOpacity": 0.18,
-          "description": "Valley basin nestled between Coast Range and Cascades on the same 45th parallel as Burgundy.",
-          "labelCenter": [
-            -123.14,
-            45.22
-          ]
-        },
-        "geometry": {
-          "type": "Polygon",
-          "coordinates": [
-            [
-              [
-                -123.35,
-                45.42
-              ],
-              [
-                -122.95,
-                45.45
-              ],
-              [
-                -122.9,
-                45
-              ],
-              [
-                -123.25,
-                44.98
-              ],
-              [
-                -123.4,
-                45.22
-              ],
-              [
-                -123.35,
-                45.42
-              ]
-            ]
-          ]
-        }
-      },
-      {
-        "type": "Feature",
         "id": "dundee-hills",
         "properties": {
           "id": "dundee-hills",
           "parentSubregionId": "dundee-hills",
           "subregionId": "dundee-hills",
           "name": "Dundee Hills AVA",
-          "category": "Red Volcanic Jory Clay Loam & Silky Red Cherry",
-          "dominantGrape": "Pinot Noir (100%)",
+          "category": "Red Volcanic Jory Clay Loam & Baseline Epicenter",
+          "dominantGrape": "Pinot Noir & Chardonnay",
           "color": "#b71c1c",
           "accent": "#ef5350",
-          "fillOpacity": 0.3,
-          "description": "Iron-rich red volcanic Jory clay loam producing silky, floral red cherry and baking spice Pinot Noir (Domaine Drouhin, Eyrie, Beaux Frères).",
+          "fillOpacity": 0.28,
+          "description": "Iron-rich red volcanic Jory clay loam on south-facing hillside slopes; spiritual home of Oregon Pinot Noir (Domaine Drouhin, Eyrie, Domaine Serene).",
           "labelCenter": [
-            -123.03,
-            45.29
+            -123.015,
+            45.275
           ]
         },
         "geometry": {
@@ -3492,27 +3629,43 @@ export const WINE_REGION_BOUNDARIES = {
           "coordinates": [
             [
               [
-                -123.08,
+                -123.04,
                 45.32
               ],
               [
-                -122.98,
-                45.33
+                -123.01,
+                45.31
               ],
               [
                 -122.98,
-                45.25
+                45.29
+              ],
+              [
+                -122.98,
+                45.26
+              ],
+              [
+                -123,
+                45.24
+              ],
+              [
+                -123.03,
+                45.23
               ],
               [
                 -123.06,
                 45.24
               ],
               [
-                -123.1,
-                45.28
+                -123.08,
+                45.27
               ],
               [
-                -123.08,
+                -123.07,
+                45.3
+              ],
+              [
+                -123.04,
                 45.32
               ]
             ]
@@ -3527,15 +3680,15 @@ export const WINE_REGION_BOUNDARIES = {
           "parentSubregionId": "eola-amity-hills",
           "subregionId": "eola-amity-hills",
           "name": "Eola-Amity Hills AVA",
-          "category": "Van Duzer Marine Gales & Shallow Nekia Basalt",
+          "category": "Shallow Volcanic Nekia & Van Duzer Winds",
           "dominantGrape": "Pinot Noir & Chardonnay",
-          "color": "#1565c0",
-          "accent": "#90caf9",
+          "color": "#311b92",
+          "accent": "#7e57c2",
           "fillOpacity": 0.28,
-          "description": "Direct path of the cool Van Duzer oceanic winds delivering piercing acidity, thick skins, and saline tension (Cristom, Walter Scott).",
+          "description": "Shallow volcanic Nekia clay loam directly aligned with Van Duzer ocean winds; high natural acidity and structured tension (Cristom, Walter Scott, Evening Land).",
           "labelCenter": [
-            -123.11,
-            45.07
+            -123.1,
+            45.05
           ]
         },
         "geometry": {
@@ -3547,20 +3700,36 @@ export const WINE_REGION_BOUNDARIES = {
                 45.14
               ],
               [
-                -123.06,
+                -123.1,
                 45.14
               ],
               [
                 -123.05,
+                45.1
+              ],
+              [
+                -123.04,
                 45.02
               ],
               [
-                -123.14,
-                45
+                -123.06,
+                44.95
+              ],
+              [
+                -123.11,
+                44.93
+              ],
+              [
+                -123.15,
+                44.96
+              ],
+              [
+                -123.17,
+                45.03
               ],
               [
                 -123.18,
-                45.06
+                45.09
               ],
               [
                 -123.16,
@@ -3577,66 +3746,15 @@ export const WINE_REGION_BOUNDARIES = {
           "id": "ribbon-ridge-yamhill",
           "parentSubregionId": "ribbon-ridge-yamhill",
           "subregionId": "ribbon-ridge-yamhill",
-          "name": "Ribbon Ridge & Yamhill AVA",
+          "name": "Ribbon Ridge & Yamhill-Carlton",
           "category": "Ancient Marine Sedimentary Willakenzie Sandstone",
           "dominantGrape": "Pinot Noir & Chardonnay",
-          "color": "#4a148c",
-          "accent": "#ce93d8",
-          "fillOpacity": 0.3,
-          "description": "Smallest nested AVA; ancient ocean floor Willakenzie sandstone yielding dark, broody black fruits and crushed rock (Beaux Frères, Brick House).",
-          "labelCenter": [
-            -123.08,
-            45.35
-          ]
-        },
-        "geometry": {
-          "type": "Polygon",
-          "coordinates": [
-            [
-              [
-                -123.11,
-                45.38
-              ],
-              [
-                -123.05,
-                45.38
-              ],
-              [
-                -123.04,
-                45.33
-              ],
-              [
-                -123.1,
-                45.33
-              ],
-              [
-                -123.12,
-                45.35
-              ],
-              [
-                -123.11,
-                45.38
-              ]
-            ]
-          ]
-        }
-      },
-      {
-        "type": "Feature",
-        "id": "ribbon-ridge-yamhill-carlton",
-        "properties": {
-          "id": "ribbon-ridge-yamhill-carlton",
-          "parentSubregionId": "ribbon-ridge-yamhill",
-          "subregionId": "ribbon-ridge-yamhill",
-          "name": "Ribbon Ridge & Yamhill-Carlton AVA",
-          "category": "Coarse Marine Sediment, Dark Fruit & Savory Spice",
-          "dominantGrape": "Pinot Noir",
-          "color": "#37474f",
-          "accent": "#90a4ae",
+          "color": "#880e4f",
+          "accent": "#ec407a",
           "fillOpacity": 0.26,
-          "description": "Horseshoe ridge of coarse marine sediment surrounding Yamhill and Carlton (Shea Vineyard, Ken Wright, Soter).",
+          "description": "Ancient marine sedimentary Willakenzie sandstone ocean beds producing dark, broody black fruit, pipe tobacco, and savory forest floor (Beaux Frères, Shea, Ken Wright).",
           "labelCenter": [
-            -123.17,
+            -123.14,
             45.34
           ]
         },
@@ -3645,28 +3763,107 @@ export const WINE_REGION_BOUNDARIES = {
           "coordinates": [
             [
               [
-                -123.22,
-                45.38
+                -123.24,
+                45.4
               ],
               [
-                -123.12,
-                45.38
+                -123.14,
+                45.4
               ],
               [
-                -123.11,
+                -123.05,
+                45.36
+              ],
+              [
+                -123.04,
+                45.32
+              ],
+              [
+                -123.08,
                 45.3
               ],
               [
-                -123.2,
-                45.29
+                -123.15,
+                45.28
               ],
               [
                 -123.24,
-                45.34
+                45.29
               ],
               [
-                -123.22,
+                -123.28,
+                45.33
+              ],
+              [
+                -123.27,
                 45.38
+              ],
+              [
+                -123.24,
+                45.4
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "chehalem-mountains",
+        "properties": {
+          "id": "chehalem-mountains",
+          "parentSubregionId": "chehalem-mountains",
+          "subregionId": "chehalem-mountains",
+          "name": "Chehalem Mountains & Laurelwood District",
+          "category": "Windblown Glacial Loess & High Elevation Peaks",
+          "dominantGrape": "Pinot Noir & Chardonnay",
+          "color": "#004d40",
+          "accent": "#26a69a",
+          "fillOpacity": 0.26,
+          "description": "Highest elevation in the valley (Bald Peak 1,633ft) featuring windblown glacial loess (Laurelwood) over basalt, producing floral aromatics and silken textures (Ponzi, Adelsheim, Bergström).",
+          "labelCenter": [
+            -122.96,
+            45.39
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -123.06,
+                45.42
+              ],
+              [
+                -122.96,
+                45.46
+              ],
+              [
+                -122.86,
+                45.46
+              ],
+              [
+                -122.84,
+                45.41
+              ],
+              [
+                -122.88,
+                45.36
+              ],
+              [
+                -122.95,
+                45.33
+              ],
+              [
+                -123.02,
+                45.35
+              ],
+              [
+                -123.07,
+                45.38
+              ],
+              [
+                -123.06,
+                45.42
               ]
             ]
           ]
@@ -3680,14 +3877,14 @@ export const WINE_REGION_BOUNDARIES = {
           "parentSubregionId": "mcminnville-ava",
           "subregionId": "mcminnville-ava",
           "name": "McMinnville AVA",
-          "category": "Coast Range Rain Shadow & Uplifted Marine Basalt",
-          "dominantGrape": "Pinot Noir & Pinot Blanc",
-          "color": "#00695c",
-          "accent": "#80cbc4",
-          "fillOpacity": 0.26,
-          "description": "Southwestern foothills in the Coast Range rain shadow producing muscular, savory, deeply pigmented Pinot Noirs.",
+          "category": "Rugged Coast Range Siltstone & Marine Basalt",
+          "dominantGrape": "Pinot Noir",
+          "color": "#4e342e",
+          "accent": "#8d6e63",
+          "fillOpacity": 0.28,
+          "description": "Nestucca marine siltstone and weathered basalt against the Coast Range foothills; wind-swept, dark, iron-inflected, muscular Pinots (Brittan, Hyland, Maysara).",
           "labelCenter": [
-            -123.27,
+            -123.31,
             45.18
           ]
         },
@@ -3696,28 +3893,40 @@ export const WINE_REGION_BOUNDARIES = {
           "coordinates": [
             [
               [
-                -123.32,
-                45.22
+                -123.38,
+                45.24
+              ],
+              [
+                -123.28,
+                45.24
               ],
               [
                 -123.22,
-                45.22
+                45.2
               ],
               [
-                -123.2,
+                -123.24,
                 45.14
               ],
               [
                 -123.3,
+                45.12
+              ],
+              [
+                -123.38,
                 45.13
               ],
               [
-                -123.34,
-                45.18
+                -123.42,
+                45.17
               ],
               [
-                -123.32,
+                -123.41,
                 45.22
+              ],
+              [
+                -123.38,
+                45.24
               ]
             ]
           ]
@@ -3725,21 +3934,21 @@ export const WINE_REGION_BOUNDARIES = {
       },
       {
         "type": "Feature",
-        "id": "chehalem-mountains",
+        "id": "van-duzer-corridor",
         "properties": {
-          "id": "chehalem-mountains",
-          "parentSubregionId": "chehalem-mountains",
-          "subregionId": "chehalem-mountains",
-          "name": "Chehalem Mountains & Laurelwood AVA",
-          "category": "Highest Elevation Ridge & Windblown Loess (Laurelwood)",
-          "dominantGrape": "Pinot Noir & Chardonnay",
-          "color": "#e65100",
-          "accent": "#ffb74d",
-          "fillOpacity": 0.26,
-          "description": "Highest elevation range in the northern Willamette with complex geological strata of windblown silty loess and volcanic basalt (Ponzi).",
+          "id": "van-duzer-corridor",
+          "parentSubregionId": "van-duzer-corridor",
+          "subregionId": "van-duzer-corridor",
+          "name": "Van Duzer Corridor AVA",
+          "category": "Pacific Ocean Wind Gap & Bracing Natural Acidity",
+          "dominantGrape": "Pinot Noir & Pinot Gris",
+          "color": "#01579b",
+          "accent": "#29b6f6",
+          "fillOpacity": 0.28,
+          "description": "Direct wind gap in the Coast Range funneling raw Pacific oceanic gales into the valley floor; thick grape skins, bracing acidity, and saline tension (Johan, Left Coast).",
           "labelCenter": [
-            -122.96,
-            45.39
+            -123.26,
+            45.01
           ]
         },
         "geometry": {
@@ -3747,28 +3956,99 @@ export const WINE_REGION_BOUNDARIES = {
           "coordinates": [
             [
               [
-                -123.05,
-                45.42
+                -123.36,
+                45.06
               ],
               [
-                -122.88,
-                45.44
+                -123.26,
+                45.07
               ],
               [
-                -122.86,
-                45.36
+                -123.18,
+                45.03
               ],
               [
-                -123,
-                45.34
+                -123.18,
+                44.96
               ],
               [
-                -123.06,
-                45.38
+                -123.26,
+                44.94
               ],
               [
-                -123.05,
-                45.42
+                -123.34,
+                44.96
+              ],
+              [
+                -123.38,
+                45.01
+              ],
+              [
+                -123.36,
+                45.06
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "mount-pisgah-lower-long-tom",
+        "properties": {
+          "id": "mount-pisgah-lower-long-tom",
+          "parentSubregionId": "mount-pisgah-lower-long-tom",
+          "subregionId": "mount-pisgah-lower-long-tom",
+          "name": "Mount Pisgah & Lower Long Tom",
+          "category": "Southern Willamette Bellpine Marine Sandstone",
+          "dominantGrape": "Pinot Noir & Chardonnay",
+          "color": "#e65100",
+          "accent": "#ffa726",
+          "fillOpacity": 0.26,
+          "description": "Ancient marine sedimentary Bellpine and sandstone hills in the southern Willamette Valley (Freedom Hill, Antiquum Farm, Benton-Lane).",
+          "labelCenter": [
+            -123.26,
+            44.38
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -123.32,
+                44.6
+              ],
+              [
+                -123.22,
+                44.6
+              ],
+              [
+                -123.18,
+                44.45
+              ],
+              [
+                -123.16,
+                44.28
+              ],
+              [
+                -123.2,
+                44.2
+              ],
+              [
+                -123.3,
+                44.18
+              ],
+              [
+                -123.38,
+                44.24
+              ],
+              [
+                -123.38,
+                44.42
+              ],
+              [
+                -123.32,
+                44.6
               ]
             ]
           ]
@@ -4822,31 +5102,150 @@ export const WINE_REGION_BOUNDARIES = {
           "color": "#4a154b",
           "accent": "#ffd700",
           "fillOpacity": 0.26,
-          "description": "Limestone valleys north of Verona producing dried-grape Amarone and basalt volcanic Soave (Quintarelli, Pieropan)."
+          "description": "Limestone valleys north of Verona producing dried-grape Amarone and basalt volcanic Soave (Quintarelli, Pieropan).",
+          "labelCenter": [
+            11.05,
+            45.5
+          ]
         },
         "geometry": {
           "type": "Polygon",
           "coordinates": [
             [
               [
-                10.82,
+                10.72,
+                45.55
+              ],
+              [
+                10.75,
+                45.62
+              ],
+              [
+                10.84,
+                45.64
+              ],
+              [
+                10.96,
+                45.63
+              ],
+              [
+                11.08,
                 45.6
               ],
               [
-                11.35,
-                45.58
+                11.22,
+                45.55
               ],
               [
-                11.3,
+                11.36,
+                45.5
+              ],
+              [
+                11.44,
+                45.45
+              ],
+              [
+                11.38,
                 45.38
               ],
               [
-                10.8,
+                11.24,
+                45.36
+              ],
+              [
+                11.08,
+                45.39
+              ],
+              [
+                10.92,
                 45.42
               ],
               [
-                10.82,
-                45.6
+                10.76,
+                45.46
+              ],
+              [
+                10.72,
+                45.55
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "lombardia-valtellina",
+        "properties": {
+          "id": "lombardia-valtellina",
+          "parentSubregionId": "lombardia-valtellina",
+          "subregionId": "lombardia-valtellina",
+          "name": "Valtellina (Lombardia Alpine Nebbiolo)",
+          "category": "Alpine Granite Terraces & Chiavennasca",
+          "dominantGrape": "Nebbiolo (Chiavennasca)",
+          "color": "#5c0632",
+          "accent": "#d4af37",
+          "fillOpacity": 0.28,
+          "description": "Perilous south-facing granite terraces overlooking the Adda River in the Alps (AR.PE.PE., Nino Negri, Sandro Fay).",
+          "labelCenter": [
+            9.87,
+            46.17
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                9.48,
+                46.14
+              ],
+              [
+                9.62,
+                46.18
+              ],
+              [
+                9.76,
+                46.2
+              ],
+              [
+                9.88,
+                46.22
+              ],
+              [
+                10.02,
+                46.21
+              ],
+              [
+                10.16,
+                46.23
+              ],
+              [
+                10.24,
+                46.2
+              ],
+              [
+                10.2,
+                46.15
+              ],
+              [
+                10.05,
+                46.13
+              ],
+              [
+                9.86,
+                46.12
+              ],
+              [
+                9.68,
+                46.12
+              ],
+              [
+                9.52,
+                46.11
+              ],
+              [
+                9.48,
+                46.14
               ]
             ]
           ]
@@ -4865,31 +5264,67 @@ export const WINE_REGION_BOUNDARIES = {
           "color": "#c0392b",
           "accent": "#f5b7b1",
           "fillOpacity": 0.28,
-          "description": "High-altitude slopes of Mount Etna volcano (up to 1,000m) with black pumice and lava Contrade (Passopisciaro, Terre Nere, Benanti)."
+          "description": "High-altitude slopes of Mount Etna volcano (up to 1,000m) with black pumice and lava Contrade (Passopisciaro, Terre Nere, Benanti).",
+          "labelCenter": [
+            15.05,
+            37.78
+          ]
         },
         "geometry": {
           "type": "Polygon",
           "coordinates": [
             [
               [
-                14.9,
-                37.85
+                14.92,
+                37.88
               ],
               [
-                15.18,
+                15.04,
+                37.91
+              ],
+              [
+                15.15,
+                37.89
+              ],
+              [
+                15.22,
                 37.82
               ],
               [
+                15.24,
+                37.72
+              ],
+              [
                 15.2,
+                37.64
+              ],
+              [
+                15.12,
+                37.58
+              ],
+              [
+                15,
+                37.58
+              ],
+              [
+                14.88,
                 37.62
               ],
               [
-                14.92,
-                37.65
+                14.82,
+                37.68
               ],
               [
-                14.9,
-                37.85
+                14.84,
+                37.76
+              ],
+              [
+                14.88,
+                37.84
+              ],
+              [
+                14.92,
+                37.88
               ]
             ]
           ]
@@ -4908,30 +5343,62 @@ export const WINE_REGION_BOUNDARIES = {
           "color": "#1565c0",
           "accent": "#90caf9",
           "fillOpacity": 0.26,
-          "description": "Spectacular Alpine terraced valley beneath Dolomite peaks producing crystalline Pinot Bianco and mineral whites (Cantina Terlano)."
+          "description": "Spectacular Alpine terraced valley beneath Dolomite peaks producing crystalline Pinot Bianco and mineral whites (Cantina Terlano).",
+          "labelCenter": [
+            11.26,
+            46.48
+          ]
         },
         "geometry": {
           "type": "Polygon",
           "coordinates": [
             [
               [
-                11.15,
+                11.14,
                 46.68
               ],
               [
-                11.55,
-                46.65
+                11.28,
+                46.72
               ],
               [
-                11.5,
-                46.25
+                11.52,
+                46.74
+              ],
+              [
+                11.64,
+                46.66
+              ],
+              [
+                11.58,
+                46.5
+              ],
+              [
+                11.48,
+                46.36
+              ],
+              [
+                11.36,
+                46.24
+              ],
+              [
+                11.2,
+                46.22
+              ],
+              [
+                11.12,
+                46.32
+              ],
+              [
+                11.14,
+                46.48
               ],
               [
                 11.1,
-                46.28
+                46.6
               ],
               [
-                11.15,
+                11.14,
                 46.68
               ]
             ]
@@ -4948,33 +5415,57 @@ export const WINE_REGION_BOUNDARIES = {
           "name": "Friuli-Venezia Giulia (Collio & Colli Orientali)",
           "category": "Flysch Ponca Soil & Macerated Orange / White Masters",
           "dominantGrape": "Friulano, Ribolla Gialla, Sauvignon",
-          "color": "#f57f17",
-          "accent": "#fff59d",
+          "color": "#6a1b9a",
+          "accent": "#ce93d8",
           "fillOpacity": 0.26,
-          "description": "Layered sandstone-marl flysch (ponca) soils along the Slovenian border; world center for amphora and orange wines (Gravner, Radikon)."
+          "description": "Bordering Slovenia on layered Ponca flysch, pioneering extended skin contact orange wines and mineral whites (Gravner, Radikon).",
+          "labelCenter": [
+            13.48,
+            46.02
+          ]
         },
         "geometry": {
           "type": "Polygon",
           "coordinates": [
             [
               [
-                13.35,
+                13.34,
                 46.12
               ],
               [
-                13.65,
-                46.08
+                13.48,
+                46.18
               ],
               [
                 13.62,
-                45.85
+                46.14
               ],
               [
-                13.3,
-                45.88
+                13.7,
+                46.04
               ],
               [
-                13.35,
+                13.72,
+                45.92
+              ],
+              [
+                13.62,
+                45.82
+              ],
+              [
+                13.48,
+                45.84
+              ],
+              [
+                13.36,
+                45.92
+              ],
+              [
+                13.28,
+                46.02
+              ],
+              [
+                13.34,
                 46.12
               ]
             ]
@@ -4989,36 +5480,56 @@ export const WINE_REGION_BOUNDARIES = {
           "parentSubregionId": "campania-irpinia",
           "subregionId": "campania-irpinia",
           "name": "Campania (Taurasi, Greco & Fiano)",
-          "category": "Ancient Volcanic Tuff & Aglianico / Fiano",
+          "category": "High-Elevation Apennine Volcanic Ash & Limestone",
           "dominantGrape": "Aglianico, Fiano di Avellino, Greco di Tufo",
-          "color": "#6a1b9a",
-          "accent": "#e1bee7",
+          "color": "#bf360c",
+          "accent": "#ffab91",
           "fillOpacity": 0.26,
-          "description": "High-altitude volcanic hills of Irpinia delivering the 'Barolo of the South' (Taurasi Aglianico) and age-worthy Fiano (Mastroberardino)."
+          "description": "The 'Barolo of the South' (Taurasi Aglianico) alongside laser-pure volcanic whites Fiano and Greco (Mastroberardino, Feudi).",
+          "labelCenter": [
+            14.92,
+            40.96
+          ]
         },
         "geometry": {
           "type": "Polygon",
           "coordinates": [
             [
               [
-                14.75,
-                41.1
+                14.74,
+                41.04
               ],
               [
-                15.18,
+                14.88,
                 41.08
               ],
               [
-                15.15,
-                40.85
+                15.06,
+                41.05
               ],
               [
-                14.7,
+                15.18,
+                40.98
+              ],
+              [
+                15.16,
                 40.88
               ],
               [
-                14.75,
-                41.1
+                15.02,
+                40.82
+              ],
+              [
+                14.86,
+                40.84
+              ],
+              [
+                14.72,
+                40.92
+              ],
+              [
+                14.74,
+                41.04
               ]
             ]
           ]
@@ -8133,76 +8644,140 @@ export const WINE_REGION_OUTLINES = {
           "coordinates": [
             [
               [
-                -1.85,
-                47.18
+                -2.08,
+                47.24
               ],
               [
-                -1.35,
-                47.38
+                -1.98,
+                47.32
               ],
               [
-                -0.85,
-                47.45
+                -1.76,
+                47.36
               ],
               [
-                -0.22,
+                -1.46,
+                47.42
+              ],
+              [
+                -1.12,
                 47.48
               ],
               [
-                0.45,
+                -0.78,
+                47.52
+              ],
+              [
+                -0.42,
+                47.54
+              ],
+              [
+                -0.08,
+                47.48
+              ],
+              [
+                0.26,
                 47.46
               ],
               [
-                1.12,
+                0.62,
                 47.52
               ],
               [
-                1.85,
+                1.02,
+                47.58
+              ],
+              [
+                1.42,
+                47.64
+              ],
+              [
+                1.82,
+                47.66
+              ],
+              [
+                2.24,
+                47.6
+              ],
+              [
+                2.68,
                 47.62
               ],
               [
-                2.65,
-                47.52
+                2.98,
+                47.58
+              ],
+              [
+                3.18,
+                47.42
+              ],
+              [
+                3.22,
+                47.24
               ],
               [
                 3.12,
-                47.35
-              ],
-              [
-                3.08,
-                47.18
-              ],
-              [
-                2.48,
-                47.05
-              ],
-              [
-                1.65,
-                47.12
-              ],
-              [
-                0.95,
                 47.08
               ],
               [
-                0.25,
+                2.88,
+                46.96
+              ],
+              [
+                2.52,
+                46.9
+              ],
+              [
+                2.12,
+                46.92
+              ],
+              [
+                1.8,
                 47.02
               ],
               [
-                -0.45,
+                1.44,
+                47.16
+              ],
+              [
+                1.08,
+                47.18
+              ],
+              [
+                0.68,
+                47.08
+              ],
+              [
+                0.24,
                 47.05
               ],
               [
-                -1.15,
-                47.02
+                -0.18,
+                47.04
               ],
               [
-                -1.75,
-                47.06
+                -0.56,
+                47.12
               ],
               [
-                -1.85,
+                -0.92,
                 47.18
+              ],
+              [
+                -1.28,
+                46.96
+              ],
+              [
+                -1.62,
+                46.94
+              ],
+              [
+                -1.94,
+                47.08
+              ],
+              [
+                -2.08,
+                47.24
               ]
             ]
           ]
@@ -8549,58 +9124,98 @@ export const WINE_REGION_OUTLINES = {
           "id": "oregon-outline",
           "name": "Willamette Valley AVA Delimited Wine Region",
           "category": "Official Regional AVA Boundary",
-          "areaHa": 10400,
-          "color": "#33691E",
-          "accent": "#D4AF37",
-          "description": "The complete Willamette Valley AVA boundary stretching 150 miles between the Oregon Coast Range and Cascade Mountains, encompassing all 11 nested AVAs (Dundee Hills, Eola-Amity, Ribbon Ridge)."
+          "areaHa": 1400000,
+          "color": "#1B5E20",
+          "accent": "#FFB300",
+          "description": "Oregon's flagship cool-climate wine corridor spanning from the Columbia River near Portland south to Eugene, nestled between the Coast Range and Cascade Mountains."
         },
         "geometry": {
           "type": "Polygon",
           "coordinates": [
             [
               [
-                -122.75,
+                -122.82,
+                45.74
+              ],
+              [
+                -122.68,
                 45.62
               ],
               [
-                -122.65,
-                45.32
+                -122.45,
+                45.54
               ],
               [
-                -122.72,
-                44.92
+                -122.42,
+                45.36
               ],
               [
-                -122.85,
-                44.45
+                -122.55,
+                45.18
               ],
               [
-                -123.02,
-                44.02
-              ],
-              [
-                -123.28,
-                43.98
-              ],
-              [
-                -123.42,
-                44.45
-              ],
-              [
-                -123.48,
+                -122.62,
                 44.95
               ],
               [
-                -123.38,
-                45.38
-              ],
-              [
-                -123.12,
-                45.65
+                -122.68,
+                44.62
               ],
               [
                 -122.75,
-                45.62
+                44.32
+              ],
+              [
+                -122.85,
+                44.08
+              ],
+              [
+                -122.98,
+                43.82
+              ],
+              [
+                -123.12,
+                43.68
+              ],
+              [
+                -123.22,
+                43.76
+              ],
+              [
+                -123.35,
+                44.02
+              ],
+              [
+                -123.42,
+                44.3
+              ],
+              [
+                -123.44,
+                44.65
+              ],
+              [
+                -123.46,
+                44.98
+              ],
+              [
+                -123.48,
+                45.18
+              ],
+              [
+                -123.42,
+                45.38
+              ],
+              [
+                -123.26,
+                45.55
+              ],
+              [
+                -123.08,
+                45.68
+              ],
+              [
+                -122.82,
+                45.74
               ]
             ]
           ]
@@ -9076,7 +9691,7 @@ export const WINE_REGION_OUTLINES = {
           "areaHa": 35000,
           "color": "#701C45",
           "accent": "#FFB300",
-          "description": "Italy's distinctive regional enclaves: the appassimento hills of Valpolicella/Amarone and Soave in Veneto alongside the active volcanic ash slopes of Mount Etna in Sicily."
+          "description": "Italy's distinctive regional enclaves: the appassimento hills of Valpolicella/Amarone and Soave in Veneto, the heroic alpine granite terraces of Valtellina in Lombardia, alongside the active volcanic ash slopes of Mount Etna in Sicily."
         },
         "geometry": {
           "type": "MultiPolygon",
@@ -9084,52 +9699,168 @@ export const WINE_REGION_OUTLINES = {
             [
               [
                 [
-                  10.75,
+                  10.68,
+                  45.54
+                ],
+                [
+                  10.72,
+                  45.64
+                ],
+                [
+                  10.84,
+                  45.68
+                ],
+                [
+                  10.98,
+                  45.66
+                ],
+                [
+                  11.14,
                   45.62
                 ],
                 [
-                  11.35,
-                  45.58
+                  11.32,
+                  45.56
                 ],
                 [
-                  11.55,
-                  45.42
+                  11.48,
+                  45.48
                 ],
                 [
-                  11.25,
+                  11.45,
+                  45.36
+                ],
+                [
+                  11.28,
                   45.32
                 ],
                 [
-                  10.82,
+                  11.06,
+                  45.35
+                ],
+                [
+                  10.88,
                   45.38
                 ],
                 [
-                  10.75,
-                  45.62
+                  10.72,
+                  45.44
+                ],
+                [
+                  10.68,
+                  45.54
                 ]
               ]
             ],
             [
               [
                 [
-                  14.92,
-                  37.85
+                  9.44,
+                  46.14
+                ],
+                [
+                  9.6,
+                  46.2
+                ],
+                [
+                  9.75,
+                  46.23
+                ],
+                [
+                  9.9,
+                  46.24
+                ],
+                [
+                  10.05,
+                  46.23
+                ],
+                [
+                  10.22,
+                  46.24
+                ],
+                [
+                  10.28,
+                  46.18
+                ],
+                [
+                  10.22,
+                  46.12
+                ],
+                [
+                  10.02,
+                  46.1
+                ],
+                [
+                  9.84,
+                  46.09
+                ],
+                [
+                  9.65,
+                  46.09
+                ],
+                [
+                  9.46,
+                  46.1
+                ],
+                [
+                  9.44,
+                  46.14
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  14.9,
+                  37.9
+                ],
+                [
+                  15.06,
+                  37.94
                 ],
                 [
                   15.18,
-                  37.88
+                  37.91
                 ],
                 [
-                  15.22,
-                  37.65
+                  15.26,
+                  37.82
                 ],
                 [
-                  14.98,
+                  15.28,
+                  37.7
+                ],
+                [
+                  15.24,
                   37.62
                 ],
                 [
-                  14.92,
-                  37.85
+                  15.14,
+                  37.55
+                ],
+                [
+                  14.98,
+                  37.55
+                ],
+                [
+                  14.84,
+                  37.6
+                ],
+                [
+                  14.78,
+                  37.68
+                ],
+                [
+                  14.8,
+                  37.78
+                ],
+                [
+                  14.86,
+                  37.86
+                ],
+                [
+                  14.9,
+                  37.9
                 ]
               ]
             ]
