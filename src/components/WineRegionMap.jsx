@@ -593,7 +593,14 @@ export default function WineRegionMap({
       region.subRegions.forEach(sub => {
         // If boundaries are active and this subregion has a boundary polygon with centered label, avoid duplicate pin clutter
         const hasBoundaryPolygon = showBoundaries && boundaryData && boundaryData.features &&
-          boundaryData.features.some(f => f.id === sub.id || f.properties?.id === sub.id || f.properties?.subregionId === sub.id);
+          boundaryData.features.some(f => 
+            f.id === sub.id || 
+            f.properties?.id === sub.id || 
+            f.properties?.subregionId === sub.id ||
+            f.properties?.parentSubregionId === sub.id ||
+            (typeof f.id === 'string' && f.id.startsWith(sub.id)) ||
+            (typeof f.properties?.id === 'string' && f.properties.id.startsWith(sub.id))
+          );
 
         if (hasBoundaryPolygon) return;
 
