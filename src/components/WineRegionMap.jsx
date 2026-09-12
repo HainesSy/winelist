@@ -589,20 +589,11 @@ export default function WineRegionMap({
     markersRef.current = {};
 
     // 1. Draw Subregion / District Appellation Markers
-    if ((pinViewMode === 'subregions' || pinViewMode === 'all') && region.subRegions && region.subRegions.length > 0) {
+    // When district boundaries are displayed on the map, districts are rendered as high-fidelity polygons with centered typography.
+    // In that mode, suppress all subregion markers to ensure only the map is visible in district view.
+    const hasActiveBoundaries = showBoundaries && boundaryData && boundaryData.features && boundaryData.features.length > 0;
+    if (!hasActiveBoundaries && (pinViewMode === 'subregions' || pinViewMode === 'all') && region.subRegions && region.subRegions.length > 0) {
       region.subRegions.forEach(sub => {
-        // If boundaries are active and this subregion has a boundary polygon with centered label, avoid duplicate pin clutter
-        const hasBoundaryPolygon = showBoundaries && boundaryData && boundaryData.features &&
-          boundaryData.features.some(f => 
-            f.id === sub.id || 
-            f.properties?.id === sub.id || 
-            f.properties?.subregionId === sub.id ||
-            f.properties?.parentSubregionId === sub.id ||
-            (typeof f.id === 'string' && f.id.startsWith(sub.id)) ||
-            (typeof f.properties?.id === 'string' && f.properties.id.startsWith(sub.id))
-          );
-
-        if (hasBoundaryPolygon) return;
 
         const isSelected = activeSubRegionId === sub.id;
         const bottleCount = cellarBottlesCountBySub[sub.id] || cellarBottlesCountBySub[sub.name] || 0;
