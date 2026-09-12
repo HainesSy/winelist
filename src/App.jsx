@@ -223,38 +223,7 @@ function App() {
       setPassword(savedPass);
       fetchFromCellarTracker(savedUser, savedPass);
     } else {
-      // Auto-load default cellar sample CSV with universal UTF-8 & Windows-1252 decoding
-      fetch('/My Cellar.csv')
-        .then(res => {
-          if (res.ok) return res.arrayBuffer();
-          throw new Error('No default CSV');
-        })
-        .then(buf => {
-          let csvText;
-          try {
-            const utf8Decoder = new TextDecoder('utf-8', { fatal: true });
-            csvText = utf8Decoder.decode(buf);
-          } catch {
-            const winDecoder = new TextDecoder('windows-1252');
-            csvText = winDecoder.decode(buf);
-          }
-          Papa.parse(csvText, {
-            header: true,
-            skipEmptyLines: true,
-            complete: (results) => {
-              const parsedWines = results.data;
-              const validWines = parsedWines.filter(w => w.Wine || w.Vintage);
-              if (validWines.length > 0) {
-                setRawWines(validWines);
-              }
-              setIsLoadingDefault(false);
-            },
-            error: () => setIsLoadingDefault(false)
-          });
-        })
-        .catch(() => {
-          setIsLoadingDefault(false);
-        });
+      setIsLoadingDefault(false);
     }
   }, []);
 
@@ -578,10 +547,6 @@ function App() {
           localStorage.setItem('ct_consumed_counts', JSON.stringify(data.counts || {}));
           localStorage.setItem('ct_consumed_bins', JSON.stringify(data.bins || {}));
         }
-        if (data && data.username && !username) {
-          setUsername(data.username);
-          localStorage.setItem('ct_user', data.username);
-        }
       }
     } catch (err) {
       // Uses local storage fallback
@@ -830,6 +795,33 @@ function App() {
             <h3 style={{ color: 'var(--accent-gold)' }}>Loading your cellar...</h3>
           </div>
         </div>
+      </div>
+    );
+  }
+
+  if (selectedRegion) {
+    return (
+      <div className="app-container menu-view">
+        <WineRegionDetail
+          key={selectedRegion.id}
+          regionId={selectedRegion.id}
+          regionName={selectedRegion.name}
+          countryName={selectedRegion.country}
+          rawWines={rawWines || []}
+          onBack={handleBackToMenu}
+          onSelectRegion={(newRegId) => {
+            const matched = findWineRegion(newRegId);
+            setSelectedRegion({
+              id: newRegId,
+              name: matched ? matched.name : newRegId,
+              country: matched ? matched.country : ''
+            });
+            window.location.hash = `#region=${encodeURIComponent(newRegId)}`;
+          }}
+          onConsumeBottle={executeInstantConsume}
+          consumedCounts={consumedCounts}
+          getCellarTrackerActionUrl={getCellarTrackerActionUrl}
+        />
       </div>
     );
   }
@@ -1362,6 +1354,29 @@ function App() {
             ref={fileInputRef}
             onChange={handleFileUpload}
           />
+        </div>
+
+        <div style={{ marginTop: '2.5rem', textAlign: 'center' }}>
+          <button
+            type="button"
+            onClick={() => navigateToRegion('champagne')}
+            className="btn"
+            style={{
+              background: 'rgba(212, 175, 55, 0.08)',
+              border: '1px solid var(--accent-gold)',
+              color: 'var(--accent-gold)',
+              padding: '0.65rem 1.35rem',
+              borderRadius: '24px',
+              fontSize: '0.9rem',
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              transition: 'all 0.2s ease'
+            }}
+          >
+            <Compass size={17} /> Explore World Wine Regions & Maps
+          </button>
         </div>
       </div>
     </div>

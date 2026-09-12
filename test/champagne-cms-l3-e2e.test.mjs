@@ -77,7 +77,7 @@ function test(tier, featureOrCategory, testName, fn) {
 }
 
 // ----------------------------------------------------------------------------
-// Helper: Simple CSV Parser for `public/My Cellar.csv`
+// Helper: Simple CSV Parser for `test/fixtures/sample_cellar.csv`
 // ----------------------------------------------------------------------------
 function parseCsv(csvText) {
   const lines = csvText.trim().split(/\r?\n/);
@@ -1044,9 +1044,9 @@ test(1, 'F14_TechCards', 'Producer Codes Card renders matriculation codes, marke
 // ----------------------------------------------------------------------------
 // Feature 15: Champagne Cellar Matcher
 // ----------------------------------------------------------------------------
-test(1, 'F15_CellarMatcher', 'CSV inventory file `public/My Cellar.csv` exists and contains real wines', () => {
-  const csvPath = path.join(rootDir, 'public/My Cellar.csv');
-  assert(fs.existsSync(csvPath), 'public/My Cellar.csv must exist');
+test(1, 'F15_CellarMatcher', 'CSV inventory file `test/fixtures/sample_cellar.csv` exists and contains real wines', () => {
+  const csvPath = path.join(rootDir, 'test/fixtures/sample_cellar.csv');
+  assert(fs.existsSync(csvPath), 'test/fixtures/sample_cellar.csv must exist');
   const csvText = fs.readFileSync(csvPath, 'utf-8');
   const rows = parseCsv(csvText);
   assert(rows.length > 50, `Expected > 50 cellar rows, got ${rows.length}`);

@@ -391,11 +391,11 @@ runTest('Suite 5', 'Non-Champagne wines do not produce false Champagne Cru match
   assert(wineDetailSrc.includes("if (isChampagne) {"), 'Champagne matcher only runs for Champagne region');
 });
 
-runTest('Suite 5', 'All 12 real Champagne bottles in public/My Cellar.csv matched accurately', () => {
-  const cellarCsv = fs.readFileSync(path.join(rootDir, 'public/My Cellar.csv'), 'utf8');
+runTest('Suite 5', 'All 12 real Champagne bottles in test/fixtures/sample_cellar.csv matched accurately', () => {
+  const cellarCsv = fs.readFileSync(path.join(rootDir, 'test/fixtures/sample_cellar.csv'), 'utf8');
   const lines = cellarCsv.trim().split('\n');
   const champagneRows = lines.slice(1).filter(l => l.includes('Champagne'));
-  assert.strictEqual(champagneRows.length, 12, 'Expected 12 Champagne bottles in My Cellar.csv');
+  assert.strictEqual(champagneRows.length, 12, 'Expected 12 Champagne bottles in sample_cellar.csv');
 });
 
 // ============================================================================
