@@ -29,3 +29,6 @@ dist-ssr
 # Agents workspace
 .agents/
 scratch/
+__pycache__/
+*.pyc
+

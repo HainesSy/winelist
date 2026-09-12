@@ -1,5 +1,6 @@
 // test/test_champagne_detail.mjs
 import { CHAMPAGNE_GRAND_CRUS, CHAMPAGNE_PREMIER_CRUS } from '../src/data/champagneData.js';
+import { WINE_REGION_BOUNDARIES } from '../src/data/wineRegionBoundaries.js';
 
 function pointInPoly(pt, poly) {
   let [x, y] = pt;
@@ -28,7 +29,6 @@ function ccw(A, B, C) {
 }
 
 function intersect(A, B, C, D) {
-  // Ignore shared endpoints
   if ((A[0] === C[0] && A[1] === C[1]) || (A[0] === D[0] && A[1] === D[1]) ||
       (B[0] === C[0] && B[1] === C[1]) || (B[0] === D[0] && B[1] === D[1])) {
     return false;
@@ -37,7 +37,7 @@ function intersect(A, B, C, D) {
 }
 
 function hasSelfIntersection(ring) {
-  const n = ring.length - 1; // last point is same as first
+  const n = ring.length - 1;
   for (let i = 0; i < n; i++) {
     for (let j = i + 1; j < n; j++) {
       if (Math.abs(i - j) <= 1 || (i === 0 && j === n - 1)) continue;
@@ -48,5 +48,35 @@ function hasSelfIntersection(ring) {
   }
   return { selfIntersects: false };
 }
+
+// Regression runner
+const featMap = {};
+for (const f of WINE_REGION_BOUNDARIES['champagne'].features) {
+  featMap[f.id] = f;
+  const rings = f.geometry.type === 'Polygon' ? f.geometry.coordinates : f.geometry.coordinates.map(p => p[0]);
+  for (let rIdx = 0; rIdx < rings.length; rIdx++) {
+    const ring = rings[rIdx];
+    const si = hasSelfIntersection(ring);
+    if (si.selfIntersects) {
+      throw new Error(`Self-intersection in feature ${f.id} ring ${rIdx}`);
+    }
+  }
+}
+
+const allCrus = [...CHAMPAGNE_GRAND_CRUS, ...CHAMPAGNE_PREMIER_CRUS];
+let passed = 0;
+for (const cru of allCrus) {
+  const feat = featMap[cru.subregionId];
+  if (!feat) {
+    throw new Error(`Missing feature for subregion: ${cru.subregionId}`);
+  }
+  const inside = featureContains(feat.geometry, cru.lng, cru.lat);
+  if (!inside) {
+    throw new Error(`Cru ${cru.name} [${cru.lng}, ${cru.lat}] is not inside ${cru.subregionId}`);
+  }
+  passed++;
+}
+
+console.log(`✅ [Champagne Regression] All ${passed}/${allCrus.length} Crus strictly contained with 0 self-intersections.`);
 
 export { pointInPoly, featureContains, hasSelfIntersection };
