@@ -662,6 +662,7 @@ export const CHAMPAGNE_SUBREGIONS = [
   {
     id: 'montagne-de-reims',
     name: "Montagne de Reims",
+    color: '#8B1E3F',
     district: "Montagne de Reims",
     lat: 49.16,
     lng: 4.10,
@@ -680,6 +681,7 @@ export const CHAMPAGNE_SUBREGIONS = [
   {
     id: 'vallee-de-la-marne',
     name: "Vallée de la Marne",
+    color: '#7B1FA2',
     district: "Vallée de la Marne",
     lat: 49.07,
     lng: 3.90,
@@ -698,6 +700,7 @@ export const CHAMPAGNE_SUBREGIONS = [
   {
     id: 'cote-des-blancs',
     name: "Côte des Blancs",
+    color: '#D4AF37',
     district: "Côte des Blancs",
     lat: 48.97,
     lng: 4.02,
@@ -716,6 +719,7 @@ export const CHAMPAGNE_SUBREGIONS = [
   {
     id: 'cote-de-sezanne',
     name: "Côte de Sézanne",
+    color: '#D87D2A',
     district: "Côte de Sézanne",
     lat: 48.72,
     lng: 3.75,
@@ -732,6 +736,7 @@ export const CHAMPAGNE_SUBREGIONS = [
   {
     id: 'cote-des-bar',
     name: "Côte des Bar (Aube)",
+    color: '#A04020',
     district: "Côte des Bar (Aube)",
     lat: 48.10,
     lng: 4.40,
@@ -748,6 +753,7 @@ export const CHAMPAGNE_SUBREGIONS = [
   {
     id: 'coteaux-sud-epernay',
     name: "Coteaux Sud d’Épernay",
+    color: '#00897B',
     district: "Coteaux Sud d’Épernay",
     lat: 49.00,
     lng: 3.94,
@@ -764,6 +770,7 @@ export const CHAMPAGNE_SUBREGIONS = [
   {
     id: 'vitryat',
     name: "Vitryat (Côtes de Vitry)",
+    color: '#F4B400',
     district: "Vitryat",
     lat: 48.80,
     lng: 4.55,
