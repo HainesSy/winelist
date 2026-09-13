@@ -665,6 +665,7 @@ export default function WineRegionDetail({
   regionId, 
   regionName = '', 
   countryName = '', 
+  initialSubRegionId = null,
   rawWines = [], 
   onBack, 
   onSelectRegion, 
@@ -673,7 +674,7 @@ export default function WineRegionDetail({
   getCellarTrackerActionUrl 
 }) {
   const [activeTab, setActiveTab] = useState('map'); // 'map' | 'crus' | 'specs' | 'prestige' | 'pairings' | 'cellar'
-  const [activeSubRegionId, setActiveSubRegionId] = useState(null);
+  const [activeSubRegionId, setActiveSubRegionId] = useState(initialSubRegionId);
   const [selectedCruId, setSelectedCruId] = useState(null);
   const [cruDistrictFilter, setCruDistrictFilter] = useState('all');
   const [cruClassificationFilter, setCruClassificationFilter] = useState('all'); // 'all' | 'grandCrus' | 'premierCrus'
@@ -685,6 +686,24 @@ export default function WineRegionDetail({
   const [pairingTypeFilter, setPairingTypeFilter] = useState('all'); // 'all' | 'red' | 'white' | 'sparkling'
   const [regionDropdownOpen, setRegionDropdownOpen] = useState(false);
   const [searchFilter, setSearchFilter] = useState('');
+
+  // Sync activeSubRegionId whenever initialSubRegionId prop updates
+  useEffect(() => {
+    setActiveSubRegionId(initialSubRegionId);
+  }, [initialSubRegionId]);
+
+  const handleSubRegionSelect = (subId) => {
+    setActiveSubRegionId(subId);
+    if (region?.id) {
+      const currentHash = window.location.hash;
+      const targetHash = subId 
+        ? `#region=${encodeURIComponent(region.id)}&subregion=${encodeURIComponent(subId)}`
+        : `#region=${encodeURIComponent(region.id)}`;
+      if (currentHash !== targetHash) {
+        window.location.hash = targetHash;
+      }
+    }
+  };
 
   // Resolve region data from ID or query
   const region = useMemo(() => {
@@ -1334,7 +1353,7 @@ export default function WineRegionDetail({
           <WineRegionMap 
             region={region} 
             activeSubRegionId={activeSubRegionId}
-            onSelectSubRegion={setActiveSubRegionId}
+            onSelectSubRegion={handleSubRegionSelect}
             cellarBottlesCountBySub={cellarBottlesBySub}
             selectedCruId={selectedCruId}
             onSelectCru={(cruId) => {
@@ -1344,7 +1363,7 @@ export default function WineRegionDetail({
               }
             }}
             onViewCellar={(subId) => {
-              setActiveSubRegionId(subId);
+              handleSubRegionSelect(subId);
               setSearchFilter('');
               setActiveTab('cellar');
             }}
@@ -1366,7 +1385,7 @@ export default function WineRegionDetail({
                     <div 
                       key={sub.id} 
                       className={`appellation-card ${isSelected ? 'is-focused' : ''}`}
-                      onClick={() => setActiveSubRegionId(isSelected ? null : sub.id)}
+                      onClick={() => handleSubRegionSelect(isSelected ? null : sub.id)}
                     >
                       <div className="appellation-card-header">
                         <h4 className="appellation-name">{sub.name}</h4>
@@ -1376,7 +1395,7 @@ export default function WineRegionDetail({
                             className="appellation-bottle-tag clickable"
                             onClick={(e) => {
                               e.stopPropagation();
-                              setActiveSubRegionId(sub.id);
+                              handleSubRegionSelect(sub.id);
                               setSearchFilter('');
                               setActiveTab('cellar');
                             }}
@@ -2841,7 +2860,7 @@ export default function WineRegionDetail({
                   <button 
                     key={sub.id} 
                     className={`filter-pill ${activeSubRegionId === sub.id ? 'active' : ''}`}
-                    onClick={() => setActiveSubRegionId(activeSubRegionId === sub.id ? null : sub.id)}
+                    onClick={() => handleSubRegionSelect(activeSubRegionId === sub.id ? null : sub.id)}
                   >
                     {sub.name} {count > 0 ? `(${count})` : ''}
                   </button>

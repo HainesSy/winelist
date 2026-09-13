@@ -1557,6 +1557,336 @@ function isAliasOrNameMatch(cleanReg, normTarget) {
 }
 
 /**
+ * Mapping of specific viticultural zones, states, provinces, and subregions
+ * to their parent macro region and subregion ID for automatic map zoom.
+ */
+export const SUBREGION_ALIAS_MAP = {
+  // Spain (spain-rioja)
+  'galicia': { regionId: 'spain-rioja', subRegionId: 'rias-baixas' },
+  'rias baixas': { regionId: 'spain-rioja', subRegionId: 'rias-baixas' },
+  'rías baixas': { regionId: 'spain-rioja', subRegionId: 'rias-baixas' },
+  'val do salnes': { regionId: 'spain-rioja', subRegionId: 'rias-baixas' },
+  'val do salnés': { regionId: 'spain-rioja', subRegionId: 'rias-baixas' },
+  'salnes': { regionId: 'spain-rioja', subRegionId: 'rias-baixas' },
+  'salnés': { regionId: 'spain-rioja', subRegionId: 'rias-baixas' },
+  'o rosal': { regionId: 'spain-rioja', subRegionId: 'rias-baixas' },
+  'albarino': { regionId: 'spain-rioja', subRegionId: 'rias-baixas' },
+  'albariño': { regionId: 'spain-rioja', subRegionId: 'rias-baixas' },
+  'catalunya': { regionId: 'spain-rioja', subRegionId: 'priorat' },
+  'catalonia': { regionId: 'spain-rioja', subRegionId: 'priorat' },
+  'cataluna': { regionId: 'spain-rioja', subRegionId: 'priorat' },
+  'cataluña': { regionId: 'spain-rioja', subRegionId: 'priorat' },
+  'priorat': { regionId: 'spain-rioja', subRegionId: 'priorat' },
+  'ribera del duero': { regionId: 'spain-rioja', subRegionId: 'ribera-del-duero' },
+  'ribera': { regionId: 'spain-rioja', subRegionId: 'ribera-del-duero' },
+  'castilla y leon': { regionId: 'spain-rioja', subRegionId: 'ribera-del-duero' },
+  'castilla y león': { regionId: 'spain-rioja', subRegionId: 'ribera-del-duero' },
+  'rioja alta': { regionId: 'spain-rioja', subRegionId: 'rioja-alta-alavesa' },
+  'rioja alavesa': { regionId: 'spain-rioja', subRegionId: 'rioja-alta-alavesa' },
+  'rioja oriental': { regionId: 'spain-rioja', subRegionId: 'rioja-oriental' },
+  'rioja baja': { regionId: 'spain-rioja', subRegionId: 'rioja-oriental' },
+
+  // Italy Other (italy-other)
+  'lombardia': { regionId: 'italy-other', subRegionId: 'lombardia-valtellina' },
+  'lombardy': { regionId: 'italy-other', subRegionId: 'lombardia-valtellina' },
+  'valtellina': { regionId: 'italy-other', subRegionId: 'lombardia-valtellina' },
+  'valtellina superiore': { regionId: 'italy-other', subRegionId: 'lombardia-valtellina' },
+  'veneto': { regionId: 'italy-other', subRegionId: 'veneto-valpolicella' },
+  'valpolicella': { regionId: 'italy-other', subRegionId: 'veneto-valpolicella' },
+  'amarone': { regionId: 'italy-other', subRegionId: 'veneto-valpolicella' },
+  'amarone della valpolicella': { regionId: 'italy-other', subRegionId: 'veneto-valpolicella' },
+  'soave': { regionId: 'italy-other', subRegionId: 'veneto-valpolicella' },
+  'sicily': { regionId: 'italy-other', subRegionId: 'sicily-etna' },
+  'sicilia': { regionId: 'italy-other', subRegionId: 'sicily-etna' },
+  'etna': { regionId: 'italy-other', subRegionId: 'sicily-etna' },
+  'campania': { regionId: 'italy-other', subRegionId: 'campania-irpinia' },
+  'taurasi': { regionId: 'italy-other', subRegionId: 'campania-irpinia' },
+  'irpinia': { regionId: 'italy-other', subRegionId: 'campania-irpinia' },
+  'alto adige': { regionId: 'italy-other', subRegionId: 'alto-adige-sudtirol' },
+  'südtirol': { regionId: 'italy-other', subRegionId: 'alto-adige-sudtirol' },
+  'sudtirol': { regionId: 'italy-other', subRegionId: 'alto-adige-sudtirol' },
+  'trentino-alto adige': { regionId: 'italy-other', subRegionId: 'alto-adige-sudtirol' },
+  'friuli': { regionId: 'italy-other', subRegionId: 'friuli-venezia-giulia' },
+  'friuli-venezia giulia': { regionId: 'italy-other', subRegionId: 'friuli-venezia-giulia' },
+
+  // Australia (australia)
+  'western australia': { regionId: 'australia', subRegionId: 'margaret-river' },
+  'wa': { regionId: 'australia', subRegionId: 'margaret-river' },
+  'margaret river': { regionId: 'australia', subRegionId: 'margaret-river' },
+  'new south wales': { regionId: 'australia', subRegionId: 'hunter-valley' },
+  'nsw': { regionId: 'australia', subRegionId: 'hunter-valley' },
+  'hunter': { regionId: 'australia', subRegionId: 'hunter-valley' },
+  'hunter valley': { regionId: 'australia', subRegionId: 'hunter-valley' },
+  'barossa': { regionId: 'australia', subRegionId: 'barossa-valley' },
+  'barossa valley': { regionId: 'australia', subRegionId: 'barossa-valley' },
+  'eden valley': { regionId: 'australia', subRegionId: 'eden-valley' },
+  'coonawarra': { regionId: 'australia', subRegionId: 'coonawarra' },
+  'south australia': { regionId: 'australia', subRegionId: 'barossa-valley' },
+
+  // Germany (germany-mosel)
+  'mosel': { regionId: 'germany-mosel', subRegionId: 'mittelmosel' },
+  'mosel saar ruwer': { regionId: 'germany-mosel', subRegionId: 'mittelmosel' },
+  'mittelmosel': { regionId: 'germany-mosel', subRegionId: 'mittelmosel' },
+  'bernkastel': { regionId: 'germany-mosel', subRegionId: 'mittelmosel' },
+  'saar': { regionId: 'germany-mosel', subRegionId: 'saar-ruwer' },
+  'ruwer': { regionId: 'germany-mosel', subRegionId: 'saar-ruwer' },
+  'rheingau': { regionId: 'germany-mosel', subRegionId: 'rheingau' },
+  'nahe': { regionId: 'germany-mosel', subRegionId: 'nahe-pfalz' },
+  'pfalz': { regionId: 'germany-mosel', subRegionId: 'nahe-pfalz' },
+  'mittelhaardt': { regionId: 'germany-mosel', subRegionId: 'nahe-pfalz' },
+  'württemberg': { regionId: 'germany-mosel', subRegionId: 'nahe-pfalz' },
+  'wurttemberg': { regionId: 'germany-mosel', subRegionId: 'nahe-pfalz' },
+  'baden': { regionId: 'germany-mosel', subRegionId: 'nahe-pfalz' },
+  'rheinhessen': { regionId: 'germany-mosel', subRegionId: 'nahe-pfalz' },
+
+  // Chile (chile-maipo)
+  'maipo': { regionId: 'chile-maipo', subRegionId: 'alto-maipo' },
+  'maipo valley': { regionId: 'chile-maipo', subRegionId: 'alto-maipo' },
+  'alto maipo': { regionId: 'chile-maipo', subRegionId: 'alto-maipo' },
+  'puente alto': { regionId: 'chile-maipo', subRegionId: 'alto-maipo' },
+  'colchagua': { regionId: 'chile-maipo', subRegionId: 'colchagua-apalta' },
+  'colchagua valley': { regionId: 'chile-maipo', subRegionId: 'colchagua-apalta' },
+  'apalta': { regionId: 'chile-maipo', subRegionId: 'colchagua-apalta' },
+  'casablanca': { regionId: 'chile-maipo', subRegionId: 'casablanca-san-antonio' },
+  'casablanca valley': { regionId: 'chile-maipo', subRegionId: 'casablanca-san-antonio' },
+  'san antonio': { regionId: 'chile-maipo', subRegionId: 'casablanca-san-antonio' },
+  'leyda': { regionId: 'chile-maipo', subRegionId: 'casablanca-san-antonio' },
+  'leyda valley': { regionId: 'chile-maipo', subRegionId: 'casablanca-san-antonio' },
+  'cachapoal': { regionId: 'chile-maipo', subRegionId: 'peumo-cachapoal' },
+  'peumo': { regionId: 'chile-maipo', subRegionId: 'peumo-cachapoal' },
+
+  // Argentina (argentina-mendoza)
+  'uco': { regionId: 'argentina-mendoza', subRegionId: 'valle-de-uco' },
+  'uco valley': { regionId: 'argentina-mendoza', subRegionId: 'valle-de-uco' },
+  'valle de uco': { regionId: 'argentina-mendoza', subRegionId: 'valle-de-uco' },
+  'tupungato': { regionId: 'argentina-mendoza', subRegionId: 'valle-de-uco' },
+  'gualtallary': { regionId: 'argentina-mendoza', subRegionId: 'valle-de-uco' },
+  'lujan de cuyo': { regionId: 'argentina-mendoza', subRegionId: 'lujan-de-cuyo' },
+  'luján de cuyo': { regionId: 'argentina-mendoza', subRegionId: 'lujan-de-cuyo' },
+  'maipu': { regionId: 'argentina-mendoza', subRegionId: 'maipu' },
+  'maipú': { regionId: 'argentina-mendoza', subRegionId: 'maipu' },
+  'san rafael': { regionId: 'argentina-mendoza', subRegionId: 'san-rafael' },
+
+  // New Zealand (new-zealand)
+  'marlborough': { regionId: 'new-zealand', subRegionId: 'marlborough' },
+  'wairau': { regionId: 'new-zealand', subRegionId: 'marlborough' },
+  'central otago': { regionId: 'new-zealand', subRegionId: 'central-otago' },
+  'otago': { regionId: 'new-zealand', subRegionId: 'central-otago' },
+  'bannockburn': { regionId: 'new-zealand', subRegionId: 'central-otago' },
+  'hawkes bay': { regionId: 'new-zealand', subRegionId: 'hawkes-bay' },
+  'hawke\'s bay': { regionId: 'new-zealand', subRegionId: 'hawkes-bay' },
+  'martinborough': { regionId: 'new-zealand', subRegionId: 'martinborough' },
+
+  // South Africa (south-africa)
+  'stellenbosch': { regionId: 'south-africa', subRegionId: 'stellenbosch' },
+  'swartland': { regionId: 'south-africa', subRegionId: 'swartland' },
+  'walker bay': { regionId: 'south-africa', subRegionId: 'walker-bay' },
+  'hemel-en-aarde': { regionId: 'south-africa', subRegionId: 'walker-bay' },
+  'hemel en aarde': { regionId: 'south-africa', subRegionId: 'walker-bay' },
+  'constantia': { regionId: 'south-africa', subRegionId: 'constantia' },
+  'franschhoek': { regionId: 'south-africa', subRegionId: 'franschhoek' },
+
+  // Portugal (portugal)
+  'douro': { regionId: 'portugal', subRegionId: 'douro' },
+  'douro valley': { regionId: 'portugal', subRegionId: 'douro' },
+  'dao': { regionId: 'portugal', subRegionId: 'dao' },
+  'dão': { regionId: 'portugal', subRegionId: 'dao' },
+  'alentejo': { regionId: 'portugal', subRegionId: 'alentejo' },
+  'vinho verde': { regionId: 'portugal', subRegionId: 'vinho-verde' },
+  'bairrada': { regionId: 'portugal', subRegionId: 'bairrada' },
+
+  // Burgundy (burgundy)
+  'chablis': { regionId: 'burgundy', subRegionId: 'chablis' },
+  'cote de nuits': { regionId: 'burgundy', subRegionId: 'cote-de-nuits' },
+  'côte de nuits': { regionId: 'burgundy', subRegionId: 'cote-de-nuits' },
+  'cote de beaune': { regionId: 'burgundy', subRegionId: 'cote-de-beaune' },
+  'côte de beaune': { regionId: 'burgundy', subRegionId: 'cote-de-beaune' },
+  'cote chalonnaise': { regionId: 'burgundy', subRegionId: 'cote-chalonnaise' },
+  'côte chalonnaise': { regionId: 'burgundy', subRegionId: 'cote-chalonnaise' },
+  'maconnais': { regionId: 'burgundy', subRegionId: 'maconnais' },
+  'mâconnais': { regionId: 'burgundy', subRegionId: 'maconnais' },
+
+  // California (california)
+  'napa': { regionId: 'california', subRegionId: 'napa-valley-floor' },
+  'napa valley': { regionId: 'california', subRegionId: 'napa-valley-floor' },
+  'oakville': { regionId: 'california', subRegionId: 'napa-valley-floor' },
+  'rutherford': { regionId: 'california', subRegionId: 'napa-valley-floor' },
+  'mt veeder': { regionId: 'california', subRegionId: 'napa-mountain-avas' },
+  'mt. veeder': { regionId: 'california', subRegionId: 'napa-mountain-avas' },
+  'mount veeder': { regionId: 'california', subRegionId: 'napa-mountain-avas' },
+  'howell mountain': { regionId: 'california', subRegionId: 'napa-mountain-avas' },
+  'sonoma': { regionId: 'california', subRegionId: 'sonoma-coast-rrv' },
+  'sonoma county': { regionId: 'california', subRegionId: 'sonoma-coast-rrv' },
+  'sonoma coast': { regionId: 'california', subRegionId: 'sonoma-coast-rrv' },
+  'russian river': { regionId: 'california', subRegionId: 'sonoma-coast-rrv' },
+  'russian river valley': { regionId: 'california', subRegionId: 'sonoma-coast-rrv' },
+  'santa cruz': { regionId: 'california', subRegionId: 'santa-cruz-mountains' },
+  'santa cruz mountains': { regionId: 'california', subRegionId: 'santa-cruz-mountains' },
+  'paso robles': { regionId: 'california', subRegionId: 'central-coast-paso' },
+  'central coast': { regionId: 'california', subRegionId: 'central-coast-paso' },
+
+  // Oregon (oregon)
+  'dundee hills': { regionId: 'oregon', subRegionId: 'dundee-hills' },
+  'eola-amity hills': { regionId: 'oregon', subRegionId: 'eola-amity-hills' },
+  'eola amity': { regionId: 'oregon', subRegionId: 'eola-amity-hills' },
+  'ribbon ridge': { regionId: 'oregon', subRegionId: 'ribbon-ridge-yamhill' },
+  'yamhill': { regionId: 'oregon', subRegionId: 'ribbon-ridge-yamhill' },
+  'yamhill-carlton': { regionId: 'oregon', subRegionId: 'ribbon-ridge-yamhill' },
+
+  // Bordeaux (bordeaux)
+  'pauillac': { regionId: 'bordeaux', subRegionId: 'left-bank-medoc' },
+  'margaux': { regionId: 'bordeaux', subRegionId: 'left-bank-medoc' },
+  'saint-julien': { regionId: 'bordeaux', subRegionId: 'left-bank-medoc' },
+  'saint julien': { regionId: 'bordeaux', subRegionId: 'left-bank-medoc' },
+  'saint-estephe': { regionId: 'bordeaux', subRegionId: 'left-bank-medoc' },
+  'saint estephe': { regionId: 'bordeaux', subRegionId: 'left-bank-medoc' },
+  'saint-emilion': { regionId: 'bordeaux', subRegionId: 'right-bank-libournais' },
+  'saint emilion': { regionId: 'bordeaux', subRegionId: 'right-bank-libournais' },
+  'pomerol': { regionId: 'bordeaux', subRegionId: 'right-bank-libournais' },
+  'sauternes': { regionId: 'bordeaux', subRegionId: 'sauternais' },
+  'pessac-leognan': { regionId: 'bordeaux', subRegionId: 'graves-pessac' },
+  'graves': { regionId: 'bordeaux', subRegionId: 'graves-pessac' },
+  'medoc': { regionId: 'bordeaux', subRegionId: 'medoc-haut-medoc' },
+  'haut-medoc': { regionId: 'bordeaux', subRegionId: 'medoc-haut-medoc' },
+
+  // Loire Valley (loire-valley)
+  'sancerre': { regionId: 'loire-valley', subRegionId: 'centre-loire' },
+  'pouilly-fume': { regionId: 'loire-valley', subRegionId: 'centre-loire' },
+  'upper loire': { regionId: 'loire-valley', subRegionId: 'centre-loire' },
+  'centre-loire': { regionId: 'loire-valley', subRegionId: 'centre-loire' },
+  'chinon': { regionId: 'loire-valley', subRegionId: 'touraine' },
+  'vouvray': { regionId: 'loire-valley', subRegionId: 'touraine' },
+  'touraine': { regionId: 'loire-valley', subRegionId: 'touraine' },
+  'saumur': { regionId: 'loire-valley', subRegionId: 'anjou-saumur' },
+  'anjou': { regionId: 'loire-valley', subRegionId: 'anjou-saumur' },
+  'muscadet': { regionId: 'loire-valley', subRegionId: 'pays-nantais' },
+
+  // Rhône (rhone)
+  'cote-rotie': { regionId: 'rhone', subRegionId: 'cote-rotie' },
+  'cote rotie': { regionId: 'rhone', subRegionId: 'cote-rotie' },
+  'hermitage': { regionId: 'rhone', subRegionId: 'hermitage' },
+  'cornas': { regionId: 'rhone', subRegionId: 'cornas' },
+  'chateauneuf-du-pape': { regionId: 'rhone', subRegionId: 'chateauneuf-du-pape' },
+  'chateauneuf': { regionId: 'rhone', subRegionId: 'chateauneuf-du-pape' },
+  'gigondas': { regionId: 'rhone', subRegionId: 'gigondas' },
+
+  // Piedmont (piedmont)
+  'barolo': { regionId: 'piedmont', subRegionId: 'barolo-langhe' },
+  'barbaresco': { regionId: 'piedmont', subRegionId: 'barbaresco-langhe' },
+  'langhe': { regionId: 'piedmont', subRegionId: 'barolo-langhe' },
+
+  // Tuscany (tuscany)
+  'chianti': { regionId: 'tuscany', subRegionId: 'chianti-classico' },
+  'chianti classico': { regionId: 'tuscany', subRegionId: 'chianti-classico' },
+  'montalcino': { regionId: 'tuscany', subRegionId: 'montalcino' },
+  'brunello': { regionId: 'tuscany', subRegionId: 'montalcino' },
+  'bolgheri': { regionId: 'tuscany', subRegionId: 'bolgheri-coastal' },
+
+  // Champagne (champagne)
+  'montagne de reims': { regionId: 'champagne', subRegionId: 'montagne-de-reims' },
+  'vallee de la marne': { regionId: 'champagne', subRegionId: 'vallee-de-la-marne' },
+  'cote des blancs': { regionId: 'champagne', subRegionId: 'cote-des-blancs' },
+  'cote des bar': { regionId: 'champagne', subRegionId: 'cote-des-bar' },
+  'aube': { regionId: 'champagne', subRegionId: 'cote-des-bar' },
+
+  // Japan (japan-chubu)
+  'chubu': { regionId: 'japan-chubu', subRegionId: 'yamanashi-katsunuma' },
+  'chūbu': { regionId: 'japan-chubu', subRegionId: 'yamanashi-katsunuma' },
+  'yamanashi': { regionId: 'japan-chubu', subRegionId: 'yamanashi-katsunuma' },
+  'katsunuma': { regionId: 'japan-chubu', subRegionId: 'yamanashi-katsunuma' },
+  'nagano': { regionId: 'japan-chubu', subRegionId: 'nagano-shinshu' }
+};
+
+/**
+ * Resolves a wine query to both its parent macro wine region and the specific
+ * subregion district (e.g. "Galicia" -> { region: spain-rioja, subRegionId: "rias-baixas" }).
+ */
+export function resolveWineRegionAndSubRegion(regionQuery, countryQuery = '') {
+  if (regionQuery === '' || regionQuery === null || regionQuery === undefined) return null;
+  if (typeof regionQuery !== 'string' && typeof regionQuery !== 'number') return null;
+
+  const rawQuery = String(regionQuery);
+  const cleanReg = normalizeText(rawQuery);
+  const cleanRegNoSpace = cleanReg.replace(/[-_]+/g, ' ');
+
+  // 1. Explicit subregion alias dictionary
+  const mappedSub = SUBREGION_ALIAS_MAP[cleanReg] || SUBREGION_ALIAS_MAP[cleanRegNoSpace];
+  if (mappedSub && WINE_REGIONS[mappedSub.regionId]) {
+    return {
+      region: WINE_REGIONS[mappedSub.regionId],
+      subRegionId: mappedSub.subRegionId || null,
+      cruId: mappedSub.cruId || null,
+      matchType: mappedSub.subRegionId ? 'subregion' : (mappedSub.cruId ? 'cru' : 'macro')
+    };
+  }
+
+  // 2. Direct exact match on macro region ID (safely check hasOwnProperty)
+  if (cleanReg && Object.prototype.hasOwnProperty.call(WINE_REGIONS, cleanReg)) {
+    return { region: WINE_REGIONS[cleanReg], subRegionId: null, cruId: null, matchType: 'macro' };
+  }
+  const kebabRaw = cleanReg ? cleanReg.replace(/[\s_]+/g, '-') : '';
+  if (kebabRaw && Object.prototype.hasOwnProperty.call(WINE_REGIONS, kebabRaw)) {
+    return { region: WINE_REGIONS[kebabRaw], subRegionId: null, cruId: null, matchType: 'macro' };
+  }
+
+  // 3. Scan all regions' subregions and crus
+  if (cleanReg) {
+    for (const regKey of Object.keys(WINE_REGIONS)) {
+      const r = WINE_REGIONS[regKey];
+      if (r.subRegions) {
+        for (const sub of r.subRegions) {
+          const normSubName = normalizeText(sub.name);
+          const normSubId = normalizeText(sub.id);
+          if (normSubName === cleanReg || normSubId === cleanReg || normSubName.replace(/[-_]+/g, ' ') === cleanRegNoSpace) {
+            return { region: r, subRegionId: sub.id, cruId: null, matchType: 'subregion' };
+          }
+          const subNameParts = normSubName.replace(/[()]/g, ' ').split(/\s+/).filter(Boolean);
+          if (subNameParts.includes(cleanReg) && cleanReg.length >= 4) {
+            return { region: r, subRegionId: sub.id, cruId: null, matchType: 'subregion' };
+          }
+          if (sub.appellations) {
+            for (const app of sub.appellations) {
+              const cleanApp = normalizeText(app);
+              if (cleanApp === cleanReg || cleanApp.replace(/\s+(aoc|docg|doc|gi|ava|qualitätswein|d\.o\.|do|doq)$/i, '') === cleanReg) {
+                return { region: r, subRegionId: sub.id, cruId: null, matchType: 'subregion' };
+              }
+            }
+          }
+        }
+      }
+      if (r.grandCrus) {
+        for (const cru of r.grandCrus) {
+          if (cru.name && (normalizeText(cru.name) === cleanReg || normalizeText(cru.name).replace(/[-_]+/g, ' ') === cleanRegNoSpace)) {
+            return { region: r, subRegionId: cru.subregion || null, cruId: cru.id, matchType: 'cru' };
+          }
+          if (cru.id && (normalizeText(cru.id) === cleanReg || normalizeText(cru.id).replace(/[-_]+/g, ' ') === cleanRegNoSpace)) {
+            return { region: r, subRegionId: cru.subregion || null, cruId: cru.id, matchType: 'cru' };
+          }
+        }
+      }
+      if (r.premierCrus) {
+        for (const cru of r.premierCrus) {
+          if (cru.name && (normalizeText(cru.name) === cleanReg || normalizeText(cru.name).replace(/[-_]+/g, ' ') === cleanRegNoSpace)) {
+            return { region: r, subRegionId: cru.subregion || null, cruId: cru.id, matchType: 'cru' };
+          }
+          if (cru.id && (normalizeText(cru.id) === cleanReg || normalizeText(cru.id).replace(/[-_]+/g, ' ') === cleanRegNoSpace)) {
+            return { region: r, subRegionId: cru.subregion || null, cruId: cru.id, matchType: 'cru' };
+          }
+        }
+      }
+    }
+  }
+
+  // 4. Macro fallback via findWineRegion
+  const macro = findWineRegion(regionQuery, countryQuery);
+  if (macro) {
+    return { region: macro, subRegionId: null, cruId: null, matchType: 'macro' };
+  }
+
+  return null;
+}
+
+/**
  * Helper: Resolve wine region query with fuzzy matching, accent-insensitivity,
  * alias resolution, country context, and resilient safe fallback.
  */

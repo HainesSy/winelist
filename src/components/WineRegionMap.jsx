@@ -216,7 +216,7 @@ export default function WineRegionMap({
     const isNewRegion = prevRegionIdRef.current !== region.id;
     if (isNewRegion) {
       prevRegionIdRef.current = region.id;
-      if (region.center && region.zoom) {
+      if (!activeSubRegionId && region.center && region.zoom) {
         map.setView(region.center, region.zoom, { animate: false });
       }
     }
@@ -1119,14 +1119,19 @@ export default function WineRegionMap({
         // If GeoJSON boundary exists for this subregion, zoom smoothly to fit it
         let targetBounds = null;
         if (boundaryData && boundaryData.features) {
-          const matchingFeature = boundaryData.features.find(f => 
+          const matchingFeatures = boundaryData.features.filter(f => 
             f.id === activeSubRegionId || 
+            (typeof f.id === 'string' && f.id.startsWith(activeSubRegionId + '-')) ||
             f.properties?.subregionId === activeSubRegionId ||
             (f.properties?.name && targetSub.name && f.properties.name.toLowerCase() === targetSub.name.toLowerCase())
           );
-          if (matchingFeature) {
+          if (matchingFeatures.length > 0) {
             try {
-              targetBounds = L.geoJSON(matchingFeature).getBounds();
+              const group = L.geoJSON(matchingFeatures);
+              const b = group.getBounds();
+              if (b && b.isValid()) {
+                targetBounds = b;
+              }
             } catch (e) {}
           }
         }
@@ -1134,7 +1139,7 @@ export default function WineRegionMap({
         if (targetBounds && targetBounds.isValid()) {
           map.fitBounds(targetBounds, {
             padding: [45, 45],
-            maxZoom: 11,
+            maxZoom: 12,
             animate: true,
             duration: 1.2
           });

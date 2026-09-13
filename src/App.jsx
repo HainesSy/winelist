@@ -30,7 +30,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import WineRegionDetail from './components/WineRegionDetail';
-import { findWineRegion } from './data/wineRegions';
+import { findWineRegion, resolveWineRegionAndSubRegion } from './data/wineRegions';
 import './App.css';
 
 function App() {
@@ -227,18 +227,35 @@ function App() {
     }
   }, []);
 
-  // Hash-based region navigation listener (e.g. #region=champagne or #region=burgundy)
+  // Hash-based region navigation listener (e.g. #region=champagne or #region=burgundy or #region=spain-rioja&subregion=rias-baixas or #region=galicia)
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
       if (hash.startsWith('#region=')) {
-        const slug = decodeURIComponent(hash.replace('#region=', '')).trim();
-        if (slug) {
-          const matched = findWineRegion(slug);
+        const rawString = hash.slice(1);
+        const params = new URLSearchParams(rawString);
+        const regionParam = params.get('region') ? decodeURIComponent(params.get('region')).trim() : '';
+        const explicitSubregion = params.get('subregion') ? decodeURIComponent(params.get('subregion')).trim() : null;
+
+        if (regionParam) {
+          const resolution = resolveWineRegionAndSubRegion(regionParam);
+          const matched = resolution.region || findWineRegion(regionParam);
+          const finalSubRegionId = explicitSubregion || resolution.subRegionId || null;
+
           if (matched) {
-            setSelectedRegion({ id: matched.id, name: matched.name, country: matched.country });
+            setSelectedRegion({
+              id: matched.id,
+              name: matched.name,
+              country: matched.country,
+              subRegionId: finalSubRegionId
+            });
           } else {
-            setSelectedRegion({ id: slug, name: slug, country: '' });
+            setSelectedRegion({
+              id: regionParam,
+              name: regionParam,
+              country: '',
+              subRegionId: finalSubRegionId
+            });
           }
         }
       } else if (!hash || hash === '#' || hash === '#menu') {
@@ -252,14 +269,21 @@ function App() {
   }, []);
 
   const navigateToRegion = (regionName, countryName = '') => {
-    const matched = findWineRegion(regionName, countryName);
+    const resolution = resolveWineRegionAndSubRegion(regionName, countryName);
+    const matched = resolution.region || findWineRegion(regionName, countryName);
     const regionId = matched ? matched.id : regionName.toLowerCase().replace(/\s+/g, '-');
+    const subRegionId = resolution.subRegionId || null;
     setSelectedRegion({
       id: regionId,
       name: matched ? matched.name : regionName,
-      country: matched ? matched.country : countryName
+      country: matched ? matched.country : countryName,
+      subRegionId: subRegionId
     });
-    window.location.hash = `#region=${encodeURIComponent(regionId)}`;
+    if (subRegionId) {
+      window.location.hash = `#region=${encodeURIComponent(regionId)}&subregion=${encodeURIComponent(subRegionId)}`;
+    } else {
+      window.location.hash = `#region=${encodeURIComponent(regionId)}`;
+    }
   };
 
   const handleBackToMenu = () => {
@@ -807,16 +831,24 @@ function App() {
           regionId={selectedRegion.id}
           regionName={selectedRegion.name}
           countryName={selectedRegion.country}
+          initialSubRegionId={selectedRegion.subRegionId || null}
           rawWines={rawWines || []}
           onBack={handleBackToMenu}
           onSelectRegion={(newRegId) => {
-            const matched = findWineRegion(newRegId);
+            const resolution = resolveWineRegionAndSubRegion(newRegId);
+            const matched = resolution.region || findWineRegion(newRegId);
+            const subId = resolution.subRegionId || null;
             setSelectedRegion({
-              id: newRegId,
+              id: matched ? matched.id : newRegId,
               name: matched ? matched.name : newRegId,
-              country: matched ? matched.country : ''
+              country: matched ? matched.country : '',
+              subRegionId: subId
             });
-            window.location.hash = `#region=${encodeURIComponent(newRegId)}`;
+            if (subId) {
+              window.location.hash = `#region=${encodeURIComponent(matched ? matched.id : newRegId)}&subregion=${encodeURIComponent(subId)}`;
+            } else {
+              window.location.hash = `#region=${encodeURIComponent(matched ? matched.id : newRegId)}`;
+            }
           }}
           onConsumeBottle={executeInstantConsume}
           consumedCounts={consumedCounts}
@@ -944,16 +976,24 @@ function App() {
             regionId={selectedRegion.id}
             regionName={selectedRegion.name}
             countryName={selectedRegion.country}
+            initialSubRegionId={selectedRegion.subRegionId || null}
             rawWines={rawWines || []}
             onBack={handleBackToMenu}
             onSelectRegion={(newRegId) => {
-              const matched = findWineRegion(newRegId);
+              const resolution = resolveWineRegionAndSubRegion(newRegId);
+              const matched = resolution.region || findWineRegion(newRegId);
+              const subId = resolution.subRegionId || null;
               setSelectedRegion({
-                id: newRegId,
+                id: matched ? matched.id : newRegId,
                 name: matched ? matched.name : newRegId,
-                country: matched ? matched.country : ''
+                country: matched ? matched.country : '',
+                subRegionId: subId
               });
-              window.location.hash = `#region=${encodeURIComponent(newRegId)}`;
+              if (subId) {
+                window.location.hash = `#region=${encodeURIComponent(matched ? matched.id : newRegId)}&subregion=${encodeURIComponent(subId)}`;
+              } else {
+                window.location.hash = `#region=${encodeURIComponent(matched ? matched.id : newRegId)}`;
+              }
             }}
             onConsumeBottle={executeInstantConsume}
             consumedCounts={consumedCounts}
