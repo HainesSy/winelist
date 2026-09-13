@@ -160,6 +160,7 @@ export default function WineRegionMap({
   const onSelectSubRegionRef = useRef(onSelectSubRegion);
   const onSelectCruRef = useRef(onSelectCru);
   const onViewCellarRef = useRef(onViewCellar);
+  const prevRegionIdRef = useRef(null);
 
   const hasGrandCrus = Boolean(region.grandCrus && region.grandCrus.length > 0);
   const hasPremierCrus = Boolean(region.premierCrus && region.premierCrus.length > 0);
@@ -169,7 +170,7 @@ export default function WineRegionMap({
   const [showBoundaries, setShowBoundaries] = useState(true);
   const [showRegionOutline, setShowRegionOutline] = useState(false);
 
-  const minMarkerZoom = Math.max((region.zoom || 9) - 1, 7);
+  const minMarkerZoom = Math.max((region.zoom || 9) - 2, 4);
   const [isZoomedOut, setIsZoomedOut] = useState(false);
 
   // Reset pin view mode to districts when navigating between regions
@@ -211,9 +212,13 @@ export default function WineRegionMap({
 
     const map = mapInstanceRef.current;
 
-    // Reset view to region center
-    if (region.center && region.zoom) {
-      map.setView(region.center, region.zoom, { animate: false });
+    // Reset view to region center only when navigating to a new region
+    const isNewRegion = prevRegionIdRef.current !== region.id;
+    if (isNewRegion) {
+      prevRegionIdRef.current = region.id;
+      if (region.center && region.zoom) {
+        map.setView(region.center, region.zoom, { animate: false });
+      }
     }
 
     // Clear existing tile layers
@@ -551,7 +556,7 @@ export default function WineRegionMap({
     }
 
     // Frame map bounds: Prioritize regional outline for whole-region framing, then district boundaries
-    if (!activeSubRegionId && !selectedCruId) {
+    if (isNewRegion && !activeSubRegionId && !selectedCruId) {
       let targetBounds = null;
       if (showRegionOutline && outlineLayer && outlineLayer.getBounds().isValid()) {
         targetBounds = outlineLayer.getBounds();
@@ -1110,11 +1115,35 @@ export default function WineRegionMap({
 
     if (activeSubRegionId && region.subRegions) {
       const targetSub = region.subRegions.find(s => s.id === activeSubRegionId);
-      if (targetSub && targetSub.lat && targetSub.lng) {
-        map.flyTo([targetSub.lat, targetSub.lng], Math.max(region.zoom + 1, 10), {
-          duration: 1.2,
-          easeLinearity: 0.25
-        });
+      if (targetSub) {
+        // If GeoJSON boundary exists for this subregion, zoom smoothly to fit it
+        let targetBounds = null;
+        if (boundaryData && boundaryData.features) {
+          const matchingFeature = boundaryData.features.find(f => 
+            f.id === activeSubRegionId || 
+            f.properties?.subregionId === activeSubRegionId ||
+            (f.properties?.name && targetSub.name && f.properties.name.toLowerCase() === targetSub.name.toLowerCase())
+          );
+          if (matchingFeature) {
+            try {
+              targetBounds = L.geoJSON(matchingFeature).getBounds();
+            } catch (e) {}
+          }
+        }
+
+        if (targetBounds && targetBounds.isValid()) {
+          map.fitBounds(targetBounds, {
+            padding: [45, 45],
+            maxZoom: 11,
+            animate: true,
+            duration: 1.2
+          });
+        } else if (targetSub.lat && targetSub.lng) {
+          map.flyTo([targetSub.lat, targetSub.lng], Math.max(region.zoom + 1, 10), {
+            duration: 1.2,
+            easeLinearity: 0.25
+          });
+        }
 
         const targetMarker = markersRef.current[activeSubRegionId];
         if (targetMarker) {
@@ -1126,7 +1155,7 @@ export default function WineRegionMap({
     } else if (!activeSubRegionId && !selectedCruId && region.center) {
       map.flyTo(region.center, region.zoom, { duration: 1.0 });
     }
-  }, [activeSubRegionId, region, selectedCruId]);
+  }, [activeSubRegionId, region, selectedCruId, boundaryData]);
 
   // Sync active Cru focus (searching in both 17 Grand Crus and 16 Premier Crus)
   useEffect(() => {

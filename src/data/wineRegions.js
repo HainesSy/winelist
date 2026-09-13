@@ -1445,9 +1445,9 @@ export const WINE_REGIONS = {
     aliases: ['australia', 'barossa', 'margaret river', 'eden valley', 'hunter valley', 'coonawarra', 'grange', 'penfolds', 'henschke'],
     tagline: "The Ancient Treasury of Pre-Phylloxera Shiraz & Maritime Elegance",
     summary: "Home to the world's oldest continually producing ungrafted Shiraz and Cabernet Sauvignon vines (planted 1843-1885) in the Barossa Valley and Eden Valley, alongside the maritime Cabernet and Chardonnay paradise of Margaret River and the ageworthy Semillons of the Hunter Valley.",
-    center: [-34.5300, 138.9500],
-    zoom: 8,
-    bounds: [[-38.00, 114.00], [-32.00, 152.00]],
+    center: [-33.5000, 134.0000],
+    zoom: 5,
+    bounds: [[-38.50, 114.50], [-31.50, 152.50]],
     heroGradient: 'linear-gradient(135deg, #2b1212 0%, #4a1c1c 50%, #d4af37 100%)',
     accentColor: '#800000',
 

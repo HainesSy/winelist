@@ -1339,7 +1339,9 @@ export default function WineRegionDetail({
             selectedCruId={selectedCruId}
             onSelectCru={(cruId) => {
               setSelectedCruId(cruId);
-              setActiveTab('crus');
+              if (cruId) {
+                setActiveTab('crus');
+              }
             }}
             onViewCellar={(subId) => {
               setActiveSubRegionId(subId);
