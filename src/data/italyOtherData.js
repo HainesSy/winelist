@@ -33,7 +33,7 @@ export const ITALY_OTHER_SUBREGIONS = [
       { name: "Soave Classico Hillside", focus: "Dark volcanic basalt and ancient limestone hills producing laser-pure Garganega (Calvarino, La Rocca)" },
       { name: "Conegliano Valdobbiadene", focus: "Steep dramatic Rive hillsides and Cartizze producing elite Prosecco Superiore DOCG" }
     ],
-    description: "Stretching north from romantic Verona toward the Lessini Mountains, this historic amphitheater has been celebrated for decadent nectar since ancient Roman times. The sacred appassimento method slowly dries Corvina bunches on winter straw mats to concentrate opulent fruit. Benchmarks by Giuseppe Quintarelli and Romano Dal Forno yield monumental Amarone overflowing with dried cherry, dark chocolate, and multi-decade cellar grandeur."
+    description: "Valpolicella encompasses a series of parallel river valleys extending northward from Verona into the foothills of the Lessini Mountains. Roman poet Virgil praised these hillsides for sweet Acinatico, the ancient ancestor to modern Amarone produced through the historic appassimento technique. Pioneering cellar masters like Giuseppe Quintarelli and Romano Dal Forno established rigorous modern standards by patiently drying Corvina bunches on winter straw mats. The resulting Amarone yields monumental richness, balancing dried black cherry, bitter dark chocolate, and tobacco with decades of cellaring power."
   },
   {
     id: 'sicily-etna',
@@ -50,7 +50,7 @@ export const ITALY_OTHER_SUBREGIONS = [
       { name: "Versante Est (Eastern Slopes - Milo)", focus: "Cool maritime slopes dedicated to 100% Carricante Etna Bianco Superiore" },
       { name: "Vittoria (Southeastern Sicily)", focus: "Red limestone sands producing fragrant, red-berried Cerasuolo di Vittoria DOCG (Nero d'Avola + Frappato)" }
     ],
-    description: "Smoking against the Sicilian sky, Mount Etna—mythological forge of the god Vulcan—hosts one of the wine world's most thrilling revivals. Century-old, ungrafted bush vines climb high up the slopes, defying eruptions and phylloxera. Pioneers like Marco de Grazia revealed that Nerello Mascalese produces translucent reds evoking wild strawberry and incense, while native Carricante yields laser-etched white wines of peerless saline grace."
+    description: "The Etna DOC forms a crescent-shaped viticultural belt wrapping around the northern, eastern, and southern slopes of Mount Etna in eastern Sicily. Greek colonists planted hillside vines here in the eighth century BC, establishing an ancient viticultural tradition that survived centuries of eruptions. Winemaker Marco de Grazia and fellow modern pioneers revived centenarian ungrafted albarello bush vines in the late 1990s, demarcating individual historic contrade. High-elevation Nerello Mascalese yields translucent, ruby red wines evocative of wild strawberry and crushed incense, while native Carricante produces laser-focused, saline whites."
   },
   {
     id: 'lombardia-valtellina',
@@ -67,7 +67,7 @@ export const ITALY_OTHER_SUBREGIONS = [
       { name: "Inferno Sub-Zone", focus: "Steepest, scorching microclimate yielding powerful, savory, and structured Alpine wines" },
       { name: "Grumello Sub-Zone", focus: "Surrounding the medieval castle, producing balanced, floral red-fruit expressions" }
     ],
-    description: "Carved along the Adda River beneath snow-capped peaks, Valtellina was praised by Leonardo da Vinci as a land of potent mountain wine. For centuries, heroic vintners have tended precarious terraces supported by ancient dry-stone walls. Local Nebbiolo, called Chiavennasca, produces diaphanous, rose-scented masterpieces alongside Sfursat, an intense dried-grape elixir celebrated for alpine herbs, wild cranberry, and noble longevity."
+    description: "Valtellina occupies forty kilometers of the east-west Adda River valley in northern Lombardy, positioned immediately south of the Swiss alpine border. Leonardo da Vinci praised the steep terraced slopes of Valtellina in his journals, marveling at the sheer human effort required to cultivate vines here. Generations of heroic winegrowers constructed over two thousand kilometers of dry-stone walls by hand, carving precipitous south-facing amphitheaters out of mountain slopes. Local Nebbiolo, named Chiavennasca, produces diaphanous alpine red wines alongside Sfursat, a potent dried-grape elixir celebrated for wild cranberry and herbal complexity."
   },
   {
     id: 'alto-adige-sudtirol',
@@ -84,7 +84,7 @@ export const ITALY_OTHER_SUBREGIONS = [
       { name: "Gries & Bolzano Basin", focus: "Warm valley floor gravels producing inky, black-fruited, velvety Lagrein" },
       { name: "Termeno / Tramin", focus: "Historical birthplace of exotic, rose-scented Gewürztraminer" }
     ],
-    description: "Nestled beneath the pink-glowing spires of the Dolomites along the Austrian border, Südtirol harmonizes Tyrolean alpine heritage with Italian culinary artistry. Sun-drenched high terraces climb toward medieval castles, where the village of Tramin gave birth to aromatic Gewürztraminer. Renowned estates craft crystalline, orchard-scented Pinot Bianco alongside velvety indigenous Lagrein and taut Pinot Nero, capturing pure mountain air in every glass."
+    description: "Alto Adige, or Südtirol, encompasses the alpine Adige and Isarco river valleys extending south from the Austrian border to Salorno. The territory harmonizes centuries of Austrian Tyrolean viticultural traditions with contemporary Italian enology, anchored by historic castle estates and exemplary grower cooperatives. The lakeside village of Tramin served as the historical namesake for aromatic Gewürztraminer, which was cultivated across these hillside benches during the Middle Ages. Cold mountain drafts produce crystalline Pinot Bianco, Sauvignon, and Pinot Nero alongside velvety indigenous Lagrein brimming with dark plum and cocoa."
   },
   {
     id: 'friuli-venezia-giulia',
@@ -101,7 +101,7 @@ export const ITALY_OTHER_SUBREGIONS = [
       { name: "Friuli Colli Orientali", focus: "Terraced hills yielding benchmark mineral Friulano, Sauvignon, and indigenous red Pignolo" },
       { name: "Carso (Karst)", focus: "Bleached limestone plateau producing savory, saline, skin-macerated Vitovska and Malvasia" }
     ],
-    description: "Where Slavic, Germanic, and Latin cultures intersect, Friuli long served as the cherished wine cellar for the Venetian Republic and Habsburg emperors. In Collio and Colli Orientali, vignerons like Josko Gravner and Stanko Radikon ignited the modern amber wine renaissance using ancient amphorae. Adriatic breezes and alpine drafts endow native Ribolla Gialla and Friulano with dazzling floral aromatics and meditative depth."
+    description: "Friuli-Venezia Giulia occupies Italy's northeastern borderland where the Julian Alps meet the coastal plains of the northern Adriatic Sea. The territory historically supplied prized table wines to the Venetian Republic and the imperial Habsburg court in Vienna across centuries of shared frontier history. In the border hills of Oslavia, visionaries Josko Gravner and Stanko Radikon ignited the global skin-contact amber wine movement using Caucasian ceramic vessels. Coastal breezes and alpine drafts endow indigenous Ribolla Gialla and Friulano with dazzling floral perfumes, savory herbs, and profound gastronomic depth."
   },
   {
     id: 'campania-irpinia',
@@ -118,7 +118,7 @@ export const ITALY_OTHER_SUBREGIONS = [
       { name: "Tufo & Santa Paolina", focus: "Sulfur-rich volcanic tuff hillsides producing laser-acid, mineral Greco di Tufo" },
       { name: "Lapio & Montefredane", focus: "Ancient volcanic hills yielding smoky, hazelnut, age-worthy Fiano di Avellino" }
     ],
-    description: "High in the forested Apennines of inland Campania, the historic province of Irpinia preserves the ancient viticultural heritage of Magna Graecia, praised by Virgil. When modern trends threatened native grapes, Antonio Mastroberardino heroically rescued Aglianico, Fiano, and Greco from obscurity. High-elevation slopes yield Taurasi—celebrated as the 'Barolo of the South'—alongside smoky, hazelnut-scented white wines of aristocratic poise and four-decade aging potential."
+    description: "Irpinia encompasses the elevated Apennine plateau of Avellino province in central Campania, situated fifty kilometers east of Naples. Ancient Greek colonists introduced Aglianico and Greco vines during antiquity, establishing a viticultural sanctuary celebrated by Roman writers Pliny and Virgil. Enologist Antonio Mastroberardino heroically preserved these indigenous varieties after World War II, stubbornly refusing to replace local vines with international commercial grapes. High-elevation slopes produce Taurasi—celebrated as the Barolo of the South—alongside cellar-worthy Fiano di Avellino and Greco di Tufo marked by toasted hazelnuts and smoke."
   }
 ];
 

@@ -24,7 +24,7 @@ export const LOIRE_SUBREGIONS = [
     climate: "Pure maritime oceanic climate with high humidity, mild winters, cool summers, and regular Atlantic rain showers.",
     terroir: "Located at the western terminus of the Loire River where it empties into the Atlantic Ocean. Ancient eroded crystalline bedrock of the Armorican Massif (Orthogneiss, Granite, and Gabbro). Shallow, well-draining soils rich in minerals force vine roots deep into fractured granite and gabbro.",
     focus: "Crystalline, bone-dry, saline white wines: Melon de Bourgogne aged Sur Lie for 18-36 months in Crus Communaux (Clisson, Gorges); lemon zest, green apple, oyster shell, sea spray, struck flint, and fine yeast texture.",
-    description: "Where the majestic Loire reaches the Atlantic tides south of Nantes, the Pays Nantais is France's ocean-cooled western sentinel. After the devastating Great Frost of 1709, resilient growers replanted the frozen hills with hardy Melon de Bourgogne from Burgundy. Aged on fine yeast lees, the wines deliver refreshing lemon zest, crisp orchard fruit, and thrilling oyster-shell salinity born of coastal gales."
+    description: "The Pays Nantais encompasses the Atlantic maritime estuary of the Loire River basin, extending south and east of the port city of Nantes. Following the catastrophic Great Frost of 1709, local growers systematically replanted their frozen hillsides with frost-resistant Melon de Bourgogne imported from Burgundy. In 2011, INAO officially established the first communal crus like Clisson and Gorges to recognize exceptional parcel-selected wines aged extended years on lees. Classic Muscadet Sèvre et Maine sur lie delivers bracing lemon zest, green apple, and piercing ocean-spray salinity crafted for fresh Atlantic oysters."
   },
   {
     id: 'anjou-saumur',
@@ -37,7 +37,7 @@ export const LOIRE_SUBREGIONS = [
     climate: "Maritime transitional climate with microclimatic shelter provided by the Mauges hills and autumn river mists from the Layon River.",
     terroir: "Geological crossroads: The dark metamorphic Schist and volcanic spilite of 'Anjou Noir' in the west transitions into the soft white Cretaceous tuffeau limestone of 'Anjou Blanc' and Saumur in the east.",
     focus: "Dry mineral Chenin Blanc masterworks (Savennières), celestial noble rot botrytized dessert wines (Quarts de Chaume Grand Cru), and aristocratic, floral Cabernet Franc (Saumur-Champigny / Clos Rougeard).",
-    description: "Steeped in royal Plantagenet history, Anjou-Saumur is the noble heartland of the Middle Loire. Monastic origins run deep: Cistercian monks planted Savennières' legendary Coulée de Serrant in 1130, while autumn river fogs foster botrytized dessert elixirs in Quarts de Chaume. Around Saumur, cliffside cellars house shimmering Crémants alongside aristocratic, violet-perfumed Cabernet Franc brought to cult fame by Clos Rougeard."
+    description: "Anjou-Saumur occupies the heart of the Middle Loire Valley around the historic ducal strongholds of Angers and Saumur. Cistercian monks planted the famous Coulée de Serrant vineyard in Savennières in 1130, initiating nine centuries of uninterrupted Chenin Blanc viticulture. In Saumur-Champigny, the Foucault brothers of Clos Rougeard elevated Cabernet Franc into a global cult icon through patient aging in subterranean caves. The district produces shimmering dry and botrytized Chenin Blanc alongside violet-scented, savory Cabernet Franc characterized by aristocratic elegance."
   },
   {
     id: 'touraine',
@@ -50,7 +50,7 @@ export const LOIRE_SUBREGIONS = [
     climate: "Temperate semi-oceanic with continental warmth in summer and protective river valley slopes.",
     terroir: "The heartland of Turonian chalk (tuffeau). Porous white limestone cliffs into which magnificent châteaux and subterranean wine cellars are carved. Gravel terraces along the Vienne River provide early-ripening warmth.",
     focus: "Benchmark red Cabernet Franc expressions (Chinon, Bourgueil), versatile Chenin Blanc across all sweetness levels (Vouvray, Montlouis), and the ultra-rare ancient Romorantin grape (Cour-Cheverny).",
-    description: "Hailed as the Garden of France and celebrated by writer François Rabelais, Touraine is a fairy-tale realm of Renaissance royal châteaux along the Loire. Across Chinon and Bourgueil, Cabernet Franc reaches poetic heights, offering fragrant wild strawberry, dried rose, and graphite notes. Across the river in Vouvray, versatile Chenin Blanc spans dry to honeyed styles, while Cour-Cheverny preserves King Francis I's rare Romorantin vines."
+    description: "Touraine occupies the central Loire Valley around the historic city of Tours, anchored by the river confluences of the Cher, Indre, and Vienne. Renaissance writer François Rabelais celebrated the joyful, fragrant red wines of Chinon and Bourgueil throughout his classic satirical chronicles of Gargantua. King Francis I established royal châteaux along these riverbanks, introducing the rare Romorantin white grape that remains protected within the Cour-Cheverny appellation today. Across Vouvray and Montlouis, versatile Chenin Blanc spans bone-dry to honeyed dessert styles, while Chinon yields perfumed Cabernet Franc marked by wild raspberry and graphite."
   },
   {
     id: 'centre-loire',
@@ -63,7 +63,7 @@ export const LOIRE_SUBREGIONS = [
     climate: "Continental climate with severe winter frosts, warm summers, and substantial diurnal temperature swings.",
     terroir: "Rolling hillside amphitheaters perched above the upper Loire River on the geological rim of the Paris Basin. Direct continuation of the Kimmeridgian and Oxfordian limestone strata found in Chablis: Terres Blanches (Kimmeridgian marl), Caillottes (pebbly limestone), and Silex (flint).",
     focus: "The global summit of Sauvignon Blanc: laser mineral tension, gunflint smoke, pink grapefruit, lemongrass, crushed oyster shell, and refined Pinot Noir reds and rosés.",
-    description: "Crowning dramatic hilltop ridges above the upper Loire, the Centre-Loire is the sacred homeland of noble Sauvignon Blanc. Medieval Sancerre faces Pouilly-Fumé across the water, where Benedictine monks cultivated vines as early as the twelfth century. Revered by pioneers like Didier Dagueneau, these hillside vineyards yield thrilling white wines shimmering with lemongrass, white peach, and smoky crystalline tension, alongside delicate, woodland-scented Pinot Noirs."
+    description: "The Centre-Loire forms the easternmost viticultural district of the Loire River basin, anchored by the historic hilltop fortress of Sancerre and neighboring Pouilly-Fumé across the river. Benedictine monks cultivated hillside vineyards here during the Middle Ages, supplying prized white wines along river trading routes to northern French dukes. Modern iconoclasts like Didier Dagueneau redefined Sauvignon Blanc by reintroducing oak barrel fermentation, low yields, and meticulous vineyard parcel selections. The resulting white wines deliver crystalline gooseberry, lemongrass, and vibrant gunflint smokiness, complemented by delicate, woodland-scented red and rosé Pinot Noir."
   }
 ];
 

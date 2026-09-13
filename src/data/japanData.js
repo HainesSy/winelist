@@ -30,7 +30,7 @@ export const JAPAN_SUBREGIONS = [
       { name: "Akeno (Hokuto City)", focus: "High-elevation (700m) sunshine capital of Japan; home to Grace Wine's vertical-trellised Cuvée Misawa estate" },
       { name: "Fuefuki & Kofu Basin", focus: "Alluvial gravel plains producing fragrant, candied-berry Muscat Bailey A and fresh Koshu" }
     ],
-    description: "Cradled beneath Mount Fuji, Katsunuma is the sacred thirteen-century cradle of Japanese viticulture. Buddhist lore recounts that monk Gyoki established Daigan-ji temple in 718 AD after envisioning Buddha bearing grapes, giving rise to native Koshu vines. Tended on sweeping overhead pergolas, benchmark estates like Grace Wine coax crystalline white wines scented with yuzu citrus, white peach, and sublime ethereal poise."
+    description: "The Katsunuma district occupies the northeastern corner of the Yamanashi Basin, situated eighty kilometers west of Tokyo at the foot of Mount Fuji. Buddhist tradition records that monk Gyoki established the historic Daizen-ji temple here in 718 AD after dreaming of Buddha holding a cluster of purple grapes. In 1877, pioneering youths Ryuka Tsuchiya and Masanari Takano journeyed to Troyes, France, returning with European winemaking techniques that sparked Japan's modern wine industry. Grown on traditional overhead pergolas, indigenous Koshu grapes yield delicate, crystalline white wines offering subtle yuzu citrus, white peach, and pristine savory freshness."
   },
   {
     id: 'nagano-shinshu',
@@ -47,7 +47,7 @@ export const JAPAN_SUBREGIONS = [
       { name: "Chikuma River Valley", focus: "Boutique artisan wine corridor producing laser-pure Chardonnay, Pinot Noir, and Sauvignon Blanc" },
       { name: "Matsumoto Basin", focus: "High-elevation plateau producing concentrated, aromatic white and red wines" }
     ],
-    description: "Flanked by the soaring peaks of the Japanese Northern Alps, Nagano's high-altitude valleys form an austere sanctuary for cool-climate viticulture. In 1989, Château Mercian's Kikyogahara Merlot stunned international judges, proving Japan could craft red wines of aristocratic depth and cellaring power. Today, boutique artisans along the Chikuma River sculpt laser-focused Chardonnay and perfumed Pinot Noir radiating alpine tautness and pristine clarity."
+    description: "GI Nagano encompasses high-altitude mountain basins along the Chikuma, Sai, and Kiso rivers, sheltered by the Japanese Northern Alps. In 1989, Château Mercian's Kikyogahara Merlot captured major international awards in Europe, proving that Japan could produce structured red wines of genuine world standing. Regional agricultural authorities subsequently established the Shinshu Wine Valley plan, encouraging independent boutique vignerons to establish high-elevation estate domaines. Alpine air currents and intense daytime sunshine craft vibrant Chardonnay and perfumed Pinot Noir marked by crisp orchard fruit and diamond-cut purity."
   },
   {
     id: 'hokkaido-yoichi',
@@ -63,7 +63,7 @@ export const JAPAN_SUBREGIONS = [
       { name: "Yoichi Town (Nobori District)", focus: "Gentle hills facing the Sea of Japan; home to Takahiko Soga's cult natural Pinot Noir (Nana-Tsu-Mori)" },
       { name: "Sorachi Valley", focus: "Inland continental basin producing crystalline, aromatic Kerner, Pinot Noir, and Chardonnay" }
     ],
-    description: "Rising on the wild northern frontier of Japan overlooking the icy Sea of Japan, Yoichi is an audacious cool-climate outpost. Deep winter powder snow blankets the hillsides, shielding dormant vines from Siberian gales before spring melt awakens the slopes. Cult vigneron Takahiko Soga of Domaine Takahiko crafts whole-cluster Pinot Noir evoking pine forest, matsutake mushrooms, and haunting umami depth."
+    description: "Yoichi occupies the rolling coastal foothills of the Shakotan Peninsula on Hokkaido's western shore, facing the cool Sea of Japan. Originally developed for apple orchards and Nikka malt whisky production, the coastal town evolved into Japan's leading cool-climate fine wine enclave. Cult winemaker Takahiko Soga of Domaine Takahiko inspired a national movement by cultivating low-intervention, whole-cluster Pinot Noir in the local snow-draped hills. Deep winter snow insulating dormant vines followed by dry, sunny summers yields aromatic Pinot Noir and Kerner singing with wild mountain berries and umami savor."
   },
   {
     id: 'yamagata-kaminoyama',
@@ -78,7 +78,7 @@ export const JAPAN_SUBREGIONS = [
     microTerroirs: [
       { name: "Kaminoyama Foothills", focus: "Warm sunny basin producing deeply colored, structured Muscat Bailey A and ripe Chardonnay" }
     ],
-    description: "Framed by sacred peaks and mystical shrines, Yamagata is an inland mountain basin celebrated for meticulous agricultural craftsmanship. Pure snowmelt from the Zaō mountains nourishes sunny hillside vineyards tended by master growers. Pioneering estates like Takeda Winery elevate Muscat Bailey A and mountain-grown Chardonnay into velvety, spice-dusted wines that capture the serene tranquility and refined beauty of northern Japan."
+    description: "GI Yamagata covers the inland mountain basins of Kaminoyama and Takahata along the Mogami River in northwestern Honshu. The territory has enjoyed renown for luxury orchard fruit cultivation since the Edo period, applying meticulous trellis pruning and canopy management to viticulture. Historic producers like Takeda Winery founded estates in 1920, pioneering cold-fermented table wines and traditional method sparkling cuvées from local fruit. Snowmelt waters and sunny autumn days produce expressive Muscat Bailey A redolent of candied berries and spice, alongside refined, orchard-scented Chardonnay."
   }
 ];
 

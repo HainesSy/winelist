@@ -38,7 +38,7 @@ export const SPAIN_SUBREGIONS = [
       { name: "Haro & Barrio de la Estación", focus: "The historic cradle of 19th-century bodegas producing classical American and French oak-aged Gran Reservas." },
       { name: "Labastida & Laguardia", focus: "Medieval hilltop communes in Rioja Alavesa famous for pure floral elegance and freshness." }
     ],
-    description: "The historic heart of Spanish fine wine spans the terraced slopes of Rioja Alta and Basque Rioja Alavesa beneath the Sierra de Cantabria. In Haro's nineteenth-century railway quarter, legendary bodegas like López de Heredia pioneered prolonged American oak maturation. Alongside classical Gran Reservas, modern artisans craft single-vineyard bottlings of vibrant cherry fruit, dried herbs, and regal longevity."
+    description: "Rioja Alta and Rioja Alavesa span the upper reaches of the Ebro River basin beneath the Sierra de Cantabria, anchoring the western Rioja DOCa. Following the arrival of the railway in 1880, pioneering bodegas in Haro's station district adopted oak barrels to craft classical oxidative red wines. Centuries-old cellars like López de Heredia and Marqués de Riscal established standards for prolonged cask aging, while Basque vignerons championed site-specific single vineyards. Tempranillo and Graciano harvested across these cool hillside terraces produce aristocratic Gran Reservas showcasing dried red cherry, cedar, dill, and regal longevity."
   },
   {
     id: 'ribera-del-duero',
@@ -55,7 +55,7 @@ export const SPAIN_SUBREGIONS = [
       { name: "Soria High Altitude", focus: "Extreme eastern frontier at 950m–1,050m with pre-phylloxera ungrafted bush vines yielding electric mineral freshness." },
       { name: "Páramos of Burgos", focus: "High barren limestone plateaus producing chiseled, structured, tightly wound wines." }
     ],
-    description: "Perched on the high Castilian plateau along the Duero River, Ribera del Duero is the fortress of Spanish red wine royalty. Extreme continental temperatures with cold mountain nights preserve vibrant natural acidity. Spearheaded by legendary icons like Vega Sicilia and Dominio de Pingus, indigenous Tinto Fino yields monumental wines of black fruit concentration, balsamic lift, and multi-decade cellar grandeur."
+    description: "Ribera del Duero spans 115 kilometers along the elevated Duero River plateau in Castile and León, centered between Peñafiel and San Esteban de Gormaz. Don Eloy Lecanda founded Bodegas Vega Sicilia in 1864, planting Bordeaux cuttings alongside indigenous Tinto Fino to create Spain's most celebrated fine wine. High continental elevations above seven hundred meters produce dramatic night cooling that preserves acidity and concentrates thick berry skins. Benchmark bottlings like Vega Sicilia Único and Pingus exhibit dense blackberry, dark cocoa, balsamic herbs, and architectural tannins built for half a century of aging."
   },
   {
     id: 'priorat',
@@ -72,7 +72,7 @@ export const SPAIN_SUBREGIONS = [
       { name: "Porrera", focus: "Cooler, higher-elevation valley renowned for profound old-vine Cariñena with searing acidity and crushed graphite notes." },
       { name: "Escaladei", focus: "High northern slopes beneath the Montsant cliff face, birthplace of Carthusian monastic winemaking in the 12th century." }
     ],
-    description: "Cupped in the rugged Montsant mountains of southern Catalonia, Priorat is steeped in twelfth-century Carthusian monastic origins. Ancient, low-yielding bush vines of Garnacha and Cariñena cling to precipitous terraced slopes. Revitalized in the 1980s by visionary pioneers like René Barbier and Álvaro Palacios, the region produces heroic red wines infused with wild scrub herbs, black plum liqueur, dark cocoa, and profound structural tension."
+    description: "Priorat DOQ encompasses an isolated mountainous enclave of nine communes in southern Catalonia, encircled by the towering Montsant mountain range. Carthusian monks founded the historic monastery of Scala Dei in 1194, establishing terraced hillside viticulture that sustained the secluded Catalan valleys for seven centuries. In the late 1980s, René Barbier, Álvaro Palacios, and a band of visionary pioneers revived old bush-vine parcels, catapulting the forgotten district onto the global stage. Ancient Garnacha and Cariñena vines produce low yields of concentrated red wine scented with black plum liqueur, scrub rosemary, cocoa, and searing tension."
   },
   {
     id: 'rias-baixas',
@@ -91,7 +91,7 @@ export const SPAIN_SUBREGIONS = [
       { name: "Soutomaior", focus: "Microscopic sub-zone at the head of the Ría de Vigo with steep sandy hillside slopes on granite." },
       { name: "Ribeira do Ulla", focus: "Northern inland zone along the Ulla River on alluvial soils, producing fresh, high-acid Albariño and red Galician heritage varieties." }
     ],
-    description: "Nestled in verdant southwestern Galicia along sunken ocean valleys, Rías Baixas is the crown jewel of Spanish white wine. Atlantic sea mists and cooling ocean winds sweep across traditional high pergolas that elevate clusters toward the sunlight. Native Albariño yields electric, saline white wines redolent of white peach nectar, citrus blossom, and crushed sea spray, developing profound textural complexity with patient lees aging."
+    description: "Rías Baixas encompasses five distinct coastal subzones along the Atlantic ocean inlets of southwestern Galicia, centered around the historic Val do Salnés. Cistercian monks from Armenteira Abbey cultivated white vines along these maritime estuaries during the twelfth century, adapting farming methods to damp oceanic conditions. Local vignerons train Albariño clusters along high overhead pergolas called parrales, allowing Atlantic breezes to circulate beneath the canopy and prevent rot. The resulting white wines deliver piercing white peach nectar, citrus blossom, and saline sea-spray tension that develops striking textural complexity with lees contact."
   },
   {
     id: 'rioja-oriental',
@@ -107,7 +107,7 @@ export const SPAIN_SUBREGIONS = [
       { name: "Monte Yerga", focus: "High-altitude slopes at 600m–800m producing profound, mineral-driven Garnacha (Álvaro Palacios Quiñón de Valmira)." },
       { name: "Aldeanueva de Ebro", focus: "Traditional center of warm, spicy Garnacha." }
     ],
-    description: "Forming the sun-drenched southeastern gateway of Rioja along the broad Ebro plain, Rioja Oriental enjoys warm Mediterranean air. Historically prized for bringing body and color to classic regional blends, the area is dominated by drought-resistant Garnacha Tinta. On the cooler slopes of Monte Yerga, visionary vignerons like Álvaro Palacios craft single-parcel masterworks that reveal ethereal red fruit perfume and vibrant youthful poise."
+    description: "Rioja Oriental encompasses the broad southeastern sector of the Rioja DOCa, extending across the lower Ebro River plain between Logroño and Alfaro. Known historically as Rioja Baja until regulatory reforms in 2018, the district was prized for supplying color and alcoholic warmth to traditional regional blends. On the cooler northern slopes of Monte Yerga, visionary winemakers like Álvaro Palacios demonstrated that old-vine Garnacha could produce world-class single-parcel masterworks. Warm Mediterranean air currents ripen Garnacha Tinta to perfection, yielding generous red wines filled with wild strawberry, dried garrigue herbs, and supple freshness."
   }
 ];
 

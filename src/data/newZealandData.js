@@ -36,7 +36,7 @@ export const NEW_ZEALAND_SUBREGIONS = [
       { name: "Awatere Valley", focus: "Cooler, windier, drier southern valley yielding flinty, herbaceous, kaffir lime and crushed-oyster-shell mineral profiles." },
       { name: "Southern Valleys", focus: "Clay-rich foothills producing structured, fleshy Pinot Noir and textured, cellar-worthy barrel-fermented whites." }
     ],
-    description: "Framed between mountain ranges at the northern tip of the South Island, Marlborough revolutionized world white wine. In 1985, Cloudy Bay burst onto the international stage, establishing a global benchmark for vibrant Sauvignon Blanc. Luminous southern sunshine and crisp sea winds flowing through the Cook Strait yield intense passionfruit, lemongrass vitality, and fresh, cherry-scented Pinot Noir."
+    description: "Marlborough occupies the northeastern tip of New Zealand's South Island, bounded by the Richmond Range and the waters of the Pacific Ocean. In 1973, Montana Wines planted the first commercial vines in the Wairau Valley, defying conventional pastoral traditions in the rural sheep-farming province. Cloudy Bay burst onto the international stage in 1985, catapulting Marlborough Sauvignon Blanc into global acclaim with its intensely pungent, vibrant aromatic profile. Luminous southern sunshine and brisk coastal breezes yield hallmark passionfruit, lemongrass, and crisp acidity, complemented by elegant, red-cherry-scented Pinot Noir."
   },
   {
     id: 'central-otago',
@@ -53,7 +53,7 @@ export const NEW_ZEALAND_SUBREGIONS = [
       { name: "Gibbston", focus: "The coolest, highest-elevation sub-zone in the Kawarau Gorge yielding delicate, floral, high-acid, and spicy Pinot Noir." },
       { name: "Bendigo", focus: "The warmest, sun-baked north-facing slopes yielding deep, dark, structured, muscular, and brooding Pinot Noirs." }
     ],
-    description: "Deep in the South Island interior, Central Otago is the planet's southernmost commercial wine frontier, born of an 1860s gold rush. In the 1980s, pioneer Alan Brady braved the rugged Kawarau Gorge, unlocking an alpine paradise where blistering days meet frosty nights. Tended by benchmark estates like Felton Road, hillside vines yield sovereign Pinot Noir scented with wild mountain thyme, damson plum, and velvet power."
+    description: "Central Otago occupies the rugged inland mountain basins of the South Island, representing the world's southernmost commercial wine region. European prospectors rushed to these arid river gorges during the 1860s gold rush, leaving behind stone cottages and irrigation channels repurposed by twentieth-century viticulturists. Pioneer Alan Brady established Taramea in the Kawarau Gorge in the 1980s, paving the way for benchmark biodynamic estates like Felton Road in Bannockburn. Intense continental sunlight and freezing alpine nights forge sovereign Pinot Noir marked by dark plum, wild thyme, black cherry, and structural power."
   },
   {
     id: 'hawkes-bay',
@@ -70,7 +70,7 @@ export const NEW_ZEALAND_SUBREGIONS = [
       { name: "Bridge Pa Triangle", focus: "Warm alluvial plains of red metal gravels producing opulent, aromatic Merlot and rich Chardonnay." },
       { name: "Te Awanga", focus: "Cool coastal strip producing vibrant, saline, sea-breeze-cooled Chardonnay and delicate Pinot Noir." }
     ],
-    description: "Basking along the sun-drenched eastern coast of the North Island, Hawke's Bay is the historic cradle of New Zealand viticulture, where French Marist brothers planted vines in 1851. Sheltered by mountain ranges, long maritime summers ripen Bordeaux varieties and Syrah to aristocratic perfection. Spearheaded by Te Mata's iconic Coleraine, the region produces structured reds brimming with cassis, crushed violets, and cracked black pepper."
+    description: "Hawke's Bay sits along the sunlit eastern coast of New Zealand's North Island, centered on the historic twin cities of Napier and Hastings. French Marist missionaries planted Mission Estate in 1851, establishing New Zealand's oldest continuously operating commercial winery and school. In the late twentieth century, visionary producer John Buck of Te Mata Estate unveiled Coleraine, proving that blended red varieties could achieve first-growth stature here. Long, warm maritime summers ripen Cabernet Sauvignon, Merlot, and Syrah to full physiological maturity, delivering structured wines scented with cassis, cedar, and black pepper."
   },
   {
     id: 'martinborough',
@@ -86,7 +86,7 @@ export const NEW_ZEALAND_SUBREGIONS = [
       { name: "Martinborough Terrace", focus: "The historic gravel river terrace home to legendary benchmark estates (Ata Rangi, Dry River) producing savory, long-lived Pinot Noir." },
       { name: "Te Muna Road", focus: "Cooler, higher-elevation stony terrace producing chiseled, aromatic Pinot Noir and flinty Riesling." }
     ],
-    description: "Clustered around a Victorian village at the southern tip of the North Island, Martinborough is the artisan sanctuary of New Zealand Pinot Noir. Pioneers Clive Paton of Ata Rangi and Neil McCallum planted vines in the late 1970s, famously propagating the legendary 'Gumboot' clone. Antarctic winds whipping through the Cook Strait reduce yields, forging savory wines scented with dark cherry, autumn leaves, and truffled complexity."
+    description: "Martinborough occupies the southern Wairarapa basin at the southern tip of New Zealand's North Island, sixty kilometers northeast of Wellington. A 1978 government scientist report identified the area's climate as the Southern Hemisphere's closest analog to Burgundy, attracting passionate artisan pioneers. Visionary growers like Clive Paton of Ata Rangi and Neil McCallum planted vines in the late 1970s, famously propagating the legendary Abel 'Gumboot' clone. Icy Antarctic gales whipping through the Cook Strait reduce yields, producing savory Pinot Noir characterized by dark cherry, dried herbs, and truffled complexity."
   }
 ];
 

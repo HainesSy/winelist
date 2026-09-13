@@ -36,7 +36,7 @@ export const SOUTH_AFRICA_SUBREGIONS = [
       { name: "Helderberg", focus: "Maritime-cooled slopes facing False Bay renowned for aristocratic Cabernet Sauvignon and chiseled Chardonnay." },
       { name: "Polkadraai Hills", focus: "Decomposed granite domes yielding electric, mineral-driven Syrah and old-bush-vine Chenin Blanc." }
     ],
-    description: "Centering around historic oak-lined avenues beneath towering mountain massifs, Stellenbosch is the proud academic and historical heartland of South African viticulture. Cooled by maritime breezes from False Bay, the district crafts aristocratic Cabernet Sauvignon and Cape Bordeaux blends. It is also the birthplace of Pinotage, bred here in 1925, with legendary estates like Kanonkop and Meerlust crafting cellar-worthy icons."
+    description: "Stellenbosch sits thirty miles east of Cape Town in the Western Cape, serving as the historical and academic capital of South African viticulture. Governor Simon van der Stel founded the town along the Eerste River in 1679, lining its avenues with heritage European oaks and planting colonial vineyards. Stellenbosch University scientist Abraham Izak Perold bred the indigenous Pinotage grape here in 1925, crossing Pinot Noir with Cinsault to withstand Cape growing conditions. Cooled by False Bay maritime breezes, historic estates like Kanonkop and Meerlust produce aristocratic Cabernet Sauvignon and Cape Bordeaux blends of sovereign longevity."
   },
   {
     id: 'swartland',
@@ -53,7 +53,7 @@ export const SOUTH_AFRICA_SUBREGIONS = [
       { name: "Kasteelberg (Riebeek Valley)", focus: "Metamorphic black slate and shale soils yielding dense, inky, savory Syrah (Mullineux Schist)." },
       { name: "Malmesbury Plains", focus: "Iron-rich Koffieklip and red clay delivering earthy, fleshy, old-vine bush reds." }
     ],
-    description: "A sun-baked expanse of rolling wheat fields north of Cape Town, the Swartland is ground zero for South Africa's artisan wine revolution. Resilient dry-farmed bush vines withstand hot days and cool Atlantic nights to yield deeply concentrated fruit. Spearheaded by visionary winemakers Eben Sadie and Chris Mullineux, the region produces soulful, old-vine Chenin Blanc and expressive Rhône varieties of remarkable depth."
+    description: "The Swartland encompasses an expansive inland district fifty kilometers north of Cape Town, centered around the agricultural towns of Malmesbury and Riebeek Kasteel. Early Dutch settlers named the region 'Black Land' after the dark indigenous renosterbos vegetation that turned the rolling hills black during winter rains. In the early 2000s, revolutionary vignerons like Eben Sadie and Chris Mullineux founded the Swartland Independent Producers, reviving forgotten dry-farmed heritage bush vines. The district produces soulful old-vine Chenin Blanc and expressive Syrah blends marked by dried scrub herbs, sun-ripened fruit, and striking structural depth."
   },
   {
     id: 'walker-bay',
@@ -70,7 +70,7 @@ export const SOUTH_AFRICA_SUBREGIONS = [
       { name: "Upper Hemel-en-Aarde Valley", focus: "Higher elevation granite and shale slopes producing aromatic, pure red-fruited Pinot Noir (Bouchard Finlayson)." },
       { name: "Hemel-en-Aarde Ridge", focus: "High-altitude sandstone terraces yielding laser-sharp, mineral Chardonnay and delicate Pinot Noir (Creation)." }
     ],
-    description: "Surrounding the whale-watching sanctuary of Hermanus, Walker Bay centers on the breathtaking Hemel-en-Aarde ('Heaven and Earth') Valley. Directly exposed to the icy Antarctic Benguela Current, morning sea fogs and brisk ocean breezes foster a hyper-cool maritime climate. Pioneer Tim Hamilton Russell and celebrated estates like Creation craft world-class Pinot Noir and Chardonnay radiating red berry purity, sculpted elegance, and Burgundian grace."
+    description: "Walker Bay occupies the ocean-facing coastal corridor surrounding the town of Hermanus, centered on the linear Hemel-en-Aarde ('Heaven and Earth') Valley. Advertising pioneer Tim Hamilton Russell broke away from conventional wine boundaries in 1975, purchasing coastal land to plant South Africa's first cool-climate Burgundian varieties. Directly exposed to the cold Antarctic Benguela Current, persistent maritime sea breezes and morning fogs keep daytime temperatures cool throughout the summer. Benchmark estates like Hamilton Russell and Creation produce world-class Pinot Noir and Chardonnay radiating wild red berry purity, refined elegance, and saline freshness."
   },
   {
     id: 'constantia',
@@ -86,7 +86,7 @@ export const SOUTH_AFRICA_SUBREGIONS = [
       { name: "Klein Constantia Mid-Slopes", focus: "East-facing amphitheater of decomposed granite dedicated to the resurrection of historic 18th-century Vin de Constance." },
       { name: "Groot Constantia Foothills", focus: "The original 1685 Simon van der Stel estate crafting refined Bordeaux-style red blends and Cape Shiraz." }
     ],
-    description: "Established in 1685 by Governor Simon van der Stel within the Table Mountain chain, Constantia is the Southern Hemisphere's oldest celebrated wine sanctuary. In the eighteenth century, its sweet Muscat elixir—Vin de Constance—captivated European monarchs, Jane Austen, and Napoleon Bonaparte on Saint Helena. Cooled by ocean breezes from two bays, historic estates produce crystalline Sauvignon Blanc and cellar-worthy dessert nectars of timeless distinction."
+    description: "Constantia occupies the eastern slopes of the Constantiaberg range on the Cape Peninsula, established in 1685 as the Southern Hemisphere's earliest commercial wine estate. During the eighteenth and nineteenth centuries, European royalty, Jane Austen, and Napoleon Bonaparte on Saint Helena prized its legendary dessert wine, Vin de Constance. Hendrick Cloete purchased the historic Groot Constantia property in 1778, refining viticulture and building the iconic Cape Dutch cellar that stands today. Cooled by Atlantic and False Bay ocean drafts, modern estates produce vibrant Sauvignon Blanc alongside resurrected Muscat de Frontignan elixirs of legendary longevity."
   },
   {
     id: 'franschhoek',
@@ -102,7 +102,7 @@ export const SOUTH_AFRICA_SUBREGIONS = [
       { name: "Boekenhoutskloof Slopes", focus: "Steep north-facing slopes producing benchmark, spicy, whole-cluster Syrah and old-wood Cabernet Sauvignon." },
       { name: "Monumental Sémillon Bush Vines", focus: "Centenary ungrafted bush vines planted in 1902 producing profound, lanolin and honey-scented Sémillon." }
     ],
-    description: "Settled in 1688 by French Huguenot refugees, the dramatic mountain-walled Franschhoek Valley literally translates to the 'French Corner.' Cooling afternoon shadows cast by surrounding massifs moderate summer heat throughout the enclosed basin. The valley is celebrated for centenarian ungrafted Sémillon bush vines planted as early as 1902, yielding opulent, beeswax-scented masterworks alongside spicy Syrah and cellar-worthy Cabernet Sauvignon."
+    description: "Franschhoek occupies an enclosed mountain valley sixty kilometers east of Cape Town, settled in 1688 by French Huguenot religious refugees. The French settlers brought their traditional winemaking heritage to the Cape, naming historic farms like La Motte and Chamonix after their ancestral French villages. Surrounding mountain massifs cast long afternoon shadows across the basin floor, creating sheltered microclimates that moderate summer heat. The valley preserves irreplaceable ungrafted Sémillon bush vines planted as early as 1902, yielding opulent, beeswax-scented masterworks alongside spicy Syrah and cellar-worthy Cabernet Sauvignon."
   }
 ];
 

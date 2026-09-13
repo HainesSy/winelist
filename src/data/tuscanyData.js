@@ -25,7 +25,7 @@ export const TUSCANY_SUBREGIONS = [
     climate: "Continental Mediterranean climate with hot summer days, cool alpine-influenced mountain nights, and significant diurnal temperature swings.",
     terroir: "Rolling forested mountains (250m to 650m) between Florence and Siena. The core geological bedrock of Galestro schist and Alberese limestone creates the world's most aromatic, savory, and age-worthy expressions of Sangiovese.",
     focus: "The historic cradle of Sangiovese (Gran Selezione & 11 official UGAs: Panzano, Radda, Gaiole, Castellina, Greve, Castelnuovo Berardenga): dried sour red cherry, redcurrant, blood orange, leather, dried oregano, balsamic herbs, and vibrant, food-loving acidity wrapped in chiseled limestone tannins.",
-    description: "Delimited in 1716 by Cosimo III de' Medici and symbolized by the Black Rooster, Chianti Classico represents Tuscany's historic viticultural core. Hillside communes are officially codified into 11 Unità Geografiche Aggiuntive (UGAs), capturing cool mountain air between Florence and Siena. Sangiovese reaches sovereign heights here, yielding wines of profound savory depth, dried red cherry, balsamic herbs, and aristocratic longevity."
+    description: "Chianti Classico covers the historic hill country between Florence and Siena, officially delimited in 1716 by Grand Duke Cosimo III de' Medici. The legendary Black Rooster emblem honors the medieval equestrian border truce that granted Florence control over these strategic central Tuscan ridges. In 2021, the regional consortium established 11 Unità Geografiche Aggiuntive (UGAs) to officially codify historic village subzones like Radda, Gaiole, and Castellina. Sangiovese achieves sovereign nobility across these high elevations, crafting wines of profound savory depth, dried red cherry, balsamic herbs, and aristocratic longevity."
   },
   {
     id: 'montalcino',
@@ -38,7 +38,7 @@ export const TUSCANY_SUBREGIONS = [
     climate: "Mediterranean-influenced continental climate sheltered from Atlantic storms by Monte Amiata (1,738m) to the south, with warm, dry conditions and excellent sun radiation.",
     terroir: "An isolated mountain fortress hill rising from 120m to 650m elevation. Distinct microclimates across four quadrants: cooler, floral, high-acid northern hills (Montosoli) vs. sun-drenched, powerful southern slopes (Castelnuovo dell'Abate).",
     focus: "100% Sangiovese Grosso of monumental depth and sovereignty: dark plum, wild blackberry, leather, black tea, espresso, dried violets, and architectural tannins requiring 10-20 years to open.",
-    description: "Perched on an isolated medieval fortress hill sheltered by Monte Amiata, Montalcino is the supreme cathedral of monovarietal Sangiovese Grosso. In 1888, Ferruccio Biondi-Santi crafted the inaugural vintage of Brunello, establishing a legendary blueprint for multi-decade cellar longevity. Patiently matured in oak casks, the wines possess monumental architectural authority, unfurling dark wild blackberry, leather, dried violets, and noble power."
+    description: "Montalcino encompasses an isolated medieval hilltop territory forty kilometers south of Siena, bounded by the Orcia, Asso, and Ombrone river valleys. In 1888, Ferruccio Biondi-Santi isolated the local Brunello clone of Sangiovese Grosso at Tenuta Greppo, pioneering an iconic blueprint for long cask maturation. Sheltered from harsh weather by the high peak of Monte Amiata, south-facing hillside slopes enjoy prolonged sunlight and warm afternoon drafts. Patiently matured in oak casks, Brunello di Montalcino exhibits architectural power, unfurling dark wild blackberry, saddle leather, dried violets, and noble cellar stamina."
   },
   {
     id: 'bolgheri-coastal',
@@ -51,7 +51,7 @@ export const TUSCANY_SUBREGIONS = [
     climate: "Warm Mediterranean maritime climate bathed in intense luminous sunlight reflected from the Tyrrhenian Sea and cooled by constant sea breezes.",
     terroir: "Coastal gravel terraces and clay hillsides nestled between the Colline Metallifere and the Mediterranean coastline. Perfect pedological parallel to Left Bank Bordeaux gravels.",
     focus: "The birthplace of the Super Tuscan revolution (Sassicaia, Ornellaia, Masseto): opulent, velvety, polished Bordeaux blends delivering dark cassis, blackcurrant, dark chocolate, eucalyptus, graphite, and seamless cashmere tannins.",
-    description: "Bathed in radiant Mediterranean light along the Tyrrhenian shore, Bolgheri transformed from sleepy coastal marsh into an internationally acclaimed fine wine destination. The 1968 debut of Sassicaia ignited the Super Tuscan revolution, proving that Bordeaux varieties could achieve transcendence here. Cooled by sea breezes, legendary estates like Ornellaia and Masseto craft opulent wines celebrated for polished cassis fruit and seamless cashmere tannins."
+    description: "Bolgheri occupies a narrow coastal strip along the Tyrrhenian shore in the Tuscan Maremma, centered around the historic village of Castagneto Carducci. Marchese Mario Incisa della Rocchetta planted French Cabernet cuttings at Tenuta San Guido during World War II, releasing the landmark 1968 vintage of Sassicaia. This audacious success ignited the Super Tuscan movement, inspiring neighboring properties like Ornellaia and Masseto to demonstrate the coastal region's aptitude for Bordeaux varieties. Mediterranean sunshine tempered by cool sea breezes yields opulent red wines celebrated for polished cassis fruit, dark cocoa, and seamless, velvety tannins."
   },
   {
     id: 'montepulciano-carmignano',
@@ -64,7 +64,7 @@ export const TUSCANY_SUBREGIONS = [
     climate: "Warm inland continental climate with gentle rolling hills and wide diurnal temperature shifts.",
     terroir: "The sandy, clay-rich hills of Montepulciano south of Chianti, and the historic Medici hills of Carmignano northwest of Florence where Cabernet has been cultivated since the 16th century.",
     focus: "Aristocratic, dark-fruited Sangiovese (Prugnolo Gentile) aged in large Slavonian botti (Montepulciano) and historic Sangiovese-Cabernet blends (Carmignano).",
-    description: "Montepulciano has cultivated its noble clone, Prugnolo Gentile, since Renaissance poets praised its aristocratic character across royal courts. To the northwest, the Medici enclave of Carmignano boasts centuries of continuous royal protection dating back to 1716, mandating that Sangiovese be blended with historic Cabernet. Both districts produce structured, cellar-worthy red wines that embody the timeless historical continuity of classical Tuscany."
+    description: "Montepulciano and Carmignano anchor two of Tuscany's oldest historical designations, situated southeast of Siena and northwest of Florence respectively. Renaissance poet Poliziano praised the noble red wines of Montepulciano, where vignerons have cultivated the local Prugnolo Gentile selection of Sangiovese for centuries. Northwest near Florence, Grand Duke Cosimo III de' Medici protected Carmignano in 1716, codifying a royal tradition of blending Sangiovese with imported French Cabernet. Both districts produce structured, cellar-worthy red wines that embody the aristocratic pedigree, wild berry fruit, and timeless continuity of classical Tuscan viticulture."
   },
   {
     id: 'san-gimignano-val-d-elsa',
@@ -77,7 +77,7 @@ export const TUSCANY_SUBREGIONS = [
     climate: "Warm, dry Mediterranean climate with breezy hillside exposures.",
     terroir: "Rolling golden clay hills surrounding the medieval UNESCO Manhattan of towers (San Gimignano). High fossil shell content imparts crisp saline minerality.",
     focus: "Tuscany's noble white wine: preserved lemon, white almond, rosemary blossom, flint, and a distinctive savory, bitter almond finish.",
-    description: "Surrounding a famous medieval skyline of soaring stone towers, this golden valley represents Tuscany's premier historic sanctuary for fine white wine. Dante Alighieri praised Vernaccia di San Gimignano in the Divine Comedy, and in 1966 it became Italy's very first DOC. The wines enchant with dry elegance, showing preserved lemon, white almond blossom, and a signature savory, refreshing finish."
+    description: "San Gimignano encompasses the hillside amphitheater surrounding the medieval tower city in the Elsa Valley southwest of Florence. Dante Alighieri praised Vernaccia di San Gimignano in the Divine Comedy in the fourteenth century, and in 1966 it became Italy's very first DOC. Medieval merchants grew wealthy exporting the golden white wine to papal tables and royal courts across Europe along the historic Via Francigena. Modern vignerons produce crisp, elegant white wines displaying preserved lemon peel, white almond blossom, wild herbs, and a signature savory, refreshing finish."
   }
 ];
 

@@ -1842,7 +1842,7 @@ export const BURGUNDY_SUBREGIONS = [
       { name: "Left Bank 1er Crus", focus: "Vaillons, Montmains, Côte de Léchet, Beauroy (racy, mineral, high-acid)" },
       { name: "Auxerrois Satellites", focus: "Irancy (Pinot Noir + César reds), Saint-Bris (Sauvignon Blanc), Vézelay (Chardonnay)" }
     ],
-    description: "Cradled along the Serein River, Chablis was pioneered in the twelfth century by Cistercian monks from nearby Pontigny Abbey. Seven legendary Grand Crus crown a single south-facing slope above the medieval village, producing Chardonnays of unmatched steely purity. Frosty spring mornings lit by flickering torches yield white wines brimming with green apple, citrus oil, and laser-precise saline tension."
+    description: "Chablis forms Burgundy's northernmost viticultural enclave, situated along the Serein River valley roughly 130 kilometers northwest of the Côte d'Or. Cistercian monks from nearby Pontigny Abbey established organized hillside vineyards here in the twelfth century, recognizing the valley's potential for pure Chardonnay. Seven Grand Cru climats crown a single continuous southwest-facing escarpment above the medieval town, where vignerons light spring frost smudge pots during icy mornings. The resulting white wines deliver razor-sharp acidity, green apple, preserved lemon peel, and an indelible, chiseled saline finish."
   },
   {
     id: 'cote-de-nuits',
@@ -1861,7 +1861,7 @@ export const BURGUNDY_SUBREGIONS = [
       { name: "Vosne-Romanée & Flagey", focus: "The supreme summit of Pinot Noir: Romanée-Conti, La Tâche, Richebourg, RSV, Échézeaux" },
       { name: "Nuits-Saint-Georges", focus: "Earthy, structured, dark-fruited Premier Crus (Les Saint-Georges, Vaucrains, Maréchale)" }
     ],
-    description: "Revered worldwide as the 'Champs-Élysées of Burgundy,' this hallowed escarpment is the spiritual homeland of Pinot Noir. In 1395, Duke Philip the Bold banished Gamay to protect these slopes, while medieval monks built the stone sanctuary of Clos de Vougeot. Hosting twenty-four red Grand Crus including Romanée-Conti and Chambertin, it crafts sovereign wines radiating violet perfume, sous-bois, and majestic longevity."
+    description: "The Côte de Nuits forms the northern half of the Côte d'Or escarpment, stretching twenty kilometers from the southern outskirts of Dijon to Corgoloin. In 1395, Duke Philip the Bold issued his famous edict banishing the disloyal Gamay grape to protect the noble reputation of Pinot Noir along these slopes. Medieval Cistercian monks enclosed the iconic Clos de Vougeot with stone walls in 1336, pioneering precise parcel-by-parcel climat mapping. Hosting twenty-four red Grand Crus including Romanée-Conti and Chambertin, the escarpment crafts sovereign wines radiating wild strawberry, violet perfume, and noble sous-bois."
   },
   {
     id: 'cote-de-beaune',
@@ -1881,7 +1881,7 @@ export const BURGUNDY_SUBREGIONS = [
       { name: "Puligny & Chassagne", focus: "Montrachet, Chevalier, Bâtard, Bienvenues, Criots Grand Crus and premier climats" },
       { name: "Southern Slopes", focus: "Saint-Aubin (steep mineral whites) and Santenay (savory earthy reds)" }
     ],
-    description: "The supreme cathedral of Chardonnay mastery, the Côte de Beaune has radiated royal and monastic prestige since Emperor Charlemagne gifted hillside parcels to Saulieu Abbey in 775 AD. In Beaune, Chancellor Nicolas Rolin established the historic Hospices in 1443 to house an enduring annual wine auction. Iconic Grand Crus like Montrachet and Corton-Charlemagne produce dry whites of breathtaking hazelnut richness, balance, and poise."
+    description: "The Côte de Beaune spans twenty-five kilometers of eastern escarpment from Ladoix-Serrigny south to the Dheune River at Cheilly-lès-Maranges. Emperor Charlemagne gifted hillside parcels on Corton to the Abbey of Saulieu in 775 AD, establishing an imperial white wine heritage that endures today. Chancellor Nicolas Rolin founded the Hospices de Beaune in 1443, establishing an endowment of premier vineyard parcels that host the world's most famous annual charitable wine auction. Legendary white Grand Crus like Montrachet produce dry wines of breathtaking hazelnut richness, crystalline citrus, and profound cellar longevity."
   },
   {
     id: 'hautes-cotes',
@@ -1897,7 +1897,7 @@ export const BURGUNDY_SUBREGIONS = [
       { name: "Hautes-Côtes de Nuits", focus: "Vibrant red berries and crisp mineral whites west of Vosne and Nuits" },
       { name: "Hautes-Côtes de Beaune", focus: "Fresh, floral Chardonnay and juicy red Pinot Noir west of Beaune and Pommard" }
     ],
-    description: "Perched high on the breezy plateau benches west of the Côte d'Or, these historic highland hamlets once served as the private hunting grounds of Burgundian dukes. Today, cooler elevations and forward-thinking vignerons have ignited an artisanal renaissance across these slopes. They craft high-energy Pinot Noir and Chardonnay brimming with crunchy wild strawberries, crisp green apple, and crystalline alpine freshness."
+    description: "The Hautes-Côtes flank the elevated western plateau above the primary Côte d'Or escarpment, positioned at elevations between 350 and 500 meters. Dukes of Burgundy once utilized these highland forests and secluded valleys as royal hunting reserves and quiet country retreats. As warming regional temperatures lengthen the growing season, ambitious young vignerons have reclaimed heritage parcels across these cooler hillside communes. Their high-elevation Pinot Noir and Chardonnay deliver crunchy red cherries, crisp orchard fruit, and refreshing alpine tension with vibrant gastronomic appeal."
   },
   {
     id: 'cote-chalonnaise',
@@ -1914,7 +1914,7 @@ export const BURGUNDY_SUBREGIONS = [
       { name: "Rully & Montagny", focus: "Crystalline, mineral Chardonnay and historic birthplace of Crémant de Bourgogne" },
       { name: "Mercurey & Givry", focus: "Structured, spicy, dark-cherry Pinot Noir favored by French royalty" }
     ],
-    description: "South of the Côte d'Or, this sun-dappled landscape has enjoyed royal admiration since King Henry IV declared his passion for Givry reds. The region holds unique treasures, from Rully's historic nineteenth-century sparkling Crémant heritage to Bouzeron's celebrated golden Aligoté Doré parcels championed by Aubert de Villaine. Energetic family domaines produce expressive Pinot Noir and Chardonnay radiating authentic Burgundian charm and generosity."
+    description: "The Côte Chalonnaise extends twenty-five kilometers south of Chagny, forming an undulating viticultural link between the Côte d'Or and the Mâconnais. French King Henry IV famously favored the red wines of Givry, granting royal patronage that elevated the district's historical commercial reputation. In Rully, nineteenth-century vignerons pioneered sparkling Crémant de Bourgogne production, while Aubert de Villaine spearheaded the AOC recognition of Bouzeron's heritage Aligoté Doré. Progressive family domaines produce expressive Pinot Noir and Chardonnay radiating authentic Burgundian charm, orchard fruit purity, and bright freshness."
   },
   {
     id: 'maconnais',
@@ -1931,7 +1931,7 @@ export const BURGUNDY_SUBREGIONS = [
       { name: "Saint-Véran", focus: "Chiseled, fresh, citrus-driven Chardonnay surrounding the Solutré rock" },
       { name: "Viré-Clessé", focus: "Lush, floral, honeyed stone-fruit whites with historic botrytis tradition" }
     ],
-    description: "The luminous southern gateway to Burgundy was shaped by the Benedictine Abbey of Cluny, whose tenth-century abbots influenced European monastic viticulture for generations. Framed beneath the prehistoric cliffs of Solutré and Vergisson, these warm slopes nurture luscious, orchard-fruited Chardonnays. Across premier appellations like Pouilly-Fuissé and Saint-Véran, the wines marry sun-warmed generosity with honeysuckle blossom and vibrant, refreshing poise."
+    description: "The Mâconnais covers thirty-five kilometers of rolling hills between Tournus and the borders of Beaujolais in southern Burgundy. Benedictine abbots at Cluny founded an international monastic empire in 910 AD, systematically planting vineyards and refining cellar practices throughout the southern valleys. The dramatic twin escarpments of Solutré and Vergisson anchor the historic white wine villages of Pouilly-Fuissé, which achieved Premier Cru classification in 2020. Chardonnay thrives across these warm amphitheaters, yielding supple white wines scented with ripe orchard peach, acacia honey, and refreshing citrus tension."
   }
 ];
 

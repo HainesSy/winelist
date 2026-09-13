@@ -36,7 +36,7 @@ export const MENDOZA_SUBREGIONS = [
       { name: "Tunuyán (Los Chacayes & Vista Flores)", focus: "Rocky gravelly piedmont at 1,000m–1,300m producing muscular, dark-fruited Malbec and wild herbal Cabernet Franc." },
       { name: "San Carlos (Paraje Altamira & El Cepillo)", focus: "Southern alluvial fan with shallow topsoil and dense limestone crusts producing chalky, saline-textured red wines." }
     ],
-    description: "Perched dramatically beneath snow-crowned Andean peaks, the high-altitude Uco Valley is Argentina's cutting-edge viticultural frontier. Pioneered by visionary Nicolás Catena in the 1990s, these sky-high vineyards harness piercing ultraviolet light and cool mountain nights. The resulting Malbec and Cabernet Franc radiate electric violet perfume, aristocratic freshness, and age-worthy cellar structure."
+    description: "The Uco Valley occupies the southwestern flank of Mendoza along the front range of the Andes, defining Argentina's premier high-altitude wine district. Visionary vintner Nicolás Catena championed these high elevations in the 1990s, proving that intense ultraviolet radiation and dramatic diurnal shifts could achieve world-class balance. Pioneering winemakers and international investors quickly followed, establishing gravity-fed architectural estates across Tupungato, Tunuyán, and San Carlos. High-elevation Malbec and Cabernet Franc produced here exhibit electric violet aromas, fresh acidity, and refined structural longevity."
   },
   {
     id: 'lujan-de-cuyo',
@@ -53,7 +53,7 @@ export const MENDOZA_SUBREGIONS = [
       { name: "Perdriel & Vistalba", focus: "Terraced stony soils directly bordering the Mendoza River; legendary benchmark for structural elegance and violet aromatics." },
       { name: "Agrelo & Ugarteche", focus: "Slightly warmer clay-loam basin producing opulent, dark chocolate and damson plum-driven Malbec." }
     ],
-    description: "Revered as Argentina's legendary Primera Zona, Luján de Cuyo is the historic heart of classical Malbec along the Mendoza River. Centuries-old irrigation channels engineered by indigenous Huarpe peoples sustain precious ungrafted vines planted by nineteenth-century Italian immigrants. The wines are timelessly romantic, yielding velvety textures layered with sweet damson plum, cocoa, and perfumed violet notes."
+    description: "Luján de Cuyo forms the historic Primera Zona along the upper river basin south of Mendoza City, officially established in 1993 as Argentina's inaugural DOC. Centuries-old acequia irrigation canals originally engineered by indigenous Huarpe communities continue to channel pure Andean snowmelt to treasured centenarian vines. Nineteenth-century Italian and French immigrants planted ungrafted heritage selections that established the district's global reputation for classical Malbec. Benchmark bottlings deliver opulent textures layered with ripe damson plum, bitter cocoa, sweet tobacco, and seamless, velvety tannins."
   },
   {
     id: 'maipu',
@@ -69,7 +69,7 @@ export const MENDOZA_SUBREGIONS = [
       { name: "Barrancas", focus: "Dry, sun-baked gravelly terrace producing ripe, dense, black-fruited Malbec and robust Syrah." },
       { name: "Lunlunta & Russell", focus: "Cooler river-adjacent alluvial benches producing perfumed, supple old-vine reds." }
     ],
-    description: "The deeply rooted historic cradle of Mendoza viticulture, Maipú was transformed from wild desert into flourishing vineyard by pioneering European settlers in the mid-nineteenth century. Atmospheric brick cellars house giant seasoned casks that mature fruit from treasured centenarian vines. The district produces generous, dark-fruited Malbec and spicy Bonarda embodying the warm conviviality of traditional Argentine gatherings."
+    description: "Maipú encompasses the historic central wine corridor immediately southeast of Mendoza City, representing the foundational cradle of the modern Argentine wine industry. European visionaries including Don Felipe Rutini and the Giol family constructed expansive brick cellars and giant seasoned casks here during the late nineteenth century. The district preserves irreplaceable pre-phylloxera rootstocks alongside traditional pergola-trained vineyards that survived decades of industrial expansion. Its generous, dark-fruited Malbec and old-vine Bonarda offer warming spice, plush black fruit, and an authentic spirit of traditional Argentine hospitality."
   },
   {
     id: 'san-rafael',
@@ -85,7 +85,7 @@ export const MENDOZA_SUBREGIONS = [
       { name: "Valle del Atuel", focus: "Cooler riverbed valley producing crisp sparkling base wines and citrusy Chenin Blanc." },
       { name: "Cuadro Benegas", focus: "Stony volcanic gravel slopes producing refined, peppery Cabernet and balanced Malbec." }
     ],
-    description: "An enchanting southern oasis fed by the rushing Diamante and Atuel rivers, San Rafael was founded by visionary French engineer Rodolfo Iselín in the late nineteenth century. Italian immigrant families established storied estates that have preserved artisanal traditions for generations. Cooler mountain nights foster bright, citrus-scented Chenin Blanc and restrained, age-worthy red wines defined by refreshing balance."
+    description: "San Rafael forms an isolated southern viticultural oasis along the Diamante and Atuel rivers, situated roughly 240 kilometers south of Mendoza City. French engineer Rodolfo Iselín established commercial viticulture here in the late nineteenth century, followed by Italian dynasties like the Bianchi and Goyenechea families. Significant distance from the northern oases fosters an independent viticultural culture dedicated to cool-fermented white varieties and balanced estate-bottled reds. Cold mountain nights produce fragrant Chenin Blanc brimming with citrus zest, alongside classical Cabernet Sauvignon and Malbec characterized by moderate alcohol and crisp balance."
   }
 ];
 

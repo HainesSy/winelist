@@ -36,7 +36,7 @@ export const PORTUGAL_SUBREGIONS = [
       { name: "Douro Superior", focus: "The wild, arid eastern frontier bordering Spain; scorching heat and flat alluvial/schist benches yielding monumental dry red icons (Barca-Velha, Quinta do Vale Meão)." },
       { name: "Baixo Corgo", focus: "The westernmost, cooler and wettest sector producing fresh, early-drinking ruby ports and lively dry table wines." }
     ],
-    description: "The crown jewel of Portuguese viticulture, the Douro Valley became the world's first demarcated and regulated wine region in 1756 under the Marquês de Pombal. Carved by the winding river into steep terraced canyons, this UNESCO landscape braves scorching continental summers. Hand-harvested field blends yield immortal Vintage Ports and monumental dry reds like Barca-Velha, offering inky floral power and decades of cellar grandeur."
+    description: "The Douro demarcated wine region extends ninety kilometers along the Douro River in northeastern Portugal, stretching from Mesão Frio to the Spanish border. Prime Minister Marquês de Pombal established one of the world's earliest officially regulated appellations here in 1756, placing stone demarcation pillars across the terraced valleys. British merchants established historic shipping lodges in Vila Nova de Gaia during the eighteenth century, cultivating an enduring global trade for fortified Vintage Port. Complex field blends of Touriga Nacional and Touriga Franca produce both immortal Ports and monumental dry reds like Barca-Velha that mature for decades."
   },
   {
     id: 'dao',
@@ -52,7 +52,7 @@ export const PORTUGAL_SUBREGIONS = [
       { name: "Serra da Estrela Slopes", focus: "The highest granite foothills producing crystalline, high-acid Touriga Nacional and ethereal Encruzado." },
       { name: "Silgueiros", focus: "Warm central granite bowl yielding concentrated, fleshy, and perfumed classical Dão reds." }
     ],
-    description: "Hailed as the Burgundy of Portugal, the Dão occupies an elevated plateau sheltered by encircling mountain ranges like the Serra da Estrela. Cold alpine nights preserve towering natural acidity and aromatic finesse. Red wines crafted from Touriga Nacional and Jaen display translucent ruby grace and crushed violet perfume, while indigenous Encruzado whites rival fine Meursault in textural nobility and age-worthy poise."
+    description: "The Dão DOC occupies an elevated central plateau in northern Portugal, sheltered on all sides by the Serra da Estrela and Caramulo mountains. Officially demarcated in 1908, the region has preserved artisanal polyculture and multi-generational family quintas through decades of cooperative monopolies. Cold alpine nocturnal temperatures preserve towering natural acidity, enabling native grapes like Touriga Nacional and Jaen to develop translucent finesse. The district produces perfumed reds with violet and pine needle notes, alongside indigenous Encruzado white wines celebrated for nutty complexity and Burgundian poise."
   },
   {
     id: 'alentejo',
@@ -68,7 +68,7 @@ export const PORTUGAL_SUBREGIONS = [
       { name: "Portalegre", focus: "Cool, rainy, high-altitude northern granite and schist mountain slopes home to centenarian field blend bush vines." },
       { name: "Borba & Estremoz", focus: "Rich marble and limestone soils producing aristocratic, structured, and age-worthy red blends." }
     ],
-    description: "Encompassing rolling golden wheat plains, cork oak forests, and white-washed towns, the Alentejo embodies the pastoral soul of southern Portugal. In Portalegre's high mountain foothills, cool night breezes balance generous summer heat. The region preserves Vinho de Talha, an unbroken two-millennium Roman tradition of amphora winemaking, producing succulent, dark-fruited reds that capture the warm hospitality of the Iberian table."
+    description: "The Alentejo DOC encompasses southern Portugal's vast rolling interior plateau, extending from the Tagus River south toward the mountains of the Algarve. Roman colonists introduced olive groves and vineyards here two thousand years ago, establishing the tradition of fermenting wine in giant earthenware amphorae called talhas. After the 1974 Carnation Revolution, forward-looking winegrowers restored historic quintas and pioneered estate bottling across eight diverse sub-appellations. The region yields succulent, dark-fruited red blends brimming with ripe plum, wild rosemary, and warm spice, complemented by refreshing high-altitude whites from Portalegre."
   },
   {
     id: 'vinho-verde',
@@ -84,7 +84,7 @@ export const PORTUGAL_SUBREGIONS = [
       { name: "Monção e Melgaço", focus: "The historic cradle of Alvarinho; south-facing granite river terraces sheltered from heavy Atlantic storms." },
       { name: "Lima Valley", focus: "Coastal granite terraces producing highly aromatic, citrusy, and floral Loureiro whites." }
     ],
-    description: "Situated in lush, emerald-green northwestern Portugal along the Minho River, Vinho Verde is the nation's largest wine denomination. In the sheltered northern enclave of Monção e Melgaço, protected slopes capture warm sunlight while preserving crystalline natural acidity. Indigenous Alvarinho reigns supreme here, crafted by visionary vignerons like Anselmo Mendes into dry white wines of white peach nectar, vibrant salinity, and twenty-year aging potential."
+    description: "Vinho Verde occupies the lush northwestern corner of Portugal in the historical Minho province, bounded by the Atlantic Ocean and the Spanish border. Roman naturalists documented vines trained high up tree trunks here, a traditional enforcado training system designed to maximize scarce land for peasant crops. In the sheltered northern subregion of Monção e Melgaço, visionary winemaker Anselmo Mendes pioneered barrel fermentation and skin maceration for indigenous Alvarinho. The resulting white wines deliver crystalline citrus blossom, white peach nectar, and vibrant ocean salinity capable of graceful cellar evolution."
   },
   {
     id: 'bairrada',
@@ -100,7 +100,7 @@ export const PORTUGAL_SUBREGIONS = [
       { name: "Clay-Limestone Hills (Barro)", focus: "Heavy chalky clay slopes producing monumental, tannic, ageworthy Baga that requires decades of cellar maturation (Luis Pato)." },
       { name: "Sandy Plains (Areias)", focus: "Coastal sand dunes hosting pre-phylloxera ungrafted bush vines producing perfumed, earlier-drinking reds." }
     ],
-    description: "Nestled along the Atlantic coast between the Serra do Buçaco and the ocean, Bairrada is home to one of Europe's most uncompromising coastal wine sanctuaries. Humid sea winds and morning fogs prolong ripening for the late-harvest Baga grape. Championed by trailblazing winemakers Luis and Filipa Pato, traditional old-vine Baga transforms with age into an ethereal, tobacco, dried-cranberry, and truffle-scented masterpiece of architectural distinction."
+    description: "Bairrada DOC extends across the maritime coastal plain between Coimbra and Aveiro in central coastal Portugal, bordered by the Serra do Buçaco. In 1756, the Marquês de Pombal ordered local vines uprooted to eliminate competition with Port, but resilient local growers preserved their precious heritage plots. Trailblazing winegrower Luis Pato championed unadulterated estate bottling in the 1980s, proving that late-ripening indigenous Baga could produce world-class fine red wine. Patient bottle aging transforms structured Baga into an ethereal masterpiece redolent of dried cranberries, pipe tobacco, pine needle, and black truffle."
   }
 ];
 

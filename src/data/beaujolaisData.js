@@ -34,7 +34,7 @@ export const BEAUJOLAIS_SUBREGIONS = [
       { name: "Moulin-à-Vent Manganese Plateau", focus: "Friable pink granite crisscrossed by toxic manganese quartz veins (Champ de Cour, Les Vérillats)" },
       { name: "Fleurie Granite Amphitheater", focus: "Ultra-fine, friable acidic pink granite sand (La Madone, Grille-Midi, Poncié)" }
     ],
-    description: "The northern crown of Beaujolais encompasses ten celebrated Cru communes, from majestic Morgon to floral Fleurie. In Villié-Morgon, visionary enologist Jules Chauvet and the 'Gang of Four' sparked the modern natural wine movement with unadulterated vinification and old vines. Elite sites evolve with cellaring grace, developing haunting truffle and dark spice complexity that famously rivals fine Burgundy."
+    description: "The northern sector of Beaujolais encompasses ten designated communal Crus stretching from Saint-Amour south to Brouilly along the Saône Valley hills. Enologist Jules Chauvet conducted foundational low-intervention research in Villié-Morgon during the 1970s, inspiring Marcel Lapierre, Jean Foillard, and the famed Gang of Four to champion natural vinification. Multi-generational vigneron families rejected industrial homogenization, relying on whole-cluster carbonic maceration and old bush vines to reveal communal distinctions. Structured Crus like Moulin-à-Vent and Morgon develop haunting woodland, truffle, and wild spice complexity that rivals premier cru Burgundy over decades."
   },
   {
     id: 'beaujolais-villages',
@@ -51,7 +51,7 @@ export const BEAUJOLAIS_SUBREGIONS = [
       { name: "Lantignié", focus: "Granite soils directly west of Régnié, seeking official Cru status" },
       { name: "Beaujeu Hillsides", focus: "The historic capital of the Beaujolais province on steep granitic slopes" }
     ],
-    description: "Gathered around the historic medieval capital of Beaujeu, thirty-eight designated hillside communes form the vibrant artisan core of regional Gamay. For generations, independent family growers have supplied the boisterous bistros and bouchons of Lyon with carafes of joyous, peppery red wine. Dynamic villages like Lantignié spearhead an ambitious quality crusade, producing single-parcel wines of striking depth and floral perfume."
+    description: "Beaujolais-Villages encompasses thirty-eight designated hillside communes surrounding the medieval capital of Beaujeu between the Northern Crus and the southern plains. Winemakers in these mid-slope communes supplied the bustling bistros and working-class bouchons of nearby Lyon with fresh carafes of peppery Gamay for generations. Forward-thinking villages like Lantignié have spearheaded single-climat classifications, documenting parcel histories and elevating estate-bottled standards across the appellation. The resulting wines deliver exuberant wild raspberry, violet perfume, and crunchy acidity, capturing the generous gastronomic character of central Beaujolais."
   },
   {
     id: 'bas-beaujolais',
@@ -67,7 +67,7 @@ export const BEAUJOLAIS_SUBREGIONS = [
       { name: "Châtillon d'Azergues & Theize", focus: "Clay-limestone hills producing expressive, chalky Chardonnay and floral Gamay" },
       { name: "Bagnols & Jarnioux", focus: "Golden stone terroirs yielding juicy, strawberry-driven early drinking reds" }
     ],
-    description: "Affectionately hailed as the 'French Tuscany,' this sun-drenched southern countryside is dotted with medieval villages built from radiant honey-hued golden stone. Peasant winemaking lore and convivial harvest celebrations have welcomed travelers here for generations. Talented vignerons craft supple Gamay redolent of freshly picked wild strawberries, alongside vibrant rosé and increasingly aristocratic, floral Chardonnay."
+    description: "Bas-Beaujolais occupies the southern undulating countryside between Villefranche-sur-Saône and the northern suburbs of Lyon, celebrated locally as the Pierres Dorées. Golden ochre stone quarried across the region since the fifteenth century adorns fortified churches, farmhouses, and historic castle ramparts throughout the territory. Traditional peasant polyculture and boisterous parish harvest festivals have sustained a close-knit community of independent vigneron families through economic shifts. Contemporary producers craft supple, fruit-forward Gamay redolent of freshly picked red berries, alongside delicate rosé and increasingly refined, floral Chardonnay."
   }
 ];
 

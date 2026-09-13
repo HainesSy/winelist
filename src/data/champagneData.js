@@ -676,7 +676,7 @@ export const CHAMPAGNE_SUBREGIONS = [
       { name: "Massif de Saint-Thierry", focus: "Cool sandy-limestone terroirs for Meunier and crisp Pinot Noir" },
       { name: "Vesle & Ardre Valleys", focus: "Frost-susceptible valleys dominated by resilient, late-budding Meunier" }
     ],
-    description: "Rising like a forested fortress between Reims and Épernay, the Montagne de Reims has supplied royal coronation banquets for centuries. Nine legendary Grand Cru villages, including Ambonnay and Bouzy, cling to its slopes where cool woodland breezes preserve aristocratic freshness. Pinot Noir reigns sovereign here, delivering vinous authority, ripe red cherry, warm brioche, and majestic longevity to the region's greatest prestige cuvées."
+    description: "The Montagne de Reims forms a prominent forested promontory between Reims and the Marne River, crowned by nine official Grand Cru villages. French kings were crowned in Reims Cathedral for over eight centuries, with local still wines from Ambonnay and Bouzy serving at coronation banquets. Multi-generational grower families continue to tend steep south-facing parcels sheltered beneath the plateau's summit woodlands. Pinot Noir dominates these slopes, contributing architectural structure, ripe red cherry, toasted brioche, and sovereign longevity to the region's finest prestige cuvées."
   },
   {
     id: 'vallee-de-la-marne',
@@ -695,7 +695,7 @@ export const CHAMPAGNE_SUBREGIONS = [
       { name: "Rive Gauche (Left Bank)", focus: "South of Marne (Festigny, Leuvrigny, Mareuil-le-Port, Œuilly) - rich Illite clay Meunier" },
       { name: "Confluence / Marne Ouest", focus: "Western extension towards Château-Thierry and the Aisne department" }
     ],
-    description: "Meandering peacefully through lush hillsides, the Vallée de la Marne is the spiritual cradle of champagne lore. At the Benedictine Abbey of Hautvillers, Dom Pierre Pérignon famously refined cellar craft, while King Henri IV celebrated the sumptuous still wines of Aÿ. The valley champions resilient Meunier alongside noble Pinot Noir, yielding warmly textured cuvées scented with baked orchard fruit, pastry spice, and riverside soul."
+    description: "The Vallée de la Marne follows the westward path of the Marne River from Tours-sur-Marne past Épernay to the borders of the Paris basin. At the Benedictine Abbey of Hautvillers, cellar master Dom Pierre Pérignon refined essential blending techniques and vineyard pruning rules in the seventeenth century. King Henri IV famously styled himself the Lord of Aÿ, celebrating the expressive wines that flowed from the valley's south-facing riverbanks. Resilient Meunier flourishes here alongside Pinot Noir, producing round, gastronomic champagnes scented with baked apple, ginger spice, and plush orchard fruit."
   },
   {
     id: 'cote-des-blancs',
@@ -714,7 +714,7 @@ export const CHAMPAGNE_SUBREGIONS = [
       { name: "Southern Amphitheater (Le Mesnil-sur-Oger)", focus: "Austere, razor-sharp, hyper-mineral, decades-long cellaring" },
       { name: "Eastern Plain (Oiry)", focus: "Airy, delicate, saline chalk expressions" }
     ],
-    description: "Carving a graceful crescent south of Épernay, the Côte des Blancs stands as the supreme sanctuary of Blanc de Blancs. Six peerless Grand Cru villages, including Avize, Cramant, and Le Mesnil-sur-Oger, bask in the gentle rays of dawn sunlight. Chardonnay achieves celestial purity here, trading heavy power for white blossom perfume, lemon curd elegance, and laser-sharp saline tension that endures for decades."
+    description: "The Côte des Blancs forms an east-facing cliffside escarpment extending fifteen kilometers south from Épernay through Le Mesnil-sur-Oger. The district encompasses six premier Grand Cru villages dedicated almost exclusively to Chardonnay, basking in gentle morning sun along sheltered hillside hollows. Pioneering vignerons like Salon in 1905 proved that single-village, single-variety Blanc de Blancs could achieve world-class elegance without blending red grapes. Chardonnay harvested here produces diaphanous champagnes shimmering with white floral blossom, Meyer lemon curd, and razor-sharp, saline tension that endures for decades."
   },
   {
     id: 'cote-de-sezanne',
@@ -731,7 +731,7 @@ export const CHAMPAGNE_SUBREGIONS = [
       { name: "Sézanne & Bethon", focus: "Sun-drenched south-facing chalk slopes producing round, fruity Chardonnays" },
       { name: "Villenauxe-la-Grande", focus: "Clay-rich western sector favoring early ripening" }
     ],
-    description: "Tucked south of the Côte des Blancs around the medieval ramparts of Sézanne, this sun-kissed haven offers a voluptuous counterpart to northern slopes. Vineyards soak up gentle warmth that ripens Chardonnay days ahead of its neighbors, a legacy nurtured since medieval times. The resulting champagnes entice with ripe white peach, acacia blossom, and a round, generous texture prized for bringing immediate joy to fine cuvées."
+    description: "The Côte de Sézanne extends south of the marshes of Saint-Gond, centered on the medieval market town of Sézanne in the southern Marne. Monastic communities tended hillside vineyards here as early as the twelfth century, cultivating vines along sunlit southeast-facing exposures. Slightly warmer macroclimatic conditions allow Chardonnay to ripen several days ahead of the Côte des Blancs, developing generous fruit weight. Local champagnes display welcoming aromas of ripe white peach, honeysuckle, and acacia blossom, offering immediate generosity and creamy textural charm."
   },
   {
     id: 'cote-des-bar',
@@ -748,7 +748,7 @@ export const CHAMPAGNE_SUBREGIONS = [
       { name: "Barséquanais (Seine, Ource, Laignes valleys)", focus: "Les Riceys, Celles-sur-Ource, Buxeuil - Kimmeridgian marl Pinot Noir & Pinot Blanc" },
       { name: "Bar-sur-Aubois (Aube valley)", focus: "Bar-sur-Aube, Urville, Champignol - Oxfordian/Kimmeridgian higher elevation slopes" }
     ],
-    description: "Carrying an independent spirit in the southern reaches of Champagne, the Côte des Bar was first mapped in 1115 by Saint Bernard and Cistercian monks of Clairvaux Abbey. After defending their heritage during the historic 1911 Champagne Riots, local vignerons ignited today's vibrant grower-producer revolution. The region's Pinot Noir delivers captivating warmth, succulent red berries, and an authentic, soulful depth that enchants modern connoisseurs."
+    description: "The Côte des Bar encompasses the southern Champagne district within the Aube department, situated around Bar-sur-Aube and Bar-sur-Seine. Saint Bernard founded Clairvaux Abbey here in 1115, where Cistercian monks systematically mapped premier vineyard parcels across surrounding river valleys. Local vignerons mobilized fiercely during the 1911 Champagne Riots, successfully petitioning the French government for full recognition within the Champagne appellation. Pinot Noir reigns supreme across the district, producing expressive, vinous champagnes laden with juicy red berries, smoke, and an authentic artisan grower soul."
   },
   {
     id: 'coteaux-sud-epernay',
@@ -765,7 +765,7 @@ export const CHAMPAGNE_SUBREGIONS = [
       { name: "Chavot-Courcourt & Moussy", focus: "Flint and clay-limestone hillsides yielding tense, mineral Meunier" },
       { name: "Pierry (1er Cru) & Monthelon", focus: "Chalk-marl slopes yielding structured Meunier and Blanc de Blancs" }
     ],
-    description: "Gathered around rolling amphitheaters south of Épernay, this district marks a romantic crossroads between the Marne and the Côte des Blancs. In the eighteenth century, Benedictine monk Jean Oudart of Pierry unraveled early secrets of bottle effervescence alongside Dom Pérignon. Today, pioneering young artisans craft parcel-specific bottlings that unite vibrant Chardonnay with succulent Meunier, offering crisp green apple and adventurous gastronomic flair."
+    description: "The Coteaux Sud d'Épernay encompass eleven hillside communes situated immediately south of Épernay, bridging the Marne Valley and the Côte des Blancs. In the late seventeenth century, Benedictine monk Jean Oudart of Pierry unraveled early principles of bottle effervescence and cork closures alongside Dom Pérignon. Today, dynamic young grower-producers champion single-parcel micro-cuvées, eschewing commercial blending to highlight individual village personalities. Balanced co-plantings of Chardonnay and Meunier yield energetic champagnes displaying crisp green orchard fruit, spring blossoms, and refined gastronomic freshness."
   },
   {
     id: 'vitryat',
@@ -781,7 +781,7 @@ export const CHAMPAGNE_SUBREGIONS = [
     microTerroirs: [
       { name: "Vitryat Hillsides", focus: "15 small communes producing vibrant, crisp, high-tension mineral Chardonnay" }
     ],
-    description: "Perched like a sunlit enclave east of the Marne, the Vitryat is a peaceful haven of pure Chardonnay viticulture. Timber-framed villages like Bassuet have tended vines since Roman times, benefiting from bright continental sunshine and cool eastern night breezes. Chardonnay hangs late into autumn, developing expressive white peach and acacia perfume while maintaining the electric, crystalline acidity coveted by master blenders."
+    description: "The Vitryat encompasses fifteen small hillside communes clustered around the market town of Vitry-le-François in the southeastern Marne department. Timber-framed agricultural hamlets like Bassuet have cultivated hillside vines since Roman times, benefiting from bright continental sunshine and cool eastern breezes. After decades of selling fruit to major blending houses, an emerging vanguard of independent growers now bottles estate-grown cuvées under their own family labels. Chardonnay ripens slowly across these slopes, developing expressive white peach and citrus floral aromas while preserving the crystalline acidity valued by discerning cellars."
   }
 ];
 

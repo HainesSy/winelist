@@ -25,7 +25,7 @@ export const BORDEAUX_SUBREGIONS = [
     climate: "Maritime temperate climate moderated by the Atlantic Ocean, Gironde Estuary, and protective Landes coastal pine forest.",
     terroir: "Series of undulating deep Quaternary Günzian and Mindel Gravel mounds (croupes de graves) deposited by the Garonne and Dordogne rivers during Pleistocene glaciations over Tertiary limestone bedrock. Supreme drainage and radiant thermal heat retention.",
     focus: "World cathedral of Cabernet Sauvignon (Pauillac, Margaux, Saint-Julien, Saint-Estèphe): authoritative structure, cedar, blackcurrant, graphite, and 40-50+ year cellar longevity (home to 4 of the 5 1855 First Growths).",
-    description: "Drained from coastal marshland by seventeenth-century Dutch engineers, the Médoc rose to become the world's most aristocratic wine peninsula. Commissioned by Emperor Napoleon III for the 1855 Paris Exposition, its historic classification immortalized legends like Latour, Margaux, Lafite, and Mouton Rothschild. Cabernet Sauvignon reigns supreme here, unfurling stately notes of cassis, cedar, and pencil graphite over decades."
+    description: "The Médoc peninsula extends eighty kilometers northwest from Bordeaux along the left bank of the Gironde estuary toward the Atlantic Ocean. Dutch drainage engineers reclaimed coastal marshlands during the seventeenth century, enabling aristocratic Bordeaux families to establish grand agricultural domains. Emperor Napoleon III commissioned the official 1855 Classification for the Exposition Universelle de Paris, cementing eternal global prestige for first growths like Latour, Lafite, and Margaux. Cabernet Sauvignon dominates these structured blends, developing aristocratic aromas of crème de cassis, cedar box, and pencil graphite over decades of cellar maturation."
   },
   {
     id: 'graves-pessac',
@@ -39,7 +39,7 @@ export const BORDEAUX_SUBREGIONS = [
     climate: "Warm maritime with strong thermal inertia from the urban heat island effect of Bordeaux and dense pine forests of the Landes to the west.",
     terroir: "The historical birthplace of Bordeaux fine wine ('Claret'). Ancient Quaternary gravels rich in white quartz, jasper, and flint over impermeable clay and limestone. Produces iconic mineral, smoky reds and barrel-fermented dry whites.",
     focus: "Dual excellence: Smoky, truffled Cabernet/Merlot reds (Château Haut-Brion, La Mission Haut-Brion) and aristocratic, age-worthy Sémillon/Sauvignon Blanc dry whites (Domaine de Chevalier).",
-    description: "The ancestral cradle of Bordeaux claret, Graves earned global renown following Eleanor of Aquitaine's royal 1152 marriage to England's King Henry II. In 1300, the future Pope Clement V established historic vines here, while Château Haut-Brion enchanted seventeenth-century London society. The district uniquely masters two noble styles: smoky, truffled red wines and age-worthy, barrel-fermented dry whites of spellbinding elegance."
+    description: "Graves and Pessac-Léognan stretch southward along the left bank of the Garonne, representing the ancestral birthplace of Bordeaux's export wine trade. Royal English demand surged following Eleanor of Aquitaine's 1152 marriage to King Henry II, establishing claret as the favored beverage of the royal court in London. In 1300, Bertrand de Goth established Château Pape Clément before his election as Pope Clement V, while Château Haut-Brion earned praise from diarist Samuel Pepys in 1663. The district produces both truffled, cedar-scented red wines and age-worthy, barrel-fermented dry whites of spellbinding aromatic complexity."
   },
   {
     id: 'sauternais',
@@ -53,7 +53,7 @@ export const BORDEAUX_SUBREGIONS = [
     climate: "Unique microclimate created by the confluence of the cold, spring-fed Ciron river and the warmer, sluggish Garonne river, generating dense autumn morning mists and warm sunny afternoons.",
     terroir: "Rolling amphitheaters perched above the Ciron and Garonne rivers. The daily cycle of morning fog followed by warm sunshine provides the perfect vector for the noble rot fungus (Botrytis cinerea) to perforate grape skins and concentrate sugar, acid, and glycerol.",
     focus: "Noble rot (Botrytis cinerea) sweet wines of celestial complexity: saffron, candied apricot, honey, orange blossom, ginger, and unctuous viscosity balanced by vibrant natural acidity.",
-    description: "Clustered along the mist-shrouded banks of the Ciron and Garonne rivers, Sauternes and Barsac produce celestial sweet wines hailed as bottled gold. European royalty and American statesmen like Thomas Jefferson treasured late-harvest nectars concentrated by benevolent noble rot. Crowned by mythical Château d'Yquem, these ambrosial elixirs radiate scents of saffron, candied apricot, honey, and ginger across generations of cellar age."
+    description: "Sauternes and Barsac occupy five communes along the confluence of the cold Ciron stream and the warmer Garonne River south of Bordeaux. Autumn moisture produces persistent morning mists followed by warm sunshine, creating the microclimate necessary for Botrytis cinerea to concentrate grape sugars. Thomas Jefferson purchased thirty dozen bottles from Château d'Yquem in 1790, praising its noble late-harvest elixirs as the finest white wine in the world. Benchmark bottlings unfold across decades, offering luxurious layers of candied orange peel, saffron, wild honeycomb, and crystal-clear botrytis acidity."
   },
   {
     id: 'right-bank-libournais',
@@ -67,7 +67,7 @@ export const BORDEAUX_SUBREGIONS = [
     climate: "Slightly more continental than the Left Bank with greater summer-winter temperature swings, lower Atlantic cloud cover, and sheltered river valleys.",
     terroir: "The limestone plateau and southern côtes of Saint-Émilion intersect the Günzian gravel-clay terraces and blue clay boutonnière of Pomerol. Perfect geological home for early-ripening Merlot and aromatic Cabernet Franc.",
     focus: "Sumptuous, velvety Merlot and Cabernet Franc across Saint-Émilion and Pomerol: opulent black cherry, violet, dark chocolate, tobacco, and black truffle (Château Pétrus, Château Cheval Blanc, Château Ausone, Château Figeac).",
-    description: "Steeped in medieval romance, the Right Bank centers on Saint-Émilion's monolithic church and the legendary hospitality of Pomerol's Knights of Saint John. Early-ripening Merlot and fragrant Cabernet Franc reach aristocratic heights under the stewardship of historic châteaux like Cheval Blanc, Pétrus, and Ausone. The wines are voluptuous and captivating, offering velvety black plum, dark chocolate, and intoxicating black truffle aromas."
+    description: "The Libournais Right Bank encompasses the hillside plateau of Saint-Émilion and neighboring Pomerol along the northern bank of the Dordogne River. Eighth-century Breton monk Émilion lived as a hermit in a cliffside cave here, inspiring pilgrims and the subsequent construction of the monolithic church. Nearby in Pomerol, the medieval Knights Hospitaller of Saint John maintained hospices that sheltered weary travelers along the Way of Saint James. Merlot and Cabernet Franc flourish under historic estates like Cheval Blanc, Ausone, and Pétrus, delivering velvety black plum, mocha, and profound black truffle aromatics."
   },
   {
     id: 'entre-deux-mers',
@@ -81,7 +81,7 @@ export const BORDEAUX_SUBREGIONS = [
     climate: "Maritime transitional climate bounded by the tidal estuaries of the Garonne and Dordogne rivers.",
     terroir: "Extensive rolling triangular plateau between the two tidal rivers ('entre deux mers'). High proportion of fossil-rich limestone marl yielding crisp, aromatic dry whites and botrytized sweet wines on river-facing bluffs.",
     focus: "Vibrant, citrus-driven dry white blends (Sauvignon/Sémillon) and exceptional value botrytized sweet dessert wines (Loupiac, Sainte-Croix-du-Mont, Cadillac).",
-    description: "Framed between the tidal Dordogne and Garonne rivers, Entre-Deux-Mers has cultivated vines since Roman times and prospered under eleventh-century Benedictine monks at the Abbey of La Sauve-Majeure. The pastoral plateau is celebrated for thirst-quenching dry white wines brimming with citrus blossom. Along river-facing bluffs, sweet satellites like Loupiac and Cadillac harness autumn river fogs to produce luscious botrytized dessert nectars."
+    description: "Entre-Deux-Mers forms a broad triangular plateau situated between the tidal waters of the Garonne and Dordogne rivers in central Gironde. Benedictine monks founded the historic Abbey of La Sauve-Majeure in 1079, clearing dense woodland to establish organized viticulture across the territory. The district historically supplied thirst-quenching dry white wines to local maritime ports and developed sweet wine communes like Loupiac and Cadillac along riverfront slopes. Modern producers bottle vibrant, citrus-scented Sauvignon Blanc alongside supple red blends and luscious late-harvest dessert wines touched by noble rot."
   },
   {
     id: 'cotes-de-bordeaux',
@@ -95,7 +95,7 @@ export const BORDEAUX_SUBREGIONS = [
     climate: "Sunny hillside microclimates with superior solar exposure and natural wind drainage along the Dordogne and Gironde bluffs.",
     terroir: "Direct eastern geological extensions of the Saint-Émilion limestone plateau (Castillon and Francs) and warm south-facing hillsides overlooking the Gironde estuary (Blaye and Bourg).",
     focus: "Rich, generous, fruit-forward Merlot-dominated red wines delivering extraordinary price-to-quality value and authentic artisan terroir expression.",
-    description: "Steeped in chivalric military lore, these sun-drenched hillsides witnessed the 1453 Battle of Castillon, which brought a dramatic close to the Hundred Years' War. Overlooking the wide Gironde, historic fortresses and ancient river ports shelter a vibrant community of passionate artisanal winemakers. The appellations yield generous, fruit-forward Merlot and Cabernet Franc blends that deliver soulful character and exceptional price-to-quality value."
+    description: "The Côtes de Bordeaux unite several historic hillside enclaves overlooking the right banks of the Garonne, Dordogne, and Gironde estuaries. The historic Battle of Castillon took place here in 1453, decisively ending the Hundred Years' War and returning Aquitaine from English rule to the French crown. Fortified hilltop bastides and Romanesque churches overlook terraced vineyards that have supported independent artisanal vignerons for centuries. These appellations produce generous, Merlot-dominant red blends marked by ripe blackberry, savory herbs, and accessible structure that offer outstanding gastronomic value."
   }
 ];
 

@@ -9,7 +9,7 @@ export const ALSACE_SUBREGIONS = [
     lng: 7.36,
     terroir: "Steep Vosges foothills sheltered by the highest mountain peaks (Grand Ballon 1,424m). Mosaic of granite, volcanic rhyolite, Muschelkalk limestone, and Keuper marls.",
     focus: "Riesling, Gewurztraminer, Pinot Gris, Pinot Noir, Grand Cru & Vendanges Tardives/SGN.",
-    description: "Sheltered beneath the craggy Vosges peaks, the sun-drenched Haut-Rhin is the spiritual heart of Alsace fine wine, hosting thirty-seven legendary Grand Crus. Monastic foundations and multi-generational family dynasties, including Capuchin friars at Domaine Weinbach since 1612, have perfected late-harvest nectar and noble-rot elixirs. The result is dry and sweet masterpieces radiating regal perfume, crystalline purity, and decades of cellaring grace."
+    description: "The Haut-Rhin encompasses the southern sector of Alsace between Colmar and Mulhouse, hosting thirty-seven of the region's fifty-one Grand Crus. Monastic foundations and multi-generational family dynasties, including Capuchin friars at Domaine Weinbach since 1612, have perfected late-harvest nectar and noble-rot elixirs. The historic imperial city of Colmar served as the primary transit port where Rhine river barges transported Alsatian wines to Northern European courts throughout the Renaissance. The resulting dry and sweet masterworks radiate regal perfume, crystalline purity, and decades of cellaring grace."
   },
   {
     id: 'bas-rhin',
@@ -18,7 +18,7 @@ export const ALSACE_SUBREGIONS = [
     lng: 7.48,
     terroir: "Gentler, cooler sandstone and clay-limestone slopes. Exceptional natural acidity retention and crystalline floral aromatics.",
     focus: "Riesling, Sylvaner, Pinot Blanc, Auxerrois, Klevener de Heiligenstein, Crémant d'Alsace.",
-    description: "Steeped in Carolingian lore, the Bas-Rhin is the romantic northern crown of Alsace where Empress Richardis founded the historic Abbey of Andlau in 880 AD. Medieval hill towns like Mittelbergheim and Barr harbor fourteen distinguished Grand Crus, famously preserving old-vine Sylvaner and rare Klevener treasures. Visionary biodynamic artisans craft thrilling white wines of ethereal floral perfume, vibrant nervous energy, and haunting charm."
+    description: "The Bas-Rhin encompasses the northern sector of the Alsace wine route, stretching along the Vosges foothills from Barr north toward Strasbourg. Empress Richardis founded the historic Abbey of Andlau here in 880 AD, establishing a monastic winemaking legacy that shaped northern Alsace for over a millennium. Medieval communes like Mittelbergheim and Barr harbor fourteen distinguished Grand Crus, famously preserving heritage plantings of old-vine Sylvaner and rare Klevener de Heiligenstein. Progressive biodynamic artisans craft dry white wines marked by ethereal floral perfume, vibrant nervous energy, and exceptional gastronomic precision."
   },
   {
     id: 'vosges-foothills-central',
@@ -27,7 +27,7 @@ export const ALSACE_SUBREGIONS = [
     lng: 7.30,
     terroir: "Intricate mosaic of geological fracture zones (Failles Vosgiennes) where pink Buntsandstein sandstone, crystalline granite, and Jurassic limestone intersect.",
     focus: "Terroir-driven Lieu-Dit bottlings, biodynamic benchmarks (Andlau, Dambach-la-Ville, Ribeauvillé, Riquewihr).",
-    description: "A fairytale corridor of fortified hamlets nestled beneath forested castles, this enchanting sector pulses with medieval folklore and imperial trade route rivalries. Historic epicenters like Ribeauvillé and walled Riquewihr celebrate centuries of artisan winemaking pageantry. Independent grower-producers like Ostertag and André Kientzler translate individual vineyard parcels into sculpted single-site wines of spellbinding aromatic purity and unforgettable romantic soul."
+    description: "The central Vosges corridor stretches between Sélestat and Colmar along the eastern mountain foothills, anchored by the historic fortified towns of Ribeauvillé and Riquewihr. For centuries, feudal lords of the Ribeaupierre dynasty governed these vineyard ramparts, hosting elaborate harvest pageants and protecting vital trade corridors into Germany. Pioneering family estates like Marcel Deiss, Ostertag, and André Kientzler championed site-specific parcel designations to preserve parcel-level distinctions. Their sculpted single-vineyard bottlings deliver spellbinding aromatic purity, dried floral spice, and deep structural longevity."
   }
 ];
 
