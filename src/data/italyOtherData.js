@@ -33,7 +33,7 @@ export const ITALY_OTHER_SUBREGIONS = [
       { name: "Soave Classico Hillside", focus: "Dark volcanic basalt and ancient limestone hills producing laser-pure Garganega (Calvarino, La Rocca)" },
       { name: "Conegliano Valdobbiadene", focus: "Steep dramatic Rive hillsides and Cartizze producing elite Prosecco Superiore DOCG" }
     ],
-    description: "The home of Appassimento mastery. Opulent dried-grape Amarone, velvety Ripasso, and flinty, almond-laced volcanic Soave Classico."
+    description: "Stretching north from Verona toward the Lessini Mountains, this storied viticultural zone encompasses the five historic communes of Valpolicella Classica and the volcanic hillsides of Soave. Its bedrock of Cretaceous Scaglia Rossa limestone and dark Eocene volcanic basalt creates ideal conditions for the Appassimento technique, where Corvina and Rondinella grapes are dried for 90 to 120 days to produce monumental Amarone. The Ora del Garda, a thermal breeze from nearby Lake Garda, ventilates the drying lofts and ensures rot-free concentration. Soave Classico's volcanic basalt terraces yield laser-pure, age-worthy Garganega whites with distinctive flinty almond minerality. These ancient winemaking traditions have been practiced here continuously since Roman times."
   },
   {
     id: 'sicily-etna',
@@ -50,7 +50,7 @@ export const ITALY_OTHER_SUBREGIONS = [
       { name: "Versante Est (Eastern Slopes - Milo)", focus: "Cool maritime slopes dedicated to 100% Carricante Etna Bianco Superiore" },
       { name: "Vittoria (Southeastern Sicily)", focus: "Red limestone sands producing fragrant, red-berried Cerasuolo di Vittoria DOCG (Nero d'Avola + Frappato)" }
     ],
-    description: "Volcanic Mediterranean summit. The 'Burgundy of the South' crafting wild strawberry, volcanic ash, iron, and blood orange reds alongside laser-pure Carricante."
+    description: "Mount Etna, Europe's highest and most active volcano, hosts vineyards planted on decomposed lava flows and black pumice at elevations reaching over 1,000 meters. The extreme altitude generates diurnal temperature swings of up to 20°C, preserving vibrant natural acidity in the thin-skinned Nerello Mascalese grape, often called the Pinot Noir of the Mediterranean. The DOC recognizes 133 official Contrade, single-vineyard crus on the volcano's northern and eastern slopes, pioneered by Andrea Franchetti and Marco de Grazia starting in 2001. Many parcels contain pre-phylloxera bush-trained vines (alberello) planted over a century ago on their own roots in the mineral-rich volcanic ash. On the cooler eastern slopes around Milo, the Carricante grape produces laser-pure, saline white wines of exceptional age-worthiness."
   },
   {
     id: 'lombardia-valtellina',
@@ -67,7 +67,7 @@ export const ITALY_OTHER_SUBREGIONS = [
       { name: "Inferno Sub-Zone", focus: "Steepest, scorching microclimate yielding powerful, savory, and structured Alpine wines" },
       { name: "Grumello Sub-Zone", focus: "Surrounding the medieval castle, producing balanced, floral red-fruit expressions" }
     ],
-    description: "Alpine Nebbiolo of astonishing purity, dried rose petals, alpine cranberries, pine herbs, and chiseled granite tension."
+    description: "Valtellina occupies a rare east-west oriented Alpine valley along the Adda River in northern Lombardy, where south-facing granite terraces capture maximum solar radiation. Nebbiolo, known locally as Chiavennasca, is cultivated on perilously steep slopes supported by an estimated 2,500 kilometers of hand-built dry stone walls (muretti a secco), representing a viticultural heritage dating back to Roman times. The DOCG encompasses five official sub-zones—Sassella, Inferno, Grumello, Valgella, and Maroggia—each with distinct microclimatic character. The region also produces Sforzato di Valtellina DOCG, a unique appassimento-style dry red where grapes are partially dried before fermentation to concentrate flavors and achieve at least 14% alcohol. These alpine Nebbiolos display ethereal dried rose petal aromatics, mountain cranberry fruit, and a distinctive chiseled granite minerality."
   },
   {
     id: 'alto-adige-sudtirol',
@@ -84,7 +84,7 @@ export const ITALY_OTHER_SUBREGIONS = [
       { name: "Gries & Bolzano Basin", focus: "Warm valley floor gravels producing inky, black-fruited, velvety Lagrein" },
       { name: "Termeno / Tramin", focus: "Historical birthplace of exotic, rose-scented Gewürztraminer" }
     ],
-    description: "Pristine Alpine perfection. Laser-cut, mineral Pinot Bianco, aromatic Gewürztraminer, and inky, savory Lagrein against the backdrop of the Dolomites."
+    description: "Italy's northernmost wine region straddles the Austrian border in the Dolomites, where a bilingual German-Italian viticultural culture thrives on steep mountain terraces between 250 and 1,000 meters elevation. The bedrock is a mosaic of Dolomitic limestone, Permian Bolzano quartz porphyry, and gravelly glacial moraine, each imparting distinct mineral signatures to the wines. Intense alpine sunshine combined with cold mountain night air creates diurnal temperature swings exceeding 20°C, preserving electric natural acidity and explosive aromatic intensity. The village of Tramin (Termeno) is the historical birthplace of Gewürztraminer, while Cantina Terlano's Vorberg Pinot Bianco, aged on lees for decades, has redefined perceptions of Italian white wine longevity. The warm basin floor around Bolzano produces the indigenous, inky Lagrein grape alongside serious, structured Pinot Nero."
   },
   {
     id: 'friuli-venezia-giulia',
@@ -101,7 +101,7 @@ export const ITALY_OTHER_SUBREGIONS = [
       { name: "Friuli Colli Orientali", focus: "Terraced hills yielding benchmark mineral Friulano, Sauvignon, and indigenous red Pignolo" },
       { name: "Carso (Karst)", focus: "Bleached limestone plateau producing savory, saline, skin-macerated Vitovska and Malvasia" }
     ],
-    description: "The intellectual capital of Italian white and orange winemaking. Home to ancestral skin-maceration amphorae and chiseled Ponca soil whites."
+    description: "Situated in Italy's far northeast bordering Slovenia, Friuli-Venezia Giulia is revered for its layered Eocene flysch soils, known locally as Ponca, comprising alternating strata of calcareous marl and sandstone. The Collio Goriziano and Colli Orientali del Friuli DOCs produce some of Italy's most mineral-driven and age-worthy dry white wines from Friulano, Sauvignon, and Pinot Grigio. In the village of Oslavia, the revolutionary Josko Gravner and Stanko Radikon pioneered the modern skin-contact orange wine movement, fermenting Ribolla Gialla for months in buried Georgian clay amphorae. The windswept Carso limestone plateau near Trieste adds a dramatic terroir yielding saline, skin-macerated Vitovska and Malvasia. Together, these diverse zones form the intellectual and philosophical heart of Italian artisanal white winemaking."
   },
   {
     id: 'campania-irpinia',
@@ -118,7 +118,7 @@ export const ITALY_OTHER_SUBREGIONS = [
       { name: "Tufo & Santa Paolina", focus: "Sulfur-rich volcanic tuff hillsides producing laser-acid, mineral Greco di Tufo" },
       { name: "Lapio & Montefredane", focus: "Ancient volcanic hills yielding smoky, hazelnut, age-worthy Fiano di Avellino" }
     ],
-    description: "The ancient jewel of Southern Italy. Majestic Aglianico in Taurasi alongside smoky, mineral-rich, age-defying volcanic whites."
+    description: "The inland Irpinia hills of Campania rise to 400–700 meters elevation in the Southern Apennines, where volcanic tuff, pumice, and ash deposits from ancient Vesuvian eruptions overlie a limestone bedrock. Taurasi DOCG, established in 1993 as southern Italy's first DOCG, produces monumental, age-worthy reds from Aglianico, a late-ripening grape of ancient Greek origin often called the Barolo of the South. The Mastroberardino family is credited with single-handedly preserving Aglianico, Fiano, and Greco from post-war extinction, ensuring the survival of Campania's viticultural heritage. The sulfur-rich volcanic tuff hillsides of Tufo yield electric, mineral-driven Greco di Tufo DOCG, while the ancient volcanic soils of Lapio produce smoky, hazelnut-inflected Fiano di Avellino DOCG. These noble varieties thrive in a cool continental microclimate that preserves striking natural acidity despite the southern latitude."
   }
 ];
 

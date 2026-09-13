@@ -34,7 +34,7 @@ export const BEAUJOLAIS_SUBREGIONS = [
       { name: "Moulin-à-Vent Manganese Plateau", focus: "Friable pink granite crisscrossed by toxic manganese quartz veins (Champ de Cour, Les Vérillats)" },
       { name: "Fleurie Granite Amphitheater", focus: "Ultra-fine, friable acidic pink granite sand (La Madone, Grille-Midi, Poncié)" }
     ],
-    description: "The elite viticultural northern sector spanning 10 distinct Cru communes. Here, Gamay transcends light bistrot fare to become a profound, structured, and long-lived vin de garde that rivals top premier and grand cru Pinot Noir."
+    description: "The elite viticultural northern sector encompasses 10 distinct Cru communes—Morgon, Moulin-à-Vent, Fleurie, Brouilly, Côte de Brouilly, Chénas, Chiroubles, Juliénas, Régnié, and Saint-Amour—planted on steep rolling hills of ancient Hercynian pink granite, blue volcanic diorite schist, and manganese-rich quartz veins. These acidic, nutrient-poor crystalline soils naturally restrict yields and force Gamay Noir à Jus Blanc vines to root deeply into bedrock fractures. Traditional semi-carbonic maceration produces vivid, aromatic fruit, while an increasing number of vignerons employ Burgundian whole-cluster or destemmed fermentation to craft structured, age-worthy vins de garde. The finest crus—particularly Morgon Côte du Py and Moulin-à-Vent—develop truffle and forest-floor complexity with 10–25 years of cellaring, rivaling top Burgundy Pinot Noir."
   },
   {
     id: 'beaujolais-villages',
@@ -51,7 +51,7 @@ export const BEAUJOLAIS_SUBREGIONS = [
       { name: "Lantignié", focus: "Granite soils directly west of Régnié, seeking official Cru status" },
       { name: "Beaujeu Hillsides", focus: "The historic capital of the Beaujolais province on steep granitic slopes" }
     ],
-    description: "A band of 38 communes occupying the prime slope exposures directly adjacent to the Crus. Delivers intense aromatic purity, crunchy cherry fruit, and refreshing mineral spine."
+    description: "A band of 38 designated communes occupying prime hillside exposures at 200–400 m elevation directly adjacent to and interleaved among the 10 Crus in northern and central Beaujolais. The geology is transitional, shifting from weathered Hercynian granite and schist in the north toward siliceous sands, clay, and the first outcrops of Pierre Dorée golden limestone in the south. This mosaic of soils produces Gamay of greater concentration and spice than basic Beaujolais AOC, with crunchy cherry fruit, floral lift, and a refreshing mineral spine. Communes such as Lantignié, Beaujeu, and Le Perréon are increasingly recognized for site-specific quality, with Lantignié actively pursuing promotion to Cru status."
   },
   {
     id: 'bas-beaujolais',
@@ -67,7 +67,7 @@ export const BEAUJOLAIS_SUBREGIONS = [
       { name: "Châtillon d'Azergues & Theize", focus: "Clay-limestone hills producing expressive, chalky Chardonnay and floral Gamay" },
       { name: "Bagnols & Jarnioux", focus: "Golden stone terroirs yielding juicy, strawberry-driven early drinking reds" }
     ],
-    description: "The southern district often dubbed 'the French Tuscany' due to its sun-drenched rolling landscapes and picturesque golden stone villages. Yields delicious, fruit-laden, joyous wines."
+    description: "The southern district, often dubbed 'the French Tuscany,' is characterized by gentle rolling hills of Middle Jurassic Bajocian limestone and calcareous clay marls, geologically distinct from the granite-dominated north. Its picturesque villages—Theizé, Oingt, Bagnols, and Châtillon d'Azergues—are built from the warm ochre 'Pierres Dorées' (golden stones) that give the area its iconic appearance. These fertile, calcium-rich soils yield supple, fruit-forward Gamay bursting with fresh strawberry and redcurrant, as well as crisp, mineral Beaujolais Blanc from Chardonnay. Bas-Beaujolais is also the historic heartland of the Beaujolais Nouveau phenomenon, the annual release on the third Thursday of November that became a global cultural event in the 1970s and 1980s."
   }
 ];
 

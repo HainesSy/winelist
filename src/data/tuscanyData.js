@@ -25,7 +25,7 @@ export const TUSCANY_SUBREGIONS = [
     climate: "Continental Mediterranean climate with hot summer days, cool alpine-influenced mountain nights, and significant diurnal temperature swings.",
     terroir: "Rolling forested mountains (250m to 650m) between Florence and Siena. The core geological bedrock of Galestro schist and Alberese limestone creates the world's most aromatic, savory, and age-worthy expressions of Sangiovese.",
     focus: "The historic cradle of Sangiovese (Gran Selezione & 11 official UGAs: Panzano, Radda, Gaiole, Castellina, Greve, Castelnuovo Berardenga): dried sour red cherry, redcurrant, blood orange, leather, dried oregano, balsamic herbs, and vibrant, food-loving acidity wrapped in chiseled limestone tannins.",
-    description: "The historical heartland of Chianti, legally delimited since Cosimo III de' Medici's decree in 1716 and symbolized by the Black Rooster (Gallo Nero). In 2021, the consortium officially codified 11 Unità Geografiche Aggiuntive (UGAs)."
+    description: "The historical heartland of Chianti has been legally delimited since Cosimo III de' Medici's landmark decree in 1716 and is proudly symbolized by the Black Rooster. Its terroir is defined by a fascinating duality between friable Galestro clay-schist and hard, compact Alberese limestone, shaping the ultimate expressions of the Sangiovese grape. To highlight its unique macro-terroirs, the consortium officially codified 11 Unità Geografiche Aggiuntive (UGAs) in 2021. The appellation mandates a minimum of 80% Sangiovese, though the pinnacle Gran Selezione tier (introduced in 2014) demands 90% and prohibits international grape varieties. These rigorous standards ensure wines of profound savory depth, vibrant acidity, and formidable cellar longevity."
   },
   {
     id: 'montalcino',
@@ -38,7 +38,7 @@ export const TUSCANY_SUBREGIONS = [
     climate: "Mediterranean-influenced continental climate sheltered from Atlantic storms by Monte Amiata (1,738m) to the south, with warm, dry conditions and excellent sun radiation.",
     terroir: "An isolated mountain fortress hill rising from 120m to 650m elevation. Distinct microclimates across four quadrants: cooler, floral, high-acid northern hills (Montosoli) vs. sun-drenched, powerful southern slopes (Castelnuovo dell'Abate).",
     focus: "100% Sangiovese Grosso of monumental depth and sovereignty: dark plum, wild blackberry, leather, black tea, espresso, dried violets, and architectural tannins requiring 10-20 years to open.",
-    description: "The supreme cathedral of monovarietal Sangiovese in Italy, pioneered by Clemente and Ferruccio Biondi-Santi in the 19th century and granted Italy's very first DOCG status in 1980."
+    description: "The supreme cathedral of monovarietal Sangiovese demands exclusively 100% Sangiovese Grosso, a local clone famously isolated by the Biondi-Santi family. Ferruccio Biondi-Santi crafted the inaugural vintage of Brunello in 1888, establishing a blueprint for extreme longevity. The isolated mountain fortress is divided into four distinct quadrant terroirs, ranging from cooler, galestro-rich northern slopes to sun-drenched, clay-heavy southern exposures. Current regulations dictate a grueling 5 years of minimum aging for Brunello, with at least 2 years in oak, culminating in wines of monumental architectural structure. Granted Italy's very first DOCG status in 1980, these wines deliver commanding flavors of dark plum, wild blackberry, and leather."
   },
   {
     id: 'bolgheri-coastal',
@@ -51,7 +51,7 @@ export const TUSCANY_SUBREGIONS = [
     climate: "Warm Mediterranean maritime climate bathed in intense luminous sunlight reflected from the Tyrrhenian Sea and cooled by constant sea breezes.",
     terroir: "Coastal gravel terraces and clay hillsides nestled between the Colline Metallifere and the Mediterranean coastline. Perfect pedological parallel to Left Bank Bordeaux gravels.",
     focus: "The birthplace of the Super Tuscan revolution (Sassicaia, Ornellaia, Masseto): opulent, velvety, polished Bordeaux blends delivering dark cassis, blackcurrant, dark chocolate, eucalyptus, graphite, and seamless cashmere tannins.",
-    description: "Pioneered in the 1960s by Marchese Mario Incisa della Rocchetta (Tenuta San Guido Sassicaia), Bolgheri transformed coastal Tuscany from marshland into one of the world's most glamorous fine wine destinations."
+    description: "This glamourous coastal appellation transformed from marshland to a world-class wine destination following the inaugural 1968 release of Sassicaia. Its sun-drenched maritime Mediterranean climate is cooled by constant sea breezes, creating ideal conditions for international grape varieties. The pedology features a striking parallel to Bordeaux, with sandy-clay alluvial soils, river pebbles, and deep blue clays. Given official DOC status in 1994, it focuses entirely on Cabernet Sauvignon, Merlot, and Cabernet Franc, completely eschewing traditional Sangiovese. These opulent Super Tuscans are celebrated for their polished cashmere tannins, deep cassis fruit, and remarkable aging potential."
   },
   {
     id: 'montepulciano-carmignano',
@@ -64,7 +64,7 @@ export const TUSCANY_SUBREGIONS = [
     climate: "Warm inland continental climate with gentle rolling hills and wide diurnal temperature shifts.",
     terroir: "The sandy, clay-rich hills of Montepulciano south of Chianti, and the historic Medici hills of Carmignano northwest of Florence where Cabernet has been cultivated since the 16th century.",
     focus: "Aristocratic, dark-fruited Sangiovese (Prugnolo Gentile) aged in large Slavonian botti (Montepulciano) and historic Sangiovese-Cabernet blends (Carmignano).",
-    description: "Home to 'The King of Wines' celebrated by poet Francesco Redi in 1685 (Vino Nobile) and the historic Medici 1716 DOCG equivalent of Carmignano."
+    description: "Montepulciano is defined by its cultivation of Prugnolo Gentile, a distinctive Sangiovese clone that yields dark-fruited, aristocratic wines elevated to DOCG status in 1980. To the northwest, the Carmignano district boasts an unprecedented pedigree, officially protected by Cosimo III de' Medici's decree in 1716. Carmignano stands alone in Tuscany for its historic mandate to blend Sangiovese with Cabernet Sauvignon, a tradition maintained continuously since the 18th century. Both subregions enjoy warm inland continental climates that ensure reliable ripening and structured, cellar-worthy profiles. Together they represent some of the most profound historical continuity in Italian winemaking."
   },
   {
     id: 'san-gimignano-val-d-elsa',
@@ -77,7 +77,7 @@ export const TUSCANY_SUBREGIONS = [
     climate: "Warm, dry Mediterranean climate with breezy hillside exposures.",
     terroir: "Rolling golden clay hills surrounding the medieval UNESCO Manhattan of towers (San Gimignano). High fossil shell content imparts crisp saline minerality.",
     focus: "Tuscany's noble white wine: preserved lemon, white almond, rosemary blossom, flint, and a distinctive savory, bitter almond finish.",
-    description: "The historical white wine of Dante Alighieri and Renaissance Popes; decreed as Italy's very first DOC in 1966 and promoted to DOCG in 1993."
+    description: "Surrounding an iconic medieval skyline famous for its imposing stone towers, this golden valley represents Tuscany's premier terroir for white wine. The rolling hills are composed of ancient volcanic tufo and yellow marine clays packed with fossilized shells, imparting a striking saline minerality. Cultivation focuses on the Vernaccia grape, a historic variety that produces dry, structured, and age-worthy white wines with notes of preserved lemon and bitter almond. In recognition of its historical and qualitative significance, it was designated as Italy's very first DOC in 1966. It remains the only white wine in Tuscany elevated to DOCG status."
   }
 ];
 

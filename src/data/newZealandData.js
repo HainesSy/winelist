@@ -36,7 +36,7 @@ export const NEW_ZEALAND_SUBREGIONS = [
       { name: "Awatere Valley", focus: "Cooler, windier, drier southern valley yielding flinty, herbaceous, kaffir lime and crushed-oyster-shell mineral profiles." },
       { name: "Southern Valleys", focus: "Clay-rich foothills producing structured, fleshy Pinot Noir and textured, cellar-worthy barrel-fermented whites." }
     ],
-    description: "The powerhouse of New Zealand wine. Free-draining greywacke riverbeds and extreme diurnal cooling create the world's most pungent, vibrant, and celebrated Sauvignon Blancs."
+    description: "Situated at the northeastern tip of the South Island between the Richmond Ranges and the Wither Hills, Marlborough is the powerhouse engine of the New Zealand wine industry. The region enjoys one of the sunniest microclimates in the nation, where exceptionally high solar radiation is coupled with brisk, cool maritime breezes sweeping in from the Pacific Ocean and Cook Strait. Vineyards are planted across ancient Quaternary alluvial floodplains dominated by free-draining Torlesse greywacke river stones, gravelly silt loams, and windblown loess deposits. The warm Wairau Valley riverbed yields exuberantly aromatic, tropical passionfruit and grapefruit-driven Sauvignon Blanc, while the cooler, windier Awatere Valley to the south delivers herbaceous, flinty, and crushed-oyster-shell mineral profiles. Established internationally by Montana in 1973 and propelled to global icon status by Cloudy Bay in 1985, Marlborough also crafts chiseled traditional method sparkling wines and increasingly refined, savory cool-climate Pinot Noir from the clay-rich Southern Valleys."
   },
   {
     id: 'central-otago',
@@ -53,7 +53,7 @@ export const NEW_ZEALAND_SUBREGIONS = [
       { name: "Gibbston", focus: "The coolest, highest-elevation sub-zone in the Kawarau Gorge yielding delicate, floral, high-acid, and spicy Pinot Noir." },
       { name: "Bendigo", focus: "The warmest, sun-baked north-facing slopes yielding deep, dark, structured, muscular, and brooding Pinot Noirs." }
     ],
-    description: "The dramatic alpine frontier of Pinot Noir. Glacial mica schist terraces and extreme continental swings produce monumental, wild-thyme-infused Pinot Noirs of breathtaking purity."
+    description: "Perched deep in the southern interior of the South Island at approximately 45° South latitude, Central Otago stands as the world's southernmost commercial wine region and New Zealand's sole inland continental climate. Ringed by the snow-capped Southern Alps that shield the valleys from maritime rain, the region experiences searing summer daytime heat juxtaposed with freezing alpine nights, generating dramatic diurnal temperature drops of up to 25°C. Vines cling to rugged glacial moraine terraces and steep hillside colluviums composed of ancient Haast mica schist, greywacke gravels, and fine windblown mineral loess. This extreme, semi-arid mountain environment forges dark-colored, structurally monumental Pinot Noirs infused with intense black cherry, cracked granite, and a hallmark wild mountain thyme (thymus vulgaris) aromatics that grows wild across the hillsides. Sub-zones like the warm north-facing amphitheater of Bannockburn (home to benchmark pioneer Felton Road) and the high-altitude Kawarau Gorge of Gibbston showcase an extraordinary stylistic spectrum from plush velvet power to crystalline floral tension."
   },
   {
     id: 'hawkes-bay',
@@ -70,7 +70,7 @@ export const NEW_ZEALAND_SUBREGIONS = [
       { name: "Bridge Pa Triangle", focus: "Warm alluvial plains of red metal gravels producing opulent, aromatic Merlot and rich Chardonnay." },
       { name: "Te Awanga", focus: "Cool coastal strip producing vibrant, saline, sea-breeze-cooled Chardonnay and delicate Pinot Noir." }
     ],
-    description: "The red wine epicenter of New Zealand. The world-renowned Gimblett Gravels capture summer warmth to craft Syrah and Cabernet-Merlot blends of aristocratic complexity and cellaring power."
+    description: "Nestled along the sunny eastern coast of the North Island beneath the protective rain shadow of the Ruahine and Kaweka mountain ranges, Hawke's Bay is New Zealand's oldest and second-largest wine region. The macroclimate is warm and maritime-Mediterranean, offering the long, sunny growing seasons and extended hang time essential for the complete phenolic maturation of late-ripening red varieties and full-bodied Chardonnay. The viticultural crown jewel is the strictly delimited Gimblett Gravels appellation—an 800-hectare ancient riverbed of deep greywacke shingle deposited when the Ngaruroro River flooded and shifted course in 1867. These barren, low-fertility stones absorb intense solar radiation during the day and radiate thermal heat back into the vine canopy at night, crafting northern-Rhône-rivaling Syrah scented with cracked black pepper and violets alongside aristocratic Cabernet-Merlot blends. Landmark historic estates including Te Mata Estate (whose legendary Coleraine Cabernet blend debuted in 1982), Craggy Range, and Trinity Hill have permanently established Hawke's Bay among the world's elite fine wine addresses."
   },
   {
     id: 'martinborough',
@@ -86,7 +86,7 @@ export const NEW_ZEALAND_SUBREGIONS = [
       { name: "Martinborough Terrace", focus: "The historic gravel river terrace home to legendary benchmark estates (Ata Rangi, Dry River) producing savory, long-lived Pinot Noir." },
       { name: "Te Muna Road", focus: "Cooler, higher-elevation stony terrace producing chiseled, aromatic Pinot Noir and flinty Riesling." }
     ],
-    description: "The spiritual home of artisanal New Zealand Pinot Noir. Wind-swept gravel terraces and heritage Abel cuttings produce wines of profound savory depth, fine-grained tannins, and decades of longevity."
+    description: "Located at the southern tip of the North Island across the Remutaka Ranges from Wellington, Martinborough within the greater Wairarapa region serves as the spiritual birthplace of artisanal New Zealand Pinot Noir. The microclimate is defined by ferocious, dry Antarctic winds funneled through the Cook Strait, which batter flowering vines in spring to naturally induce millerandage (hen-and-chicken berries) and restrict yields to exceptionally low levels. The viticultural epicenter is the Martinborough Terrace—a deep, ancient alluvial river plateau carved by the Ruamahanga River, packed with free-draining greywacke gravels layered beneath rich silty loams. The region's defining clone is the historic 'Abel' or 'Gumboot' selection, reputedly smuggled through New Zealand customs from Domaine de la Romanée-Conti in the mid-1970s, yielding small thick-skinned berries with immense structural depth. Led by pioneering estates like Ata Rangi, Dry River, and Martinborough Vineyard, the wines are celebrated for their profound, savory complexity, displaying dark plum fruit, forest floor, autumn leaf, dried mushrooms, and fine-grained tannins built for decades in the cellar."
   }
 ];
 

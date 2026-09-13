@@ -676,7 +676,7 @@ export const CHAMPAGNE_SUBREGIONS = [
       { name: "Massif de Saint-Thierry", focus: "Cool sandy-limestone terroirs for Meunier and crisp Pinot Noir" },
       { name: "Vesle & Ardre Valleys", focus: "Frost-susceptible valleys dominated by resilient, late-budding Meunier" }
     ],
-    description: "A horseshoe-shaped forested mountain dominating northern Champagne. Renowned for power, structure, and 9 of the 17 Grand Crus."
+    description: "A horseshoe-shaped forested plateau rising to 280 meters, dominating the landscape between Reims and Épernay with steep chalk escarpments on all flanks. The bedrock is Upper Cretaceous Belemnite chalk capped by Tertiary sands and clays, providing exceptional drainage and thermal regulation. Cool northerly airflows from the forested summit create high diurnal temperature variation, preserving vibrant acidity in Pinot Noir. Nine of Champagne's seventeen Grand Cru communes are located here, including Ambonnay, Bouzy, Verzenay, and Verzy. The region yields powerful, structured wines with red-fruit depth, forming the backbone of most prestige cuvée assemblages."
   },
   {
     id: 'vallee-de-la-marne',
@@ -695,7 +695,7 @@ export const CHAMPAGNE_SUBREGIONS = [
       { name: "Rive Gauche (Left Bank)", focus: "South of Marne (Festigny, Leuvrigny, Mareuil-le-Port, Œuilly) - rich Illite clay Meunier" },
       { name: "Confluence / Marne Ouest", focus: "Western extension towards Château-Thierry and the Aisne department" }
     ],
-    description: "Stretching 100km along the Marne River. The world capital of Meunier, yielding generous, round, fruit-forward wines alongside legendary Pinot Noir in Aÿ."
+    description: "Stretching over 100 kilometers along the Marne River from Aÿ westward to Château-Thierry, this is the longest and most geologically diverse subregion of Champagne. Sparnacian clays, calcareous marls, and alluvial river gravels dominate the valley floor, providing natural frost protection and water-retentive soils ideal for Meunier. South-facing amphitheaters in the Grande Vallée around Aÿ, Dizy, and Cumières trap solar warmth, while the broader western stretches favor the hardy, late-budding Meunier grape. Grand Cru Aÿ produces some of the most powerful, opulent Pinot Noir in all of Champagne. The wines range from fruity, round Meunier-based blends to vinous, spicy single-commune bottlings from benchmark growers like Bollinger and Georges Laval."
   },
   {
     id: 'cote-des-blancs',
@@ -714,7 +714,7 @@ export const CHAMPAGNE_SUBREGIONS = [
       { name: "Southern Amphitheater (Le Mesnil-sur-Oger)", focus: "Austere, razor-sharp, hyper-mineral, decades-long cellaring" },
       { name: "Eastern Plain (Oiry)", focus: "Airy, delicate, saline chalk expressions" }
     ],
-    description: "The global benchmark for Blanc de Blancs Chardonnay. A 20-kilometer cliff of pure chalk yielding wines of peerless precision, steeliness, and laser-like minerality."
+    description: "A continuous 20-kilometer east-facing escarpment of pure Upper Cretaceous Belemnitella quadrata chalk, running south from Chouilly to Vertus. The chalk possesses 35–40% microporosity, acting as a natural sponge that stores winter rainfall and radiates solar warmth back to the vines. Chardonnay accounts for over 97% of plantings across six Grand Cru communes: Avize, Cramant, Chouilly, Le Mesnil-sur-Oger, Oger, and Oiry. The cool, east-facing orientation preserves electric acidity and slow, even ripening. Wines range from the creamy richness of Cramant and Chouilly to the razor-sharp, decades-long austerity of Le Mesnil-sur-Oger, establishing this as the global benchmark for Blanc de Blancs Champagne."
   },
   {
     id: 'cote-de-sezanne',
@@ -731,7 +731,7 @@ export const CHAMPAGNE_SUBREGIONS = [
       { name: "Sézanne & Bethon", focus: "Sun-drenched south-facing chalk slopes producing round, fruity Chardonnays" },
       { name: "Villenauxe-la-Grande", focus: "Clay-rich western sector favoring early ripening" }
     ],
-    description: "Located south of Côte des Blancs. Warmer microclimate producing fleshier, rounder, tropical stone-fruit-driven Chardonnays with immediate approachability."
+    description: "Located approximately 25 kilometers south of the Côte des Blancs, this subregion shares the same Cretaceous chalk bedrock but is overlaid with heavier Thanetian sands and clay-marl topsoils. The south and southeast orientation, combined with slightly lower altitude, creates a warmer microclimate that advances ripening by several days compared to Le Mesnil or Avize. Chardonnay dominates plantings and produces fleshier, rounder wines with stone-fruit and tropical notes alongside gentle chalk minerality. Key communes include Sézanne, Bethon, and Villenauxe-la-Grande, the latter known for its clay-rich soils and early-maturing fruit. These approachable Chardonnays are prized by négociant houses for adding generosity and ripe mid-palate weight to non-vintage blends."
   },
   {
     id: 'cote-des-bar',
@@ -748,7 +748,7 @@ export const CHAMPAGNE_SUBREGIONS = [
       { name: "Barséquanais (Seine, Ource, Laignes valleys)", focus: "Les Riceys, Celles-sur-Ource, Buxeuil - Kimmeridgian marl Pinot Noir & Pinot Blanc" },
       { name: "Bar-sur-Aubois (Aube valley)", focus: "Bar-sur-Aube, Urville, Champignol - Oxfordian/Kimmeridgian higher elevation slopes" }
     ],
-    description: "The southern frontier of Champagne in the Aube department. Epicenter of the artisanal grower revolution focusing on organic viticulture, single parcels, and vinous Pinot Noir."
+    description: "Situated 110 kilometers southeast of Épernay in the Aube department, the Côte des Bar is geologically distinct from the rest of Champagne, resting on Upper Jurassic Kimmeridgian and Portlandian limestone-marl strata identical to those found in Chablis. Pinot Noir dominates over 85% of plantings, thriving on these warm, fossil-rich clay-limestone slopes. The slightly more continental climate yields ripe, vinous, fruit-forward base wines with lower acidity than the Marne. Since the 1990s, the region has become the epicenter of Champagne's artisanal grower revolution, with producers like Cédric Bouchard, Marie-Courtin, and Fleury championing organic and biodynamic viticulture. Key communes include Les Riceys—also famous for its rare still Rosé des Riceys—Celles-sur-Ource, and Bar-sur-Aube."
   },
   {
     id: 'coteaux-sud-epernay',
@@ -765,7 +765,7 @@ export const CHAMPAGNE_SUBREGIONS = [
       { name: "Chavot-Courcourt & Moussy", focus: "Flint and clay-limestone hillsides yielding tense, mineral Meunier" },
       { name: "Pierry (1er Cru) & Monthelon", focus: "Chalk-marl slopes yielding structured Meunier and Blanc de Blancs" }
     ],
-    description: "Rolling hills south of Épernay acting as a bridge between Vallée de la Marne and Côte des Blancs. Home to dynamic young terroir-focused vignerons."
+    description: "A series of rolling hills immediately south of Épernay, forming a geological transition zone between the Vallée de la Marne and the Côte des Blancs. The soils are a complex mosaic of Sparnacian clays, flint gravels (meulière), and shallow chalk pockets, creating diverse terroir expressions within a small area. Meunier and Chardonnay are the primary varieties, with Pierry holding Premier Cru status at 90% on the Échelle des Crus. The flint-rich soils of Chavot-Courcourt and Moussy impart a distinctive smoky, mineral tension to the wines. A new generation of vignerons, led by Jean-Marc Sélèque and Vincent Charlot, has elevated this once-overlooked area into one of Champagne's most exciting terroir-driven sources."
   },
   {
     id: 'vitryat',
@@ -781,7 +781,7 @@ export const CHAMPAGNE_SUBREGIONS = [
     microTerroirs: [
       { name: "Vitryat Hillsides", focus: "15 small communes producing vibrant, crisp, high-tension mineral Chardonnay" }
     ],
-    description: "An isolated eastern chalk enclave producing pristine, floral, high-acid Chardonnays prized for freshness in house blends."
+    description: "An isolated eastern enclave centered around the town of Vitry-le-François, roughly 30 kilometers east of the Côte des Blancs. The bedrock is pure Turonian and Senonian chalk, distinct from the Campanian Belemnite chalk found farther west, yielding wines of pronounced floral lift and crystalline acidity. Chardonnay accounts for over 98% of plantings across approximately 15 small communes including Vitry-en-Perthois, Bassuet, and Saint-Amand-sur-Fion. The continental climate here is more extreme than in the Marne, with colder winters and greater diurnal temperature swings that preserve high natural acidity. These vibrant, mineral-driven Chardonnays are highly sought after by major houses as freshness components in non-vintage assemblages."
   }
 ];
 

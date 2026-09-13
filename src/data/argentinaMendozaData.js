@@ -36,7 +36,7 @@ export const MENDOZA_SUBREGIONS = [
       { name: "Tunuyán (Los Chacayes & Vista Flores)", focus: "Rocky gravelly piedmont at 1,000m–1,300m producing muscular, dark-fruited Malbec and wild herbal Cabernet Franc." },
       { name: "San Carlos (Paraje Altamira & El Cepillo)", focus: "Southern alluvial fan with shallow topsoil and dense limestone crusts producing chalky, saline-textured red wines." }
     ],
-    description: "The crown jewel of modern South American viticulture. A pristine alpine corridor where extreme elevation and calcic limestone transform Malbec from sweet jamminess into chiseled, mineral, age-worthy fine wine."
+    description: "The crown jewel of modern South American viticulture, the Uco Valley is a pristine alpine corridor at 900 to 1,600 meters elevation, nestled directly beneath the snow-capped Andes in the extreme rain shadow that receives under 200mm of annual rainfall. Quaternary alluvial fans deposited by glacial runoff have created soils of metamorphic granite, basalt boulders, and sand densely encrusted with chalky white calcium carbonate (caliche), which restricts vine vigor and concentrates phenolic intensity. Extreme diurnal temperature swings of up to 22°C preserve vibrant malic acidity and promote thick grape skins rich in anthocyanins. Pioneered by the Catena family with the planting of the Adrianna Vineyard, this corridor now encompasses world-renowned IGs including Gualtallary, Paraje Altamira, San Pablo, and Los Chacayes. These high-altitude terroirs transform Malbec from ripe jamminess into chiseled, mineral-driven, age-worthy fine wine of global stature."
   },
   {
     id: 'lujan-de-cuyo',
@@ -53,7 +53,7 @@ export const MENDOZA_SUBREGIONS = [
       { name: "Perdriel & Vistalba", focus: "Terraced stony soils directly bordering the Mendoza River; legendary benchmark for structural elegance and violet aromatics." },
       { name: "Agrelo & Ugarteche", focus: "Slightly warmer clay-loam basin producing opulent, dark chocolate and damson plum-driven Malbec." }
     ],
-    description: "Argentina's first official DOC (established 1989). A legendary terroir where century-old ungrafted vines produce the benchmark classical expression of Argentine Malbec: opulent, velvety, and deeply aromatic."
+    description: "Recognized as Argentina's first official DOC in 1989, Luján de Cuyo is the historical cradle of Argentine fine wine, situated along the Mendoza River terraces at 850 to 1,100 meters elevation. Its Quaternary alluvial soils of silt, clay-loam, and rounded riverbed cobbles (canto rodado) provide excellent drainage and support some of the oldest ungrafted Malbec vines in the country, with centenary plantings dating to the late 19th century. The warm sunny days are moderated by cool mountain breezes descending from the Andes, and traditional acequia snowmelt canal irrigation sustains the vines through the arid growing season. Key districts including Las Compuertas, Perdriel, and Agrelo each contribute distinctive expressions ranging from perfumed elegance to opulent power. These legendary terroirs produce the benchmark classical expression of Argentine Malbec: opulent, velvety, and deeply aromatic with violet florals and sweet dark fruit."
   },
   {
     id: 'maipu',
@@ -69,7 +69,7 @@ export const MENDOZA_SUBREGIONS = [
       { name: "Barrancas", focus: "Dry, sun-baked gravelly terrace producing ripe, dense, black-fruited Malbec and robust Syrah." },
       { name: "Lunlunta & Russell", focus: "Cooler river-adjacent alluvial benches producing perfumed, supple old-vine reds." }
     ],
-    description: "The historical home of Mendoza winemaking where 19th-century Italian and Spanish immigrants planted pre-phylloxera massale selections. Produces deeply generous, round, and spicy red wines."
+    description: "Maipú holds the distinction of being the historical birthplace of Mendoza winemaking, where 19th-century Italian and Spanish immigrants planted pre-phylloxera massale selections that still survive in some centenarian vineyards. Situated east of Luján de Cuyo at a warmer, lower elevation of 650 to 850 meters, its deep alluvial gravel beds, sand, and clay silt deposited by the Mendoza River provide fast-draining soils that yield generous, full-bodied red wines. The abundant sunshine and long growing season ensure reliable ripening of Malbec, while old-vine Bonarda—an ancient Savoyard grape also known as Douce Noire—produces spicy, dark-fruited expressions of increasing artisanal interest. The Barrancas sub-zone, perched on elevated, sun-baked gravelly terraces, is particularly noted for dense, ripe, and immediately satisfying Malbec and Syrah. Despite its warmer profile, the district's stony soils and cool mountain night breezes maintain balancing freshness and food-friendly drinkability."
   },
   {
     id: 'san-rafael',
@@ -85,7 +85,7 @@ export const MENDOZA_SUBREGIONS = [
       { name: "Valle del Atuel", focus: "Cooler riverbed valley producing crisp sparkling base wines and citrusy Chenin Blanc." },
       { name: "Cuadro Benegas", focus: "Stony volcanic gravel slopes producing refined, peppery Cabernet and balanced Malbec." }
     ],
-    description: "A historic southern DOC oasis with a long winemaking pedigree dating to French engineer Rodolfo Iselín. Renowned for its balanced, lower-alcohol red wines and vibrant Chenin Blanc."
+    description: "Located 240 kilometers south of Mendoza City, San Rafael functions as an independent viticultural oasis fed by the Diamante and Atuel rivers, which channel pure Andean snowmelt through the arid landscape. The region was developed as a DOC in 1993 and traces its winemaking pedigree to French engineer Rodolfo Iselín, who established modern viticulture here in the late 19th century. Its cooler continental climate, with milder summer peaks than northern Mendoza, combined with sandy-clay soils and stony volcanic gravels at 600 to 800 meters elevation, produces wines of notable freshness and balance. Chenin Blanc thrives here, delivering vibrant citrusy whites, while Malbec and Cabernet Sauvignon express a more restrained, lower-alcohol elegance compared to warmer northern districts. The region is also gaining recognition for sparkling wine production from the cool Atuel river valley."
   }
 ];
 

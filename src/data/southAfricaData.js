@@ -36,7 +36,7 @@ export const SOUTH_AFRICA_SUBREGIONS = [
       { name: "Helderberg", focus: "Maritime-cooled slopes facing False Bay renowned for aristocratic Cabernet Sauvignon and chiseled Chardonnay." },
       { name: "Polkadraai Hills", focus: "Decomposed granite domes yielding electric, mineral-driven Syrah and old-bush-vine Chenin Blanc." }
     ],
-    description: "South Africa's premier fine wine address. Century-old Cape Dutch estates and dramatic granite mountain peaks yield red wines of immense structural pedigree and longevity."
+    description: "The historic and academic heartland of South African viticulture, centered around the oak-lined streets of Stellenbosch and framed by dramatic mountain sentinels including the Simonsberg, Helderberg, and Stellenbosch Mountain. The climate is classic Mediterranean, moderated by maritime breezes funneling inland from nearby False Bay that mitigate midday summer heat spikes. Ancient, deeply weathered Pre-Cambrian Cape Granite on elevated hillside slopes transitions to Table Mountain sandstone and rich alluvial valley soils, providing excellent drainage and forcing vine roots deep into mineral strata. Cabernet Sauvignon serves as the undisputed king of the district, yielding structured, aristocratic reds and classical Cape Bordeaux blends with notes of cassis, pencil shavings, and fine-grained tannins. Stellenbosch is also the spiritual birthplace of Pinotage—bred at the local university by Professor A.I. Perold in 1925—with benchmark estates like Kanonkop, Meerlust (Rubicon), Rust en Vrede, and Thelema crafting cellar-worthy icons that age for decades."
   },
   {
     id: 'swartland',
@@ -53,7 +53,7 @@ export const SOUTH_AFRICA_SUBREGIONS = [
       { name: "Kasteelberg (Riebeek Valley)", focus: "Metamorphic black slate and shale soils yielding dense, inky, savory Syrah (Mullineux Schist)." },
       { name: "Malmesbury Plains", focus: "Iron-rich Koffieklip and red clay delivering earthy, fleshy, old-vine bush reds." }
     ],
-    description: "The ground-zero of South Africa's modern artisanal fine-wine revolution. Dry-farmed bush vines and minimal-intervention winemaking craft some of the world's most exciting mineral wines."
+    description: "A vast, sun-drenched expanse of rolling wheat fields and rugged mountain ridges north of Cape Town, the Swartland has emerged as ground zero for South Africa's dynamic artisanal fine-wine revolution. The region experiences an austere, semi-arid Mediterranean climate with hot, dry summers and cool Atlantic nights, where vines are traditionally cultivated as non-irrigated, dry-farmed bush vines. The terroir is anchored by three distinct geological formations: the crystalline decomposed granite domes of the Paardeberg, the iron-rich 'koffieklip' gravels of the plains, and the dark metamorphic Malmesbury shales of the Kasteelberg. Low-yielding old bush vines—many certified by South Africa's pioneering Old Vine Project—yield profound, mineral-charged Chenin Blanc and expressive Rhône varieties including Syrah, Mourvèdre, and Grenache. Spearheaded by visionary winemakers like Eben Sadie (Columella, Palladius) and Chris and Andrea Mullineux, the Swartland Independent movement champions minimal intervention, ambient yeast fermentations, and old large-format oak foudres."
   },
   {
     id: 'walker-bay',
@@ -70,7 +70,7 @@ export const SOUTH_AFRICA_SUBREGIONS = [
       { name: "Upper Hemel-en-Aarde Valley", focus: "Higher elevation granite and shale slopes producing aromatic, pure red-fruited Pinot Noir (Bouchard Finlayson)." },
       { name: "Hemel-en-Aarde Ridge", focus: "High-altitude sandstone terraces yielding laser-sharp, mineral Chardonnay and delicate Pinot Noir (Creation)." }
     ],
-    description: "South Africa's 'Heaven and Earth' valley. Direct Antarctic marine breezes and iron-rich Bokkeveld shale craft Pinot Noirs and Chardonnays of stunning Burgundian finesse."
+    description: "Situated along the rugged Cape South Coast around the whale-watching sanctuary of Hermanus, Walker Bay centers on the breathtaking Hemel-en-Aarde ('Heaven and Earth') Valley. Directly exposed to the icy Antarctic Benguela Current sweeping across Walker Bay, the region enjoys a hyper-cool maritime macroclimate blanketed by persistent morning sea fogs and brisk afternoon ocean breezes. The pedology is dominated by ancient, high-clay Bokkeveld Group marine shales layered over Table Mountain sandstone, providing superior water retention that enables dry-farming even on elevated slopes. Across its three distinct wards—Hemel-en-Aarde Valley, Upper Hemel-en-Aarde, and Hemel-en-Aarde Ridge—Pinot Noir and Chardonnay achieve an extraordinary level of cool-climate Burgundian finesse, marked by crystalline red berry fruit, savory forest floor, and flinty salinity. Pioneer Tim Hamilton Russell, alongside world-renowned estates such as Bouchard Finlayson, Creation, and Newton Johnson, has cemented Walker Bay's global reputation as South Africa's premier address for Burgundian varieties."
   },
   {
     id: 'constantia',
@@ -86,7 +86,7 @@ export const SOUTH_AFRICA_SUBREGIONS = [
       { name: "Klein Constantia Mid-Slopes", focus: "East-facing amphitheater of decomposed granite dedicated to the resurrection of historic 18th-century Vin de Constance." },
       { name: "Groot Constantia Foothills", focus: "The original 1685 Simon van der Stel estate crafting refined Bordeaux-style red blends and Cape Shiraz." }
     ],
-    description: "One of the world's most historic wine regions. Coveted by European royalty in the 18th and 19th centuries, its cool granite slopes continue to produce electrifying whites and sweet icons."
+    description: "Established in 1685 by Governor Simon van der Stel on the eastern slopes of the Constantiaberg mountain ridge within the Table Mountain chain, Constantia is the oldest and most historically celebrated wine district in the Southern Hemisphere. During the 18th and 19th centuries, its unctuous, naturally sweet Muscat nectar—Vin de Constance—was coveted by European monarchs, hailed by Jane Austen and Charles Dickens, and famously requested on the deathbed of Napoleon Bonaparte on Saint Helena. The microclimate is exceptionally cool and maritime, bathed in breezes drawn simultaneously from False Bay and the open Atlantic Ocean, which preserve searing natural acidity and vibrant aromatic freshness. Vineyards cling to steep east-facing amphitheaters of deeply decomposed Pre-Cambrian granite over moisture-retentive Oakleaf red clay subsoils. Today, alongside the triumphant modern revival of Vin de Constance by Klein Constantia, estates like Groot Constantia, Buitenverwachting, and Steenberg craft some of the Cape's most electrifying, flinty Sauvignon Blancs and chiseled Bordeaux-style reds."
   },
   {
     id: 'franschhoek',
@@ -102,7 +102,7 @@ export const SOUTH_AFRICA_SUBREGIONS = [
       { name: "Boekenhoutskloof Slopes", focus: "Steep north-facing slopes producing benchmark, spicy, whole-cluster Syrah and old-wood Cabernet Sauvignon." },
       { name: "Monumental Sémillon Bush Vines", focus: "Centenary ungrafted bush vines planted in 1902 producing profound, lanolin and honey-scented Sémillon." }
     ],
-    description: "The French Corner of the Cape. Magnificent mountain amphitheaters and Huguenot viticultural heritage deliver wines of concentrated power, rich texture, and centuries-old bush vine character."
+    description: "A dramatic, enclosed dead-end mountain valley settled in 1688 by French Huguenot refugees who brought European viticultural traditions to the Cape, Franschhoek literally translates to the 'French Corner'. The valley is framed on three sides by towering, sheer sandstone massifs—the Franschhoek, Wemmershoek, and Groot Drakenstein Mountains—which trap winter rainfall and cast cooling afternoon shadows that temper summer heat. Geological soils range from deep alluvial sands along the valley floor to weathered granite benches and decomposed Table Mountain sandstone on the upper slope colluviums. Franschhoek is globally celebrated for preserving some of South Africa's oldest living agricultural monuments: gnarled, ungrafted bush-vine Sémillon parcels planted in 1902 and 1936 that yield opulent, lanolin, wax, and beeswax-scented masterworks. Contemporary benchmark estates including Boekenhoutskloof, Bellingham, and Chamonix also excel with whole-cluster, black-pepper-inflected Syrah and muscular, age-worthy Cabernet Sauvignon."
   }
 ];
 

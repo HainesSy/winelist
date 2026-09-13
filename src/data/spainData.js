@@ -38,7 +38,7 @@ export const SPAIN_SUBREGIONS = [
       { name: "Haro & Barrio de la Estación", focus: "The historic cradle of 19th-century bodegas producing classical American and French oak-aged Gran Reservas." },
       { name: "Labastida & Laguardia", focus: "Medieval hilltop communes in Rioja Alavesa famous for pure floral elegance and freshness." }
     ],
-    description: "The historical heart of Spanish fine wine. Cool Atlantic ocean breezes meet continental sunshine, crafting wines of noble restraint, spicy cedar complexity, and decades-long cellaring capacity."
+    description: "The historical and viticultural heart of Spanish fine wine, encompassing the terraced hillside slopes of Rioja Alta and the Basque-governed communes of Rioja Alavesa along the northern Ebro River basin. Sheltered from harsh Biscay storms by the towering limestone rampart of the Sierra de Cantabria, vineyards sit at 450 to 750 metres elevation where cool Atlantic breezes meet continental warmth. The soils are dominated by chalky calcareous clay (arcillo-calcárea) over Tertiary limestone, imparting intense mineral freshness, high natural acidity, and fine-grained tannins to old-vine Tempranillo. In Haro's historic Barrio de la Estación, 19th-century bodegas such as López de Heredia, CVNE, and La Rioja Alta established the classical standard of prolonged American oak cask maturation for Reservas and Gran Reservas. Concurrently, modernist producers like Artadi and Telmo Rodríguez have spearheaded the single-vineyard (Viñedo Singular) movement in villages like Labastida and San Vicente de la Sonsierra, showcasing pure terroir transparency."
   },
   {
     id: 'ribera-del-duero',
@@ -55,7 +55,7 @@ export const SPAIN_SUBREGIONS = [
       { name: "Soria High Altitude", focus: "Extreme eastern frontier at 950m–1,050m with pre-phylloxera ungrafted bush vines yielding electric mineral freshness." },
       { name: "Páramos of Burgos", focus: "High barren limestone plateaus producing chiseled, structured, tightly wound wines." }
     ],
-    description: "The fortress of Castilian viticulture. Extreme altitude and diurnal swings forge Tempranillo of legendary power, concentration, and aristocratic grandeur."
+    description: "Perched upon the barren, sun-drenched plateau of the Meseta Central at 750 to over 1,000 metres elevation, Ribera del Duero stands as the fortress of Castilian fine wine. The region experiences an unforgiving continental climate defined by the local proverb 'nine months of winter and three of hell', where extreme diurnal temperature swings of up to 25°C preserve vivid acidity while building thick, anthocyanin-dense grape skins. The soils form a complex patchwork of Quaternary river gravels along the Duero riverbanks, chalky white limestone marls (páramos) on the elevated plateaus, and deep sedimentary clays. Here, the indigenous Tinto Fino (a thick-skinned local adaptation of Tempranillo) yields wines of monumental power, black fruit concentration, graphite minerality, and noble structural longevity. The legendary 'Milla de Oro' (Golden Mile) between Valbuena and Pesquera de Duero is home to Spain's most iconic cult estates, including Vega Sicilia, Dominio de Pingus, and Bodegas Aalto."
   },
   {
     id: 'priorat',
@@ -72,7 +72,7 @@ export const SPAIN_SUBREGIONS = [
       { name: "Porrera", focus: "Cooler, higher-elevation valley renowned for profound old-vine Cariñena with searing acidity and crushed graphite notes." },
       { name: "Escaladei", focus: "High northern slopes beneath the Montsant cliff face, birthplace of Carthusian monastic winemaking in the 12th century." }
     ],
-    description: "One of only two DOQ/DOCa regions in Spain. Extreme mountain slopes and black slate create wines of primordial mineral intensity, dark fruit liqueur, and unforgettable tension."
+    description: "Perched in the rugged Montsant mountain amphitheater of southern Catalonia, Priorat is one of only two wine regions in Spain granted the apex status of Denominación de Origen Calificada (DOCa/DOQ). The viticultural terrain is defined by extreme, dizzyingly steep hillside terraces (costers) that can only be worked by hand or with mules. The bedrock is composed of the mythical 'Llicorella'—ancient Devonian black and reddish metamorphic slate flecked with quartz mica—which retains minimal moisture and forces centenarian vine roots up to 15 metres deep into rock fissures. Low-yielding old bush vines of Garnacha Tinta and Cariñena (Samsó) produce concentrated wines infused with wild garrigue scrub herbs, crushed graphite, dark plum liqueur, and profound mineral tension. Revitalized in the late 1980s by the visionary 'Gang of Five'—led by René Barbier (Clos Mogador) and Álvaro Palacios (L'Ermita)—Priorat has become one of the world's most collectible, terroir-driven fine wine sanctuaries."
   },
   {
     id: 'rias-baixas',
@@ -91,7 +91,7 @@ export const SPAIN_SUBREGIONS = [
       { name: "Soutomaior", focus: "Microscopic sub-zone at the head of the Ría de Vigo with steep sandy hillside slopes on granite." },
       { name: "Ribeira do Ulla", focus: "Northern inland zone along the Ulla River on alluvial soils, producing fresh, high-acid Albariño and red Galician heritage varieties." }
     ],
-    description: "Spain's green Atlantic paradise. Decomposed granite soils, perpetual ocean breezes, and ancient pergolas craft the world's most electrifying, saline-mineral white wines from indigenous Albariño."
+    description: "Situated in lush, green southwestern Galicia along a dramatic coastline of sunken Atlantic river valleys, DO Rías Baixas is the undisputed crown jewel of Spanish white wine. The hyper-oceanic maritime climate brings annual rainfall exceeding 1,600 mm, dense sea mists, and relentless Atlantic winds rolling in from the nearby ocean. To counter humidity and rot, vignerons train vines high on traditional granite post pergolas (emparrados), elevating clusters into sea breezes above poor, well-draining soils of decomposed granite sand known locally as 'xabre'. Across its five distinct sub-zones—led by the coastal core of Val do Salnés and the Portuguese-bordering O Rosal—indigenous Albariño yields crystalline, electric whites with hallmark notes of white peach, citrus peel, saline ocean spray, and crushed stone minerality. Visionary producers such as Gerardo Méndez (Do Ferreiro), Pazo de Señorans, and Raúl Pérez have elevated the region further by mastering extended lees aging (sobre lías), creating texturally profound whites that develop Burgundian complexity over a decade or more."
   },
   {
     id: 'rioja-oriental',
@@ -107,7 +107,7 @@ export const SPAIN_SUBREGIONS = [
       { name: "Monte Yerga", focus: "High-altitude slopes at 600m–800m producing profound, mineral-driven Garnacha (Álvaro Palacios Quiñón de Valmira)." },
       { name: "Aldeanueva de Ebro", focus: "Traditional center of warm, spicy Garnacha." }
     ],
-    description: "The sun-kissed Mediterranean gateway of Rioja, undergoing a massive quality renaissance through high-altitude Garnacha single-vineyard bottlings."
+    description: "Forming the southeastern frontier of the DOCa Rioja along the broad Ebro river plain, Rioja Oriental (historically known as Rioja Baja) serves as the warm, Mediterranean-influenced gateway of the region. Shielded from Atlantic dampness, this sun-drenched sector experiences significantly lower rainfall, warmer average temperatures, and alluvial silt and ferruginous clay soils that favor generous ripening. Long prized by western Rioja bodegas as a source of body, alcoholic strength, and color for classic regional blends, the area is historically dominated by drought-tolerant Garnacha Tinta alongside structured Graciano. In recent years, a dynamic quality revolution has taken hold on the cooler, high-altitude slopes of the Monte Yerga range, where vineyards at 600 to 800 metres elevation produce ethereal, mineral-driven single-parcel masterworks. Landmark bottlings such as Álvaro Palacios's Quiñón de Valmira have definitively rewritten the global narrative of Rioja Oriental, proving its capacity for world-class, site-specific fine wine."
   }
 ];
 

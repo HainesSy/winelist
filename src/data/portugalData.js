@@ -36,7 +36,7 @@ export const PORTUGAL_SUBREGIONS = [
       { name: "Douro Superior", focus: "The wild, arid eastern frontier bordering Spain; scorching heat and flat alluvial/schist benches yielding monumental dry red icons (Barca-Velha, Quinta do Vale Meão)." },
       { name: "Baixo Corgo", focus: "The westernmost, cooler and wettest sector producing fresh, early-drinking ruby ports and lively dry table wines." }
     ],
-    description: "The crown jewel of Portuguese viticulture. Monumental hand-built schist stone terraces rising vertically above the Douro River forge wines of timeless architectural majesty and power."
+    description: "The crown jewel of Portuguese viticulture, the Douro Valley holds the historic distinction of being the world's first officially demarcated and regulated wine region, established in 1756 by the Marquês de Pombal. Inscribed as a UNESCO World Heritage landscape, the viticultural amphitheater is defined by dizzyingly steep metamorphic schist canyons carved by the Douro River as it flows toward the Atlantic. The bedrock consists of pre-Cambrian crystalline metamorphic schist (xisto) that fractures along vertical planes, allowing vine roots to plunge up to 20 metres into subterranean moisture reserves during scorching, arid summers. Across its three traditional sectors—the cooler western Baixo Corgo, the classic central heartland of Cima Corgo around Pinhão, and the blistering eastern frontier of Douro Superior—indigenous field blends dominated by Touriga Nacional, Touriga Franca, and Tinta Roriz yield both immortal Vintage Ports and monumental dry reds. Legendary icons such as Quinta do Noval Nacional (from pre-phylloxera ungrafted vines) and Casa Ferreirinha's Barca-Velha represent the zenith of structural pedigree, combining inky floral power with centuries-long aging capacity."
   },
   {
     id: 'dao',
@@ -52,7 +52,7 @@ export const PORTUGAL_SUBREGIONS = [
       { name: "Serra da Estrela Slopes", focus: "The highest granite foothills producing crystalline, high-acid Touriga Nacional and ethereal Encruzado." },
       { name: "Silgueiros", focus: "Warm central granite bowl yielding concentrated, fleshy, and perfumed classical Dão reds." }
     ],
-    description: "Portugal's most aristocratic terroir. Cool granite plateaus sheltered by granite mountain walls yield reds of exceptional elegance, perfumed violets, and white Encruzado of Grand Cru mineral pedigree."
+    description: "Frequently hailed by international sommeliers as 'The Burgundy of Portugal', the Dão DOC occupies an elevated granite plateau situated between 400 and 700 metres altitude in north-central Portugal. The region is completely encircled and insulated from extreme weather by towering mountain massifs—the Serra da Estrela, Caramulo, and Buçaco—which block Atlantic deluges while funneling cool alpine night air that preserves towering natural acidity. Vineyards are cultivated on deep, coarse decomposed Hercynian granite sands known as 'saibro', poor in organic nutrients but rich in quartz crystals that promote exquisite mineral tension. Red wines crafted from Touriga Nacional, Alfrocheiro, and Jaen (Mencía) display aristocratic poise, translucent ruby hue, and haunting aromatics of wild bergamot, pine needles, and crushed violets rather than sheer brute power. For white wines, the indigenous Encruzado grape represents one of Europe's greatest unsung treasures, producing cellar-worthy, hazelnut, citrus oil, and flint-laced masterworks that rival fine Meursault in textural nobility."
   },
   {
     id: 'alentejo',
@@ -68,7 +68,7 @@ export const PORTUGAL_SUBREGIONS = [
       { name: "Portalegre", focus: "Cool, rainy, high-altitude northern granite and schist mountain slopes home to centenarian field blend bush vines." },
       { name: "Borba & Estremoz", focus: "Rich marble and limestone soils producing aristocratic, structured, and age-worthy red blends." }
     ],
-    description: "The soul of southern Portugal. Golden sun-baked landscapes and high mountain enclaves craft opulent red wines and ancient clay-amphora Talha traditions dating back two millennia."
+    description: "Encompassing nearly a third of Portugal's total landmass across the rolling golden plains of the south, the Alentejo DOC represents the pastoral soul of Iberian viticulture. The sun-drenched landscape is an agricultural mosaic of undulating wheat fields, ancient cork oak forests (montado), olive groves, and historic white-washed marble towns like Estremoz and Borba. The macroclimate is intensely Mediterranean and continental with scorching summer heat, though the elevated northern outpost of Portalegre in the Serra de São Mamede reaches up to 1,000 metres elevation, delivering refreshing acidity and cool mountain nights. The soils form a geological tapestry ranging from crystalline schists and chalky marble veins to granite uplands, nurturing succulent, dark-fruited blends of Aragonez (Tempranillo), Trincadeira, and ink-dark Alicante Bouschet. The region is also the global epicentre of Vinho de Talha DOC—an unbroken, two-millennium-old winemaking tradition inherited directly from Roman antiquity where whole clusters are fermented and aged inside giant beeswax-lined clay amphorae."
   },
   {
     id: 'vinho-verde',
@@ -84,7 +84,7 @@ export const PORTUGAL_SUBREGIONS = [
       { name: "Monção e Melgaço", focus: "The historic cradle of Alvarinho; south-facing granite river terraces sheltered from heavy Atlantic storms." },
       { name: "Lima Valley", focus: "Coastal granite terraces producing highly aromatic, citrusy, and floral Loureiro whites." }
     ],
-    description: "Portugal's green Atlantic sanctuary. Ancient granite amphitheaters along the Minho River craft dry Alvarinhos of piercing saline minerality, white peach purity, and decades of cellaring power."
+    description: "Situated in lush, emerald-green northwestern Portugal along the Atlantic coast and the northern border with Galicia, Vinho Verde is the nation's largest demarcated wine denomination. While the southerly sub-zones closer to the ocean produce light, spritzy, everyday quaffing whites, the premier northern enclave of Monção e Melgaço occupies a sheltered microclimatic basin along the southern banks of the Minho River. Protected from excessive Atlantic storms by the Serra da Peneda mountain wall, south-facing hillside terraces of decomposed Hercynian granite sands (saibro) capture concentrated solar heat while preserving crystalline natural acidity. Here, indigenous Alvarinho reigns supreme, yielding 100% single-varietal dry whites of piercing saline minerality, white peach nectar, wet stone, and immense structural density that shatter the myth that Vinho Verde cannot age. Visionary vignerons such as Anselmo Mendes and Soalheiro utilize lees contact, skin maceration, and neutral oak casks to craft cellar-worthy masterworks that comfortably mature for ten to twenty years."
   },
   {
     id: 'bairrada',
@@ -100,7 +100,7 @@ export const PORTUGAL_SUBREGIONS = [
       { name: "Clay-Limestone Hills (Barro)", focus: "Heavy chalky clay slopes producing monumental, tannic, ageworthy Baga that requires decades of cellar maturation (Luis Pato)." },
       { name: "Sandy Plains (Areias)", focus: "Coastal sand dunes hosting pre-phylloxera ungrafted bush vines producing perfumed, earlier-drinking reds." }
     ],
-    description: "The home of the legendary Baga grape. Cool Atlantic breezes and chalky clay soils craft one of Europe's most uncompromising, structured, and long-lived noble red varieties."
+    description: "Located along the coastal plains of Beira Litoral between the Serra do Buçaco mountains and the roaring Atlantic Ocean, Bairrada is home to one of Europe's most uncompromising and noble terroir expressions. The hyper-maritime climate is dominated by humid Atlantic winds, dense morning ocean fogs, and cool autumn temperatures that extend the ripening period well into October. The region's finest viticultural parcels—known as 'Barro'—are composed of heavy, moisture-retaining Jurassic clay-limestone marls rich in active calcium carbonate, which alternate with coastal sandy flats (Areias). On these chalky clay slopes, the notoriously late-ripening, thick-skinned Baga grape produces brooding, astringent, and ink-stained reds that possess soaring acidity and fierce, architectural tannins reminiscent of Piedmontese Nebbiolo. Championed by iconic winemakers like Luis Pato and Filipa Pato, traditionally vinified old-vine Baga transforms after 15 to 30 years in bottle into an ethereal, tobacco, dried-cranberry, and truffle-scented masterpiece of unforgettable distinction."
   }
 ];
 
