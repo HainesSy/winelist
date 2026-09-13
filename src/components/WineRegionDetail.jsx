@@ -1486,25 +1486,7 @@ export default function WineRegionDetail({
 
                         return (
                           <div className="appellation-detail-row appellation-terroir-row">
-                            <div className="appellation-terroir-header">
-                              <strong>Terroir / Soil:</strong>
-                              {hasMore && (
-                                <button
-                                  type="button"
-                                  className="terroir-more-info-btn"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    setExpandedTerroirs(prev => ({
-                                      ...prev,
-                                      [sub.id]: !prev[sub.id]
-                                    }));
-                                  }}
-                                  aria-expanded={isExpanded}
-                                >
-                                  {isExpanded ? 'Less info ▴' : 'More info ▾'}
-                                </button>
-                              )}
-                            </div>
+                            <strong>Terroir / Soil:</strong>
                             <p className="appellation-terroir-text">
                               {firstSentence}
                               {hasMore && isExpanded && (
@@ -1514,6 +1496,22 @@ export default function WineRegionDetail({
                                 <span className="terroir-ellipsis"> ...</span>
                               )}
                             </p>
+                            {hasMore && (
+                              <button
+                                type="button"
+                                className="terroir-more-info-btn"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setExpandedTerroirs(prev => ({
+                                    ...prev,
+                                    [sub.id]: !prev[sub.id]
+                                  }));
+                                }}
+                                aria-expanded={isExpanded}
+                              >
+                                {isExpanded ? 'Less info ▴' : 'More info ▾'}
+                              </button>
+                            )}
                           </div>
                         );
                       })()}

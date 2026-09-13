@@ -2569,6 +2569,7 @@ button.region-label:hover,
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
+  align-items: start;
 }
 
 .appellation-card {
@@ -2581,6 +2582,8 @@ button.region-label:hover,
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
   display: flex;
   flex-direction: column;
+  align-self: start;
+  height: auto;
 }
 
 .appellation-card:hover {
@@ -2659,40 +2662,39 @@ button.region-label:hover,
 }
 
 .appellation-terroir-row {
-  margin-top: 0.4rem;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.appellation-terroir-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 3px;
+.appellation-terroir-text {
+  margin: 3px 0 0 0;
+  font-size: 0.83rem;
+  color: #444;
+  line-height: 1.45;
 }
 
 .terroir-more-info-btn {
   background: none;
   border: none;
   color: var(--accent-dark-gold, #996515);
-  font-size: 0.74rem;
+  font-size: 0.76rem;
   font-weight: 700;
   cursor: pointer;
-  padding: 1px 6px;
-  border-radius: 4px;
+  padding: 4px 6px 2px 0;
+  margin-top: 4px;
   text-decoration: underline;
   transition: all 0.15s ease;
   line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
 }
 
 .terroir-more-info-btn:hover {
   color: #722f37;
-  background: rgba(114, 47, 55, 0.08);
-}
-
-.appellation-terroir-text {
-  margin: 0;
-  font-size: 0.83rem;
-  color: #444;
-  line-height: 1.45;
+  text-decoration: none;
 }
 
 .terroir-expanded-content {
@@ -2717,9 +2719,10 @@ button.region-label:hover,
 }
 
 .appellation-card-footer {
-  margin-top: auto;
+  margin-top: 0.85rem;
   padding-top: 0.75rem;
   border-top: 1px solid #f0ebe0;
+  width: 100%;
 }
 
 .appellation-focus-link {
@@ -5561,6 +5564,7 @@ button.region-label:hover,
   .growers-grid {
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
     gap: 10px;
+    align-items: start;
   }
 
   .pressing-fraction-grid,
