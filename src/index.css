@@ -2126,12 +2126,6 @@ button.region-label:hover,
   color: #ffffff;
 }
 
-.sommelier-country-border {
-  pointer-events: none !important;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
 .map-reset-btn {
   pointer-events: auto;
   background: rgba(255, 255, 255, 0.92);

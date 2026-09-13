@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Layers, Maximize2, Compass, MapPin, Award, Shapes, Crown, Globe } from 'lucide-react';
+import { Layers, Maximize2, Compass, MapPin, Award, Shapes, Crown } from 'lucide-react';
 import { WINE_REGION_BOUNDARIES, WINE_REGION_OUTLINES } from '../data/wineRegionBoundaries';
-import { COUNTRY_BOUNDARIES_FEATURE_COLLECTION } from '../data/countryBoundaries';
 
 // Custom Wine Sommelier Tile Providers supporting Mapbox Token, Stadia Key & Free Fallbacks
 const mapboxToken = import.meta.env.VITE_MAPBOX_TOKEN || import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
@@ -157,7 +156,6 @@ export default function WineRegionMap({
   const layerGroupRef = useRef(null);
   const outlineGroupRef = useRef(null);
   const geoJsonGroupRef = useRef(null);
-  const countryBorderGroupRef = useRef(null);
   const boundaryLabelsRef = useRef([]);
   const onSelectSubRegionRef = useRef(onSelectSubRegion);
   const onSelectCruRef = useRef(onSelectCru);
@@ -171,7 +169,6 @@ export default function WineRegionMap({
   const [pinViewMode, setPinViewMode] = useState('subregions'); // Default to 'subregions' (Districts)
   const [showBoundaries, setShowBoundaries] = useState(true);
   const [showRegionOutline, setShowRegionOutline] = useState(false);
-  const [showCountryBorders, setShowCountryBorders] = useState(true);
 
   const minMarkerZoom = Math.max((region.zoom || 9) - 2, 4);
   const [isZoomedOut, setIsZoomedOut] = useState(false);
@@ -207,13 +204,7 @@ export default function WineRegionMap({
 
       L.control.zoom({ position: 'topright' }).addTo(map);
 
-      // Dedicated pane for subtle country borders: sits between basemap tiles (zIndex 200) and wine regions (zIndex 400)
-      map.createPane('countryBordersPane');
-      map.getPane('countryBordersPane').style.zIndex = 350;
-      map.getPane('countryBordersPane').style.pointerEvents = 'none';
-
       mapInstanceRef.current = map;
-      countryBorderGroupRef.current = L.layerGroup().addTo(map);
       outlineGroupRef.current = L.layerGroup().addTo(map);
       geoJsonGroupRef.current = L.layerGroup().addTo(map);
       layerGroupRef.current = L.layerGroup().addTo(map);
@@ -250,9 +241,6 @@ export default function WineRegionMap({
     tileLayer.addTo(map);
 
     // Clear previous vector layers
-    if (countryBorderGroupRef.current) {
-      countryBorderGroupRef.current.clearLayers();
-    }
     if (outlineGroupRef.current) {
       outlineGroupRef.current.clearLayers();
     }
@@ -260,24 +248,6 @@ export default function WineRegionMap({
       geoJsonGroupRef.current.clearLayers();
     }
     boundaryLabelsRef.current = [];
-
-    // 0. Draw Very Subtle Country Border Outlines (Macro National Geographies)
-    let countryLayer = null;
-    if (showCountryBorders && COUNTRY_BOUNDARIES_FEATURE_COLLECTION) {
-      countryLayer = L.geoJSON(COUNTRY_BOUNDARIES_FEATURE_COLLECTION, {
-        pane: 'countryBordersPane',
-        interactive: false,
-        style: () => ({
-          color: '#64748b',
-          weight: 1.0,
-          opacity: 0.45,
-          dashArray: '3, 4',
-          fill: false,
-          className: 'sommelier-country-border'
-        })
-      });
-      countryLayer.addTo(countryBorderGroupRef.current);
-    }
 
     // 1. Draw Minimalist Regional Boundary Outline (Macro Appellation Border)
     let outlineLayer = null;
@@ -1148,7 +1118,7 @@ export default function WineRegionMap({
         resizeObserver.disconnect();
       }
     };
-  }, [region, currentLayerType, pinViewMode, activeSubRegionId, selectedCruId, cellarBottlesCountBySub, showBoundaries, boundaryData, showRegionOutline, outlineData, showCountryBorders, hasGrandCrus, hasPremierCrus, minMarkerZoom]);
+  }, [region, currentLayerType, pinViewMode, activeSubRegionId, selectedCruId, cellarBottlesCountBySub, showBoundaries, boundaryData, showRegionOutline, outlineData, hasGrandCrus, hasPremierCrus, minMarkerZoom]);
 
   // Sync active sub-region focus
   useEffect(() => {
@@ -1310,14 +1280,6 @@ export default function WineRegionMap({
               Districts {showBoundaries ? 'ON' : 'OFF'}
             </button>
           )}
-          <button 
-            className={`map-layer-pill ${showCountryBorders ? 'active' : ''}`}
-            onClick={() => setShowCountryBorders(prev => !prev)}
-            title="Toggle Subtle Country Border Outlines"
-          >
-            <Globe size={13} style={{ marginRight: '3px', color: showCountryBorders ? 'var(--accent-gold)' : 'inherit' }} />
-            Country Borders {showCountryBorders ? 'ON' : 'OFF'}
-          </button>
         </div>
 
         <div className="map-toolbar-group">
