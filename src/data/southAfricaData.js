@@ -589,7 +589,7 @@ export const SOUTH_AFRICA_DATA = {
   id: 'south-africa',
   name: "South Africa (Western Cape)",
   country: "South Africa",
-  countryCode: "ZAF",
+  countryCode: "ZA",
   aliases: [
     'south africa', 'western cape', 'stellenbosch', 'swartland',
     'walker bay', 'hemel-en-aarde', 'constantia', 'franschhoek',

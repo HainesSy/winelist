@@ -1184,7 +1184,7 @@ export default function WineRegionDetail({
                         if (onSelectRegion) onSelectRegion(r.id);
                       }}
                     >
-                      <span className="dropdown-flag">{r.countryCode === 'FR' ? '🇫🇷' : r.countryCode === 'IT' ? '🇮🇹' : r.countryCode === 'US' ? '🇺🇸' : r.countryCode === 'ES' ? '🇪🇸' : r.countryCode === 'DE' ? '🇩🇪' : r.countryCode === 'CL' ? '🇨🇱' : r.countryCode === 'AU' ? '🇦🇺' : r.countryCode === 'JP' ? '🇯🇵' : '🍷'}</span>
+                      <span className="dropdown-country-badge">{r.countryCode || 'INT'}</span>
                       <div className="dropdown-item-info">
                         <span className="dropdown-item-name">{r.name}</span>
                         <span className="dropdown-item-country">{r.country}</span>
@@ -1213,14 +1213,8 @@ export default function WineRegionDetail({
         <div className="region-hero-content">
           <div className="region-meta-badges">
             <span className="region-country-badge">
-              {region.countryCode === 'FR' ? '🇫🇷 France' : 
-               region.countryCode === 'IT' ? '🇮🇹 Italy' : 
-               region.countryCode === 'US' ? '🇺🇸 United States' : 
-               region.countryCode === 'ES' ? '🇪🇸 Spain' : 
-               region.countryCode === 'DE' ? '🇩🇪 Germany' : 
-               region.countryCode === 'CL' ? '🇨🇱 Chile' : 
-               region.countryCode === 'AU' ? '🇦🇺 Australia' : 
-               region.countryCode === 'JP' ? '🇯🇵 Japan' : region.country}
+              {region.countryCode && <span className="region-country-code-pill">{region.countryCode}</span>}
+              <span>{region.country}</span>
             </span>
             {hasGrandCrus && (
               <span className="region-cms-badge">
@@ -1408,17 +1402,23 @@ export default function WineRegionDetail({
                         )}
                       </div>
 
-                      <div className="appellation-detail-row">
-                        <strong>Terroir / Soil:</strong>
-                        <p>{sub.terroir}</p>
-                      </div>
+                      {sub.description && (
+                        <p className="appellation-desc">{sub.description}</p>
+                      )}
 
-                      <div className="appellation-detail-row">
-                        <strong>Grape Focus:</strong>
-                        <p>{sub.focus}</p>
-                      </div>
+                      {sub.focus && (
+                        <div className="appellation-detail-row">
+                          <strong>Grape Focus:</strong>
+                          <p>{sub.focus}</p>
+                        </div>
+                      )}
 
-                      <p className="appellation-desc">{sub.description}</p>
+                      {sub.terroir && (
+                        <div className="appellation-detail-row">
+                          <strong>Terroir / Soil:</strong>
+                          <p>{sub.terroir}</p>
+                        </div>
+                      )}
 
                       <div className="appellation-card-footer">
                         <span className="appellation-focus-link">

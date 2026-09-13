@@ -523,7 +523,7 @@ export const NEW_ZEALAND_DATA = {
   id: 'new-zealand',
   name: "New Zealand (Aotearoa)",
   country: "New Zealand",
-  countryCode: "NZL",
+  countryCode: "NZ",
   aliases: [
     'new zealand', 'nz', 'marlborough', 'central otago',
     'hawkes bay', "hawke's bay", 'martinborough', 'wairarapa',

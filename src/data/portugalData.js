@@ -557,7 +557,7 @@ export const PORTUGAL_DATA = {
   id: 'portugal',
   name: "Portugal (Douro, Dão, Alentejo & Atlantic Coast)",
   country: "Portugal",
-  countryCode: "PRT",
+  countryCode: "PT",
   aliases: [
     'portugal', 'douro', 'dao', 'dão', 'alentejo',
     'vinho verde', 'bairrada', 'moncao', 'melgaco',

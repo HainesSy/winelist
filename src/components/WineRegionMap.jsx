@@ -630,19 +630,16 @@ export default function WineRegionMap({
               <h4 class="popup-title">${sub.name}</h4>
             </div>
             <div class="popup-body">
-              ${sub.grapeVarieties && sub.grapeVarieties.length > 0 ? `
+              ${sub.description ? `<p class="popup-desc" style="font-size: 0.8rem; color: #555; margin-bottom: 8px; line-height: 1.4;">${sub.description}</p>` : ''}
+              ${sub.focus || (sub.grapeVarieties && sub.grapeVarieties.length > 0) ? `
                 <div class="popup-row">
                   <strong>Grape Focus:</strong>
-                  <p>🍇 ${Array.isArray(sub.grapeVarieties) ? sub.grapeVarieties.join(', ') : sub.grapeVarieties}</p>
+                  <p>🍇 ${sub.focus || (Array.isArray(sub.grapeVarieties) ? sub.grapeVarieties.join(', ') : sub.grapeVarieties)}</p>
                 </div>
               ` : ''}
               <div class="popup-row">
                 <strong>Terroir / Soil:</strong>
                 <p>${sub.terroir || (sub.soilTypes ? (Array.isArray(sub.soilTypes) ? sub.soilTypes.join(', ') : sub.soilTypes) : 'Limestone, clay, and gravel benches.')}</p>
-              </div>
-              <div class="popup-row">
-                <strong>Focus:</strong>
-                <p>${sub.focus || 'Signature regional cuvées.'}</p>
               </div>
               ${sub.appellations && sub.appellations.length > 0 ? `
                 <div class="popup-row">

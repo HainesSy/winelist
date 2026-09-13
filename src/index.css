@@ -1359,6 +1359,8 @@ button.region-label:hover,
 
 /* Top Breadcrumb & Navigation */
 .region-top-bar {
+  position: relative;
+  z-index: 50;
   margin-bottom: 1.5rem;
 }
 
@@ -1487,8 +1489,36 @@ button.region-label:hover,
   background: rgba(212, 175, 55, 0.15);
 }
 
-.dropdown-flag {
-  font-size: 1.2rem;
+.dropdown-country-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  min-width: 28px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 4px;
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--accent-gold);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
+  flex-shrink: 0;
+  box-sizing: border-box;
+  transition: all 0.15s ease;
+}
+
+.dropdown-item:hover .dropdown-country-badge {
+  background: rgba(212, 175, 55, 0.22);
+  border-color: var(--accent-gold);
+}
+
+.dropdown-item.active .dropdown-country-badge {
+  background: var(--accent-gold);
+  color: #1a150a;
+  border-color: var(--accent-gold);
+  font-weight: 800;
 }
 
 .dropdown-item-info {
@@ -1558,15 +1588,32 @@ button.region-label:hover,
 }
 
 .region-country-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(8px);
-  padding: 4px 10px;
+  padding: 3px 10px;
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.region-country-code-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(212, 175, 55, 0.35);
+  color: #fff9e6;
+  border: 1px solid rgba(212, 175, 55, 0.6);
 }
 
 .region-cellar-badge {
@@ -2530,15 +2577,15 @@ button.region-label:hover,
 }
 
 .appellation-desc {
-  font-size: 0.82rem;
+  font-size: 0.83rem;
   color: var(--text-muted);
   line-height: 1.45;
-  margin-top: 0.4rem;
-  flex: 1;
+  margin-top: 0.2rem;
+  margin-bottom: 0.85rem;
 }
 
 .appellation-card-footer {
-  margin-top: 1rem;
+  margin-top: auto;
   padding-top: 0.75rem;
   border-top: 1px solid #f0ebe0;
 }
