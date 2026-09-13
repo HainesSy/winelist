@@ -31,7 +31,7 @@ export const CALIFORNIA_SUBREGIONS = [
       { name: "Stags Leap Palisades", focus: "Volcanic colluvium and loam yielding 'iron fist in a velvet glove' tannins (SLV, Shafer)" },
       { name: "Coombsville Basin", focus: "Cool volcanic caldera basin south of Napa town producing fresh, structured, floral Cabernets" }
     ],
-    description: "Napa Valley's floor stretches 50 km between the volcanic Vaca Range to the east and the Mayacamas Range to the west, encompassing 16 nested AVAs that collectively define American Cabernet Sauvignon. Alluvial gravel benchlands deposited by the Napa River and its tributaries—most famously the Oakville and Rutherford Benches—provide exceptional drainage over Bale clay loam and volcanic sediment. The 1976 Judgment of Paris, where Stag's Leap Wine Cellars bested top Bordeaux châteaux, cemented the valley's global reputation. A warm continental climate tempered by San Pablo Bay fog sustains long hang times, yielding opulent, cassis-drenched Cabernets with polished tannins and remarkable cellar longevity."
+    description: "Cradled between the Mayacamas and Vaca ranges, Napa's valley floor was immortalized when Stag's Leap Cellars conquered Bordeaux in the 1976 Judgment of Paris. Pioneered by legends Hamilton Crabb at To Kalon, André Tchelistcheff, and Robert Mondavi, this strip crafts benchmark Cabernet Sauvignon. Afternoon marine fogs moderate intense sunshine, yielding opulent layers of crème de cassis, cocoa, and seamless, graphite-tinged tannins."
   },
   {
     id: 'napa-mountain-avas',
@@ -49,7 +49,7 @@ export const CALIFORNIA_SUBREGIONS = [
       { name: "Spring Mountain District", focus: "Mixed volcanic and sedimentary slopes yielding elegant, aromatic, long-lived Cabernets (Philip Togni, Pride)" },
       { name: "Diamond Mountain District", focus: "Porous white volcanic ash and pumice delivering fine-grained, mineral-dusted tannins (Diamond Creek)" }
     ],
-    description: "Napa's mountain AVAs—Howell Mountain, Mount Veeder, Spring Mountain, Diamond Mountain, and Atlas Peak—rise from 400 to 800 meters above the valley floor, sitting above the marine fog line in unobstructed sunlight. Howell Mountain, established in 1983, was the first sub-appellation designated within Napa Valley. Soils are predominantly volcanic in origin, ranging from iron-rich red Aiken basaltic clay to rhyolitic tufa and decomposed pumice, interspersed with uplifted marine sandstone on the Mayacamas side. Intense UV exposure and dramatic diurnal temperature swings of 15–20°C concentrate phenolics, producing brooding, inky Cabernets with muscular tannins and extraordinary aging potential spanning three decades or more."
+    description: "Perched high above the valley fog line, Howell Mountain, Mount Veeder, and Spring Mountain define California's heroic mountain frontier. In 1983, Randy Dunn and fellow mountain trailblazers championed these high-altitude sites, where fierce alpine winds and bright sunshine produce thick-skinned berries. The resulting Cabernets possess architectural power, chiseled elegance, and brooding wild blackberry notes built for forty years of cellar aging."
   },
   {
     id: 'sonoma-coast-rrv',
@@ -66,7 +66,7 @@ export const CALIFORNIA_SUBREGIONS = [
       { name: "True Sonoma Coast (Occidental/Freestone)", focus: "Extreme maritime cooling within miles of Pacific surf producing razor-sharp, floral, wild-berry Pinots (Occidental, Littorai)" },
       { name: "Fort Ross-Seaview Ridge", focus: "High-altitude coastal ridges elevated above ocean fog yielding intense, structured Pinot Noir and Chardonnay (Marcassin, Flowers)" }
     ],
-    description: "The Russian River Valley and Sonoma Coast form one of California's premier cool-climate growing areas, where extreme Pacific fog penetrates inland through the Petaluma Gap wind corridor each afternoon. Goldridge fine sandy loam, derived from uplifted ancient seabed deposits, dominates the middle-reach benchlands, providing low-fertility, freely draining soils ideal for Pinot Noir and Chardonnay. The Petaluma Gap funnels high-velocity marine winds from Bodega Bay into the southern reaches, thickening grape skins and intensifying phenolic complexity. These conditions produce ethereal, red-berry-laden Pinot Noirs with tea-leaf savory notes and vibrant, hazelnut-inflected Chardonnays that rival the finest of Burgundy."
+    description: "From redwood forests to windswept ocean cliffs, this cool-climate haven traces its roots to 1812, when Russian settlers first planted coastal vines. Trailblazers Joe Rochioli, Burt Williams, and Ed Selyem later revealed the region's genius for world-class Pinot Noir and Chardonnay. Dense Pacific fog rolling through the Petaluma Gap preserves electric acidity, framing fragrant notes of wild strawberry, forest duff, and lemon blossom."
   },
   {
     id: 'santa-cruz-mountains',
@@ -82,7 +82,7 @@ export const CALIFORNIA_SUBREGIONS = [
       { name: "Monte Bello Ridge", focus: "Decomposed limestone and Franciscan greenstone at 1,300–2,600ft crafting California's most aristocratic, Bordeaux-structured Cabernet" },
       { name: "Mount Eden / Saratoga", focus: "Historic mountain vineyards planted by Martin Ray in the 1940s with original Corton-Charlemagne Chardonnay clones" }
     ],
-    description: "Established in 1981 as one of California's earliest AVAs, the Santa Cruz Mountains rise from 400 to 800 meters along a rugged coastal ridge bisected by the San Andreas Fault. This tectonic activity has thrust Franciscan assemblage shale, decomposed sandstone, and rare marine limestone veins to the surface, most notably on the Monte Bello ridge where Ridge Vineyards produces California's most Bordeaux-structured Cabernet. Cool Pacific air and persistent coastal fog moderate daytime temperatures, while forested canyons shelter vineyards from excessive wind. The resulting wines—structured Cabernets, mineral-driven Chardonnays, and perfumed Pinot Noirs—display European restraint and routinely age for half a century."
+    description: "Clinging to rugged ridges between the Pacific Ocean and Silicon Valley, the Santa Cruz Mountains represent an iconic mountain sanctuary. Immigrant pioneer Paul Masson and purist Martin Ray paved the way for Paul Draper at Ridge Vineyards, whose legendary Monte Bello stunned French judges in 1976. Towering redwoods and cold ocean gales forge Cabernets and Chardonnays of Old World restraint, savory cedar, and multi-decade longevity."
   },
   {
     id: 'central-coast-paso',
@@ -98,7 +98,7 @@ export const CALIFORNIA_SUBREGIONS = [
       { name: "Adelaida & Willow Creek Districts", focus: "High-altitude white limestone hills producing opulent, world-class Syrah and Rhône blends (Saxum, Tablas Creek)" },
       { name: "Sta. Rita Hills (Santa Barbara)", focus: "Transverse east-west marine valley funnelling Pacific fog and ocean breezes for laser-pure Pinot Noir and Chardonnay" }
     ],
-    description: "California's Central Coast spans a vast arc from Monterey to Santa Barbara, anchored by Paso Robles and its 11 officially recognized sub-districts delineated in 2014. Paso Robles' western highlands sit atop Monterey Formation calcareous shale and Linne-Calodo limestone, with diurnal temperature swings of 20–25°C producing opulent Rhône-style Syrah and Grenache of profound depth. To the south, the Sta. Rita Hills AVA occupies a rare east-west transverse valley in the Santa Ynez range, where relentless Pacific fog and ocean breezes craft laser-precise, mineral-driven Pinot Noir and Chardonnay. This dynamic region unites sun-drenched power with maritime-cooled finesse across remarkably diverse terroirs."
+    description: "Stretching across sun-drenched hills and cooling marine gaps, the Central Coast bridges Franciscan mission heritage with fearless modern winemaking. In Paso Robles, the Perrin family of Beaucastel joined Robert Haas to import heritage Rhône clones for Tablas Creek, while the Santa Rita Hills pioneered ocean-chilled Pinot Noir. The region unites opulent, peppery Syrah and Grenache with laser-pure coastal whites of striking freshness."
   },
   {
     id: 'sierra-foothills',
@@ -113,7 +113,7 @@ export const CALIFORNIA_SUBREGIONS = [
     microTerroirs: [
       { name: "Plymouth & Shenandoah Valley", focus: "Pre-Prohibition ungrafted dry-farmed bush vines yielding intense, brambly, spicy Zinfandels" }
     ],
-    description: "The Sierra Foothills trace California's winemaking origins to the 1849 Gold Rush, when miners planted vines across El Dorado, Amador, and Calaveras counties on the western slopes of the Sierra Nevada. Vineyards sit at 350 to 900 meters elevation on decomposed granite and quartz-veined Ahwahnee rocky loam, where warm days and cool mountain nights produce intensely concentrated fruit. Many pre-Prohibition bush-trained Zinfandel vines—some exceeding 130 years of age—survive here on their own roots, dry-farmed without irrigation. These ancient vines yield powerful, brambly Zinfandels with cracked black pepper, wild berry compote, and a rustic, mineral-edged character unique to this historic region."
+    description: "Born during the 1849 California Gold Rush, the Sierra Foothills preserve precious head-trained, ungrafted bush vines planted by pioneer miners along the Mother Lode. High in the mountains, centenarian survivors like the 1869 Grandpère vineyard endure scorching summer heat and cold alpine night breezes. They yield robust, soulful Zinfandels and spicy Syrahs laden with cracked pepper, blackberry briar, and authentic frontier spirit."
   },
   {
     id: 'mendocino-anderson-valley',
@@ -128,7 +128,7 @@ export const CALIFORNIA_SUBREGIONS = [
     microTerroirs: [
       { name: "Deep End (Anderson Valley)", focus: "Coldest coastal zone near Boonville producing crystalline sparkling base wines and fragrant Pinot Noir" }
     ],
-    description: "Anderson Valley is a narrow, redwood-flanked corridor in Mendocino County through which the Navarro River channels dense Pacific fog inland, creating a pronounced temperature gradient between the frigid 'deep end' near the coast and the warmer 'near end' around Boonville. This marine influence makes the valley one of California's coolest growing regions, ideally suited to Pinot Noir, Chardonnay, and aromatic varieties like Gewürztraminer and Riesling. Roederer Estate, founded in 1982 by Champagne house Louis Roederer, established Anderson Valley as a benchmark for American traditional method sparkling wine. Soils of alluvial gravelly loam over sandstone bedrock promote excellent drainage, yielding crystalline sparkling bases and delicate, forest-berry-scented Pinot Noirs."
+    description: "Hidden behind soaring redwood groves in Mendocino County, Anderson Valley is an isolated, mist-wrapped haven whose fierce independence spawned its own folk dialect. In 1982, Louis Roederer chose this chilled valley to establish Roederer Estate, captivated by its cold coastal fogs and slow ripening rhythm. The resulting traditional method sparkling wines and perfumed Pinot Noirs display razor-etched acidity, wild alpine strawberry, and forest freshness."
   }
 ];
 

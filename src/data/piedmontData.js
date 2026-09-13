@@ -24,7 +24,7 @@ export const PIEDMONT_SUBREGIONS = [
     climate: "Continental climate buffered by the Ligurian Apennines and the Alps, with hot sunny summers, crisp autumn morning fogs (nebbia), and cold, snowy winters.",
     terroir: "Dramatic, steep, rolling hills (300m–550m) surrounding the Tanaro River south of Alba. Divided into the softer, western Tortonian marls (La Morra, Barolo) and the rugged, eastern Serravallian sandstones (Serralunga d'Alba, Monforte d'Alba).",
     focus: "The King of Wines and the Wine of Kings across 11 statutory Communes (La Morra, Barolo, Castiglione Falletto, Monforte, Serralunga): translucent ruby with orange bricking, ethereal rose petal, tar, sour red cherry, white truffle, leather, and commanding structural tannins built for 30-50+ years.",
-    description: "The crown jewel of Italian viticulture encompasses 11 statutory communes (Barolo, La Morra, Castiglione Falletto, Serralunga d'Alba, Monforte d'Alba, Novello, Verduno, Grinzane Cavour, Cherasco, Diano d'Alba, Roddi) and 181 officially delimited MGAs established in 2010. The region is defined by its stark geological divide between softer Tortonian calcareous marl in the west and older, structured Serravallian sandstone in the east. Viticulture centers on the noble Nebbiolo grape, specifically its high-quality Lampia, Michet, and Rosé biotypes. These majestic wines undergo a mandatory minimum of 38 months of aging before release, developing ethereal aromas of tar and roses alongside commanding tannins. Top expressions showcase supreme longevity, requiring decades to reach their peak."
+    description: "Revered as 'the King of Wines and the Wine of Kings,' Barolo is the aristocratic crown jewel of Piedmontese viticulture, championed by the Count of Cavour. Across its 11 statutory communes, legendary hillside crus are delimited into 181 official MGAs like Cannubi. Shrouded in autumn fogs from the Tanaro, Nebbiolo slowly ripens to yield transcendent perfumes of dried rose, red cherry, and Alba white truffle."
   },
   {
     id: 'barbaresco-langhe',
@@ -37,7 +37,7 @@ export const PIEDMONT_SUBREGIONS = [
     climate: "Slightly warmer and lower in elevation than Barolo, with stronger thermal maritime breezes from the Tanaro River promoting earlier harvest and softer tannin maturation.",
     terroir: "Rolling hills northeast of Alba along the right bank of the Tanaro River. Higher sand content and lower elevation (200m–350m) yield wines of haunting floral elegance, silken texture, and earlier accessibility than Barolo.",
     focus: "The Queen of Nebbiolo: supreme floral perfume of dried violets, wild strawberry, blood orange, white pepper, licorice, and refined, satiny tannins with 25-40 year cellar endurance.",
-    description: "Located slightly lower and warmer than Barolo, this prestigious DOCG comprises four historic communes (Barbaresco, Neive, Treiso, and San Rocco Seno d'Elvio) and 66 officially delimited MGAs. The Tanaro River provides a crucial moderating influence, promoting earlier ripening and softer tannin development. Barbaresco mandates a shorter 26-month minimum aging period, yielding wines of haunting floral elegance and silken texture. The appellation has been celebrated globally through the cooperative genius of Produttori del Barbaresco and visionary family estates. These elegant Nebbiolos are accessible earlier than Barolo while still offering exceptional cellaring potential."
+    description: "Celebrated as the ethereal 'Queen of Nebbiolo,' Barbaresco unites visionary grower solidarity with aristocratic refinement. The appellation spans four historic communes—Barbaresco, Neive, Treiso, and San Rocco Seno d'Elvio—mapped across 66 officially delimited MGAs. Tempered by warm river drafts, these gentle hills coax Nebbiolo into silken maturity, revealing perfumes of dried violet, wild strawberry, and satiny tannins."
   },
   {
     id: 'roero-alto-monferrato',
@@ -50,7 +50,7 @@ export const PIEDMONT_SUBREGIONS = [
     climate: "Warm continental with lower rainfall in the rain shadow of the Ligurian Apennines.",
     terroir: "Wild, rugged eroded sandy cliffs (Rocche del Roero) north of the Tanaro River, transitioning to the chalky hills of Gavi and the sunny amphitheaters of Monferrato.",
     focus: "Crisp, steely, mineral white expressions (Roero Arneis, Gavi di Gavi) and explosive, acid-driven, dark-berried red masterpieces (Nizza 100% Barbera, Dogliani Dolcetto, Ruchè).",
-    description: "Situated on the steep left bank of the Tanaro River, the Roero district features distinctive sandy marine Pliocene soils rich in fossilized shells. This unique terroir sparked the remarkable renaissance of the Arneis white grape, producing crisp, floral, and mineral-driven wines. Beyond Roero, the broader Monferrato hills encompass powerhouse appellations like the Barbera d'Asti DOCG, known for its electric acidity and dark fruit. The region also champions rare local varieties, most notably the highly aromatic Ruchè di Castagnole Monferrato. Together, this diverse area forms the dynamic epicenter of Piedmontese viticultural biodiversity."
+    description: "Looking across the Tanaro River, Roero and Monferrato represent the wild, romantic heartland of Piedmontese viticultural heritage. Feudal castles once held by the Counts of Roero witnessed the revival of aromatic white Arneis, famously dubbed 'White Barolo.' Across Monferrato's sunny amphitheaters, trailblazers like Giacomo Bologna of Braida championed Barbera d'Asti, crafting vibrant red wines bursting with dark cherry, alpine flowers, and gastronomic joy."
   },
   {
     id: 'alta-langa-sparkling',
@@ -63,7 +63,7 @@ export const PIEDMONT_SUBREGIONS = [
     climate: "Cool high-altitude alpine climate with crisp night mountain breezes, high diurnal shifts, and pristine natural acidity retention.",
     terroir: "High wooded hills above the Langhe fog line overlooking the Ligurian Alps. Strictly delimited to elevations above 250 meters.",
     focus: "Vintage-dated traditional method sparkling wines of celestial precision: toasted hazelnut, lemon brioche, red berry lift, and mineral tension aged min. 30–36 months on lees.",
-    description: "Italy's first historic home of traditional method sparkling wine traces its origins to 1865 when the Gancia family pioneered the style in Canelli. The modern DOCG strictly regulates Metodo Classico production, demanding vintage-dated cuvées and a minimum of 30 months (over 250 days) of aging on the lees. Vineyards must be planted at high altitudes between 300 and 600 meters to ensure crisp natural acidity and gradual ripening. Handcrafted exclusively from estate hillside Pinot Nero and Chardonnay, the wines exhibit celestial precision with notes of toasted hazelnut and lemon brioche. This rigorous framework guarantees pristine quality that rivals the greatest sparkling wines of the world."
+    description: "High in the wooded ridges overlooking the Ligurian Alps, Alta Langa represents Italy's aristocratic sparkling heritage, pioneered in 1865 by Carlo Gancia. Perched strictly above 250 meters elevation, windswept mountain vineyards catch cold alpine downdrafts that preserve sparkling acidity in Pinot Nero and Chardonnay. Slumbering for years on fine lees, these vintage-dated traditional method wines enchant with toasted hazelnut, baked brioche, and crystalline freshness."
   },
   {
     id: 'alto-piemonte',
@@ -76,7 +76,7 @@ export const PIEDMONT_SUBREGIONS = [
     climate: "Cool alpine pre-mountain climate sheltered by Monte Rosa (4,634m) with high diurnal temperature swings and pure alpine meltwater drainage.",
     terroir: "Steep terraced slopes beneath the Alpine peaks on ancient 280-million-year-old volcanic granite and acidic red porphyry. Vines in Carema are trained on dramatic stone pergola pillars (pilun).",
     focus: "Spanna (Nebbiolo) of razor-sharp alpine purity: alpine herbs, sour cherry, rose hips, crushed volcanic rock, iron, orange zest, and vibrant, electric acidity.",
-    description: "The historical powerhouse of 19th-century Piedmont is situated 100 km north of Barolo, resting dramatically at the foot of Monte Rosa. The region is defined by its ancient, highly acidic Permian volcanic porphyry soils that impart a piercing, crushed-rock minerality. It hosts the prestigious Gattinara and Ghemme DOCGs, known for their rigorous regulations, alongside historic DOCs like Boca, Lessona, and Bramaterra. Here, Nebbiolo is traditionally known by its local synonym, Spanna, and often blended with native grapes like Vespolina and Uva Rara. These alpine expressions deliver razor-sharp acidity, vibrant freshness, and profound aging potential."
+    description: "Looming in the frozen shadow of Monte Rosa, Alto Piemonte is the heroic northern frontier of historic Piedmontese viticulture. In the nineteenth century, these subalpine terraces were renowned as Italy's foremost sanctuary for Nebbiolo, locally called Spanna. In enclaves like Gattinara and dramatic Carema, terraced stone pergolas capture alpine meltwater, yielding wines of soaring acidity scented with wild cranberry, rose hips, and orange zest."
   }
 ];
 
@@ -692,7 +692,7 @@ export const PIEDMONT_TECHNICAL_REGULATIONS = {
         tier: "Alta Langa DOCG (Metodo Classico Sparkling)",
         italianTerm: "Alta Langa DOCG",
         criteria: "Vintage-dated traditional method from Pinot Nero & Chardonnay grown above 250m elevation.",
-        aging: "Non-Vintage / Annata: min. 30 months on lees; Riserva: min. 36 months on lees.",
+        aging: "Millesimato (Vintage-Dated): min. 30 months on lees; Riserva: min. 36 months on lees.",
         yield: "Max 77 hl/ha (11,000 kg/ha)",
         examples: ["Fontanafredda Alta Langa", "Contratto Alta Langa", "Cocchi Alta Langa"]
       },

@@ -9,7 +9,7 @@ export const ALSACE_SUBREGIONS = [
     lng: 7.36,
     terroir: "Steep Vosges foothills sheltered by the highest mountain peaks (Grand Ballon 1,424m). Mosaic of granite, volcanic rhyolite, Muschelkalk limestone, and Keuper marls.",
     focus: "Riesling, Gewurztraminer, Pinot Gris, Pinot Noir, Grand Cru & Vendanges Tardives/SGN.",
-    description: "The historical epicentre of fine wine in Alsace, representing roughly two-thirds of the region's total production and 37 of the 51 Grand Crus, including iconic sites like Rangen, Schlossberg, Brand, Sommerberg, Hengst, and Schoenenbourg. Sheltered from Atlantic rainfall by the Vosges Mountains—whose highest peak, the Grand Ballon, rises to 1,424 metres—the Haut-Rhin enjoys one of France's driest microclimates, with Colmar receiving only 550 mm of annual rainfall, making it the second-driest city in mainland France. This rain shadow effect creates long, warm, dry autumns ideal for late-harvest Vendanges Tardives and noble rot Sélection de Grains Nobles. The geological mosaic is extraordinarily diverse: south-facing slopes of granite and volcanic rhyolite around Turckheim and Kaysersberg give way to Muschelkalk limestone at Pfaffenheim and Keuper marl at Rouffach, each imprinting radically different mineral signatures on the four noble grapes. Benchmark estates including Domaine Weinbach, Trimbach, Zind-Humbrecht, and Marcel Deiss have elevated these terroirs to international acclaim."
+    description: "Sheltered beneath the craggy Vosges peaks, the sun-drenched Haut-Rhin is the spiritual heart of Alsace fine wine, hosting thirty-seven legendary Grand Crus. Monastic foundations and multi-generational family dynasties, including Capuchin friars at Domaine Weinbach since 1612, have perfected late-harvest nectar and noble-rot elixirs. The result is dry and sweet masterpieces radiating regal perfume, crystalline purity, and decades of cellaring grace."
   },
   {
     id: 'bas-rhin',
@@ -18,7 +18,7 @@ export const ALSACE_SUBREGIONS = [
     lng: 7.48,
     terroir: "Gentler, cooler sandstone and clay-limestone slopes. Exceptional natural acidity retention and crystalline floral aromatics.",
     focus: "Riesling, Sylvaner, Pinot Blanc, Auxerrois, Klevener de Heiligenstein, Crémant d'Alsace.",
-    description: "Northern third of Alsace wine country, home to 14 Grand Crus—including Zotzenberg (Burgundy's only Grand Cru for Sylvaner), Kastelberg (uniquely planted to the rare Steiner schist), Muenchberg, and Steinklotz—and celebrated communal denominations like Côtes de Barr and Scherwiller. The cooler continental climate and gentler Buntsandstein sandstone and Keuper clay-marl slopes preserve crystalline natural acidity and amplify delicate floral aromatics, producing wines of particular elegance and tension. The Bas-Rhin is the stronghold of Alsace's Sylvaner and Pinot Blanc traditions, alongside expressive Auxerrois and the rare Klevener de Heiligenstein (a Savagnin Rosé permitted only in five communes around Heiligenstein). Towns like Andlau, Barr, Mittelbergheim, and Dambach-la-Ville represent some of the most picturesque medieval wine villages along the 170-kilometre Route des Vins d'Alsace. The northern latitude and longer maturation period can produce Rieslings of extraordinary finesse, with estates like Domaine Kreydenweiss, Albert Seltz, and Jean-Pierre Rietsch leading a biodynamic renaissance."
+    description: "Steeped in Carolingian lore, the Bas-Rhin is the romantic northern crown of Alsace where Empress Richardis founded the historic Abbey of Andlau in 880 AD. Medieval hill towns like Mittelbergheim and Barr harbor fourteen distinguished Grand Crus, famously preserving old-vine Sylvaner and rare Klevener treasures. Visionary biodynamic artisans craft thrilling white wines of ethereal floral perfume, vibrant nervous energy, and haunting charm."
   },
   {
     id: 'vosges-foothills-central',
@@ -27,7 +27,7 @@ export const ALSACE_SUBREGIONS = [
     lng: 7.30,
     terroir: "Intricate mosaic of geological fracture zones (Failles Vosgiennes) where pink Buntsandstein sandstone, crystalline granite, and Jurassic limestone intersect.",
     focus: "Terroir-driven Lieu-Dit bottlings, biodynamic benchmarks (Andlau, Dambach-la-Ville, Ribeauvillé, Riquewihr).",
-    description: "The most geologically diverse viticultural strip in Europe, where the Vosges Fault system has uplifted and exposed 13 distinct geological formations spanning 500 million years of Earth history across just 170 kilometres. From Triassic pink Buntsandstein sandstone in the north through Jurassic Muschelkalk limestone, volcanic rhyolite and granite in the central zone, to Oligocene conglomerates in the south, over 50 identifiable soil types create an unparalleled mosaic of terroir expressions for dry, age-worthy single-vineyard wines. These fracture zones and fault lines—the Failles Vosgiennes—juxtapose dramatically different bedrocks within adjacent vineyards, which is why two Grand Crus mere hundreds of metres apart can produce Rieslings of radically different mineral character. The steep, south-to-southeast-facing slopes between 200 and 400 metres elevation benefit from optimal solar exposure, while the Vosges rain shadow ensures dry ripening conditions. Benchmark Lieu-Dit bottlings from biodynamic pioneers like Ostertag, Bott-Geyl, and André Kientzler demonstrate how this geological complexity translates into wines of extraordinary precision and individuality."
+    description: "A fairytale corridor of fortified hamlets nestled beneath forested castles, this enchanting sector pulses with medieval folklore and imperial trade route rivalries. Historic epicenters like Ribeauvillé and walled Riquewihr celebrate centuries of artisan winemaking pageantry. Independent grower-producers like Ostertag and André Kientzler translate individual vineyard parcels into sculpted single-site wines of spellbinding aromatic purity and unforgettable romantic soul."
   }
 ];
 
@@ -1653,7 +1653,7 @@ export const ALSACE_FOOD_PAIRINGS = [
     category: 'Charcuterie & Smoked Meats',
     wineType: 'Red',
     targetWine: 'Alsace Pinot Noir (Saint-Hippolyte / Rodern)',
-    dish: "Smoked Ham, Knack d\'Alsace, Presskopf & Pork Tenderloin with Morels",
+    dish: "Smoked Ham, Knack d'Alsace, Presskopf & Pork Tenderloin with Morels",
     note: "Lightly chilled Pinot Noir brings crunchy redcurrant fruit and refreshing acidity to balance savory, smoked Alsatian charcuterie.",
     glassware: "Pinot Noir / Universal Stem (500ml)",
     servingTemp: "14–16°C (57–60°F)",

@@ -9,7 +9,7 @@ export const CORSICA_SUBREGIONS = [
     lng: 9.36,
     terroir: "Pure white chalk and clay-limestone benches (Calcaire de Saint-Florent) nestled in a sun-drenched maritime amphitheater.",
     focus: "Niellucciu (min. 90% for reds), Vermentinu (100% for whites), Rosé.",
-    description: "Corsica's first official AOC, decreed in 1968, Patrimonio occupies a sun-drenched maritime amphitheater around the Gulf of Saint-Florent on the island's northern coast. Its distinctive Miocene white limestone and chalky marl soils—unique on an otherwise granite-dominated island—provide the alkaline bedrock that gives Niellucciu (min. 90% in reds) its deep color, firm tannins, and dark cherry-leather complexity. Vermentinu, required at 100% for whites, delivers intensely saline, citrus-blossom-scented wines of remarkable mineral persistence. The Tramuntana and Libeccio winds moderate temperatures and keep disease pressure exceptionally low. Domaine Antoine Arena and Yves Leccia are recognized as benchmark producers, crafting age-worthy, terroir-driven cuvées."
+    description: "Cradled in a sunlit coastal amphitheater overlooking the Gulf of Saint-Florent, Patrimonio is the historic intellectual cradle of Corsican viticulture. Granted the island's first AOC in 1968, it was celebrated by patriot Pasquale Paoli and revitalized by Antoine Arena. Lashed by sea winds, native Niellucciu and Vermentinu yield leather-and-maquis-scented reds alongside radiant, crystalline whites."
   },
   {
     id: 'ajaccio',
@@ -18,7 +18,7 @@ export const CORSICA_SUBREGIONS = [
     lng: 8.74,
     terroir: "Weathered Hercynian granite hillsides (Arènes granitiques) and warm amphitheaters surrounding the Gulf of Ajaccio and Taravo Valley.",
     focus: "Sciaccarellu (min. 60% in red & rosé blends), Vermentinu.",
-    description: "Granted Cru appellation status in 1971, Ajaccio is the epicenter of Sciaccarellu, which must constitute a minimum of 60% in red and rosé blends. Vineyards are planted on weathered Hercynian granite hillsides—the decomposed arènes granitiques—surrounding the Gulf of Ajaccio and extending inland through the Taravo Valley up to 500 m elevation at Clos d'Alzeto. The warm maritime climate, tempered by the Libeccio wind from the west, allows Sciaccarellu to develop its signature translucent ruby color, crushed white pepper, wild strawberry, and maquis herb aromatics. Domaine Vaccelli and Domaine Comte Abbatucci are leading estates, producing wines of weightless, Burgundian-like finesse from this porous granitic terroir."
+    description: "Encircling the luminous gulf where Napoleon Bonaparte was born, Ajaccio is the noble stronghold of Sciaccarellu, Corsica's most aristocratic red grape. Visionary vigneron Jean-Charles Abbatucci resurrected ancient varieties here, while Domaine Vaccelli established global benchmarks for ethereal refinement. Chilled by descending mountain airflows, the wines reveal wild strawberry, crushed rosemary, and a weightless Burgundian finesse."
   },
   {
     id: 'corse-calvi',
@@ -27,7 +27,7 @@ export const CORSICA_SUBREGIONS = [
     lng: 8.75,
     terroir: "Northwestern Balagne district with pink granite, schist, and alluvium slopes framed between Mount Cinto (2,706m) and the sea.",
     focus: "Sciaccarellu, Niellucciu, Vermentinu.",
-    description: "Known as 'The Garden of Corsica,' the Calvi appellation (AOC 1976) occupies the Balagne district in northwestern Corsica, where vineyards on pink granite, metamorphic schist, and alluvial slopes are framed between the towering peak of Mount Cinto (2,706 m) and the Mediterranean Sea. Maritime breezes sweeping off the coast and cold katabatic winds descending from the mountains create significant diurnal temperature variation, preserving vibrant freshness and aromatic intensity. Sciaccarellu, Niellucciu, and Vermentinu are the primary varieties, yielding herbal, garrigue-scented reds, fragrant rosés, and saline whites. Domaine Clos Culombu and Domaine d'Alzipratu are the district's benchmark producers."
+    description: "Framed between snowcapped Mount Cinto and the western sea, Calvi presides over the Balagne, historically revered as the Garden of Corsica. Genoese citadels and hilltop villages have nurtured olive groves and vines since antiquity. Guided by trailblazing estates like Domaine d'Alzipratu, cold alpine breezes and sea warmth yield saline Vermentinu and fragrant reds scented with immortelle, wild myrtle, and garrigue."
   },
   {
     id: 'coteaux-du-cap-corse',
@@ -36,7 +36,7 @@ export const CORSICA_SUBREGIONS = [
     lng: 9.42,
     terroir: "Extreme terraced metamorphic schist (Schistes lustrés) hanging precariously over the Mediterranean along the northern peninsula.",
     focus: "Vermentinu, Muscat Blanc à Petits Grains (Vin Doux Naturel).",
-    description: "The narrow Cap Corse peninsula extends 40 km into the Mediterranean at Corsica's northern tip, where vineyards cling to dramatically steep terraces of schistes lustrés—foliated Alpine metamorphic schist—hanging above the sea. These dark, heat-retaining soils impart piercing marine salinity and gunflint minerality to dry Vermentinu whites of exceptional tension. The appellation also encompasses Muscat du Cap Corse AOC (decreed 1993), a Vin Doux Naturel crafted from 100% Muscat Blanc à Petits Grains fortified by mutage, producing unctuous wines scented with candied apricot, orange blossom, and wild mint. Clos Nicrosi, a historic estate dating to the mid-19th century, and Domaine Pieretti are the leading producers of this remote, wind-swept terroir."
+    description: "Jutting forty kilometers into the azure Ligurian Sea, the wild Cap Corse peninsula was shaped by intrepid mariners and nineteenth-century adventurers. Terraced slopes plunge toward the crashing waves, where historic estates like Clos Nicrosi craft dry Vermentinu of searing tension. The peninsula is also famous for Muscat du Cap Corse, an intoxicating dessert nectar brimming with candied orange zest, mint, and dried apricot."
   },
   {
     id: 'corse-sartene',
@@ -45,7 +45,7 @@ export const CORSICA_SUBREGIONS = [
     lng: 8.97,
     terroir: "Decomposed granite and gravelly clay slopes around the historic mountain fortress of Sartène in southwest Corsica.",
     focus: "Sciaccarellu, Niellucciu, Vermentinu.",
-    description: "Centered around the historic medieval fortress town of Sartène in southwest Corsica, this sub-regional appellation (AOC 1976) encompasses vineyards on decomposed granite and iron-rich gravelly clay slopes in the Ortolo and Rizzanese river valleys. The Hercynian granitic soils produce wines of pronounced mineral intensity, with Sciaccarellu contributing peppery red-fruit aromatics and Niellucciu adding muscular tannic structure. A warm maritime microclimate, moderated by the Libeccio wind and proximity to the Gulf of Valinco, ensures full phenolic ripeness while preserving natural acidity. Domaine Saparale, Domaine Sant Armettu, and Domaine Pero Longo are benchmark producers crafting structured reds and mineral-laden Vermentinu whites."
+    description: "Described by Prosper Mérimée as the 'most Corsican of Corsican towns,' Sartène perches on high promontories steeped in romantic tales of clan vendettas. Historic properties in the Ortolo and Rizzanese valleys, like Domaine Saparale, have restored the district's aristocratic winemaking prestige. Tempered by gulf breezes and mountain shadows, the vineyards yield peppery reds and structured whites carrying wild blackberry and smoky juniper aromas."
   },
   {
     id: 'corse-figari',
@@ -54,7 +54,7 @@ export const CORSICA_SUBREGIONS = [
     lng: 9.12,
     terroir: "The southernmost vineyards in France; extreme wind-whipped granite plateau with shallow, stony, poor granitic soils.",
     focus: "Sciaccarellu, Niellucciu, Vermentinu, Biancu Gentile, Carcaghjolu Neru.",
-    description: "Figari (AOC 1976) contains the southernmost vineyards in metropolitan France, planted on an ultra-dry, wind-battered granite plateau with shallow, stony, nutrient-poor granitic soils that naturally restrict yields and concentrate flavors. Relentless winds—particularly the Libeccio from the southwest—desiccate the canopy, virtually eliminating fungal disease and producing thick-skinned, intensely flavored fruit. The appellation is notable for preserving rare indigenous heritage varieties including Carcaghjolu Neru and Biancu Gentile alongside the principal Sciaccarellu and Niellucciu. Clos Canarelli, under the visionary Yves Canarelli, has established Figari as a source of profound, saline, mineral-driven wines, including pioneering clay amphora-aged cuvées of international acclaim."
+    description: "Perched on a sun-drenched southern plateau facing the Strait of Bonifacio, Figari is home to the southernmost vineyards in metropolitan France. Relentless marine winds buffet the vines, keeping fruit naturally pristine and low-yielding. Pioneered by visionary vigneron Yves Canarelli, the appellation revives ancient amphora aging and near-extinct grapes like Biancu Gentile, delivering wines of laser precision, crushed thyme, and piercing salinity."
   },
   {
     id: 'corse-porto-vecchio',
@@ -63,7 +63,7 @@ export const CORSICA_SUBREGIONS = [
     lng: 9.28,
     terroir: "Southeastern granite hills overlooking the Tyrrhenian Sea; sheltered by the Ospedale pine forest.",
     focus: "Niellucciu, Sciaccarellu, Vermentinu.",
-    description: "Situated on southeastern granite hills overlooking the Tyrrhenian Sea, Corse Porto-Vecchio (AOC 1976) benefits from one of Corsica's warmest and driest microclimates, sheltered from northwesterly winds by the mountainous Ospedale pine forest behind. The weathered granitic soils and silica clay produce soft-textured, fruit-driven reds from Niellucciu and Sciaccarellu, vibrant floral rosés, and sun-kissed Vermentinu whites with tropical undertones. The Sirocco wind from North Africa occasionally brings heatwaves that accelerate ripening on the eastern coast. Domaine de Torraccia, established by pioneer Marc Imbert, remains the appellation's leading estate, known for its Cuvée Oriu of supple red and black fruit with thyme-scented warmth."
+    description: "Overlooking turquoise lagoons and historic salt pans, Porto-Vecchio basks in Mediterranean warmth sheltered by the fragrant pines of the Ospedale forest. In the 1960s, pioneer Christian Imbert founded Domaine de Torraccia and led the heroic movement to protect Corsica's native grape varieties. The resulting wines, headlined by the iconic cuvée Oriu, burst with succulent red cherry, dried rosemary, and sun-baked garrigue charm."
   },
   {
     id: 'corse-regional',
@@ -72,7 +72,7 @@ export const CORSICA_SUBREGIONS = [
     lng: 9.50,
     terroir: "Broad eastern alluvial plain with clay, sand, and river gravels between Solenzara and Bastia.",
     focus: "Niellucciu, Sciaccarellu, Vermentinu, IGP Île de Beauté varieties.",
-    description: "The island-wide Vin de Corse AOC (decreed 1976) and the flexible IGP Île de Beauté together represent roughly 57% of Corsican wine production, centered on the broad Plaine Orientale—the eastern alluvial plain stretching from Solenzara to Bastia. Quaternary clay, sand, and river gravel soils provide generous yields and accessible, fruit-forward wines from Niellucciu, Sciaccarellu, and Vermentinu. The IGP designation permits international varieties and single-varietal labeling, encouraging dynamic experimentation alongside traditional Corsican cépages. This regional tier serves as the accessible entry point to Corsican wine, offering everyday Mediterranean freshness at approachable prices."
+    description: "Spanning the broad eastern coastal plain between Bastia and Solenzara, regional Corse viticulture has thrived since ancient Greek and Roman colonists planted vines at Aléria. In 1975, the historic Aléria events catalyzed the island's modern quality wine renaissance. Today, passionate vignerons celebrate native Niellucciu and Sciaccarellu in welcoming red, white, and rosé wines filled with ripe orchard fruit, wild herbs, and Mediterranean joy."
   }
 ];
 

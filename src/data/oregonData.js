@@ -28,7 +28,7 @@ export const OREGON_SUBREGIONS = [
       { name: "Worden Hill Road", focus: "High-elevation volcanic ridge producing perfumed, silky, red-cherry Pinots (Domaine Drouhin, Archery Summit)" },
       { name: "Red Hills Core", focus: "Historic South Block of Eyrie Vineyards, the spiritual birthplace of Oregon Pinot Noir" }
     ],
-    description: "The Dundee Hills are the historical epicenter of Oregon Pinot Noir, where David Lett founded The Eyrie Vineyards in 1965, planting the state's first Pinot Noir vines on iron-rich red volcanic Jory clay loam. South-facing slopes rise from 200 to 320 meters atop Columbia River basalt bedrock, providing excellent drainage and radiant heat accumulation during the long summer days. The 1975 Eyrie South Block Reserve stunned French judges at the 1979 Gault-Millau Wine Olympiad in Paris, placing among the top Burgundies and establishing Oregon's international credibility. These deep Jory soils impart a signature perfume of bright Rainier cherry, wild raspberry, damp truffle, and silky, gossamer tannins."
+    description: "The Dundee Hills are the pioneering cradle of Oregon Pinot Noir, where David Lett planted cuttings in 1965 at The Eyrie Vineyards. His wines stunned French judges at the 1979 Paris Olympiad, prompting Maison Joseph Drouhin to establish an estate here in 1987. Gentle south-facing slopes yield Pinots of aristocratic poise, revealing ripe red cherries, forest truffles, and gossamer tannins."
   },
   {
     id: 'eola-amity-hills',
@@ -44,7 +44,7 @@ export const OREGON_SUBREGIONS = [
       { name: "Spring Valley Slope", focus: "Cristom's single-vineyard collection (Marjorie, Louise, Jessie, Eileen) on volcanic benches" },
       { name: "Seven Springs Crest", focus: "Historic biodynamic hillside capturing cold ocean gales (Evening Land, Walter Scott)" }
     ],
-    description: "The Eola-Amity Hills sit directly in the path of the Van Duzer Corridor, a notch in the Coast Range that funnels raw Pacific Ocean gales into the central Willamette Valley every afternoon, dropping vineyard temperatures by 15–20°F. Vineyards occupy east- and west-facing slopes between 150 and 350 meters on shallow volcanic Nekia clay loam over fractured basalt, with pockets of marine sedimentary intrusion. This extreme wind exposure thickens grape skins, concentrating phenolics and preserving electric natural acidity that defines the AVA's structural tension. The resulting Pinot Noirs display dark bramble fruit, crushed slate minerality, and savory herbal complexity, while Chardonnays show chiseled acidity and saline precision."
+    description: "Named after Aeolus, the Greek keeper of the winds, the Eola-Amity Hills face the turbulent Pacific gales of the Van Duzer Corridor. Daily temperature drops toughen grape skins, preserving the electric acidity and structure celebrated by sommeliers. Tended by benchmark estates like Bethel Heights and Cristom, the vines produce savory, brooding Pinot Noir scented with dark blackberry, wild thyme, and graphite."
   },
   {
     id: 'ribbon-ridge-yamhill',
@@ -60,7 +60,7 @@ export const OREGON_SUBREGIONS = [
       { name: "Ribbon Ridge Ridgecrest", focus: "Tiny 500-acre sandstone island producing dark black cherry, crushed violet, and refined mineral tannins" },
       { name: "Yamhill-Carlton Horseshoe", focus: "Coarse marine sandstone bowl yielding dark blackberry, licorice, tobacco, and forest floor (Shea Vineyard)" }
     ],
-    description: "Ribbon Ridge and Yamhill-Carlton share an ancient marine sedimentary foundation of Willakenzie series sandstone—Eocene and Oligocene seabed uplifted over millions of years—producing some of Oregon's most structured and age-worthy Pinot Noirs. Ribbon Ridge, at roughly 1,300 hectares, is the smallest nested AVA in the Willamette Valley, forming a sheltered sandstone island protected by the surrounding Chehalem Mountains from harsh weather. Yamhill-Carlton wraps around it in a horseshoe-shaped basin of coarse, freely draining marine sandstone and siltstone ridges. These fast-draining soils force deep root penetration, yielding dark-fruited wines with black cherry, pipe tobacco, iron minerality, and muscular, fine-grained tannins."
+    description: "Tucked beneath the rain shadow of the Coast Range, Ribbon Ridge and Yamhill-Carlton form a serene haven for structured Pinot Noir. Ribbon Ridge is the Willamette's most intimate enclave, while Yamhill-Carlton is anchored by legendary sites like Shea Vineyard. Sheltered from harsh winds, the vineyards yield wines drenched in dark cherry, pipe tobacco, crushed violet, and forest floor backed by fine-grained tannins."
   },
   {
     id: 'chehalem-mountains',
@@ -76,7 +76,7 @@ export const OREGON_SUBREGIONS = [
       { name: "Laurelwood District", focus: "Porous windblown glacial loess over basalt producing high-toned red fruits, lavender floral lift, and silken texture" },
       { name: "Bald Peak Summit", focus: "High-elevation cool parcels yielding chiseled, mineral-driven Chardonnays" }
     ],
-    description: "The Chehalem Mountains contain the highest peaks in the Willamette Valley, with Bald Peak reaching nearly 500 meters, and are distinguished by a complex mosaic of three distinct soil types found nowhere else in the region. Volcanic Jory clay loam from Columbia River basalt flows, windblown glacial Laurelwood loess deposited by the Missoula Floods roughly 15,000 years ago, and ancient marine Willakenzie sandstone all coexist within this single AVA. Pioneering vignerons Dick Erath and David Adelsheim planted the first modern vineyards here in the late 1960s. This pedological diversity produces multi-dimensional Pinot Noirs with layered red and black fruit, lavender florals, and a distinctively silken, seamless texture."
+    description: "Named after the Native Kalapuya word for 'Valley of Flowers,' the Chehalem Mountains form the high northern horizon of the Willamette Valley. In the late 1960s, dreamers like David Adelsheim and Dick Ponzi cleared thickets to plant foundational vineyards here. Elevated slopes enjoy cool morning breezes and long twilight, crafting Pinot Noir and Chardonnay of multi-dimensional depth, wild strawberry, and dried lavender elegance."
   },
   {
     id: 'mcminnville-ava',
@@ -91,7 +91,7 @@ export const OREGON_SUBREGIONS = [
     microTerroirs: [
       { name: "Foothill Terraces", focus: "Stony, wind-swept slopes yielding dark, muscular, iron-driven, and structured Pinots" }
     ],
-    description: "McMinnville AVA lies in the western Willamette Valley at the base of the Coast Range foothills, where shallow, stony Nestucca marine siltstone and weathered basalt soils create a rugged, wind-exposed growing environment. The proximity to the Coast Range channels persistent Pacific breezes across the vineyard slopes, scouring vine canopies and thickening grape skins throughout the growing season. Elevations range from 60 to 300 meters on well-drained hillside terraces that force vines to root deeply into fractured bedrock. The resulting Pinot Noirs are among Oregon's most deeply colored and muscular, with firm structural grip, iron-inflected minerality, and concentrated dark fruit."
+    description: "Perched against the rugged base of the Coast Range, McMinnville is the untamed, wind-swept frontier of Willamette viticulture. Historic sites like the 1971 Hyland Vineyard and artisan outposts like Brittan Vineyards endure persistent Pacific gales. These winds stunt shoot growth and concentrate berry skins, forging brooding Pinot Noirs laden with wild blackberry, cracked black pepper, structural gravitas, and remarkable cellaring stamina."
   },
   {
     id: 'van-duzer-corridor',
@@ -106,7 +106,7 @@ export const OREGON_SUBREGIONS = [
     microTerroirs: [
       { name: "Corridor Floor", focus: "Wind-battered vines with thick grape skins producing electric acidity and deep phenolic depth" }
     ],
-    description: "The Van Duzer Corridor AVA takes its name from a prominent notch in the Oregon Coast Range that funnels raw Pacific Ocean air directly into the heart of the Willamette Valley, creating the coolest growing season of any sub-appellation in the region. Every afternoon, chilly marine breezes accelerate through the gap, plummeting vineyard temperatures by as much as 30°F and dramatically extending the growing season. Soils consist of marine sedimentary Bellpine siltstone with scattered volcanic basalt gravels, providing moderate fertility and good drainage. The extreme wind exposure produces thick-skinned Pinot Noir with bracing natural acidity, saline tension, and concentrated phenolic depth."
+    description: "Carved through a coastal mountain gap, the Van Duzer Corridor is the climatic engine driving the Willamette Valley's cooling rhythm. Every afternoon, inland warmth pulls a torrent of chilly Pacific air through the notch, plunging temperatures by thirty degrees. Vines develop thick skins that lock in explosive natural acidity, producing thrilling Pinot Noir and white wines singing with crunchy cranberry, wild herbs, and oceanic freshness."
   },
   {
     id: 'mount-pisgah-lower-long-tom',
@@ -122,7 +122,7 @@ export const OREGON_SUBREGIONS = [
       { name: "Freedom Hill (Mt. Pisgah)", focus: "Famous sedimentary bench producing benchmark structured, dark-fruited Pinots for Ken Wright and Walter Scott" },
       { name: "Lower Long Tom", focus: "Southern Willamette Bellpine soils with grazing-based regenerative viticulture (Antiquum Farm)" }
     ],
-    description: "Mount Pisgah and Lower Long Tom represent the newest frontiers of the Willamette Valley, with both AVAs officially established in 2022 in the warmer southern reaches of the appellation. Ancient marine sedimentary Bellpine siltstone and sandstone terraces combine with pockets of volcanic basalt, offering diverse soil profiles that produce structured, dark-fruited Pinot Noirs. The slightly warmer temperatures compared to northern Willamette sites allow for more consistent ripening while retaining freshness from cool overnight marine air drainage. Freedom Hill Vineyard, one of Oregon's most celebrated single-vineyard sources, sits on the slopes of Mount Pisgah, supplying benchmark fruit to producers like Ken Wright and Walter Scott."
+    description: "Rising out of the peaceful southern Willamette countryside, Mount Pisgah and Lower Long Tom represent Oregon's newest nested AVAs. Mount Pisgah earned renown through Freedom Hill Vineyard, planted in 1981 and championed by Ken Wright for structured, cellar-worthy reds. In Lower Long Tom, Antiquum Farm pioneered grazing-based regenerative viticulture, crafting soulful Pinot Noir pulsing with pure floral perfume and vibrant ecological vitality."
   }
 ];
 
