@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { 
   ArrowLeft, 
   Wine, 
@@ -770,6 +770,51 @@ export default function WineRegionDetail({
     }
   };
 
+  const [columnCount, setColumnCount] = useState(() => {
+    if (typeof window === 'undefined') return 3;
+    const w = window.innerWidth;
+    if (w < 640) return 1;
+    if (w < 960) return 2;
+    return 3;
+  });
+  const gridRef = useRef(null);
+
+  useEffect(() => {
+    const updateCols = (width) => {
+      const cols = Math.max(1, Math.min(3, Math.floor((width + 16) / (280 + 16))));
+      setColumnCount(cols);
+    };
+
+    if (typeof ResizeObserver !== 'undefined' && gridRef.current) {
+      const observer = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          updateCols(entry.contentRect.width);
+        }
+      });
+      observer.observe(gridRef.current);
+      return () => observer.disconnect();
+    } else if (typeof window !== 'undefined') {
+      const handleResize = () => {
+        const w = window.innerWidth;
+        if (w < 640) setColumnCount(1);
+        else if (w < 960) setColumnCount(2);
+        else setColumnCount(3);
+      };
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+
+  const masonryColumns = useMemo(() => {
+    if (!region?.subRegions || region.subRegions.length === 0) return [];
+    const count = Math.max(1, Math.min(columnCount, region.subRegions.length));
+    const cols = Array.from({ length: count }, () => []);
+    region.subRegions.forEach((sub, idx) => {
+      cols[idx % count].push(sub);
+    });
+    return cols;
+  }, [region?.subRegions, columnCount]);
+
   const isChampagne = region?.id === 'champagne';
   const isBurgundy = region?.id === 'burgundy';
   const isBeaujolais = region?.id === 'beaujolais';
@@ -1434,96 +1479,106 @@ export default function WineRegionDetail({
                   {allTerroirsExpanded ? 'Collapse All Terroir ▴' : 'Expand All Terroir ▾'}
                 </button>
               </div>
-              <div className="appellation-cards-grid">
-                {region.subRegions.map(sub => {
-                  const isSelected = activeSubRegionId === sub.id;
-                  const bottleCount = cellarBottlesBySub[sub.id] || 0;
+              <div 
+                ref={gridRef}
+                className="appellation-cards-grid"
+                style={{
+                  gridTemplateColumns: `repeat(${masonryColumns.length || 1}, minmax(0, 1fr))`
+                }}
+              >
+                {masonryColumns.map((colCards, colIdx) => (
+                  <div key={colIdx} className="appellation-masonry-column">
+                    {colCards.map(sub => {
+                      const isSelected = activeSubRegionId === sub.id;
+                      const bottleCount = cellarBottlesBySub[sub.id] || 0;
 
-                  return (
-                    <div 
-                      key={sub.id} 
-                      className={`appellation-card ${isSelected ? 'is-focused' : ''}`}
-                      onClick={() => handleSubRegionSelect(isSelected ? null : sub.id)}
-                    >
-                      <div className="appellation-card-header">
-                        <h4 className="appellation-name">{sub.name}</h4>
-                        {bottleCount > 0 ? (
-                          <button 
-                            type="button"
-                            className="appellation-bottle-tag clickable"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleSubRegionSelect(sub.id);
-                              setSearchFilter('');
-                              setActiveTab('cellar');
-                            }}
-                            title={`Click to view ${bottleCount} cellar bottle${bottleCount > 1 ? 's' : ''} from ${sub.name}`}
-                          >
-                            🍷 {bottleCount} in Cellar →
-                          </button>
-                        ) : (
-                          <span className="appellation-zone-tag">District</span>
-                        )}
-                      </div>
-
-                      {sub.description && (
-                        <p className="appellation-desc">{sub.description}</p>
-                      )}
-
-                      {sub.focus && (
-                        <div className="appellation-detail-row">
-                          <strong>Grape Focus:</strong>
-                          <p>{sub.focus}</p>
-                        </div>
-                      )}
-
-                      {sub.terroir && (() => {
-                        const isExpanded = Boolean(expandedTerroirs[sub.id]);
-                        const match = sub.terroir.match(/^([^.!?]+[.!?])\s*(.*)$/s);
-                        const hasMore = Boolean(match && match[2] && match[2].trim().length > 0);
-                        const firstSentence = hasMore ? match[1].trim() : sub.terroir;
-                        const remainingText = hasMore ? match[2].trim() : '';
-
-                        return (
-                          <div className="appellation-detail-row appellation-terroir-row">
-                            <strong>Terroir / Soil:</strong>
-                            <p className="appellation-terroir-text">
-                              {firstSentence}
-                              {hasMore && isExpanded && (
-                                <span className="terroir-expanded-content"> {remainingText}</span>
-                              )}
-                              {hasMore && !isExpanded && (
-                                <span className="terroir-ellipsis"> ...</span>
-                              )}
-                            </p>
-                            {hasMore && (
-                              <button
+                      return (
+                        <div 
+                          key={sub.id} 
+                          className={`appellation-card ${isSelected ? 'is-focused' : ''}`}
+                          onClick={() => handleSubRegionSelect(isSelected ? null : sub.id)}
+                        >
+                          <div className="appellation-card-header">
+                            <h4 className="appellation-name">{sub.name}</h4>
+                            {bottleCount > 0 ? (
+                              <button 
                                 type="button"
-                                className="terroir-more-info-btn"
+                                className="appellation-bottle-tag clickable"
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  setExpandedTerroirs(prev => ({
-                                    ...prev,
-                                    [sub.id]: !prev[sub.id]
-                                  }));
+                                  handleSubRegionSelect(sub.id);
+                                  setSearchFilter('');
+                                  setActiveTab('cellar');
                                 }}
-                                aria-expanded={isExpanded}
+                                title={`Click to view ${bottleCount} cellar bottle${bottleCount > 1 ? 's' : ''} from ${sub.name}`}
                               >
-                                {isExpanded ? 'Less info ▴' : 'More info ▾'}
+                                🍷 {bottleCount} in Cellar →
                               </button>
+                            ) : (
+                              <span className="appellation-zone-tag">District</span>
                             )}
                           </div>
-                        );
-                      })()}
 
-                      <div className="appellation-card-footer">
-                        <span className="appellation-focus-link">
-                          {isSelected ? 'Focused on Map ↑' : 'Locate on Map & Filter →'}
-                        </span>
-                      </div>
-                    </div>
-                  );
-                })}
+                          {sub.description && (
+                            <p className="appellation-desc">{sub.description}</p>
+                          )}
+
+                          {sub.focus && (
+                            <div className="appellation-detail-row">
+                              <strong>Grape Focus:</strong>
+                              <p>{sub.focus}</p>
+                            </div>
+                          )}
+
+                          {sub.terroir && (() => {
+                            const isExpanded = Boolean(expandedTerroirs[sub.id]);
+                            const match = sub.terroir.match(/^([^.!?]+[.!?])\s*(.*)$/s);
+                            const hasMore = Boolean(match && match[2] && match[2].trim().length > 0);
+                            const firstSentence = hasMore ? match[1].trim() : sub.terroir;
+                            const remainingText = hasMore ? match[2].trim() : '';
+
+                            return (
+                              <div className="appellation-detail-row appellation-terroir-row">
+                                <strong>Terroir / Soil:</strong>
+                                <p className="appellation-terroir-text">
+                                  {firstSentence}
+                                  {hasMore && isExpanded && (
+                                    <span className="terroir-expanded-content"> {remainingText}</span>
+                                  )}
+                                  {hasMore && !isExpanded && (
+                                    <span className="terroir-ellipsis"> ...</span>
+                                  )}
+                                </p>
+                                {hasMore && (
+                                  <button
+                                    type="button"
+                                    className="terroir-more-info-btn"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      setExpandedTerroirs(prev => ({
+                                        ...prev,
+                                        [sub.id]: !prev[sub.id]
+                                      }));
+                                    }}
+                                    aria-expanded={isExpanded}
+                                  >
+                                    {isExpanded ? 'Less info ▴' : 'More info ▾'}
+                                  </button>
+                                )}
+                              </div>
+                            );
+                          })()}
+
+                          <div className="appellation-card-footer">
+                            <span className="appellation-focus-link">
+                              {isSelected ? 'Focused on Map ↑' : 'Locate on Map & Filter →'}
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ))}
               </div>
             </div>
           )}
