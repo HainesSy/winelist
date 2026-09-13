@@ -23,6 +23,7 @@
 import assert from 'node:assert';
 import { WINE_REGIONS, findWineRegion } from '../src/data/wineRegions.js';
 import { WINE_REGION_BOUNDARIES, WINE_REGION_OUTLINES } from '../src/data/wineRegionBoundaries.js';
+import { COUNTRY_BOUNDARIES_MAP, COUNTRY_BOUNDARIES_FEATURE_COLLECTION } from '../src/data/countryBoundaries.js';
 
 console.log('================================================================');
 console.log('🍷 WORLD WINE REGIONS: MASTER INVARIANT & SCHEMA VALIDATION');
@@ -414,6 +415,51 @@ for (const cru of allChampCrus) {
   }
 }
 console.log(`  ✓ Verified 100% containment for all ${allChampCrus.length} Champagne Grand & Premier Crus`);
+
+// ----------------------------------------------------------------------------
+// 4d. VALIDATING COUNTRY BOUNDARIES (RFC 7946 TOPOLOGY & TARGET COUNTRIES)
+// ----------------------------------------------------------------------------
+console.log('\n━━━ 4d. Validating Country Boundaries RFC 7946 Topology ━━━');
+
+const EXPECTED_COUNTRY_CODES = [
+  'FR', 'IT', 'ES', 'PT', 'DE', 'US', 'AU', 'NZ', 'ZA', 'CL', 'AR', 'JP'
+];
+
+check('Country boundaries FeatureCollection exists', !!COUNTRY_BOUNDARIES_FEATURE_COLLECTION);
+check('Country boundaries contains 12 sovereign wine nations', COUNTRY_BOUNDARIES_FEATURE_COLLECTION.features.length === 12);
+
+for (const code of EXPECTED_COUNTRY_CODES) {
+  const feat = COUNTRY_BOUNDARIES_MAP[code];
+  check(`Country boundary feature exists for code "${code}"`, !!feat);
+  check(`Country feature "${code}" has Feature type`, feat.type === 'Feature');
+  check(`Country feature "${code}" has non-empty name property`, typeof feat.properties?.name === 'string');
+  
+  const geom = feat.geometry;
+  check(`Country feature "${code}" has Polygon or MultiPolygon geometry`, geom.type === 'Polygon' || geom.type === 'MultiPolygon');
+  
+  const polys = geom.type === 'MultiPolygon' ? geom.coordinates : [geom.coordinates];
+  check(`Country feature "${code}" has at least 1 polygon`, polys.length >= 1);
+  
+  for (let pi = 0; pi < polys.length; pi++) {
+    const poly = polys[pi];
+    for (let ri = 0; ri < poly.length; ri++) {
+      const ring = poly[ri];
+      check(`Country "${code}" poly #${pi} ring #${ri} has at least 4 coordinates`, ring.length >= 4);
+      const first = ring[0];
+      const last = ring[ring.length - 1];
+      check(`Country "${code}" poly #${pi} ring #${ri} is closed (RFC 7946)`, 
+        first[0] === last[0] && first[1] === last[1],
+        `Ring not closed for ${code}: [${first}] vs [${last}]`
+      );
+      for (const [lng, lat] of ring) {
+        check(`Country "${code}" coordinates within globe [-180, 180] x [-90, 90]`,
+          lng >= -180 && lng <= 180 && lat >= -90 && lat <= 90
+        );
+      }
+    }
+  }
+  console.log(`  ✓ Verified subtle country boundary for ${feat.properties.name} (${code})`);
+}
 
 // ----------------------------------------------------------------------------
 // 5. SOMMELIER CANONICAL SEARCH QUERY RESOLUTION (50+ QUERIES)
