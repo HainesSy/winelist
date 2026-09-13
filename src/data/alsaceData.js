@@ -7,7 +7,7 @@ export const ALSACE_SUBREGIONS = [
     name: "Haut-Rhin (Upper Rhine / Southern & Central Alsace)",
     lat: 48.08,
     lng: 7.36,
-    terroir: "Steep Vosges foothills sheltered by the highest mountain peaks (Grand Ballon 1,424m). Mosaic of granite, volcanic rhyolite, Muschelkalk limestone, and Keuper marls.",
+    terroir: "Steep Vosges foothills feature a complex mosaic of granite, volcanic rhyolite, and Muschelkalk limestone sheltered by the Grand Ballon. The well-draining soils induce mild hydric stress, restricting vine vigor to concentrate aromatic monoterpenes and preserve natural tartaric acidity in late-ripening Riesling and Gewurztraminer. Vignerons favor extended maturation on fine lees in large neutral oak foudres, softening the high mineral tension while preserving intense floral aromatics.",
     focus: "Riesling, Gewurztraminer, Pinot Gris, Pinot Noir, Grand Cru & Vendanges Tardives/SGN.",
     description: "The Haut-Rhin encompasses the southern sector of Alsace between Colmar and Mulhouse, hosting thirty-seven of the region's fifty-one Grand Crus. Monastic foundations and multi-generational family dynasties, including Capuchin friars at Domaine Weinbach since 1612, have perfected late-harvest nectar and noble-rot elixirs. The historic imperial city of Colmar served as the primary transit port where Rhine river barges transported Alsatian wines to Northern European courts throughout the Renaissance. The resulting dry and sweet masterworks radiate regal perfume, crystalline purity, and decades of cellaring grace."
   },
@@ -16,7 +16,7 @@ export const ALSACE_SUBREGIONS = [
     name: "Bas-Rhin (Lower Rhine / Northern Alsace & Couronne de Strasbourg)",
     lat: 48.55,
     lng: 7.48,
-    terroir: "Gentler, cooler sandstone and clay-limestone slopes. Exceptional natural acidity retention and crystalline floral aromatics.",
+    terroir: "Rolling northern hills feature pink Buntsandstein sandstone, Keuper marls, and cooler clay-limestone slopes. The cooler mesoclimate and moisture-retentive soils slow sugar accumulation, yielding small berries with high malic acid retention and crystalline citrus flavors in Sylvaner and Riesling. Vinification focuses on temperature-controlled stainless steel fermentation and early racking to safeguard vivid freshness and avoid harsh phenolic extraction.",
     focus: "Riesling, Sylvaner, Pinot Blanc, Auxerrois, Klevener de Heiligenstein, Crémant d'Alsace.",
     description: "The Bas-Rhin encompasses the northern sector of the Alsace wine route, stretching along the Vosges foothills from Barr north toward Strasbourg. Empress Richardis founded the historic Abbey of Andlau here in 880 AD, establishing a monastic winemaking legacy that shaped northern Alsace for over a millennium. Medieval communes like Mittelbergheim and Barr harbor fourteen distinguished Grand Crus, famously preserving heritage plantings of old-vine Sylvaner and rare Klevener de Heiligenstein. Progressive biodynamic artisans craft dry white wines marked by ethereal floral perfume, vibrant nervous energy, and exceptional gastronomic precision."
   },
@@ -25,7 +25,7 @@ export const ALSACE_SUBREGIONS = [
     name: "Central Vosges Escarpment & Fault Lines",
     lat: 48.20,
     lng: 7.30,
-    terroir: "Intricate mosaic of geological fracture zones (Failles Vosgiennes) where pink Buntsandstein sandstone, crystalline granite, and Jurassic limestone intersect.",
+    terroir: "Intricate geological fracture zones (Failles Vosgiennes) expose tight fault lines of Triassic sandstone, Hercynian granite, and Jurassic limestone. Abrupt shifts in soil pH and drainage alter root depth and nutrient uptake, producing varied ripening curves and pronounced structural minerality across varieties. Producers practice parcel-by-parcel vinification, adjusting skin contact and lees stirring according to whether fruit stems from warm, reflective granite or cold, acid-retaining limestone.",
     focus: "Terroir-driven Lieu-Dit bottlings, biodynamic benchmarks (Andlau, Dambach-la-Ville, Ribeauvillé, Riquewihr).",
     description: "The central Vosges corridor stretches between Sélestat and Colmar along the eastern mountain foothills, anchored by the historic fortified towns of Ribeauvillé and Riquewihr. For centuries, feudal lords of the Ribeaupierre dynasty governed these vineyard ramparts, hosting elaborate harvest pageants and protecting vital trade corridors into Germany. Pioneering family estates like Marcel Deiss, Ostertag, and André Kientzler championed site-specific parcel designations to preserve parcel-level distinctions. Their sculpted single-vineyard bottlings deliver spellbinding aromatic purity, dried floral spice, and deep structural longevity."
   }
