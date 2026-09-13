@@ -1489,36 +1489,43 @@ button.region-label:hover,
   background: rgba(212, 175, 55, 0.15);
 }
 
+.region-selector-flag {
+  font-size: 1.25rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 2px;
+}
+
+.region-hero-flag {
+  font-size: 1.25rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
 .dropdown-country-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  min-width: 28px;
-  height: 20px;
-  padding: 0 5px;
+  font-size: 1.35rem;
+  line-height: 1;
+  min-width: 30px;
+  height: 24px;
+  padding: 0 2px;
   border-radius: 4px;
-  background: rgba(212, 175, 55, 0.12);
-  color: var(--accent-gold);
-  border: 1px solid rgba(212, 175, 55, 0.35);
-  font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
+  background: transparent;
   flex-shrink: 0;
   box-sizing: border-box;
-  transition: all 0.15s ease;
+  transition: transform 0.15s ease;
+  user-select: none;
 }
 
-.dropdown-item:hover .dropdown-country-badge {
-  background: rgba(212, 175, 55, 0.22);
-  border-color: var(--accent-gold);
-}
-
+.dropdown-item:hover .dropdown-country-badge,
 .dropdown-item.active .dropdown-country-badge {
-  background: var(--accent-gold);
-  color: #1a150a;
-  border-color: var(--accent-gold);
-  font-weight: 800;
+  transform: scale(1.18);
 }
 
 .dropdown-item-info {
@@ -2369,6 +2376,46 @@ button.region-label:hover,
   display: block;
 }
 
+.popup-terroir-details {
+  margin-top: 3px;
+}
+
+.popup-terroir-summary-btn {
+  list-style: none;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 2px;
+}
+
+.popup-terroir-summary-btn::-webkit-details-marker {
+  display: none;
+}
+
+.popup-more-info-link {
+  font-size: 11px;
+  color: var(--accent-dark-gold, #996515);
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.popup-more-info-link:hover {
+  color: #722f37;
+}
+
+.popup-terroir-details[open] .popup-more-info-link {
+  display: none;
+}
+
+.popup-terroir-rest {
+  display: block;
+  font-size: 11px;
+  color: #555;
+  margin-top: 3px;
+  line-height: 1.35;
+  animation: fadeInTerroir 0.2s ease-in-out;
+}
+
 .popup-cellar-count {
   margin-top: 8px;
   padding: 6px 8px;
@@ -2474,6 +2521,41 @@ button.region-label:hover,
   margin-top: 2rem;
 }
 
+.appellations-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.appellations-section-header .section-subtitle {
+  margin-bottom: 0;
+}
+
+.terroir-toggle-all-btn {
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: var(--accent-dark-gold, #996515);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+}
+
+.terroir-toggle-all-btn:hover {
+  background: var(--accent-gold, #d4af37);
+  color: #1a150a;
+  border-color: var(--accent-gold, #d4af37);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.25);
+}
+
 .section-subtitle {
   font-family: var(--font-serif);
   font-size: 1.35rem;
@@ -2574,6 +2656,56 @@ button.region-label:hover,
   color: #222;
   display: inline-block;
   margin-right: 4px;
+}
+
+.appellation-terroir-row {
+  margin-top: 0.4rem;
+}
+
+.appellation-terroir-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3px;
+}
+
+.terroir-more-info-btn {
+  background: none;
+  border: none;
+  color: var(--accent-dark-gold, #996515);
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 1px 6px;
+  border-radius: 4px;
+  text-decoration: underline;
+  transition: all 0.15s ease;
+  line-height: 1.2;
+}
+
+.terroir-more-info-btn:hover {
+  color: #722f37;
+  background: rgba(114, 47, 55, 0.08);
+}
+
+.appellation-terroir-text {
+  margin: 0;
+  font-size: 0.83rem;
+  color: #444;
+  line-height: 1.45;
+}
+
+.terroir-expanded-content {
+  animation: fadeInTerroir 0.2s ease-in-out;
+}
+
+.terroir-ellipsis {
+  color: #888;
+}
+
+@keyframes fadeInTerroir {
+  from { opacity: 0; transform: translateY(-2px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .appellation-desc {

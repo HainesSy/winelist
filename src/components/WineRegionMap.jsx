@@ -637,9 +637,24 @@ export default function WineRegionMap({
                   <p>🍇 ${sub.focus || (Array.isArray(sub.grapeVarieties) ? sub.grapeVarieties.join(', ') : sub.grapeVarieties)}</p>
                 </div>
               ` : ''}
-              <div class="popup-row">
+              <div class="popup-row popup-terroir-row">
                 <strong>Terroir / Soil:</strong>
-                <p>${sub.terroir || (sub.soilTypes ? (Array.isArray(sub.soilTypes) ? sub.soilTypes.join(', ') : sub.soilTypes) : 'Limestone, clay, and gravel benches.')}</p>
+                ${(() => {
+                  const terroirText = sub.terroir || (sub.soilTypes ? (Array.isArray(sub.soilTypes) ? sub.soilTypes.join(', ') : sub.soilTypes) : 'Limestone, clay, and gravel benches.');
+                  const match = terroirText.match(/^([^.!?]+[.!?])\s*(.*)$/s);
+                  if (match && match[2] && match[2].trim().length > 0) {
+                    return `
+                      <div class="popup-terroir-content">
+                        <span>${match[1].trim()}</span>
+                        <details class="popup-terroir-details">
+                          <summary class="popup-terroir-summary-btn"><span class="popup-more-info-link">More info ▾</span></summary>
+                          <span class="popup-terroir-rest">${match[2].trim()}</span>
+                        </details>
+                      </div>
+                    `;
+                  }
+                  return `<p>${terroirText}</p>`;
+                })()}
               </div>
               ${sub.appellations && sub.appellations.length > 0 ? `
                 <div class="popup-row">

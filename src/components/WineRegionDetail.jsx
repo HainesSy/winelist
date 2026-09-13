@@ -25,6 +25,37 @@ import WineRegionMap from './WineRegionMap';
 import { WINE_REGIONS, findWineRegion } from '../data/wineRegions';
 
 // Authoritative Master Sommelier Service & Glassware Guidelines
+export const COUNTRY_FLAGS = {
+  FR: '🇫🇷',
+  IT: '🇮🇹',
+  US: '🇺🇸',
+  ES: '🇪🇸',
+  DE: '🇩🇪',
+  AU: '🇦🇺',
+  NZ: '🇳🇿',
+  ZA: '🇿🇦',
+  PT: '🇵🇹',
+  CL: '🇨🇱',
+  AR: '🇦🇷',
+  JP: '🇯🇵',
+  AT: '🇦🇹',
+  INT: '🌐',
+};
+
+export function getCountryFlag(countryCode) {
+  if (!countryCode) return '🍷';
+  const code = String(countryCode).toUpperCase().trim();
+  if (COUNTRY_FLAGS[code]) return COUNTRY_FLAGS[code];
+  if (code.length === 2) {
+    try {
+      return String.fromCodePoint(...code.split('').map(c => 127397 + c.charCodeAt(0)));
+    } catch {
+      return '🍷';
+    }
+  }
+  return '🍷';
+}
+
 function getSommelierServiceTip(region) {
   if (!region) return '';
   if (region.sommelierTip) return region.sommelierTip;
@@ -686,6 +717,7 @@ export default function WineRegionDetail({
   const [pairingTypeFilter, setPairingTypeFilter] = useState('all'); // 'all' | 'red' | 'white' | 'sparkling'
   const [regionDropdownOpen, setRegionDropdownOpen] = useState(false);
   const [searchFilter, setSearchFilter] = useState('');
+  const [expandedTerroirs, setExpandedTerroirs] = useState({});
 
   // Sync activeSubRegionId whenever initialSubRegionId prop updates
   useEffect(() => {
@@ -713,11 +745,30 @@ export default function WineRegionDetail({
     return findWineRegion(regionName || regionId, countryName);
   }, [regionId, regionName, countryName]);
 
-  // Scroll to top upon opening new region
+  // Scroll to top upon opening new region & reset expanded terroirs
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setPairingTypeFilter('all');
+    setExpandedTerroirs({});
   }, [region?.id]);
+
+  const allTerroirsExpanded = useMemo(() => {
+    if (!region?.subRegions || region.subRegions.length === 0) return false;
+    return region.subRegions.every(sub => expandedTerroirs[sub.id]);
+  }, [region?.subRegions, expandedTerroirs]);
+
+  const handleToggleAllTerroirs = () => {
+    if (!region?.subRegions) return;
+    if (allTerroirsExpanded) {
+      setExpandedTerroirs({});
+    } else {
+      const next = {};
+      region.subRegions.forEach(sub => {
+        next[sub.id] = true;
+      });
+      setExpandedTerroirs(next);
+    }
+  };
 
   const isChampagne = region?.id === 'champagne';
   const isBurgundy = region?.id === 'burgundy';
@@ -1165,8 +1216,9 @@ export default function WineRegionDetail({
             <button 
               className="region-selector-btn"
               onClick={() => setRegionDropdownOpen(!regionDropdownOpen)}
+              title="Change Wine Region"
             >
-              <Compass size={16} style={{ color: 'var(--accent-gold)' }} />
+              <span className="region-selector-flag">{getCountryFlag(region.countryCode)}</span>
               <span className="current-region-text">{region.name}</span>
               <ChevronDown size={14} className={regionDropdownOpen ? 'rotate-180' : ''} />
             </button>
@@ -1184,7 +1236,9 @@ export default function WineRegionDetail({
                         if (onSelectRegion) onSelectRegion(r.id);
                       }}
                     >
-                      <span className="dropdown-country-badge">{r.countryCode || 'INT'}</span>
+                      <span className="dropdown-country-badge" title={r.country} aria-label={r.country}>
+                        {getCountryFlag(r.countryCode)}
+                      </span>
                       <div className="dropdown-item-info">
                         <span className="dropdown-item-name">{r.name}</span>
                         <span className="dropdown-item-country">{r.country}</span>
@@ -1213,7 +1267,7 @@ export default function WineRegionDetail({
         <div className="region-hero-content">
           <div className="region-meta-badges">
             <span className="region-country-badge">
-              {region.countryCode && <span className="region-country-code-pill">{region.countryCode}</span>}
+              <span className="region-hero-flag">{getCountryFlag(region.countryCode)}</span>
               <span>{region.country}</span>
             </span>
             {hasGrandCrus && (
@@ -1366,10 +1420,20 @@ export default function WineRegionDetail({
           {/* Sub-region Appellation Cards Grid */}
           {region.subRegions && region.subRegions.length > 0 && (
             <div className="appellations-grid-section">
-              <h3 className="section-subtitle">
-                <Layers size={18} style={{ color: 'var(--accent-gold)', marginRight: '8px' }} />
-                Key Districts & Viticultural Zones
-              </h3>
+              <div className="appellations-section-header">
+                <h3 className="section-subtitle">
+                  <Layers size={18} style={{ color: 'var(--accent-gold)', marginRight: '8px' }} />
+                  Key Districts & Viticultural Zones ({region.subRegions.length})
+                </h3>
+                <button
+                  type="button"
+                  className="terroir-toggle-all-btn"
+                  onClick={handleToggleAllTerroirs}
+                  title={allTerroirsExpanded ? "Collapse all terroir descriptions" : "Expand all terroir descriptions"}
+                >
+                  {allTerroirsExpanded ? 'Collapse All Terroir ▴' : 'Expand All Terroir ▾'}
+                </button>
+              </div>
               <div className="appellation-cards-grid">
                 {region.subRegions.map(sub => {
                   const isSelected = activeSubRegionId === sub.id;
@@ -1413,12 +1477,46 @@ export default function WineRegionDetail({
                         </div>
                       )}
 
-                      {sub.terroir && (
-                        <div className="appellation-detail-row">
-                          <strong>Terroir / Soil:</strong>
-                          <p>{sub.terroir}</p>
-                        </div>
-                      )}
+                      {sub.terroir && (() => {
+                        const isExpanded = Boolean(expandedTerroirs[sub.id]);
+                        const match = sub.terroir.match(/^([^.!?]+[.!?])\s*(.*)$/s);
+                        const hasMore = Boolean(match && match[2] && match[2].trim().length > 0);
+                        const firstSentence = hasMore ? match[1].trim() : sub.terroir;
+                        const remainingText = hasMore ? match[2].trim() : '';
+
+                        return (
+                          <div className="appellation-detail-row appellation-terroir-row">
+                            <div className="appellation-terroir-header">
+                              <strong>Terroir / Soil:</strong>
+                              {hasMore && (
+                                <button
+                                  type="button"
+                                  className="terroir-more-info-btn"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setExpandedTerroirs(prev => ({
+                                      ...prev,
+                                      [sub.id]: !prev[sub.id]
+                                    }));
+                                  }}
+                                  aria-expanded={isExpanded}
+                                >
+                                  {isExpanded ? 'Less info ▴' : 'More info ▾'}
+                                </button>
+                              )}
+                            </div>
+                            <p className="appellation-terroir-text">
+                              {firstSentence}
+                              {hasMore && isExpanded && (
+                                <span className="terroir-expanded-content"> {remainingText}</span>
+                              )}
+                              {hasMore && !isExpanded && (
+                                <span className="terroir-ellipsis"> ...</span>
+                              )}
+                            </p>
+                          </div>
+                        );
+                      })()}
 
                       <div className="appellation-card-footer">
                         <span className="appellation-focus-link">
