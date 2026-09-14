@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import WineRegionMap from './WineRegionMap';
 import { WINE_REGIONS, findWineRegion } from '../data/wineRegions';
+import CountryFlag from './CountryFlag';
 
 // Authoritative Master Sommelier Service & Glassware Guidelines
 export const COUNTRY_FLAGS = {
@@ -44,16 +45,7 @@ export const COUNTRY_FLAGS = {
 
 export function getCountryFlag(countryCode) {
   if (!countryCode) return '🍷';
-  const code = String(countryCode).toUpperCase().trim();
-  if (COUNTRY_FLAGS[code]) return COUNTRY_FLAGS[code];
-  if (code.length === 2) {
-    try {
-      return String.fromCodePoint(...code.split('').map(c => 127397 + c.charCodeAt(0)));
-    } catch {
-      return '🍷';
-    }
-  }
-  return '🍷';
+  return <CountryFlag code={countryCode} />;
 }
 
 function getSommelierServiceTip(region) {
