@@ -21,7 +21,7 @@ export const CALIFORNIA_SUBREGIONS = [
     district: "Napa Valley Floor",
     lat: 38.4300,
     lng: -122.3800,
-    terroir: "Deep alluvial fans and gravelly loams deposited by mountain streams, including the famous Rutherford Bench and Bale loam. Warm Mediterranean sunshine paired with balanced drainage enables Cabernet Sauvignon berries to ripen uniformly, yielding concentrated cassis fruit, supple skin tannins, and dusty cocoa nuances. Enologists employ extended maceration and 18 to 22 months of maturation in 50–100% new French oak barriques, shaping dense fruit extract into polished, luxurious, full-bodied architectures.",
+    terroir: "Deep Alluvial gravel fans and gravelly loams deposited by mountain streams, including the famous Rutherford Bench and Bale loam. Warm Mediterranean sunshine paired with balanced drainage enables Cabernet Sauvignon berries to ripen uniformly, yielding concentrated cassis fruit, supple skin tannins, and dusty cocoa nuances. Enologists employ extended maceration and 18 to 22 months of maturation in 50–100% new French oak barriques, shaping dense fruit extract into polished, luxurious, full-bodied architectures.",
     focus: "Cabernet Sauvignon: Oakville (Screaming Eagle, Harlan, Opus One, Dalla Valle), Rutherford, Stags Leap District, Yountville, St. Helena, Calistoga.",
     geology: "Quaternary alluvial gravel fans (Rutherford Bench, Oakville) over volcanic bedrock and marine sediments.",
     dominantGrapes: "Cabernet Sauvignon (primary), Merlot, Cabernet Franc, Sauvignon Blanc",

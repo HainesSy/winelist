@@ -55,13 +55,64 @@ function starPath(cx, cy, spikes, outerRadius, innerRadius) {
   return p + 'Z';
 }
 
-export function CountryFlag({ code, className = '', style = {}, title = '' }) {
+/**
+ * Convert 2-letter ISO country code into standard Unicode Flag Emoji
+ * E.g. 'FR' -> 🇫🇷, 'US' -> 🇺🇸, 'JP' -> 🇯🇵
+ */
+export function getCountryEmoji(code) {
+  const c = String(code || '').toUpperCase().trim();
+  if (c.length !== 2) return '';
+  const codePoints = [...c].map(char => 0x1F1E6 + char.charCodeAt(0) - 65);
+  return String.fromCodePoint(...codePoints);
+}
+
+/**
+ * Detect platforms where native Unicode flag emojis are beautifully supported:
+ * Android, iOS (iPhone & iPad), mobile browsers, and Apple macOS.
+ * Desktop Windows & Linux (which lack native flag emojis and only render "FR" / "US")
+ * will use the custom waving SVG fallbacks.
+ */
+function shouldDefaultToEmoji() {
+  if (typeof window === 'undefined' || typeof navigator === 'undefined') return false;
+  const ua = navigator.userAgent || '';
+  const isMobile = /Android|iPhone|iPad|iPod|Mobile|Tablet/i.test(ua);
+  const isIpadOS = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+  const isMac = /Macintosh|Mac OS X/i.test(ua) && !isIpadOS;
+  return isMobile || isIpadOS || isMac;
+}
+
+export function CountryFlag({ code, className = '', style = {}, title = '', forceSvg = false, forceEmoji = false }) {
   const c = String(code || '').toUpperCase().trim();
   const label = title || c;
+  const emoji = getCountryEmoji(c);
+
+  // If on mobile/tablet (Android, iPad, iPhone, etc.) or explicitly requested, use native emoji encoding!
+  if (emoji && (forceEmoji || (!forceSvg && shouldDefaultToEmoji()))) {
+    return (
+      <span
+        className={`country-flag-emoji ${className}`.trim()}
+        role="img"
+        aria-label={label}
+        style={{
+          display: 'inline-block',
+          fontFamily: '"Apple Color Emoji", "Noto Color Emoji", "Twemoji", "Segoe UI Emoji", sans-serif',
+          lineHeight: 1,
+          verticalAlign: '-0.08em',
+          fontSize: '1.2em',
+          flexShrink: 0,
+          ...style
+        }}
+      >
+        {emoji}
+      </span>
+    );
+  }
+
   const rawId = useId();
   const uid = rawId.replace(/[^a-zA-Z0-9_-]/g, '_');
   const clipId = `wave-clip-${uid}`;
   const shadeId = `wave-shade-${uid}`;
+  const cantonClipId = `canton-clip-${uid}`;
 
   const baseSvgProps = {
     className: `country-flag-svg ${className}`.trim(),
@@ -149,18 +200,46 @@ export function CountryFlag({ code, className = '', style = {}, title = '' }) {
         );
       }
 
-      case 'AR': { // Argentina: 3 waving ribbons + Sun of May in wave dip
+      case 'AR': { // Argentina: 3 waving ribbons + authentic Sol de Mayo with 16 radiant sun rays
         const h3 = H / 3;
+        const sunX = 320;
+        const sunY = y0 + H * 0.5 + 16;
+        const rDisc = 24;
+        const rRay = 42;
+
         return (
           <>
             <path d={fullRibbon(y0, y0 + h3)} fill="#74acdf" />
             <path d={fullRibbon(y0 + h3, y0 + h3 * 2)} fill="#ffffff" />
             <path d={fullRibbon(y0 + h3 * 2, y0 + H)} fill="#74acdf" />
-            <g transform={`translate(320, ${y0 + H * 0.5 + 18})`}>
-              <circle r="32" fill="#f6b40e" stroke="#85340a" strokeWidth="1.5" />
-              <circle cx="-8" cy="-5" r="2.5" fill="#85340a" />
-              <circle cx="8" cy="-5" r="2.5" fill="#85340a" />
-              <path d="M-8,8 Q0,15 8,8" stroke="#85340a" strokeWidth="2" fill="none" />
+            <g>
+              {/* 16 radiant sun rays alternating around the disc */}
+              {[...Array(16)].map((_, i) => {
+                const angle = (i * 2 * Math.PI) / 16 - Math.PI / 2;
+                const xTip = sunX + Math.cos(angle) * rRay;
+                const yTip = sunY + Math.sin(angle) * rRay;
+                const a1 = angle - 0.14;
+                const a2 = angle + 0.14;
+                const xBase1 = sunX + Math.cos(a1) * (rDisc - 1);
+                const yBase1 = sunY + Math.sin(a1) * (rDisc - 1);
+                const xBase2 = sunX + Math.cos(a2) * (rDisc - 1);
+                const yBase2 = sunY + Math.sin(a2) * (rDisc - 1);
+                return (
+                  <polygon
+                    key={i}
+                    points={`${xBase1.toFixed(1)},${yBase1.toFixed(1)} ${xTip.toFixed(1)},${yTip.toFixed(1)} ${xBase2.toFixed(1)},${yBase2.toFixed(1)}`}
+                    fill="#f6b40e"
+                  />
+                );
+              })}
+              {/* Central golden sun disc with regal double ring */}
+              <circle cx={sunX} cy={sunY} r={rDisc} fill="#f6b40e" stroke="#d48806" strokeWidth="2" />
+              <circle cx={sunX} cy={sunY} r="16" fill="none" stroke="#d48806" strokeWidth="1.2" opacity="0.6" />
+              {/* Dignified classical solar face */}
+              <circle cx={sunX - 7} cy={sunY - 4} r="2" fill="#85340a" />
+              <circle cx={sunX + 7} cy={sunY - 4} r="2" fill="#85340a" />
+              <path d={`M ${sunX - 1},${sunY - 1} L ${sunX},${sunY + 4} L ${sunX - 2},${sunY + 4}`} stroke="#85340a" strokeWidth="1.2" fill="none" />
+              <path d={`M ${sunX - 6},${sunY + 7} Q ${sunX},${sunY + 11} ${sunX + 6},${sunY + 7}`} stroke="#85340a" strokeWidth="1.5" fill="none" strokeLinecap="round" />
             </g>
           </>
         );
@@ -230,11 +309,11 @@ export function CountryFlag({ code, className = '', style = {}, title = '' }) {
         );
       }
 
-      case 'JP': { // Japan: crimson sun sitting on undulating wave
+      case 'JP': { // Japan: Pristine white waving silk + crimson sun disc
         return (
           <>
             <path d={fullRibbon(y0, y0 + H)} fill="#ffffff" />
-            <circle cx="320" cy={y0 + H * 0.5 + 18} r="115" fill="#bc002d" />
+            <circle cx="320" cy={y0 + H * 0.5 + 16} r="100" fill="#bc002d" />
           </>
         );
       }
@@ -289,44 +368,66 @@ export function CountryFlag({ code, className = '', style = {}, title = '' }) {
         );
       }
 
-      case 'AU': { // Australia: waving blue field + Union Jack + waving stars
+      case 'AU': { // Australia: Waving blue field + Wavy Union Jack Canton + accurate Southern Cross
+        const yMid = y0 + H * 0.5;
+        const cantonPath = `${cantonWaveFwd(y0)} L ${xCanton},${yMid + 12} ${cantonWaveRev(yMid)} Z`;
+
         return (
           <>
-            <path d={fullRibbon(y0, y0 + H)} fill="#00008b" />
-            <g>
-              <rect x={x0} y={y0} width="270" height="195" fill="#00247d" />
-              <path d={`M${x0},${y0} L${x0 + 270},${y0 + 195} M${x0 + 270},${y0} L${x0 + 270},${y0 + 195}`} stroke="#ffffff" strokeWidth="28" />
-              <path d={`M${x0},${y0} L${x0 + 270},${y0 + 195} M${x0 + 270},${y0} L${x0 + 270},${y0 + 195}`} stroke="#cf142b" strokeWidth="14" />
-              <path d={`M${x0 + 135},${y0} V${y0 + 195} M${x0},${y0 + 97.5} H${x0 + 270}`} stroke="#ffffff" strokeWidth="48" />
-              <path d={`M${x0 + 135},${y0} V${y0 + 195} M${x0},${y0 + 97.5} H${x0 + 270}`} stroke="#cf142b" strokeWidth="28" />
+            <path d={fullRibbon(y0, y0 + H)} fill="#001d68" />
+            <defs>
+              <clipPath id={cantonClipId}>
+                <path d={cantonPath} />
+              </clipPath>
+            </defs>
+            <g clipPath={`url(#${cantonClipId})`}>
+              <path d={cantonPath} fill="#00247d" />
+              <path d={`M ${x0},${y0} L ${xCanton},${yMid + 12} M ${xCanton},${y0} L ${x0},${yMid + 12}`} stroke="#ffffff" strokeWidth="26" />
+              <path d={`M ${x0},${y0} L ${xCanton},${yMid + 12} M ${xCanton},${y0} L ${x0},${yMid + 12}`} stroke="#cf142b" strokeWidth="13" />
+              <path d={`M ${(x0 + xCanton) / 2},${y0 - 20} V ${yMid + 30} M ${x0 - 20},${(y0 + yMid) / 2 + 6} H ${xCanton + 20}`} stroke="#ffffff" strokeWidth="42" />
+              <path d={`M ${(x0 + xCanton) / 2},${y0 - 20} V ${yMid + 30} M ${x0 - 20},${(y0 + yMid) / 2 + 6} H ${xCanton + 20}`} stroke="#cf142b" strokeWidth="24" />
             </g>
-            <path d={starPath(165, y0 + 280, 7, 42, 18)} fill="#ffffff" />
-            <path d={starPath(475, y0 + 75, 7, 22, 10)} fill="#ffffff" />
-            <path d={starPath(545, y0 + 165, 7, 22, 10)} fill="#ffffff" />
-            <path d={starPath(475, y0 + 300, 7, 24, 11)} fill="#ffffff" />
-            <path d={starPath(405, y0 + 195, 7, 22, 10)} fill="#ffffff" />
-            <path d={starPath(440, y0 + 235, 5, 13, 6)} fill="#ffffff" />
+            <path d={cantonPath} fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="2" />
+
+            {/* Commonwealth Star (7-pointed) under the canton */}
+            <path d={starPath(155, y0 + H * 0.76, 7, 38, 17)} fill="#ffffff" />
+
+            {/* Southern Cross constellation (Fly half) */}
+            <path d={starPath(475, y0 + H * 0.20, 7, 20, 9)} fill="#ffffff" />
+            <path d={starPath(545, y0 + H * 0.44, 7, 20, 9)} fill="#ffffff" />
+            <path d={starPath(405, y0 + H * 0.50, 7, 20, 9)} fill="#ffffff" />
+            <path d={starPath(500, y0 + H * 0.62, 5, 12, 5.5)} fill="#ffffff" />
+            <path d={starPath(475, y0 + H * 0.82, 7, 24, 11)} fill="#ffffff" />
           </>
         );
       }
 
-      case 'NZ': { // New Zealand: waving blue field + Union Jack + 4 red stars on wave
+      case 'NZ': { // New Zealand: Waving blue field + Wavy Union Jack Canton + 4 red stars with white borders
+        const yMid = y0 + H * 0.5;
+        const cantonPath = `${cantonWaveFwd(y0)} L ${xCanton},${yMid + 12} ${cantonWaveRev(yMid)} Z`;
+
         return (
           <>
-            <path d={fullRibbon(y0, y0 + H)} fill="#00247d" />
-            <g>
-              <rect x={x0} y={y0} width="270" height="195" fill="#00247d" />
-              <path d={`M${x0},${y0} L${x0 + 270},${y0 + 195} M${x0 + 270},${y0} L${x0 + 270},${y0 + 195}`} stroke="#ffffff" strokeWidth="28" />
-              <path d={`M${x0},${y0} L${x0 + 270},${y0 + 195} M${x0 + 270},${y0} L${x0 + 270},${y0 + 195}`} stroke="#cc142b" strokeWidth="14" />
-              <path d={`M${x0 + 135},${y0} V${y0 + 195} M${x0},${y0 + 97.5} H${x0 + 270}`} stroke="#ffffff" strokeWidth="48" />
-              <path d={`M${x0 + 135},${y0} V${y0 + 195} M${x0},${y0 + 97.5} H${x0 + 270}`} stroke="#cc142b" strokeWidth="28" />
+            <path d={fullRibbon(y0, y0 + H)} fill="#001d68" />
+            <defs>
+              <clipPath id={cantonClipId}>
+                <path d={cantonPath} />
+              </clipPath>
+            </defs>
+            <g clipPath={`url(#${cantonClipId})`}>
+              <path d={cantonPath} fill="#00247d" />
+              <path d={`M ${x0},${y0} L ${xCanton},${yMid + 12} M ${xCanton},${y0} L ${x0},${yMid + 12}`} stroke="#ffffff" strokeWidth="26" />
+              <path d={`M ${x0},${y0} L ${xCanton},${yMid + 12} M ${xCanton},${y0} L ${x0},${yMid + 12}`} stroke="#cc142b" strokeWidth="13" />
+              <path d={`M ${(x0 + xCanton) / 2},${y0 - 20} V ${yMid + 30} M ${x0 - 20},${(y0 + yMid) / 2 + 6} H ${xCanton + 20}`} stroke="#ffffff" strokeWidth="42" />
+              <path d={`M ${(x0 + xCanton) / 2},${y0 - 20} V ${yMid + 30} M ${x0 - 20},${(y0 + yMid) / 2 + 6} H ${xCanton + 20}`} stroke="#cc142b" strokeWidth="24" />
             </g>
-            <g>
-              <path d={starPath(475, y0 + 75, 5, 24, 11)} fill="#cc142b" stroke="#ffffff" strokeWidth="3.5" />
-              <path d={starPath(545, y0 + 165, 5, 22, 10)} fill="#cc142b" stroke="#ffffff" strokeWidth="3.5" />
-              <path d={starPath(475, y0 + 295, 5, 26, 12)} fill="#cc142b" stroke="#ffffff" strokeWidth="3.5" />
-              <path d={starPath(400, y0 + 190, 5, 20, 9)} fill="#cc142b" stroke="#ffffff" strokeWidth="3.5" />
-            </g>
+            <path d={cantonPath} fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="2" />
+
+            {/* 4 red stars with white border (Southern Cross) */}
+            <path d={starPath(475, y0 + H * 0.20, 5, 24, 11)} fill="#cc142b" stroke="#ffffff" strokeWidth="3.5" />
+            <path d={starPath(545, y0 + H * 0.44, 5, 22, 10)} fill="#cc142b" stroke="#ffffff" strokeWidth="3.5" />
+            <path d={starPath(405, y0 + H * 0.50, 5, 20, 9)} fill="#cc142b" stroke="#ffffff" strokeWidth="3.5" />
+            <path d={starPath(475, y0 + H * 0.82, 5, 26, 12)} fill="#cc142b" stroke="#ffffff" strokeWidth="3.5" />
           </>
         );
       }
@@ -349,11 +450,11 @@ export function CountryFlag({ code, className = '', style = {}, title = '' }) {
         </clipPath>
         {/* Soft matte cloth-fold shadow aligned with wave peaks and valleys */}
         <linearGradient id={shadeId} x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#000000" stopOpacity={0.08} />
-          <stop offset="25%" stopColor="#ffffff" stopOpacity={0.12} />
-          <stop offset="50%" stopColor="#000000" stopOpacity={0.15} />
-          <stop offset="78%" stopColor="#ffffff" stopOpacity={0.13} />
-          <stop offset="100%" stopColor="#000000" stopOpacity={0.10} />
+          <stop offset="0%" stopColor="#000000" stopOpacity={c === 'JP' ? 0.04 : 0.08} />
+          <stop offset="25%" stopColor="#ffffff" stopOpacity={c === 'JP' ? 0.16 : 0.12} />
+          <stop offset="50%" stopColor="#000000" stopOpacity={c === 'JP' ? 0.07 : 0.15} />
+          <stop offset="78%" stopColor="#ffffff" stopOpacity={c === 'JP' ? 0.18 : 0.13} />
+          <stop offset="100%" stopColor="#000000" stopOpacity={c === 'JP' ? 0.05 : 0.10} />
         </linearGradient>
       </defs>
       <g clipPath={`url(#${clipId})`}>
