@@ -442,7 +442,7 @@ export const WINE_REGIONS = {
       system: "Échelle des Crus (17 Grand Crus 100%, 42 Premier Crus 90-99%, Autre Crus)",
       description: "Champagne historically classifies entire communes rather than individual parcels. 17 villages hold 100% Grand Cru standing, 42 villages hold Premier Cru (90-99%) standing, and roughly 260 communes are classified as Autre Crus (80-89%).",
       tiers: [
-        { name: "Grand Cru (17 Villages - 100%)", detail: "The elite communes representing ~8.5% of vineyard area: Ambonnay, Bouzy, Verzenay, Mailly, Verzy, Beaumont-sur-Vesle, Sillery, Puisieulx, Louvois (Montagne de Reims); Aÿ, Tours-sur-Marne (Vallée de la Marne); Avize, Chouilly, Cramant, Le Mesnil-sur-Oger, Oger, Oiry (Côte des Blancs)." },
+        { name: "Grand Cru (17 Villages - 100%)", detail: "The 17 classified communes representing ~8.5% of vineyard area: Ambonnay, Bouzy, Verzenay, Mailly, Verzy, Beaumont-sur-Vesle, Sillery, Puisieulx, Louvois (Montagne de Reims); Aÿ, Tours-sur-Marne (Vallée de la Marne); Avize, Chouilly, Cramant, Le Mesnil-sur-Oger, Oger, Oiry (Côte des Blancs)." },
         { name: "Premier Cru (42 Villages - 90-99%)", detail: "Historic high-rated communes including Mareuil-sur-Aÿ (99%), Tauxières-Mutry (99%), Bisseuil (99%), Vertus (95%), Trépail (95%), Villers-Marmery (95%), Dizy (95%), Cuis (95%), Chigny-les-Roses (94%), Rilly-la-Montagne (94%), Ludes (94%), Cumières (93%), Hautvillers (93%), Pierry (90%), Écueil (90%), and Vrigny (90%)." },
         { name: "Autre Cru (80-89%)", detail: "Communes across the Marne, Aube, Aisne, Haute-Marne, and Seine-et-Marne departments that produce regional AOC Champagne." }
       ],
