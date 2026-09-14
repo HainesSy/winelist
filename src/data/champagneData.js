@@ -676,7 +676,7 @@ export const CHAMPAGNE_SUBREGIONS = [
       { name: "Massif de Saint-Thierry", focus: "Cool sandy-limestone terroirs for Meunier and crisp Pinot Noir" },
       { name: "Vesle & Ardre Valleys", focus: "Frost-prone valleys planted primarily to resilient, late-budding Meunier" }
     ],
-    description: "A forested plateau between Reims and the Marne River containing nine Grand Cru villages. Vineyards on the northern and southern slopes are planted primarily to Pinot Noir, producing structured wines with red fruit character and firm acidity that provide aging capacity and body in blends."
+    description: "A forested plateau between Reims and the Marne River containing nine Grand Cru villages. For over eight centuries, French kings were crowned at Reims Cathedral, where still wines from Ambonnay and Bouzy were traditionally served at coronation banquets. Today, vineyards across the northern and southern chalk slopes are planted primarily to Pinot Noir, producing structured wines with red fruit depth and firm acidity that provide body and longevity in classic Champagne assemblages."
   },
   {
     id: 'vallee-de-la-marne',
@@ -695,7 +695,7 @@ export const CHAMPAGNE_SUBREGIONS = [
       { name: "Rive Gauche (Left Bank)", focus: "South of Marne (Festigny, Leuvrigny, Mareuil-le-Port, Œuilly) - clay-rich Meunier" },
       { name: "Confluence / Marne Ouest", focus: "Western extension towards Château-Thierry and the Aisne department" }
     ],
-    description: "Extending west along the Marne River from Tours-sur-Marne past Épernay, this valley's frost-prone clay and alluvial soils are planted predominantly to Meunier. Pinot Noir is centered on the steep south-facing slopes of Aÿ and Mareuil-sur-Aÿ. The region yields approachable wines with round texture and orchard fruit, and includes Hautvillers, where Dom Pérignon refined 17th-century winemaking methods."
+    description: "Extending west along the Marne River from Tours-sur-Marne past Épernay, this valley is the historic heart of Champagne viticulture. At the Benedictine Abbey of Hautvillers, cellar master Dom Pierre Pérignon refined blending and vineyard pruning methods in the late seventeenth century, while King Henri IV famously styled himself 'Sire d’Aÿ' in praise of the area's still wines. The valley's frost-prone clay and alluvial soils are planted predominantly to cold-hardy Meunier, complemented by Grand Cru Pinot Noir in Aÿ, yielding wines with round texture, orchard fruit aromas, and early approachability."
   },
   {
     id: 'cote-des-blancs',
@@ -714,7 +714,7 @@ export const CHAMPAGNE_SUBREGIONS = [
       { name: "Southern Amphitheater (Le Mesnil-sur-Oger)", focus: "High-acid, mineral Chardonnay built for long aging" },
       { name: "Eastern Plain (Oiry)", focus: "Light-bodied Chardonnay on alluvial-chalk plains" }
     ],
-    description: "An east-facing chalk escarpment running 15 kilometers south from Épernay through Le Mesnil-sur-Oger, dedicated almost exclusively to Chardonnay (>97%). Its six Grand Cru villages define the Blanc de Blancs style, producing wines with high acidity, citrus and white floral notes, and pronounced chalk minerality from pure Belemnite chalk subsoils."
+    description: "An east-facing chalk escarpment stretching fifteen kilometers south from Épernay through Le Mesnil-sur-Oger, devoted almost entirely to Chardonnay (>97%). Home to six Grand Cru villages, the district defined the Blanc de Blancs category when Eugène-Aimé Salon created the first commercial vintage in 1905, proving single-variety Chardonnay could excel without blending red grapes. Its pure Belemnite chalk subsoils produce wines marked by high acidity, citrus, white floral aromas, and chalk minerality built for long cellar maturation."
   },
   {
     id: 'cote-de-sezanne',
@@ -731,7 +731,7 @@ export const CHAMPAGNE_SUBREGIONS = [
       { name: "Sézanne & Bethon", focus: "South-facing chalk slopes producing round, fruit-forward Chardonnay" },
       { name: "Villenauxe-la-Grande", focus: "Clay-rich western sector favoring early ripening" }
     ],
-    description: "Located south of the Côte des Blancs around Sézanne, this district features rolling chalk hills overlaid with clay and sand. A warmer microclimate allows Chardonnay to ripen earlier than in the north, producing rounder, fruit-forward wines with white peach and floral notes that provide immediate mid-palate fruit in blends."
+    description: "Extending south of the Saint-Gond marshes around the medieval town of Sézanne, this district's hillside vineyards were first developed by monastic communities in the twelfth century. Rolling chalk slopes covered by Thanetian sands and clay marl enjoy a warmer microclimate than the Côte des Blancs, allowing Chardonnay to ripen earlier. The resulting wines show ripe white peach and floral character with a rounded texture, providing immediate fruit and suppleness in non-vintage blends."
   },
   {
     id: 'cote-des-bar',
@@ -748,7 +748,7 @@ export const CHAMPAGNE_SUBREGIONS = [
       { name: "Barséquanais (Seine, Ource, Laignes valleys)", focus: "Les Riceys, Celles-sur-Ource, Buxeuil - Kimmeridgian marl Pinot Noir & Pinot Blanc" },
       { name: "Bar-sur-Aubois (Aube valley)", focus: "Bar-sur-Aube, Urville, Champignol - Oxfordian/Kimmeridgian higher elevation slopes" }
     ],
-    description: "Champagne's southern district in the Aube department, centered around Bar-sur-Aube and Bar-sur-Seine. Geologically continuous with Chablis, its Kimmeridgian limestone-marl soils are planted primarily to Pinot Noir (~85%) alongside Pinot Blanc. Cultivated since Clairvaux Abbey was established in 1115 and confirmed in the appellation after the 1911 Champagne Riots, the area is known for site-expressive, low-dosage grower cuvées."
+    description: "Champagne's southern district in the Aube department, situated around Bar-sur-Aube and Bar-sur-Seine. Cistercian monks systematically mapped the region's hillside vineyards after Saint Bernard founded Clairvaux Abbey here in 1115. Following exclusion from initial appellation maps, local growers mobilized during the 1911 Champagne Riots to secure permanent inclusion within Champagne AOC. Geologically continuous with Chablis, its Kimmeridgian limestone-marl soils are planted primarily to Pinot Noir (~85%) alongside Pinot Blanc, yielding expressive, low-dosage grower cuvées with ripe red fruit and saline minerality."
   },
   {
     id: 'coteaux-sud-epernay',
@@ -765,7 +765,7 @@ export const CHAMPAGNE_SUBREGIONS = [
       { name: "Chavot-Courcourt & Moussy", focus: "Flint and clay-limestone hillsides planted to Meunier and Chardonnay" },
       { name: "Pierry (1er Cru) & Monthelon", focus: "Chalk-marl slopes yielding structured Meunier and Chardonnay" }
     ],
-    description: "A transitional zone of eleven communes south of Épernay connecting the Vallée de la Marne and Côte des Blancs. Varied soils of chalk, flint (silex), and clay support balanced plantings of Meunier, Chardonnay, and Pinot Noir. Home to Premier Cru Pierry—where Frère Jean Oudart conducted early winemaking work in the 17th century—the district is noted for parcel-specific cuvées."
+    description: "Encompassing eleven communes immediately south of Épernay, this district bridges the Vallée de la Marne and the Côte des Blancs. In the late seventeenth century, Benedictine monk Frère Jean Oudart of Pierry conducted foundational experiments on bottle effervescence and cork closures alongside Dom Pérignon. A diverse soil mosaic of Campanian chalk, flint (silex), and clay supports balanced plantings of Meunier, Chardonnay, and Pinot Noir, highlighted by Premier Cru Pierry and single-parcel grower cuvées."
   },
   {
     id: 'vitryat',
@@ -781,7 +781,7 @@ export const CHAMPAGNE_SUBREGIONS = [
     microTerroirs: [
       { name: "Vitryat Hillsides", focus: "15 communes producing crisp, mineral Chardonnay on pure chalk" }
     ],
-    description: "Comprising fifteen communes around Vitry-le-François in the southeastern Marne, this district features Turonian and Campanian chalk hills planted almost entirely to Chardonnay (~98%). Traditionally supplying fruit to major houses, it now produces independent estate bottlings defined by brisk acidity, citrus notes, and chalk minerality."
+    description: "Encompassing fifteen communes around Vitry-le-François in the southeastern Marne, this district has cultivated hillside vines since Roman times in villages like Bassuet. Its isolated white Turonian and Campanian chalk hills are planted almost entirely to Chardonnay (~98%), which ripens with high acidity and bright citrus floral aromas. Historically a source of blending fruit for major houses, the area now features independent growers estate-bottling pure Blanc de Blancs defined by chalk minerality."
   }
 ];
 
