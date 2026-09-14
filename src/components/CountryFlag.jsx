@@ -66,19 +66,108 @@ export function getCountryEmoji(code) {
   return String.fromCodePoint(...codePoints);
 }
 
+let _cachedSupportsEmoji = null;
+
 /**
- * Detect platforms where native Unicode flag emojis are beautifully supported:
- * Android, iOS (iPhone & iPad), mobile browsers, and Apple macOS.
- * Desktop Windows & Linux (which lack native flag emojis and only render "FR" / "US")
+ * Detect platforms and browsers where native Unicode flag emojis are supported:
+ * 1. Apple ecosystem (iOS, iPadOS, iPadOS Desktop Safari, macOS Safari/Chrome) -> Apple Color Emoji
+ * 2. Android devices (both mobile mode AND "Desktop site" / desktop mode) -> Noto Color Emoji
+ * 3. Any platform where the browser can natively render colored flag emoji glyphs
+ * 
+ * Desktop Windows & Linux (which lack native colored flag emojis in Segoe UI Emoji and only render "FR" / "US")
  * will use the custom waving SVG fallbacks.
  */
-function shouldDefaultToEmoji() {
-  if (typeof window === 'undefined' || typeof navigator === 'undefined') return false;
+export function shouldDefaultToEmoji() {
+  if (_cachedSupportsEmoji !== null) return _cachedSupportsEmoji;
+  if (typeof window === 'undefined' || typeof navigator === 'undefined') {
+    _cachedSupportsEmoji = false;
+    return false;
+  }
+
   const ua = navigator.userAgent || '';
-  const isMobile = /Android|iPhone|iPad|iPod|Mobile|Tablet/i.test(ua);
-  const isIpadOS = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
-  const isMac = /Macintosh|Mac OS X/i.test(ua) && !isIpadOS;
-  return isMobile || isIpadOS || isMac;
+  const platform = navigator.platform || '';
+
+  // Windows PC: Microsoft Windows (10/11) Segoe UI Emoji lacks country flag emojis,
+  // rendering them as two monochrome letters (e.g. "US" or "FR"). Always use SVG.
+  const isWindows = /Windows NT|Win32|Win64/i.test(ua) || platform.startsWith('Win');
+  if (isWindows) {
+    _cachedSupportsEmoji = false;
+    return false;
+  }
+
+  // Apple ecosystem (iPhone, iPad, iPadOS Desktop Safari, macOS Safari/Chrome):
+  const isApple =
+    /iPhone|iPad|iPod|Macintosh|Mac OS X/i.test(ua) ||
+    platform.startsWith('Mac') ||
+    platform.startsWith('iPhone') ||
+    platform.startsWith('iPad');
+  if (isApple) {
+    _cachedSupportsEmoji = true;
+    return true;
+  }
+
+  // Android standard mobile user agent:
+  if (/Android/i.test(ua)) {
+    _cachedSupportsEmoji = true;
+    return true;
+  }
+
+  // Android in "Desktop site" / "Desktop mode":
+  // In desktop mode, Chrome/Brave/Edge on Android spoof the UA (typically "X11; Linux x86_64" or "Linux aarch64"
+  // without "Android" or "Mobile"), but the device is still Android with Noto Color Emoji and touchscreen.
+  const userAgentDataPlatform = navigator.userAgentData?.platform;
+  if (userAgentDataPlatform === 'Android') {
+    _cachedSupportsEmoji = true;
+    return true;
+  }
+
+  const hasTouch =
+    navigator.maxTouchPoints > 0 ||
+    'ontouchstart' in window ||
+    (typeof window.matchMedia === 'function' && window.matchMedia('(pointer: coarse)').matches);
+
+  if (platform.startsWith('Linux') && hasTouch) {
+    _cachedSupportsEmoji = true;
+    return true;
+  }
+
+  // Direct feature detection via canvas: test if the platform can render colored flag emojis
+  try {
+    const canvas = document.createElement('canvas');
+    canvas.width = 16;
+    canvas.height = 16;
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    if (!ctx) {
+      _cachedSupportsEmoji = false;
+      return false;
+    }
+
+    ctx.fillStyle = '#000000';
+    ctx.textBaseline = 'top';
+    ctx.font = '16px "Apple Color Emoji", "Noto Color Emoji", "Twemoji", "Segoe UI Emoji", sans-serif';
+    // Draw US flag emoji: 🇺🇸 (U+1F1FA U+1F1F8)
+    ctx.fillText(String.fromCodePoint(0x1F1FA, 0x1F1F8), 0, 0);
+
+    const pixels = ctx.getImageData(0, 0, 16, 16).data;
+    for (let i = 0; i < pixels.length; i += 4) {
+      const r = pixels[i];
+      const g = pixels[i + 1];
+      const b = pixels[i + 2];
+      const a = pixels[i + 3];
+      if (a > 30) {
+        // Flag emojis render with distinct colors (red/blue), whereas text fallbacks in #000000 are grayscale
+        if (Math.abs(r - g) > 15 || Math.abs(r - b) > 15 || Math.abs(g - b) > 15) {
+          _cachedSupportsEmoji = true;
+          return true;
+        }
+      }
+    }
+    _cachedSupportsEmoji = false;
+    return false;
+  } catch {
+    _cachedSupportsEmoji = false;
+    return false;
+  }
 }
 
 export function CountryFlag({ code, className = '', style = {}, title = '', forceSvg = false, forceEmoji = false }) {
