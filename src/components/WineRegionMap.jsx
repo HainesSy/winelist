@@ -2,7 +2,25 @@ import { useEffect, useRef, useState, memo } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Layers, Maximize2, Compass, MapPin, Award, Shapes, Crown } from 'lucide-react';
-import { WINE_REGION_BOUNDARIES, WINE_REGION_OUTLINES } from '../data/wineRegionBoundaries';
+import { WINE_REGION_OUTLINES } from '../data/wineRegionOutlines';
+
+// Persistent off-screen canvas context for dynamic boundary label fitting (avoids reallocating on every zoom/pan)
+let persistentCanvas = null;
+let persistentCtx = null;
+function getMeasurementContext() {
+  if (!persistentCtx && typeof document !== 'undefined') {
+    try {
+      persistentCanvas = document.createElement('canvas');
+      persistentCtx = persistentCanvas.getContext('2d');
+    } catch {
+      // Fallback
+    }
+  }
+  return persistentCtx;
+}
+
+// In-memory GeoJSON boundary cache to ensure each region's vector boundary is fetched only once
+const boundariesCache = new Map();
 
 // Custom Wine Sommelier Tile Providers supporting Mapbox Token, Stadia Key & Free Fallbacks
 const mapboxToken = import.meta.env.VITE_MAPBOX_TOKEN || import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
@@ -141,6 +159,34 @@ function generateLayoutCandidates(name, isNarrow) {
   return candidates;
 }
 
+function isFeatureActive(feat, activeId) {
+  if (!activeId) return false;
+  const p = feat.properties || {};
+  const fid = feat.id;
+  return activeId === p.id ||
+         activeId === fid ||
+         activeId === p.subregionId ||
+         activeId === p.parentSubregionId ||
+         (p.id && typeof p.id === 'string' && p.id.startsWith(activeId)) ||
+         (fid && typeof fid === 'string' && fid.startsWith(activeId));
+}
+
+function getBoundaryFeatureStyle(feature, activeSubRegionId) {
+  const props = feature.properties || {};
+  const isSelected = isFeatureActive(feature, activeSubRegionId);
+  const baseColor = props.color || '#d4af37';
+  const strokeColor = isSelected ? '#ffffff' : (props.borderColor || props.accent || baseColor);
+  const baseFillOpacity = props.fillOpacity !== undefined ? props.fillOpacity : 0.55;
+  return {
+    fillColor: baseColor,
+    fillOpacity: isSelected ? Math.min(baseFillOpacity + 0.22, 0.88) : baseFillOpacity,
+    color: strokeColor,
+    weight: isSelected ? 2.6 : 1.5,
+    opacity: isSelected ? 1.0 : 0.92,
+    className: `aoc-defined-boundary ${isSelected ? 'is-selected-boundary' : ''}`
+  };
+}
+
 function WineRegionMap({ 
   region, 
   activeSubRegionId, 
@@ -148,7 +194,8 @@ function WineRegionMap({
   cellarBottlesCountBySub = {},
   selectedCruId = null,
   onSelectCru = null,
-  onViewCellar = null
+  onViewCellar = null,
+  boundaryData: propBoundaryData = null
 }) {
   const mapContainerRef = useRef(null);
   const mapInstanceRef = useRef(null);
@@ -156,6 +203,7 @@ function WineRegionMap({
   const layerGroupRef = useRef(null);
   const outlineGroupRef = useRef(null);
   const geoJsonGroupRef = useRef(null);
+  const geoJsonLayerRef = useRef(null);
   const tileLayerRef = useRef(null);
   const tileLayerTypeRef = useRef(null);
   const boundaryLabelsRef = useRef([]);
@@ -163,6 +211,11 @@ function WineRegionMap({
   const onSelectCruRef = useRef(onSelectCru);
   const onViewCellarRef = useRef(onViewCellar);
   const prevRegionIdRef = useRef(null);
+  const activeSubRegionIdRef = useRef(activeSubRegionId);
+  const selectedCruIdRef = useRef(selectedCruId);
+
+  useEffect(() => { activeSubRegionIdRef.current = activeSubRegionId; }, [activeSubRegionId]);
+  useEffect(() => { selectedCruIdRef.current = selectedCruId; }, [selectedCruId]);
 
   const hasGrandCrus = Boolean(region.grandCrus && region.grandCrus.length > 0);
   const hasPremierCrus = Boolean(region.premierCrus && region.premierCrus.length > 0);
@@ -174,6 +227,34 @@ function WineRegionMap({
 
   const minMarkerZoom = Math.max((region.zoom || 9) - 2, 4);
   const [isZoomedOut, setIsZoomedOut] = useState(false);
+
+  // Dynamic GeoJSON boundary fetcher with in-memory caching
+  const cachedData = region?.id ? boundariesCache.get(region.id) : null;
+  const [asyncBoundaryData, setAsyncBoundaryData] = useState(null);
+
+  useEffect(() => {
+    if (propBoundaryData || !region?.id || boundariesCache.has(region.id)) return;
+    let cancelled = false;
+    fetch(`/data/boundaries/${region.id}.json`)
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then(data => {
+        if (!cancelled) {
+          boundariesCache.set(region.id, data);
+          setAsyncBoundaryData(data);
+        }
+      })
+      .catch(err => {
+        console.warn(`Could not load GeoJSON boundary for ${region.id}:`, err);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [region?.id, propBoundaryData]);
+
+  const boundaryData = propBoundaryData || cachedData || asyncBoundaryData;
 
   // Reset pin view mode to districts when navigating between regions
   useEffect(() => {
@@ -187,7 +268,6 @@ function WineRegionMap({
     onViewCellarRef.current = onViewCellar;
   }, [onSelectSubRegion, onSelectCru, onViewCellar]);
 
-  const boundaryData = WINE_REGION_BOUNDARIES[region.id];
   const outlineData = WINE_REGION_OUTLINES ? WINE_REGION_OUTLINES[region.id] : null;
   const bottleCountsKey = JSON.stringify(cellarBottlesCountBySub || {});
 
@@ -357,34 +437,8 @@ function WineRegionMap({
     // 2. Draw GeoJSON Wine Appellation Sub-District Polygons
     let geoLayer = null;
     if (showBoundaries && boundaryData) {
-      const isFeatureActive = (feat, activeId) => {
-        if (!activeId) return false;
-        const p = feat.properties || {};
-        const fid = feat.id;
-        return activeId === p.id ||
-               activeId === fid ||
-               activeId === p.subregionId ||
-               activeId === p.parentSubregionId ||
-               (p.id && typeof p.id === 'string' && p.id.startsWith(activeId)) ||
-               (fid && typeof fid === 'string' && fid.startsWith(activeId));
-      };
-
       geoLayer = L.geoJSON(boundaryData, {
-        style: (feature) => {
-          const props = feature.properties || {};
-          const isSelected = isFeatureActive(feature, activeSubRegionId);
-          const baseColor = props.color || '#d4af37';
-          const strokeColor = isSelected ? '#ffffff' : (props.borderColor || props.accent || baseColor);
-          const baseFillOpacity = props.fillOpacity !== undefined ? props.fillOpacity : 0.55;
-          return {
-            fillColor: baseColor,
-            fillOpacity: isSelected ? Math.min(baseFillOpacity + 0.22, 0.88) : baseFillOpacity,
-            color: strokeColor,
-            weight: isSelected ? 2.6 : 1.5,
-            opacity: isSelected ? 1.0 : 0.92,
-            className: `aoc-defined-boundary ${isSelected ? 'is-selected-boundary' : ''}`
-          };
-        },
+        style: (feature) => getBoundaryFeatureStyle(feature, activeSubRegionIdRef.current),
         onEachFeature: (feature, layer) => {
           const props = feature.properties || {};
           const targetSubId = props.subregionId || props.parentSubregionId || props.id || feature.id;
@@ -422,17 +476,7 @@ function WineRegionMap({
             },
             mouseout: (e) => {
               const target = e.target;
-              const isStillSelected = isFeatureActive(feature, activeSubRegionId);
-              const baseColor = props.color || '#d4af37';
-              const strokeColor = isStillSelected ? '#ffffff' : (props.borderColor || props.accent || baseColor);
-              const baseFillOpacity = props.fillOpacity !== undefined ? props.fillOpacity : 0.55;
-              target.setStyle({
-                fillColor: baseColor,
-                fillOpacity: isStillSelected ? Math.min(baseFillOpacity + 0.22, 0.88) : baseFillOpacity,
-                color: strokeColor,
-                weight: isStillSelected ? 2.6 : 1.5,
-                opacity: isStillSelected ? 1.0 : 0.92
-              });
+              target.setStyle(getBoundaryFeatureStyle(feature, activeSubRegionIdRef.current));
             },
             click: (e) => {
               L.DomEvent.stopPropagation(e);
@@ -540,17 +584,7 @@ function WineRegionMap({
             });
 
             labelMarker.on('mouseout', () => {
-              const isStillSelected = isFeatureActive(feature, activeSubRegionId);
-              const baseColor = props.color || '#d4af37';
-              const strokeColor = isStillSelected ? '#ffffff' : (props.borderColor || props.accent || baseColor);
-              const baseFillOpacity = props.fillOpacity !== undefined ? props.fillOpacity : 0.55;
-              layer.setStyle({
-                fillColor: baseColor,
-                fillOpacity: isStillSelected ? Math.min(baseFillOpacity + 0.22, 0.88) : baseFillOpacity,
-                color: strokeColor,
-                weight: isStillSelected ? 2.6 : 1.5,
-                opacity: isStillSelected ? 1.0 : 0.92
-              });
+              layer.setStyle(getBoundaryFeatureStyle(feature, activeSubRegionIdRef.current));
             });
 
             labelMarker.addTo(geoJsonGroupRef.current);
@@ -568,6 +602,7 @@ function WineRegionMap({
         }
       });
       geoLayer.addTo(geoJsonGroupRef.current);
+      geoJsonLayerRef.current = geoLayer;
       if (typeof requestAnimationFrame !== 'undefined') {
         requestAnimationFrame(() => {
           if (typeof updateBoundaryLabelFitting === 'function') {
@@ -973,13 +1008,7 @@ function WineRegionMap({
       const map = mapInstanceRef.current;
       if (!boundaryLabelsRef.current || !boundaryLabelsRef.current.length) return;
 
-      let ctx = null;
-      try {
-        const canvas = document.createElement('canvas');
-        ctx = canvas.getContext('2d');
-      } catch {
-        // Context fallback
-      }
+      const ctx = getMeasurementContext();
 
       boundaryLabelsRef.current.forEach(item => {
         const cp = map.latLngToLayerPoint(item.center);
@@ -1126,7 +1155,71 @@ function WineRegionMap({
       map.off('moveend', updateBoundaryLabelFitting);
       map.off('resize', updateBoundaryLabelFitting);
     };
-  }, [region, currentLayerType, pinViewMode, activeSubRegionId, selectedCruId, bottleCountsKey, showBoundaries, boundaryData, showRegionOutline, outlineData, hasGrandCrus, hasPremierCrus, minMarkerZoom]);
+  }, [region, currentLayerType, pinViewMode, bottleCountsKey, showBoundaries, boundaryData, showRegionOutline, outlineData, hasGrandCrus, hasPremierCrus, minMarkerZoom]);
+
+  // Dedicated active Subregion style update (avoids tearing down and rebuilding Leaflet layers)
+  useEffect(() => {
+    if (geoJsonLayerRef.current) {
+      geoJsonLayerRef.current.setStyle((feature) => getBoundaryFeatureStyle(feature, activeSubRegionId));
+    }
+
+    if (region?.subRegions) {
+      region.subRegions.forEach(sub => {
+        const marker = markersRef.current[`sub-${sub.id}`] || markersRef.current[sub.id];
+        if (marker) {
+          const el = marker.getElement();
+          if (el) {
+            const markerDiv = el.querySelector('.custom-sommelier-marker') || el;
+            if (sub.id === activeSubRegionId) {
+              markerDiv.classList.add('is-active');
+            } else {
+              markerDiv.classList.remove('is-active');
+            }
+          }
+        }
+      });
+    }
+  }, [activeSubRegionId, region?.subRegions]);
+
+  // Dedicated active Cru marker style update (avoids tearing down and rebuilding Leaflet layers)
+  useEffect(() => {
+    if (region?.grandCrus) {
+      region.grandCrus.forEach(cru => {
+        const marker = markersRef.current[`cru-${cru.id}`];
+        if (marker) {
+          const el = marker.getElement();
+          if (el) {
+            const markerDiv = el.querySelector('.custom-sommelier-marker') || el;
+            if (cru.id === selectedCruId) {
+              markerDiv.classList.add('is-active');
+              marker.setZIndexOffset(1000);
+            } else {
+              markerDiv.classList.remove('is-active');
+              marker.setZIndexOffset(700);
+            }
+          }
+        }
+      });
+    }
+    if (region?.premierCrus) {
+      region.premierCrus.forEach(pcru => {
+        const marker = markersRef.current[`premier-${pcru.id}`];
+        if (marker) {
+          const el = marker.getElement();
+          if (el) {
+            const markerDiv = el.querySelector('.custom-sommelier-marker') || el;
+            if (pcru.id === selectedCruId) {
+              markerDiv.classList.add('is-active');
+              marker.setZIndexOffset(900);
+            } else {
+              markerDiv.classList.remove('is-active');
+              marker.setZIndexOffset(500);
+            }
+          }
+        }
+      });
+    }
+  }, [selectedCruId, region?.grandCrus, region?.premierCrus]);
 
   // Sync active sub-region focus
   useEffect(() => {
@@ -1152,7 +1245,9 @@ function WineRegionMap({
               if (b && b.isValid()) {
                 targetBounds = b;
               }
-            } catch (e) {}
+            } catch {
+              // Ignore invalid GeoJSON bounds calculation
+            }
           }
         }
 

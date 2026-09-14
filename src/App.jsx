@@ -29,11 +29,62 @@ import {
   Compass,
   ChevronRight
 } from 'lucide-react';
-import WineRegionDetail from './components/WineRegionDetail';
-import { findWineRegion, resolveWineRegionAndSubRegion } from './data/wineRegions';
+import WineRow from './components/WineRow';
 import './App.css';
 
+// Lazy-load WineRegionDetail so Leaflet and heavy regional cartography are split from initial bundle
+const WineRegionDetail = React.lazy(() => import('./components/WineRegionDetail'));
+
 const EMPTY_ARRAY = [];
+
+// Allocation-free HTML entity decoder (zero DOM allocations during CSV import)
+const HTML_ENTITIES = {
+  '&amp;': '&',
+  '&lt;': '<',
+  '&gt;': '>',
+  '&quot;': '"',
+  '&#39;': "'",
+  '&apos;': "'",
+  '&nbsp;': ' ',
+  '&copy;': '©',
+  '&reg;': '®',
+  '&deg;': '°',
+  '&eacute;': 'é',
+  '&egrave;': 'è',
+  '&ecirc;': 'ê',
+  '&euml;': 'ë',
+  '&agrave;': 'à',
+  '&acirc;': 'â',
+  '&ccedil;': 'ç',
+  '&icirc;': 'î',
+  '&iuml;': 'ï',
+  '&ocirc;': 'ô',
+  '&ouml;': 'ö',
+  '&ugrave;': 'ù',
+  '&ucirc;': 'û',
+  '&uuml;': 'ü',
+  '&ntilde;': 'ñ'
+};
+
+const ENTITY_REGEX = /&(#x[0-9a-fA-F]+|#\d+|[a-zA-Z]+);/g;
+
+function decodeEntities(text) {
+  if (typeof text !== 'string' || !text.includes('&')) return text;
+  return text.replace(ENTITY_REGEX, (match, entity) => {
+    if (HTML_ENTITIES[match]) return HTML_ENTITIES[match];
+    if (entity.startsWith('#x') || entity.startsWith('#X')) {
+      const code = parseInt(entity.slice(2), 16);
+      return !isNaN(code) ? String.fromCodePoint(code) : match;
+    }
+    if (entity.startsWith('#')) {
+      const code = parseInt(entity.slice(1), 10);
+      return !isNaN(code) ? String.fromCodePoint(code) : match;
+    }
+    const lower = match.toLowerCase();
+    if (HTML_ENTITIES[lower]) return HTML_ENTITIES[lower];
+    return match;
+  });
+}
 
 function App() {
   const [rawWines, setRawWines] = useState(null);
@@ -88,8 +139,17 @@ function App() {
   });
 
   const [toast, setToast] = useState(null); // { message, type, ctUrl, linkText }
-  const [swipeState, setSwipeState] = useState({ key: null, deltaX: 0 });
-  const touchStartRef = useRef({ x: 0, y: 0, wineKey: null, isSwiping: false, wine: null });
+
+  // Pre-computed lookup map for unsynced consumption counts (O(1) per row instead of O(N*M) per render)
+  const unSyncedConsumptionMap = React.useMemo(() => {
+    const map = new Map();
+    for (const h of consumptionHistory) {
+      if (!h.synced && h.wineKey) {
+        map.set(h.wineKey, (map.get(h.wineKey) || 0) + 1);
+      }
+    }
+    return map;
+  }, [consumptionHistory]);
 
   const showToast = (message, type = 'info', ctUrl = null, linkText = 'Open on CellarTracker') => {
     setToast({ message, type, ctUrl, linkText });
@@ -231,7 +291,7 @@ function App() {
 
   // Hash-based region navigation listener (e.g. #region=champagne or #region=burgundy or #region=spain-rioja&subregion=rias-baixas or #region=galicia)
   useEffect(() => {
-    const handleHashChange = () => {
+    const handleHashChange = async () => {
       const hash = window.location.hash;
       if (hash.startsWith('#region=')) {
         const rawString = hash.slice(1);
@@ -240,23 +300,33 @@ function App() {
         const explicitSubregion = params.get('subregion') ? decodeURIComponent(params.get('subregion')).trim() : null;
 
         if (regionParam) {
-          const resolution = resolveWineRegionAndSubRegion(regionParam);
-          const matched = resolution.region || findWineRegion(regionParam);
-          const finalSubRegionId = explicitSubregion || resolution.subRegionId || null;
+          try {
+            const { findWineRegion, resolveWineRegionAndSubRegion } = await import('./data/wineRegions');
+            const resolution = resolveWineRegionAndSubRegion(regionParam);
+            const matched = resolution.region || findWineRegion(regionParam);
+            const finalSubRegionId = explicitSubregion || resolution.subRegionId || null;
 
-          if (matched) {
-            setSelectedRegion({
-              id: matched.id,
-              name: matched.name,
-              country: matched.country,
-              subRegionId: finalSubRegionId
-            });
-          } else {
+            if (matched) {
+              setSelectedRegion({
+                id: matched.id,
+                name: matched.name,
+                country: matched.country,
+                subRegionId: finalSubRegionId
+              });
+            } else {
+              setSelectedRegion({
+                id: regionParam,
+                name: regionParam,
+                country: '',
+                subRegionId: finalSubRegionId
+              });
+            }
+          } catch {
             setSelectedRegion({
               id: regionParam,
               name: regionParam,
               country: '',
-              subRegionId: finalSubRegionId
+              subRegionId: explicitSubregion
             });
           }
         }
@@ -270,20 +340,32 @@ function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const navigateToRegion = (regionName, countryName = '') => {
-    const resolution = resolveWineRegionAndSubRegion(regionName, countryName);
-    const matched = resolution.region || findWineRegion(regionName, countryName);
-    const regionId = matched ? matched.id : regionName.toLowerCase().replace(/\s+/g, '-');
-    const subRegionId = resolution.subRegionId || null;
-    setSelectedRegion({
-      id: regionId,
-      name: matched ? matched.name : regionName,
-      country: matched ? matched.country : countryName,
-      subRegionId: subRegionId
-    });
-    if (subRegionId) {
-      window.location.hash = `#region=${encodeURIComponent(regionId)}&subregion=${encodeURIComponent(subRegionId)}`;
-    } else {
+  const navigateToRegion = async (regionName, countryName = '') => {
+    try {
+      const { findWineRegion, resolveWineRegionAndSubRegion } = await import('./data/wineRegions');
+      const resolution = resolveWineRegionAndSubRegion(regionName, countryName);
+      const matched = resolution.region || findWineRegion(regionName, countryName);
+      const regionId = matched ? matched.id : regionName.toLowerCase().replace(/\s+/g, '-');
+      const subRegionId = resolution.subRegionId || null;
+      setSelectedRegion({
+        id: regionId,
+        name: matched ? matched.name : regionName,
+        country: matched ? matched.country : countryName,
+        subRegionId: subRegionId
+      });
+      if (subRegionId) {
+        window.location.hash = `#region=${encodeURIComponent(regionId)}&subregion=${encodeURIComponent(subRegionId)}`;
+      } else {
+        window.location.hash = `#region=${encodeURIComponent(regionId)}`;
+      }
+    } catch {
+      const regionId = regionName.toLowerCase().replace(/\s+/g, '-');
+      setSelectedRegion({
+        id: regionId,
+        name: regionName,
+        country: countryName,
+        subRegionId: null
+      });
       window.location.hash = `#region=${encodeURIComponent(regionId)}`;
     }
   };
@@ -351,12 +433,6 @@ function App() {
     });
   };
 
-  const decodeEntities = (text) => {
-    if (!text) return text;
-    const txt = document.createElement('textarea');
-    txt.innerHTML = text;
-    return txt.value;
-  };
 
   const groupWines = (wineList) => {
     const grouped = {};
@@ -617,58 +693,7 @@ function App() {
     };
   }, []);
 
-  // Swipe gesture handlers
-  const handleTouchStart = (e, wine, remainingQty) => {
-    if (e.target.closest('.undo-btn') || e.target.closest('.consumed-badge')) {
-      return;
-    }
-    if (remainingQty <= 0) return;
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    touchStartRef.current = {
-      x: clientX,
-      y: clientY,
-      wineKey: wine.wineKey,
-      isSwiping: false,
-      wine
-    };
-  };
-
-  const handleTouchMove = (e, wine) => {
-    if (!touchStartRef.current.wineKey || touchStartRef.current.wineKey !== wine.wineKey) return;
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-
-    const deltaX = clientX - touchStartRef.current.x;
-    const deltaY = clientY - touchStartRef.current.y;
-
-    if (!touchStartRef.current.isSwiping) {
-      if (Math.abs(deltaX) > Math.abs(deltaY) && deltaX > 8) {
-        touchStartRef.current.isSwiping = true;
-      } else {
-        return;
-      }
-    }
-
-    if (deltaX > 0) {
-      const clampedX = Math.min(deltaX, 150);
-      setSwipeState({ key: wine.wineKey, deltaX: clampedX });
-    }
-  };
-
-  const handleTouchEnd = (wine) => {
-    if (!touchStartRef.current.wineKey || touchStartRef.current.wineKey !== wine.wineKey) return;
-
-    // Instant 1-Swipe Consumption: No confirmation modal required
-    if (swipeState.key === wine.wineKey && swipeState.deltaX > 55) {
-      executeInstantConsume(wine);
-    }
-
-    setSwipeState({ key: null, deltaX: 0 });
-    touchStartRef.current = { x: 0, y: 0, wineKey: null, isSwiping: false, wine: null };
-  };
-
-  const executeInstantConsume = (wine) => {
+  const executeInstantConsume = React.useCallback((wine) => {
     const wineKey = wine.wineKey;
     const availableBins = wine.bins.filter(bin => {
       const consumedFromBin = consumedBins[wineKey]?.[bin.id] || 0;
@@ -729,7 +754,7 @@ function App() {
 
     const binLabel = selectedBin ? (selectedBin.bin !== 'Unassigned' ? selectedBin.bin : selectedBin.location) : 'Cellar';
     showToast(`Opened 1 bottle of ${wine.Producer} ${wine.Wine} (${binLabel}). Added to Service Tray.`, 'success');
-  };
+  }, [consumedBins, consumedCounts, consumptionHistory, username]);
 
   const handleBulkSyncOnCellarTracker = () => {
     const pendingItems = consumptionHistory.filter(h => !h.synced);
@@ -777,7 +802,7 @@ function App() {
     showToast("All bottles marked as synced with CellarTracker.", "success");
   };
 
-  const handleUndoConsume = (e, wineKey, historyId = null) => {
+  const handleUndoConsume = React.useCallback((e, wineKey, historyId = null) => {
     if (e) e.stopPropagation();
     const currentCount = consumedCounts[wineKey] || 0;
     if (currentCount <= 0) return;
@@ -818,7 +843,7 @@ function App() {
     syncStateWithServer(updatedHistory, newCounts, newBins);
 
     showToast('Reverted 1 bottle consumption log.', 'info');
-  };
+  }, [consumedBins, consumedCounts, consumptionHistory, username]);
 
   const clearServiceHistory = async () => {
     if (window.confirm("Are you sure you want to clear all logged consumption history and reset bottle counts?")) {
@@ -855,34 +880,21 @@ function App() {
   if (selectedRegion) {
     return (
       <div className="app-container menu-view">
-        <WineRegionDetail
-          key={selectedRegion.id}
-          regionId={selectedRegion.id}
-          regionName={selectedRegion.name}
-          countryName={selectedRegion.country}
-          initialSubRegionId={selectedRegion.subRegionId || null}
-          rawWines={rawWines || EMPTY_ARRAY}
-          onBack={handleBackToMenu}
-          onSelectRegion={(newRegId) => {
-            const resolution = resolveWineRegionAndSubRegion(newRegId);
-            const matched = resolution.region || findWineRegion(newRegId);
-            const subId = resolution.subRegionId || null;
-            setSelectedRegion({
-              id: matched ? matched.id : newRegId,
-              name: matched ? matched.name : newRegId,
-              country: matched ? matched.country : '',
-              subRegionId: subId
-            });
-            if (subId) {
-              window.location.hash = `#region=${encodeURIComponent(matched ? matched.id : newRegId)}&subregion=${encodeURIComponent(subId)}`;
-            } else {
-              window.location.hash = `#region=${encodeURIComponent(matched ? matched.id : newRegId)}`;
-            }
-          }}
-          onConsumeBottle={executeInstantConsume}
-          consumedCounts={consumedCounts}
-          getCellarTrackerActionUrl={getCellarTrackerActionUrl}
-        />
+        <React.Suspense fallback={<div className="loading-state" style={{ padding: '40px', textAlign: 'center', color: 'var(--accent-gold)' }}>Loading wine region details...</div>}>
+          <WineRegionDetail
+            key={selectedRegion.id}
+            regionId={selectedRegion.id}
+            regionName={selectedRegion.name}
+            countryName={selectedRegion.country}
+            initialSubRegionId={selectedRegion.subRegionId || null}
+            rawWines={rawWines || EMPTY_ARRAY}
+            onBack={handleBackToMenu}
+            onSelectRegion={(newRegId) => navigateToRegion(newRegId)}
+            onConsumeBottle={executeInstantConsume}
+            consumedCounts={consumedCounts}
+            getCellarTrackerActionUrl={getCellarTrackerActionUrl}
+          />
+        </React.Suspense>
       </div>
     );
   }
@@ -1000,34 +1012,21 @@ function App() {
         </header>
 
         {selectedRegion ? (
-          <WineRegionDetail
-            key={selectedRegion.id}
-            regionId={selectedRegion.id}
-            regionName={selectedRegion.name}
-            countryName={selectedRegion.country}
-            initialSubRegionId={selectedRegion.subRegionId || null}
-            rawWines={rawWines || EMPTY_ARRAY}
-            onBack={handleBackToMenu}
-            onSelectRegion={(newRegId) => {
-              const resolution = resolveWineRegionAndSubRegion(newRegId);
-              const matched = resolution.region || findWineRegion(newRegId);
-              const subId = resolution.subRegionId || null;
-              setSelectedRegion({
-                id: matched ? matched.id : newRegId,
-                name: matched ? matched.name : newRegId,
-                country: matched ? matched.country : '',
-                subRegionId: subId
-              });
-              if (subId) {
-                window.location.hash = `#region=${encodeURIComponent(matched ? matched.id : newRegId)}&subregion=${encodeURIComponent(subId)}`;
-              } else {
-                window.location.hash = `#region=${encodeURIComponent(matched ? matched.id : newRegId)}`;
-              }
-            }}
-            onConsumeBottle={executeInstantConsume}
-            consumedCounts={consumedCounts}
-            getCellarTrackerActionUrl={getCellarTrackerActionUrl}
-          />
+          <React.Suspense fallback={<div className="loading-state" style={{ padding: '40px', textAlign: 'center', color: 'var(--accent-gold)' }}>Loading wine region details...</div>}>
+            <WineRegionDetail
+              key={selectedRegion.id}
+              regionId={selectedRegion.id}
+              regionName={selectedRegion.name}
+              countryName={selectedRegion.country}
+              initialSubRegionId={selectedRegion.subRegionId || null}
+              rawWines={rawWines || EMPTY_ARRAY}
+              onBack={handleBackToMenu}
+              onSelectRegion={(newRegId) => navigateToRegion(newRegId)}
+              onConsumeBottle={executeInstantConsume}
+              consumedCounts={consumedCounts}
+              getCellarTrackerActionUrl={getCellarTrackerActionUrl}
+            />
+          </React.Suspense>
         ) : (
           <div className="menu-container">
           <table className="print-table">
@@ -1082,106 +1081,15 @@ function App() {
                             )}
 
                             <div className="wine-list">
-                              {categoryWines.map((wine, idx) => {
-                                const vintage = wine.Vintage || 'NV';
-                                const producer = wine.Producer || '';
-                                
-                                let cleanName = wine.Wine || wine.Designation || 'Unknown Wine';
-                                if (producer && cleanName.startsWith(producer)) {
-                                  cleanName = cleanName.replace(producer, '').trim();
-                                }
-                                if (vintage !== 'NV' && cleanName.startsWith(vintage)) {
-                                  cleanName = cleanName.replace(vintage, '').trim();
-                                }
-                                cleanName = cleanName.replace(/^[,.\s-]+/, '').trim();
-
-                                const primaryText = producer || cleanName;
-                                const secondaryText = producer ? (cleanName ? `${cleanName}, ${vintage}` : vintage) : vintage;
-
-                                const getValidPrice = (...prices) => {
-                                  for (const p of prices) {
-                                    if (p && p !== '0' && p !== '0.00' && p !== '$0' && p !== '$0.00') {
-                                      return p;
-                                    }
-                                  }
-                                  return '';
-                                };
-
-                                const price = getValidPrice(wine.Value, wine.Valuation, wine.Price);
-                                let displayPrice = price;
-                                if (price && !isNaN(parseFloat(price.replace('$', '')))) {
-                                  displayPrice = Math.round(parseFloat(price.replace('$', '')));
-                                }
-
-                                const consumedTotal = consumptionHistory.filter(h => h.wineKey === wine.wineKey && !h.synced).length;
-                                const remainingTotal = Math.max(0, wine.totalQuantity - consumedTotal);
-                                const isSwipingThis = swipeState.key === wine.wineKey;
-                                const currentTranslateX = isSwipingThis ? swipeState.deltaX : 0;
-
-                                return (
-                                  <div 
-                                    key={idx} 
-                                    className="wine-item-wrapper"
-                                    onTouchStart={(e) => handleTouchStart(e, wine, remainingTotal)}
-                                    onTouchMove={(e) => handleTouchMove(e, wine)}
-                                    onTouchEnd={() => handleTouchEnd(wine)}
-                                    onMouseDown={(e) => handleTouchStart(e, wine, remainingTotal)}
-                                    onMouseMove={(e) => handleTouchMove(e, wine)}
-                                    onMouseUp={() => handleTouchEnd(wine)}
-                                    onMouseLeave={() => handleTouchEnd(wine)}
-                                  >
-                                    <div 
-                                      className="swipe-action-bg"
-                                      style={{ opacity: currentTranslateX > 15 ? 1 : 0 }}
-                                    >
-                                      <Wine size={18} className="wine-swipe-icon" />
-                                      <span>Log 1 Bottle</span>
-                                    </div>
-
-                                    <div 
-                                      className={`wine-item ${consumedTotal > 0 ? 'has-consumed' : ''}`}
-                                      style={{
-                                        transform: `translateX(${currentTranslateX}px)`,
-                                        transition: isSwipingThis ? 'none' : 'transform 0.25s ease-out'
-                                      }}
-                                    >
-                                      <div className="wine-info">
-                                        <span className="producer">{primaryText}</span>
-                                        <span className="vintage-region">
-                                          {secondaryText}
-                                          {consumedTotal > 0 && (
-                                            <span 
-                                              className="consumed-badge" 
-                                              title="Bottles opened tonight (Click to undo)"
-                                              onClick={(e) => {
-                                                e.stopPropagation();
-                                                handleUndoConsume(e, wine.wineKey);
-                                              }}
-                                            >
-                                              <Wine size={12} style={{ display: 'inline', marginRight: '3px', pointerEvents: 'none' }} />
-                                              {consumedTotal} Opened
-                                              <button 
-                                                type="button"
-                                                className="undo-btn" 
-                                                onClick={(e) => {
-                                                  e.stopPropagation();
-                                                  handleUndoConsume(e, wine.wineKey);
-                                                }}
-                                                title="Undo 1 bottle consumption"
-                                              >
-                                                <Undo2 size={13} style={{ pointerEvents: 'none' }} />
-                                              </button>
-                                            </span>
-                                          )}
-                                        </span>
-                                      </div>
-                                      {displayPrice && (
-                                        <div className="price">{displayPrice}</div>
-                                      )}
-                                    </div>
-                                  </div>
-                                );
-                              })}
+                              {categoryWines.map((wine) => (
+                                <WineRow
+                                  key={wine.wineKey}
+                                  wine={wine}
+                                  consumedTotal={unSyncedConsumptionMap.get(wine.wineKey) || 0}
+                                  onConsume={executeInstantConsume}
+                                  onUndoConsume={handleUndoConsume}
+                                />
+                              ))}
                             </div>
                           </div>
                         ))}
