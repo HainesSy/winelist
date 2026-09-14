@@ -2390,7 +2390,6 @@ export default function WineRegionDetail({
                         <tr>
                           <th>Dosage Category</th>
                           <th>Residual Sugar</th>
-                          <th>Added Sugar Law</th>
                           <th>Palate Style & Character Profile</th>
                           <th>Food Pairings</th>
                         </tr>
@@ -2404,13 +2403,6 @@ export default function WineRegionDetail({
                             </td>
                             <td>
                               <span className="sugar-badge">{tier.sugarRange || tier.range || `${tier.gPerLMin}-${tier.gPerLMax} g/L`}</span>
-                            </td>
-                            <td>
-                              {tier.sugarAddedAllowed === false ? (
-                                <span className="sugar-free-badge">🚫 0 Sugar Added</span>
-                              ) : (
-                                <span className="sugar-allowed-badge">✓ Sugar Allowed</span>
-                              )}
                             </td>
                             <td>
                               <p className="dosage-profile-text">{tier.profile || tier.description}</p>

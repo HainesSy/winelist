@@ -1026,12 +1026,12 @@ test(1, 'F14_TechCards', 'CIVC Pressing Flow Gauge renders 4,000 kg Marc, 2,050 
   assert(content.includes('500 L'), 'Must render 500 L taille');
 });
 
-test(1, 'F14_TechCards', 'Dosage Spectrum Card renders 7 tiers with sugar-free vs sugar-allowed badges', () => {
+test(1, 'F14_TechCards', 'Dosage Spectrum Card renders 7 tiers with residual sugar ranges', () => {
   const detailFile = path.join(rootDir, 'src/components/WineRegionDetail.jsx');
   const content = fs.readFileSync(detailFile, 'utf-8');
   assert(content.includes('dosage-spectrum-container'), 'Must render dosage spectrum');
-  assert(content.includes('sugar-free-badge'), 'Must render sugar-free-badge for Brut Nature');
-  assert(content.includes('sugar-allowed-badge'), 'Must render sugar-allowed-badge');
+  assert(content.includes('dosage-table'), 'Must render dosage table');
+  assert(content.includes('sugar-badge'), 'Must render sugar-badge');
 });
 
 test(1, 'F14_TechCards', 'Producer Codes Card renders matriculation codes, market share, and house examples', () => {
