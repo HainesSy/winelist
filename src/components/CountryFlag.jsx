@@ -1,9 +1,9 @@
 import React, { useId } from 'react';
 
 /**
- * Standardized Cross-Platform Wavy SVG Country Flags
- * Replicates the organic waving cloth contour and 3D lighting of Android's Noto Color Emoji flags,
- * ensuring identical, crisp, beautiful rendering on Windows desktop, Mac, iOS, and Android.
+ * Standardized Cross-Platform Wavy Country Flags
+ * Refined, subtle, matte waving silhouette with zero artificial glare/shine.
+ * Classy sommelier-grade aesthetic with soft organic contours and crisp vector heraldry.
  */
 
 // Helper to draw 5-pointed star
@@ -34,8 +34,7 @@ export function CountryFlag({ code, className = '', style = {}, title = '' }) {
   const label = title || c;
   const rawId = useId();
   const uid = rawId.replace(/[^a-zA-Z0-9_-]/g, '_');
-  const clipId = `wave-clip-${uid}`;
-  const shadeId = `wave-shade-${uid}`;
+  const clipId = `classy-flag-clip-${uid}`;
 
   const baseSvgProps = {
     className: `country-flag-svg ${className}`.trim(),
@@ -47,25 +46,25 @@ export function CountryFlag({ code, className = '', style = {}, title = '' }) {
     style: {
       display: 'inline-block',
       verticalAlign: '-0.14em',
-      filter: 'drop-shadow(0 1.5px 2px rgba(0, 0, 0, 0.18))',
+      filter: 'drop-shadow(0 1px 1.5px rgba(0, 0, 0, 0.12))',
       flexShrink: 0,
       ...style
     }
   };
 
-  // The organic waving flag contour path (replicating Android Noto Color Emoji flag wave)
+  // Subtle, classy gentle waving flag contour (soft curves, natural drape, no extreme distortion)
   const wavePathD = `
-    M 24,72
-    C 135,15 255,30 350,80
-    C 440,128 535,72 612,42
-    C 624,37 628,48 626,62
-    L 618,375
-    C 616,390 605,398 592,405
-    C 525,438 435,488 350,438
-    C 255,388 135,372 26,428
-    C 14,434 10,422 12,408
-    L 20,88
-    C 21,78 22,73 24,72 Z
+    M 22,35
+    C 160,22 300,42 460,26
+    C 530,19 585,24 618,30
+    C 625,32 626,38 625,48
+    L 616,436
+    C 615,444 608,449 598,451
+    C 525,455 435,438 350,452
+    C 225,470 120,448 24,455
+    C 15,456 14,449 14,440
+    L 19,46
+    C 19,40 21,36 22,35 Z
   `;
 
   const renderFlagGraphic = () => {
@@ -279,17 +278,11 @@ export function CountryFlag({ code, className = '', style = {}, title = '' }) {
         <clipPath id={clipId}>
           <path d={wavePathD} />
         </clipPath>
-        <linearGradient id={shadeId} x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#000000" stopOpacity="0.12" />
-          <stop offset="26%" stopColor="#ffffff" stopOpacity="0.32" />
-          <stop offset="55%" stopColor="#000000" stopOpacity="0.25" />
-          <stop offset="82%" stopColor="#ffffff" stopOpacity="0.34" />
-          <stop offset="100%" stopColor="#000000" stopOpacity="0.16" />
-        </linearGradient>
       </defs>
       <g clipPath={`url(#${clipId})`}>
         {renderFlagGraphic()}
-        <rect width="640" height="480" fill={`url(#${shadeId})`} pointerEvents="none" />
+        {/* Crisp, fine border around the gentle wave contour to maintain sommelier definition */}
+        <path d={wavePathD} fill="none" stroke="rgba(0,0,0,0.12)" strokeWidth="12" />
       </g>
     </svg>
   );
