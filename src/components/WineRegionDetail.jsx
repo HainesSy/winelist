@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useRef } from 'react';
+import { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import { 
   ArrowLeft, 
   Wine, 
@@ -724,7 +724,15 @@ export default function WineRegionDetail({
     setActiveSubRegionId(initialSubRegionId);
   }, [initialSubRegionId]);
 
-  const handleSubRegionSelect = (subId) => {
+  // Resolve region data from ID or query
+  const region = useMemo(() => {
+    if (regionId && WINE_REGIONS[regionId]) {
+      return WINE_REGIONS[regionId];
+    }
+    return findWineRegion(regionName || regionId, countryName);
+  }, [regionId, regionName, countryName]);
+
+  const handleSubRegionSelect = useCallback((subId) => {
     setActiveSubRegionId(subId);
     if (region?.id) {
       const currentHash = window.location.hash;
@@ -735,15 +743,20 @@ export default function WineRegionDetail({
         window.location.hash = targetHash;
       }
     }
-  };
+  }, [region?.id]);
 
-  // Resolve region data from ID or query
-  const region = useMemo(() => {
-    if (regionId && WINE_REGIONS[regionId]) {
-      return WINE_REGIONS[regionId];
+  const handleSelectCruFromMap = useCallback((cruId) => {
+    setSelectedCruId(cruId);
+    if (cruId) {
+      setActiveTab('crus');
     }
-    return findWineRegion(regionName || regionId, countryName);
-  }, [regionId, regionName, countryName]);
+  }, []);
+
+  const handleViewCellarFromMap = useCallback((subId) => {
+    handleSubRegionSelect(subId);
+    setSearchFilter('');
+    setActiveTab('cellar');
+  }, [handleSubRegionSelect]);
 
   // Scroll to top upon opening new region & reset expanded terroirs
   useEffect(() => {
@@ -1449,17 +1462,8 @@ export default function WineRegionDetail({
             onSelectSubRegion={handleSubRegionSelect}
             cellarBottlesCountBySub={cellarBottlesBySub}
             selectedCruId={selectedCruId}
-            onSelectCru={(cruId) => {
-              setSelectedCruId(cruId);
-              if (cruId) {
-                setActiveTab('crus');
-              }
-            }}
-            onViewCellar={(subId) => {
-              handleSubRegionSelect(subId);
-              setSearchFilter('');
-              setActiveTab('cellar');
-            }}
+            onSelectCru={handleSelectCruFromMap}
+            onViewCellar={handleViewCellarFromMap}
           />
 
           {/* Sub-region Appellation Cards Grid */}

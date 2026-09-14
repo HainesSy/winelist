@@ -33,6 +33,8 @@ import WineRegionDetail from './components/WineRegionDetail';
 import { findWineRegion, resolveWineRegionAndSubRegion } from './data/wineRegions';
 import './App.css';
 
+const EMPTY_ARRAY = [];
+
 function App() {
   const [rawWines, setRawWines] = useState(null);
   const [activeTab, setActiveTab] = useState('Cellar');
@@ -564,12 +566,33 @@ function App() {
       if (res.ok) {
         const data = await res.json();
         if (data && data.history !== undefined) {
-          setConsumptionHistory(data.history || []);
-          setConsumedCounts(data.counts || {});
-          setConsumedBins(data.bins || {});
-          localStorage.setItem('ct_consumption_history', JSON.stringify(data.history || []));
-          localStorage.setItem('ct_consumed_counts', JSON.stringify(data.counts || {}));
-          localStorage.setItem('ct_consumed_bins', JSON.stringify(data.bins || {}));
+          const nextHistory = data.history || [];
+          const nextCounts = data.counts || {};
+          const nextBins = data.bins || {};
+
+          setConsumptionHistory(prev => {
+            if (JSON.stringify(prev) === JSON.stringify(nextHistory)) return prev;
+            try {
+              localStorage.setItem('ct_consumption_history', JSON.stringify(nextHistory));
+            } catch (e) {}
+            return nextHistory;
+          });
+
+          setConsumedCounts(prev => {
+            if (JSON.stringify(prev) === JSON.stringify(nextCounts)) return prev;
+            try {
+              localStorage.setItem('ct_consumed_counts', JSON.stringify(nextCounts));
+            } catch (e) {}
+            return nextCounts;
+          });
+
+          setConsumedBins(prev => {
+            if (JSON.stringify(prev) === JSON.stringify(nextBins)) return prev;
+            try {
+              localStorage.setItem('ct_consumed_bins', JSON.stringify(nextBins));
+            } catch (e) {}
+            return nextBins;
+          });
         }
       }
     } catch (err) {
@@ -579,12 +602,18 @@ function App() {
 
   useEffect(() => {
     loadStateFromServer();
-    const interval = setInterval(loadStateFromServer, 3000);
-    const handleFocus = () => loadStateFromServer();
-    window.addEventListener('focus', handleFocus);
+    const interval = setInterval(() => {
+      // Don't poll if document is hidden to conserve battery and avoid background re-renders
+      if (typeof document !== 'undefined' && document.hidden) return;
+      loadStateFromServer();
+    }, 10000);
+    const handleSync = () => loadStateFromServer();
+    window.addEventListener('focus', handleSync);
+    document.addEventListener('visibilitychange', handleSync);
     return () => {
       clearInterval(interval);
-      window.removeEventListener('focus', handleFocus);
+      window.removeEventListener('focus', handleSync);
+      document.removeEventListener('visibilitychange', handleSync);
     };
   }, []);
 
@@ -832,7 +861,7 @@ function App() {
           regionName={selectedRegion.name}
           countryName={selectedRegion.country}
           initialSubRegionId={selectedRegion.subRegionId || null}
-          rawWines={rawWines || []}
+          rawWines={rawWines || EMPTY_ARRAY}
           onBack={handleBackToMenu}
           onSelectRegion={(newRegId) => {
             const resolution = resolveWineRegionAndSubRegion(newRegId);
@@ -977,7 +1006,7 @@ function App() {
             regionName={selectedRegion.name}
             countryName={selectedRegion.country}
             initialSubRegionId={selectedRegion.subRegionId || null}
-            rawWines={rawWines || []}
+            rawWines={rawWines || EMPTY_ARRAY}
             onBack={handleBackToMenu}
             onSelectRegion={(newRegId) => {
               const resolution = resolveWineRegionAndSubRegion(newRegId);

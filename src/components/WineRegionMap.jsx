@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, memo } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Layers, Maximize2, Compass, MapPin, Award, Shapes, Crown } from 'lucide-react';
@@ -141,7 +141,7 @@ function generateLayoutCandidates(name, isNarrow) {
   return candidates;
 }
 
-export default function WineRegionMap({ 
+function WineRegionMap({ 
   region, 
   activeSubRegionId, 
   onSelectSubRegion,
@@ -156,6 +156,8 @@ export default function WineRegionMap({
   const layerGroupRef = useRef(null);
   const outlineGroupRef = useRef(null);
   const geoJsonGroupRef = useRef(null);
+  const tileLayerRef = useRef(null);
+  const tileLayerTypeRef = useRef(null);
   const boundaryLabelsRef = useRef([]);
   const onSelectSubRegionRef = useRef(onSelectSubRegion);
   const onSelectCruRef = useRef(onSelectCru);
@@ -187,6 +189,31 @@ export default function WineRegionMap({
 
   const boundaryData = WINE_REGION_BOUNDARIES[region.id];
   const outlineData = WINE_REGION_OUTLINES ? WINE_REGION_OUTLINES[region.id] : null;
+  const bottleCountsKey = JSON.stringify(cellarBottlesCountBySub || {});
+
+  // Mount-only ResizeObserver ensuring Leaflet recalculates size smoothly on orientation shift without tile flashing
+  useEffect(() => {
+    if (!mapContainerRef.current) return;
+    let resizeObserver = null;
+    let rafId = null;
+
+    if (typeof ResizeObserver !== 'undefined') {
+      resizeObserver = new ResizeObserver(() => {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          if (mapInstanceRef.current) {
+            mapInstanceRef.current.invalidateSize({ pan: false });
+          }
+        });
+      });
+      resizeObserver.observe(mapContainerRef.current);
+    }
+
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      if (resizeObserver) resizeObserver.disconnect();
+    };
+  }, []);
 
   // Initialize and update map
   useEffect(() => {
@@ -221,24 +248,24 @@ export default function WineRegionMap({
       }
     }
 
-    // Clear existing tile layers
-    map.eachLayer(layer => {
-      if (layer instanceof L.TileLayer) {
-        map.removeLayer(layer);
+    // Update tile layer ONLY when currentLayerType changes or on initial mount
+    if (!tileLayerRef.current || tileLayerTypeRef.current !== currentLayerType) {
+      if (tileLayerRef.current) {
+        map.removeLayer(tileLayerRef.current);
       }
-    });
-
-    // Add selected base tile layer
-    const tileLayers = getTileLayers();
-    const layerConfig = tileLayers[currentLayerType] || tileLayers.parchment;
-    const tileLayer = L.tileLayer(layerConfig.url, {
-      attribution: layerConfig.attribution,
-      maxZoom: 19,
-      className: layerConfig.className,
-      tileSize: layerConfig.tileSize || 256,
-      zoomOffset: layerConfig.zoomOffset || 0
-    });
-    tileLayer.addTo(map);
+      const tileLayers = getTileLayers();
+      const layerConfig = tileLayers[currentLayerType] || tileLayers.parchment;
+      const tileLayer = L.tileLayer(layerConfig.url, {
+        attribution: layerConfig.attribution,
+        maxZoom: 19,
+        className: layerConfig.className,
+        tileSize: layerConfig.tileSize || 256,
+        zoomOffset: layerConfig.zoomOffset || 0
+      });
+      tileLayer.addTo(map);
+      tileLayerRef.current = tileLayer;
+      tileLayerTypeRef.current = currentLayerType;
+    }
 
     // Clear previous vector layers
     if (outlineGroupRef.current) {
@@ -541,11 +568,6 @@ export default function WineRegionMap({
         }
       });
       geoLayer.addTo(geoJsonGroupRef.current);
-      setTimeout(() => {
-        if (typeof updateBoundaryLabelFitting === 'function') {
-          updateBoundaryLabelFitting();
-        }
-      }, 30);
       if (typeof requestAnimationFrame !== 'undefined') {
         requestAnimationFrame(() => {
           if (typeof updateBoundaryLabelFitting === 'function') {
@@ -574,17 +596,6 @@ export default function WineRegionMap({
           animate: false
         });
       }
-    }
-
-    // Ensure Leaflet recalculates size on iPad/tablet resize or orientation shift
-    let resizeObserver = null;
-    if (typeof ResizeObserver !== 'undefined' && mapContainerRef.current) {
-      resizeObserver = new ResizeObserver(() => {
-        if (mapInstanceRef.current) {
-          mapInstanceRef.current.invalidateSize({ pan: false });
-        }
-      });
-      resizeObserver.observe(mapContainerRef.current);
     }
 
     // Clear and redraw markers
@@ -1114,11 +1125,8 @@ export default function WineRegionMap({
       map.off('zoomend', updateZoomLOD);
       map.off('moveend', updateBoundaryLabelFitting);
       map.off('resize', updateBoundaryLabelFitting);
-      if (resizeObserver) {
-        resizeObserver.disconnect();
-      }
     };
-  }, [region, currentLayerType, pinViewMode, activeSubRegionId, selectedCruId, cellarBottlesCountBySub, showBoundaries, boundaryData, showRegionOutline, outlineData, hasGrandCrus, hasPremierCrus, minMarkerZoom]);
+  }, [region, currentLayerType, pinViewMode, activeSubRegionId, selectedCruId, bottleCountsKey, showBoundaries, boundaryData, showRegionOutline, outlineData, hasGrandCrus, hasPremierCrus, minMarkerZoom]);
 
   // Sync active sub-region focus
   useEffect(() => {
@@ -1373,3 +1381,5 @@ export default function WineRegionMap({
     </div>
   );
 }
+
+export default memo(WineRegionMap);
