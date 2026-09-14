@@ -404,8 +404,8 @@ export const WINE_REGIONS = {
       'coteaux champenois', 'rose des riceys', 'rosé des riceys',
       'aÿ', 'ay', 'avize', 'cramant', 'le mesnil-sur-oger', 'le mesnil', 'bouzy', 'ambonnay', 'verzenay', 'verzy', 'oger', 'chouilly'
     ],
-    tagline: "The Pinnacle of Effervescence, Chalk Terroir & Timeless Craft",
-    summary: "Located roughly 90 miles northeast of Paris, Champagne is the global pinnacle of sparkling winemaking. Its cool continental climate and deep Mesozoic chalk and limestone formations produce wines of electrifying tension, micro-fine effervescence, laser-like minerality, and legendary longevity.",
+    tagline: "The Global Benchmark for Traditional Method Sparkling Wine & Chalk Terroir",
+    summary: "Located 90 miles northeast of Paris, Champagne is the global reference for traditional-method sparkling wine. Its cool continental climate and deep chalk and limestone soils produce wines known for vibrant acidity, fine effervescence, chalk minerality, and exceptional aging potential.",
     center: [49.0333, 4.0333],
     zoom: 10,
     bounds: [[47.95, 3.40], [49.45, 4.70]],
@@ -413,20 +413,20 @@ export const WINE_REGIONS = {
     accentColor: '#d4af37',
 
     terroir: {
-      climate: "Cool Continental (Köppen Cfb) with maritime oceanic currents. High annual precipitation, persistent morning mists, and marginal northern temperatures (average growing season ~10-11°C) that preserve searing natural acidity and slow phenolic maturation.",
-      soil: "Upper Cretaceous Belemnite chalk (Belemnitella quadrata) on hillside mid-slopes, Micraster chalk on valley plains, Upper Jurassic Kimmeridgian limestone and fossil oyster marls in the Aube, and Sparnacian sedimentary clays in the Marne Valley.",
-      elevation: "90m to 300m above sea level along undulating hillside slopes offering optimal solar radiation angles and thermal frost drainage.",
-      riverInfluence: "The Marne, Vesle, Ardre, and Aube river valleys create crucial microclimatic corridors that channel cold air away from hillside vineyard amphitheaters."
+      climate: "Cool continental with maritime oceanic influence. Low average growing season temperatures (~10–11°C) and consistent moisture maintain high natural acidity while allowing steady phenolic ripening.",
+      soil: "Upper Cretaceous Belemnite chalk on hillside mid-slopes, Micraster chalk on valley floors, Kimmeridgian limestone-marl in the Côte des Bar, and Sparnacian clays across the Vallée de la Marne.",
+      elevation: "90m to 300m above sea level on undulating slopes that optimize sun exposure and provide natural cold-air drainage against frost.",
+      riverInfluence: "The Marne, Vesle, Ardre, and Aube river valleys create microclimatic corridors that channel cold air away from hillside vineyards, reducing frost risk."
     },
 
     grapes: [
-      { name: 'Pinot Noir', percentage: 38, type: 'Red', role: "Provides structural backbone, palate weight, red berry aromatics (raspberry, red cherry), and mid-palate vinous power; dominant in Montagne de Reims and Côte des Bar." },
-      { name: 'Chardonnay', percentage: 31, type: 'White', role: "Yields elegance, laser-sharp acidity, delicate white floral and citrus aromas, saline chalk minerality, and immense longevity; dominant in Côte des Blancs." },
-      { name: 'Meunier', percentage: 31, type: 'Red', role: "Adds roundness, lush orchard fruit (apple, pear, mirabelle plum) forwardness, and early drinkability; cold-hardy for frost-prone clay soils in the Vallée de la Marne." },
-      { name: 'Pinot Blanc (Blanc Vrai)', percentage: 0.25, type: 'White', role: "White mutation of Pinot Noir yielding round stone fruit, white peach, melon, and textured floral mouthfeel; historical stronghold in Côte des Bar (Celles-sur-Ource)." },
-      { name: 'Arbane', percentage: 0.05, type: 'White', role: "Ancient indigenous Aube white variety renowned for electric high acidity, rustic floral lift, green apple, and lemon verbena nuances." },
-      { name: 'Petit Meslier', percentage: 0.05, type: 'White', role: "Rare Gouais Blanc × Savagnin heritage crossing with piercing acidity, lime zest, herbal tea, and crisp vegetal-citrus bite." },
-      { name: 'Pinot Gris (Fromenteau)', percentage: 0.05, type: 'White', role: "Historic pink-grey grape producing honeyed apricot, smoky, baked apple richness, and supple texture." }
+      { name: 'Pinot Noir', percentage: 38, type: 'Red', role: "Provides structure, body, red berry fruit (cherry, raspberry), and mid-palate depth; primary grape in Montagne de Reims and Côte des Bar." },
+      { name: 'Chardonnay', percentage: 31, type: 'White', role: "Brings freshness, crisp acidity, citrus and white floral notes, chalky minerality, and long aging potential; dominant in Côte des Blancs." },
+      { name: 'Meunier', percentage: 31, type: 'Red', role: "Contributes roundness, approachable orchard fruit (apple, pear), and floral aromas; frost-hardy and well-suited to clay soils in the Vallée de la Marne." },
+      { name: 'Pinot Blanc (Blanc Vrai)', percentage: 0.25, type: 'White', role: "White mutation of Pinot Noir offering stone fruit (peach, melon), moderate acidity, and a rounded mouthfeel; centered in the Côte des Bar." },
+      { name: 'Arbane', percentage: 0.05, type: 'White', role: "Historic Aube white variety characterized by brisk acidity, green apple, and citrus verbena notes." },
+      { name: 'Petit Meslier', percentage: 0.05, type: 'White', role: "Heritage cross of Gouais Blanc and Savagnin marked by sharp acidity, citrus zest, and herbal notes." },
+      { name: 'Pinot Gris (Fromenteau)', percentage: 0.05, type: 'White', role: "Historic pink-skinned grape contributing stone fruit, baked apple, gentle spice, and a supple texture." }
     ],
 
     structure: {
@@ -447,19 +447,19 @@ export const WINE_REGIONS = {
         { name: "Autre Cru (80-89%)", detail: "Communes across the Marne, Aube, Aisne, Haute-Marne, and Seine-et-Marne departments that produce regional AOC Champagne." }
       ],
       styles: [
-        { name: 'Blanc de Blancs', desc: "100% white grapes (predominantly Chardonnay, or heritage white varieties); pristine, chiseled, citrus, floral, and chalk-driven." },
-        { name: 'Blanc de Noirs', desc: "100% black grapes (Pinot Noir and/or Meunier); vinous, structured, red berry profile with generous mid-palate weight." },
-        { name: 'Rosé Champagne', desc: "Crafted via assemblage (blending 8-15% still Coteaux Champenois red wine into white base must) or saignée (short skin maceration)." },
-        { name: 'Vintage (Millésimé)', desc: "Single harvest expression aged minimum 36 months total (max 80% of harvest declareable to preserve reserve wines)." },
-        { name: 'Multi-Vintage / Non-Vintage', desc: "Signature house assemblage of the current year blended with extensive solera/perpetual reserve wines, aged min. 15 months (12 on lees)." },
-        { name: 'Prestige Cuvée', desc: "Flagship luxury tête de cuvée representing the apex of a house or grower's winemaking, sourced from oldest Grand Cru vines." }
+        { name: 'Blanc de Blancs', desc: "100% white grapes (primarily Chardonnay); crisp and linear with citrus, white floral notes, and chalk minerality." },
+        { name: 'Blanc de Noirs', desc: "100% black grapes (Pinot Noir and/or Meunier); structured with red berry aromas and mid-palate weight." },
+        { name: 'Rosé Champagne', desc: "Produced either by assemblage (blending 8–15% still Coteaux Champenois red wine into white base wine) or saignée (short skin maceration)." },
+        { name: 'Vintage (Millésimé)', desc: "Single-year wine aged at least 36 months; a maximum of 80% of the harvest may be used to preserve reserve stock." },
+        { name: 'Multi-Vintage / Non-Vintage', desc: "Base wine from the current harvest blended with reserve wines, aged a minimum of 15 months total (12 months on the lees)." },
+        { name: 'Prestige Cuvée', desc: "Flagship tête de cuvée representing a producer's top selection, typically sourced from older vines in Grand Cru communes." }
       ]
     },
 
     flavorProfile: {
       primary: ['Green Apple', 'Lemon Zest', 'White Peach', 'Brioche', 'Chalk / Saline Minerality'],
       secondary: ['Toasted Hazelnuts', 'Crushed Oyster Shell', 'Honeysuckle', 'Fresh Dough', 'Candied Ginger', 'Black Truffle'],
-      palate: "Vibrant, persistent mousse with crystalline acidity, chalky tension, tactile salinity, and an extraordinarily long, expansive finish."
+      palate: "Fine, persistent mousse with vibrant acidity, mineral tension, and a long, focused finish."
     },
 
     foodPairings: CHAMPAGNE_FOOD_PAIRINGS,

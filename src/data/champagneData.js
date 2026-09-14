@@ -32,7 +32,7 @@ export const CHAMPAGNE_GRAND_CRUS = [
     grapeRatio: "Pinot Noir (~80%), Chardonnay (~20%)",
     soil: "Upper Campanian Belemnite chalk (Belemnitella quadrata) covered with warm calcareous clay topsoil",
     echelleRating: 100,
-    character: "Rich, vinous, structural Pinot Noir with red berry depth, black truffle notes, warm mid-palate power, and profound elegance.",
+    character: "Rich, structured Pinot Noir with red berry fruit, savory depth, and balanced warmth.",
     benchmarkProducers: ["Egly-Ouriet", "Krug (Clos d’Ambonnay)", "Eric Rodez", "Paul Déthune", "Marguet", "Marie-Noëlle Ledru"],
     famousProducers: ["Egly-Ouriet", "Krug (Clos d’Ambonnay)", "Eric Rodez", "Paul Déthune", "Marguet", "Marie-Noëlle Ledru"],
     iconicVineyards: ["Clos d’Ambonnay (0.68 ha)", "Les Crayères", "Les Beurys", "Le Bout du Clos", "Les Bermonts"]
@@ -51,7 +51,7 @@ export const CHAMPAGNE_GRAND_CRUS = [
     grapeRatio: "Pinot Noir (~87%), Chardonnay (~13%)",
     soil: "Deep Belemnite chalk subsoil with rich, sun-baked calcareous clay topsoil",
     echelleRating: 100,
-    character: "Muscular, broad-shouldered, intensely aromatic Pinot Noir; global benchmark for Bouzy Rouge still red wine.",
+    character: "Full-bodied, aromatic Pinot Noir with rich red fruit; historical benchmark for still Bouzy Rouge.",
     benchmarkProducers: ["Pierre Paillard", "Camille Savès", "Antoine Bouvet", "Benoît Lahaye", "Paul Bara", "Georges Vesselle"],
     famousProducers: ["Pierre Paillard", "Camille Savès", "Antoine Bouvet", "Benoît Lahaye", "Paul Bara", "Georges Vesselle"],
     iconicVineyards: ["Les Maillerettes", "Les Mottelettes", "Les Loges", "Clos de Bouveries", "Les Voies"]
@@ -70,7 +70,7 @@ export const CHAMPAGNE_GRAND_CRUS = [
     grapeRatio: "Pinot Noir (~86%), Chardonnay (~14%)",
     soil: "Pure Belemnitella quadrata chalk with cool northern exposure and Atlantic airflow",
     echelleRating: 100,
-    character: "Chiseled tension, laser-like acidity, flinty minerality, and iron backbone forming the structural core of Grandes Marques.",
+    character: "Structured, linear Pinot Noir with firm acidity and mineral drive; a core component of major house blends.",
     benchmarkProducers: ["Louis Roederer", "Bollinger", "Michel Arnould", "J.M. Labruyère", "Pehu-Simonet", "Godmé"],
     famousProducers: ["Louis Roederer", "Bollinger", "Michel Arnould", "J.M. Labruyère", "Pehu-Simonet", "Godmé"],
     iconicVineyards: ["Les Corettes", "Les Perthois", "Moulin de Verzenay", "Les Noues", "Les Champs Saint-Martin"]
@@ -89,7 +89,7 @@ export const CHAMPAGNE_GRAND_CRUS = [
     grapeRatio: "Pinot Noir (~87%), Chardonnay (~13%)",
     soil: "Porous Belemnite chalk beds with cool Atlantic airflow and high diurnal shifts",
     echelleRating: 100,
-    character: "High-toned red fruits, crystalline mineral precision, lean aristocratic elegance, and racy freshness.",
+    character: "Fresh red fruit aromas with mineral precision, lively acidity, and a light-to-medium frame.",
     benchmarkProducers: ["Mailly Grand Cru (Cooperative founded 1929)", "Ernest Remy", "Taittinger"],
     famousProducers: ["Mailly Grand Cru (Cooperative founded 1929)", "Ernest Remy", "Taittinger"],
     iconicVineyards: ["Les Echalas", "Les Crayères", "Les Challois", "Les Coutures"]
@@ -108,7 +108,7 @@ export const CHAMPAGNE_GRAND_CRUS = [
     grapeRatio: "Pinot Noir (~78%), Chardonnay (~22%)",
     soil: "Belemnite chalk mixed with pockets of clay marl and flint (silex)",
     echelleRating: 100,
-    character: "Perfumed, floral-tinged Pinot Noir and mineral Chardonnay with refined tension and herbal citrus complexity.",
+    character: "Fragrant red-fruited Pinot Noir and mineral Chardonnay with balanced acidity and herbal citrus notes.",
     benchmarkProducers: ["Veuve Clicquot", "Adrien Renoir", "Mouzon-Leroux", "Penet-Chardonnet", "Louis Roederer"],
     famousProducers: ["Veuve Clicquot", "Adrien Renoir", "Mouzon-Leroux", "Penet-Chardonnet", "Louis Roederer"],
     iconicVineyards: ["Les Epinettes", "Les Champs Saint Martin", "Les Terres Blanches", "Les Vignes Saint-Benoît"]
@@ -127,7 +127,7 @@ export const CHAMPAGNE_GRAND_CRUS = [
     grapeRatio: "Pinot Noir (~88%), Chardonnay (~12%)",
     soil: "Chalk with gravelly alluvial sand deposits near the Vesle river (~28 ha total)",
     echelleRating: 100,
-    character: "Delicate, light-to-medium bodied Pinot Noir adding aromatic lift and freshness in grand cuvée blends.",
+    character: "Delicate, light-bodied Pinot Noir providing aromatic lift and freshness in blends.",
     benchmarkProducers: ["Paul Bara", "Louis Roederer", "Pol Roger", "Grandes Marques blenders"],
     famousProducers: ["Paul Bara", "Louis Roederer", "Pol Roger", "Grandes Marques blenders"],
     iconicVineyards: ["Les Vignes Saint-Benoît", "Les Grèves"]
@@ -146,7 +146,7 @@ export const CHAMPAGNE_GRAND_CRUS = [
     grapeRatio: "Pinot Noir (~56%), Chardonnay (~44%)",
     soil: "Deep Belemnite chalk overlain with silty alluvial loam",
     echelleRating: 100,
-    character: "Historically the most renowned Champagne cru of the 18th century (\"Vins de Sillery\"); refined, subtle elegance.",
+    character: "Refined and balanced profile from chalk soils; historically renowned as 'Vins de Sillery' in the 18th century.",
     benchmarkProducers: ["François Secondé", "Veuve Clicquot", "Taittinger"],
     famousProducers: ["François Secondé", "Veuve Clicquot", "Taittinger"],
     iconicVineyards: ["Les Champs Saint-Hilaire", "Les Basse-Crayères"]
@@ -165,7 +165,7 @@ export const CHAMPAGNE_GRAND_CRUS = [
     grapeRatio: "Pinot Noir (~65%), Chardonnay (~35%)",
     soil: "Pure white chalk under shallow topsoil (~19 ha, Champagne’s smallest Grand Cru)",
     echelleRating: 100,
-    character: "Racy, mineral-dusted, pristine acidity, highly sought-after component for prestigious assemblage bottlings.",
+    character: "Crisp, mineral-driven profile with taut acidity; prized as a structuring component for prestige cuvées.",
     benchmarkProducers: ["François Secondé", "Mailly Grand Cru", "Veuve Clicquot", "Lanson"],
     famousProducers: ["François Secondé", "Mailly Grand Cru", "Veuve Clicquot", "Lanson"],
     iconicVineyards: ["Les Graviers", "Le Mont de Puisieulx", "Les Clos"]
@@ -184,7 +184,7 @@ export const CHAMPAGNE_GRAND_CRUS = [
     grapeRatio: "Pinot Noir (~75%), Chardonnay (~25%)",
     soil: "Belemnite chalk with higher clay marl fraction situated on southern mountain slopes",
     echelleRating: 100,
-    character: "Supple, generous, textured red fruit expression balancing Bouzy and Tauxières.",
+    character: "Supple and rounded red fruit profile, offering a gentle bridge between Bouzy and Tauxières.",
     benchmarkProducers: ["Billecart-Salmon", "Guy de Chassey", "Laurent-Perrier"],
     famousProducers: ["Billecart-Salmon", "Guy de Chassey", "Laurent-Perrier"],
     iconicVineyards: ["Les Clos", "Les Chenevières", "La Pierre aux Lignettes"]
@@ -207,7 +207,7 @@ export const CHAMPAGNE_GRAND_CRUS = [
     grapeRatio: "Pinot Noir (~88%), Chardonnay (~10%), Meunier (~2%)",
     soil: "Deep Belemnitella quadrata chalk with rich alluvial silt and exceptional solar heat retention",
     echelleRating: 100,
-    character: "The global benchmark for Pinot Noir in Champagne: powerful, opulent, truffle-laced, spicy, hazelnut, and majestic architecture.",
+    character: "Benchmark Pinot Noir expressing power, spice, ripe red fruit, and broad structural depth.",
     benchmarkProducers: ["Bollinger", "Henri Giraud", "Gosset", "Deutz", "Gatinois", "Marc Hébrart", "Ayala"],
     famousProducers: ["Bollinger", "Henri Giraud", "Gosset", "Deutz", "Gatinois", "Marc Hébrart", "Ayala"],
     iconicVineyards: ["La Côte aux Enfants (Bollinger)", "Chaudes Terres (VVF)", "Clos Saint-Jacques", "Le Léon", "Vaurevals", "Pruche"]
@@ -226,7 +226,7 @@ export const CHAMPAGNE_GRAND_CRUS = [
     grapeRatio: "Pinot Noir (~70%), Chardonnay (~30%)",
     soil: "Chalk covered with sand and river gravels along the Marne confluence",
     echelleRating: 100,
-    character: "Silky, aromatic Pinot Noir. Global headquarters of Champagne Laurent-Perrier.",
+    character: "Silky, aromatic Pinot Noir; historic winemaking base of Laurent-Perrier.",
     benchmarkProducers: ["Laurent-Perrier", "Lamiable", "Guy Charbaut"],
     famousProducers: ["Laurent-Perrier", "Lamiable", "Guy Charbaut"],
     iconicVineyards: ["Le Clos Laurent-Perrier", "Les Mesneux"]
@@ -249,7 +249,7 @@ export const CHAMPAGNE_GRAND_CRUS = [
     grapeRatio: "Chardonnay (100%)",
     soil: "Pure Belemnitella quadrata chalk with exceptionally thin, well-drained topsoil",
     echelleRating: 100,
-    character: "The epicenter of Blanc de Blancs balance: intense chalky minerality, white flowers, citrus oil, brioche, and fleshy mid-palate richness.",
+    character: "Balanced Blanc de Blancs combining chalk minerality, citrus, white floral notes, and a textured mid-palate.",
     benchmarkProducers: ["Jacques Selosse", "Agrapart & Fils", "De Sousa", "Franck Bonville", "Varnier-Fannière", "Michel Fallon"],
     famousProducers: ["Jacques Selosse", "Agrapart & Fils", "De Sousa", "Franck Bonville", "Varnier-Fannière", "Michel Fallon"],
     iconicVineyards: ["Les Chantereines (Selosse)", "Les Robarts", "Les Maladries", "La Fosse", "Avizoise (Agrapart)", "Les Chemins d’Avize"]
@@ -268,7 +268,7 @@ export const CHAMPAGNE_GRAND_CRUS = [
     grapeRatio: "Chardonnay (~99%), Pinot Noir (~1%)",
     soil: "Deep porous Belemnite chalk beds with open solar exposure",
     echelleRating: 100,
-    character: "Creamy, generous, exotic stone fruit, white peach, acacia honey, round texture, and accessible silky minerality.",
+    character: "Round, approachable Chardonnay with white peach, floral notes, and a creamy texture.",
     benchmarkProducers: ["Legras & Haas", "AR Lenoble", "R&L Legras", "Vazart-Coquart", "Pierre Gimonnet"],
     famousProducers: ["Legras & Haas", "AR Lenoble", "R&L Legras", "Vazart-Coquart", "Pierre Gimonnet"],
     iconicVineyards: ["Mont Aigu (AR Lenoble)", "Les Partelaines", "Les Aventures", "Les Ruelle"]
@@ -287,7 +287,7 @@ export const CHAMPAGNE_GRAND_CRUS = [
     grapeRatio: "Chardonnay (100%)",
     soil: "Pure outcropping of Upper Cretaceous Belemnite chalk",
     echelleRating: 100,
-    character: "Creamy, silky texture, delicate mousse, brioche, toasted hazelnut, and refined saline elegance (historic Crémant de Cramant).",
+    character: "Creamy, refined Chardonnay with brioche, hazelnut, and subtle saline notes; birthplace of the lower-pressure Crémant de Cramant style.",
     benchmarkProducers: ["Diebolt-Vallois", "Suenen", "Bérêche & Fils", "Pertois-Moriset", "Philippe Glavier", "Mumm (Mumm de Cramant)"],
     famousProducers: ["Diebolt-Vallois", "Suenen", "Bérêche & Fils", "Pertois-Moriset", "Philippe Glavier", "Mumm (Mumm de Cramant)"],
     iconicVineyards: ["Les Bourys", "Les Chets", "Les Buzons", "Le Bateau", "Les Briquettes", "Les Pimonts"]
@@ -306,7 +306,7 @@ export const CHAMPAGNE_GRAND_CRUS = [
     grapeRatio: "Chardonnay (100%)",
     soil: "Exposed, pristine Belemnitella quadrata chalk with virtually zero organic topsoil",
     echelleRating: 100,
-    character: "The most austere, steely, razor-sharp, hyper-mineral, crushed oyster shell, and extraordinarily long-lived Blanc de Blancs in the world.",
+    character: "Steely, austere Chardonnay with intense chalk minerality, bright citrus, and exceptional aging capacity.",
     benchmarkProducers: ["Salon", "Krug (Clos du Mesnil)", "Pierre Péters", "Delamotte", "Pascal Doquet", "Guy Charlemagne", "Michel Turgy"],
     famousProducers: ["Salon", "Krug (Clos du Mesnil)", "Pierre Péters", "Delamotte", "Pascal Doquet", "Guy Charlemagne", "Michel Turgy"],
     iconicVineyards: ["Clos du Mesnil (1.84 ha)", "Les Chétillons (Pierre Péters)", "Les Carelles", "Les Coullemets", "Les Mussets"]
@@ -325,7 +325,7 @@ export const CHAMPAGNE_GRAND_CRUS = [
     grapeRatio: "Chardonnay (100%)",
     soil: "Belemnite chalk with slightly higher heat retention and clay sediment than Le Mesnil",
     echelleRating: 100,
-    character: "Broad, opulent, exotic citrus, yellow orchard fruits, spicy warmth, candied lemon peel, and mineral density.",
+    character: "Broad and ripe Chardonnay with citrus, yellow orchard fruit, and mineral depth from a sheltered basin.",
     benchmarkProducers: ["Pascal Agrapart", "Jean Milan", "Chapuy", "Gimonnet-Gonet", "Paul Clouet", "Vincent Charlot"],
     famousProducers: ["Pascal Agrapart", "Jean Milan", "Chapuy", "Gimonnet-Gonet", "Paul Clouet", "Vincent Charlot"],
     iconicVineyards: ["Les Terres de Noël (Jean Milan)", "Les Chenevats", "Les Babillottes", "Les Beignets"]
@@ -344,7 +344,7 @@ export const CHAMPAGNE_GRAND_CRUS = [
     grapeRatio: "Chardonnay (~99%), Pinot Noir (~1%)",
     soil: "Belemnite chalk with alluvial clay-sand overlay (~88 ha total)",
     echelleRating: 100,
-    character: "Light-footed, ethereal, chalk-driven Blanc de Blancs with delicate saline lift, white florals, and crisp citrus.",
+    character: "Delicate, chalk-driven Blanc de Blancs with crisp citrus, white floral aromas, and a light mineral finish.",
     benchmarkProducers: ["Suenen", "Agrapart & Fils", "Françoise Bedel"],
     famousProducers: ["Suenen", "Agrapart & Fils", "Françoise Bedel"],
     iconicVineyards: ["Les Hauts d’Oiry", "La Croix", "Les Crayères"]
@@ -365,7 +365,7 @@ export const CHAMPAGNE_PREMIER_CRUS = [
     dominantGrape: "Pinot Noir (~75%), Chardonnay (~25%)",
     aspect: "Steep South-facing 45° pure chalk slope",
     soil: "Steep south-facing pure Belemnite chalk escarpment rising directly above the Marne canal",
-    character: "Profoundly muscular, vinous, black fruit and intense chalk structure; home to the legendary Clos des Goisses.",
+    character: "Structured, full-bodied Pinot Noir with dark fruit and chalky mineral depth; home to Clos des Goisses.",
     historicalSignificance: "Highest rated Premier Cru commune at 99%; home to Philipponnat Clos des Goisses and Billecart-Salmon.",
     benchmarkProducers: ["Philipponnat", "Billecart-Salmon", "Marc Hébrart"],
     famousProducers: ["Philipponnat", "Billecart-Salmon", "Marc Hébrart"],
@@ -384,7 +384,7 @@ export const CHAMPAGNE_PREMIER_CRUS = [
     dominantGrape: "Pinot Noir (~85%), Chardonnay (~15%)",
     aspect: "South-facing gentle slopes",
     soil: "Calcareous clay over Belemnite chalk directly bordering Grand Cru Bouzy",
-    character: "Supple, round, red-cherry Pinot Noir with gentle spice and refined structure.",
+    character: "Round, red-cherry Pinot Noir with gentle spice and balanced structure.",
     historicalSignificance: "Tied with Mareuil-sur-Aÿ as the highest-rated Premier Cru commune at 99%.",
     benchmarkProducers: ["Pierre Paillard", "Benoît Lahaye", "Vilmart & Cie"],
     famousProducers: ["Pierre Paillard", "Benoît Lahaye", "Vilmart & Cie"],
@@ -403,7 +403,7 @@ export const CHAMPAGNE_PREMIER_CRUS = [
     dominantGrape: "Pinot Noir (~60%), Chardonnay (~40%)",
     aspect: "South / South-East slopes",
     soil: "Deep chalk and gravel terraces east of Mareuil-sur-Aÿ",
-    character: "Structured, mineral-driven Pinot Noir and Blanc de Blancs component prized by prestigious houses.",
+    character: "Structured, mineral-driven Pinot Noir and Chardonnay prized as blending components.",
     historicalSignificance: "99% rated Premier Cru commune along the Marne canal terrace.",
     benchmarkProducers: ["Champagne Besserat de Bellefon", "Grandes Marques blenders"],
     famousProducers: ["Champagne Besserat de Bellefon", "Grandes Marques blenders"],
@@ -422,8 +422,8 @@ export const CHAMPAGNE_PREMIER_CRUS = [
     dominantGrape: "Chardonnay (~90%), Pinot Noir (~10%)",
     aspect: "East / South-East rolling slopes",
     soil: "Thick Belemnite chalk escarpment with sandy, clay-limestone colluvial deposits at base",
-    character: "Generous, saline, white blossom, chalky tension with richer fruit than Le Mesnil; benchmark for non-dosé single-terroir cuvées.",
-    historicalSignificance: "Southern anchor of the Côte des Blancs; epicenter of biodynamic grower mastery.",
+    character: "Generous Chardonnay with white flowers, ripe citrus, and chalk tension; benchmark for low- and zero-dosage grower cuvées.",
+    historicalSignificance: "Southern anchor of the Côte des Blancs and an important center for biodynamic growers.",
     benchmarkProducers: ["Larmandier-Bernier", "Duval-Leroy", "Pascal Doquet", "Paul Goerg"],
     famousProducers: ["Larmandier-Bernier", "Duval-Leroy", "Pascal Doquet", "Paul Goerg"],
     iconicVineyards: ["Terre de Vertus", "Les Poteaux", "Les Barillers", "Clos Notre Dame"]
@@ -441,7 +441,7 @@ export const CHAMPAGNE_PREMIER_CRUS = [
     dominantGrape: "Chardonnay (~90%), Pinot Noir (~10%)",
     aspect: "East-facing slopes",
     soil: "East-facing Upper Cretaceous Belemnite chalk with silex flint nodules",
-    character: "The isolated \"white pearl\" of the Montagne de Reims; steely, mineral, electric Chardonnay with smoky tension.",
+    character: "Distinctive Chardonnay enclave in the Montagne de Reims; steely and mineral with crisp acidity and subtle smoke.",
     historicalSignificance: "Renowned Chardonnay enclave on the eastern flank of the Pinot Noir-dominated Montagne de Reims.",
     benchmarkProducers: ["David Léclapart", "A. Margaine", "Pascal Doquet"],
     famousProducers: ["David Léclapart", "A. Margaine", "Pascal Doquet"],
@@ -460,7 +460,7 @@ export const CHAMPAGNE_PREMIER_CRUS = [
     dominantGrape: "Chardonnay (~98%)",
     aspect: "East-facing slopes",
     soil: "Deep chalk hillside facing east on the eastern flank of the mountain",
-    character: "Chiseled, citrus-driven, chalky Blanc de Blancs possessing high natural acidity and longevity.",
+    character: "Crisp, citrus-driven Blanc de Blancs with high natural acidity and long aging capacity.",
     historicalSignificance: "Second major Chardonnay enclave on the Montagne de Reims along with Trépail.",
     benchmarkProducers: ["Henriet-Bazin", "A. Margaine", "Boutillez-Guer"],
     famousProducers: ["Henriet-Bazin", "A. Margaine", "Boutillez-Guer"],
@@ -479,7 +479,7 @@ export const CHAMPAGNE_PREMIER_CRUS = [
     dominantGrape: "Chardonnay (~40%), Pinot Noir (~35%), Meunier (~25%)",
     aspect: "South / South-West facing slopes",
     soil: "Deep calcareous marl and Belemnite chalk hillsides",
-    character: "Complex, structured, hazelnut, citrus, and stone fruit expression; home to legendary Jacquesson parcel bottlings.",
+    character: "Structured, nuanced profile with stone fruit, citrus, and toasted nuts; known for Jacquesson single-parcel bottlings.",
     historicalSignificance: "Historic winemaking base of Champagne Jacquesson and Gaston Chiquet.",
     benchmarkProducers: ["Jacquesson", "Gaston Chiquet"],
     famousProducers: ["Jacquesson", "Gaston Chiquet"],
@@ -498,7 +498,7 @@ export const CHAMPAGNE_PREMIER_CRUS = [
     dominantGrape: "Chardonnay (~98%)",
     aspect: "North / North-East facing chalk amphitheater",
     soil: "North-facing pure Belemnite chalk amphitheater",
-    character: "Razor-sharp, high-acid, citrus-driven, intensely refreshing Blanc de Blancs.",
+    character: "Crisp, high-acid Blanc de Blancs with bright green apple and citrus; prized for refreshing base wines.",
     historicalSignificance: "Northern gateway to Côte des Blancs known for high-acid base wines; home to Pierre Gimonnet.",
     benchmarkProducers: ["Pierre Gimonnet & Fils"],
     famousProducers: ["Pierre Gimonnet & Fils"],
@@ -517,7 +517,7 @@ export const CHAMPAGNE_PREMIER_CRUS = [
     dominantGrape: "Meunier (~45%), Pinot Noir (~35%), Chardonnay (~20%)",
     aspect: "North / North-East facing slopes",
     soil: "Chalk-limestone with clay-sand deposits",
-    character: "Aromatic red fruits, supple mid-palate, floral lift, and balanced freshness.",
+    character: "Aromatic red fruit, supple texture, and floral lift with balanced freshness.",
     historicalSignificance: "Named in honor of Madame Louise Pommery’s rose gardens; home of J. Lassalle and Cattier.",
     benchmarkProducers: ["Cattier (Armand de Brignac)", "J. Lassalle", "Guy Charbaut"],
     famousProducers: ["Cattier (Armand de Brignac)", "J. Lassalle", "Guy Charbaut"],
@@ -536,7 +536,7 @@ export const CHAMPAGNE_PREMIER_CRUS = [
     dominantGrape: "Pinot Noir (~40%), Meunier (~35%), Chardonnay (~25%)",
     aspect: "North-facing gentle slopes",
     soil: "Belemnite chalk with sandy-clay topsoil on the northern mountain slope",
-    character: "Refined, structured, oak-worthy Pinot Noir and Chardonnay blends of aristocratic poise.",
+    character: "Balanced, structured Pinot Noir and Chardonnay blends with good depth and aging potential.",
     historicalSignificance: "One of the oldest documented viticultural villages in Champagne; home of Vilmart & Cie.",
     benchmarkProducers: ["Vilmart & Cie", "Bérêche & Fils", "Roger Brun"],
     famousProducers: ["Vilmart & Cie", "Bérêche & Fils", "Roger Brun"],
@@ -555,7 +555,7 @@ export const CHAMPAGNE_PREMIER_CRUS = [
     dominantGrape: "Meunier (~45%), Pinot Noir (~35%), Chardonnay (~20%)",
     aspect: "North-facing Belemnite chalk slopes",
     soil: "North-facing Belemnite chalk slopes flanked by forested summit",
-    character: "Crisp, mineral-backed Meunier and Pinot Noir with racy acidity and tension.",
+    character: "Crisp, mineral-driven Meunier and Pinot Noir with lively acidity and tension.",
     historicalSignificance: "Heart of the northern slopes of Montagne de Reims; home to Bérêche & Fils and Canard-Duchêne.",
     benchmarkProducers: ["Bérêche & Fils", "Canard-Duchêne", "Huré Frères"],
     famousProducers: ["Bérêche & Fils", "Canard-Duchêne", "Huré Frères"],
@@ -574,7 +574,7 @@ export const CHAMPAGNE_PREMIER_CRUS = [
     dominantGrape: "Pinot Noir (~50%), Meunier (~35%), Chardonnay (~15%)",
     aspect: "South-facing riverside amphitheater",
     soil: "Warm, south-facing clay-limestone amphitheater over shallow chalk near the Marne River",
-    character: "Early ripening, voluptuous, opulent red fruits, spicy depth; celebrated for still Cumières Rouge Coteaux Champenois.",
+    character: "Warm, early-ripening amphitheater producing rich red fruit and spice; noted for both sparkling wines and still Cumières Rouge.",
     historicalSignificance: "One of the warmest microclimates in Champagne, famous for early harvesting and historic Coteaux Champenois reds.",
     benchmarkProducers: ["Georges Laval", "Geoffroy", "Vadin-Plateau"],
     famousProducers: ["Georges Laval", "Geoffroy", "Vadin-Plateau"],
@@ -593,8 +593,8 @@ export const CHAMPAGNE_PREMIER_CRUS = [
     dominantGrape: "Meunier (~40%), Pinot Noir (~35%), Chardonnay (~25%)",
     aspect: "South / South-East hillsides",
     soil: "Chalk-marl and Sparnacian clay slopes overlooking the river",
-    character: "Spiritual cradle of Champagne (Dom Pérignon at Abbaye Saint-Pierre); rounded, harmonious, floral, and supple.",
-    historicalSignificance: "Spiritual birthplace of Champagne at Abbaye Saint-Pierre d’Hautvillers where Dom Pierre Pérignon was cellar master (1668–1715).",
+    character: "Rounded and floral wines with supple fruit; historic home of Dom Pierre Pérignon at the Abbey of Hautvillers.",
+    historicalSignificance: "Historic birthplace of Champagne blending at Abbaye Saint-Pierre d’Hautvillers, where Dom Pierre Pérignon served as cellar master (1668–1715).",
     benchmarkProducers: ["Dom Pérignon (Moët & Chandon)", "J.M. Gobillard", "Marion-Bosser"],
     famousProducers: ["Dom Pérignon (Moët & Chandon)", "J.M. Gobillard", "Marion-Bosser"],
     iconicVineyards: ["Les Terres Rouges", "Abbaye Saint-Pierre", "Les Prières"]
@@ -612,8 +612,8 @@ export const CHAMPAGNE_PREMIER_CRUS = [
     dominantGrape: "Meunier (~40%), Chardonnay (~35%), Pinot Noir (~25%)",
     aspect: "East / South-East hillsides",
     soil: "Flint stones (meulière) embedded in Sparnacian clay over Campanian chalk",
-    character: "Tense, mineral, smoky, flint-inflected Meunier and Chardonnay of striking purity.",
-    historicalSignificance: "Historic 18th-century cellar master Frère Jean Oudart developed early sparkling techniques here; home to Jean-Marc Sélèque.",
+    character: "Mineral and flint-inflected Meunier and Chardonnay with crisp acidity and savory depth.",
+    historicalSignificance: "Historic base where 18th-century cellar master Frère Jean Oudart developed early sparkling techniques; home to JM Sélèque.",
     benchmarkProducers: ["JM Sélèque", "Paul Clouet", "Vincent Charlot"],
     famousProducers: ["JM Sélèque", "Paul Clouet", "Vincent Charlot"],
     iconicVineyards: ["Les Gouttes d’Or", "Les Tartières", "Les Frileux", "Partition"]
@@ -631,8 +631,8 @@ export const CHAMPAGNE_PREMIER_CRUS = [
     dominantGrape: "Pinot Noir (~85%), Chardonnay (~15%)",
     aspect: "East-facing gentle slopes",
     soil: "Sandy Thanetian clay over deep chalk bedrock on the Petite Montagne",
-    character: "Vibrant, crystalline, energetic, wild-strawberry Pinot Noir celebrated in modern cult grower Champagne.",
-    historicalSignificance: "Epicenter of artisanal Petite Montagne grower movement; home to Frédéric Savart.",
+    character: "Vibrant, red-fruited Pinot Noir with wild strawberry notes and tension; center of modern grower Champagne.",
+    historicalSignificance: "Center of the Petite Montagne artisanal grower movement; home to Frédéric Savart.",
     benchmarkProducers: ["Frédéric Savart", "Lacourte-Godbillon", "Brocard Pierre"],
     famousProducers: ["Frédéric Savart", "Lacourte-Godbillon", "Brocard Pierre"],
     iconicVineyards: ["Le Mont Benoit", "Les Noues", "L’Ouverture"]
@@ -650,8 +650,8 @@ export const CHAMPAGNE_PREMIER_CRUS = [
     dominantGrape: "Meunier (~85%), Pinot Noir (~10%), Chardonnay (~5%)",
     aspect: "East / North-East slopes",
     soil: "Sandy Thanetian silt and soft chalk on gentle rolling hills",
-    character: "World benchmark for single-variety 100% Meunier showing incredible floral aromatics, round stone fruit, and saline finish.",
-    historicalSignificance: "Petite Montagne village made legendary by Francis Egly’s 100% Meunier single-vineyard bottling.",
+    character: "Benchmark for varietal Meunier, showing floral aromas, ripe stone fruit, and a clean mineral finish.",
+    historicalSignificance: "Petite Montagne village highlighted by Francis Egly’s 100% Meunier single-vineyard bottling.",
     benchmarkProducers: ["Egly-Ouriet (Les Vignes de Vrigny)", "Roger Coulon"],
     famousProducers: ["Egly-Ouriet (Les Vignes de Vrigny)", "Roger Coulon"],
     iconicVineyards: ["Les Vignes de Vrigny", "Les Champs Chevalier"]
@@ -666,17 +666,17 @@ export const CHAMPAGNE_SUBREGIONS = [
     district: "Montagne de Reims",
     lat: 49.16,
     lng: 4.10,
-    terroir: "A thick cap of Cretaceous Belemnite and Micraster chalk overlaid with thin calcareous clay, gravelly colluvium, and sand on north- and south-facing slopes. Deep porous chalk regulates soil moisture and maintains elevated natural tartaric acidity, while clay-rich surface topsoil allows Pinot Noir to develop thick skins, deep structure, and red fruit power. Cellarmasters vinify Pinot Noir with rapid pneumatic pressing to avoid color extraction, relying on malolactic conversion and extended bottle lees aging to soften the broad muscular spine.",
+    terroir: "A plateau of Cretaceous Belemnite and Micraster chalk overlaid with calcareous clay, sand, and gravel colluvium. The porous chalk regulates soil moisture and maintains high natural acidity, while clay-rich topsoil allows Pinot Noir to develop firm structure and red fruit depth. Cellarmasters typically vinify Pinot Noir with rapid pneumatic pressing to avoid color extraction, relying on malolactic conversion and extended lees aging to integrate the wine's firm frame.",
     focus: "Pinot Noir Grand Crus: Ambonnay, Bouzy, Verzenay, Mailly, Verzy, Sillery, Puisieulx, Beaumont-sur-Vesle, Louvois.",
     geology: "Thick Belemnite chalk escarpment facing north, east, and south with gravelly alluvial topsoils.",
     dominantGrapes: "Pinot Noir (primary), Chardonnay (Trépail, Villers-Marmery), Meunier",
     microTerroirs: [
-      { name: "Grande Montagne", focus: "Muscular Grand Cru Pinot Noir on southern slopes (Ambonnay, Bouzy, Louvois) and northern slopes (Verzenay, Mailly, Verzy)" },
+      { name: "Grande Montagne", focus: "Structured Grand Cru Pinot Noir on southern slopes (Ambonnay, Bouzy, Louvois) and northern slopes (Verzenay, Mailly, Verzy)" },
       { name: "Monts de Berne", focus: "Sandy-clay chalk hills northwest of Reims (Saint-Thierry, Merfy, Cauroy-lès-Hermonville)" },
       { name: "Massif de Saint-Thierry", focus: "Cool sandy-limestone terroirs for Meunier and crisp Pinot Noir" },
-      { name: "Vesle & Ardre Valleys", focus: "Frost-susceptible valleys dominated by resilient, late-budding Meunier" }
+      { name: "Vesle & Ardre Valleys", focus: "Frost-prone valleys planted primarily to resilient, late-budding Meunier" }
     ],
-    description: "The Montagne de Reims forms a prominent forested promontory between Reims and the Marne River, crowned by nine official Grand Cru villages. French kings were crowned in Reims Cathedral for over eight centuries, with local still wines from Ambonnay and Bouzy serving at coronation banquets. Multi-generational grower families continue to tend steep south-facing parcels sheltered beneath the plateau's summit woodlands. Pinot Noir dominates these slopes, contributing architectural structure, ripe red cherry, toasted brioche, and sovereign longevity to the region's finest prestige cuvées."
+    description: "The Montagne de Reims is a forested plateau between Reims and the Marne River, home to nine Grand Cru villages. Historically connected to French royal coronations at Reims Cathedral, its vineyards remain renowned for structured Pinot Noir. Multi-generational growers tend parcels on both northern and southern flanks, where Pinot Noir provides backbone, red fruit depth, and long aging capacity in classic blends."
   },
   {
     id: 'vallee-de-la-marne',
@@ -685,17 +685,17 @@ export const CHAMPAGNE_SUBREGIONS = [
     district: "Vallée de la Marne",
     lat: 49.07,
     lng: 3.90,
-    terroir: "Heavy, moisture-retentive Sparnacian clay, silt, and sandy marl soils along the east-west meandering Marne River valley. The cool, frost-prone valley floor and cold clay soils suit the late-budding, early-ripening Meunier, yielding plump, round berries with lower astringency, tender fruit fleshiness, and aromatic stone fruit. Meunier is predominantly blended to bring roundness, immediate approachable fruit, and aromatic generosity to non-vintage cuvées, vinified in stainless steel or enamel vats to preserve fresh primary aromatics.",
+    terroir: "Moisture-retentive Sparnacian clay, silt, and sandy marl soils along the east-west Marne River corridor. The cool valley floor and cold clay soils suit late-budding, early-ripening Meunier, producing approachable wines with rounded texture and orchard fruit aromatics. Meunier is widely blended to add fruit generosity and forward appeal to non-vintage cuvées.",
     focus: "Meunier & Pinot Noir: Aÿ (Grand Cru), Tours-sur-Marne (Grand Cru), Mareuil-sur-Aÿ (1er Cru), Dizy, Hautvillers, Cumières.",
     geology: "Sparnacian illite clays, calcareous marls, and river gravels buffering against spring frosts.",
     dominantGrapes: "Meunier (primary across the valley), Pinot Noir (Grand Cru Aÿ), Chardonnay",
     microTerroirs: [
-      { name: "Grande Vallée", focus: "Steep south-facing amphitheaters of Aÿ, Dizy, Hautvillers, Cumières, Mareuil-sur-Aÿ, Bisseuil" },
+      { name: "Grande Vallée", focus: "Steep south-facing slopes of Aÿ, Dizy, Hautvillers, Cumières, Mareuil-sur-Aÿ, Bisseuil" },
       { name: "Rive Droite (Right Bank)", focus: "North of Marne (Damery, Venteuil, Dormans) - clay-limestone Meunier" },
-      { name: "Rive Gauche (Left Bank)", focus: "South of Marne (Festigny, Leuvrigny, Mareuil-le-Port, Œuilly) - rich Illite clay Meunier" },
+      { name: "Rive Gauche (Left Bank)", focus: "South of Marne (Festigny, Leuvrigny, Mareuil-le-Port, Œuilly) - clay-rich Meunier" },
       { name: "Confluence / Marne Ouest", focus: "Western extension towards Château-Thierry and the Aisne department" }
     ],
-    description: "The Vallée de la Marne follows the westward path of the Marne River from Tours-sur-Marne past Épernay to the borders of the Paris basin. At the Benedictine Abbey of Hautvillers, cellar master Dom Pierre Pérignon refined essential blending techniques and vineyard pruning rules in the seventeenth century. King Henri IV famously styled himself the Lord of Aÿ, celebrating the expressive wines that flowed from the valley's south-facing riverbanks. Resilient Meunier flourishes here alongside Pinot Noir, producing round, gastronomic champagnes scented with baked apple, ginger spice, and plush orchard fruit."
+    description: "The Vallée de la Marne follows the Marne River west from Tours-sur-Marne past Épernay. At the Benedictine Abbey of Hautvillers, cellar master Dom Pierre Pérignon developed foundational blending and pruning practices in the seventeenth century. Meunier thrives across the valley's clay soils alongside Pinot Noir in Aÿ, yielding champagnes marked by baked apple, pear, and rounded gastronomic texture."
   },
   {
     id: 'cote-des-blancs',
@@ -704,17 +704,17 @@ export const CHAMPAGNE_SUBREGIONS = [
     district: "Côte des Blancs",
     lat: 48.97,
     lng: 4.02,
-    terroir: "East-facing Cretaceous cliffs of pure, soft Belemnite chalk composed of microscopic fossilized coccoliths with virtually no topsoil. The exceptionally alkaline, porous chalk reflects radiant light, preserves very low must pH, and locks in searing natural acidity, resulting in small Chardonnay berries with laser-like mineral focus and citrus purity. Winemakers often encourage full malolactic fermentation and extend bottle aging on the lees for five to ten years to soften the razor-sharp chalk acidity into luxurious brioche complexity.",
+    terroir: "East-facing cliffside escarpment of pure, soft Belemnite chalk composed of microscopic fossilized coccoliths with very thin topsoil. Highly porous and reflective, the chalk maintains low pH and brisk acidity, giving Chardonnay intense mineral focus and citrus clarity. Producers often use full malolactic fermentation and extended lees aging to balance the chalky acidity with autolytic texture.",
     focus: "Chardonnay Grand Crus: Avize, Chouilly, Cramant, Le Mesnil-sur-Oger, Oger, Oiry, plus Vertus (1er Cru).",
     geology: "Upper Campanian Belemnite chalk escarpment with 35-40% microporosity.",
     dominantGrapes: "Chardonnay (97%+ of vineyard surface)",
     microTerroirs: [
-      { name: "Northern Gateway (Chouilly, Cramant)", focus: "Creamy, rich, blossom-fragrant Blanc de Blancs" },
-      { name: "Central Core (Avize, Oger)", focus: "Benchmark tension, yellow citrus, and crystalline chalk balance" },
-      { name: "Southern Amphitheater (Le Mesnil-sur-Oger)", focus: "Austere, razor-sharp, hyper-mineral, decades-long cellaring" },
-      { name: "Eastern Plain (Oiry)", focus: "Airy, delicate, saline chalk expressions" }
+      { name: "Northern Gateway (Chouilly, Cramant)", focus: "Creamy, floral Blanc de Blancs" },
+      { name: "Central Core (Avize, Oger)", focus: "Balanced citrus, white floral notes, and chalk tension" },
+      { name: "Southern Amphitheater (Le Mesnil-sur-Oger)", focus: "Austere, mineral-driven Chardonnay built for extended cellaring" },
+      { name: "Eastern Plain (Oiry)", focus: "Delicate, saline chalk expressions" }
     ],
-    description: "The Côte des Blancs forms an east-facing cliffside escarpment extending fifteen kilometers south from Épernay through Le Mesnil-sur-Oger. The district encompasses six premier Grand Cru villages dedicated almost exclusively to Chardonnay, basking in gentle morning sun along sheltered hillside hollows. Pioneering vignerons like Salon in 1905 proved that single-village, single-variety Blanc de Blancs could achieve world-class elegance without blending red grapes. Chardonnay harvested here produces diaphanous champagnes shimmering with white floral blossom, Meyer lemon curd, and razor-sharp, saline tension that endures for decades."
+    description: "The Côte des Blancs forms an east-facing escarpment extending 15 kilometers south from Épernay through Le Mesnil-sur-Oger. The district includes six Grand Cru villages devoted almost entirely to Chardonnay. Established as a benchmark for single-variety Blanc de Blancs since the early twentieth century, these slopes produce elegant champagnes with white blossom, citrus, and long-lasting chalk minerality."
   },
   {
     id: 'cote-de-sezanne',
@@ -723,15 +723,15 @@ export const CHAMPAGNE_SUBREGIONS = [
     district: "Côte de Sézanne",
     lat: 48.72,
     lng: 3.75,
-    terroir: "Warm south- and southeast-facing rolling slopes dominated by chalk bedrock overlaid with heavier deposits of clay and flinty gravel. Slightly warmer temperatures and deeper clay-chalk soils allow Chardonnay to ripen more fully than in the Côte des Blancs, producing rounder berries with richer stone fruit, white peach, and exotic floral notes. Enologists frequently blend Sézanne Chardonnay into Brut NV cuvées to provide immediate roundness and luscious mid-palate fruit, requiring lower dosage levels at disgorgement.",
+    terroir: "South- and southeast-facing slopes of chalk bedrock overlaid with clay, sand, and gravel. A slightly warmer climate and deeper clay soils allow Chardonnay to ripen earlier than in the Côte des Blancs, developing riper stone fruit, peach, and floral notes. Sézanne fruit is often blended into Brut NV cuvées to provide immediate roundness and mid-palate fruit.",
     focus: "Chardonnay: Sézanne, Bethon, Villenauxe-la-Grande, Barbonne-Fayel.",
     geology: "Cretaceous chalk overlaid with warm Thanetian sands and clay-marl topsoils.",
     dominantGrapes: "Chardonnay (primary), Pinot Noir, Meunier",
     microTerroirs: [
-      { name: "Sézanne & Bethon", focus: "Sun-drenched south-facing chalk slopes producing round, fruity Chardonnays" },
+      { name: "Sézanne & Bethon", focus: "South-facing chalk slopes producing ripe, rounded Chardonnay" },
       { name: "Villenauxe-la-Grande", focus: "Clay-rich western sector favoring early ripening" }
     ],
-    description: "The Côte de Sézanne extends south of the marshes of Saint-Gond, centered on the medieval market town of Sézanne in the southern Marne. Monastic communities tended hillside vineyards here as early as the twelfth century, cultivating vines along sunlit southeast-facing exposures. Slightly warmer macroclimatic conditions allow Chardonnay to ripen several days ahead of the Côte des Blancs, developing generous fruit weight. Local champagnes display welcoming aromas of ripe white peach, honeysuckle, and acacia blossom, offering immediate generosity and creamy textural charm."
+    description: "Located south of the Côte des Blancs near the historic market town of Sézanne, this district features rolling chalk hills with warmer macroclimates. Vineyards dating to medieval monastic estates yield generous Chardonnays with white peach, acacia flower, and approachable, supple textures."
   },
   {
     id: 'cote-des-bar',
@@ -740,7 +740,7 @@ export const CHAMPAGNE_SUBREGIONS = [
     district: "Côte des Bar (Aube)",
     lat: 48.10,
     lng: 4.40,
-    terroir: "Upper Jurassic Kimmeridgian marl alternating with limestone bands, identical to the geological strata of Chablis. The warmer southern latitude combined with Kimmeridgian limestone-clay soils produces expressive, aromatic Pinot Noir with rich red berry fruit, supple tannins, and a saline, seashell mineral tension. Leading grower-producers embrace parcel-specific vinification in neutral oak barriques, minimal sulfur, and low dosage (Extra Brut or Brut Nature) to showcase the unique terroir vinous depth.",
+    terroir: "Upper Jurassic Kimmeridgian marls and limestones containing fossilized Exogyra virgula oysters, geologically continuous with Chablis. Warmer temperatures and limestone-clay soils yield expressive Pinot Noir with ripe red fruit, subtle spice, and saline minerality. Artisanal growers often vinify single-parcel bottlings in neutral oak with low dosage to highlight terroir character.",
     focus: "Artisanal Grower Pinot Noir: Les Riceys, Urville, Celles-sur-Ource, Buxeuil, Bar-sur-Aube.",
     geology: "Kimmeridgian and Portlandian limestone-marl alternating strata.",
     dominantGrapes: "Pinot Noir (85%+), Pinot Blanc (Blanc Vrai), Chardonnay",
@@ -748,7 +748,7 @@ export const CHAMPAGNE_SUBREGIONS = [
       { name: "Barséquanais (Seine, Ource, Laignes valleys)", focus: "Les Riceys, Celles-sur-Ource, Buxeuil - Kimmeridgian marl Pinot Noir & Pinot Blanc" },
       { name: "Bar-sur-Aubois (Aube valley)", focus: "Bar-sur-Aube, Urville, Champignol - Oxfordian/Kimmeridgian higher elevation slopes" }
     ],
-    description: "The Côte des Bar encompasses the southern Champagne district within the Aube department, situated around Bar-sur-Aube and Bar-sur-Seine. Saint Bernard founded Clairvaux Abbey here in 1115, where Cistercian monks systematically mapped premier vineyard parcels across surrounding river valleys. Local vignerons mobilized fiercely during the 1911 Champagne Riots, successfully petitioning the French government for full recognition within the Champagne appellation. Pinot Noir reigns supreme across the district, producing expressive, vinous champagnes laden with juicy red berries, smoke, and an authentic artisan grower soul."
+    description: "The Côte des Bar forms Champagne's southern district in the Aube department, centered around Bar-sur-Aube and Bar-sur-Seine. Cultivated since Cistercian monks founded Clairvaux Abbey in 1115, the region secured its standing within the Champagne appellation following the 1911 Champagne Riots. Today, it is a dynamic center for grower-producers crafting expressive Pinot Noir and rare Pinot Blanc from Kimmeridgian soils."
   },
   {
     id: 'coteaux-sud-epernay',
@@ -757,15 +757,15 @@ export const CHAMPAGNE_SUBREGIONS = [
     district: "Coteaux Sud d’Épernay",
     lat: 49.00,
     lng: 3.94,
-    terroir: "Complex transition zone featuring Campanian chalk outcrops overlaid with flinty clay, sandstone, and lignite-rich Sparnacian sediments. This varied pedology allows Chardonnay, Meunier, and Pinot Noir to thrive in close proximity, developing bright floral lift, orchard fruit, and crisp, mineral-edged acidity. Producers craft harmonious three-grape blends, employing temperature-controlled stainless steel fermentation and moderate lees aging to produce vibrant, versatile cuvées.",
+    terroir: "A transitional sector featuring Campanian chalk overlaid with flint (silex), sandstone, and Sparnacian clays. This diverse soil allows Chardonnay, Meunier, and Pinot Noir to thrive in close proximity, yielding wines with bright fruit, floral notes, and crisp acidity. Producers commonly craft balanced three-grape blends with fresh mineral drive.",
     focus: "Meunier & Chardonnay: Pierry (Premier Cru), Chavot-Courcourt, Moussy, Monthelon, Brugny-Vaudancourt.",
     geology: "Complex mosaic of flint (silex), clay-limestone marls, and shallow chalk beds.",
     dominantGrapes: "Meunier, Chardonnay, Pinot Noir",
     microTerroirs: [
-      { name: "Chavot-Courcourt & Moussy", focus: "Flint and clay-limestone hillsides yielding tense, mineral Meunier" },
+      { name: "Chavot-Courcourt & Moussy", focus: "Flint and clay-limestone hillsides yielding mineral Meunier" },
       { name: "Pierry (1er Cru) & Monthelon", focus: "Chalk-marl slopes yielding structured Meunier and Blanc de Blancs" }
     ],
-    description: "The Coteaux Sud d'Épernay encompass eleven hillside communes situated immediately south of Épernay, bridging the Marne Valley and the Côte des Blancs. In the late seventeenth century, Benedictine monk Jean Oudart of Pierry unraveled early principles of bottle effervescence and cork closures alongside Dom Pérignon. Today, dynamic young grower-producers champion single-parcel micro-cuvées, eschewing commercial blending to highlight individual village personalities. Balanced co-plantings of Chardonnay and Meunier yield energetic champagnes displaying crisp green orchard fruit, spring blossoms, and refined gastronomic freshness."
+    description: "Covering eleven communes south of Épernay, the Coteaux Sud d'Épernay bridges the Vallée de la Marne and the Côte des Blancs. In the seventeenth century, Frère Jean Oudart of Pierry conducted early studies on effervescence and closures alongside Dom Pérignon. Today, artisanal growers focus on single-parcel cuvées that highlight the area's flint and chalk diversity."
   },
   {
     id: 'vitryat',
@@ -774,14 +774,14 @@ export const CHAMPAGNE_SUBREGIONS = [
     district: "Vitryat",
     lat: 48.80,
     lng: 4.55,
-    terroir: "Isolated island of pure Turonian and Campanian chalk hills situated around the town of Vitry-le-François. The bright white chalk hills reflect intense solar light onto the canopy, producing small, sun-drenched Chardonnay berries with taut citrus freshness, lively white flower aromatics, and energetic acidity. Fruit is vinified with protective techniques in stainless steel to capture pure floral-citrus aromatics, serving as an invaluable component for prestige assemblages or crystalline Blanc de Blancs.",
+    terroir: "Chalk hills surrounding Vitry-le-François featuring pure Turonian and Campanian chalk escarpments. The pale chalk reflects sunlight, helping Chardonnay reach clean ripeness while maintaining high acidity and citrus floral character. Wines are typically vinified in stainless steel to emphasize linear freshness, serving both as valuable blending components and distinct Blanc de Blancs.",
     focus: "Vibrant Blanc de Blancs Chardonnay: Vitry-en-Perthois, Bassuet, Saint-Amand-sur-Fion.",
     geology: "Pure white Turonian chalk escarpment.",
     dominantGrapes: "Chardonnay (98%+)",
     microTerroirs: [
-      { name: "Vitryat Hillsides", focus: "15 small communes producing vibrant, crisp, high-tension mineral Chardonnay" }
+      { name: "Vitryat Hillsides", focus: "15 small communes producing vibrant, crisp mineral Chardonnay" }
     ],
-    description: "The Vitryat encompasses fifteen small hillside communes clustered around the market town of Vitry-le-François in the southeastern Marne department. Timber-framed agricultural hamlets like Bassuet have cultivated hillside vines since Roman times, benefiting from bright continental sunshine and cool eastern breezes. After decades of selling fruit to major blending houses, an emerging vanguard of independent growers now bottles estate-grown cuvées under their own family labels. Chardonnay ripens slowly across these slopes, developing expressive white peach and citrus floral aromas while preserving the crystalline acidity valued by discerning cellars."
+    description: "The Vitryat comprises fifteen small communes around Vitry-le-François in the southeastern Marne department. Hillside viticulture here dates to Roman times. While traditionally supplying fruit to major houses, an emerging group of independent vignerons now estate-bottles vibrant, citrus-focused Blanc de Blancs from these chalk hills."
   }
 ];
 
@@ -795,10 +795,10 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
         frenchName: "Craie à Bélemnites",
         period: "Upper Cretaceous (Campanian stage, ~75-80 Ma)",
         fossil: "Belemnitella quadrata (fossilized cephalopod guards)",
-        characteristics: "Ultra-porous (35-40% capillary water retention) pure calcium carbonate acting as natural sponge and solar radiator.",
+        characteristics: "Porous calcium carbonate chalk (35–40% capillary water retention) providing consistent hydration and solar reflection.",
         porosity: "35% to 40% capillary porosity, holding 300–400 liters of water per cubic meter.",
         keyAreas: ["Montagne de Reims mid/upper slopes", "Côte des Blancs hillside escarpments"],
-        wineImpact: "Imparts chiseled tension, laser-sharp acidity, flinty/saline minerality, and unmatched aging longevity."
+        wineImpact: "Imparts crisp acidity, chalk minerality, and long aging potential."
       },
       {
         id: 'micraster-chalk',
@@ -806,10 +806,10 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
         frenchName: "Craie à Micraster",
         period: "Upper Cretaceous (Turonian/Santonian, ~85-90 Ma)",
         fossil: "Micraster (fossilized heart sea urchins)",
-        characteristics: "Denser, less porous chalk mixed with silty and clay alluvial deposits.",
+        characteristics: "Denser chalk mixed with silty and clay alluvial deposits along valley floors.",
         porosity: "25% to 30% porosity.",
         keyAreas: ["Lower slopes of the Marne Valley", "Valley plains of Sillery, Puisieulx, and Oiry", "Vitryat"],
-        wineImpact: "Yields lighter-bodied, delicate, saline, and ethereal floral expressions."
+        wineImpact: "Yields lighter-bodied, delicate, and floral expressions."
       },
       {
         id: 'kimmeridgian-marl',
@@ -817,10 +817,10 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
         frenchName: "Marnes Kimméridgiennes",
         period: "Upper Jurassic (Kimmeridgian stage, ~150-155 Ma)",
         fossil: "Exogyra virgula (comma-shaped fossil oysters)",
-        characteristics: "Alternating strata of calcareous marl and hard limestone; geologically contiguous with Chablis and Sancerre.",
+        characteristics: "Alternating strata of calcareous marl and hard limestone; geologically continuous with Chablis and Sancerre.",
         porosity: "Moderate porosity with high clay moisture-retention.",
         keyAreas: ["Côte des Bar / Aube (Barséquanais and Bar-sur-Aubois)"],
-        wineImpact: "Yields deeply vinous, structured, and earthy Pinot Noir and textured Pinot Blanc."
+        wineImpact: "Produces structured, savory Pinot Noir and textured Pinot Blanc."
       },
       {
         id: 'sparnacian-clay',
@@ -828,10 +828,10 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
         frenchName: "Argiles et Sables Sparnaciens",
         period: "Lower Eocene (Tertiary era, ~53-56 Ma)",
         fossil: "Lignite beds, quartz sands, and siliceous millstone flint (meulière)",
-        characteristics: "Cool, heavy, nutrient-retentive illite clays and sand pockets.",
+        characteristics: "Moisture-retentive illite clays, sands, and lignite deposits buffering against drought.",
         porosity: "Dense, water-retentive, cold soils buffering against drought.",
         keyAreas: ["Vallée de la Marne slopes and banks", "Coteaux Sud d’Épernay", "Massif de Saint-Thierry"],
-        wineImpact: "Provides moisture buffer for Meunier, yielding round, juicy, and expressive orchard-fruit profiles."
+        wineImpact: "Supports Meunier cultivation, yielding rounded wines with expressive orchard fruit."
       },
       {
         id: 'alluvial-gravels',
@@ -842,7 +842,7 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
         characteristics: "Well-drained sand, gravel, and silt benches along river corridors.",
         porosity: "Freely draining upper topsoil over chalk bedrock.",
         keyAreas: ["Marne, Vesle, and Aisne riverbanks (Tours-sur-Marne, Beaumont-sur-Vesle)"],
-        wineImpact: "Encourages supple aromatic lift and delicate, silky textures."
+        wineImpact: "Encourages aromatic freshness and supple textures."
       }
     ]
   },
@@ -856,8 +856,8 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
         percentage: 38,
         type: "Red",
         epicenter: "Montagne de Reims, Côte des Bar, Aÿ",
-        profile: "Red berries (raspberry, red cherry), muscular structure, palate weight, savoriness, aging backbone",
-        role: "Forms the structural backbone and vinous architecture of classic Champagne assemblages; sole grape for Blanc de Noirs.",
+        profile: "Red berries (raspberry, red cherry), structure, body, and savory depth",
+        role: "Provides structure, body, and aging potential in classic blends; sole grape for Blanc de Noirs.",
         benchmarkCuvees: ["Bollinger Vieilles Vignes Françaises (VVF)", "Egly-Ouriet Blanc de Noirs Les Crayères"]
       },
       {
@@ -867,8 +867,8 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
         percentage: 31,
         type: "White",
         epicenter: "Côte des Blancs, Sézanne, Vitryat",
-        profile: "Citrus (lemon, lime), white blossom, flint, brioche, laser-like acidity, decades-long cellaring",
-        role: "Provides freshness, linear tension, chalk minerality, and extended aging dynamics; sole grape for Blanc de Blancs.",
+        profile: "Citrus (lemon, lime), white blossom, flint, brioche, crisp acidity, and long cellar life",
+        role: "Contributes freshness, linear acidity, mineral drive, and longevity; sole grape for Blanc de Blancs.",
         benchmarkCuvees: ["Salon Le Mesnil", "Pierre Péters Les Chétillons", "Taittinger Comtes de Champagne"]
       },
       {
@@ -878,8 +878,8 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
         percentage: 31,
         type: "Red",
         epicenter: "Vallée de la Marne, Ardre Valley",
-        profile: "Orchard fruit (apple, pear, mirabelle plum), roundness, floral lift, early accessibility",
-        role: "Adds roundness, lush orchard fruit forwardness, and early drinkability especially on clay-dominant valley soils.",
+        profile: "Orchard fruit (apple, pear, mirabelle plum), roundness, floral aromas, and approachable fruit",
+        role: "Adds roundness and accessible fruit, particularly on clay-dominant valley soils.",
         benchmarkCuvees: ["Jérôme Prévost La Closerie Les Béguines", "Egly-Ouriet Les Vignes de Vrigny"]
       }
     ],
@@ -891,8 +891,8 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
         percentage: "<0.25%",
         type: "White",
         epicenter: "Côte des Bar (Celles-sur-Ource, Buxeuil)",
-        profile: "Round, white peach, melon, moderate acidity, textured waxy floral perfume",
-        role: "White mutation of Pinot Noir; offers textural softness and generous stone fruit without sharp acidity.",
+        profile: "Round stone fruit (white peach, melon), moderate acidity, and textured floral notes",
+        role: "White mutation of Pinot Noir offering stone fruit and gentle texture; concentrated in the Côte des Bar.",
         status: "Authorized heritage variety under INAO Champagne AOC regulations.",
         benchmarkCuvees: ["Cédric Bouchard Roses de Jeanne La Bolorée", "Pierre Gerbais L’Originale"]
       },
@@ -903,8 +903,8 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
         percentage: "<0.05%",
         type: "White",
         epicenter: "Aube (Bar-sur-Aube, Buxeuil)",
-        profile: "Electric high acidity, rustic citrus verbena, green apple, white pepper",
-        role: "Ancient indigenous Aube white variety renowned for electric high acidity and rustic floral lift.",
+        profile: "High acidity, green apple, citrus verbena, and white pepper",
+        role: "Historic Aube white variety valued for crisp acidity and floral lift.",
         status: "Authorized heritage variety; extremely low-yielding and scarce.",
         benchmarkCuvees: ["Moutard Cépage Arbane", "Olivier Horiot 5 Sens"]
       },
@@ -915,8 +915,8 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
         percentage: "<0.05%",
         type: "White",
         epicenter: "Vallée de la Marne / Aube pockets",
-        profile: "Piercing acidity, lime zest, herbal tea, green pear, crisp mineral bite",
-        role: "Rare Gouais Blanc × Savagnin heritage crossing with piercing acidity and herbal tension.",
+        profile: "Sharp acidity, lime zest, herbal tea, and crisp mineral bite",
+        role: "Heritage cross of Gouais Blanc and Savagnin marked by brisk acidity and citrus freshness.",
         status: "Authorized heritage variety.",
         benchmarkCuvees: ["Duval-Leroy Petit Meslier Authentis", "Champagne Aubry Le Nombre d’Or"]
       },
@@ -927,8 +927,8 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
         percentage: "<0.05%",
         type: "White (Gris)",
         epicenter: "Aube / Marne historic plots",
-        profile: "Honeyed apricot, smoke, baked apple, supple texture, moderate acidity",
-        role: "Historic pink-grey grape producing honeyed apricot, smoky richness, and supple texture.",
+        profile: "Stone fruit, baked apple, subtle smoke, and supple texture",
+        role: "Historic pink-skinned grape contributing stone fruit flavors and textured mouthfeel.",
         status: "Authorized heritage variety.",
         benchmarkCuvees: ["Drappier Trop m’en Faut (100% Pinot Gris)"]
       }
@@ -952,7 +952,7 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
         minAbv: "9.0% vol. (base wine)",
         aging: "Min 15 mo NV (12 mo on lees), 36 mo Vintage",
         criteria: "100% rating on historical Échelle des Crus; 17 demarcated communes across Montagne de Reims, Vallée de la Marne, and Côte des Blancs.",
-        description: "The apex of Champagne terroir, exclusively situated on pure Belemnite chalk mid-slopes."
+        description: "The top tier of Champagne communes, situated predominantly on chalk mid-slopes."
       },
       {
         tier: "Premier Cru (90–99%)",
@@ -962,7 +962,7 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
         minAbv: "9.0% vol. (base wine)",
         aging: "Min 15 mo NV (12 mo on lees), 36 mo Vintage",
         criteria: "90% to 99% rating on historical Échelle des Crus across 42 communes.",
-        description: "Exceptional hillside sites bordering Grand Crus, offering remarkable mineral tension and purity."
+        description: "High-rated hillside communes offering notable mineral focus and structural quality."
       },
       {
         tier: "Autre Cru / Terroir (80–89%)",
@@ -972,7 +972,7 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
         minAbv: "9.0% vol. (base wine)",
         aging: "Min 15 mo NV (12 mo on lees), 36 mo Vintage",
         criteria: "Demarcated Champagne AOC communes rated 80% to 89% on Échelle des Crus.",
-        description: "Regional AOC vineyards across the Marne, Aube, and Aisne delivering fruit for flagship house blends."
+        description: "Regional AOC communes across the Marne, Aube, and Aisne that provide fruit for classic house blends."
       }
     ]
   },
@@ -1051,7 +1051,7 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
       sugarRange: "0–3 g/L",
       sugarAddedAllowed: false,
       rule: "Residual sugar 0–3 g/L with NO added sugar in the liqueur d’expédition (natural grape residual only).",
-      profile: "Chiseled, bone-dry, laser-sharp chalk minerality and saline tension.",
+      profile: "Bone-dry with prominent chalk minerality, vibrant acidity, and no added sweetness.",
       foodPairing: "Raw oysters (Belon, Gillardeau), caviar, sashimi, hamachi crudo, sea urchin."
     },
     {
@@ -1065,7 +1065,7 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
       sugarRange: "0–6 g/L",
       sugarAddedAllowed: true,
       rule: "Residual sugar 0–6 g/L (dosage added or natural).",
-      profile: "Crisp, tense, pristine mineral drive with subtle roundness.",
+      profile: "Dry and crisp with mineral drive and subtle roundness.",
       foodPairing: "Lobster carpaccio, langoustines, goat cheeses, sushi, pan-seared sea scallops."
     },
     {
@@ -1079,7 +1079,7 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
       sugarRange: "0–12 g/L",
       sugarAddedAllowed: true,
       rule: "Residual sugar 0–12 g/L (the global benchmark commercial style).",
-      profile: "Harmonious equilibrium between vibrant acidity and supple texture.",
+      profile: "Balanced equilibrium between crisp acidity and gentle textural roundness.",
       foodPairing: "Roast poultry, fried chicken, gougères, turbot with beurre blanc, triple-cream cheeses."
     },
     {
@@ -1093,7 +1093,7 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
       sugarRange: "12–17 g/L",
       sugarAddedAllowed: true,
       rule: "Residual sugar 12–17 g/L.",
-      profile: "Gentle orchard fruit sweetness, softer acidity, rounded mouthfeel.",
+      profile: "Slight orchard fruit sweetness, softer acidity, and a rounded mouthfeel.",
       foodPairing: "Spicy Asian dishes, charcuterie, creamy seafood pasta, soft goat cheeses."
     },
     {
@@ -1107,7 +1107,7 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
       sugarRange: "17–32 g/L",
       sugarAddedAllowed: true,
       rule: "Residual sugar 17–32 g/L (medium-sweet on modern palate).",
-      profile: "Noticeable stone fruit sweetness, rich texture, pastry cream notes.",
+      profile: "Noticeable stone fruit sweetness and a softer, richer texture.",
       foodPairing: "Foie gras, mild soft cheeses, fruit tarts, spicy curries."
     },
     {
@@ -1121,7 +1121,7 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
       sugarRange: "32–50 g/L",
       sugarAddedAllowed: true,
       rule: "Residual sugar 32–50 g/L.",
-      profile: "Luscious, honeyed orchard fruits, candied citrus, dessert sweetness.",
+      profile: "Sweet with honeyed orchard fruits and candied citrus, balanced by underlying acidity.",
       foodPairing: "Brioche french toast, tarte Tatin, fruit soufflés, blue cheeses."
     },
     {
@@ -1135,7 +1135,7 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
       sugarRange: "50+ g/L",
       sugarAddedAllowed: true,
       rule: "Residual sugar exceeding 50 g/L (historic 19th-century Tsarist Russian palate).",
-      profile: "Intensely sweet, opulent, syrupy nectar balanced by core acidity.",
+      profile: "Rich dessert sweetness balanced by natural acidity.",
       foodPairing: "Crêpes Suzette, Roquefort, chocolate and fruit-based desserts."
     }
   ],
@@ -1166,8 +1166,8 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
       title: "Coopérative de Manipulation",
       frenchName: "Coopérative de Manipulation",
       englishTranslation: "Cooperative Winery",
-      description: "A cooperative winemaking union that pools harvested grapes from hundreds of member growers, vinifies the collective must, and markets finished Champagne under the co-op's proprietary brand names.",
-      operationalModel: "Economies of scale, centralized state-of-the-art pressing and aging facilities.",
+      description: "A cooperative winemaking union that pools harvested grapes from member growers, vinifies the collective must, and markets finished Champagne under the cooperative's brands.",
+      operationalModel: "Shared pressing and cellar facilities providing economies of scale for member growers.",
       shareOfProduction: "~9% of total production",
       exampleProducers: ["Nicolas Feuillatte (CV-CNF)", "Mailly Grand Cru", "De Saint-Gall (Union Champagne)", "Palmer & Co", "Jacquart", "Castelnau"]
     },
@@ -1176,7 +1176,7 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
       title: "Récoltant-Coopérateur",
       frenchName: "Récoltant-Coopérateur",
       englishTranslation: "Grower-Cooperator",
-      description: "A grape grower who delivers their harvest to a cooperative for pressing and vinification, then receives back finished, disgorged, and bottled Champagne to market under their own private family label.",
+      description: "A grape grower who delivers their harvest to a cooperative for pressing and vinification, then receives back finished, disgorged, and bottled Champagne to market under their own private label.",
       operationalModel: "Grower-owned brand vinified with shared cooperative equipment and cellar facilities.",
       shareOfProduction: "~1% of total production",
       exampleProducers: ["Independent family growers across the Marne, Aisne, and Aube valleys"]
@@ -1186,7 +1186,7 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
       title: "Société de Récoltants",
       frenchName: "Société de Récoltants",
       englishTranslation: "Growers' Union / Family Association",
-      description: "A legally registered entity formed by multiple family growers who pool their estate vineyards, share pressing and vinification facilities, and market wine under a single shared brand.",
+      description: "A registered entity formed by related family growers who pool their estate vineyards, share pressing and vinification facilities, and market wine under a single shared brand.",
       operationalModel: "Family partnership structure pooling vineyard assets while maintaining grower autonomy.",
       shareOfProduction: "<0.5% of total production",
       exampleProducers: ["Champagne Jean Milan (Oger)", "Champagne Aubry (Jouy-lès-Reims)"]
@@ -1206,7 +1206,7 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
       title: "Marque d'Acheteur",
       frenchName: "Marque d'Acheteur",
       englishTranslation: "Buyer's Own Brand",
-      description: "A proprietary private label owned by an external third-party customer (supermarket chain, department store, restaurant group, celebrity) produced under contract by a Champagne house or cooperative.",
+      description: "A private label owned by an external third party (supermarket, restaurant group, retailer) produced under contract by a Champagne house or cooperative.",
       operationalModel: "Private label contract packaging customized for retail clients.",
       shareOfProduction: "~1% of total production",
       exampleProducers: ["Kirkland Signature Champagne (Costco)", "Marks & Spencer Champagne", "Fauchon", "Harrods"]
@@ -1226,9 +1226,9 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
         "Delimited across the entire Champagne AOC production zone.",
         "Yield limits are strictly lower than for sparkling base wines, requiring higher natural sugar ripeness (min. 10.5% potential alcohol)."
       ],
-      description: "Still (non-sparkling / vin tranquille) dry wines produced from designated parcels within the Champagne appellation boundaries. Most famous for historic red Pinot Noirs from warm Grand Cru slopes.",
+      description: "Still (non-sparkling) dry wines produced from designated parcels within the Champagne appellation. Most notable for red Pinot Noir from warm Grand Cru slopes such as Bouzy, Ambonnay, and Aÿ.",
       benchmarkCruCommunes: ["Bouzy (Bouzy Rouge)", "Ambonnay (Egly-Ouriet Cuvée des Grands Côtés)", "Aÿ (Bollinger La Côte aux Enfants)", "Cumières", "Verzenay", "Sillery (Selosse Sous le Mont Blanc)"],
-      winemaking: "Red wines are macerated and aged in oak casks for 1-2 years; white and rosé styles express pure chalk acidity without carbonation."
+      winemaking: "Red wines undergo maceration and are aged in oak barrels for 1–2 years; white and rosé styles express pure fruit and acidity without effervescence."
     },
     {
       id: 'rose-des-riceys',
@@ -1242,10 +1242,10 @@ export const CHAMPAGNE_TECHNICAL_REGULATIONS = {
         "Must be produced via traditional semi-carbonic saignée maceration (3 to 6 days in open wooden vats).",
         "Blending white and red wine (assemblage) is strictly prohibited (unlike sparkling Rosé Champagne)."
       ],
-      description: "An ultra-rare still rosé wine produced exclusively within the 3 hillside villages of Les Riceys (Ricey-Haut, Ricey-Haute-Rive, Ricey-Bas) in the Barséquanais (Aube department / Côte des Bar).",
+      description: "A rare still rosé wine produced exclusively within the three hillside villages of Les Riceys in the Côte des Bar (Aube).",
       historicalLore: "Historically favored by King Louis XIV, who discovered it during the construction of the Palace of Versailles.",
-      winemaking: "Strictly 100% Pinot Noir crafted via whole-cluster semi-carbonic maceration and saignée bleeding in open oak vats. Only produced in warm, fully ripe harvest years.",
-      sensoryProfile: "Deep salmon-ruby hue, intense bouquet of wild woodland strawberries, bergamot, crushed almonds, dried herbs, and a savory earthy finish (goût de terroir).",
+      winemaking: "100% Pinot Noir crafted through whole-cluster semi-carbonic maceration and saignée bleeding in open vats; produced only in warm, fully ripe vintages.",
+      sensoryProfile: "Deep salmon hue with aromas of wild strawberry, bergamot, dried herbs, and a savory finish.",
       benchmarkProducers: ["Olivier Horiot (En Barmont / Valingrain)", "Alexandre Bonnet", "Jacques Defrance", "Guy de Forez", "Chassenay d’Arce"]
     }
   ]
@@ -1263,8 +1263,8 @@ export const CHAMPAGNE_PRESTIGE_CUVEES = [
     grapeComposition: "Vintage Assemblage (~50% Chardonnay, ~50% Pinot Noir)",
     sourcing: "100% Grand Cru villages of Montagne de Reims, Côte des Blancs, Vallée de la Marne + Hautvillers Premier Cru (historic Abbey)",
     winemaking: "Minimum 8-10 years on lees (Plénitude P2 at 15+ years, P3 at 25-30+ years); reductive vinification in stainless steel.",
-    character: "Smoky reduction, toasted brioche, dried citrus, white peach, jasmine floral notes, seamless silken mousse, and immense longevity.",
-    iconicStatus: "The world's first commercial prestige cuvée, conceived by Robert-Jean de Vogüé in 1935."
+    character: "Toasted brioche, citrus, white peach, jasmine floral notes, silken mousse, and long aging potential.",
+    iconicStatus: "The first commercially released prestige cuvée, created by Moët & Chandon with the 1921 vintage."
   },
   {
     id: 'cristal',
@@ -1277,8 +1277,8 @@ export const CHAMPAGNE_PRESTIGE_CUVEES = [
     grapeComposition: "Vintage (~60% Pinot Noir, ~40% Chardonnay)",
     sourcing: "100% Estate-owned Grand Cru parcels across Verzenay, Verzy, Beaumont-sur-Vesle, Aÿ, Avize, Cramant, and Le Mesnil-sur-Oger",
     winemaking: "Biodynamic estate vineyards, partial oak cask aging (approx. 20%), minimum 6 years sur lattes + 8 months post-disgorgement rest; packaged in clear flat-bottomed crystal bottle with UV cellophane wrap.",
-    character: "Laser-like chalk tension, candied citrus, toasted hazelnut, white flowers, crystalline mineral purity, and vibrating finish.",
-    iconicStatus: "Created in 1876 for Tsar Alexander II of Russia; the ultimate expression of biodynamic Grand Cru terroir."
+    character: "Fine chalk tension, candied citrus, toasted hazelnut, white flowers, and mineral focus with a persistent finish.",
+    iconicStatus: "Created in 1876 for Tsar Alexander II of Russia; crafted from 100% estate-owned Grand Cru parcels."
   },
   {
     id: 'comtes-de-champagne',
@@ -1291,8 +1291,8 @@ export const CHAMPAGNE_PRESTIGE_CUVEES = [
     grapeComposition: "100% Chardonnay (Blanc de Blancs)",
     sourcing: "Exclusively from 5 Côte des Blancs Grand Crus: Avize, Chouilly, Cramant, Le Mesnil-sur-Oger, and Oger",
     winemaking: "100% first press cuvée juice; 5% aged for 4 months in new toasted French oak barrels; minimum 10 years cellar aging in Saint-Nicaise Gallo-Roman chalk crayères.",
-    character: "Creamy white peach, toasted brioche, lemon curd, candied ginger, saline chalk minerality, and silky aristocratic texture.",
-    iconicStatus: "Benchmark prestige Blanc de Blancs created in tribute to the Counts of Champagne."
+    character: "White peach, toasted brioche, lemon curd, candied ginger, and chalk minerality with a silky texture.",
+    iconicStatus: "Taittinger's benchmark Blanc de Blancs, sourced entirely from Grand Cru villages in the Côte des Blancs."
   },
   {
     id: 'grand-siecle',
@@ -1305,8 +1305,8 @@ export const CHAMPAGNE_PRESTIGE_CUVEES = [
     grapeComposition: "Multi-Vintage Iteration (~55% Chardonnay, ~45% Pinot Noir)",
     sourcing: "100% Grand Cru fruit selected from 11 of the 17 Grand Crus (Ambonnay, Bouzy, Mailly, Tours-sur-Marne, Avize, Cramant, Le Mesnil, etc.)",
     winemaking: "Iterated blend of 3 declared standout complementary vintage years (e.g., Itération No. 26: 2012, 2008, 2005); aged minimum 10-12 years on lees.",
-    character: "Perfect harmony of richness, candied citrus peel, roasted hazelnut, acacia honey, silkiness, and vibrant mineral acidity.",
-    iconicStatus: "Conceived by Bernard de Nonancourt in 1959 to 'recreate the perfect year' through assemblage."
+    character: "Rich yet focused blend of candied citrus, roasted hazelnut, acacia honey, and vibrant acidity.",
+    iconicStatus: "Laurent-Perrier's signature prestige cuvée, blending three standout vintage years to craft a balanced multi-vintage expression."
   },
   {
     id: 'sir-winston-churchill',
@@ -1319,8 +1319,8 @@ export const CHAMPAGNE_PRESTIGE_CUVEES = [
     grapeComposition: "Vintage Pinot Noir Dominant (Secret family assemblage proportion)",
     sourcing: "Grand Cru old-vine Pinot Noir from Montagne de Reims and Grand Cru Chardonnay from Côte des Blancs",
     winemaking: "Vinified in stainless steel at cool temperatures, hand-riddled in Pol Roger's deep subterranean chalk cellars; minimum 10 years aging on lees.",
-    character: "Robust, vinous, powerful, full-bodied architecture with roasted nuts, dried fruits, gingerbread, and majestic finish.",
-    iconicStatus: "Crafted in tribute to Winston Churchill's favorite robust and mature Champagne style (\"My tastes are simple: I am easily satisfied with the best\")."
+    character: "Structured, full-bodied profile featuring roasted nuts, dried stone fruit, gingerbread, and a long, savory finish.",
+    iconicStatus: "Crafted by Pol Roger in tribute to Winston Churchill, emphasizing mature, Pinot Noir-dominant richness."
   },
   {
     id: 'clos-des-goisses',
@@ -1333,8 +1333,8 @@ export const CHAMPAGNE_PRESTIGE_CUVEES = [
     grapeComposition: "Single-Vineyard Vintage (~70% Pinot Noir, ~30% Chardonnay)",
     sourcing: "5.5-hectare walled vineyard with pure south-facing 45° steep chalk slope in Mareuil-sur-Aÿ (Premier Cru 99%)",
     winemaking: "Partial oak cask vinification (approx. 50%), no malolactic fermentation, minimum 8-10 years aging on lees, low dosage.",
-    character: "Monumental power, black cherry, graphite smoke, chalk bedrock, opulent structure, and extraordinary aging capacity (30-50+ years).",
-    iconicStatus: "Champagne's first and most famous single-vineyard clos cuvée, pioneering single-terroir expression in 1935."
+    character: "Deep structure, black cherry, graphite, chalk bedrock, and long aging potential (30+ years).",
+    iconicStatus: "Pioneering single-vineyard Champagne, sourced from a walled 5.5-hectare south-facing slope in Mareuil-sur-Aÿ."
   },
   {
     id: 'clos-du-mesnil',
@@ -1347,8 +1347,8 @@ export const CHAMPAGNE_PRESTIGE_CUVEES = [
     grapeComposition: "Single-Vineyard 100% Chardonnay (Blanc de Blancs)",
     sourcing: "1.84-hectare walled vineyard within the heart of Le Mesnil-sur-Oger (Grand Cru), enclosed by stone walls since 1698",
     winemaking: "Fermented parcel-by-parcel in small neutral oak casks (205 L), extended 10-15 years aging in Krug cellars before release.",
-    character: "Electrifying chalk tension, lemon zest, crushed oyster shell, toasted almond, white truffle, and infinite mineral finish.",
-    iconicStatus: "The undisputed holy grail of single-vineyard Blanc de Blancs."
+    character: "Chalk tension, lemon zest, toasted almond, white truffle notes, and a long mineral finish.",
+    iconicStatus: "Single-vineyard Blanc de Blancs from a 1.84-hectare walled parcel in Le Mesnil-sur-Oger, enclosed since 1698."
   },
   {
     id: 'clos-d-ambonnay',
@@ -1361,8 +1361,8 @@ export const CHAMPAGNE_PRESTIGE_CUVEES = [
     grapeComposition: "Single-Vineyard 100% Pinot Noir (Blanc de Noirs)",
     sourcing: "Tiny 0.68-hectare walled vineyard within the village of Ambonnay (Grand Cru)",
     winemaking: "Fermented in small oak barrels, aged over 12-15 years on lees; extremely limited production (approx. 3,000 bottles).",
-    character: "Heady red currant, black truffle, roasted sweet spices, praline, vinous majesty, and immense structural depth.",
-    iconicStatus: "The rarest and most prestigious single-vineyard Blanc de Noirs in the world."
+    character: "Red currant, black truffle, sweet spice, praline, and deep structural weight.",
+    iconicStatus: "Rare single-vineyard Blanc de Noirs produced from a tiny 0.68-hectare walled parcel in Ambonnay."
   },
   {
     id: 'vieilles-vignes-francaises',
@@ -1375,8 +1375,8 @@ export const CHAMPAGNE_PRESTIGE_CUVEES = [
     grapeComposition: "100% Ungrafted Pinot Noir (Blanc de Noirs)",
     sourcing: "Ungrafted, phylloxera-free old vines grown en foule in tiny walled parcels in Aÿ (Chaudes Terres and Clos Saint-Jacques)",
     winemaking: "100% vinified in seasoned oak casks, aged under natural cork for 8-10+ years on lees; minute production (~2,000-3,000 bottles).",
-    character: "Living historical time capsule of pre-phylloxera Champagne: profound concentration, black cherry, exotic spices, leather, and velvet texture.",
-    iconicStatus: "World-renowned benchmark for pre-phylloxera ungrafted French viticulture."
+    character: "Concentrated black cherry, subtle spice, leather, and velvety texture from ungrafted vines.",
+    iconicStatus: "Produced from rare, phylloxera-free ungrafted Pinot Noir vines grown in walled parcels in Aÿ."
   },
   {
     id: 'la-grande-dame',
@@ -1389,8 +1389,8 @@ export const CHAMPAGNE_PRESTIGE_CUVEES = [
     grapeComposition: "Vintage (~90% Pinot Noir, ~10% Chardonnay)",
     sourcing: "Historical Grand Cru parcels acquired by Madame Clicquot (Aÿ, Bouzy, Ambonnay, Verzy, Verzenay, Avize, Le Mesnil)",
     winemaking: "Aged minimum 8 years in the limestone crayères of Reims; showcase for Pinot Noir authority and elegance.",
-    character: "Pinot Noir authority, red fruits, smoky minerality, dried fig, candied citrus, and refined velvety structure.",
-    iconicStatus: "Tribute to Barbe-Nicole Ponsardin (Madame Clicquot), the \"Grande Dame de la Champagne\"."
+    character: "Pinot Noir-driven structure with red fruit, subtle smoke, dried fig, and a velvety texture.",
+    iconicStatus: "Tribute to Madame Clicquot, crafted primarily from historic Grand Cru vineyards acquired during her tenure."
   },
   {
     id: 'belle-epoque',
@@ -1403,8 +1403,8 @@ export const CHAMPAGNE_PRESTIGE_CUVEES = [
     grapeComposition: "Vintage (~50% Chardonnay, ~45% Pinot Noir, ~5% Meunier)",
     sourcing: "Chardonnay from Cramant Grand Cru + Montagne de Reims Pinot Noir",
     winemaking: "Vinified in stainless steel, aged over 6 years on lees; encased in the iconic 1902 Emile Gallé Japanese anemone enameled bottle.",
-    character: "White peach, hawthorn blossom, candied ginger, subtle brioche, refined silken mousse, and elegant floral lift.",
-    iconicStatus: "Icon of Belle Époque art and floral Champagne finesse."
+    character: "White peach, hawthorn blossom, candied ginger, delicate brioche, and a fine floral lift.",
+    iconicStatus: "Perrier-Jouët's flagship cuvée, renowned for floral elegance and its 1902 Art Nouveau bottle design by Emile Gallé."
   },
   {
     id: 'cuvee-nicolas-francois',
@@ -1417,8 +1417,8 @@ export const CHAMPAGNE_PRESTIGE_CUVEES = [
     grapeComposition: "Vintage (~60% Pinot Noir, ~40% Chardonnay)",
     sourcing: "Grand Crus of Montagne de Reims and Côte des Blancs + Mareuil-sur-Aÿ Premier Cru",
     winemaking: "Partial oak vinification (approx. 20%), cold settling (débourbage à froid), extended 10+ years aging on lees.",
-    character: "Vinous harmony, hawthorn blossom, yellow orchard peach, brioche, toasted almond, and pristine balance.",
-    iconicStatus: "Created in tribute to the founder of Champagne Billecart-Salmon in Mareuil-sur-Aÿ."
+    character: "Yellow peach, hawthorn blossom, brioche, toasted almond, and fine balance.",
+    iconicStatus: "Created in honor of the founder of Champagne Billecart-Salmon, blending Grand Cru Pinot Noir and Chardonnay."
   }
 ];
 
@@ -1431,7 +1431,7 @@ export const CHAMPAGNE_ICONIC_GROWERS = [
     vigneron: "Anselme & Guillaume Selosse",
     status: "RM",
     producerCode: "RM",
-    philosophy: "Pioneer of the grower Champagne movement. Solera maturation (Substance), parcel-specific lieux-dits, biodynamic farming, indigenous yeasts, wood vinification with controlled oxidative nuance.",
+    philosophy: "Pioneer of modern grower Champagne. Employs solera aging for the 'Substance' cuvée, single-parcel lieux-dits, biodynamic viticulture, indigenous yeasts, and neutral oak aging with controlled oxidation.",
     keyCuvees: ["Substance (Solera from 1986)", "Initial Blanc de Blancs", "Version Originale (V.O.)", "Lieux-dits: Les Carelles (Le Mesnil), La Côte Faron (Aÿ), Le Bout du Clos (Ambonnay), Sous le Mont (Mareuil), Chemin de Châlons (Cramant), Les Chantereines (Avize)"]
   },
   {
@@ -1442,7 +1442,7 @@ export const CHAMPAGNE_ICONIC_GROWERS = [
     vigneron: "Rodolphe Péters",
     status: "RM",
     producerCode: "RM",
-    philosophy: "Master of crystalline, laser-pure Blanc de Blancs exclusively from Grand Cru chalk vineyards. Utilizes a perpetual reserve dating back to 1988.",
+    philosophy: "Specialist in pure, linear Blanc de Blancs sourced exclusively from Grand Cru chalk vineyards. Maintains a perpetual reserve dating back to 1988.",
     keyCuvees: ["Cuvée Spéciale Les Chétillons (Single-vineyard benchmark)", "Cuvée de Réserve Blanc de Blancs", "L’Étonnant Monsieur Victor", "Rosé for Albane"]
   },
   {
@@ -1453,7 +1453,7 @@ export const CHAMPAGNE_ICONIC_GROWERS = [
     vigneron: "Francis Egly",
     status: "RM",
     producerCode: "RM",
-    philosophy: "The titan of Pinot Noir grower Champagne. Ultra-ripe harvesting, low yields, barrel fermentation in Dominique Laurent casks, extended lees aging (36 to 96+ months), bottled with minimal or zero dosage.",
+    philosophy: "Pioneering Pinot Noir grower focusing on fully ripe fruit, low yields, barrel fermentation in Burgundian oak casks, extended lees aging (36 to 96+ months), and minimal or zero dosage.",
     keyCuvees: ["Grand Cru Millésimé", "Blanc de Noirs Les Crayères Vieilles Vignes (100% Ambonnay Pinot Noir planted 1946)", "Grand Cru V.P. (Vieillissement Prolongé - 84 months on lees)", "Grand Cru Brut Tradition", "Les Vignes de Vrigny (100% Meunier 1er Cru)", "Coteaux Champenois Cuvée des Grands Côtés (Red)"]
   },
   {
@@ -1464,7 +1464,7 @@ export const CHAMPAGNE_ICONIC_GROWERS = [
     vigneron: "Cédric Bouchard",
     status: "RM",
     producerCode: "RM",
-    philosophy: "Radical purism: Single vineyard, single grape variety, single vintage, zero dosage, native yeasts, single press, bottled at lower pressure (4.5 atmospheres for delicate vinous pearl).",
+    philosophy: "Minimalist approach: single vineyard, single grape variety, single vintage, zero dosage, native yeasts, and gentle bottle pressure (4.5 atmospheres) to highlight wine texture.",
     keyCuvees: ["Les Ursules (100% Pinot Noir)", "La Bolorée (100% Pinot Blanc from 1935 vines)", "La Haute-Lemblée (100% Chardonnay)", "Côte de Val Vilaine (100% Pinot Noir)", "Le Creux d’Enfer (100% Pinot Noir Rosé de Saignée)"]
   },
   {
@@ -1475,7 +1475,7 @@ export const CHAMPAGNE_ICONIC_GROWERS = [
     vigneron: "Pascal & Fabrice Agrapart",
     status: "RM",
     producerCode: "RM",
-    philosophy: "Hyper-terroir focused Blanc de Blancs. Natural vineyard management, horse-plowed soils, demi-muid fermentation, zero filtration, low dosage.",
+    philosophy: "Terroir-driven Blanc de Blancs crafted with organic farming, horse-plowed parcels, large demi-muid oak fermentation, no filtration, and low dosage.",
     keyCuvees: ["Minéral (Avize & Cramant chalk)", "Avizoise (Clay-chalk Avize)", "Vénus Brut Nature (Horse-plowed single plot planted 1959)", "Complantée (Co-planted 6 heritage & main varieties in Avize)", "Terroirs Extra Brut"]
   },
   {
@@ -1486,7 +1486,7 @@ export const CHAMPAGNE_ICONIC_GROWERS = [
     vigneron: "Bertrand & Hélène Gautherot",
     status: "RM",
     producerCode: "RM",
-    philosophy: "Demeter-certified biodynamic farming on Jurassic Kimmeridgian and Portlandian soils. Native yeast fermentation in used oak and Spanish clay amphorae, zero dosage, zero sulfur at bottling.",
+    philosophy: "Demeter-certified biodynamic farming on Kimmeridgian and Portlandian soils. Fermentation with indigenous yeasts in seasoned oak and clay amphorae, bottled without dosage or added sulfur.",
     keyCuvees: ["Fidèle (100% Pinot Noir from Kimmeridgian marl)", "Blanc d’Argile (100% Chardonnay from Kimmeridgian clay)", "Textures (100% Pinot Blanc vinified in amphora)", "Saignée de Sorbée (100% Pinot Noir Saignée Rosé)"]
   },
   {
@@ -1497,7 +1497,7 @@ export const CHAMPAGNE_ICONIC_GROWERS = [
     vigneron: "Jérôme Prévost (protégé of Anselme Selosse)",
     status: "RC / RM",
     producerCode: "RC",
-    philosophy: "World benchmark for 100% Meunier from a single 2-hectare parcel ('Les Béguines') rich in Thanetian sandy-clay calcareous soils packed with fossilized seashells.",
+    philosophy: "Benchmark producer of 100% Meunier from a 2-hectare parcel ('Les Béguines') on Thanetian sandy-clay and chalk soils rich in marine fossils.",
     keyCuvees: ["Les Béguines (100% Meunier)", "& (Extra parcel blend)", "Fac-Simile (Rosé de Saignée Meunier)"]
   },
   {
@@ -1508,7 +1508,7 @@ export const CHAMPAGNE_ICONIC_GROWERS = [
     vigneron: "Olivier Collin (protégé of Anselme Selosse)",
     status: "RM",
     producerCode: "RM",
-    philosophy: "Single-parcel micro-cuvées aged for years in oak casks, highlighting isolated limestone and flint terroirs south of the Côte des Blancs.",
+    philosophy: "Single-parcel micro-cuvées aged extensively in oak casks, focusing on isolated limestone and flint terroirs in the Coteaux du Petit Morin.",
     keyCuvees: ["Les Enfers (100% Chardonnay)", "Les Roises (100% Chardonnay)", "Les Pierrières (100% Chardonnay)", "Les Maillons (100% Pinot Noir)"]
   },
   {
@@ -1519,7 +1519,7 @@ export const CHAMPAGNE_ICONIC_GROWERS = [
     vigneron: "David Léclapart",
     status: "RM",
     producerCode: "RM",
-    philosophy: "Biodynamic purist on the Premier Cru slopes of Trépail. Spiritual, zero-dosage Blanc de Blancs expressing pure chalk and flint.",
+    philosophy: "Biodynamic grower on the Premier Cru slopes of Trépail, producing zero-dosage Blanc de Blancs marked by chalk and flint minerality.",
     keyCuvees: ["L’Amateur (Blanc de Blancs)", "L’Artiste (Old vines)", "L’Apôtre (1946 parcel)", "L’Alchimiste (Rosé de Saignée)"]
   },
   {
@@ -1530,7 +1530,7 @@ export const CHAMPAGNE_ICONIC_GROWERS = [
     vigneron: "Aurélien Laherte",
     status: "RM",
     producerCode: "RM",
-    philosophy: "Dynamic champion of heritage cépages and single-parcel Meuniers. Biodynamic viticulture and oak barrel vinification.",
+    philosophy: "Specialist in heritage grape varieties and single-parcel Meunier expressions, utilizing biodynamic viticulture and oak barrel vinification.",
     keyCuvees: ["Les 7 (Co-planted 7 varieties)", "Les Empreintes", "Les Vignes d’Autrefois (Old-vine Meunier)", "Blanc de Blancs Brut Nature"]
   }
 ];
@@ -1541,7 +1541,7 @@ export const CHAMPAGNE_FOOD_PAIRINGS = [
     wineType: 'White',
     targetWine: 'Blanc de Blancs & Brut Nature (Le Mesnil / Avize)',
     dish: "Fresh Oysters (Belon & Gillardeau), Oscietra Caviar, Hamachi Crudo with Yuzu, Hokkaido Scallops",
-    note: "The wine's searing acidity and saline chalk finish effortlessly harmonize with the briny sweetness of raw shellfish.",
+    note: "Crisp acidity and saline minerality complement the natural salinity and delicate sweetness of raw shellfish.",
     glassware: "Tulip-shaped Champagne / White Wine Stem (450ml)",
     servingTemp: "8–10°C (46–50°F)",
     decanting: "Not recommended; preserve delicate effervescence."
@@ -1551,7 +1551,7 @@ export const CHAMPAGNE_FOOD_PAIRINGS = [
     wineType: 'White',
     targetWine: 'Brut NV & Extra Brut (Multi-Vintage Cuvées)',
     dish: "Truffle Pommes Frites, Southern Buttermilk Fried Chicken, Warm Gruyère Gougères, Tempura Langoustines",
-    note: "High effervescence and brisk acidity cleanse the palate after every rich, buttery or crispy bite, preventing palate fatigue.",
+    note: "High effervescence and brisk acidity cut through rich, fried textures, refreshing the palate between bites.",
     glassware: "White Wine Tulip Stem",
     servingTemp: "9–11°C (48–52°F)",
     decanting: "Not recommended."
@@ -1561,7 +1561,7 @@ export const CHAMPAGNE_FOOD_PAIRINGS = [
     wineType: 'Red',
     targetWine: 'Blanc de Noirs & Coteaux Champenois Rouge (Ambonnay / Aÿ / Bouzy)',
     dish: "Roast Bresse Pigeon with Truffle Jus, Butter-Poached Maine Lobster, Roast Turbot with Caviar Beurre Blanc",
-    note: "Fuller-bodied Blanc de Noirs and still Coteaux Champenois reds possess the textural weight and phenolic grip for poultry, pigeon, and rich butter sauces.",
+    note: "Medium- to full-bodied Blanc de Noirs and still Coteaux Champenois reds provide the texture and subtle tannin needed for poultry, lobster, and rich sauces.",
     glassware: "Burgundy Pinot Noir Stem or Wide Tulip (550ml)",
     servingTemp: "10–12°C (50–54°F)",
     decanting: "Gentle aeration in wide glass for 10 minutes."
@@ -1571,7 +1571,7 @@ export const CHAMPAGNE_FOOD_PAIRINGS = [
     wineType: 'Rosé',
     targetWine: "Rosé de Saignée & Grand Cru Rosé Champagne",
     dish: "Roasted Duck Breast with Cherry-Pinot Reduction & Pata Negra Charcuterie",
-    note: "Structured saignée maceration extracts phenolic tannins and red berry aromatics (blood orange, wild raspberry) that cut through the unctuous richness of duck fat and cure-aged Iberico ham.",
+    note: "Saignée rosé maceration yields gentle tannins and red berry flavors that cut through the richness of duck and cured meats.",
     glassware: "Tulip-shaped Champagne / Pinot Noir Stem (500ml)",
     servingTemp: "9–11°C (48–52°F)",
     decanting: "Optional; 15–20 minutes in glass to open aromatic red-fruit aromatics without losing effervescence."
@@ -1581,10 +1581,11 @@ export const CHAMPAGNE_FOOD_PAIRINGS = [
     wineType: 'White',
     targetWine: 'Vintage Champagne & Prestige Cuvées (10+ Years On Lees)',
     dish: "Triple-Cream Chaource AOP, Brillat-Savarin, 24-Month Comté, Langres AOP washed with Marc de Champagne",
-    note: "Creamy bloomy-rind and washed-rind regional cheeses are cut by Champagne's mousse, revealing nutty autolytic depth.",
+    note: "The fine mousse and acidity balance the richness of bloomy and washed-rind cheeses, while aged cuvées complement nutty notes in Comté.",
     glassware: "Prestige Cuvée Tulip Glass (500ml)",
     servingTemp: "10–12°C (50–54°F)",
     decanting: "Not recommended."
   }
 ];
+
 
