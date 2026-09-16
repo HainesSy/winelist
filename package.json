@@ -9,7 +9,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "node test/verify_all_17_regions.mjs && node test/empirical_domain_validation_suite.test.mjs && node test/adversarial_world_regions_stress.js"
+    "test": "node test/verify_all_17_regions.mjs && node test/empirical_domain_validation_suite.test.mjs && node test/adversarial_world_regions_stress.js && node test/bulk_sync_url.test.mjs"
   },
   "dependencies": {
     "cors": "^2.8.6",
@@ -32,6 +32,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.5.0",
+    "polygon-clipping": "^0.15.7",
     "vite": "^8.0.10"
   }
 }

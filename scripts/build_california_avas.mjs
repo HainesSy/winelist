@@ -486,17 +486,20 @@ async function run() {
     features: features
   };
 
-  const jsonStr = JSON.stringify(californiaCollection);
-  console.log(`\nSuccessfully compiled ${features.length} California AVAs!`);
-  console.log(`Total payload size: ${(jsonStr.length / 1024).toFixed(1)} KB`);
-
-  // Write to public/data/boundaries/california.json
+  const jsonStr = JSON.stringify(californiaCollection, null, 2);
   fs.writeFileSync('public/data/boundaries/california.json', jsonStr);
-  console.log(`Wrote to public/data/boundaries/california.json`);
+
+  // Carve shared AVA overlap puzzle pieces
+  const { carveCaliforniaAVAs } = await import('./carve_california_overlaps.mjs');
+  const finalCollection = carveCaliforniaAVAs();
+  const finalStr = JSON.stringify(finalCollection, null, 2);
+
+  console.log(`\nSuccessfully compiled and carved ${finalCollection.features.length} California AVAs & shared zones!`);
+  console.log(`Total payload size: ${(finalStr.length / 1024).toFixed(1)} KB`);
 
   // Write to dist/data/boundaries/california.json
   if (fs.existsSync('dist/data/boundaries')) {
-    fs.writeFileSync('dist/data/boundaries/california.json', jsonStr);
+    fs.writeFileSync('dist/data/boundaries/california.json', finalStr);
     console.log(`Wrote to dist/data/boundaries/california.json`);
   }
 }

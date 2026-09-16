@@ -453,6 +453,16 @@ function WineRegionMap({
                 ${props.category ? `<span class="poly-cat-badge">${props.category}</span>` : ''}
               </div>
               ${props.dominantGrape ? `<div class="poly-grape">🍇 ${props.dominantGrape}</div>` : ''}
+              ${props.ttbRule ? `
+                <div class="poly-ttb-rule">
+                  ⚖️ <strong>TTB Dual-Labeling:</strong> ${props.ttbRule}
+                </div>
+              ` : ''}
+              ${props.sommelierNote ? `
+                <div class="poly-somm-note">
+                  💡 <em>${props.sommelierNote}</em>
+                </div>
+              ` : ''}
             </div>
           `, {
             sticky: true,
