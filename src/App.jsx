@@ -480,8 +480,8 @@ function App() {
       const rowQty = parseInt(wine.Quantity || '1', 10) || 1;
       const binName = decodeEntities(wine.Bin || 'Unassigned');
       const locName = decodeEntities(wine.Location || 'Cellar');
-      const iWine = wine.iWine || wine.WineID || wine.IWine || '';
-      const iBottle = wine.iBottle || wine.BottleID || wine.IBottle || wine.Barcode || '';
+      const iWine = wine.iWine || wine.WineID || wine.IWine || wine['Wine ID'] || wine['WineID'] || '';
+      const iBottle = wine.iBottle || wine.BottleID || wine.IBottle || wine['Bottle ID'] || wine.Barcode || wine.barcode || wine['Barcode'] || '';
 
       if (!grouped[mainType]) {
         grouped[mainType] = {};
@@ -703,18 +703,23 @@ function App() {
     const selectedBin = availableBins.length > 0 ? availableBins[0] : wine.bins[0];
     const selectedBinId = selectedBin?.id || '';
 
+    const currentConsumedFromBin = consumedBins[wineKey]?.[selectedBinId] || 0;
+
     const newCounts = { ...consumedCounts, [wineKey]: (consumedCounts[wineKey] || 0) + 1 };
     const wineBinMap = consumedBins[wineKey] || {};
     const newBins = {
       ...consumedBins,
       [wineKey]: {
         ...wineBinMap,
-        [selectedBinId]: (wineBinMap[selectedBinId] || 0) + 1
+        [selectedBinId]: currentConsumedFromBin + 1
       }
     };
 
+    const bottleFromBin = (selectedBin?.bottleIds && selectedBin.bottleIds[currentConsumedFromBin])
+      ? selectedBin.bottleIds[currentConsumedFromBin]
+      : null;
     const targetIWine = selectedBin?.iWine || wine.iWine || wine.WineID || wine.IWine || wine['Wine ID'] || '';
-    const targetIBottle = selectedBin?.iBottle || wine.iBottle || wine.BottleID || wine.IBottle || wine['Bottle ID'] || wine.Barcode || wine.barcode || '';
+    const targetIBottle = bottleFromBin || selectedBin?.iBottle || wine.iBottle || wine.BottleID || wine.IBottle || wine['Bottle ID'] || wine.Barcode || wine.barcode || '';
     const fallbackQuery = `${wine.Producer} ${wine.Wine} ${wine.Vintage !== 'NV' ? wine.Vintage : ''}`.trim();
     const ctActionUrl = getCellarTrackerActionUrl(targetIWine, targetIBottle, 'Drink', fallbackQuery);
 
@@ -759,7 +764,7 @@ function App() {
   const handleBulkSyncOnCellarTracker = () => {
     const pendingItems = consumptionHistory.filter(h => !h.synced);
     const targetItems = pendingItems.length > 0 ? pendingItems : consumptionHistory;
-    const codes = targetItems.map(item => item.iBottle || item.barcode || item.iWine).filter(Boolean);
+    const codes = targetItems.map(item => String(item.iBottle || item.barcode || item.iWine || '').trim()).filter(Boolean);
 
     if (codes.length === 0) {
       showToast("No opened bottles in Service Tray to sync.", "info");
@@ -767,7 +772,7 @@ function App() {
     }
 
     // 1. Open CellarTracker's direct validated scan list with all opened bottles
-    const scanUrl = `https://www.cellartracker.com/list.asp'able=Scan&Validate=true&iInventoryList=${encodeURIComponent(codes.join(','))}`;
+    const scanUrl = `https://www.cellartracker.com/list.asp?Table=Scan&Validate=true&iInventoryList=${encodeURIComponent(codes.join(','))}`;
 
     try {
       window.open(scanUrl, '_blank', 'noopener,noreferrer');
@@ -811,11 +816,22 @@ function App() {
     if (newCounts[wineKey] === 0) delete newCounts[wineKey];
 
     const wineBinMap = { ...(consumedBins[wineKey] || {}) };
-    const binKeys = Object.keys(wineBinMap);
-    if (binKeys.length > 0) {
-      const lastBinId = binKeys[binKeys.length - 1];
-      wineBinMap[lastBinId] = Math.max(0, wineBinMap[lastBinId] - 1);
-      if (wineBinMap[lastBinId] === 0) delete wineBinMap[lastBinId];
+    let targetBinId = null;
+    if (historyId) {
+      const itemToUndo = consumptionHistory.find(h => h.id === historyId);
+      if (itemToUndo) targetBinId = itemToUndo.binId;
+    }
+
+    if (targetBinId && wineBinMap[targetBinId]) {
+      wineBinMap[targetBinId] = Math.max(0, wineBinMap[targetBinId] - 1);
+      if (wineBinMap[targetBinId] === 0) delete wineBinMap[targetBinId];
+    } else {
+      const binKeys = Object.keys(wineBinMap);
+      if (binKeys.length > 0) {
+        const lastBinId = binKeys[binKeys.length - 1];
+        wineBinMap[lastBinId] = Math.max(0, wineBinMap[lastBinId] - 1);
+        if (wineBinMap[lastBinId] === 0) delete wineBinMap[lastBinId];
+      }
     }
 
     const newBins = { ...consumedBins, [wineKey]: wineBinMap };
